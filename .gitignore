@@ -1,16 +1,8 @@
-# 子项目（独立 git 仓库，由 haodaer 统一管理）
-/main-site
-/auth-service
-/travel-guide
-/haodaer-shici
-/haodaer-tiaozhan
-/ultraman-english
-/xueguoxue
-/xuetongshi
-/admin
-/forum
-/store
-/chinese-poetry
+# 依赖和构建
+node_modules/
+dist/
+.next/
+target/
 
 # 系统文件
 .DS_Store
@@ -19,3 +11,5 @@
 # Claude
 .claude/
 
+# 数据集（单独 clone）
+chinese-poetry/

@@ -1,0 +1,483 @@
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from "vue"
+import { knowledgeData, categories, categoryColors, dailyQuotes, type Topic, type Section } from './data/knowledge'
+import { speak, stopSpeaking } from './lib/audio'
+import { filterApps } from '@shared/composables/useSearch'
+import HeaderBar from '@shared/components/HeaderBar.vue'
+import AppSearchResults from '@shared/components/AppSearchResults.vue'
+import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
+import FooterBar from '@shared/components/FooterBar.vue'
+
+// Navigation
+type View = 'home' | 'detail' | 'reader' | 'search'
+const currentView = ref<View>('home')
+const currentTopic = ref<Topic | null>(null)
+const currentSection = ref<Section | null>(null)
+const activeCategory = ref('全部')
+const searchQuery = ref('')
+const apiResults = ref<any[]>([])
+const searchResults = ref<{ topic: Topic; sections: Section[] }[]>([])
+
+const filteredApps = computed(() => filterApps(searchQuery.value))
+
+// Daily quote
+const dailyIndex = ref(Math.floor(Math.random() * dailyQuotes.length))
+
+// Favorites
+const favoriteIds = ref<string[]>(JSON.parse(localStorage.getItem('xuetongshi_fav') || '[]'))
+function toggleFavorite(id: string) {
+  const i = favoriteIds.value.indexOf(id)
+  i >= 0 ? favoriteIds.value.splice(i, 1) : favoriteIds.value.push(id)
+  localStorage.setItem('xuetongshi_fav', JSON.stringify(favoriteIds.value))
+}
+function isFavorite(id: string) { return favoriteIds.value.includes(id) }
+
+// --- Hash-based URL navigation ---
+function pushHash(view: string, topicId?: string, sectionId?: string) {
+  let hash = ''
+  if (view === 'detail' && topicId) hash = 'detail/' + topicId
+  else if (view === 'reader' && sectionId) hash = 'reader/' + sectionId
+  history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
+}
+
+function restoreFromHash() {
+  const hash = window.location.hash.slice(1)
+  if (!hash) return
+  const parts = hash.split('/')
+  const view = parts[0]
+  const id = parts[1]
+  if (view === 'detail' && id) {
+    const item = knowledgeData.find(t => t.id === id)
+    if (item) { currentTopic.value = item; currentView.value = 'detail' }
+  } else if (view === 'reader' && id) {
+    for (const t of knowledgeData) {
+      const sec = t.sections.find(s => s.id === id)
+      if (sec) { currentTopic.value = t; currentSection.value = sec; currentView.value = 'reader'; break }
+    }
+  }
+}
+
+function openDetail(t: Topic) {
+  stopSpeaking()
+  currentTopic.value = t
+  currentSection.value = null
+  currentView.value = 'detail'
+  pushHash('detail', t.id)
+}
+
+function openReader(s: Section) {
+  currentSection.value = s
+  currentView.value = 'reader'
+  pushHash('reader', currentTopic.value?.id, s.id)
+}
+
+function goHome() {
+  stopSpeaking()
+  currentView.value = 'home'
+  currentTopic.value = null
+  currentSection.value = null
+  history.pushState(null, '', window.location.pathname)
+}
+
+function goToSection(t: Topic, s: Section) {
+  currentTopic.value = t
+  currentSection.value = s
+  currentView.value = 'reader'
+  pushHash('reader', t.id, s.id)
+}
+
+function goBack() {
+  stopSpeaking()
+  if (currentView.value === 'search') { goHome(); return }
+  history.back()
+}
+
+function onPopState() {
+  const hash = window.location.hash.slice(1)
+  if (!hash) {
+    currentView.value = 'home'
+    currentTopic.value = null
+    currentSection.value = null
+    return
+  }
+  restoreFromHash()
+}
+
+// --- Search (local, no redirect) ---
+async function doSearch() {
+  const q = searchQuery.value.trim()
+  if (!q) return
+  const lower = q.toLowerCase()
+  const results: { topic: Topic; sections: Section[] }[] = []
+
+  for (const topic of knowledgeData) {
+    const matched: Section[] = []
+    const topicMatch = topic.title.includes(lower) || topic.tags.some(t => t.includes(lower))
+    for (const sec of topic.sections) {
+      if (sec.title.includes(lower) || sec.content.includes(lower) || topicMatch) {
+        matched.push(sec)
+      }
+    }
+    if (matched.length > 0) {
+      results.push({ topic, sections: matched })
+    }
+  }
+
+  searchResults.value = results
+  currentView.value = 'search'
+  // API search
+  try {
+    const _res = await fetch('/api/search?q=' + encodeURIComponent(q))
+    const _data = await _res.json()
+    apiResults.value = _data.data || []
+  } catch { apiResults.value = [] }
+  stopSpeaking()
+  history.replaceState(null, '', window.location.pathname)
+}
+
+// --- Home filtering ---
+const filteredTopics = computed(() => {
+  let list = knowledgeData
+  if (activeCategory.value !== '全部') list = list.filter(t => t.category === activeCategory.value)
+  return list
+})
+
+const categoriesWithTopics = computed(() => {
+  const cats = activeCategory.value === '全部' ? categories : [activeCategory.value]
+  return cats.map(cat => ({
+    category: cat,
+    color: categoryColors[cat] || '#64748b',
+    items: filteredTopics.value.filter(t => t.category === cat)
+  })).filter(g => g.items.length > 0)
+})
+
+// --- Audio ---
+const speaking = ref(false)
+function playText(text: string) {
+  stopSpeaking()
+  if (!text.trim()) return
+  speaking.value = true
+  speak(text, 0.8, () => { speaking.value = false })
+}
+function stopAudio() { stopSpeaking(); speaking.value = false }
+function getReaderContent(): string { return currentSection.value?.content || '' }
+
+onMounted(() => {
+  window.addEventListener('beforeunload', stopSpeaking)
+  window.addEventListener('popstate', onPopState)
+
+  // Check for ?q= param from main-site
+  const params = new URLSearchParams(window.location.search)
+  const qParam = params.get('q')
+  if (qParam) {
+    searchQuery.value = qParam
+    doSearch()
+    history.replaceState(null, '', window.location.pathname)
+    return
+  }
+
+  restoreFromHash()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('beforeunload', stopSpeaking)
+  window.removeEventListener('popstate', onPopState)
+})
+</script>
+
+<template>
+  <div class="page" style="--hd-accent:#06b6d4;--hd-accent-hover:#0891b2;--hd-accent-light:#a5f3fc;--hd-accent-shadow:rgba(6,182,212,0.1);--hd-accent-bg:#cffafe">
+    <HeaderBar v-model="searchQuery" placeholder="搜索知识..." @search="doSearch" />
+
+    <!-- ===== HOME VIEW ===== -->
+    <template v-if="currentView === 'home'">
+      <section class="ts-hero">
+        <div class="ts-hero-inner animate-fadeInUp">
+          <div class="ts-hero-row">
+            <div class="ts-hero-left">
+              <h1 class="ts-hero-title">学通识</h1>
+              <p class="ts-hero-desc">博学多识，拓展视野</p>
+            </div>
+            <div class="ts-hero-right">
+              <div class="ts-quote-box">
+                <p class="ts-quote-text">{{ dailyQuotes[dailyIndex].text }}</p>
+                <p class="ts-quote-source">—— {{ dailyQuotes[dailyIndex].source }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="ts-tags animate-fadeIn">
+            <button v-for="cat in ['全部', ...categories]" :key="cat" @click="activeCategory = cat"
+              class="ts-tag" :class="activeCategory === cat ? 'ts-tag-active' : ''">
+              {{ cat }}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="ts-grid-section" v-for="g in categoriesWithTopics" :key="g.category">
+        <h2 class="section-title">
+          <span class="section-title-dot" :style="{ backgroundColor: g.color }"></span>
+          {{ g.category }}（{{ g.items.length }}）
+        </h2>
+        <div class="ts-grid">
+          <div v-for="t in g.items" :key="t.id" class="ts-card" @click="openDetail(t)">
+            <div class="ts-card-top" :style="{ backgroundColor: g.color + '18' }">
+              <svg class="ts-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 class="ts-card-title">{{ t.title }}</h3>
+            <span class="ts-card-cat" :style="{ backgroundColor: g.color + '18', color: g.color }">{{ t.category }}</span>
+            <p class="ts-card-summary">{{ t.summary }}</p>
+          </div>
+        </div>
+        <p v-if="g.items.length === 0" class="ts-empty">暂无内容</p>
+      </section>
+      <p v-if="categoriesWithTopics.length === 0" class="ts-empty" style="padding:60px 24px">没有找到匹配的知识</p>
+    </template>
+
+    <!-- ===== SEARCH RESULTS VIEW ===== -->
+    <template v-if="currentView === 'search'">
+      <div class="ts-search-results">
+        <div class="ts-search-header">
+          <button class="ts-back" @click="goBack()">← 返回</button>
+        </div>
+        <div class="ts-search-summary">搜索 "{{ searchQuery }}"</div>
+
+        <AppSearchResults :apps="filteredApps" />
+        <ContentSearchResults :results="apiResults" :query="searchQuery" />
+
+        <!-- Content search results -->
+        <div v-if="searchResults.length > 0" class="ts-section">
+          <h3 class="ts-section-title">📚 内容搜索结果</h3>
+          <div v-for="r in searchResults" :key="r.topic.id" class="ts-search-group">
+            <div class="ts-search-topic" @click="openDetail(r.topic)">
+              <span class="ts-search-topic-name">{{ r.topic.title }}</span>
+              <span class="ts-search-topic-cat" :style="{ color: categoryColors[r.topic.category] }">{{ r.topic.category }}</span>
+            </div>
+            <div class="ts-search-sections">
+              <div v-for="sec in r.sections" :key="r.topic.id + '-' + sec.id" class="ts-search-item" @click="goToSection(r.topic, sec)">
+                <div class="ts-search-item-title">{{ r.topic.title }} · {{ sec.title }}</div>
+                <div class="ts-search-item-preview">{{ sec.content.substring(0, 80) }}{{ sec.content.length > 80 ? '...' : '' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="filteredApps.length === 0 && searchResults.length === 0" class="ts-empty" style="padding:60px 24px">
+          没有找到相关内容
+        </div>
+      </div>
+    </template>
+
+    <!-- ===== DETAIL VIEW ===== -->
+    <template v-if="currentView === 'detail' && currentTopic">
+      <div class="ts-detail-wrap">
+        <button class="ts-back" @click="goBack()">← 返回</button>
+        <div class="ts-detail-card">
+          <h1 class="ts-detail-title">{{ currentTopic.title }}</h1>
+          <p class="ts-detail-meta">{{ currentTopic.category }}</p>
+          <div class="ts-detail-tags">
+            <span v-for="tag in currentTopic.tags" :key="tag" class="ts-detail-tag">{{ tag }}</span>
+          </div>
+          <p class="ts-detail-summary">{{ currentTopic.summary }}</p>
+        </div>
+
+        <h3 class="ts-sections-title">知识点（{{ currentTopic.sections.length }}）</h3>
+        <div class="ts-sections">
+          <div v-for="sec in currentTopic.sections" :key="sec.id" class="ts-section-item" @click="openReader(sec)">
+            <div class="ts-section-info">
+              <span class="ts-section-name">{{ sec.title }}</span>
+              <p class="ts-section-preview">{{ sec.content.substring(0, 50) }}{{ sec.content.length > 50 ? '...' : '' }}</p>
+            </div>
+            <button class="ts-section-fav" @click.stop="toggleFavorite(currentTopic!.id + '-' + sec.id)"
+              :style="{ color: isFavorite(currentTopic!.id + '-' + sec.id) ? '#eab308' : '#94a3b8' }">
+              {{ isFavorite(currentTopic!.id + '-' + sec.id) ? '★' : '☆' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ===== READER VIEW ===== -->
+    <template v-if="currentView === 'reader' && currentSection">
+      <div class="ts-reader-wrap">
+        <div class="ts-reader-header">
+          <button class="ts-back" @click="goBack()">← 返回</button>
+          <span class="ts-reader-title">{{ currentTopic?.title }} · {{ currentSection.title }}</span>
+        </div>
+
+        <div class="ts-content-sections">
+          <div class="ts-content-block">
+            <div class="ts-content-label">
+              <span>{{ currentSection.title }}</span>
+              <button class="ts-block-play" @click="speaking ? stopAudio() : playText(currentSection.content)">{{ speaking ? '⏹' : '▶' }}</button>
+            </div>
+            <p class="ts-content-text">{{ currentSection.content }}</p>
+          </div>
+        </div>
+
+        <div class="ts-reader-actions">
+          <button class="ts-action-btn ts-action-play" @click="speaking ? stopAudio() : playText(getReaderContent())">
+            {{ speaking ? '⏹ 停止' : '▶ 播放全文' }}
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <!-- ===== FOOTER ===== -->
+    <FooterBar v-if="currentView === 'home'" />
+  </div>
+</template>
+
+<style>
+/* ===== Shared ===== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.animate-fadeInUp { animation: fadeInUp 0.6s ease-out both; }
+.animate-fadeIn { animation: fadeIn 0.5s ease-out both; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #f8fafc; color: #0f172a; -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Hero ===== */
+.ts-hero {
+  background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+  padding: 28px 0 24px; border-bottom: 1px solid #67e8f9;
+}
+.ts-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.ts-hero-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 24px; }
+.ts-hero-left { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.ts-hero-title { font-size: 36px; font-weight: 800; color: #0f172a; letter-spacing: 1px; }
+.ts-hero-desc { font-size: 15px; color: #64748b; line-height: 1.6; }
+.ts-hero-right { flex-shrink: 0; }
+.ts-quote-box { text-align: right; white-space: nowrap; }
+.ts-quote-text { font-size: 18px; font-weight: 700; color: #06b6d4; letter-spacing: 1px; }
+.ts-quote-source { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+.ts-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.ts-tag {
+  padding: 5px 16px; border-radius: 10px; font-size: 13px; font-weight: 500;
+  cursor: pointer; border: 2px solid #e2e8f0; background: white; color: #475569; transition: all 0.2s;
+}
+.ts-tag:hover { border-color: #06b6d4; color: #06b6d4; }
+.ts-tag-active { background: #06b6d4; color: white; border-color: #06b6d4; }
+.ts-tag-active:hover { background: #0891b2; border-color: #0891b2; color: white; }
+
+/* ===== Grid ===== */
+.ts-grid-section { max-width: 1200px; margin: 0 auto; padding: 32px 24px 8px; }
+.section-title { font-size: 20px; font-weight: 700; margin-bottom: 18px; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+.section-title-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.ts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ts-card {
+  background: white; border-radius: 16px; padding: 24px 20px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.3s;
+}
+.ts-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.ts-card-top {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+}
+.ts-card-icon { width: 28px; height: 28px; color: #06b6d4; }
+.ts-card-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+.ts-card-cat {
+  display: inline-block; padding: 2px 10px; border-radius: 8px; font-size: 11px; font-weight: 500; margin-bottom: 8px;
+}
+.ts-card-summary { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+.ts-empty { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
+
+/* ===== Search Results ===== */
+.ts-search-results { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.ts-search-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.ts-search-summary { font-size: 14px; color: #64748b; }
+.ts-search-group { margin-bottom: 20px; }
+.ts-search-topic {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px; background: #f0f9ff; border-radius: 10px;
+  cursor: pointer; margin-bottom: 6px; transition: background 0.2s;
+}
+.ts-search-topic:hover { background: #ecfeff; }
+.ts-search-topic-name { font-size: 15px; font-weight: 600; color: #0f172a; }
+.ts-search-topic-cat { font-size: 12px; font-weight: 500; }
+.ts-search-sections { display: flex; flex-direction: column; gap: 4px; padding-left: 12px; }
+.ts-search-item {
+  padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: background 0.2s;
+}
+.ts-search-item:hover { background: #f1f5f9; }
+.ts-search-item-title { font-size: 13px; font-weight: 500; color: #06b6d4; margin-bottom: 2px; }
+.ts-search-item-preview { font-size: 12px; color: #94a3b8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-section-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+
+/* ===== Detail ===== */
+.ts-detail-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.ts-back { background: none; border: none; font-size: 13px; color: #06b6d4; cursor: pointer; padding: 4px 0; display: block; white-space: nowrap; }
+.ts-back:hover { color: #0891b2; }
+.ts-detail-card { background: white; border-radius: 18px; padding: 28px; margin: 16px 24px; border: 1px solid #e2e8f0; }
+.ts-detail-title { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+.ts-detail-meta { font-size: 13px; color: #64748b; margin-bottom: 10px; }
+.ts-detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.ts-detail-tag { padding: 2px 10px; background: #cffafe; color: #06b6d4; border-radius: 8px; font-size: 11px; font-weight: 500; }
+.ts-detail-summary { font-size: 13px; color: #64748b; line-height: 1.7; }
+.ts-sections-title { font-size: 16px; font-weight: 600; margin: 0 0 10px; color: #0f172a; padding: 0 24px; }
+.ts-sections { display: flex; flex-direction: column; gap: 8px; padding: 0 24px 24px; }
+.ts-section-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: white; border-radius: 14px; padding: 14px 18px;
+  border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s;
+}
+.ts-section-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.04); border-color: #67e8f9; }
+.ts-section-info { flex: 1; min-width: 0; }
+.ts-section-name { font-size: 14px; font-weight: 600; color: #0f172a; display: block; margin-bottom: 3px; }
+.ts-section-preview { font-size: 12px; color: #94a3b8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-section-fav {
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: #f8fafc; font-size: 18px; cursor: pointer;
+  flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.ts-section-fav:hover { background: #ecfeff; transform: scale(1.15); }
+
+/* ===== Reader ===== */
+.ts-reader-wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.ts-reader-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.ts-reader-header .ts-back { margin-bottom: 0; }
+.ts-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
+.ts-content-sections { display: flex; flex-direction: column; gap: 20px; }
+.ts-content-block { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
+.ts-content-label {
+  font-size: 14px; font-weight: 700; color: #06b6d4;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 2px solid #cffafe;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ts-content-text { font-size: 14px; line-height: 1.9; color: #475569; white-space: pre-line; }
+.ts-block-play {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: #cffafe; color: #06b6d4; font-size: 13px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.ts-block-play:hover { background: #06b6d4; color: white; }
+.ts-reader-actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
+.ts-action-btn { padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
+.ts-action-play { background: #06b6d4; color: white; }
+.ts-action-play:hover { background: #0891b2; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .ts-hero { padding: 20px 0 16px; }
+  .ts-hero-title { font-size: 26px; }
+  .ts-hero-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .ts-hero-right { width: 100%; }
+  .ts-hero-left { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .ts-quote-box { text-align: left; white-space: normal; }
+  .ts-quote-text { font-size: 16px; }
+  .ts-grid { grid-template-columns: repeat(2, 1fr); }
+  .ts-detail-card { margin: 12px 12px; padding: 20px; }
+  .ts-sections-title { margin: 0 12px 10px; }
+  .ts-sections { padding: 0 12px 16px; }
+  .ts-reader-wrap { padding: 14px; }
+  .ts-content-block { padding: 16px; }
+  .ts-search-results { padding: 14px; }
+}
+</style>
