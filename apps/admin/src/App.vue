@@ -1,237 +1,201 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
-const services = ref<any[]>([])
-const system = ref<any>({})
-const stats = ref<any>({})
-const health = ref<any>({})
-const moderation = ref<any>({ pendingCount: 0, pendingList: [] })
-const analytics = ref<any>({ totalViews: 0, todayViews: 0, uniquePages: 0, eventCount: 0 })
-const loading = ref(true)
-const error = ref('')
-const autoRefresh = ref(true)
+const router = useRouter()
+const route = useRoute()
 
-async function fetchData() {
-  try {
-    const [s, sy, st, h, m, a] = await Promise.all([
-      fetch('/api/services').then(r => r.json()),
-      fetch('/api/system').then(r => r.json()),
-      fetch('/api/stats').then(r => r.json()),
-      fetch('/api/health').then(r => r.json()),
-      fetch('/api/moderation').then(r => r.json()),
-      fetch('/api/analytics').then(r => r.json()),
-    ])
-    services.value = s
-    system.value = sy
-    stats.value = st
-    health.value = h
-    moderation.value = m
-    analytics.value = a
-    error.value = ''
-  } catch (e: any) {
-    error.value = e.message
-  } finally {
-    loading.value = false
-  }
-}
-
-onMounted(() => {
-  fetchData()
-  if (autoRefresh.value) setInterval(fetchData, 30000)
-})
-
-function formatTime(ts: number) {
-  const diff = Date.now() - ts
-  const m = Math.floor(diff / 60000)
-  if (m < 60) return `${m}分钟前`
-  const h = Math.floor(m / 60)
-  return `${h}小时${m % 60}分钟前`
-}
-
-function memoryFormat(bytes: number) {
-  if (!bytes) return 'N/A'
-  const mb = bytes / 1024 / 1024
-  return mb > 1024 ? `${(mb / 1024).toFixed(1)}GB` : `${mb.toFixed(0)}MB`
-}
-
-function contentTypeLabel(ct: string) {
-  const map: Record<string, string> = {
-    comment: '评论', kid_say: '童言', checkin_note: '签到', gallery_caption: '画廊',
-  }
-  return map[ct] || ct
-}
+const navItems = [
+  { path: '/', label: '仪表盘', icon: '📊' },
+  { path: '/questions', label: '题库管理', icon: '❓' },
+  { path: '/users', label: '用户管理', icon: '👥' },
+  { path: '/analytics', label: '运营分析', icon: '📈' },
+]
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-900 text-gray-100">
-    <header class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between">
-      <div>
-        <h1 class="text-xl font-bold">好大儿 管理后台</h1>
-        <p class="text-sm text-gray-400 mt-1">只读监控仪表盘</p>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="https://grandand.com" class="sidebar-logo">好大儿</a>
+        <span class="sidebar-badge">管理</span>
       </div>
-      <div class="flex items-center gap-4">
-        <span v-if="health.time" class="text-xs text-gray-500">更新于 {{ health.time?.slice(11, 19) }}</span>
-        <button @click="fetchData" class="px-3 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-          刷新
-        </button>
+      <nav class="sidebar-nav">
+        <a
+          v-for="item in navItems"
+          :key="item.path"
+          href="#"
+          class="nav-item"
+          :class="{ active: route.path === item.path }"
+          @click.prevent="router.push(item.path)"
+        >
+          <span class="nav-icon">{{ item.icon }}</span>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="https://grandand.com" target="_blank" class="footer-link">← 返回主站</a>
       </div>
-    </header>
-
-    <div v-if="error" class="mx-6 mt-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-sm text-red-300">
-      {{ error }}
-    </div>
-
-    <div v-if="loading" class="flex items-center justify-center py-20 text-gray-500">加载中...</div>
-
-    <template v-if="!loading">
-      <!-- Stats Cards -->
-      <section class="px-6 py-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">用户</p>
-          <p class="text-2xl font-bold mt-1 text-blue-400">{{ stats.users ?? '-' }}</p>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <h2 class="page-title">{{ route.meta.title || '好大儿管理' }}</h2>
+        <div class="topbar-right">
+          <a href="https://grandand.com" target="_blank" class="topbar-link">主站</a>
+          <span class="topbar-sep">|</span>
+          <a href="https://travel.grandand.com" target="_blank" class="topbar-link">走天下</a>
         </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">攻略</p>
-          <p class="text-2xl font-bold mt-1 text-emerald-400">{{ stats.guides ?? '-' }}</p>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">段落</p>
-          <p class="text-2xl font-bold mt-1 text-violet-400">{{ stats.sections ?? '-' }}</p>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">评分</p>
-          <p class="text-2xl font-bold mt-1 text-yellow-400">{{ stats.ratings ?? '-' }}</p>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">评论</p>
-          <p class="text-2xl font-bold mt-1 text-pink-400">{{ stats.comments ?? '-' }}</p>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">点赞</p>
-          <p class="text-2xl font-bold mt-1 text-orange-400">{{ stats.likes ?? '-' }}</p>
-        </div>
-        <div class="bg-gray-800 rounded-xl p-4">
-          <p class="text-xs text-gray-400 uppercase tracking-wide">收藏</p>
-          <p class="text-2xl font-bold mt-1 text-rose-400">{{ stats.favorites ?? '-' }}</p>
-        </div>
-      </section>
-
-      <!-- Content Moderation Panel -->
-      <section class="px-6 pb-6">
-        <div class="bg-gray-800 rounded-xl p-5">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
-              内容审核
-              <span v-if="moderation.pendingCount > 0"
-                class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
-                {{ moderation.pendingCount }} 待审
-              </span>
-            </h2>
-            <span class="text-xs text-gray-500">自上次构建后</span>
-          </div>
-
-          <div v-if="moderation.pendingList?.length > 0" class="space-y-2">
-            <div v-for="item in moderation.pendingList" :key="item.id"
-              class="bg-gray-700/40 rounded-lg p-3 text-sm">
-              <div class="flex items-start justify-between mb-1">
-                <span class="text-xs bg-yellow-600/30 text-yellow-400 px-2 py-0.5 rounded">
-                  {{ contentTypeLabel(item.contentType) }}
-                </span>
-                <span class="text-xs text-gray-500">{{ item.createdAt?.slice(11, 19) || '' }}</span>
-              </div>
-              <p class="text-gray-300 text-xs leading-relaxed">{{ item.content }}</p>
-              <p v-if="item.reason" class="text-red-400 text-xs mt-1">⚠ {{ item.reason }}</p>
-            </div>
-          </div>
-          <div v-else class="text-gray-500 text-sm py-2 text-center">
-            暂无待审核内容
-          </div>
-        </div>
-      </section>
-
-      <!-- Analytics Panel -->
-      <section class="px-6 pb-6">
-        <div class="bg-gray-800 rounded-xl p-5">
-          <h2 class="text-sm font-semibold text-gray-300 mb-4">流量分析</h2>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
-              <p class="text-xs text-gray-500">总浏览量</p>
-              <p class="text-xl font-bold text-blue-400">{{ analytics.totalViews }}</p>
-            </div>
-            <div>
-              <p class="text-xs text-gray-500">今日访问</p>
-              <p class="text-xl font-bold text-emerald-400">{{ analytics.todayViews }}</p>
-            </div>
-            <div>
-              <p class="text-xs text-gray-500">独立页面</p>
-              <p class="text-xl font-bold text-violet-400">{{ analytics.uniquePages }}</p>
-            </div>
-            <div>
-              <p class="text-xs text-gray-500">总事件数</p>
-              <p class="text-xl font-bold text-yellow-400">{{ analytics.eventCount }}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- System + Services -->
-      <div class="px-6 grid md:grid-cols-2 gap-6 pb-8">
-        <div class="bg-gray-800 rounded-xl p-5">
-          <h2 class="text-sm font-semibold text-gray-300 mb-4">系统状态</h2>
-          <div class="space-y-3 text-sm">
-            <div class="flex justify-between"><span class="text-gray-500">主机</span><span>{{ system.hostname }}</span></div>
-            <div class="flex justify-between"><span class="text-gray-500">Node.js</span><span>{{ system.node }}</span></div>
-            <div class="flex justify-between"><span class="text-gray-500">磁盘</span><span>{{ system.disk }}</span></div>
-            <div class="flex justify-between"><span class="text-gray-500">内存</span><span>{{ system.memory }}</span></div>
-            <div class="flex justify-between"><span class="text-gray-500">负载</span><span>{{ system.load }}</span></div>
-            <div class="flex justify-between"><span class="text-gray-500">API 状态</span>
-              <span :class="health.status === 'ok' ? 'text-emerald-400' : 'text-red-400'">
-                {{ health.status ?? '-' }}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-800 rounded-xl p-5">
-          <h2 class="text-sm font-semibold text-gray-300 mb-4">服务状态</h2>
-          <div class="space-y-2">
-            <div v-for="s in services" :key="s.id"
-              class="flex items-center justify-between py-2 px-3 rounded-lg text-sm"
-              :class="s.status === 'online' ? 'bg-gray-700/50' : 'bg-red-900/20'">
-              <div class="flex items-center gap-3">
-                <span class="w-2 h-2 rounded-full"
-                  :class="s.status === 'online' ? 'bg-emerald-400' : 'bg-red-400'"></span>
-                <span class="font-medium">{{ s.name }}</span>
-                <span class="text-gray-500 text-xs">:{{ s.port }}</span>
-              </div>
-              <div class="flex items-center gap-4 text-xs text-gray-400">
-                <span>{{ memoryFormat(s.memory) }}</span>
-                <span>{{ s.cpu }}%</span>
-              </div>
-            </div>
-            <p v-if="services.length === 0" class="text-gray-500 text-sm py-2">无运行中服务</p>
-          </div>
-        </div>
+      </header>
+      <div class="content-area">
+        <router-view />
       </div>
-
-      <div class="px-6 pb-8">
-        <h2 class="text-sm font-semibold text-gray-300 mb-3">快捷入口</h2>
-        <div class="flex flex-wrap gap-3 text-sm">
-          <a v-for="link in [
-            { name: '主站', url: 'https://grandand.com' },
-            { name: '走天下', url: 'https://travel.grandand.com' },
-            { name: '认证服务', url: 'https://auth.grandand.com/health' },
-          ]" :key="link.name" :href="link.url" target="_blank"
-            class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-            {{ link.name }} ↗
-          </a>
-        </div>
-      </div>
-    </template>
+    </main>
   </div>
 </template>
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #f8fafc; color: #0f172a; -webkit-font-smoothing: antialiased;
+}
+
+.admin-layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: 220px; background: #fff; border-right: 1px solid #e2e8f0;
+  display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 40;
+}
+.sidebar-header {
+  padding: 20px 20px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e2e8f0;
+}
+.sidebar-logo { font-size: 22px; font-weight: 800; color: #2563eb; text-decoration: none; }
+.sidebar-badge {
+  font-size: 10px; background: #2563eb; color: #fff; padding: 2px 8px; border-radius: 6px; font-weight: 600;
+}
+.sidebar-nav { flex: 1; padding: 12px 10px; display: flex; flex-direction: column; gap: 2px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px;
+  text-decoration: none; font-size: 14px; color: #64748b; transition: all 0.15s; font-weight: 500;
+}
+.nav-item:hover { background: #f1f5f9; color: #0f172a; }
+.nav-item.active { background: #eff6ff; color: #2563eb; font-weight: 600; }
+.nav-icon { font-size: 16px; width: 22px; text-align: center; }
+.sidebar-footer { padding: 16px 10px; border-top: 1px solid #e2e8f0; }
+.footer-link {
+  display: block; padding: 8px 14px; font-size: 13px; color: #94a3b8; text-decoration: none; border-radius: 8px;
+}
+.footer-link:hover { background: #f1f5f9; color: #64748b; }
+
+/* Main Content */
+.main-content { margin-left: 220px; flex: 1; min-height: 100vh; }
+.topbar {
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0;
+  padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 30;
+}
+.page-title { font-size: 18px; font-weight: 700; color: #0f172a; }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.topbar-link { font-size: 13px; color: #64748b; text-decoration: none; }
+.topbar-link:hover { color: #2563eb; }
+.topbar-sep { color: #e2e8f0; font-size: 12px; }
+
+.content-area { padding: 24px 28px; }
+
+/* ----- Shared Component Styles ----- */
+
+/* Cards */
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 24px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 10px;
+  font-size: 13px; font-weight: 500; border: none; cursor: pointer; text-decoration: none;
+  transition: all 0.15s;
+}
+.btn-primary { background: #2563eb; color: #fff; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-outline { background: transparent; border: 1px solid #e2e8f0; color: #64748b; }
+.btn-outline:hover { border-color: #bfdbfe; color: #2563eb; background: #f8fafc; }
+.btn-danger { background: #ef4444; color: #fff; }
+.btn-danger:hover { background: #dc2626; }
+.btn-sm { padding: 5px 12px; font-size: 12px; border-radius: 8px; }
+
+/* Inputs */
+.input {
+  padding: 8px 14px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 13px;
+  outline: none; transition: all 0.15s; color: #334155; background: #fff;
+}
+.input:focus { border-color: #bfdbfe; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.input::placeholder { color: #94a3b8; }
+select.input { cursor: pointer; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  text-align: left; padding: 10px 14px; color: #64748b; font-weight: 600;
+  border-bottom: 2px solid #e2e8f0; white-space: nowrap;
+}
+.data-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+.data-table tr:hover td { background: #f8fafc; }
+
+/* Pagination */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 16px; }
+.page-btn {
+  padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px;
+  cursor: pointer; background: #fff; color: #64748b; transition: all 0.15s;
+}
+.page-btn:hover { border-color: #bfdbfe; color: #2563eb; }
+.page-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+.page-btn:disabled { opacity: 0.4; cursor: default; }
+.page-info { font-size: 13px; color: #94a3b8; margin: 0 8px; }
+
+/* Toolbar */
+.toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+
+/* Filters */
+.filter-group { display: flex; align-items: center; gap: 6px; }
+.filter-label { font-size: 12px; color: #94a3b8; white-space: nowrap; }
+
+/* Search box */
+.search-box {
+  display: flex; align-items: center; border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 0 12px; background: #fff; transition: all 0.15s; flex: 1; max-width: 320px;
+}
+.search-box:focus-within { border-color: #bfdbfe; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.search-box input { border: none; background: transparent; padding: 8px 6px; font-size: 13px; outline: none; flex: 1; color: #334155; }
+.search-box input::placeholder { color: #94a3b8; }
+.search-box .search-icon { color: #94a3b8; width: 16px; height: 16px; cursor: pointer; }
+
+/* Stat Cards */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.stat-card {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px 20px;
+}
+.stat-card .stat-label { font-size: 12px; color: #94a3b8; font-weight: 500; }
+.stat-card .stat-value {
+  font-size: 28px; font-weight: 800; margin-top: 4px; line-height: 1.2;
+}
+.stat-card .stat-sub { font-size: 12px; color: #cbd5e1; margin-top: 2px; }
+
+/* Loading & empty states */
+.loading-state { text-align: center; padding: 48px 20px; color: #94a3b8; font-size: 14px; }
+.empty-state { text-align: center; padding: 48px 20px; color: #94a3b8; }
+.empty-state .empty-icon { font-size: 36px; margin-bottom: 8px; }
+.empty-state .empty-text { font-size: 14px; }
+
+/* Badge tags */
+.tag {
+  display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 500;
+}
+.tag-blue { background: #eff6ff; color: #2563eb; }
+.tag-green { background: #f0fdf4; color: #16a34a; }
+.tag-yellow { background: #fefce8; color: #ca8a04; }
+.tag-red { background: #fef2f2; color: #dc2626; }
+.tag-purple { background: #faf5ff; color: #9333ea; }
+.tag-gray { background: #f1f5f9; color: #64748b; }
+
+/* Section */
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.section-title { font-size: 15px; font-weight: 700; color: #0f172a; }
 </style>
