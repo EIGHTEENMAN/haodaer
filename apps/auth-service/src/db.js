@@ -78,13 +78,79 @@ db.exec(`
     nickname TEXT NOT NULL,
     gender TEXT,
     age INTEGER,
+    birthday TEXT,
     avatar TEXT,
+    phone TEXT UNIQUE,
+    wechat_openid TEXT UNIQUE,
+    password_hash TEXT,
+    game_level INTEGER DEFAULT 1,
+    game_score INTEGER DEFAULT 0,
+    challenge_points INTEGER DEFAULT 0,
+    challenge_rank INTEGER DEFAULT 0,
     created_at TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
 
+  CREATE TABLE IF NOT EXISTS learning_progress (
+    id TEXT PRIMARY KEY,
+    child_id TEXT NOT NULL,
+    subject TEXT NOT NULL CHECK(subject IN ('poetry','classics','general','english','challenge')),
+    items_learned INTEGER DEFAULT 0,
+    time_spent_minutes INTEGER DEFAULT 0,
+    accuracy REAL DEFAULT 0,
+    last_studied_at TEXT,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (child_id) REFERENCES children(id),
+    UNIQUE(child_id, subject)
+  );
+
+  CREATE TABLE IF NOT EXISTS parent_consent (
+    child_user_id TEXT PRIMARY KEY,
+    parent_name TEXT,
+    parent_phone TEXT,
+    consent_at TEXT,
+    verified INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS youth_mode_settings (
+    user_id TEXT PRIMARY KEY,
+    enabled INTEGER DEFAULT 1,
+    daily_time_limit_minutes INTEGER DEFAULT 40,
+    night_mode_enabled INTEGER DEFAULT 1,
+    social_limited INTEGER DEFAULT 1,
+    updated_at TEXT DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS daily_usage (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    date TEXT NOT NULL,
+    minutes_used INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now')),
+    UNIQUE(user_id, date)
+  );
+
   CREATE INDEX IF NOT EXISTS idx_children_user ON children(user_id);
+  CREATE INDEX IF NOT EXISTS idx_learning_progress_child ON learning_progress(child_id);
+  CREATE INDEX IF NOT EXISTS idx_daily_usage_user ON daily_usage(user_id, date);
 `);
+
+// Add new columns to users (safe migration)
+try { db.exec(`ALTER TABLE users ADD COLUMN gender TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE users ADD COLUMN birthday TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE users ADD COLUMN suspended INTEGER DEFAULT 0`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN birthday TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN phone TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN wechat_openid TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN password_hash TEXT`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN game_level INTEGER DEFAULT 1`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN game_score INTEGER DEFAULT 0`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN challenge_points INTEGER DEFAULT 0`); } catch (e) {}
+try { db.exec(`ALTER TABLE children ADD COLUMN challenge_rank INTEGER DEFAULT 0`); } catch (e) {}
 
 // Periodic cleanup: delete expired sessions every 5 minutes
 setInterval(() => {

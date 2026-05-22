@@ -1,22 +1,61 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { classicData, categories, categoryColors, type Classic, type Section } from './data/classics'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { classicIndex, categories, categoryColors, type ClassicMeta } from './data/classics-meta'
+import type { Classic, Section } from './data/classics'
 import { speak, stopSpeaking } from './lib/audio'
 import { useAuth } from '@shared/composables/useAuth'
 import { filterApps } from '@shared/composables/useSearch'
+import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
+import { useLearningStats } from '@shared/composables/useLearningStats'
 import HeaderBar from '@shared/components/HeaderBar.vue'
 import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
+import YouthModeGate from '@shared/components/YouthModeGate.vue'
 
 // Auth state
-const { token } = useAuth()
+const { token, user } = useAuth()
+
+// Learning stats
+const stats = useLearningStats('xueguoxue')
+
+// Lazy-loaded full data
+const fullData = ref<Classic[] | null>(null)
+const loadingData = ref(false)
+let fullDataPromise: Promise<void> | null = null
+
+async function ensureFullData() {
+  if (fullData.value) return
+  if (fullDataPromise) return fullDataPromise
+  loadingData.value = true
+  fullDataPromise = import('./data/classics').then(mod => {
+    fullData.value = mod.classicData
+    loadingData.value = false
+  })
+  await fullDataPromise
+}
 
 // Navigation state
 type View = 'home' | 'detail' | 'reader' | 'search'
 const currentView = ref<View>('home')
 const currentClassic = ref<Classic | null>(null)
 const currentSection = ref<Section | null>(null)
+const readerEntryTime = ref(0)
+
+watch(currentView, (newView, oldView) => {
+  if (oldView === 'reader' && newView !== 'reader' && readerEntryTime.value > 0) {
+    const childId = getActiveChildId()
+    if (childId) {
+      const elapsed = Math.round((Date.now() - readerEntryTime.value) / 60000)
+      reportLearningProgress(childId, 'classics', 1, Math.max(1, elapsed))
+    }
+    readerEntryTime.value = 0
+  }
+  if (newView === 'reader') {
+    readerEntryTime.value = Date.now()
+  }
+})
+
 const activeCategory = ref('全部')
 const searchQuery = ref('')
 const apiResults = ref<any[]>([])
@@ -27,13 +66,16 @@ const filteredApps = computed(() => filterApps(searchQuery.value))
 async function doSearch() {
   const q = searchQuery.value.trim().toLowerCase()
   if (!q) return
+  await ensureFullData()
+  const list = fullData.value
+  if (!list) return
 
   // Clean URL hash
   history.replaceState(null, '', window.location.pathname)
 
   const results: { classic: Classic; sections: Section[] }[] = []
 
-  for (const c of classicData) {
+  for (const c of list) {
     const sectionMatches = c.sections.filter(s =>
       s.title.toLowerCase().includes(q) ||
       s.original.toLowerCase().includes(q) ||
@@ -105,7 +147,7 @@ const speaking = ref(false)
 
 // Filtered classics
 const filteredClassics = computed(() => {
-  let list = classicData
+  let list = classicIndex
   if (activeCategory.value !== '全部') list = list.filter(c => c.category === activeCategory.value)
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
@@ -127,13 +169,23 @@ const categoriesWithClassics = computed(() => {
 // Navigation
 function openDetail(c: Classic) {
   stopSpeaking()
+  stats.markOpened(c.id)
   currentClassic.value = c
   currentSection.value = null
   currentView.value = 'detail'
   saveHash()
 }
 
+async function openDetailFromMeta(meta: ClassicMeta) {
+  if (loadingData.value) return
+  stopSpeaking()
+  await ensureFullData()
+  const c = fullData.value?.find(x => x.id === meta.id)
+  if (c) openDetail(c)
+}
+
 function openReader(s: Section) {
+  stats.markRead(s.id)
   currentSection.value = s
   currentView.value = 'reader'
   saveHash()
@@ -155,6 +207,7 @@ function goBack() {
 
 function goToSection(c: Classic, s: Section) {
   stopSpeaking()
+  stats.markRead(s.id)
   currentClassic.value = c
   currentSection.value = s
   currentView.value = 'reader'
@@ -171,7 +224,7 @@ function saveHash() {
   }
   history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
 }
-function restoreFromHash() {
+async function restoreFromHash() {
   const hash = window.location.hash.slice(1)
   if (!hash) {
     stopSpeaking()
@@ -182,13 +235,17 @@ function restoreFromHash() {
     return
   }
   const [view, id] = hash.split('/')
-  if (view === 'detail' && id) {
-    const item = classicData.find(c => c.id === id)
-    if (item) { currentClassic.value = item; currentView.value = 'detail' }
-  } else if (view === 'reader' && id) {
-    for (const c of classicData) {
-      const sec = c.sections.find(s => s.id === id)
-      if (sec) { currentClassic.value = c; currentSection.value = sec; currentView.value = 'reader'; break }
+  if ((view === 'detail' || view === 'reader') && id) {
+    await ensureFullData()
+    if (!fullData.value) return
+    if (view === 'detail') {
+      const item = fullData.value.find(c => c.id === id)
+      if (item) { currentClassic.value = item; currentView.value = 'detail' }
+    } else if (view === 'reader') {
+      for (const c of fullData.value) {
+        const sec = c.sections.find(s => s.id === id)
+        if (sec) { currentClassic.value = c; currentSection.value = sec; currentView.value = 'reader'; break }
+      }
     }
   }
 }
@@ -211,7 +268,7 @@ function getReaderContent(): string {
   return currentSection.value.original
 }
 
-onMounted(() => {
+onMounted(async () => {
   favoriteIds.value = loadFavorites()
   window.addEventListener('beforeunload', stopSpeaking)
   // Check for ?q= param from main-site search results
@@ -219,9 +276,9 @@ onMounted(() => {
   const qParam = params.get('q')
   if (qParam) { searchQuery.value = qParam }
 
-  // Restore view state from URL hash (supports browser refresh and back/forward)
-  restoreFromHash()
-  window.addEventListener('popstate', restoreFromHash)
+  // Restore view state from URL hash
+  await restoreFromHash()
+  window.addEventListener('popstate', () => { restoreFromHash() })
 })
 
 onUnmounted(() => {
@@ -231,6 +288,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <YouthModeGate>
   <div class="page" style="--hd-accent:#2563eb;--hd-accent-hover:#1d4ed8;--hd-accent-light:#bfdbfe;--hd-accent-shadow:rgba(59,130,246,0.1);--hd-accent-bg:#f0f9ff">
     <HeaderBar v-model="searchQuery" @search="doSearch" />
 
@@ -261,6 +319,20 @@ onUnmounted(() => {
         </div>
       </section>
 
+      <!-- Learning Progress -->
+      <div class="ls-bar animate-fadeIn">
+        <template v-if="token && user">
+          <span class="ls-user">{{ user.nickname || user.username }}</span>
+          <span class="ls-dot"></span>
+          <span>📖 已打开 {{ stats.openedCount }}/92 本书</span>
+          <span class="ls-dot"></span>
+          <span>📝 已学习 {{ stats.readCount }}/613 个节选</span>
+        </template>
+        <template v-else>
+          <span>📖 学习进度：0/92 本书，0/613 个节选 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
+        </template>
+      </div>
+
       <!-- Classics Grid by Category -->
       <section class="gx-grid-section" v-for="g in categoriesWithClassics" :key="g.category">
         <h2 class="section-title">
@@ -268,7 +340,7 @@ onUnmounted(() => {
           {{ g.category }}（{{ g.items.length }}）
         </h2>
         <div class="gx-grid">
-          <div v-for="c in g.items" :key="c.id" class="gx-card" @click="openDetail(c)">
+          <div v-for="c in g.items" :key="c.id" class="gx-card" @click="openDetailFromMeta(c)">
             <div class="gx-card-top" :style="{ backgroundColor: g.color + '18' }">
               <span class="gx-card-emoji">📖</span>
             </div>
@@ -317,8 +389,13 @@ onUnmounted(() => {
       </div>
     </template>
 
+    <!-- ===== LOADING ===== -->
+    <template v-if="loadingData && (currentView === 'detail' || currentView === 'reader')">
+      <div class="gx-empty" style="padding:80px 24px">📖 正在加载内容...</div>
+    </template>
+
     <!-- ===== DETAIL VIEW with Favorite ===== -->
-    <template v-if="currentView === 'detail' && currentClassic">
+    <template v-if="!loadingData && currentView === 'detail' && currentClassic">
       <div class="gx-detail-wrap">
         <button class="gx-back" @click="goBack()">← 返回</button>
 
@@ -348,7 +425,7 @@ onUnmounted(() => {
     </template>
 
     <!-- ===== READER VIEW (Vertical layout, no line-play) ===== -->
-    <template v-if="currentView === 'reader' && currentSection">
+    <template v-if="!loadingData && currentView === 'reader' && currentSection">
       <div class="gx-reader-wrap">
         <div class="gx-reader-header">
           <button class="gx-back" @click="goBack()">← 返回</button>
@@ -391,9 +468,12 @@ onUnmounted(() => {
       </div>
     </template>
 
+    <!-- ===== Copyright ===== -->
+    <div v-if="currentView === 'home'" class="hd-copyright"><p>平台上的古典文献均为公有领域作品。内容仅供学习参考，如涉及版权问题请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p></div>
     <!-- ===== FOOTER ===== -->
     <FooterBar v-if="currentView === 'home'" />
   </div>
+  </YouthModeGate>
 </template>
 
 <style>
@@ -445,6 +525,24 @@ body {
 .gx-tag:hover { border-color: #2563eb; color: #2563eb; }
 .gx-tag-active { background: #2563eb; color: white; border-color: #2563eb; }
 .gx-tag-active:hover { background: #1d4ed8; border-color: #1d4ed8; color: white; }
+
+/* ===== Learning Stats Bar ===== */
+.ls-bar {
+  max-width: 1200px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; font-weight: 500; color: #334155; background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+.ls-dot {
+  width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1;
+}
+.ls-user {
+  font-weight: 700; color: #2563eb; font-size: 15px;
+}
+.ls-login-link {
+  color: #2563eb; text-decoration: none; font-weight: 500;
+}
+.ls-login-link:hover { text-decoration: underline; }
 
 /* ===== Grid Section ===== */
 .gx-grid-section {
@@ -586,6 +684,9 @@ body {
 }
 .gx-search-sections .gx-section-item:last-child { border-bottom: none; }
 .gx-section-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+
+.hd-copyright { max-width: 1200px; margin: 0 auto; padding: 20px 24px 8px; text-align: center; }
+.hd-copyright p { font-size: 11px; color: #94a3b8; line-height: 1.7; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {

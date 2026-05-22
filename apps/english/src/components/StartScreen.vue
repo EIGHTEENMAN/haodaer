@@ -10,9 +10,7 @@
           <span class="avatar">{{ userInitial }}</span>
           <div>
             <div class="username">{{ userName }}</div>
-            <div class="game-nickname-row">
-              NICKNAME: <input v-model="gameNickname" class="nick-input" placeholder="PLAYER" @blur="saveNickname" />
-            </div>
+            <div class="display-name">{{ displayName }}</div>
           </div>
         </div>
         <div v-else class="login-hint">
@@ -39,41 +37,110 @@
         <p>WASD Dodge · SPACE Attack</p>
       </div>
     </div>
+
+    <LoginModal v-if="showLogin" @logged-in="onLoggedIn" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue"
+import LoginModal from "./LoginModal.vue"
 import { wordStore, getMasteredCount } from "../stores/wordStore"
 
 const emit = defineEmits<{ start: []; words: []; profile: [] }>()
+const showLogin = ref(false)
 
 const loggedIn = ref(false)
 const userName = ref("")
-const gameNickname = ref(localStorage.getItem("ultraman_nickname") || "")
+const displayName = ref("")
 const userInitial = ref("")
 
-onMounted(() => {
-  const token = localStorage.getItem("haodaer_token")
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(?:^| )' + name + '=([^;]+)'))
+  return match ? decodeURIComponent(match[1]) : null
+}
+
+onMounted(async () => {
+  // Cross-subdomain sync: check cookie if no localStorage token
+  let token = sessionStorage.getItem("haodaer_token")
+  if (!token) {
+    token = getCookie('haodaer_token')
+    if (token) {
+      sessionStorage.setItem('haodaer_token', token)
+      // Will need to fetch user data below
+    }
+  }
   if (token) {
     try {
-      const userStr = localStorage.getItem("haodaer_user")
+      const userStr = sessionStorage.getItem("haodaer_user")
+      let userData: any = null
       if (userStr) {
-        const user = JSON.parse(userStr)
-        userName.value = user.nickname || user.username || "Player"
+        userData = JSON.parse(userStr)
+      } else {
+        // Token from cookie but no user data yet — fetch it
+        const r = await fetch('/api/auth/me', {
+          headers: { Authorization: 'Bearer ' + token }
+        })
+        const d = await r.json()
+        if (d.code === 'OK') {
+          userData = d.data
+          sessionStorage.setItem('haodaer_user', JSON.stringify(userData))
+        }
+      }
+      if (userData) {
+        userName.value = userData.nickname || userData.username || "Player"
         userInitial.value = userName.value.charAt(0)
         loggedIn.value = true
+      }
+      // Get display name from active profile
+      const profile = localStorage.getItem("haodaer_active_profile")
+      if (profile) {
+        const p = JSON.parse(profile)
+        displayName.value = p.nickname || userName.value
+      } else {
+        displayName.value = userName.value
       }
     } catch {}
   }
 })
 
-function saveNickname() {
-  localStorage.setItem("ultraman_nickname", gameNickname.value)
+function goLogin() {
+  showLogin.value = true
 }
 
-function goLogin() {
-  window.location.href = "https://grandand.com/login?redirect=" + encodeURIComponent(window.location.href)
+async function onLoggedIn() {
+  showLogin.value = false
+  // Reload user info after login
+  const token = sessionStorage.getItem("haodaer_token")
+  if (!token) return
+  try {
+    const userStr = sessionStorage.getItem("haodaer_user")
+    let userData: any = null
+    if (userStr) {
+      userData = JSON.parse(userStr)
+    } else {
+      const r = await fetch('/api/auth/me', {
+        headers: { Authorization: 'Bearer ' + token }
+      })
+      const d = await r.json()
+      if (d.code === 'OK') {
+        userData = d.data
+        sessionStorage.setItem('haodaer_user', JSON.stringify(userData))
+      }
+    }
+    if (userData) {
+      userName.value = userData.nickname || userData.username || "Player"
+      userInitial.value = userName.value.charAt(0)
+      loggedIn.value = true
+      const profile = localStorage.getItem("haodaer_active_profile")
+      if (profile) {
+        const p = JSON.parse(profile)
+        displayName.value = p.nickname || userName.value
+      } else {
+        displayName.value = userName.value
+      }
+    }
+  } catch {}
 }
 
 const hasRecords = computed(() => wordStore.records.size > 0)
@@ -139,26 +206,11 @@ const masteredCount = computed(() => getMasteredCount())
   font-size: 14px;
   text-align: left;
 }
-.game-nickname-row {
-  color: #aaa;
+.display-name {
+  color: #88ccff;
   font-size: 11px;
   margin-top: 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.nick-input {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-  padding: 2px 8px;
-  font-size: 11px;
-  width: 100px;
-  font-family: 'Press Start 2P', monospace;
-}
-.nick-input:focus {
-  outline: none;
-  border-color: #ffd700;
+  text-align: left;
 }
 .login-hint {
   color: #888;

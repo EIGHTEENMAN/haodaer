@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getToken, saveProfile, addChild, fetchUser, setUser } from '@/api/auth'
+import { getToken, saveProfile, addChild, fetchUser, setUser, setChildPassword } from '@/api/auth'
 
 const props = defineProps<{
   open: boolean
@@ -11,9 +11,16 @@ const emit = defineEmits<{
 }>()
 
 const step = ref(1)
+
+// Step 1: Registrant info
 const nickname = ref('')
 const avatar = ref('')
-const children = ref([{ nickname: '', gender: '', age: '' }])
+const gender = ref('')
+const birthday = ref('')
+
+// Step 2: Children info
+const children = ref([{ nickname: '', gender: '', birthday: '', avatar: '', phone: '', password: '' }])
+
 const saving = ref(false)
 const error = ref('')
 
@@ -24,7 +31,7 @@ function updateChild(idx: number, field: string, value: string) {
 }
 
 function addChild() {
-  children.value.push({ nickname: '', gender: '', age: '' })
+  children.value.push({ nickname: '', gender: '', birthday: '', avatar: '', phone: '' })
 }
 
 function removeChild(idx: number) {
@@ -39,15 +46,26 @@ async function save() {
   error.value = ''
   saving.value = true
   try {
-    await saveProfile({ nickname: nickname.value.trim(), avatar: avatar.value || undefined })
+    await saveProfile({
+      nickname: nickname.value.trim(),
+      avatar: avatar.value || undefined,
+      gender: gender.value || undefined,
+      birthday: birthday.value || undefined,
+    })
 
     for (const child of children.value) {
       if (child.nickname.trim()) {
-        await addChild({
+        const res = await addChild({
           nickname: child.nickname.trim(),
           gender: child.gender || undefined,
-          age: child.age ? parseInt(child.age) : undefined,
+          birthday: child.birthday || undefined,
+          avatar: child.avatar || undefined,
+          phone: child.phone || undefined,
         })
+        // Set independent password if provided
+        if (child.password && res.code === 'OK') {
+          await setChildPassword(res.data.id, child.password)
+        }
       }
     }
 
@@ -71,13 +89,13 @@ async function save() {
         <div :class="['ps-step', { active: step >= 2 }]" />
       </div>
 
-      <!-- Step 1: Profile -->
+      <!-- Step 1: Registrant Profile -->
       <div v-if="step === 1">
-        <h2 class="ps-title">完善资料</h2>
-        <p class="ps-desc">设置你的昵称和头像</p>
+        <h2 class="ps-title">欢迎加入好大儿</h2>
+        <p class="ps-desc">请先填写注册人的信息</p>
 
         <div class="ps-section">
-          <label class="ps-label">选择头像</label>
+          <label class="ps-label">头像</label>
           <div class="ps-avatars">
             <button
               v-for="a in avatars"
@@ -96,6 +114,21 @@ async function save() {
             placeholder="给自己取个好听的名字"
             class="ps-input"
           />
+          <p class="ps-hint">例如：帅爸、美妈、好大儿家长</p>
+        </div>
+
+        <div class="ps-section">
+          <label class="ps-label">性别</label>
+          <select v-model="gender" class="ps-select">
+            <option value="">保密</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+          </select>
+        </div>
+
+        <div class="ps-section">
+          <label class="ps-label">生日</label>
+          <input v-model="birthday" type="date" class="ps-input" />
         </div>
 
         <p v-if="error" class="ps-error">{{ error }}</p>
@@ -106,10 +139,10 @@ async function save() {
         >下一步</button>
       </div>
 
-      <!-- Step 2: Children -->
+      <!-- Step 2: Children Information -->
       <div v-if="step === 2">
         <h2 class="ps-title">添加孩子信息</h2>
-        <p class="ps-desc">填写孩子的昵称、性别和年龄（可跳过）</p>
+        <p class="ps-desc">填写孩子信息，每个孩子将拥有独立的学习数据</p>
 
         <div class="ps-children">
           <div v-for="(child, i) in children" :key="i" class="ps-child-card">
@@ -118,30 +151,60 @@ async function save() {
               class="ps-remove"
               @click="removeChild(i)"
             >✕</button>
+
+            <div class="ps-section">
+              <label class="ps-label-sm">头像</label>
+              <div class="ps-avatars-sm">
+                <button
+                  v-for="a in avatars"
+                  :key="a"
+                  :class="['ps-avatar-sm', { selected: child.avatar === a }]"
+                  @click="updateChild(i, 'avatar', a)"
+                >{{ a }}</button>
+              </div>
+            </div>
+
             <div class="ps-child-field">
               <label class="ps-label-sm">孩子昵称</label>
               <input
                 v-model="child.nickname"
-                placeholder="如：小明"
+                placeholder="如：小帅"
                 class="ps-input"
               />
+              <p class="ps-hint">不填可跳过</p>
             </div>
             <div class="ps-child-row">
               <div class="ps-child-field">
                 <label class="ps-label-sm">性别</label>
                 <select v-model="child.gender" class="ps-select">
                   <option value="">保密</option>
-                  <option value="boy">男孩</option>
-                  <option value="girl">女孩</option>
+                  <option value="男">男孩</option>
+                  <option value="女">女孩</option>
                 </select>
               </div>
               <div class="ps-child-field">
-                <label class="ps-label-sm">年龄</label>
-                <select v-model="child.age" class="ps-select">
-                  <option value="">请选择</option>
-                  <option v-for="n in 18" :key="n" :value="n">{{ n }}岁</option>
-                </select>
+                <label class="ps-label-sm">生日</label>
+                <input v-model="child.birthday" type="date" class="ps-input" />
               </div>
+            </div>
+            <div class="ps-section" style="margin-top:8px">
+              <label class="ps-label-sm">手机号（可选）</label>
+              <input
+                v-model="child.phone"
+                placeholder="绑定后孩子可独立登录"
+                class="ps-input"
+                type="tel"
+              />
+            </div>
+            <div class="ps-section">
+              <label class="ps-label-sm">独立密码（可选）</label>
+              <input
+                v-model="child.password"
+                placeholder="至少6位，孩子可用手机+密码登录"
+                class="ps-input"
+                type="password"
+                minlength={6}
+              />
             </div>
           </div>
         </div>
@@ -175,6 +238,7 @@ async function save() {
   background: white; border-radius: 16px;
   width: 100%; max-width: 448px; margin: 0 16px; padding: 32px;
   animation: fadeInUp 0.25s ease;
+  max-height: 90vh; overflow-y: auto;
 }
 .ps-steps { display: flex; gap: 8px; margin-bottom: 24px; }
 .ps-step {
@@ -183,9 +247,10 @@ async function save() {
 .ps-step.active { background: #3b82f6; }
 .ps-title { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px; }
 .ps-desc { font-size: 14px; color: #6b7280; margin-bottom: 24px; }
-.ps-section { margin-bottom: 24px; }
+.ps-section { margin-bottom: 20px; }
 .ps-label { display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px; }
 .ps-label-sm { display: block; font-size: 12px; color: #6b7280; margin-bottom: 4px; }
+.ps-hint { font-size: 12px; color: #9ca3af; margin-top: 4px; }
 .ps-req { color: #ef4444; }
 .ps-avatars { display: flex; flex-wrap: wrap; gap: 8px; }
 .ps-avatar {
@@ -196,6 +261,15 @@ async function save() {
 }
 .ps-avatar:hover { border-color: #9ca3af; }
 .ps-avatar.selected { border-color: #3b82f6; background: #f0f9ff; transform: scale(1.1); }
+.ps-avatars-sm { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
+.ps-avatar-sm {
+  width: 36px; height: 36px; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; border: 2px solid #e5e7eb;
+  cursor: pointer; transition: all 0.2s;
+}
+.ps-avatar-sm:hover { border-color: #9ca3af; }
+.ps-avatar-sm.selected { border-color: #3b82f6; background: #f0f9ff; }
 .ps-input {
   width: 100%; padding: 10px 12px; border: 1px solid #d1d5db;
   border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box;
@@ -208,7 +282,7 @@ async function save() {
 .ps-error { color: #ef4444; font-size: 14px; margin-bottom: 16px; }
 .ps-btn {
   width: 100%; padding: 12px; border-radius: 12px; font-size: 14px; font-weight: 500;
-  border: none; cursor: pointer; transition: all 0.2s;
+  border: none; cursor: pointer; transition: all 0.2s; font-family: inherit;
 }
 .ps-btn-primary { background: #2563eb; color: white; }
 .ps-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
@@ -221,7 +295,7 @@ async function save() {
 .ps-btn-dashed:hover { border-color: #3b82f6; color: #3b82f6; }
 .ps-btn-ghost { background: #f3f4f6; color: #374151; }
 .ps-btn-ghost:hover { background: #e5e7eb; }
-.ps-children { max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+.ps-children { max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
 .ps-child-card {
   background: #f9fafb; border-radius: 12px; padding: 16px; position: relative;
 }

@@ -3,14 +3,14 @@ const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
 const { authenticate } = require('../middleware/auth');
-const { revokeAllUserSessions } = require('../utils/jwt');
+const { revokeAllUserSessions, generateTokens, setTokenCookie } = require('../utils/jwt');
 
 const router = express.Router();
 
 // GET /api/user/profile - Get user profile
 router.get('/profile', authenticate, (req, res) => {
   const user = db.prepare(`
-    SELECT u.id, u.username, u.phone, u.nickname, u.avatar, u.role, u.created_at,
+    SELECT u.id, u.username, u.phone, u.nickname, u.avatar, u.gender, u.birthday, u.role, u.created_at,
            p.balance as points
     FROM users u
     LEFT JOIN points p ON p.user_id = u.id
@@ -21,23 +21,21 @@ router.get('/profile', authenticate, (req, res) => {
     return res.status(404).json({ code: 'USER_NOT_FOUND', message: '用户不存在' });
   }
 
-  res.json({ code: 'OK', data: user });
+  const children = db.prepare(`SELECT * FROM children WHERE user_id = ? ORDER BY created_at ASC`).all(req.user.id);
+
+  res.json({ code: 'OK', data: { ...user, children } });
 });
 
 // PUT /api/user/profile - Update user profile
 router.put('/profile', authenticate, (req, res) => {
-  const { nickname, avatar } = req.body;
+  const { nickname, avatar, gender, birthday } = req.body;
   const updates = [];
   const values = [];
 
-  if (nickname !== undefined) {
-    updates.push('nickname = ?');
-    values.push(nickname);
-  }
-  if (avatar !== undefined) {
-    updates.push('avatar = ?');
-    values.push(avatar);
-  }
+  if (nickname !== undefined) { updates.push('nickname = ?'); values.push(nickname); }
+  if (avatar !== undefined) { updates.push('avatar = ?'); values.push(avatar); }
+  if (gender !== undefined) { updates.push('gender = ?'); values.push(gender); }
+  if (birthday !== undefined) { updates.push('birthday = ?'); values.push(birthday); }
 
   if (updates.length === 0) {
     return res.status(400).json({ code: 'NO_CHANGES', message: '没有需要更新的字段' });
@@ -48,7 +46,7 @@ router.put('/profile', authenticate, (req, res) => {
 
   db.prepare(`UPDATE users SET ${updates.join(', ')} WHERE id = ?`).run(...values);
 
-  const user = db.prepare(`SELECT id, username, phone, nickname, avatar FROM users WHERE id = ?`).get(req.user.id);
+  const user = db.prepare(`SELECT id, username, phone, nickname, avatar, gender, birthday FROM users WHERE id = ?`).get(req.user.id);
   res.json({ code: 'OK', data: user });
 });
 
@@ -112,31 +110,33 @@ router.post('/wechat-bind', authenticate, (req, res) => {
   res.json({ code: 'OK' });
 });
 
+// ─── Children CRUD ──────────────────────────────────────────
+
 // GET /api/user/children - Get all children for current user
 router.get('/children', authenticate, (req, res) => {
   const children = db.prepare(
-    `SELECT id, user_id, nickname, gender, age, avatar, created_at FROM children WHERE user_id = ? ORDER BY created_at ASC`
+    `SELECT * FROM children WHERE user_id = ? ORDER BY created_at ASC`
   ).all(req.user.id);
   res.json({ code: 'OK', data: children });
 });
 
 // POST /api/user/children - Add a child
 router.post('/children', authenticate, (req, res) => {
-  const { nickname, gender, age, avatar } = req.body;
+  const { nickname, gender, birthday, avatar, phone } = req.body;
   if (!nickname) {
     return res.status(400).json({ code: 'INVALID_INPUT', message: '孩子昵称不能为空' });
   }
   const id = uuidv4();
   db.prepare(
-    `INSERT INTO children (id, user_id, nickname, gender, age, avatar) VALUES (?, ?, ?, ?, ?, ?)`
-  ).run(id, req.user.id, nickname, gender || null, age ? parseInt(age) : null, avatar || null);
+    `INSERT INTO children (id, user_id, nickname, gender, birthday, avatar, phone) VALUES (?, ?, ?, ?, ?, ?, ?)`
+  ).run(id, req.user.id, nickname, gender || null, birthday || null, avatar || null, phone || null);
   const child = db.prepare(`SELECT * FROM children WHERE id = ?`).get(id);
   res.status(201).json({ code: 'OK', data: child });
 });
 
 // PUT /api/user/children/:id - Update a child
 router.put('/children/:id', authenticate, (req, res) => {
-  const { nickname, gender, age, avatar } = req.body;
+  const { nickname, gender, birthday, avatar, phone } = req.body;
   const existing = db.prepare(`SELECT id FROM children WHERE id = ? AND user_id = ?`).get(req.params.id, req.user.id);
   if (!existing) {
     return res.status(404).json({ code: 'NOT_FOUND', message: '孩子信息不存在' });
@@ -145,8 +145,9 @@ router.put('/children/:id', authenticate, (req, res) => {
   const values = [];
   if (nickname !== undefined) { updates.push('nickname = ?'); values.push(nickname); }
   if (gender !== undefined) { updates.push('gender = ?'); values.push(gender); }
-  if (age !== undefined) { updates.push('age = ?'); values.push(parseInt(age)); }
+  if (birthday !== undefined) { updates.push('birthday = ?'); values.push(birthday); }
   if (avatar !== undefined) { updates.push('avatar = ?'); values.push(avatar); }
+  if (phone !== undefined) { updates.push('phone = ?'); values.push(phone); }
   if (updates.length > 0) {
     values.push(req.params.id);
     db.prepare(`UPDATE children SET ${updates.join(', ')} WHERE id = ?`).run(...values);
@@ -155,4 +156,326 @@ router.put('/children/:id', authenticate, (req, res) => {
   res.json({ code: 'OK', data: child });
 });
 
+// DELETE /api/user/children/:id - Remove a child
+router.delete('/children/:id', authenticate, (req, res) => {
+  const existing = db.prepare(`SELECT id FROM children WHERE id = ? AND user_id = ?`).get(req.params.id, req.user.id);
+  if (!existing) {
+    return res.status(404).json({ code: 'NOT_FOUND', message: '孩子信息不存在' });
+  }
+  db.prepare(`DELETE FROM learning_progress WHERE child_id = ?`).run(req.params.id);
+  db.prepare(`DELETE FROM children WHERE id = ?`).run(req.params.id);
+  res.json({ code: 'OK' });
+});
+
+// ─── Game Data Sync ─────────────────────────────────────────
+
+// PUT /api/user/children/:id/game-data - Update game data (level, score)
+router.put('/children/:id/game-data', authenticate, (req, res) => {
+  const { gameLevel, gameScore } = req.body;
+  const existing = db.prepare(`SELECT id FROM children WHERE id = ?`).get(req.params.id);
+  if (!existing) {
+    return res.status(404).json({ code: 'NOT_FOUND', message: '孩子不存在' });
+  }
+  const updates = [];
+  const values = [];
+  if (gameLevel !== undefined) { updates.push('game_level = ?'); values.push(gameLevel); }
+  if (gameScore !== undefined) { updates.push('game_score = ?'); values.push(gameScore); }
+  if (updates.length > 0) {
+    values.push(req.params.id);
+    db.prepare(`UPDATE children SET ${updates.join(', ')} WHERE id = ?`).run(...values);
+  }
+  const child = db.prepare(`SELECT id, nickname, game_level, game_score FROM children WHERE id = ?`).get(req.params.id);
+  res.json({ code: 'OK', data: child });
+});
+
+// PUT /api/user/children/:id/challenge-points - Sync challenge points
+router.put('/children/:id/challenge-points', authenticate, (req, res) => {
+  const { challengePoints } = req.body;
+  if (challengePoints === undefined) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: 'challengePoints 不能为空' });
+  }
+  const existing = db.prepare(`SELECT id FROM children WHERE id = ?`).get(req.params.id);
+  if (!existing) {
+    return res.status(404).json({ code: 'NOT_FOUND', message: '孩子不存在' });
+  }
+  db.prepare(`UPDATE children SET challenge_points = ? WHERE id = ?`).run(challengePoints, req.params.id);
+  // Update rank (simple: count children with higher points + 1)
+  const rank = db.prepare(`SELECT COUNT(*) + 1 as rank FROM children WHERE challenge_points > ?`).get(challengePoints);
+  db.prepare(`UPDATE children SET challenge_rank = ? WHERE id = ?`).run(rank.rank, req.params.id);
+  const child = db.prepare(`SELECT id, nickname, challenge_points, challenge_rank FROM children WHERE id = ?`).get(req.params.id);
+  res.json({ code: 'OK', data: child });
+});
+
+// GET /api/user/ranking - Get ranking for a specific child
+router.get('/ranking', authenticate, (req, res) => {
+  const { childId } = req.query;
+  if (!childId) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: 'childId 不能为空' });
+  }
+  const child = db.prepare(`SELECT id, nickname, challenge_points, challenge_rank FROM children WHERE id = ?`).get(childId);
+  if (!child) {
+    return res.status(404).json({ code: 'NOT_FOUND', message: '孩子不存在' });
+  }
+  // Top 20 leaderboard
+  const top20 = db.prepare(`
+    SELECT c.id, c.nickname, c.avatar, c.challenge_points, c.challenge_rank
+    FROM children c ORDER BY c.challenge_points DESC LIMIT 20
+  `).all();
+  res.json({ code: 'OK', data: { me: child, leaderboard: top20 } });
+});
+
+// ─── Learning Progress ──────────────────────────────────────
+
+// GET /api/user/learning-progress - Get learning progress for a child or all children
+router.get('/learning-progress', authenticate, (req, res) => {
+  const { childId } = req.query;
+  if (childId) {
+    const data = db.prepare(`SELECT * FROM learning_progress WHERE child_id = ?`).all(childId);
+    return res.json({ code: 'OK', data });
+  }
+  // If no childId, get progress for all children of this user
+  const children = db.prepare(`SELECT id FROM children WHERE user_id = ?`).all(req.user.id);
+  const childIds = children.map(c => c.id);
+  if (childIds.length === 0) return res.json({ code: 'OK', data: [] });
+  const placeholders = childIds.map(() => '?').join(',');
+  const allProgress = db.prepare(`SELECT * FROM learning_progress WHERE child_id IN (${placeholders})`).all(...childIds);
+  res.json({ code: 'OK', data: allProgress });
+});
+
+// PUT /api/user/learning-progress - Update learning progress (incremental)
+router.put('/learning-progress', authenticate, (req, res) => {
+  const { childId, subject, itemsLearned, timeSpentMinutes, accuracy } = req.body;
+  if (!childId || !subject) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: 'childId 和 subject 不能为空' });
+  }
+  const validSubjects = ['poetry', 'classics', 'general', 'english', 'challenge'];
+  if (!validSubjects.includes(subject)) {
+    return res.status(400).json({ code: 'INVALID_SUBJECT', message: `subject 必须是: ${validSubjects.join(', ')}` });
+  }
+
+  const existing = db.prepare(`SELECT * FROM learning_progress WHERE child_id = ? AND subject = ?`).get(childId, subject);
+
+  if (existing) {
+    // Incremental update
+    const updates = [];
+    const values = [];
+    if (itemsLearned !== undefined) { updates.push('items_learned = items_learned + ?'); values.push(itemsLearned); }
+    if (timeSpentMinutes !== undefined) { updates.push('time_spent_minutes = time_spent_minutes + ?'); values.push(timeSpentMinutes); }
+    if (accuracy !== undefined) { updates.push('accuracy = ?'); values.push(accuracy); }
+    updates.push("last_studied_at = datetime('now')");
+    updates.push("updated_at = datetime('now')");
+    values.push(childId, subject);
+    db.prepare(`UPDATE learning_progress SET ${updates.join(', ')} WHERE child_id = ? AND subject = ?`).run(...values);
+  } else {
+    // Create new
+    const id = uuidv4();
+    db.prepare(`
+      INSERT INTO learning_progress (id, child_id, subject, items_learned, time_spent_minutes, accuracy, last_studied_at)
+      VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+    `).run(id, childId, subject, itemsLearned || 0, timeSpentMinutes || 0, accuracy || 0);
+  }
+
+  const progress = db.prepare(`SELECT * FROM learning_progress WHERE child_id = ? AND subject = ?`).get(childId, subject);
+  res.json({ code: 'OK', data: progress });
+});
+
+// GET /api/user/learning-progress/summary - Get aggregated progress summary (for parent view)
+router.get('/learning-progress/summary', authenticate, (req, res) => {
+  const children = db.prepare(`SELECT * FROM children WHERE user_id = ? ORDER BY created_at ASC`).all(req.user.id);
+  const childIds = children.map(c => c.id);
+  if (childIds.length === 0) return res.json({ code: 'OK', data: [] });
+
+  const placeholders = childIds.map(() => '?').join(',');
+  const allProgress = db.prepare(`SELECT * FROM learning_progress WHERE child_id IN (${placeholders})`).all(...childIds);
+
+  // Group by child_id
+  const summary = children.map(child => ({
+    ...child,
+    progress: allProgress.filter(p => p.child_id === child.id),
+  }));
+
+  res.json({ code: 'OK', data: summary });
+});
+
+// ─── Child Independent Login ─────────────────────────────────
+
+// POST /api/user/children/login - Child login with phone + password
+router.post('/children/login', (req, res) => {
+  const { phone, password } = req.body;
+  if (!phone || !password) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: '手机号和密码不能为空' });
+  }
+
+  const child = db.prepare(`SELECT * FROM children WHERE phone = ?`).get(phone);
+  if (!child) {
+    return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '账号或密码错误' });
+  }
+  if (!child.password_hash) {
+    return res.status(401).json({ code: 'NO_PASSWORD', message: '该账号未设置密码' });
+  }
+
+  const valid = bcrypt.compareSync(password, child.password_hash);
+  if (!valid) {
+    return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '账号或密码错误' });
+  }
+
+  const tokens = generateTokens({ id: child.id, role: 'child' });
+  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
+
+  res.json({ code: 'OK', data: { child, ...tokens } });
+});
+
+// POST /api/user/children/set-password - Set child independent password
+router.post('/children/set-password', authenticate, (req, res) => {
+  const { childId, password } = req.body;
+  if (!childId || !password) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: 'childId 和密码不能为空' });
+  }
+  if (password.length < 6) {
+    return res.status(400).json({ code: 'INVALID_PASSWORD', message: '密码长度不能少于6位' });
+  }
+  const existing = db.prepare(`SELECT id FROM children WHERE id = ?`).get(childId);
+  if (!existing) {
+    return res.status(404).json({ code: 'NOT_FOUND', message: '孩子不存在' });
+  }
+  const hash = bcrypt.hashSync(password, 10);
+  db.prepare(`UPDATE children SET password_hash = ? WHERE id = ?`).run(hash, childId);
+  res.json({ code: 'OK' });
+});
+
 module.exports = router;
+
+// ─── Youth Mode ─────────────────────────────────────────────
+
+// GET /api/user/youth-mode - Get youth mode settings for current user
+router.get('/youth-mode', authenticate, (req, res) => {
+  const settings = db.prepare(`SELECT * FROM youth_mode_settings WHERE user_id = ?`).get(req.user.id);
+  const consent = db.prepare(`SELECT parent_name, parent_phone, consent_at FROM parent_consent WHERE child_user_id = ?`).get(req.user.id);
+
+  // Get today's usage
+  const today = new Date().toISOString().slice(0, 10);
+  const usage = db.prepare(`SELECT minutes_used FROM daily_usage WHERE user_id = ? AND date = ?`).get(req.user.id, today);
+
+  res.json({
+    code: 'OK',
+    data: {
+      settings: settings || { enabled: 0, daily_time_limit_minutes: 40, night_mode_enabled: 1, social_limited: 1 },
+      consent: consent || null,
+      todayMinutes: usage?.minutes_used || 0,
+    },
+  });
+});
+
+// PUT /api/user/youth-mode - Update youth mode settings
+router.put('/youth-mode', authenticate, (req, res) => {
+  const { enabled, dailyTimeLimit, nightModeEnabled, socialLimited } = req.body;
+  const existing = db.prepare(`SELECT user_id FROM youth_mode_settings WHERE user_id = ?`).get(req.user.id);
+
+  if (existing) {
+    const updates = [];
+    const values = [];
+    if (enabled !== undefined) { updates.push('enabled = ?'); values.push(enabled ? 1 : 0); }
+    if (dailyTimeLimit !== undefined) { updates.push('daily_time_limit_minutes = ?'); values.push(Math.min(Math.max(dailyTimeLimit, 15), 120)); }
+    if (nightModeEnabled !== undefined) { updates.push('night_mode_enabled = ?'); values.push(nightModeEnabled ? 1 : 0); }
+    if (socialLimited !== undefined) { updates.push('social_limited = ?'); values.push(socialLimited ? 1 : 0); }
+    updates.push("updated_at = datetime('now')");
+    values.push(req.user.id);
+    db.prepare(`UPDATE youth_mode_settings SET ${updates.join(', ')} WHERE user_id = ?`).run(...values);
+  } else {
+    db.prepare(`INSERT INTO youth_mode_settings (user_id, enabled, daily_time_limit_minutes, night_mode_enabled, social_limited) VALUES (?, ?, ?, ?, ?)`)
+      .run(req.user.id, enabled !== false ? 1 : 0, dailyTimeLimit || 40, nightModeEnabled !== false ? 1 : 0, socialLimited !== false ? 1 : 0);
+  }
+
+  const settings = db.prepare(`SELECT * FROM youth_mode_settings WHERE user_id = ?`).get(req.user.id);
+  res.json({ code: 'OK', data: settings });
+});
+
+// POST /api/user/youth-mode/track - Track usage time (incremental)
+router.post('/youth-mode/track', authenticate, (req, res) => {
+  const { minutes } = req.body;
+  if (!minutes || minutes < 1) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: 'minutes 必须大于 0' });
+  }
+
+  const settings = db.prepare(`SELECT enabled, daily_time_limit_minutes FROM youth_mode_settings WHERE user_id = ?`).get(req.user.id);
+  if (!settings || !settings.enabled) {
+    return res.json({ code: 'OK', data: { allowed: true, remaining: -1 } });
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const existing = db.prepare(`SELECT id, minutes_used FROM daily_usage WHERE user_id = ? AND date = ?`).get(req.user.id, today);
+
+  if (existing) {
+    db.prepare(`UPDATE daily_usage SET minutes_used = minutes_used + ?, updated_at = datetime('now') WHERE id = ?`).run(minutes, existing.id);
+  } else {
+    const { v4: uuidv4 } = require('uuid');
+    db.prepare(`INSERT INTO daily_usage (id, user_id, date, minutes_used) VALUES (?, ?, ?, ?)`).run(uuidv4(), req.user.id, today, minutes);
+  }
+
+  const updated = db.prepare(`SELECT minutes_used FROM daily_usage WHERE user_id = ? AND date = ?`).get(req.user.id, today);
+  const remaining = settings.daily_time_limit_minutes - (updated?.minutes_used || 0);
+
+  res.json({ code: 'OK', data: { allowed: remaining > 0, remaining: Math.max(0, remaining), totalUsed: updated?.minutes_used || 0 } });
+});
+
+// GET /api/user/youth-mode/check - Check if user is currently allowed to use
+router.get('/youth-mode/check', authenticate, (req, res) => {
+  const settings = db.prepare(`SELECT * FROM youth_mode_settings WHERE user_id = ?`).get(req.user.id);
+
+  const result = { enabled: false, allowed: true, reason: null, remaining: -1 };
+  if (!settings || !settings.enabled) {
+    return res.json({ code: 'OK', data: result });
+  }
+
+  result.enabled = true;
+
+  // Check night mode (22:00 - 06:00)
+  if (settings.night_mode_enabled) {
+    const hour = new Date().getHours();
+    if (hour >= 22 || hour < 6) {
+      result.allowed = false;
+      result.reason = '夜间休息时段（22:00-06:00）暂停使用';
+      return res.json({ code: 'OK', data: result });
+    }
+  }
+
+  // Check daily limit
+  const today = new Date().toISOString().slice(0, 10);
+  const usage = db.prepare(`SELECT minutes_used FROM daily_usage WHERE user_id = ? AND date = ?`).get(req.user.id, today);
+  const used = usage?.minutes_used || 0;
+  result.remaining = Math.max(0, settings.daily_time_limit_minutes - used);
+
+  if (used >= settings.daily_time_limit_minutes) {
+    result.allowed = false;
+    result.reason = `今日学习时长已达上限（${settings.daily_time_limit_minutes} 分钟）`;
+  }
+
+  res.json({ code: 'OK', data: result });
+});
+
+// DELETE /api/user/account - Delete user account
+router.delete('/account', authenticate, (req, res) => {
+  const userId = req.user.id;
+
+  const user = db.prepare(`SELECT id FROM users WHERE id = ?`).get(userId);
+  if (!user) {
+    return res.status(404).json({ code: 'USER_NOT_FOUND', message: '用户不存在' });
+  }
+
+  const tx = db.transaction(() => {
+    revokeAllUserSessions(userId);
+    db.prepare(`DELETE FROM point_transactions WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM points WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM daily_usage WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM youth_mode_settings WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM parent_consent WHERE child_user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM learning_progress WHERE child_id IN (SELECT id FROM children WHERE user_id = ?)`).run(userId);
+    db.prepare(`DELETE FROM children WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM sessions WHERE user_id = ?`).run(userId);
+    db.prepare(`DELETE FROM users WHERE id = ?`).run(userId);
+  });
+
+  tx();
+
+  res.json({ code: 'OK', message: '账号已注销' });
+});

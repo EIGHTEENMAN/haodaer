@@ -2,14 +2,14 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
-const { generateTokens, verifyRefreshToken, revokeSession, revokeAllUserSessions } = require('../utils/jwt');
+const { generateTokens, verifyRefreshToken, revokeSession, revokeAllUserSessions, setTokenCookie } = require('../utils/jwt');
 const { authenticate } = require('../middleware/auth');
 
 const router = express.Router();
 
 // POST /api/auth/register - Register with username + password + phone
 router.post('/register', async (req, res) => {
-  const { username, password, phone, verificationCode, nickname } = req.body;
+  const { username, password, phone, verificationCode, nickname, gender, birthday, childNickname, childGender, childBirthday } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ code: 'INVALID_INPUT', message: '用户名和密码不能为空' });
@@ -45,20 +45,33 @@ router.post('/register', async (req, res) => {
   const passwordHash = await bcrypt.hash(password, 10);
 
   db.prepare(
-    `INSERT INTO users (id, username, phone, password_hash, nickname) VALUES (?, ?, ?, ?, ?)`
-  ).run(id, username, phone || null, passwordHash, nickname || username);
+    `INSERT INTO users (id, username, phone, password_hash, nickname, gender, birthday) VALUES (?, ?, ?, ?, ?, ?, ?)`
+  ).run(id, username, phone || null, passwordHash, nickname || username, gender || null, birthday || null);
+
+  // Create initial child record
+  if (childNickname) {
+    const childId = uuidv4();
+    const autoNickname = childGender === '男' ? '超帅' : childGender === '女' ? '小可爱' : '宝贝';
+    db.prepare(
+      `INSERT INTO children (id, user_id, nickname, gender, birthday) VALUES (?, ?, ?, ?, ?)`
+    ).run(childId, id, childNickname || autoNickname, childGender || null, childBirthday || null);
+  }
 
   // Create points record
   db.prepare(`INSERT INTO points (user_id, balance, total_earned) VALUES (?, 0, 0)`).run(id);
 
   const tokens = generateTokens({ id, role: 'user' });
 
-  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
+  setTokenCookie(res, tokens.accessToken, tokens.syncToken);
+
+  // Fetch created user with children
+  const user = db.prepare(`SELECT id, username, nickname, phone, gender, birthday FROM users WHERE id = ?`).get(id);
+  const children = db.prepare(`SELECT * FROM children WHERE user_id = ?`).all(id);
 
   res.json({
     code: 'OK',
     data: {
-      user: { id, username, nickname: nickname || username, phone },
+      user: { ...user, children },
       ...tokens,
     },
   });
@@ -77,6 +90,11 @@ router.post('/login', (req, res) => {
     return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '用户名或密码错误' });
   }
 
+  // Check if account is suspended
+  if (user.suspended) {
+    return res.status(403).json({ code: 'ACCOUNT_SUSPENDED', message: '账号已被暂停，请联系管理员' });
+  }
+
   const valid = bcrypt.compareSync(password, user.password_hash);
   if (!valid) {
     return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '用户名或密码错误' });
@@ -84,7 +102,7 @@ router.post('/login', (req, res) => {
 
   const tokens = generateTokens(user);
 
-  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
+  setTokenCookie(res, tokens.accessToken, tokens.syncToken);
 
   res.json({
     code: 'OK',
@@ -110,7 +128,7 @@ router.post('/refresh', (req, res) => {
   revokeSession(refreshToken);
   const tokens = generateTokens({ id: session.user_id, role: session.role });
 
-  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
+  setTokenCookie(res, tokens.accessToken, tokens.syncToken);
 
   res.json({ code: 'OK', data: tokens });
 });
@@ -121,7 +139,8 @@ router.post('/logout', (req, res) => {
   if (refreshToken) {
     revokeSession(refreshToken);
   }
-  res.clearCookie('access_token');
+  res.clearCookie('access_token', { path: '/' }); // host-only cookie (no domain)
+  res.clearCookie('haodaer_token', { domain: '.grandand.com', path: '/' }); // shared cross-app cookie
   res.json({ code: 'OK' });
 });
 
@@ -143,6 +162,39 @@ router.post('/send-code', (req, res) => {
   console.log(`[SMS] Code for ${phone}: ${code} (purpose: ${purpose || 'register'})`);
 
   res.json({ code: 'OK', message: '验证码已发送（开发模式）' });
+});
+
+// POST /api/auth/parent-consent - Parent consent for under-14 users
+router.post('/parent-consent', async (req, res) => {
+  const { userId, parentName, parentPhone, verificationCode } = req.body;
+  if (!userId || !parentName || !parentPhone || !verificationCode) {
+    return res.status(400).json({ code: 'INVALID_INPUT', message: '家长姓名、手机号和验证码不能为空' });
+  }
+
+  // Verify parent's phone code
+  const valid = db.prepare(
+    `SELECT * FROM verification_codes WHERE phone = ? AND code = ? AND purpose = 'parent_consent' AND used = 0 AND expires_at > datetime('now')`
+  ).get(parentPhone, verificationCode);
+  if (!valid) {
+    return res.status(400).json({ code: 'INVALID_CODE', message: '验证码错误或已过期' });
+  }
+  db.prepare(`UPDATE verification_codes SET used = 1 WHERE id = ?`).run(valid.id);
+
+  // Save consent
+  const existing = db.prepare(`SELECT child_user_id FROM parent_consent WHERE child_user_id = ?`).get(userId);
+  if (existing) {
+    db.prepare(`UPDATE parent_consent SET parent_name = ?, parent_phone = ?, consent_at = datetime('now'), verified = 1, updated_at = datetime('now') WHERE child_user_id = ?`)
+      .run(parentName, parentPhone, userId);
+  } else {
+    db.prepare(`INSERT INTO parent_consent (child_user_id, parent_name, parent_phone, consent_at, verified) VALUES (?, ?, ?, datetime('now'), 1)`)
+      .run(userId, parentName, parentPhone);
+  }
+
+  // Enable youth mode for this user
+  db.prepare(`INSERT OR REPLACE INTO youth_mode_settings (user_id, enabled, daily_time_limit_minutes, night_mode_enabled) VALUES (?, 1, 40, 1)`)
+    .run(userId);
+
+  res.json({ code: 'OK', message: '家长同意已确认，青少年模式已启用' });
 });
 
 // POST /api/auth/verify-code - Verify code (for password reset flow)
@@ -178,17 +230,18 @@ router.post('/reset-password', (req, res) => {
 
 // GET /api/auth/me - Get current user
 router.get('/me', authenticate, (req, res) => {
-  const user = db.prepare(`SELECT id, username, phone, nickname, avatar, role, created_at FROM users WHERE id = ?`).get(req.user.id);
+  const user = db.prepare(`SELECT id, username, phone, nickname, avatar, gender, birthday, role, created_at FROM users WHERE id = ?`).get(req.user.id);
   if (!user) {
     return res.status(404).json({ code: 'USER_NOT_FOUND', message: '用户不存在' });
   }
   const points = db.prepare(`SELECT balance FROM points WHERE user_id = ?`).get(user.id);
-  res.json({ code: 'OK', data: { ...user, points: points?.balance || 0 } });
+  const children = db.prepare(`SELECT * FROM children WHERE user_id = ? ORDER BY created_at ASC`).all(user.id);
+  res.json({ code: 'OK', data: { ...user, points: points?.balance || 0, children } });
 });
 
 // POST /api/auth/phone-login - Phone + verification code login (auto-register)
 router.post('/phone-login', async (req, res) => {
-  const { phone, code } = req.body;
+  const { phone, code, nickname, gender, birthday, childNickname, childGender, childBirthday } = req.body;
   if (!phone || !code) {
     return res.status(400).json({ code: 'INVALID_INPUT', message: '手机号和验证码不能为空' });
   }
@@ -208,35 +261,37 @@ router.post('/phone-login', async (req, res) => {
   if (!user) {
     isNewUser = true;
     const id = uuidv4();
-    const defaultName = 'user_' + phone.substring(phone.length - 4);
+    const defaultName = nickname || ('user_' + phone.substring(phone.length - 4));
     db.prepare(
-      `INSERT INTO users (id, phone, username, nickname) VALUES (?, ?, ?, ?)`
-    ).run(id, phone, defaultName, defaultName);
+      `INSERT INTO users (id, phone, username, nickname, gender, birthday) VALUES (?, ?, ?, ?, ?, ?)`
+    ).run(id, phone, defaultName, defaultName, gender || null, birthday || null);
     db.prepare(`INSERT INTO points (user_id, balance, total_earned) VALUES (?, 0, 0)`).run(id);
+
+    // Create initial child record
+    if (childNickname) {
+      const childId = uuidv4();
+      const autoChildName = childGender === '男' ? '超帅' : childGender === '女' ? '小可爱' : '宝贝';
+      db.prepare(
+        `INSERT INTO children (id, user_id, nickname, gender, birthday) VALUES (?, ?, ?, ?, ?)`
+      ).run(childId, id, childNickname || autoChildName, childGender || null, childBirthday || null);
+    }
+
     user = db.prepare(`SELECT * FROM users WHERE id = ?`).get(id);
   }
 
   const tokens = generateTokens(user);
-  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
+  setTokenCookie(res, tokens.accessToken, tokens.syncToken);
+
+  const children = db.prepare(`SELECT * FROM children WHERE user_id = ?`).all(user.id);
 
   res.json({
     code: 'OK',
     data: {
-      user: { id: user.id, username: user.username, nickname: user.nickname, avatar: user.avatar, phone: user.phone },
+      user: { id: user.id, username: user.username, nickname: user.nickname, avatar: user.avatar, phone: user.phone, gender: user.gender, birthday: user.birthday, children },
       isNewUser,
       ...tokens,
     },
   });
 });
-
-function setTokenCookie(res, token, expiresAt) {
-  res.cookie('access_token', token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'lax',
-    expires: new Date(expiresAt),
-    path: '/',
-  });
-}
 
 module.exports = router;

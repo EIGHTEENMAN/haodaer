@@ -1,54 +1,56 @@
 import Phaser from "phaser"
 import { WordData } from "../../stores/gameStore"
-import { Projectile } from "./Projectile"
-import { StageConfig } from "../../data/stages"
 
 export class Monster extends Phaser.Physics.Arcade.Sprite {
   wordData: WordData
   maxHp: number
   currentHp: number
   isBoss: boolean
+
+  // Chase & melee
+  chaseSpeed: number
+  meleeDamage: number
+  meleeRange = 42
+  meleeCooldown = 1000
+  lastMeleeTime = 0
+
+  // Stuck/confused
+  private stuckTimer = 0
+  isConfused = false
+  private confusedDirection = 0
+  private confusedTimer = 0
+  private readonly CONFUSED_DURATION = 1500
+
+  // Labels
   private wordLabel: Phaser.GameObjects.Text
   private emojiLabel: Phaser.GameObjects.Text
   private hpBar: Phaser.GameObjects.Graphics
-  private projectilesGroup: Phaser.Physics.Arcade.Group
-  private fireTimer = 0
-  private fireInterval: number
-  private hasScatter: boolean
-  private bulletSpeedLevel: number
-  private driftAngle = Math.random() * Math.PI * 2
-  private driftSpeed = 15 + Math.random() * 10
+  private confusedEmoji: Phaser.GameObjects.Text | null = null
 
-  // Generate texture BEFORE sprite creation so Phaser has it at super() time
+  // Visual variety
+  private bodyType: number
+
   static preCreateTexture(scene: Phaser.Scene, wordId: number, difficulty: number, isBoss: boolean) {
-    const key = '__MON_' + wordId + '_' + difficulty
+    const bodyType = wordId % 4
+    const key = `__MON_${wordId}_${difficulty}_${bodyType}`
     if (scene.textures.exists(key)) return
     const gfx = scene.add.graphics()
     const hue = (difficulty * 51) % 360
     const bodyColor = Phaser.Display.Color.HSLToColor(hue / 360, 0.6, 0.45).color
     const headColor = Phaser.Display.Color.HSLToColor(hue / 360, 0.5, 0.55).color
-    gfx.fillStyle(bodyColor)
-    gfx.fillRect(4, 24, 44, 40)
-    gfx.fillStyle(headColor)
-    gfx.fillRect(8, 0, 36, 30)
-    gfx.fillStyle(0xffffff)
-    gfx.fillRect(14, 8, 10, 10)
-    gfx.fillRect(30, 8, 10, 10)
-    gfx.fillStyle(0xff4444)
-    gfx.fillRect(17, 11, 6, 6)
-    gfx.fillRect(33, 11, 6, 6)
-    gfx.fillStyle(0x000000)
-    gfx.fillRect(16, 22, 22, 4)
+
     if (isBoss) {
+      drawMonsterBody(gfx, bodyColor, headColor, 0, 0, 52, 66)
       gfx.fillStyle(0xffd700)
-      gfx.fillRect(12, -6, 30, 8)
-      gfx.fillRect(16, -10, 6, 6)
-      gfx.fillRect(24, -8, 6, 4)
-      gfx.fillRect(32, -10, 6, 6)
+      gfx.fillRect(16, -12, 36, 10)
+      gfx.fillRect(20, -16, 8, 8)
+      gfx.fillRect(30, -14, 8, 6)
+      gfx.fillRect(40, -16, 8, 8)
+      gfx.generateTexture(key, 64, 80)
+    } else {
+      const [w, h] = drawMonsterShape(gfx, bodyColor, headColor, bodyType)
+      gfx.generateTexture(key, w, h)
     }
-    const w = 52 + (isBoss ? 8 : 0)
-    const h = 66 + (isBoss ? 12 : 0)
-    gfx.generateTexture(key, w, h)
     gfx.destroy()
   }
 
@@ -57,46 +59,45 @@ export class Monster extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     wordData: WordData,
-    projectilesGroup: Phaser.Physics.Arcade.Group,
-    stageConfig: StageConfig
+    chaseSpeed: number,
+    meleeDamage: number,
+    isBoss: boolean,
   ) {
-    // Simple colored texture key unique per monster
-    const textureKey = `__MON_${wordData.id}_${wordData.difficulty}`
+    const textureKey = `__MON_${wordData.id}_${wordData.difficulty}_${wordData.id % 4}`
     super(scene, x, y, textureKey)
 
     this.wordData = wordData
-    this.projectilesGroup = projectilesGroup
-    this.isBoss = stageConfig.stage === 6
-    this.bulletSpeedLevel = stageConfig.bulletSpeed
-    this.hasScatter = stageConfig.hasScatter
+    this.isBoss = isBoss
+    this.bodyType = wordData.id % 4
 
-    // Fire rate based on bullet speed config (0-3)
-    const fireRates = [0, 3000, 2000, 1200, 800]
-    this.fireInterval = fireRates[Math.min(this.bulletSpeedLevel, 4)]
+    // Chase speed: player SPEED=250, monster slower so player can outrun
+    this.chaseSpeed = chaseSpeed  // 120-220 range
+    this.meleeDamage = meleeDamage // 8-20 range
 
     // HP scales with difficulty
-    this.maxHp = wordData.difficulty * (this.isBoss ? 200 : 30)
+    const hpBase = isBoss ? 500 : 80
+    this.maxHp = hpBase + wordData.difficulty * 20
     this.currentHp = this.maxHp
 
     scene.add.existing(this)
     scene.physics.add.existing(this)
 
     this.setCollideWorldBounds(true)
-    this.setSize(48, 56)
+    this.setSize(36, 44)
     this.setDepth(9)
 
     this.createMonsterTexture(textureKey, wordData.difficulty)
 
-    // Emoji
+    // Emoji label (above monster)
     const emojiChar = wordData.emoji || (this.isBoss ? "👑" : "👾")
-    this.emojiLabel = scene.add.text(x, y - 80, emojiChar, {
-      fontSize: this.isBoss ? "30px" : "24px",
+    this.emojiLabel = scene.add.text(x, y - 72, emojiChar, {
+      fontSize: this.isBoss ? "30px" : "22px",
       stroke: "#000000",
       strokeThickness: 2,
     }).setOrigin(0.5).setDepth(12)
 
-    // Word label (English word on monster)
-    this.wordLabel = scene.add.text(x, y - 48, wordData.word, {
+    // Word label (English word above monster)
+    this.wordLabel = scene.add.text(x, y - 44, wordData.word, {
       fontSize: "12px",
       color: "#ffffff",
       stroke: "#000000",
@@ -108,7 +109,7 @@ export class Monster extends Phaser.Physics.Arcade.Sprite {
     this.hpBar = scene.add.graphics().setDepth(12)
     this.updateHpBar()
 
-    // Boss gets a slow idle bob
+    // Boss idle bob
     if (this.isBoss) {
       scene.tweens.add({
         targets: this,
@@ -128,45 +129,27 @@ export class Monster extends Phaser.Physics.Arcade.Sprite {
     const bodyColor = Phaser.Display.Color.HSLToColor(hue / 360, 0.6, 0.45).color
     const headColor = Phaser.Display.Color.HSLToColor(hue / 360, 0.5, 0.55).color
 
-    // Square body
-    gfx.fillStyle(bodyColor)
-    gfx.fillRect(4, 24, 44, 40)
-
-    // Square head
-    gfx.fillStyle(headColor)
-    gfx.fillRect(8, 0, 36, 30)
-
-    // Eyes
-    gfx.fillStyle(0xffffff)
-    gfx.fillRect(14, 8, 10, 10)
-    gfx.fillRect(30, 8, 10, 10)
-    gfx.fillStyle(0xff4444)
-    gfx.fillRect(17, 11, 6, 6)
-    gfx.fillRect(33, 11, 6, 6)
-
-    // Mouth
-    gfx.fillStyle(0x000000)
-    gfx.fillRect(16, 22, 22, 4)
-
-    // Boss has a crown
     if (this.isBoss) {
+      drawMonsterBody(gfx, bodyColor, headColor, 0, 0, 52, 66)
       gfx.fillStyle(0xffd700)
-      gfx.fillRect(12, -6, 30, 8)
-      gfx.fillRect(16, -10, 6, 6)
-      gfx.fillRect(24, -8, 6, 4)
-      gfx.fillRect(32, -10, 6, 6)
+      gfx.fillRect(16, -12, 36, 10)
+      gfx.fillRect(20, -16, 8, 8)
+      gfx.fillRect(30, -14, 8, 6)
+      gfx.fillRect(40, -16, 8, 8)
+      gfx.generateTexture(key, 64, 80)
+    } else {
+      const [w, h] = drawMonsterShape(gfx, bodyColor, headColor, this.bodyType)
+      gfx.generateTexture(key, w, h)
     }
-
-    gfx.generateTexture(key, 52 + (this.isBoss ? 8 : 0), 66 + (this.isBoss ? 12 : 0))
     gfx.destroy()
   }
 
   updateHpBar() {
     this.hpBar.clear()
-    const barWidth = 60
-    const barHeight = 6
+    const barWidth = 54
+    const barHeight = 5
     const x = this.x - barWidth / 2
-    const y = this.y - 56
+    const y = this.y - 52
     const ratio = this.currentHp / this.maxHp
 
     this.hpBar.fillStyle(0x333333)
@@ -177,9 +160,37 @@ export class Monster extends Phaser.Physics.Arcade.Sprite {
     this.hpBar.fillRect(x, y, fillW, barHeight)
   }
 
-  takeDamage(amount: number): boolean {
+  takeDamage(amount: number, fromX?: number): boolean {
     this.currentHp -= amount
     this.updateHpBar()
+
+    // Knockback: push monster away from attack source
+    if (fromX !== undefined) {
+      const dir = this.x > fromX ? 1 : -1
+      this.setVelocity(dir * 300, -100)
+      this.scene.time.delayedCall(200, () => {
+        if (this.active) this.setVelocity(0, 0)
+      })
+    }
+
+    // Squash & stretch effect
+    this.scene.tweens.add({
+      targets: this,
+      scaleX: 0.7,
+      scaleY: 1.3,
+      duration: 60,
+      ease: "Power1",
+      onComplete: () => {
+        if (!this.active) return
+        this.scene.tweens.add({
+          targets: this,
+          scaleX: 1,
+          scaleY: 1,
+          duration: 120,
+          ease: "Bounce.easeOut",
+        })
+      },
+    })
 
     // Red flash
     this.setTint(0xff4444)
@@ -190,50 +201,156 @@ export class Monster extends Phaser.Physics.Arcade.Sprite {
     return this.currentHp <= 0
   }
 
-  updateLabelPositions() {
-    this.emojiLabel.setPosition(this.x, this.y - 80)
-    this.wordLabel.setPosition(this.x, this.y - 48)
+  updateLabels() {
+    this.emojiLabel.setPosition(this.x, this.y - 72)
+    this.wordLabel.setPosition(this.x, this.y - 44)
+    if (this.confusedEmoji) {
+      this.confusedEmoji.setPosition(this.x, this.y - 96)
+    }
     this.hpBar.setPosition(0, 0)
     this.updateHpBar()
   }
 
-  fireAtPlayer(playerX: number, playerY: number) {
-    if (this.fireInterval <= 0) return // bulletSpeed = 0 means no bullets
-
-    const now = this.scene.time.now
-    if (now - this.fireTimer < this.fireInterval) return
-    this.fireTimer = now
+  /**
+   * Chase & melee AI
+   * Returns true if this monster did a melee attack this frame
+   */
+  updateAI(delta: number, playerX: number, playerY: number): boolean {
+    if (!this.active || this.currentHp <= 0) return false
 
     const dx = playerX - this.x
     const dy = playerY - this.y
     const dist = Math.sqrt(dx * dx + dy * dy)
-    if (dist < 10) return
 
-    const nx = dx / dist
-    const ny = dy / dist
+    // Handle confused state
+    if (this.isConfused) {
+      this.confusedTimer += delta
+      if (this.confusedTimer >= this.CONFUSED_DURATION) {
+        this.endConfused()
+      } else {
+        // Wander in confused direction
+        this.setVelocity(
+          Math.cos(this.confusedDirection) * this.chaseSpeed * 0.6,
+          Math.sin(this.confusedDirection) * this.chaseSpeed * 0.6,
+        )
+      }
+      return false
+    }
 
-    // Choose bullet type based on stage config
-    if (this.hasScatter && Math.random() < 0.25) {
-      // Scatter shot
-      const bullets = Projectile.spawnScatter(this.scene, this.x, this.y, playerX, playerY)
-      bullets.forEach(b => this.projectilesGroup.add(b))
-    } else if (this.bulletSpeedLevel >= 2 && Math.random() < 0.3) {
-      // Letter bullet
-      const letter = this.wordData.word.charAt(Math.floor(Math.random() * this.wordData.word.length))
-      const p = new Projectile(this.scene, this.x, this.y, "LETTER", nx, ny, letter, { x: playerX, y: playerY })
-      this.projectilesGroup.add(p)
+    if (dist <= this.meleeRange) {
+      // In melee range - attack player
+      this.setVelocity(0, 0)
+
+      const now = this.scene.time.now
+      if (now - this.lastMeleeTime >= this.meleeCooldown) {
+        this.lastMeleeTime = now
+        // Wind-up squash
+        this.scene.tweens.add({
+          targets: this,
+          scaleX: 1.2,
+          scaleY: 0.8,
+          duration: 100,
+          yoyo: true,
+          ease: "Power1",
+          onComplete: () => {
+            if (this.active) {
+              this.setScale(1)
+            }
+          },
+        })
+        return true // dealt melee damage this frame
+      }
     } else {
-      // Fireball (with tracking if boss)
-      const type = this.isBoss ? "BOSS" : "FIREBALL"
-      const p = new Projectile(this.scene, this.x, this.y, type, nx, ny, "", this.isBoss ? undefined : undefined)
-      this.projectilesGroup.add(p)
+      // Chase the player
+      const targetVx = (dx / dist) * this.chaseSpeed
+      const targetVy = (dy / dist) * this.chaseSpeed
+      this.setVelocity(targetVx, targetVy)
+
+      // Face toward movement direction
+      this.rotation = Math.atan2(dy, dx) - Math.PI / 2
+
+      // Check if stuck on obstacle
+      if (dist > this.meleeRange * 2) {
+        const body = this.body as Phaser.Physics.Arcade.Body
+        const blocked = body.blocked.left || body.blocked.right || body.blocked.up || body.blocked.down
+        if (blocked) {
+          this.stuckTimer += delta
+          if (this.stuckTimer > 600 && !this.isConfused) {
+            this.startConfused()
+          }
+        } else {
+          this.stuckTimer = 0
+        }
+      }
+    }
+
+    return false
+  }
+
+  private startConfused() {
+    this.isConfused = true
+    this.confusedTimer = 0
+    this.confusedDirection = Math.random() * Math.PI * 2
+
+    // Show "?" emoji
+    this.confusedEmoji = this.scene.add.text(this.x, this.y - 96, "?", {
+      fontSize: "20px",
+      color: "#ff4444",
+      stroke: "#000000",
+      strokeThickness: 3,
+      fontFamily: "monospace",
+      fontStyle: "bold",
+    }).setOrigin(0.5).setDepth(13)
+  }
+
+  private endConfused() {
+    this.isConfused = false
+    this.stuckTimer = 0
+    if (this.confusedEmoji) {
+      this.confusedEmoji.destroy()
+      this.confusedEmoji = null
     }
   }
 
   destroyMonster() {
-    this.emojiLabel.destroy()
-    this.wordLabel.destroy()
-    this.hpBar.destroy()
+    this.endConfused()
+    if (this.emojiLabel) this.emojiLabel.destroy()
+    if (this.wordLabel) this.wordLabel.destroy()
+    if (this.hpBar) this.hpBar.destroy()
     this.destroy()
   }
+}
+
+// --- Monster texture helpers (unchanged) ---
+
+function drawMonsterShape(gfx: Phaser.GameObjects.Graphics, bodyColor: number, headColor: number, type: number): [number, number] {
+  const configs: [number, number, number, number][] = [
+    [0, 0, 52, 66],
+    [6, -4, 40, 76],
+    [-4, 2, 60, 56],
+    [2, -2, 48, 64],
+  ]
+  const c = configs[type] || configs[0]
+  drawMonsterBody(gfx, bodyColor, headColor, c[0], c[1], c[2], c[3])
+  return [c[2], c[3]]
+}
+
+function drawMonsterBody(gfx: Phaser.GameObjects.Graphics, bodyColor: number, headColor: number, ox: number, oy: number, w: number, h: number) {
+  const bw = w - 8
+  const bh = h - 28
+  const hw = w - 16
+  const hh = h - 34
+
+  gfx.fillStyle(bodyColor)
+  gfx.fillRect(ox + 4, oy + 24, bw, bh)
+  gfx.fillStyle(headColor)
+  gfx.fillRect(ox + 8, oy + 0, hw, hh)
+  gfx.fillStyle(0xffffff)
+  gfx.fillRect(ox + 14, oy + 8, 7, 8)
+  gfx.fillRect(ox + w - 21, oy + 8, 7, 8)
+  gfx.fillStyle(0xff4444)
+  gfx.fillRect(ox + 16, oy + 10, 4, 5)
+  gfx.fillRect(ox + w - 19, oy + 10, 4, 5)
+  gfx.fillStyle(0x000000)
+  gfx.fillRect(ox + 16, oy + hh - 2, w - 32, 3)
 }

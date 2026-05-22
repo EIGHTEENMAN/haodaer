@@ -2,6 +2,7 @@
   <div class="stage-map">
     <div class="sm-header">
       <h1 class="sm-world-name">{{ currentWorld.id }}</h1>
+      <p class="sm-grade">{{ gradeLabel }}</p>
       <p class="sm-world-theme">{{ themeEnglish }}</p>
     </div>
 
@@ -41,7 +42,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import { WORLDS, BOSS_NAMES, StageConfig } from "../data/stages"
+import { WORLDS, BOSS_NAMES, GRADES, getGradeForWorld, StageConfig } from "../data/stages"
+import { getProgress } from "../stores/gameStore"
 
 const props = defineProps<{
   worldId: string
@@ -55,24 +57,15 @@ const emit = defineEmits<{
 const currentWorldIndex = computed(() => WORLDS.findIndex(w => w.id === props.worldId) + 1)
 const currentWorld = computed(() => WORLDS.find(w => w.id === props.worldId)!)
 const bossName = computed(() => BOSS_NAMES[props.worldId] || "???")
+const gradeLabel = computed(() => {
+  const g = getGradeForWorld(props.worldId)
+  return g ? `GRADE ${g.id} - ${g.nameCn}` : ''
+})
 const themeEnglish = computed(() => {
   const t = currentWorld.value?.theme || ""
   const spaceIdx = t.indexOf(" ")
   return spaceIdx > 0 ? t.substring(spaceIdx + 1) : t
 })
-
-interface ProgressData {
-  unlockedWorlds: string[]
-  completedStages: Record<string, number[]>
-}
-
-function getProgress(): ProgressData {
-  try {
-    const raw = localStorage.getItem("ultraman_progress")
-    if (raw) return JSON.parse(raw)
-  } catch {}
-  return { unlockedWorlds: ["ANIMAL"], completedStages: {} }
-}
 
 function completedStages(): number[] {
   return getProgress().completedStages[props.worldId] || []
@@ -106,7 +99,7 @@ function nodePosition(i: number): Record<string, string> {
   const rx = 40
   const ry = 30
   const x = 50 + rx * Math.cos(angle - Math.PI)
-  const y = 10 + ry * Math.sin(angle - Math.PI) + 10
+  const y = 30 + ry * Math.sin(angle - Math.PI) + 10
   return {
     left: x + "%",
     top: y + "%",
@@ -128,7 +121,7 @@ function nodePosition(i: number): Record<string, string> {
 }
 .sm-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 .sm-world-name {
   font-family: "Press Start 2P", monospace;
@@ -136,6 +129,12 @@ function nodePosition(i: number): Record<string, string> {
   color: #ffd700;
   text-shadow: 0 0 10px rgba(255,215,0,0.4);
   margin-bottom: 4px;
+}
+.sm-grade {
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  color: #66aadd;
+  margin-bottom: 2px;
 }
 .sm-world-theme {
   font-family: "Press Start 2P", monospace;
@@ -146,8 +145,9 @@ function nodePosition(i: number): Record<string, string> {
   position: relative;
   width: 100%;
   max-width: 700px;
-  height: 350px;
   flex: 1;
+  min-height: 300px;
+  padding-top: 32px;
 }
 .stage-path-bg {
   position: absolute;

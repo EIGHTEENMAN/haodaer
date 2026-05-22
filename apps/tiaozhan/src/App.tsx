@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { navLinks } from '@shared/config/navLinks'
 import Home from './pages/Home'
 import QuizBattle from './pages/QuizBattle'
 import LoginModal from './components/LoginModal'
@@ -230,9 +231,9 @@ export default function App() {
           </div>
           <div className="header-right">
             <div className="header-links">
-              <a href="https://forum.grandand.com" className="header-link">💬 论坛</a>
-              <a href="https://store.grandand.com" className="header-link">🎁 商城</a>
-              <a href="/faq" className="header-link">❓ 帮助</a>
+              {navLinks.filter(l => !l.hidden).map(link => (
+                <a key={link.label} href={link.href} className="header-link">{link.icon} {link.label}</a>
+              ))}
             </div>
             <div className="header-auth">
               {user && getToken() ? (

@@ -10,7 +10,7 @@
         <div class="avatar-section">
           <div class="avatar">{{ userInitial }}</div>
           <div class="nickname">{{ userName }}</div>
-          <div class="game-nickname">{{ gameNickname || 'PLAYER' }}</div>
+          <div class="game-level">LV {{ level }}</div>
         </div>
 
         <div class="info-grid">
@@ -42,13 +42,16 @@ import { wordStore, getMasteredCount, getAccuracy } from "../stores/wordStore"
 
 defineEmits<{ back: [] }>()
 
+import { player } from "../stores/playerStore"
+
 const userName = ref("")
-const gameNickname = ref(localStorage.getItem("ultraman_nickname") || "")
 const userInitial = ref("")
+const level = ref(1)
 
 onMounted(() => {
+  level.value = player.level
   try {
-    const userStr = localStorage.getItem("haodaer_user")
+    const userStr = sessionStorage.getItem("haodaer_user")
     if (userStr) {
       const user = JSON.parse(userStr)
       userName.value = user.nickname || user.username || "Player"
@@ -67,7 +70,7 @@ const accuracy = computed(() => getAccuracy())
   position: fixed;
   inset: 0;
   background: #1a1a2e;
-  z-index: 800;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +126,7 @@ const accuracy = computed(() => getAccuracy())
   font-size: 16px;
   font-family: 'Press Start 2P', monospace;
 }
-.game-nickname {
+.game-level {
   color: #88ccff;
   font-size: 12px;
   margin-top: 6px;

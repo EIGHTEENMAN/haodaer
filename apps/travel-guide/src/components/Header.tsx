@@ -21,6 +21,27 @@ export default function Header() {
 
   useEffect(() => {
     refreshUser();
+
+    // Cross-domain auth sync: check cookie if no localStorage token
+    if (!isLoggedIn()) {
+      const match = document.cookie.match(new RegExp('(^| )haodaer_token=([^;]+)'));
+      if (match) {
+        const cookieToken = decodeURIComponent(match[2]);
+        sessionStorage.setItem('haodaer_token', cookieToken);
+        fetch('/api/auth/me', {
+          headers: { Authorization: 'Bearer ' + cookieToken }
+        })
+        .then(r => r.json())
+        .then(d => {
+          if (d.code === 'OK') {
+            sessionStorage.setItem('haodaer_user', JSON.stringify(d.data));
+            setLocalUser(d.data);
+          }
+        })
+        .catch(() => {});
+      }
+    }
+
     window.addEventListener('storage', refreshUser);
     const iv = setInterval(refreshUser, 3000);
     return () => {
@@ -45,7 +66,7 @@ export default function Header() {
   const handleSetupComplete = () => {
     setShowSetup(false);
     fetch('/api/auth/me', {
-      headers: { Authorization: `Bearer ${localStorage.getItem('haodaer_token')}` },
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('haodaer_token')}` },
     }).then(r => r.json()).then(d => {
       if (d.code === 'OK') {
         setUser(d.data);

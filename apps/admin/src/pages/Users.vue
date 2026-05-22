@@ -7,8 +7,14 @@ const page = ref(1)
 const pageSize = ref(20)
 const loading = ref(false)
 const downloading = ref(false)
+const actionMsg = ref('')
 
 const keyword = ref('')
+
+function authHeaders() {
+  const token = sessionStorage.getItem('admin_token')
+  return { Authorization: 'Bearer ' + token }
+}
 
 async function search() {
   loading.value = true
@@ -18,7 +24,7 @@ async function search() {
     params.set('page', String(page.value))
     params.set('pageSize', String(pageSize.value))
 
-    const r = await fetch('/api/admin/users?' + params.toString())
+    const r = await fetch('/api/admin/users?' + params.toString(), { headers: authHeaders() })
     const d = await r.json()
     users.value = d.list
     total.value = d.total
@@ -34,8 +40,7 @@ async function downloadExcel() {
   try {
     const params = new URLSearchParams()
     if (keyword.value.trim()) params.set('keyword', keyword.value.trim())
-
-    const r = await fetch('/api/admin/users/download?' + params.toString())
+    const r = await fetch('/api/admin/users/download?' + params.toString(), { headers: authHeaders() })
     const blob = await r.blob()
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -49,6 +54,35 @@ async function downloadExcel() {
   } finally {
     downloading.value = false
   }
+}
+
+async function toggleSuspend(u: any) {
+  if (!confirm(u.suspended ? '确定恢复该用户？' : '确定暂停该用户？（用户无法登录）')) return
+  try {
+    const endpoint = u.suspended ? `/api/admin/users/${u.id}/unsuspend` : `/api/admin/users/${u.id}/suspend`
+    const r = await fetch(endpoint, { method: 'POST', headers: authHeaders() })
+    const d = await r.json()
+    if (d.success) {
+      u.suspended = u.suspended ? 0 : 1
+      actionMsg.value = u.suspended ? '用户已暂停' : '用户已恢复'
+      setTimeout(() => actionMsg.value = '', 2000)
+    }
+  } catch { alert('操作失败') }
+}
+
+async function deleteUser(u: any) {
+  if (!confirm(`确定永久删除用户"${u.username}"？\n此操作不可恢复！`)) return
+  if (!confirm('再次确认：删除后该用户所有数据将永久丢失！')) return
+  try {
+    const r = await fetch(`/api/admin/users/${u.id}`, { method: 'DELETE', headers: authHeaders() })
+    const d = await r.json()
+    if (d.success) {
+      users.value = users.value.filter(x => x.id !== u.id)
+      total.value--
+      actionMsg.value = '用户已删除'
+      setTimeout(() => actionMsg.value = '', 2000)
+    }
+  } catch { alert('删除失败') }
 }
 
 function onSearch() {
@@ -86,6 +120,7 @@ onMounted(search)
         <input v-model="keyword" placeholder="搜索用户名/昵称/手机号" @keyup.enter="onSearch" />
       </div>
       <div style="flex:1"></div>
+      <span v-if="actionMsg" style="font-size:12px;color:#16a34a;transition:opacity 0.3s">{{ actionMsg }}</span>
       <button class="btn btn-primary" :disabled="downloading" @click="downloadExcel">
         {{ downloading ? '生成中...' : '📥 下载 Excel' }}
       </button>
@@ -114,7 +149,9 @@ onMounted(search)
             <th>手机号</th>
             <th>邮箱</th>
             <th>角色</th>
+            <th>状态</th>
             <th>注册时间</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -125,7 +162,23 @@ onMounted(search)
             <td>{{ u.phone || '-' }}</td>
             <td style="font-size:12px;color:#64748b">{{ u.email || '-' }}</td>
             <td><span :class="['tag', roleTag(u.role)]">{{ roleLabel(u.role) }}</span></td>
+            <td>
+              <span v-if="u.suspended" class="tag tag-orange">已暂停</span>
+              <span v-else class="tag tag-green">正常</span>
+            </td>
             <td style="color:#94a3b8;font-size:12px">{{ u.created_at?.slice(0, 19)?.replace('T', ' ') }}</td>
+            <td style="white-space:nowrap">
+              <button
+                class="btn btn-sm"
+                :class="u.suspended ? 'btn-primary' : 'btn-warning'"
+                @click="toggleSuspend(u)"
+              >
+                {{ u.suspended ? '恢复' : '暂停' }}
+              </button>
+              <button class="btn btn-sm btn-danger" style="margin-left:4px" @click="deleteUser(u)">
+                删除
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

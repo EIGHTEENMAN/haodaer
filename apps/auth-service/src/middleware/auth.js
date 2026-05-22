@@ -1,15 +1,16 @@
 const { verifyAccessToken } = require('../utils/jwt');
 
 function authenticate(req, res, next) {
-  // Try Cookie first, then Authorization header
+  // Try Authorization header first (explicit per-request token), then cookie fallback
+  // Cookie-based access_token now has domain=.grandand.com and is sent to all subdomains;
+  // the Authorization header carries the correct token (syncToken or accessToken),
+  // while the cookie may hold a stale short-lived accessToken.
   let token = null;
-  if (req.cookies && req.cookies.access_token) {
+  const authHeader = req.headers.authorization;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.substring(7);
+  } else if (req.cookies && req.cookies.access_token) {
     token = req.cookies.access_token;
-  } else {
-    const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    }
   }
 
   if (!token) {

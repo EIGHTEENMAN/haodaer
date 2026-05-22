@@ -13,6 +13,7 @@
         :class="{ locked: !isUnlocked(world.id) }"
         @click="selectWorld(world.id)"
       >
+        <div class="grade-badge">{{ getGradeLabel(world.id) }}</div>
         <div class="world-visual">{{ world.visual }}</div>
         <div class="world-name">{{ world.id }}</div>
         <div class="world-stars" v-if="completedCount(world.id) > 0">
@@ -31,25 +32,13 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import { WORLDS } from "../data/stages"
+import { WORLDS, GRADES, getGradeForWorld } from "../data/stages"
+import { getProgress } from "../stores/gameStore"
 
 const emit = defineEmits<{
   select: [worldId: string]
   back: []
 }>()
-
-interface ProgressData {
-  unlockedWorlds: string[]
-  completedStages: Record<string, number[]>
-}
-
-function getProgress(): ProgressData {
-  try {
-    const raw = localStorage.getItem("ultraman_progress")
-    if (raw) return JSON.parse(raw)
-  } catch {}
-  return { unlockedWorlds: ["ANIMAL"], completedStages: {} }
-}
 
 function isUnlocked(worldId: string): boolean {
   const p = getProgress()
@@ -67,6 +56,11 @@ function stagesCompleted(worldId: string): number {
 
 function completedCount(worldId: string): number {
   return stagesCompleted(worldId)
+}
+
+function getGradeLabel(worldId: string): string {
+  const g = getGradeForWorld(worldId)
+  return g ? `G${g.id} ${g.nameCn}` : ''
 }
 
 function selectWorld(worldId: string) {
@@ -138,6 +132,16 @@ const totalCompleted = computed(() => {
   opacity: 0.4;
   cursor: not-allowed;
   border-color: rgba(255,255,255,0.1);
+}
+.grade-badge {
+  font-size: 10px;
+  color: #88ccff;
+  background: rgba(136,204,255,0.12);
+  border: 1px solid rgba(136,204,255,0.25);
+  padding: 2px 8px;
+  display: inline-block;
+  margin-bottom: 6px;
+  font-family: "Press Start 2P", monospace;
 }
 .world-visual {
   font-size: 40px;

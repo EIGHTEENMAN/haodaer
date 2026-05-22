@@ -1,18 +1,57 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue"
-import { knowledgeData, categories, categoryColors, dailyQuotes, type Topic, type Section } from './data/knowledge'
+import { ref, computed, watch, onMounted, onUnmounted } from "vue"
+import { knowledgeIndex, categories, categoryColors, dailyQuotes, type TopicMeta } from './data/knowledge-meta'
+import type { Topic, Section } from './data/knowledge'
 import { speak, stopSpeaking } from './lib/audio'
 import { filterApps } from '@shared/composables/useSearch'
+import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
+import { useLearningStats } from '@shared/composables/useLearningStats'
+import { useAuth } from '@shared/composables/useAuth'
 import HeaderBar from '@shared/components/HeaderBar.vue'
 import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
+import YouthModeGate from '@shared/components/YouthModeGate.vue'
 
 // Navigation
 type View = 'home' | 'detail' | 'reader' | 'search'
 const currentView = ref<View>('home')
 const currentTopic = ref<Topic | null>(null)
 const currentSection = ref<Section | null>(null)
+const readerEntryTime = ref(0)
+const { token, user } = useAuth()
+const stats = useLearningStats('xuetongshi')
+
+// Lazy-loaded full data (with section content)
+const fullData = ref<Topic[] | null>(null)
+const loadingData = ref(false)
+let fullDataPromise: Promise<void> | null = null
+
+async function ensureFullData() {
+  if (fullData.value) return
+  if (fullDataPromise) return fullDataPromise
+  loadingData.value = true
+  fullDataPromise = import('./data/knowledge').then(mod => {
+    fullData.value = mod.knowledgeData
+    loadingData.value = false
+  })
+  await fullDataPromise
+}
+
+watch(currentView, (newView, oldView) => {
+  if (oldView === 'reader' && newView !== 'reader' && readerEntryTime.value > 0) {
+    const childId = getActiveChildId()
+    if (childId) {
+      const elapsed = Math.round((Date.now() - readerEntryTime.value) / 60000)
+      reportLearningProgress(childId, 'general', 1, Math.max(1, elapsed))
+    }
+    readerEntryTime.value = 0
+  }
+  if (newView === 'reader') {
+    readerEntryTime.value = Date.now()
+  }
+})
+
 const activeCategory = ref('全部')
 const searchQuery = ref('')
 const apiResults = ref<any[]>([])
@@ -40,29 +79,43 @@ function pushHash(view: string, topicId?: string, sectionId?: string) {
   history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
 }
 
-function restoreFromHash() {
+async function restoreFromHash() {
   const hash = window.location.hash.slice(1)
   if (!hash) return
   const parts = hash.split('/')
   const view = parts[0]
   const id = parts[1]
-  if (view === 'detail' && id) {
-    const item = knowledgeData.find(t => t.id === id)
-    if (item) { currentTopic.value = item; currentView.value = 'detail' }
-  } else if (view === 'reader' && id) {
-    for (const t of knowledgeData) {
-      const sec = t.sections.find(s => s.id === id)
-      if (sec) { currentTopic.value = t; currentSection.value = sec; currentView.value = 'reader'; break }
+  if ((view === 'detail' || view === 'reader') && id) {
+    await ensureFullData()
+    if (!fullData.value) return
+    if (view === 'detail') {
+      const item = fullData.value.find(t => t.id === id)
+      if (item) { currentTopic.value = item; currentView.value = 'detail' }
+    } else if (view === 'reader') {
+      for (const t of fullData.value) {
+        const sec = t.sections.find(s => s.id === id)
+        if (sec) { currentTopic.value = t; currentSection.value = sec; currentView.value = 'reader'; break }
+      }
     }
   }
 }
 
 function openDetail(t: Topic) {
   stopSpeaking()
+  stats.markOpened(t.category)
+  stats.markRead(t.id)
   currentTopic.value = t
   currentSection.value = null
   currentView.value = 'detail'
   pushHash('detail', t.id)
+}
+
+async function openDetailFromMeta(meta: TopicMeta) {
+  if (loadingData.value) return
+  stopSpeaking()
+  await ensureFullData()
+  const t = fullData.value?.find(x => x.id === meta.id)
+  if (t) openDetail(t)
 }
 
 function openReader(s: Section) {
@@ -80,6 +133,8 @@ function goHome() {
 }
 
 function goToSection(t: Topic, s: Section) {
+  stats.markOpened(t.category)
+  stats.markRead(t.id)
   currentTopic.value = t
   currentSection.value = s
   currentView.value = 'reader'
@@ -107,10 +162,13 @@ function onPopState() {
 async function doSearch() {
   const q = searchQuery.value.trim()
   if (!q) return
+  await ensureFullData()
+  const list = fullData.value
+  if (!list) return
   const lower = q.toLowerCase()
   const results: { topic: Topic; sections: Section[] }[] = []
 
-  for (const topic of knowledgeData) {
+  for (const topic of list) {
     const matched: Section[] = []
     const topicMatch = topic.title.includes(lower) || topic.tags.some(t => t.includes(lower))
     for (const sec of topic.sections) {
@@ -137,7 +195,7 @@ async function doSearch() {
 
 // --- Home filtering ---
 const filteredTopics = computed(() => {
-  let list = knowledgeData
+  let list = knowledgeIndex
   if (activeCategory.value !== '全部') list = list.filter(t => t.category === activeCategory.value)
   return list
 })
@@ -162,7 +220,7 @@ function playText(text: string) {
 function stopAudio() { stopSpeaking(); speaking.value = false }
 function getReaderContent(): string { return currentSection.value?.content || '' }
 
-onMounted(() => {
+onMounted(async () => {
   window.addEventListener('beforeunload', stopSpeaking)
   window.addEventListener('popstate', onPopState)
 
@@ -171,12 +229,12 @@ onMounted(() => {
   const qParam = params.get('q')
   if (qParam) {
     searchQuery.value = qParam
-    doSearch()
+    await doSearch()
     history.replaceState(null, '', window.location.pathname)
     return
   }
 
-  restoreFromHash()
+  await restoreFromHash()
 })
 
 onUnmounted(() => {
@@ -186,7 +244,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page" style="--hd-accent:#06b6d4;--hd-accent-hover:#0891b2;--hd-accent-light:#a5f3fc;--hd-accent-shadow:rgba(6,182,212,0.1);--hd-accent-bg:#cffafe">
+  <YouthModeGate>
+  <div class="page" style="--hd-accent:#2563eb;--hd-accent-hover:#1d4ed8;--hd-accent-light:#bfdbfe;--hd-accent-shadow:rgba(59,130,246,0.1);--hd-accent-bg:#f0f9ff">
     <HeaderBar v-model="searchQuery" placeholder="搜索知识..." @search="doSearch" />
 
     <!-- ===== HOME VIEW ===== -->
@@ -214,13 +273,27 @@ onUnmounted(() => {
         </div>
       </section>
 
+      <!-- Learning Progress -->
+      <div class="ls-bar animate-fadeIn">
+        <template v-if="token && user">
+          <span class="ls-user">{{ user.nickname || user.username }}</span>
+          <span class="ls-dot"></span>
+          <span>🌍 已了解 {{ stats.openedCount }}/{{ categories.length }} 个领域</span>
+          <span class="ls-dot"></span>
+          <span>📚 已学习 {{ stats.readCount }}/{{ knowledgeIndex.length }} 个条目</span>
+        </template>
+        <template v-else>
+          <span>🌍 学习进度：0/{{ categories.length }} 个领域，0/{{ knowledgeIndex.length }} 个条目 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
+        </template>
+      </div>
+
       <section class="ts-grid-section" v-for="g in categoriesWithTopics" :key="g.category">
         <h2 class="section-title">
           <span class="section-title-dot" :style="{ backgroundColor: g.color }"></span>
           {{ g.category }}（{{ g.items.length }}）
         </h2>
         <div class="ts-grid">
-          <div v-for="t in g.items" :key="t.id" class="ts-card" @click="openDetail(t)">
+          <div v-for="t in g.items" :key="t.id" class="ts-card" @click="openDetailFromMeta(t)">
             <div class="ts-card-top" :style="{ backgroundColor: g.color + '18' }">
               <svg class="ts-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -270,8 +343,13 @@ onUnmounted(() => {
       </div>
     </template>
 
+    <!-- ===== LOADING ===== -->
+    <template v-if="loadingData && (currentView === 'detail' || currentView === 'reader')">
+      <div class="ts-empty" style="padding:80px 24px">📖 正在加载内容...</div>
+    </template>
+
     <!-- ===== DETAIL VIEW ===== -->
-    <template v-if="currentView === 'detail' && currentTopic">
+    <template v-if="!loadingData && currentView === 'detail' && currentTopic">
       <div class="ts-detail-wrap">
         <button class="ts-back" @click="goBack()">← 返回</button>
         <div class="ts-detail-card">
@@ -300,7 +378,7 @@ onUnmounted(() => {
     </template>
 
     <!-- ===== READER VIEW ===== -->
-    <template v-if="currentView === 'reader' && currentSection">
+    <template v-if="!loadingData && currentView === 'reader' && currentSection">
       <div class="ts-reader-wrap">
         <div class="ts-reader-header">
           <button class="ts-back" @click="goBack()">← 返回</button>
@@ -325,9 +403,12 @@ onUnmounted(() => {
       </div>
     </template>
 
+    <!-- ===== Copyright ===== -->
+    <div v-if="currentView === 'home'" class="hd-copyright"><p>通识内容为百科知识汇编，仅供学习参考。部分资料参考公开文献，如涉及版权请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p></div>
     <!-- ===== FOOTER ===== -->
     <FooterBar v-if="currentView === 'home'" />
   </div>
+  </YouthModeGate>
 </template>
 
 <style>
@@ -364,6 +445,24 @@ body {
 .ts-tag:hover { border-color: #06b6d4; color: #06b6d4; }
 .ts-tag-active { background: #06b6d4; color: white; border-color: #06b6d4; }
 .ts-tag-active:hover { background: #0891b2; border-color: #0891b2; color: white; }
+
+/* ===== Learning Stats Bar ===== */
+.ls-bar {
+  max-width: 1200px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; font-weight: 500; color: #334155; background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+.ls-dot {
+  width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1;
+}
+.ls-user {
+  font-weight: 700; color: #06b6d4; font-size: 15px;
+}
+.ls-login-link {
+  color: #06b6d4; text-decoration: none; font-weight: 500;
+}
+.ls-login-link:hover { text-decoration: underline; }
 
 /* ===== Grid ===== */
 .ts-grid-section { max-width: 1200px; margin: 0 auto; padding: 32px 24px 8px; }
@@ -462,6 +561,9 @@ body {
 .ts-action-btn { padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
 .ts-action-play { background: #06b6d4; color: white; }
 .ts-action-play:hover { background: #0891b2; }
+
+.hd-copyright { max-width: 1200px; margin: 0 auto; padding: 20px 24px 8px; text-align: center; }
+.hd-copyright p { font-size: 11px; color: #94a3b8; line-height: 1.7; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {

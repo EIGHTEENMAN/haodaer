@@ -11,11 +11,20 @@ type AuthModalProps = {
 };
 
 export default function AuthModal({ open, onClose, onLogin, force }: AuthModalProps) {
+  // Phone login state
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
   const [countdown, setCountdown] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Password login/register state
+  const [authTab, setAuthTab] = useState<'phone' | 'password'>('phone');
+  const [passwordMode, setPasswordMode] = useState<'login' | 'register'>('login');
+  const [pwdUsername, setPwdUsername] = useState('');
+  const [pwdPassword, setPwdPassword] = useState('');
+  const [pwdConfirmPassword, setPwdConfirmPassword] = useState('');
+  const [pwdLoading, setPwdLoading] = useState(false);
 
   useEffect(() => {
     if (countdown <= 0) return;
@@ -43,7 +52,7 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
     finally { setLoading(false); }
   }, [phone]);
 
-  const doLogin = useCallback(async () => {
+  const doPhoneLogin = useCallback(async () => {
     if (!phone || !code) { setError('请填写手机号和验证码'); return; }
     setError('');
     setLoading(true);
@@ -55,7 +64,7 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
       });
       const d = await res.json();
       if (d.code === 'OK') {
-        setToken(d.data.accessToken);
+        setToken(d.data.accessToken, d.data.syncToken);
         setUser(d.data.user);
         if (d.data.isNewUser) setIsNewUser(true);
         else setIsNewUser(false);
@@ -67,6 +76,55 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
     finally { setLoading(false); }
   }, [phone, code, onLogin]);
 
+  const doUsernameLogin = useCallback(async () => {
+    if (!pwdUsername || !pwdPassword) { setError('请填写用户名和密码'); return; }
+    setError('');
+    setPwdLoading(true);
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: pwdUsername, password: pwdPassword }),
+      });
+      const d = await res.json();
+      if (d.code === 'OK') {
+        setToken(d.data.accessToken, d.data.syncToken);
+        setUser(d.data.user);
+        setIsNewUser(false);
+        onLogin(d.data.user);
+      } else {
+        setError(d.message || '登录失败');
+      }
+    } catch { setError('网络错误'); }
+    finally { setPwdLoading(false); }
+  }, [pwdUsername, pwdPassword, onLogin]);
+
+  const doUsernameRegister = useCallback(async () => {
+    if (!pwdUsername || !pwdPassword) { setError('请填写用户名和密码'); return; }
+    if (pwdUsername.length < 2) { setError('用户名至少2个字符'); return; }
+    if (pwdPassword.length < 6) { setError('密码至少6位'); return; }
+    if (pwdPassword !== pwdConfirmPassword) { setError('两次密码输入不一致'); return; }
+    setError('');
+    setPwdLoading(true);
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: pwdUsername, password: pwdPassword }),
+      });
+      const d = await res.json();
+      if (d.code === 'OK') {
+        setToken(d.data.accessToken, d.data.syncToken);
+        setUser(d.data.user);
+        setIsNewUser(true);
+        onLogin(d.data.user);
+      } else {
+        setError(d.message || '注册失败');
+      }
+    } catch { setError('网络错误'); }
+    finally { setPwdLoading(false); }
+  }, [pwdUsername, pwdPassword, pwdConfirmPassword, onLogin]);
+
   if (!open) return null;
 
   const scanMethods = [
@@ -75,16 +133,22 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
     { name: '微信', icon: '💬', desc: '使用微信扫一扫' },
   ];
 
-  const renderLoginButton = () => {
-    if (loading) return '处理中...';
-    return '登录 / 注册';
-  };
+  const tabClass = (tab: 'phone' | 'password') =>
+    `flex-1 py-2.5 text-center text-sm font-medium border-b-2 transition-colors cursor-pointer ${
+      authTab === tab
+        ? 'text-green-600 border-green-600'
+        : 'text-gray-400 border-transparent hover:text-gray-600'
+    }`;
 
-  const renderCodeButton = () => {
-    if (countdown > 0) return `${countdown}s`;
-    if (loading) return '发送中...';
-    return '获取验证码';
-  };
+  const subTabClass = (mode: 'login' | 'register') =>
+    `flex-1 py-1.5 text-center text-sm font-medium rounded-md transition-all cursor-pointer ${
+      passwordMode === mode
+        ? 'bg-white text-gray-900 shadow-sm'
+        : 'text-gray-500 hover:text-gray-700'
+    }`;
+
+  const inputClass = "w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-shadow";
+  const btnClass = "w-full py-3 bg-green-600 text-white rounded-xl text-sm font-medium hover:bg-green-700 disabled:opacity-50 transition-all shadow-md hover:shadow-lg";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -101,8 +165,8 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
         )}
 
         <div className="flex flex-col md:flex-row">
-          {/* Left: QR Code */}
-          <div className="md:w-1/2 bg-gradient-to-br from-green-500 to-indigo-600 p-8 flex flex-col items-center justify-center text-white">
+          {/* Left: QR Code (hidden on mobile) */}
+          <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-green-500 to-indigo-600 p-8 flex-col items-center justify-center text-white">
             <h2 className="text-xl font-bold mb-6">扫码登录</h2>
             <div className="w-48 h-48 bg-white rounded-xl p-3 mb-4 flex items-center justify-center">
               <div className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
@@ -126,55 +190,164 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
             </div>
           </div>
 
-          {/* Right: Phone Login */}
-          <div className="md:w-1/2 p-8 flex flex-col justify-center">
-            <h2 className="text-xl font-bold text-gray-900 mb-1">手机号登录</h2>
-            <p className="text-sm text-gray-500 mb-6">输入手机号，验证后自动注册/登录</p>
+          {/* Right: Tabbed Forms */}
+          <div className="md:w-1/2 p-4 md:p-6 flex flex-col justify-center">
+            {/* Tab Bar */}
+            <div className="flex mb-5 border-b border-gray-200">
+              <button className={tabClass('phone')} onClick={() => { setAuthTab('phone'); setError(''); }}>
+                手机验证
+              </button>
+              <button className={tabClass('password')} onClick={() => { setAuthTab('password'); setError(''); }}>
+                账号密码
+              </button>
+            </div>
 
-            {error && (
-              <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg">{error}</div>
+            {/* Phone Login Form */}
+            {authTab === 'phone' && (
+              <>
+                <h2 className="text-xl font-bold text-gray-900 mb-1">手机号登录</h2>
+                <p className="text-sm text-gray-500 mb-5">输入手机号，验证后自动注册/登录</p>
+
+                {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg">{error}</div>}
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">手机号</label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 11))}
+                    placeholder="请输入手机号"
+                    className={inputClass}
+                    maxLength={11}
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={code}
+                      onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                      placeholder="请输入验证码"
+                      className="flex-1 px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-shadow"
+                      maxLength={6}
+                    />
+                    <button
+                      onClick={sendCode}
+                      disabled={loading || countdown > 0}
+                      className="px-4 py-2.5 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200 disabled:opacity-50 transition-colors whitespace-nowrap"
+                    >
+                      {countdown > 0 ? `${countdown}s` : loading ? '发送中...' : '获取验证码'}
+                    </button>
+                  </div>
+                </div>
+
+                <button onClick={doPhoneLogin} disabled={loading} className={btnClass}>
+                  {loading ? '处理中...' : '登录 / 注册'}
+                </button>
+              </>
             )}
 
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">手机号</label>
-              <input
-                type="tel"
-                value={phone}
-                onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 11))}
-                placeholder="请输入手机号"
-                className="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-shadow"
-                maxLength={11}
-              />
-            </div>
+            {/* Username/Password Form */}
+            {authTab === 'password' && (
+              <>
+                <h2 className="text-xl font-bold text-gray-900 mb-1">账号密码登录</h2>
+                <p className="text-sm text-gray-500 mb-5">使用用户名和密码登录或注册新账号</p>
 
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-1">验证码</label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={code}
-                  onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  placeholder="请输入验证码"
-                  className="flex-1 px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-shadow"
-                  maxLength={6}
-                />
-                <button
-                  onClick={sendCode}
-                  disabled={loading || countdown > 0}
-                  className="px-4 py-2.5 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200 disabled:opacity-50 transition-colors whitespace-nowrap"
-                >
-                  {renderCodeButton()}
-                </button>
-              </div>
-            </div>
+                {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg">{error}</div>}
 
-            <button
-              onClick={doLogin}
-              disabled={loading}
-              className="w-full py-3 bg-green-600 text-white rounded-xl text-sm font-medium hover:bg-green-700 disabled:opacity-50 transition-all shadow-md hover:shadow-lg"
-            >
-              {renderLoginButton()}
-            </button>
+                {/* Login / Register sub-tab */}
+                <div className="flex mb-4 bg-gray-100 rounded-lg p-0.5">
+                  <button className={subTabClass('login')} onClick={() => { setPasswordMode('login'); setError(''); }}>
+                    登录
+                  </button>
+                  <button className={subTabClass('register')} onClick={() => { setPasswordMode('register'); setError(''); }}>
+                    注册
+                  </button>
+                </div>
+
+                {/* Login mode */}
+                {passwordMode === 'login' && (
+                  <>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">用户名 / 手机号</label>
+                      <input
+                        type="text"
+                        value={pwdUsername}
+                        onChange={e => setPwdUsername(e.target.value)}
+                        placeholder="请输入用户名或手机号"
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                      <input
+                        type="password"
+                        value={pwdPassword}
+                        onChange={e => setPwdPassword(e.target.value)}
+                        placeholder="请输入密码"
+                        className={inputClass}
+                      />
+                    </div>
+                    <button onClick={doUsernameLogin} disabled={pwdLoading} className={btnClass}>
+                      {pwdLoading ? '处理中...' : '登录'}
+                    </button>
+                    <p
+                      className="mt-3 text-xs text-green-600 text-center cursor-pointer hover:underline"
+                      onClick={() => { setPasswordMode('register'); setError(''); }}
+                    >
+                      没有账号？去注册
+                    </p>
+                  </>
+                )}
+
+                {/* Register mode */}
+                {passwordMode === 'register' && (
+                  <>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+                      <input
+                        type="text"
+                        value={pwdUsername}
+                        onChange={e => setPwdUsername(e.target.value)}
+                        placeholder="2-20个字符"
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                      <input
+                        type="password"
+                        value={pwdPassword}
+                        onChange={e => setPwdPassword(e.target.value)}
+                        placeholder="至少6位密码"
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">确认密码</label>
+                      <input
+                        type="password"
+                        value={pwdConfirmPassword}
+                        onChange={e => setPwdConfirmPassword(e.target.value)}
+                        placeholder="再次输入密码"
+                        className={inputClass}
+                      />
+                    </div>
+                    <button onClick={doUsernameRegister} disabled={pwdLoading} className={btnClass}>
+                      {pwdLoading ? '处理中...' : '注册'}
+                    </button>
+                    <p
+                      className="mt-3 text-xs text-green-600 text-center cursor-pointer hover:underline"
+                      onClick={() => { setPasswordMode('login'); setError(''); }}
+                    >
+                      已有账号？去登录
+                    </p>
+                  </>
+                )}
+              </>
+            )}
 
             <p className="mt-4 text-xs text-gray-400 text-center">
               登录即代表同意{' '}

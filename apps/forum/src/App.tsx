@@ -1,8 +1,39 @@
 import { useState, useEffect, useCallback } from 'react'
+import { navLinks } from '@shared/config/navLinks'
+import LoginModal from './components/LoginModal'
 
 type Page = 'home' | 'post' | 'new' | 'search'
 interface User { id: string; username: string; token: string }
 interface Board { id: string; name: string; description: string; post_count: number }
+
+function getStoredUser(): { id: string; username: string; nickname?: string; avatar?: string } | null {
+  try {
+    const raw = sessionStorage.getItem('haodaer_user')
+    return raw ? JSON.parse(raw) : null
+  } catch { return null }
+}
+
+function getToken(): string | null {
+  return sessionStorage.getItem('haodaer_token')
+}
+
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'))
+  return match ? decodeURIComponent(match[2]) : null
+}
+
+function getDisplayName(): string {
+  const stored = getStoredUser()
+  if (!stored) return ''
+  try {
+    const profile = localStorage.getItem('haodaer_active_profile')
+    if (profile) {
+      const p = JSON.parse(profile)
+      return p.nickname || stored.nickname || stored.username
+    }
+  } catch {}
+  return stored.nickname || stored.username || '用户'
+}
 
 function api(url: string, options?: RequestInit) {
   return fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...options?.headers as any } })
@@ -23,12 +54,59 @@ export default function App() {
   const [showNotif, setShowNotif] = useState(false)
   const [searchQ, setSearchQ] = useState('')
   const [searchResults, setSearchResults] = useState<any[]>([])
-  const [loginName, setLoginName] = useState('')
   const [showNewPost, setShowNewPost] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
+  const [reportTarget, setReportTarget] = useState<{ type: string; id: string } | null>(null)
+  const [reportReason, setReportReason] = useState('')
 
   useEffect(() => {
     api('/api/boards').then(r => r.json()).then(setBoards).catch(() => {})
     history.replaceState({ page: 'home' }, '')
+
+    async function autoLogin() {
+      let stored = getStoredUser()
+      let token = getToken()
+
+      // Cross-app auth sync: check cookie if no localStorage
+      if (!token) {
+        const cookieToken = getCookie('haodaer_token')
+        if (cookieToken) {
+          sessionStorage.setItem('haodaer_token', cookieToken)
+          token = cookieToken
+          try {
+            const r = await fetch('/api/auth/me', {
+              headers: { 'Authorization': 'Bearer ' + cookieToken }
+            })
+            const d = await r.json()
+            if (d.code === 'OK') {
+              sessionStorage.setItem('haodaer_user', JSON.stringify(d.data))
+              stored = d.data
+            }
+          } catch {}
+        }
+      }
+
+      if (stored && token) {
+        const username = getDisplayName()
+        try {
+          const r = await api('/api/auth', {
+            method: 'POST',
+            body: JSON.stringify({ userId: stored.id, username })
+          })
+          const d = await r.json()
+          setUser({ id: stored.id, username, token: d.token })
+        } catch {}
+      }
+    }
+
+    // Listen for report events from PostDetail
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setReportTarget(detail)
+      setReportReason('')
+    }
+    window.addEventListener('open-report', handler)
+    return () => window.removeEventListener('open-report', handler)
   }, [])
 
   // Browser navigation: popstate listener
@@ -68,15 +146,6 @@ export default function App() {
     setNotifs(d.list || [])
     setUnread(d.unread || 0)
   }, [user])
-
-  const handleLogin = async () => {
-    if (!loginName.trim()) return
-    const id = crypto.randomUUID()
-    const r = await api('/api/auth', { method: 'POST', body: JSON.stringify({ userId: id, username: loginName.trim() }) })
-    const d = await r.json()
-    setUser({ id, username: loginName.trim(), token: d.token })
-    setLoginName('')
-  }
 
   const navigate = (p: Page, extra?: Record<string, any>) => {
     history.pushState({ page: p, ...extra }, '')
@@ -136,6 +205,31 @@ export default function App() {
     fetchNotifs()
   }
 
+  const doReport = async () => {
+    if (!user || !reportTarget || !reportReason.trim()) return
+    await api('/api/reports', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${user.token}` },
+      body: JSON.stringify({ targetType: reportTarget.type, targetId: reportTarget.id, reason: reportReason }),
+    })
+    setReportTarget(null)
+    setReportReason('')
+  }
+
+  const handleLogin = useCallback(async (token: string, userData: any) => {
+    const username = getDisplayName()
+    try {
+      const r = await api('/api/auth', {
+        method: 'POST',
+        body: JSON.stringify({ userId: userData.id, username }),
+      })
+      const d = await r.json()
+      setUser({ id: userData.id, username, token: d.token })
+      fetchPosts()
+      fetchNotifs()
+    } catch {}
+  }, [])
+
   const doSearch = async () => {
     if (!searchQ.trim()) return
     const r = await api(`/api/search?q=${encodeURIComponent(searchQ)}`).then(r => r.json())
@@ -144,29 +238,42 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      {/* Nav */}
-      <nav className="nav">
-        <h1 onClick={() => navigate('home')}>好大儿社区</h1>
-        <div className="nav-right">
-          {user && (
-            <>
-              <button className="btn btn-ghost" onClick={() => { setShowNotif(!showNotif); if (!showNotif) fetchNotifs() }}>
-                🔔{unread > 0 && <span className="notif-dot" />}
-              </button>
-              <span className="username">{user.username}</span>
-            </>
-          )}
-          {!user && (
-            <div style={{ display: 'flex', gap: 4 }}>
-              <input className="input" style={{ width: 100, padding: '6px 10px', fontSize: 12 }}
-                placeholder="昵称" value={loginName} onChange={e => setLoginName(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleLogin()} />
-              <button className="btn btn-primary btn-sm" onClick={handleLogin}>登录</button>
+    <>
+      <header className="forum-header">
+        <div className="forum-header-inner">
+          <div className="forum-header-left">
+            <a href="https://grandand.com" className="forum-logo">好大儿</a>
+            <form className="forum-search" onSubmit={(e) => { e.preventDefault(); const inp = document.querySelector(".forum-search-input") as HTMLInputElement; if(inp?.value) window.location.href = "https://grandand.com/search?q=" + encodeURIComponent(inp.value); }}>
+              <svg className="forum-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" onClick={() => { const inp = document.querySelector(".forum-search-input") as HTMLInputElement; if(inp?.value) window.location.href = "https://grandand.com/search?q=" + encodeURIComponent(inp.value); }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input placeholder="搜索" className="forum-search-input" />
+            </form>
+          </div>
+          <div className="forum-header-right">
+            <div className="forum-header-links">
+              {navLinks.filter(l => !l.hidden).map(link => (
+                <a key={link.label} href={link.href} className="forum-header-link">{link.icon} {link.label}</a>
+              ))}
             </div>
-          )}
+            <div className="forum-header-auth">
+              {user && (
+                <>
+                  <button className="btn btn-ghost" onClick={() => { setShowNotif(!showNotif); if (!showNotif) fetchNotifs() }}>
+                    🔔{unread > 0 && <span className="notif-dot" />}
+                  </button>
+                  <span className="username">{user.username}</span>
+                </>
+              )}
+              {!user && (
+                <button className="btn btn-primary btn-sm" onClick={() => setShowLogin(true)}>登录 / 注册</button>
+              )}
+            </div>
+          </div>
         </div>
-      </nav>
+      </header>
+
+      <div className="app">
 
       {/* Notifications */}
       {showNotif && user && (
@@ -267,6 +374,24 @@ export default function App() {
         </div>
       )}
     </div>
+      <LoginModal open={showLogin} onClose={() => setShowLogin(false)} onLogin={handleLogin} />
+
+      {/* Report Modal */}
+      {reportTarget && (
+        <div className="modal-overlay" onClick={() => setReportTarget(null)}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <h3>举报 {reportTarget.type === 'post' ? '帖子' : '评论'}</h3>
+            <textarea className="textarea" style={{ marginBottom: 12 }}
+              placeholder="请描述举报原因..." value={reportReason}
+              onChange={e => setReportReason(e.target.value)} />
+            <div className="actions">
+              <button className="btn btn-outline" onClick={() => setReportTarget(null)}>取消</button>
+              <button className="btn btn-primary" disabled={!reportReason.trim()} onClick={doReport}>提交举报</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
@@ -315,6 +440,7 @@ function PostDetail({ post, comments, user, onBack, onLike, onComment }: {
           <button className={`btn btn-sm ${post.isLiked ? 'btn-danger' : 'btn-outline'}`} onClick={onLike}>
             ❤ {post.like_count || 0}
           </button>
+          {user && <button className="btn btn-ghost btn-sm" onClick={() => { const p = post; window.dispatchEvent(new CustomEvent('open-report', { detail: { type: 'post', id: p.id } })) }}>举报</button>}
         </div>
       </div>
 
@@ -335,6 +461,7 @@ function PostDetail({ post, comments, user, onBack, onLike, onComment }: {
             <div className="comment-meta">
               {c.username} · {c.created_at?.slice(0, 10)}
               {user && <button className="btn btn-ghost btn-sm" onClick={() => setReplyTo(replyTo === c.id ? null : c.id)}>回复</button>}
+              {user && <button className="btn btn-ghost btn-sm" onClick={() => window.dispatchEvent(new CustomEvent('open-report', { detail: { type: 'comment', id: c.id } }))}>举报</button>}
             </div>
             <div className="comment-content">{c.content}</div>
             {replyTo === c.id && (

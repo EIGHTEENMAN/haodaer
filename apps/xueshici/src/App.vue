@@ -1,12 +1,33 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue"
-import { poemsData, categories, categoryColors, poetBios, type Poem, type Section } from './data/poems'
+import { ref, computed, watch, onMounted, onUnmounted } from "vue"
+import { poemsIndex, categories, categoryColors, poetBios, type PoemMeta } from './data/poems-meta'
+import type { Poem, Section } from './data/poems'
 import { speak, stopSpeaking } from './lib/audio'
 import { filterApps } from '@shared/composables/useSearch'
+import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
+import { useLearningStats } from '@shared/composables/useLearningStats'
+import { useAuth } from '@shared/composables/useAuth'
 import HeaderBar from '@shared/components/HeaderBar.vue'
 import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
+import YouthModeGate from '@shared/components/YouthModeGate.vue'
+
+// Lazy loading state for full poem data
+const fullData = ref<Poem[] | null>(null)
+const loadingData = ref(false)
+let fullDataPromise: Promise<void> | null = null
+
+async function ensureFullData() {
+  if (fullData.value) return
+  if (fullDataPromise) return fullDataPromise
+  loadingData.value = true
+  fullDataPromise = import('./data/poems').then(mod => {
+    fullData.value = mod.poemsData
+    loadingData.value = false
+  })
+  await fullDataPromise
+}
 
 // Navigation: home -> poet -> detail -> reader
 type View = 'home' | 'poet' | 'detail' | 'reader' | 'search'
@@ -22,7 +43,7 @@ const searchResults = ref<{ poem: Poem; sections: Section[] }[]>([])
 const filteredApps = computed(() => filterApps(searchQuery.value))
 
 // Daily quote — random poem
-const dailyPoem = ref<Poem | null>(null)
+const dailyPoem = ref<PoemMeta | null>(null)
 const dailyQuote = computed(() => {
   if (!dailyPoem.value) return ''
   const lines = dailyPoem.value.summary.split('\n')
@@ -30,6 +51,25 @@ const dailyQuote = computed(() => {
   const allSame = lines.every(l => l.length === lines[0].length)
   const n = allSame ? Math.min(2, lines.length) : Math.min(3, lines.length)
   return lines.slice(0, n).join('，') + '。'
+})
+
+// Learning progress tracking
+const readerEntryTime = ref(0)
+const { token, user } = useAuth()
+const stats = useLearningStats('xueshici')
+
+watch(currentView, (newView, oldView) => {
+  if (oldView === 'reader' && newView !== 'reader' && readerEntryTime.value > 0) {
+    const childId = getActiveChildId()
+    if (childId) {
+      const elapsed = Math.round((Date.now() - readerEntryTime.value) / 60000)
+      reportLearningProgress(childId, 'poetry', 1, Math.max(1, elapsed))
+    }
+    readerEntryTime.value = 0
+  }
+  if (newView === 'reader') {
+    readerEntryTime.value = Date.now()
+  }
 })
 
 // Favorites
@@ -43,7 +83,7 @@ function isFavorite(id: string) { return favoriteIds.value.includes(id) }
 
 // Search/filter poems
 const filteredPoems = computed(() => {
-  let list = poemsData
+  let list = poemsIndex
   if (activeDynasty.value !== '全部') list = list.filter(p => p.dynasty === activeDynasty.value)
   if (currentPoet.value) list = list.filter(p => p.author === currentPoet.value)
   if (searchQuery.value) {
@@ -67,7 +107,7 @@ interface DynastyGroup {
 
 const poetsByDynasty = computed<DynastyGroup[]>(() => {
   // Filter by search query for home page
-  let base = poemsData
+  let base = poemsIndex
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
     base = base.filter(p => p.title.includes(q) || p.author.includes(q))
@@ -89,11 +129,12 @@ const poetsByDynasty = computed<DynastyGroup[]>(() => {
 
 // Poems of current poet (for poet view)
 const currentPoetPoems = computed(() => {
-  return poemsData.filter(p => p.author === currentPoet.value)
+  return poemsIndex.filter(p => p.author === currentPoet.value)
 })
 
 function openPoet(name: string) {
   stopSpeaking()
+  stats.markOpened(name)
   currentPoet.value = name
   currentView.value = 'poet'
   saveHash()
@@ -101,10 +142,18 @@ function openPoet(name: string) {
 
 function openDetail(p: Poem) {
   stopSpeaking()
+  stats.markRead(p.id)
   currentPoem.value = p
   currentSection.value = null
   currentView.value = 'detail'
   saveHash()
+}
+
+async function openDetailFromMeta(meta: PoemMeta) {
+  stopSpeaking()
+  await ensureFullData()
+  const poem = fullData.value?.find(p => p.id == meta.id)
+  if (poem) { openDetail(poem) }
 }
 
 function openReader(s: Section) {
@@ -139,7 +188,7 @@ function saveHash() {
   }
   history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
 }
-function restoreFromHash() {
+async function restoreFromHash() {
   const hash = window.location.hash.slice(1)
   if (!hash) return
   const slashIdx = hash.indexOf('/')
@@ -150,11 +199,13 @@ function restoreFromHash() {
     currentPoet.value = decodeURIComponent(id)
     currentView.value = 'poet'
   } else if (view === 'detail') {
-    const item = poemsData.find(p => p.id === id)
+    await ensureFullData()
+    const item = fullData.value?.find(p => p.id == id)
     if (item) { currentPoem.value = item; currentView.value = 'detail' }
   } else if (view === 'reader') {
-    for (const p of poemsData) {
-      const sec = p.sections.find(s => s.id === id)
+    await ensureFullData()
+    for (const p of fullData.value!) {
+      const sec = p.sections.find(s => s.id == id)
       if (sec) { currentPoem.value = p; currentSection.value = sec; currentView.value = 'reader'; break }
     }
   }
@@ -182,9 +233,10 @@ function getReaderContent(): string {
 
 async function doSearch() {
   if (!searchQuery.value) return
+  await ensureFullData()
   const q = searchQuery.value.toLowerCase().trim()
   const results: { poem: Poem; sections: Section[] }[] = []
-  for (const poem of poemsData) {
+  for (const poem of fullData.value!) {
     const poemMatch = poem.title.toLowerCase().includes(q) || poem.author.toLowerCase().includes(q)
     const matchingSections: Section[] = []
     for (const section of poem.sections) {
@@ -214,15 +266,16 @@ async function doSearch() {
 
 function goToSection(poem: Poem, section: Section) {
   stopSpeaking()
+  stats.markRead(poem.id)
   currentPoem.value = poem
   currentSection.value = section
   currentView.value = 'reader'
   saveHash()
 }
 
-onMounted(() => {
-  if (poemsData.length > 0) {
-    dailyPoem.value = poemsData[Math.floor(Math.random() * poemsData.length)]
+onMounted(async () => {
+  if (poemsIndex.length > 0) {
+    dailyPoem.value = poemsIndex[Math.floor(Math.random() * poemsIndex.length)]
   }
   window.addEventListener('beforeunload', stopSpeaking)
   // Check for ?q= param from main-site search results
@@ -231,7 +284,7 @@ onMounted(() => {
   if (qParam) { searchQuery.value = qParam }
 
   // Restore view state from URL hash (supports browser refresh and back/forward)
-  restoreFromHash()
+  await restoreFromHash()
   window.addEventListener('popstate', restoreFromHash)
 })
 
@@ -242,7 +295,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page" style="--hd-accent:#d97706;--hd-accent-hover:#b45309;--hd-accent-light:#fde68a;--hd-accent-shadow:rgba(217,119,6,0.1);--hd-accent-bg:#fef3c7">
+  <YouthModeGate>
+  <div class="page" style="--hd-accent:#2563eb;--hd-accent-hover:#1d4ed8;--hd-accent-light:#bfdbfe;--hd-accent-shadow:rgba(59,130,246,0.1);--hd-accent-bg:#f0f9ff">
     <HeaderBar v-model="searchQuery" @search="doSearch" />
 
     <!-- ===== HOME VIEW: Dynasty -> Poets ===== -->
@@ -271,6 +325,20 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+
+      <!-- Learning Progress -->
+      <div class="ls-bar animate-fadeIn">
+        <template v-if="token && user">
+          <span class="ls-user">{{ user.nickname || user.username }}</span>
+          <span class="ls-dot"></span>
+          <span>👤 已认识 {{ stats.openedCount }}/299 位诗人</span>
+          <span class="ls-dot"></span>
+          <span>📜 已学习 {{ stats.readCount }}/934 首诗词</span>
+        </template>
+        <template v-else>
+          <span>👤 学习进度：0/299 位诗人，0/934 首诗词 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
+        </template>
+      </div>
 
       <!-- Poets Grid by Dynasty -->
       <section class="sc-grid-section" v-for="g in poetsByDynasty" :key="g.dynasty">
@@ -340,7 +408,7 @@ onUnmounted(() => {
 
         <h3 class="sc-sections-title">作品列表</h3>
         <div class="sc-poem-list">
-          <div v-for="p in currentPoetPoems" :key="p.id" class="sc-poem-item" @click="openDetail(p)">
+          <div v-for="p in currentPoetPoems" :key="p.id" class="sc-poem-item" @click="openDetailFromMeta(p)">
             <div class="sc-poem-item-info">
               <span class="sc-poem-item-title">{{ p.title }}</span>
               <p class="sc-poem-item-preview">{{ p.summary.substring(0, 40) }}{{ p.summary.length > 40 ? '...' : '' }}</p>
@@ -352,8 +420,11 @@ onUnmounted(() => {
       </div>
     </template>
 
+    <!-- ===== LOADING ===== -->
+    <div v-if="loadingData && (currentView === 'detail' || currentView === 'reader')" class="sc-empty" style="padding:80px 24px;font-size:16px">数据加载中...</div>
+
     <!-- ===== DETAIL VIEW ===== -->
-    <template v-if="currentView === 'detail' && currentPoem">
+    <template v-if="!loadingData && currentView === 'detail' && currentPoem">
       <div class="sc-detail-wrap">
         <button class="sc-back" @click="goBack()">← 返回</button>
         <div class="sc-detail-card">
@@ -382,7 +453,7 @@ onUnmounted(() => {
     </template>
 
     <!-- ===== READER VIEW ===== -->
-    <template v-if="currentView === 'reader' && currentSection">
+    <template v-if="!loadingData && currentView === 'reader' && currentSection">
       <div class="sc-reader-wrap">
         <div class="sc-reader-header">
           <button class="sc-back" @click="goBack()">← 返回</button>
@@ -424,8 +495,12 @@ onUnmounted(() => {
     </template>
 
     <!-- ===== FOOTER ===== -->
+    <div v-if="currentView === 'home'" class="sc-copyright">
+      <p>本平台所收录的古典诗词均为公有领域作品。现代作品片段仅作教学引用，版权归原作者所有。如涉及侵权，请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p>
+    </div>
     <FooterBar v-if="currentView === 'home'" />
   </div>
+  </YouthModeGate>
 </template>
 
 <style>
@@ -464,6 +539,24 @@ body {
 .sc-tag:hover { border-color: #d97706; color: #d97706; }
 .sc-tag-active { background: #d97706; color: white; border-color: #d97706; }
 .sc-tag-active:hover { background: #b45309; border-color: #b45309; color: white; }
+
+/* ===== Learning Stats Bar ===== */
+.ls-bar {
+  max-width: 1200px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; font-weight: 500; color: #334155; background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+.ls-dot {
+  width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1;
+}
+.ls-user {
+  font-weight: 700; color: #d97706; font-size: 15px;
+}
+.ls-login-link {
+  color: #d97706; text-decoration: none; font-weight: 500;
+}
+.ls-login-link:hover { text-decoration: underline; }
 
 /* ===== Grid Section (Poets) ===== */
 .sc-grid-section { max-width: 1200px; margin: 0 auto; padding: 32px 24px 8px; }
@@ -583,6 +676,10 @@ body {
 }
 .sc-search-section:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.04); border-color: #fde68a; }
 .sc-section-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+
+/* ===== Copyright Disclaimer ===== */
+.sc-copyright { max-width: 1200px; margin: 0 auto; padding: 20px 24px 8px; text-align: center; }
+.sc-copyright p { font-size: 11px; color: #94a3b8; line-height: 1.7; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {

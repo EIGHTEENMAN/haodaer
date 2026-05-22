@@ -1,10 +1,26 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
+function syncChallengePoints(points: number) {
+  const token = sessionStorage.getItem('haodaer_token')
+  const profile = localStorage.getItem('haodaer_active_profile')
+  if (!token || !profile) return
+  try {
+    const p = JSON.parse(profile)
+    if (!p.id) return
+    fetch('https://grandand.com/api/user/children/' + p.id + '/challenge-points', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ points }),
+    }).catch(() => {})
+  } catch {}
+}
+
 interface Props {
   user: { id: string; username: string; token: string }
   onBack: () => void
   initialMode?: 'solo' | 'online'
   initialCategory?: string
+  initialRoomTarget?: string  // e.g. "ABCD-T1"
 }
 
 interface Question {
@@ -21,23 +37,27 @@ interface Player {
   username: string
 }
 
-type Step = 'mode-select' | 'subject-select' | 'room-setup' | 'room-lobby' | 'queue' | 'playing' | 'result'
+interface TeamPlayer extends Player {
+  score?: number
+}
+
+type Step = 'subject-select' | 'room-setup' | 'room-lobby' | 'queue' | 'playing' | 'result'
 
 type Difficulty = { label: string; value: number }
 
 const UI_CATEGORY_MAP: Record<string, string[]> = {
-  guoxue: ['chinese'],
-  shici: ['chinese'],
-  tongshi: ['general', 'science', 'english', 'math'],
+  guoxue: ['guoxue'],
+  shici: ['shici'],
+  tongshi: ['general', 'science'],
   mixed: [],
 }
 
 const SUBJECTS = [
-  { id: 'chinese', name: '语文', icon: '📖' },
-  { id: 'math', name: '数学', icon: '🔢' },
+  { id: 'shici', name: '诗词', icon: '📜' },
+  { id: 'guoxue', name: '国学', icon: '📖' },
   { id: 'english', name: '英语', icon: '🔤' },
   { id: 'science', name: '科学', icon: '🔬' },
-  { id: 'general', name: '常识', icon: '🌍' },
+  { id: 'general', name: '通识', icon: '🌍' },
 ]
 
 const DIFFICULTIES: Difficulty[] = [
@@ -48,48 +68,58 @@ const DIFFICULTIES: Difficulty[] = [
 ]
 
 const SUBJECT_LABELS: Record<string, string> = {
-  chinese: '语文', math: '数学', english: '英语', science: '科学', general: '常识',
+  shici: '诗词', guoxue: '国学', english: '英语', science: '科学', general: '通识',
 }
 
-export default function QuizBattle({ user, onBack, initialMode, initialCategory }: Props) {
+const TEAM_SIZES = [1, 2, 3, 4, 5]
+
+export default function QuizBattle({ user, onBack, initialMode, initialCategory, initialRoomTarget }: Props) {
   const initialSubjects = initialCategory ? (UI_CATEGORY_MAP[initialCategory] || []) : []
   const [step, setStep] = useState<Step>(() => {
     if (initialMode === 'solo') return 'playing'
-    if (initialMode === 'online') return 'room-setup'
-    return 'mode-select'
+    if (initialMode === 'online' || initialRoomTarget) return 'room-setup'
+    return 'room-setup'
   })
-  const [gameMode, setGameMode] = useState<'solo' | 'online' | null>(initialMode || null)
+  const [gameMode, setGameMode] = useState<'solo' | 'online' | null>(initialMode || 'online')
   const [subjects, setSubjects] = useState<string[]>(initialSubjects)
   const [difficulty, setDifficulty] = useState(0)
   const [teamSize, setTeamSize] = useState(1)
 
-  // Room state
+  // Room state (team-based)
   const [roomCode, setRoomCode] = useState('')
-  const [roomPlayers, setRoomPlayers] = useState<Player[]>([])
-  const [roomSlots, setRoomSlots] = useState(2)
+  const [team1, setTeam1] = useState<Player[]>([])
+  const [team2, setTeam2] = useState<Player[]>([])
+  const [currentTeamSize, setCurrentTeamSize] = useState(1)
+  const [countdown, setCountdown] = useState<number | null>(null)
+  const [isHost, setIsHost] = useState(false)
 
   // WebSocket
   const [ws, setWs] = useState<WebSocket | null>(null)
   const wsRef = useRef<WebSocket | null>(null)
+  const autoAdvanceRef = useRef<ReturnType<typeof setTimeout>>()
 
   // Battle state
-  const [opponent, setOpponent] = useState('')
   const [question, setQuestion] = useState<Question | null>(null)
   const [qNumber, setQNumber] = useState(0)
   const [totalQ, setTotalQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [answered, setAnswered] = useState(false)
   const [scores, setScores] = useState<Record<string, number>>({})
-  const [result, setResult] = useState<{ isWinner: boolean; isDraw: boolean; message: string; teamScore: number; opponentScore: number; opponents: string[]; teamMembers: string[] } | null>(null)
-  const [timeLeft, setTimeLeft] = useState(15)
+  const [result, setResult] = useState<{
+    isWinner: boolean; isDraw: boolean; message: string;
+    teamScore: number; opponentScore: number;
+    opponents: string[]; teamMembers: string[];
+    team1: TeamPlayer[]; team2: TeamPlayer[];
+  } | null>(null)
+  const [timeLeft, setTimeLeft] = useState(10)
 
   // Solo state
   const [soloQuestions, setSoloQuestions] = useState<Question[]>([])
   const [soloIndex, setSoloIndex] = useState(0)
+  const currentSoloQ = soloQuestions[soloIndex]
   const [soloDone, setSoloDone] = useState(false)
   const [soloCorrect, setSoloCorrect] = useState(0)
-  const [soloAnswers, setSoloAnswers] = useState<Record<number, number>>({})
-  const [soloLoading, setSoloLoading] = useState(false)
+  const [soloLoading, setSoloLoading] = useState(() => initialMode === 'solo')
 
   // Auto-start solo when coming from home page
   const autoStarted = useRef(false)
@@ -106,6 +136,7 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
   useEffect(() => {
     if (soloDone && soloQuestions.length > 0 && user.token) {
       const cat = initialCategory || 'mixed'
+      const totalQ = Math.min(soloIndex + 1, soloQuestions.length)
       fetch('/api/quiz/solo/record', {
         method: 'POST',
         headers: {
@@ -113,21 +144,43 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
           'Authorization': `Bearer ${user.token}`,
         },
         body: JSON.stringify({
-          totalQuestions: soloQuestions.length,
+          totalQuestions: totalQ,
           totalCorrect: soloCorrect,
+          bestStreak: soloCorrect,
           category: cat,
         }),
+      }).then(() => {
+        // Sync challenge points to auth-service
+        syncChallengePoints(soloCorrect * 10)
       }).catch(() => {})
     }
   }, [soloDone])
 
-  // Timer for questions
+  // Timer for questions (both online and solo)
   useEffect(() => {
-    if (timeLeft > 0 && question && gameMode === 'online') {
-      const t = setTimeout(() => setTimeLeft(t => t - 1), 1000)
-      return () => clearTimeout(t)
+    if (timeLeft <= 0) return
+    if (gameMode === 'online' && !question) return
+    if (gameMode === 'solo' && (!currentSoloQ || answered)) return
+    const t = setTimeout(() => setTimeLeft(t => t - 1), 1000)
+    return () => clearTimeout(t)
+  }, [timeLeft, question, currentSoloQ, gameMode, answered])
+
+  // Reset timer when solo question changes
+  useEffect(() => {
+    if (gameMode === 'solo' && currentSoloQ && !soloDone && !soloLoading) {
+      setTimeLeft(10)
+      if (!answered) setSelected(null)
     }
-  }, [timeLeft, question, gameMode])
+  }, [soloIndex, gameMode])
+
+  // Handle timeout for solo mode
+  useEffect(() => {
+    if (gameMode === 'solo' && timeLeft === 0 && !answered && currentSoloQ) {
+      setAnswered(true)
+      // Timeout = wrong answer, game over
+      setTimeout(() => setSoloDone(true), 1500)
+    }
+  }, [timeLeft, gameMode])
 
   // Cleanup WebSocket on unmount
   useEffect(() => {
@@ -139,6 +192,17 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
       }
     }
   }, [])
+
+  // Auto-join room when initialRoomTarget is provided
+  useEffect(() => {
+    if (initialRoomTarget && !autoStarted.current) {
+      autoStarted.current = true
+      // Small delay to let component mount fully
+      setTimeout(() => {
+        connectAndJoin(initialRoomTarget!)
+      }, 100)
+    }
+  }, [initialRoomTarget])
 
   // ---- WebSocket Setup ----
   const connect = useCallback(() => {
@@ -164,24 +228,38 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
           break
         case 'room_created':
           setRoomCode(msg.roomCode)
-          setRoomSlots(msg.slots)
-          setRoomPlayers(msg.players)
+          setCurrentTeamSize(msg.teamSize)
+          setTeam1(msg.team1 || [])
+          setTeam2(msg.team2 || [])
+          setIsHost(true)
           setStep('room-lobby')
           break
         case 'room_update':
-          setRoomPlayers(msg.players)
+          setTeam1(msg.team1 || [])
+          setTeam2(msg.team2 || [])
+          setCurrentTeamSize(msg.teamSize || currentTeamSize)
+          break
+        case 'match_starting':
+          setCountdown(msg.countdown)
+          break
+        case 'match_start_cancelled':
+          setCountdown(null)
           break
         case 'match_found':
-          setOpponent(msg.opponent)
           setTotalQ(msg.totalQuestions)
           setScores({})
           setResult(null)
+          setCountdown(null)
           setStep('playing')
           break
         case 'match_start':
           setTotalQ(msg.totalQuestions)
           setScores({})
           setResult(null)
+          setStep('playing')
+          setCountdown(null)
+          if (msg.team1) setTeam1(msg.team1)
+          if (msg.team2) setTeam2(msg.team2)
           break
         case 'question':
           setQuestion(msg)
@@ -206,9 +284,12 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
         case 'opponent_left':
           socket.close()
           setWs(null)
-          setStep('mode-select')
+          setStep('room-setup')
           break
         case 'queue_status':
+          break
+        case 'surrender_update':
+          // Visual surrender notification is handled via state
           break
       }
     }
@@ -218,7 +299,17 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
     }
 
     return socket
-  }, [user, step])
+  }, [user, step, currentTeamSize])
+
+  function connectAndJoin(code: string) {
+    const socket = connect()
+    socket.onopen = () => {
+      socket.send(JSON.stringify({
+        type: 'join_room',
+        roomCode: code,
+      }))
+    }
+  }
 
   // Solo: fetch questions
   const startSolo = async () => {
@@ -240,7 +331,6 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
       setSoloIndex(0)
       setSoloDone(false)
       setSoloCorrect(0)
-      setSoloAnswers({})
       setSelected(null)
       setAnswered(false)
       setSoloLoading(false)
@@ -255,29 +345,31 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
     if (answered) return
     setSelected(idx)
     setAnswered(true)
-    setSoloAnswers(prev => ({ ...prev, [soloIndex]: idx }))
-    if (idx === soloQuestions[soloIndex]?.answer) {
+    const isCorrect = idx === soloQuestions[soloIndex]?.answer
+    if (isCorrect) {
       setSoloCorrect(c => c + 1)
+      // Auto-advance to next question after 1.5s
+      clearTimeout(autoAdvanceRef.current)
+      autoAdvanceRef.current = setTimeout(() => {
+        handleSoloNext()
+      }, 1500)
+    } else {
+      // Wrong answer - game over
+      clearTimeout(autoAdvanceRef.current)
+      autoAdvanceRef.current = setTimeout(() => {
+        setSoloDone(true)
+      }, 1500)
     }
   }
 
   const handleSoloNext = () => {
+    clearTimeout(autoAdvanceRef.current)
     if (soloIndex < soloQuestions.length - 1) {
-      const next = soloIndex + 1
-      setSoloIndex(next)
-      setSelected(soloAnswers[next] ?? null)
-      setAnswered(soloAnswers[next] !== undefined)
+      setSoloIndex(i => i + 1)
+      setSelected(null)
+      setAnswered(false)
     } else {
       setSoloDone(true)
-    }
-  }
-
-  const handleSoloPrev = () => {
-    if (soloIndex > 0) {
-      const prev = soloIndex - 1
-      setSoloIndex(prev)
-      setSelected(soloAnswers[prev] ?? null)
-      setAnswered(soloAnswers[prev] !== undefined)
     }
   }
 
@@ -296,20 +388,13 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
 
   // Online: join room by code
   const joinRoom = (code: string) => {
-    const socket = connect()
-    socket.onopen = () => {
-      socket.send(JSON.stringify({
-        type: 'join_room',
-        roomCode: code,
-      }))
-    }
+    connectAndJoin(code)
   }
 
   // Online: start match (host)
   const startMatch = () => {
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify({ type: 'start_match' }))
-      setStep('queue')
     }
   }
 
@@ -330,23 +415,24 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
     wsRef.current.send(JSON.stringify({ type: 'submit_answer', answer: idx }))
   }
 
-  // Leave room / cancel
-  const handleLeave = () => {
+  // Leave room / cancel and go home
+  const goHome = () => {
     if (wsRef.current) {
       try { wsRef.current.send(JSON.stringify({ type: 'leave_room' })) } catch {}
       try { wsRef.current.send(JSON.stringify({ type: 'leave_queue' })) } catch {}
       wsRef.current.close()
     }
     setWs(null)
-    setSoloLoading(false)
-    setStep('mode-select')
-    setQuestion(null)
+    onBack()
+  }
+
+  const handleLeave = () => {
+    if (wsRef.current) {
+      try { wsRef.current.send(JSON.stringify({ type: 'leave_room' })) } catch {}
+      wsRef.current.close()
+    }
+    setWs(null)
     setResult(null)
-    setSoloDone(false)
-    setSoloQuestions([])
-    setRoomCode('')
-    setRoomPlayers([])
-    setGameMode(null)
   }
 
   const toggleSubject = (id: string) => {
@@ -363,49 +449,35 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
     }
   }
 
-  const currentSoloQ = soloQuestions[soloIndex]
+  const copyInviteLink = (team: 'team1' | 'team2') => {
+    if (roomCode) {
+      const suffix = team === 'team1' ? '-T1' : '-T2'
+      const link = `${window.location.origin}${window.location.pathname}#join?room=${roomCode}${suffix}`
+      navigator.clipboard.writeText(link).catch(() => {})
+    }
+  }
+
+  // Compute per-team scores for result display
+  const team1Total = result ? (result.team1 || []).reduce((s, p) => s + (p.score || 0), 0) : 0
+  const team2Total = result ? (result.team2 || []).reduce((s, p) => s + (p.score || 0), 0) : 0
 
   // ===================== RENDER =====================
 
   return (
     <div className="quiz-page">
       <div className="quiz-header">
-        <button className="btn-secondary" onClick={handleLeave}>← 返回</button>
+        <button className="btn-secondary" onClick={goHome}>← 返回</button>
         {step === 'playing' && gameMode === 'online' && question && (
           <span style={{ fontSize: 13, color: 'var(--text-light)' }}>⏱ {timeLeft}s</span>
         )}
         {step === 'playing' && gameMode === 'solo' && !soloLoading && (
           <span style={{ fontSize: 13, color: 'var(--text-light)' }}>
-            已答 {Object.keys(soloAnswers).length}/{soloQuestions.length}
+            🔥 第 {soloIndex + 1}/{soloQuestions.length} 题
           </span>
         )}
       </div>
 
-      {/* Step 1: Mode Select */}
-      {step === 'mode-select' && (
-        <div className="zone-select">
-          <h2>选择挑战模式</h2>
-          <p className="subtitle">你想怎么玩？</p>
-          <div className="zone-cards">
-            <div className="zone-card" onClick={() => { setGameMode('solo'); setStep('subject-select'); }}>
-              <div className="zone-icon">📚</div>
-              <div className="zone-info">
-                <h3>单人练习</h3>
-                <p>自己练习题目，自定节奏，没有对手压力。选好科目和难度后开始答题，每道题可以慢慢思考。</p>
-              </div>
-            </div>
-            <div className="zone-card" onClick={() => { setGameMode('online'); setStep('subject-select'); }}>
-              <div className="zone-icon">⚔️</div>
-              <div className="zone-info">
-                <h3>在线对战</h3>
-                <p>和全国小朋友实时对战！可以快速匹配、创建房间邀请好友，比拼谁的知识更渊博。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Step 2: Subject Select */}
+      {/* Step 1: Subject Select */}
       {step === 'subject-select' && (
         <div className="subject-select">
           <h2>{gameMode === 'solo' ? '选择练习科目' : '选择对战科目'}</h2>
@@ -465,14 +537,14 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
         </div>
       )}
 
-      {/* Step 3: Room Setup (online only) */}
+      {/* Step 2: Room Setup (online only) */}
       {step === 'room-setup' && (
         <div className="room-setup">
           <h2>房间设置</h2>
           <p style={{ textAlign: 'center', color: 'var(--text-light)', fontSize: 13 }}>选择每队人数</p>
 
           <div className="team-size-select">
-            {[1, 2, 3].map(n => (
+            {TEAM_SIZES.map(n => (
               <div
                 key={n}
                 className={`team-size-btn ${teamSize === n ? 'selected' : ''}`}
@@ -501,10 +573,10 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
               <input
                 id="join-room-input"
                 placeholder="输入房间码"
-                maxLength={4}
+                maxLength={7}
                 style={{
                   padding: '10px 14px', border: '2px solid #e7e5e4', borderRadius: 10,
-                  fontSize: 18, width: 120, textAlign: 'center', letterSpacing: 4, textTransform: 'uppercase',
+                  fontSize: 18, width: 140, textAlign: 'center', letterSpacing: 4, textTransform: 'uppercase',
                 }}
                 onKeyDown={e => {
                   if (e.key === 'Enter') {
@@ -524,59 +596,118 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
         </div>
       )}
 
-      {/* Step 4: Room Lobby */}
+      {/* Step 3: Room Lobby */}
       {step === 'room-lobby' && (
         <div className="room-lobby">
-          <h2>等待队友加入</h2>
+          <h2 style={{ textAlign: 'center', fontSize: 20, fontWeight: 700, marginBottom: 4 }}>
+            {countdown !== null ? `⏰ ${countdown}秒后开始...` : '等待队友加入'}
+          </h2>
+          <p style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-light)', marginBottom: 16 }}>
+            房间码：<strong style={{ fontSize: 20, letterSpacing: 4, color: '#2563eb', cursor: 'pointer' }} onClick={copyRoomCode}>{roomCode}</strong>
+            <span style={{ marginLeft: 8, fontSize: 12, color: '#94a3b8', cursor: 'pointer' }} onClick={copyRoomCode}>📋 复制</span>
+          </p>
 
-          <div className="room-code-box" onClick={copyRoomCode}>
-            <div className="label">房间码（点击复制）</div>
-            <div className="code">{roomCode}</div>
-            <div className="hint">邀请好友输入这个房间码加入</div>
-          </div>
-
-          <div className="team-slots">
-            {Array.from({ length: roomSlots }).map((_, i) => {
-              const player = roomPlayers[i]
-              return (
-                <div key={i} className={`slot ${player ? 'filled' : ''}`}>
-                  <div className="slot-icon">{player ? '👤' : '⬜'}</div>
-                  <div className="slot-name">{player ? player.username : '等待加入...'}</div>
-                  <div className="slot-status">
-                    {player ? (player.userId === roomPlayers[0]?.userId ? '👑 房主' : '✅ 已加入') : '⏳'}
+          <div className="team-lobby">
+            {/* Red Team */}
+            <div className="team-column team-red">
+              <div className="team-header">
+                <span className="team-label">🔴 红队</span>
+                <span className="team-count">{team1.length}/{currentTeamSize}</span>
+              </div>
+              {Array.from({ length: currentTeamSize }).map((_, i) => {
+                const p = team1[i]
+                return (
+                  <div key={i} className={`team-slot ${p ? 'filled' : ''}`}>
+                    <div className="slot-avatar">{p ? '🦸' : '⬜'}</div>
+                    <div className="slot-info">
+                      <div className="slot-name">{p ? p.username : '等待加入...'}</div>
+                      <div className="slot-status">
+                        {p
+                          ? (p.userId === team1[0]?.userId ? '👑 队长' : '✅ 已加入')
+                          : '⏳ 等待中'}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+              {isHost && (
+                <button className="invite-btn invite-red" onClick={() => copyInviteLink('team1')}>
+                  📕 邀请到红队
+                </button>
+              )}
+            </div>
+
+            {/* VS Divider */}
+            <div className="vs-divider">VS</div>
+
+            {/* Blue Team */}
+            <div className="team-column team-blue">
+              <div className="team-header">
+                <span className="team-label">🔵 蓝队</span>
+                <span className="team-count">{team2.length}/{currentTeamSize}</span>
+              </div>
+              {Array.from({ length: currentTeamSize }).map((_, i) => {
+                const p = team2[i]
+                return (
+                  <div key={i} className={`team-slot ${p ? 'filled' : ''}`}>
+                    <div className="slot-avatar">{p ? '🦸' : '⬜'}</div>
+                    <div className="slot-info">
+                      <div className="slot-name">{p ? p.username : '等待加入...'}</div>
+                      <div className="slot-status">
+                        {p
+                          ? (p.userId === team2[0]?.userId ? '👑 队长' : '✅ 已加入')
+                          : '⏳ 等待中'}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+              {isHost && (
+                <button className="invite-btn invite-blue" onClick={() => copyInviteLink('team2')}>
+                  📘 邀请到蓝队
+                </button>
+              )}
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
-            <button className="btn-primary" onClick={startMatch}>
-              🚀 开始对战
-            </button>
-            <button className="btn-secondary" onClick={handleLeave}>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 16 }}>
+            {isHost && countdown === null && (
+              <button className="btn-primary" onClick={startMatch}>
+                🚀 开始对战
+              </button>
+            )}
+            <button className="btn-secondary" onClick={goHome}>
               离开房间
             </button>
           </div>
         </div>
       )}
 
-      {/* Step 5: Queue */}
+      {/* Step 4: Queue */}
       {step === 'queue' && (
-        <div className="quiz-card waiting">
-          <div className="spinner" />
-          <p>正在匹配...</p>
-          <p style={{ fontSize: 13, color: 'var(--text-light)' }}>请稍候</p>
-          <button className="btn-secondary" onClick={handleLeave}>取消匹配</button>
+        <div className="quiz-card waiting animate-fadeIn">
+          <div className="spinner animate-pulse" />
+          <p>正在为你寻找对手...</p>
+          <p style={{ fontSize: 13, color: 'var(--text-light)' }}>请稍候，正在匹配实力相近的对手</p>
+          <button className="btn-secondary" onClick={goHome}>取消匹配</button>
         </div>
       )}
 
-      {/* Step 6: Playing - Online */}
+      {/* Step 5:Playing - Online */}
       {step === 'playing' && gameMode === 'online' && question && (
-        <div className="quiz-card">
+        <div className="quiz-card animate-fadeInUp" key={qNumber}>
+          <div className="question-progress">
+            <div className="progress-bar">
+              <div className="progress-fill" style={{ width: `${(qNumber / totalQ) * 100}%` }} />
+            </div>
+            <span className="progress-text">{qNumber}/{totalQ}</span>
+          </div>
           <div className="question-number">
             第 {qNumber}/{totalQ} 题 · {SUBJECT_LABELS[question.category] || question.category}
             {question.difficulty >= 2 ? ' · ⭐难度' + question.difficulty : ''}
+          </div>
+          <div className={`timer-badge ${timeLeft <= 3 ? 'timer-urgent' : ''}`}>
+            ⏱ {timeLeft}s
           </div>
           <div className="question-text">{question.question}</div>
           <div className="options">
@@ -592,17 +723,29 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
             ))}
           </div>
           <div className="score-bar" style={{ marginTop: 16 }}>
-            <span>你：{scores[user.id] || 0}分</span>
-            <span>
-              {Object.entries(scores).filter(([k]) => k !== user.id).length > 0
-                ? `对手：${Object.entries(scores).filter(([k]) => k !== user.id).reduce((a, [, v]) => a + v, 0)}分`
-                : `对手：0分`}
-            </span>
+            <span>🔴 红队：{team1.reduce((s, p) => s + (scores[p.userId] || 0), 0)}分</span>
+            <span>🔵 蓝队：{team2.reduce((s, p) => s + (scores[p.userId] || 0), 0)}分</span>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 12 }}>
+            <button
+              className="btn-surrender"
+              onClick={() => {
+                if (window.confirm('确定要投降吗？')) {
+                  wsRef.current?.send(JSON.stringify({ type: 'surrender' }))
+                }
+              }}
+              style={{
+                padding: '6px 20px', border: '1px solid #ef4444', background: 'transparent',
+                color: '#ef4444', borderRadius: 8, fontSize: 13, cursor: 'pointer',
+              }}
+            >
+              🏳️ 投降
+            </button>
           </div>
         </div>
       )}
 
-      {/* Step 6: Playing - Solo (loading) */}
+      {/* Step 5:Playing - Solo (loading) */}
       {step === 'playing' && gameMode === 'solo' && soloLoading && (
         <div className="quiz-card waiting">
           <div className="spinner" />
@@ -610,11 +753,20 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
         </div>
       )}
 
-      {/* Step 6: Playing - Solo */}
+      {/* Step 5:Playing - Solo */}
       {step === 'playing' && gameMode === 'solo' && currentSoloQ && !soloDone && !soloLoading && (
-        <div className="quiz-card">
+        <div className="quiz-card animate-fadeInUp" key={soloIndex}>
+          <div className="question-progress">
+            <div className="progress-bar">
+              <div className="progress-fill" style={{ width: `${((soloIndex + 1) / soloQuestions.length) * 100}%` }} />
+            </div>
+            <span className="progress-text">{soloIndex + 1}/{soloQuestions.length}</span>
+          </div>
           <div className="question-number">
             第 {soloIndex + 1}/{soloQuestions.length} 题 · {SUBJECT_LABELS[currentSoloQ.category] || currentSoloQ.category}
+          </div>
+          <div className={`timer-badge ${timeLeft <= 3 ? 'timer-urgent' : ''}`}>
+            ⏱ {timeLeft}s
           </div>
           <div className="question-text">{currentSoloQ.question}</div>
           <div className="options">
@@ -637,43 +789,39 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
               </button>
             ))}
           </div>
-          <div className="solo-question-nav">
-            <button onClick={handleSoloPrev} disabled={soloIndex === 0}>← 上一题</button>
-            <span>{soloIndex + 1} / {soloQuestions.length}</span>
-            <button onClick={handleSoloNext}>
-              {soloIndex < soloQuestions.length - 1 ? '下一题 →' : '查看结果'}
-            </button>
+          <div className="solo-streak">
+            <span>🔥 已连胜 {soloCorrect} 题</span>
           </div>
         </div>
       )}
 
       {/* Solo Result */}
       {soloDone && (
-        <div className="solo-result quiz-card">
-          <div className="result-icon">📊</div>
-          <h2>练习完成！</h2>
-          <p className="score-detail">你完成了 {soloQuestions.length} 道题</p>
+        <div className="solo-result quiz-card animate-scaleIn">
+          <div className="result-icon">🏆</div>
+          <h2>{soloCorrect === soloQuestions.length ? '🎉 全部答对！' : '挑战结束！'}</h2>
+          <p className="score-detail">你连续答对了 <strong>{soloCorrect}</strong> 道题</p>
           <div className="stats">
             <div className="stat-item">
               <div className="num">{soloCorrect}</div>
-              <div className="lbl">答对</div>
+              <div className="lbl">连胜</div>
             </div>
             <div className="stat-item">
-              <div className="num">{soloQuestions.length - soloCorrect}</div>
-              <div className="lbl">答错</div>
+              <div className="num">{Math.min(soloCorrect + 1, soloQuestions.length)}</div>
+              <div className="lbl">总答题</div>
             </div>
             <div className="stat-item">
-              <div className="num">{soloQuestions.length > 0 ? Math.round(soloCorrect / soloQuestions.length * 100) : 0}%</div>
+              <div className="num">{soloCorrect > 0 ? Math.round(soloCorrect / Math.min(soloIndex + 1, soloQuestions.length) * 100) : 0}%</div>
               <div className="lbl">正确率</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
-            <button className="btn-primary" onClick={handleLeave}>返回首页</button>
+            <button className="btn-primary" onClick={goHome}>返回首页</button>
             <button className="btn-secondary" onClick={() => {
               setSoloDone(false)
               setSoloQuestions([])
               setQuestion(null)
-              setStep('mode-select')
+              setStep('subject-select')
             }}>重新选择</button>
           </div>
         </div>
@@ -689,21 +837,43 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory 
 
       {/* Result (online) */}
       {step === 'result' && result && (
-        <div className="quiz-card quiz-result">
+        <div className="quiz-card quiz-result animate-scaleIn">
           <div className="result-icon">{result.isWinner ? '🎉' : result.isDraw ? '🤝' : '💪'}</div>
           <h2>{result.message}</h2>
-          <div className="score" style={{ fontSize: 36 }}>
-            {result.teamScore} : {result.opponentScore}
+          <div className="result-team-scores">
+            <div className="result-team result-team-red">
+              <div className="rt-label">🔴 红队</div>
+              <div className="rt-score">{result.team1?.reduce((s, p) => s + (p.score || 0), 0) || team1Total}</div>
+              <div className="rt-members">
+                {(result.team1 || []).map(p => (
+                  <div key={p.userId} className="rt-member">
+                    <span>{p.userId === user.id ? '⭐ ' : ''}{p.username}</span>
+                    <span className="rt-member-score">+{p.score || 0}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="result-vs">VS</div>
+            <div className="result-team result-team-blue">
+              <div className="rt-label">🔵 蓝队</div>
+              <div className="rt-score">{result.team2?.reduce((s, p) => s + (p.score || 0), 0) || team2Total}</div>
+              <div className="rt-members">
+                {(result.team2 || []).map(p => (
+                  <div key={p.userId} className="rt-member">
+                    <span>{p.userId === user.id ? '⭐ ' : ''}{p.username}</span>
+                    <span className="rt-member-score">+{p.score || 0}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          {result.opponents.length > 0 && (
-            <p className="detail">vs {result.opponents.join('、')}</p>
-          )}
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 16 }}>
             <button className="btn-primary" onClick={() => { handleLeave(); setStep('room-setup'); }}>再来一局</button>
             <button className="btn-secondary" onClick={onBack}>返回首页</button>
           </div>
         </div>
       )}
-    </div>
-  )
-}
+
+	    </div>
+	  )
+	}

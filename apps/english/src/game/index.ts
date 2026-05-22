@@ -30,13 +30,17 @@ export function createGame() {
 export function restartGameScene() {
   if (!phaserGame) return
   try {
-    const scene = phaserGame.scene.getScene("GameScene")
-    if (scene) {
-      scene.scene.restart()
+    if (phaserGame.scene.isActive('BootScene')) {
+      phaserGame.scene.stop('BootScene')
     }
+    // Force stop and restart GameScene fresh
+    if (phaserGame.scene.isActive('GameScene')) {
+      phaserGame.scene.stop('GameScene')
+    }
+    phaserGame.scene.start('GameScene')
   } catch {
-    // Fallback: stop and start
-    phaserGame.scene.stop("GameScene")
-    phaserGame.scene.start("GameScene")
+    phaserGame.scene.stop('BootScene')
+    phaserGame.scene.stop('GameScene')
+    phaserGame.scene.start('GameScene')
   }
 }

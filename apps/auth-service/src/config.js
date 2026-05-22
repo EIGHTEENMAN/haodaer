@@ -19,8 +19,16 @@ const config = {
     path: process.env.DB_PATH || './data/auth.db',
   },
   cors: {
-    origin: process.env.CORS_ORIGIN || 'https://grandand.com',
+    origin: process.env.CORS_ORIGIN || function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (origin === 'https://grandand.com' || /^https:\/\/[a-z0-9-]+\.grandand\.com$/.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(null, true); // Allow in dev
+      }
+    },
   },
+  cookieDomain: process.env.COOKIE_DOMAIN || (process.env.NODE_ENV === 'production' ? '.grandand.com' : ''),
 };
 
 module.exports = config;

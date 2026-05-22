@@ -4,6 +4,13 @@ import { ref, onMounted } from 'vue'
 const doc = ref<any>(null)
 const loading = ref(true)
 const error = ref('')
+const docSearchQuery = ref('')
+
+function docDoSearch() {
+  if (docSearchQuery.value.trim()) {
+    window.location.href = '/search?q=' + encodeURIComponent(docSearchQuery.value.trim())
+  }
+}
 
 onMounted(async () => {
   const params = new URLSearchParams(window.location.search)
@@ -33,6 +40,12 @@ function typeIcon(t: string): string {
     <header class="doc-header">
       <div class="doc-header-inner">
         <a href="https://grandand.com" class="doc-logo">好大儿</a>
+        <form class="doc-search" @submit.prevent="docDoSearch">
+          <svg class="doc-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="docDoSearch">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input v-model="docSearchQuery" placeholder="搜索" class="doc-search-input" />
+        </form>
         <a href="/" class="doc-back-btn">← 返回首页</a>
         <a :href="doc?.sourceUrl" target="_blank" class="doc-source-link" v-if="doc">
           前往 {{ doc.sourceName }} →
@@ -86,6 +99,11 @@ function typeIcon(t: string): string {
 .doc-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
 .doc-header-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
 .doc-logo{font-size:32px;font-weight:800;color:#2563eb;text-decoration:none}
+.doc-search{display:flex;align-items:center;gap:6px;background:#f1f5f9;border-radius:10px;padding:6px 12px;transition:all .2s;border:1px solid transparent;flex:1;max-width:320px}
+.doc-search:focus-within{background:#fff;border-color:#bfdbfe;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.doc-search-icon{width:16px;height:16px;color:#94a3b8;flex-shrink:0;cursor:pointer}
+.doc-search-input{border:none;background:transparent;outline:none;font-size:13px;width:160px;color:#334155}
+.doc-search-input::placeholder{color:#94a3b8}
 .doc-back-btn{font-size:14px;color:#64748b;text-decoration:none;margin-left:auto}
 .doc-back-btn:hover{color:#0f172a}
 .doc-source-link{font-size:14px;color:#64748b;text-decoration:none;white-space:nowrap}
@@ -112,6 +130,7 @@ function typeIcon(t: string): string {
 .doc-back:hover{color:#0f172a}
 @media(max-width:600px){
 .doc-header-inner{padding:12px 16px;gap:10px}
+.doc-search{display:none}
 .doc-title{font-size:24px}
 .doc-text{font-size:16px}
 .doc-box{padding:20px}

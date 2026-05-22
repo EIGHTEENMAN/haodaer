@@ -13,7 +13,7 @@ type CheckIn = {
 
 export default function CheckInPage() {
   useEffect(() => {
-    const u = localStorage.getItem("user");
+    const u = sessionStorage.getItem("haodaer_user");
     if (u) { try { setUser(JSON.parse(u)); } catch {} }
   }, []);
   const [user, setUser] = useState<any>(null);

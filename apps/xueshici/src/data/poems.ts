@@ -2316,7 +2316,7 @@ const poemData: Poem[] = [
     summary: "红军不怕远征难\n万水千山只等闲\n五岭逶迤腾细浪\n乌蒙磅礴走泥丸",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "七律·长征", original: "红军不怕远征难\n万水千山只等闲\n五岭逶迤腾细浪\n乌蒙磅礴走泥丸\n金沙水拍云崖暖\n大渡桥横铁索寒\n更喜岷山千里雪\n三军过后尽开颜", translation: "红军不怕远征难万水千山只等闲五岭逶迤腾细浪乌蒙磅礴走泥丸三军过后尽开颜", interpretation: "红军不怕远征难" }]
+sections: [    { id: 1, title: "七律·长征", original: "（版权保护作品，此处仅展示片段供教学参考）红军不怕远征难万水千山只等闲", translation: "（版权保护作品，此处仅展示片段）红军不怕远征难", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 209,
@@ -2327,7 +2327,7 @@ const poemData: Poem[] = [
     summary: "北国风光\n千里冰封\n万里雪飘\n望长城内外\n惟余莽莽\n大河上下\n顿失滔滔\n山舞银蛇\n原驰蜡象\n欲与天公试比高\n俱往矣\n数风流人物\n还看今朝",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "沁园春·雪（节选）", original: "北国风光\n千里冰封\n万里雪飘\n望长城内外\n惟余莽莽\n大河上下\n顿失滔滔\n山舞银蛇\n原驰蜡象\n欲与天公试比高\n须晴日\n看红装素裹\n分外妖娆\n江山如此\n多娇引无数英雄\n竞折腰俱往矣数\n风流人物还看今朝", translation: "北国风光千里冰封万里雪飘山舞银蛇原驰蜡象欲与天公试比高俱往矣数风流人物还看今朝", interpretation: "数风流人物还看今朝" }]
+sections: [    { id: 1, title: "沁园春·雪（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）北国风光千里冰封万里雪飘", translation: "（版权保护作品，此处仅展示片段）北国风光", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 210,
@@ -2338,7 +2338,7 @@ const poemData: Poem[] = [
     summary: "风雨送春归\n飞雪迎春到\n已是悬崖百丈冰\n犹有花枝俏\n俏也不争春\n只把春来报\n待到山花烂漫时\n她在丛中笑",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "卜算子·咏梅", original: "风雨送春归\n飞雪迎春到\n已是悬崖百丈冰\n犹有花枝俏\n俏也不争春\n只把春来报\n待到山花烂漫时\n她在丛中笑", translation: "风雨送春归飞雪迎春到已是悬崖百丈冰犹有花枝俏待到山花烂漫时她在丛中笑", interpretation: "待到山花烂漫时她在丛中笑" }]
+sections: [    { id: 1, title: "卜算子·咏梅", original: "（版权保护作品，此处仅展示片段供教学参考）已是悬崖百丈冰犹有花枝俏", translation: "（版权保护作品，此处仅展示片段）已是悬崖百丈冰", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 211,
@@ -2349,7 +2349,7 @@ const poemData: Poem[] = [
     summary: "钟山风雨起苍黄\n百万雄师过大江\n虎踞龙盘今胜昔\n天翻地覆慨而慷",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "七律·人民解放军占领南京", original: "钟山风雨起苍黄\n百万雄师过大江\n虎踞龙盘今胜昔\n天翻地覆慨而慷\n宜将剩勇追穷寇\n不可沽名学霸王\n天若有情天亦老\n人间正道是沧桑", translation: "钟山风雨起苍黄百万雄师过大江宜将剩勇追穷寇不可沽名学霸王", interpretation: "宜将剩勇追穷寇不可沽名学霸王" }]
+sections: [    { id: 1, title: "七律·人民解放军占领南京", original: "（版权保护作品，此处仅展示片段供教学参考）钟山风雨起苍黄百万雄师过大江", translation: "（版权保护作品，此处仅展示片段）钟山风雨起苍黄", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 212,
@@ -2360,7 +2360,7 @@ const poemData: Poem[] = [
     summary: "独立寒秋\n湘江北去\n橘子洲头\n看万山红遍\n层林尽染\n漫江碧透\n百舸争流\n鹰击长空\n鱼翔浅底\n万类霜天竞自由",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "沁园春·长沙（节选）", original: "独立寒秋\n湘江北去\n橘子洲头\n看万山红遍\n层林尽染\n漫江碧透\n百舸争流\n鹰击长空\n鱼翔浅底\n万类霜天竞自由\n怅寥廓\n问苍茫大地\n谁主沉浮\n携来百侣\n曾游忆往昔峥嵘\n岁月稠恰同学少\n年风华正茂书生意\n气挥斥方遒曾记否\n到中流击水浪遏飞舟", translation: "独立寒秋湘江北去看万山红遍层林尽染漫江碧透百舸争流鹰击长空鱼翔浅底问苍茫大地谁主沉浮", interpretation: "问苍茫大地谁主沉浮" }]
+sections: [    { id: 1, title: "沁园春·长沙（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）独立寒秋湘江北去橘子洲头", translation: "（版权保护作品，此处仅展示片段）独立寒秋", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 213,
@@ -2382,7 +2382,7 @@ const poemData: Poem[] = [
     summary: "为有牺牲多壮志\n敢教日月换新天\n喜看稻菽千重浪\n遍地英雄下夕烟",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "七律·到韶山", original: "别梦依稀咒逝川\n故园三十二年前\n红旗卷起农奴戟\n黑手高悬霸主鞭\n为有牺牲多壮志\n敢教日月换新天\n喜看稻菽千重浪\n遍地英雄下夕烟", translation: "别梦依稀咒逝川故园三十二年前为有牺牲多壮志敢教日月换新天喜看稻菽千重浪", interpretation: "为有牺牲多壮志敢教日月换新天" }]
+sections: [    { id: 1, title: "七律·到韶山", original: "（版权保护作品，此处仅展示片段供教学参考）为有牺牲多壮志敢教日月换新天", translation: "（版权保护作品，此处仅展示片段）为有牺牲多壮志", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 215,
@@ -2393,7 +2393,7 @@ const poemData: Poem[] = [
     summary: "大江歌罢掉头东\n邃密群科济世穷\n面壁十年图破壁\n难酬蹈海亦英雄",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "大江歌罢掉头东", original: "大江歌罢掉头东\n邃密群科济世穷\n面壁十年图破壁\n难酬蹈海亦英雄", translation: "大江歌罢掉头东邃密群科济世穷面壁十年图破壁", interpretation: "面壁十年图破壁" }]
+sections: [    { id: 1, title: "大江歌罢掉头东", original: "（版权保护作品，此处仅展示片段供教学参考）大江歌罢掉头东邃密群科济世穷", translation: "（版权保护作品，此处仅展示片段）大江歌罢掉头东", interpretation: "赏析引用·周恩来" }]
   },
   {
     id: 216,
@@ -2415,7 +2415,7 @@ const poemData: Poem[] = [
     summary: "风生从虎云生龙\n鼓舞山岳震荡空\n叱咤风云变色处\n万马千军恣横行",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "风", original: "风生从虎云生龙\n鼓舞山岳震荡空\n叱咤风云变色处\n万马千军恣横行", translation: "风生从虎云生龙鼓舞山岳震荡空", interpretation: "郭沫若有感于时代变革" }]
+sections: [    { id: 1, title: "风", original: "（版权保护作品，此处仅展示片段供教学参考）风生从虎云生龙鼓舞山岳震荡空", translation: "（版权保护作品，此处仅展示片段）风生从虎云生龙", interpretation: "赏析引用·郭沫若" }]
   },
   {
     id: 218,
@@ -2448,7 +2448,7 @@ const poemData: Poem[] = [
     summary: "从明天起\n做一个幸\n福的人喂\n马劈柴周\n游世界从\n明天起关\n心粮食和\n蔬菜我有\n一所房子\n面朝大海\n春暖花开",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "面朝大海春暖花开（节选）", original: "从明天起\n做一个幸\n福的人喂\n马劈柴周\n游世界从\n明天起关\n心粮食和\n蔬菜我有\n一所房子\n面朝大海\n春暖花开", translation: "从明天起做一个幸福的人喂马劈柴周游世界我有一所房子面朝大海春暖花开", interpretation: "面朝大海春暖花开" }]
+sections: [    { id: 1, title: "面朝大海春暖花开（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）从明天起\n做一个幸\n福的人喂\n马劈...", translation: "（版权保护作品，此处仅展示片段）从明天起\n做一个幸\n福的人喂\n马劈...", interpretation: "赏析引用·海子" }]
   },
   {
     id: 221,
@@ -2459,7 +2459,7 @@ const poemData: Poem[] = [
     summary: "繁星闪烁着深蓝\n的太空何曾听得\n见它们对话沉默\n中微光里它们深\n深的互相颂赞了",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "繁星", original: "繁星闪烁着深蓝\n的太空何曾听得\n见它们对话沉默\n中微光里它们深\n深的互相颂赞了", translation: "繁星闪烁着深蓝的太空它们深深互相颂赞", interpretation: "冰心小诗代表作" }]
+sections: [    { id: 1, title: "繁星", original: "（版权保护作品，此处仅展示片段供教学参考）繁星闪烁着深蓝\n的太空何曾听得\n见它...", translation: "（版权保护作品，此处仅展示片段）繁星闪烁着深蓝\n的太空何曾听得\n见它...", interpretation: "赏析引用·冰心" }]
   },
   {
     id: 222,
@@ -2470,7 +2470,7 @@ const poemData: Poem[] = [
     summary: "雪压冬云白絮飞\n万花纷谢一时稀\n高天滚滚寒流急\n大地微微暖气吹\n独有英雄驱虎豹\n更无豪杰怕熊罴\n梅花欢喜漫天雪\n冻死苍蝇未足奇",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "七律·冬云", original: "雪压冬云白絮飞\n万花纷谢一时稀\n高天滚滚寒流急\n大地微微暖气吹\n独有英雄驱虎豹\n更无豪杰怕熊罴\n梅花欢喜漫天雪\n冻死苍蝇未足奇", translation: "雪压冬云白絮飞万花纷谢一时稀高天滚滚寒流急大地微微暖气吹梅花欢喜漫天雪", interpretation: "梅花欢喜漫天雪" }]
+sections: [    { id: 1, title: "七律·冬云", original: "（版权保护作品，此处仅展示片段供教学参考）雪压冬云白絮飞万花纷谢一时稀", translation: "（版权保护作品，此处仅展示片段）雪压冬云白絮飞", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 223,
@@ -2514,7 +2514,7 @@ const poemData: Poem[] = [
     summary: "一个海员\n说最使他\n高兴的是\n抛锚所发\n出的那一\n阵铁链的\n喧哗一个\n海员说最\n使他高兴\n的是起锚\n所激起的\n那一片洁\n白的浪花",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "盼望", original: "一个海员\n说最使他\n高兴的是\n抛锚所发\n出的那一\n阵铁链的\n喧哗一个\n海员说最\n使他高兴\n的是起锚\n所激起的\n那一片洁\n白的浪花", translation: "每一个期待都是一个盼望", interpretation: "艾青哲理小诗" }]
+sections: [    { id: 1, title: "盼望", original: "（版权保护作品，此处仅展示片段供教学参考）一个海员\n说最使他\n高兴的是\n抛锚...", translation: "（版权保护作品，此处仅展示片段）一个海员\n说最使他\n高兴的是\n抛锚...", interpretation: "赏析引用·艾青" }]
   },
   {
     id: 227,
@@ -2525,7 +2525,7 @@ const poemData: Poem[] = [
     summary: "卑鄙是卑鄙\n者的通行证\n高尚是高尚\n者的墓志铭\n告诉你吧世\n界我不相信",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "回答（节选）", original: "卑鄙是卑鄙\n者的通行证\n高尚是高尚\n者的墓志铭\n告诉你吧世\n界我不相信", translation: "卑鄙是卑鄙者的通行证高尚是高尚者的墓志铭", interpretation: "卑鄙是卑鄙者的通行证" }]
+sections: [    { id: 1, title: "回答（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）卑鄙是卑鄙\n者的通行证\n高尚是高尚\...", translation: "（版权保护作品，此处仅展示片段）卑鄙是卑鄙\n者的通行证\n高尚是高尚\...", interpretation: "赏析引用·北岛" }]
   },
   {
     id: 228,
@@ -2536,7 +2536,7 @@ const poemData: Poem[] = [
     summary: "我如果爱你绝不像攀援的凌霄花借你的高枝炫耀自己我必须是你近旁的一株木棉作为树的形象和你站在一起",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "致橡树（节选）", original: "我如果爱你绝不像攀援的凌霄花借你的高枝炫耀自己我必须是你近旁的一株木棉作为树的形象和你站在一起", translation: "我必须是你近旁的一株木棉作为树的形象和你站在一起", interpretation: "舒婷代表作" }]
+sections: [    { id: 1, title: "致橡树（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）我如果爱你绝不像攀援的凌霄花借你的高枝炫...", translation: "（版权保护作品，此处仅展示片段）我如果爱你绝不像攀援的凌霄花借你的高枝炫...", interpretation: "赏析引用·舒婷" }]
   },
   {
     id: 229,
@@ -2547,7 +2547,7 @@ const poemData: Poem[] = [
     summary: "小时候乡\n愁是一枚\n小小的邮\n票我在这\n头母亲在\n那头长大\n后乡愁是\n一张窄窄\n的船票我\n在这头新\n娘在那头",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "乡愁", original: "小时候乡\n愁是一枚\n小小的邮\n票我在这\n头母亲在\n那头长大\n后乡愁是\n一张窄窄\n的船票我\n在这头新\n娘在那头\n后来啊乡\n愁是一方\n矮矮的坟\n墓我在外\n头母亲在\n里头而现\n在乡愁是\n一湾浅浅\n的海峡我\n在这头大\n陆在那头", translation: "小时候乡愁是一枚小小的邮票我在这头母亲在那头而现在乡愁是一湾浅浅的海峡我在这头大陆在那头", interpretation: "乡愁是一湾浅浅的海峡" }]
+sections: [    { id: 1, title: "乡愁", original: "（版权保护作品，此处仅展示片段供教学参考）小时候乡\n愁是一枚\n小小的邮\n票我...", translation: "（版权保护作品，此处仅展示片段）小时候乡\n愁是一枚\n小小的邮\n票我...", interpretation: "赏析引用·余光中" }]
   },
   {
     id: 230,
@@ -4098,7 +4098,7 @@ const poemData: Poem[] = [
     summary: "雾失楼台\n月迷津渡\n桃源望断无寻处\n可堪孤馆\n闭春寒杜\n鹃声里斜阳暮",
     tags: "宋,经典",
     color: "#06b6d4",
-    sections: [    { id: 1, title: "踏莎行·郴州旅舍（节选）", original: "雾失楼台\n月迷津渡\n桃源望断无寻处\n可堪孤馆\n闭春寒杜\n鹃声里斜阳暮驿\n寄梅花鱼\n传尺素砌\n成此恨无重数郴\n江幸自绕\n郴山为谁\n流下潇湘去", translation: "雾失楼台月迷津渡可堪孤馆闭春寒杜鹃声里斜阳暮郴江幸自绕郴山为谁流下潇湘去", interpretation: "雾失楼台月迷津渡" }]
+    sections: [    { id: 1, title: "踏莎行·郴州旅舍（节选）", original: "雾失楼台\n月迷津渡\n桃源望断无寻处\n可堪孤馆闭春寒\n杜鹃声里斜阳暮\n驿寄梅花\n鱼传尺素\n砌成此恨无重数\n郴江幸自绕郴山\n为谁流下潇湘去", translation: "雾失楼台月迷津渡可堪孤馆闭春寒杜鹃声里斜阳暮郴江幸自绕郴山为谁流下潇湘去", interpretation: "雾失楼台月迷津渡" }]
   },
   {
     id: 403,
@@ -4681,7 +4681,7 @@ const poemData: Poem[] = [
     summary: "困难这不是一项\n容易战胜的敌人\n它不会自己退却\n它不会自动瓦解",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "向困难进军（节选）", original: "困难这不是一项\n容易战胜的敌人\n它不会自己退却\n它不会自动瓦解", translation: "困难这不是一项容易战胜的敌人", interpretation: "郭小川政治抒情诗" }]
+sections: [    { id: 1, title: "向困难进军（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）困难这不是一项\n容易战胜的敌人\n它不...", translation: "（版权保护作品，此处仅展示片段）困难这不是一项\n容易战胜的敌人\n它不...", interpretation: "赏析引用·郭小川" }]
   },
   {
     id: 473,
@@ -4692,7 +4692,7 @@ const poemData: Poem[] = [
     summary: "好！黄山松\n我大声为你\n叫好谁有你\n挺的硬扎扎",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "黄山松", original: "好！黄山松\n我大声为你\n叫好谁有你\n挺的硬扎扎", translation: "好！\n黄山松我大声为你叫好", interpretation: "赞颂坚韧不拔" }]
+sections: [    { id: 1, title: "黄山松", original: "（版权保护作品，此处仅展示片段供教学参考）好！黄山松\n我大声为你\n叫好谁有你\...", translation: "（版权保护作品，此处仅展示片段）好！黄山松\n我大声为你\n叫好谁有你\...", interpretation: "赏析引用·张万舒" }]
   },
   {
     id: 474,
@@ -4736,7 +4736,7 @@ const poemData: Poem[] = [
     summary: "总得叫大车装个够它横竖不说一句话背上的压力往肉里扣它把头沉重地低下",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "老马", original: "总得叫大车装个够它横竖不说一句话背上的压力往肉里扣它把头沉重地低下", translation: "总得叫大车装个够它横竖不说一句话背上的压力往肉里扣", interpretation: "描写旧社会农民苦难" }]
+sections: [    { id: 1, title: "老马", original: "（版权保护作品，此处仅展示片段供教学参考）总得叫大车装个够它横竖不说一句话背上的压...", translation: "（版权保护作品，此处仅展示片段）总得叫大车装个够它横竖不说一句话背上的压...", interpretation: "赏析引用·臧克家" }]
   },
   {
     id: 478,
@@ -4747,7 +4747,7 @@ const poemData: Poem[] = [
     summary: "雪落在中国的土地上寒冷在封锁着中国呀",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "雪落在中国的土地上（节选）", original: "雪落在中国\n的土地上寒\n冷在封锁着\n中国呀那些\n被烽火所啮\n啃着的地域\n无数的土地\n的垦植者失\n去了他们所\n饲养的家畜", translation: "雪落在中国的土地上寒冷在封锁着中国呀", interpretation: "艾青抗战时期代表作" }]
+sections: [    { id: 1, title: "雪落在中国的土地上（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）雪落在中国\n的土地上寒\n冷在封锁着\...", translation: "（版权保护作品，此处仅展示片段）雪落在中国\n的土地上寒\n冷在封锁着\...", interpretation: "赏析引用·艾青" }]
   },
   {
     id: 479,
@@ -4758,7 +4758,7 @@ const poemData: Poem[] = [
     summary: "一切存在严格地说都需要时间时间证实一切因为它改变一切",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "时间", original: "一切存在严格地说都需要时间时间证实一切因为它改变一切", translation: "一切存在都需要时间时间证实一切", interpretation: "沈从文哲理短文" }]
+sections: [    { id: 1, title: "时间", original: "（版权保护作品，此处仅展示片段供教学参考）一切存在严格地说都需要时间时间证实一切因...", translation: "（版权保护作品，此处仅展示片段）一切存在严格地说都需要时间时间证实一切因...", interpretation: "赏析引用·沈从文" }]
   },
   {
     id: 480,
@@ -4769,7 +4769,7 @@ const poemData: Poem[] = [
     summary: "我打江南走过那\n等在季节里的容\n颜如莲花的开落\n我达达的马蹄是\n美丽的错误我不\n是归人是个过客",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "错误", original: "我打江南走\n过那等在季\n节里的容颜\n如莲花的开\n落东风不来\n三月的柳絮\n不飞你的心\n如小小的寂\n寞的城恰若\n青石的街道\n向晚跫音不\n响三月的春\n帷不揭你底\n心是小小的\n窗扉紧掩我\n达达的马蹄\n是美丽的错\n误我不是归\n人是个过客", translation: "我打江南走过那等在季节里的容颜如莲花的开落我达达的马蹄是美丽的错误我不是归人是个过客", interpretation: "我达达的马蹄是美丽的错误" }]
+sections: [    { id: 1, title: "错误", original: "（版权保护作品，此处仅展示片段供教学参考）我打江南走\n过那等在季\n节里的容颜\...", translation: "（版权保护作品，此处仅展示片段）我打江南走\n过那等在季\n节里的容颜\...", interpretation: "赏析引用·郑愁予" }]
   },
   {
     id: 481,
@@ -4780,7 +4780,7 @@ const poemData: Poem[] = [
     summary: "等你，在雨\n中在造虹的\n雨中蝉声沉\n落蛙声升起\n一池的红莲\n如红焰在雨",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "等你，在雨中（节选）", original: "等你，\n在雨中在造虹的雨中蝉声沉落蛙声升起一池的红莲如红焰在雨中你来不来都一样竟感觉每朵莲都像你", translation: "等你，在雨中在造虹的雨中你来不来都一样竟感觉每朵莲都像你", interpretation: "等你，\n在雨中" }]
+sections: [    { id: 1, title: "等你，在雨中（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）等你，\n在雨中在造虹的雨中蝉声沉落蛙声...", translation: "（版权保护作品，此处仅展示片段）等你，\n在雨中在造虹的雨中蝉声沉落蛙声...", interpretation: "赏析引用·余光中" }]
   },
   {
     id: 482,
@@ -4791,7 +4791,7 @@ const poemData: Poem[] = [
     summary: "酒入豪肠七分酿成了月光余下的三分啸成剑气绣口一吐就半个盛唐",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "寻李白（节选）", original: "酒入豪肠七分酿成了月光余下的三分啸成剑气绣口一吐就半个盛唐", translation: "酒入豪肠七分酿成了月光余下的三分啸成剑气绣口一吐就半个盛唐", interpretation: "绣口一吐就半个盛唐" }]
+sections: [    { id: 1, title: "寻李白（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）酒入豪肠七分酿成了月光余下的三分啸成剑气...", translation: "（版权保护作品，此处仅展示片段）酒入豪肠七分酿成了月光余下的三分啸成剑气...", interpretation: "赏析引用·余光中" }]
   },
   {
     id: 487,
@@ -5803,7 +5803,7 @@ const poemData: Poem[] = [
     summary: "太阳哟我背立在大海边头紧觑着你太阳哟你不把我照得个透明我不回去",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "太阳礼赞", original: "太阳哟我背立在大海边头紧觑着你太阳哟你不把我照得个透明我不回去", translation: "太阳哟你不把我照得个透明我不回去", interpretation: "郭沫若对光明的礼赞" }]
+sections: [    { id: 1, title: "太阳礼赞", original: "（版权保护作品，此处仅展示片段供教学参考）太阳哟我背立在大海边头紧觑着你", translation: "（版权保护作品，此处仅展示片段）太阳哟我背立在大海边头紧觑着你", interpretation: "赏析引用·郭沫若" }]
   },
   {
     id: 587,
@@ -5814,7 +5814,7 @@ const poemData: Poem[] = [
     summary: "天上一个\n月亮水里\n一个月亮\n天上的月\n亮在水里\n水里的月\n亮在天上\n低头看水\n里抬头看\n天上看月\n亮思故乡",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "月之故乡", original: "天上一个\n月亮水里\n一个月亮\n天上的月\n亮在水里\n水里的月\n亮在天上\n低头看水\n里抬头看\n天上看月\n亮思故乡", translation: "天上一个月亮水里一个月亮低头看水里抬头看天上", interpretation: "看月亮思故乡" }]
+sections: [    { id: 1, title: "月之故乡", original: "（版权保护作品，此处仅展示片段供教学参考）天上一个\n月亮水里\n一个月亮\n天上...", translation: "（版权保护作品，此处仅展示片段）天上一个\n月亮水里\n一个月亮\n天上...", interpretation: "赏析引用·彭邦桢" }]
   },
   {
     id: 588,
@@ -5825,7 +5825,7 @@ const poemData: Poem[] = [
     summary: "我不去想是\n否能够成功\n既然选择了\n远方便只顾\n风雨兼程我\n不去想未来\n是平坦还是\n泥泞只要热\n爱生命一切\n都在意料中",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "热爱生命", original: "我不去想是否能够成功既然选择了远方便只顾风雨兼程我不去想能否赢得爱情既然钟情于玫瑰就勇敢地吐露真诚只要热爱生命一切都在意料中", translation: "我不去想是否能够成功既然选择了远方便只顾风雨兼程只要热爱生命一切都在意料中", interpretation: "既然选择了远方便只顾风雨兼程" }]
+sections: [    { id: 1, title: "热爱生命", original: "（版权保护作品，此处仅展示片段供教学参考）我不去想是否能够成功既然选择了远方便只顾...", translation: "（版权保护作品，此处仅展示片段）我不去想是否能够成功既然选择了远方便只顾...", interpretation: "赏析引用·汪国真" }]
   },
   {
     id: 589,
@@ -5836,7 +5836,7 @@ const poemData: Poem[] = [
     summary: "我们可以欺\n骗别人却无\n法欺骗自己\n当我们走向\n枝繁叶茂的\n五月青春就\n不再是一个\n谜向上的路\n总是坎坷又\n崎岖要保持\n最初的浪漫\n真是不容易",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "跨越自己", original: "我们可以欺\n骗别人却无\n法欺骗自己\n当我们走向\n枝繁叶茂的\n五月青春就\n不再是一个\n谜向上的路\n总是坎坷又\n崎岖要保持\n最初的浪漫\n真是不容易", translation: "我们可以欺骗别人却无法欺骗自己", interpretation: "汪国真哲理诗" }]
+sections: [    { id: 1, title: "跨越自己", original: "（版权保护作品，此处仅展示片段供教学参考）我们可以欺\n骗别人却无\n法欺骗自己\...", translation: "（版权保护作品，此处仅展示片段）我们可以欺\n骗别人却无\n法欺骗自己\...", interpretation: "赏析引用·汪国真" }]
   },
   {
     id: 590,
@@ -8058,7 +8058,7 @@ const poemData: Poem[] = [
     summary: "那是力争\n上游的一\n种树笔直\n的干笔直\n的枝参天\n耸立不折\n不挠对抗\n着西北风",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "白杨礼赞", original: "那是力争\n上游的一\n种树笔直\n的干笔直\n的枝参天\n耸立不折\n不挠对抗\n着西北风", translation: "那是力争上游的一种树笔直的干笔直的枝参天耸立不折不挠", interpretation: "白杨树力争上游" }]
+sections: [    { id: 1, title: "白杨礼赞", original: "（版权保护作品，此处仅展示片段供教学参考）那是力争\n上游的一\n种树笔直\n的干...", translation: "（版权保护作品，此处仅展示片段）那是力争\n上游的一\n种树笔直\n的干...", interpretation: "赏析引用·茅盾" }]
   },
   {
     id: 799,
@@ -8080,7 +8080,7 @@ const poemData: Poem[] = [
     summary: "牢骚太盛防肠断\n风物长宜放眼量\n莫道昆明池水浅\n观鱼胜过富春江",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "七律·和柳亚子先生（节选）", original: "饮茶粤海未能忘\n索句渝州叶正黄\n三十一年还旧国\n落花时节读华章\n牢骚太盛防肠断\n风物长宜放眼量\n莫道昆明池水浅\n观鱼胜过富春江", translation: "牢骚太盛防肠断风物长宜放眼量", interpretation: "风物长宜放眼量" }]
+sections: [    { id: 1, title: "七律·和柳亚子先生（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）饮茶粤海未能忘\n索句渝州叶正黄\n三十...", translation: "（版权保护作品，此处仅展示片段）饮茶粤海未能忘\n索句渝州叶正黄\n三十...", interpretation: "赏析引用·毛泽东" }]
   },
   {
     id: 801,
@@ -8091,7 +8091,7 @@ const poemData: Poem[] = [
     summary: "万里长江横渡极\n目楚天舒不管风\n吹浪打胜似闲庭\n信步今日得宽馀",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "水调歌头·游泳（节选）", original: "才饮长沙水\n又食武昌鱼\n万里长江横渡\n极目楚天舒\n不管风吹浪打\n胜似闲庭信步\n今日得宽馀\n子在川上曰\n逝者如斯夫", translation: "万里长江横渡极目楚天舒不管风吹浪打胜似闲庭信步", interpretation: "不管风吹浪打胜似闲庭信步" }]
+sections: [    { id: 1, title: "水调歌头·游泳（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）才饮长沙水\n又食武昌鱼\n万里长江横渡...", translation: "（版权保护作品，此处仅展示片段）才饮长沙水\n又食武昌鱼\n万里长江横渡...", interpretation: "赏析引用·毛泽东" }]
   },
   {
     id: 802,
@@ -8102,7 +8102,7 @@ const poemData: Poem[] = [
     summary: "天高云淡\n望断南飞雁\n不到长城非好汉\n屈指行程二万\n六盘山上高峰\n红旗漫卷西风\n今日长缨在手\n何时缚住苍龙",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "清平乐·六盘山", original: "天高云淡\n望断南飞雁\n不到长城非好汉\n屈指行程二万\n六盘山上高峰\n红旗漫卷西风\n今日长缨在手\n何时缚住苍龙", translation: "不到长城非好汉屈指行程二万六盘山上高峰红旗漫卷西风今日长缨在手", interpretation: "不到长城非好汉" }]
+sections: [    { id: 1, title: "清平乐·六盘山", original: "（版权保护作品，此处仅展示片段供教学参考）不到长城非好汉", translation: "（版权保护作品，此处仅展示片段）不到长城非好汉", interpretation: "赏析引用·毛泽东代表作" }]
   },
   {
     id: 803,
@@ -8113,7 +8113,7 @@ const poemData: Poem[] = [
     summary: "雄关漫道真\n如铁而今迈\n步从头越从\n头越苍山如\n海残阳如血",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "忆秦娥·娄山关（节选）", original: "西风烈长空雁叫霜晨月霜晨月马蹄声碎喇叭声咽雄关漫道真如铁而今迈步从头越从头越苍山如海残阳如血", translation: "雄关漫道真如铁而今迈步从头越苍山如海残阳如血", interpretation: "雄关漫道真如铁而今迈步从头越" }]
+sections: [    { id: 1, title: "忆秦娥·娄山关（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）西风烈长空雁叫霜晨月霜晨月马蹄声碎喇叭声...", translation: "（版权保护作品，此处仅展示片段）西风烈长空雁叫霜晨月霜晨月马蹄声碎喇叭声...", interpretation: "赏析引用·毛泽东" }]
   },
   {
     id: 804,
@@ -8124,7 +8124,7 @@ const poemData: Poem[] = [
     summary: "此去泉台招旧部\n旌旗十万斩阎罗\n南国烽烟正十年\n此头须向国门悬\n后死诸君多努力\n捷报飞来当纸钱",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "梅岭三章（节选）", original: "断头今日意如何\n创业艰难百战多\n此去泉台招旧部\n旌旗十万斩阎罗\n南国烽烟正十年\n此头须向国门悬\n后死诸君多努力\n捷报飞来当纸钱", translation: "断头今日意如何创业艰难百战多此去泉台招旧部旌旗十万斩阎罗", interpretation: "此去泉台招旧部旌旗十万斩阎罗" }]
+sections: [    { id: 1, title: "梅岭三章（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）断头今日意如何\n创业艰难百战多\n此去...", translation: "（版权保护作品，此处仅展示片段）断头今日意如何\n创业艰难百战多\n此去...", interpretation: "赏析引用·陈毅" }]
   },
   {
     id: 805,
@@ -8135,7 +8135,7 @@ const poemData: Poem[] = [
     summary: "北华收复赖群雄\n猛士如云唱大风\n自信挥戈能退日\n河山依旧战旗红",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "赠友人", original: "北华收复赖群雄\n猛士如云唱大风\n自信挥戈能退日\n河山依旧战旗红", translation: "北华收复赖群雄猛士如云唱大风自信挥戈能退日", interpretation: "自信挥戈能退日" }]
+sections: [    { id: 1, title: "赠友人", original: "（版权保护作品，此处仅展示片段供教学参考）北华收复赖群雄\n猛士如云唱大风\n自信...", translation: "（版权保护作品，此处仅展示片段）北华收复赖群雄\n猛士如云唱大风\n自信...", interpretation: "赏析引用·朱德" }]
   },
   {
     id: 806,
@@ -8146,7 +8146,7 @@ const poemData: Poem[] = [
     summary: "借得西湖水一环\n更移阳朔七堆山\n堤边添上丝丝柳\n画幅长留天地间",
     tags: "近现代,写景",
     color: "#64748b",
-    sections: [    { id: 1, title: "游七星岩", original: "借得西湖水一环\n更移阳朔七堆山\n堤边添上丝丝柳\n画幅长留天地间", translation: "借得西湖水一环更移阳朔七堆山", interpretation: "画幅长留天地间" }]
+sections: [    { id: 1, title: "游七星岩", original: "（版权保护作品，此处仅展示片段供教学参考）借得西湖水一环\n更移阳朔七堆山\n堤边...", translation: "（版权保护作品，此处仅展示片段）借得西湖水一环\n更移阳朔七堆山\n堤边...", interpretation: "赏析引用·叶剑英" }]
   },
   {
     id: 807,
@@ -8157,7 +8157,7 @@ const poemData: Poem[] = [
     summary: "忧患元元忆逝翁\n红旗缥缈没遥空\n昏鸦三匝迷枯树\n回雁兼程溯旧踪\n赤道雕弓能射虎\n椰林匕首敢屠龙\n景升父子皆豚犬\n旋转还凭革命功",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "远望", original: "忧患元元忆逝翁\n红旗缥缈没遥空\n昏鸦三匝迷枯树\n回雁兼程溯旧踪\n赤道雕弓能射虎\n椰林匕首敢屠龙\n景升父子皆豚犬\n旋转还凭革命功", translation: "忧患元元忆逝翁红旗缥缈没遥空", interpretation: "旋转还凭革命功" }]
+sections: [    { id: 1, title: "远望", original: "（版权保护作品，此处仅展示片段供教学参考）忧患元元忆逝翁\n红旗缥缈没遥空\n昏鸦...", translation: "（版权保护作品，此处仅展示片段）忧患元元忆逝翁\n红旗缥缈没遥空\n昏鸦...", interpretation: "赏析引用·叶剑英" }]
   },
   {
     id: 808,
@@ -8201,7 +8201,7 @@ const poemData: Poem[] = [
     summary: "少年负志\n气海运期\n鲲鹏杖策\n渡东海归\n来气蒸云\n梦吞八九",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "少年行", original: "少年负志\n气海运期\n鲲鹏杖策\n渡东海归\n来气蒸云\n梦吞八九", translation: "少年负志气海运期鲲鹏", interpretation: "少年负志气" }]
+sections: [    { id: 1, title: "少年行", original: "（版权保护作品，此处仅展示片段供教学参考）少年负志\n气海运期\n鲲鹏杖策\n渡东...", translation: "（版权保护作品，此处仅展示片段）少年负志\n气海运期\n鲲鹏杖策\n渡东...", interpretation: "赏析引用·郭沫若" }]
   },
   {
     id: 812,
@@ -8212,7 +8212,7 @@ const poemData: Poem[] = [
     summary: "一个浪一个浪无休止地扑过来每一个浪都在它脚下被打成碎沫散开它的脸上和身上像刀砍过的一样但它依然站在那里含着微笑看着海洋",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "礁石", original: "一个浪一个浪无休止地扑过来每一个浪都在它脚下被打成碎沫散开它的脸上和身上像刀砍过的一样但它依然站在那里含着微笑看着海洋", translation: "一个浪一个浪无休止地扑过来每一个浪都在它脚下被打成碎沫散开但它依然站在那里含着微笑看着海洋", interpretation: "礁石坚强不屈" }]
+sections: [    { id: 1, title: "礁石", original: "（版权保护作品，此处仅展示片段供教学参考）一个浪一个浪无休止地扑过来每一个浪都在它...", translation: "（版权保护作品，此处仅展示片段）一个浪一个浪无休止地扑过来每一个浪都在它...", interpretation: "赏析引用·艾青" }]
   },
   {
     id: 813,
@@ -8223,7 +8223,7 @@ const poemData: Poem[] = [
     summary: "为什么我的眼里常含泪水因为我对这土地爱得深沉",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "我爱这土地（节选）", original: "假如我是一只鸟我也应该用嘶哑的喉咙歌唱为什么我的眼里常含泪水因为我对这土地爱得深沉", translation: "为什么我的眼里常含泪水因为我对这土地爱得深沉", interpretation: "为什么我的眼里常含泪水因为我对这土地爱得深沉" }]
+sections: [    { id: 1, title: "我爱这土地（节选）", original: "（版权保护作品，此处仅展示片段供教学参考）假如我是一只鸟我也应该用嘶哑的喉咙歌唱为...", translation: "（版权保护作品，此处仅展示片段）假如我是一只鸟我也应该用嘶哑的喉咙歌唱为...", interpretation: "赏析引用·艾青" }]
   },
   {
     id: 814,
@@ -8234,7 +8234,7 @@ const poemData: Poem[] = [
     summary: "我从不肯妄\n弃了一张纸\n总是留着留\n着叠成一只\n一只很小的\n船儿从舟上\n抛下在海里\n有的被天风\n吹卷到舟中\n的窗里有的\n被海浪打湿\n沾在船头上",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "纸船", original: "我从不肯妄\n弃了一张纸\n总是留着留\n着叠成一只\n一只很小的\n船儿从舟上\n抛下在海里\n有的被天风\n吹卷到舟中\n的窗里有的\n被海浪打湿\n沾在船头上", translation: "我从不肯妄弃了一张纸叠成一只一只很小的船儿从舟上抛下在海里", interpretation: "叠纸船寄托思念" }]
+sections: [    { id: 1, title: "纸船", original: "（版权保护作品，此处仅展示片段供教学参考）我从不肯妄\n弃了一张纸\n总是留着留\...", translation: "（版权保护作品，此处仅展示片段）我从不肯妄\n弃了一张纸\n总是留着留\...", interpretation: "赏析引用·冰心" }]
   },
   {
     id: 815,
@@ -8245,7 +8245,7 @@ const poemData: Poem[] = [
     summary: "成功的花人们只惊羡她现时的明艳然而当初她的芽儿浸透了奋斗的泪泉洒遍了牺牲的血雨",
     tags: "近现代,经典",
     color: "#64748b",
-    sections: [    { id: 1, title: "成功的花", original: "成功的花人们只惊羡她现时的明艳然而当初她的芽儿浸透了奋斗的泪泉洒遍了牺牲的血雨", translation: "成功的花人们只惊羡她现时的明艳", interpretation: "成功的花浸透了奋斗的泪泉" }]
+sections: [    { id: 1, title: "成功的花", original: "（版权保护作品，此处仅展示片段供教学参考）成功的花人们只惊羡她现时的明艳然而当初她...", translation: "（版权保护作品，此处仅展示片段）成功的花人们只惊羡她现时的明艳然而当初她...", interpretation: "赏析引用·冰心" }]
   },
   {
     id: 816,

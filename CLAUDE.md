@@ -45,6 +45,34 @@
 
 进度检查点存储在记忆系统中 (`memory/project-progress.md`)，每次完成任务后自动同步更新。会话启动时自动读取并恢复进度，无需手动汇报。
 
+## 新机器开发环境搭建
+
+```bash
+# 1. 克隆仓库
+git clone git@github.com:EIGHTEENMAN/好大儿.git
+cd 好大儿
+
+# 2. 安装依赖（每个 app 各自安装）
+cd apps/auth-service && npm install && cd ../..
+cd apps/main-site && npm install && cd ../..
+cd apps/tiaozhan && npm install && cd ../..
+cd apps/forum && npm install && cd ../..
+cd apps/store && npm install && cd ../..
+cd apps/english && npm install && cd ../..
+cd apps/shici && npm install && cd ../..
+cd apps/xueguoxue && npm install && cd ../..
+cd apps/xuetongshi && npm install && cd ../..
+cd apps/admin && npm install && cd ../..
+cd apps/travel-guide && npm install && cd ../..
+
+# 3. 启动开发模式（auth-service 必须最先启动）
+cd apps/auth-service && npm run dev
+
+# 新开终端，启动主站或其他应用
+cd apps/main-site && npm run dev
+```
+
+**要求：** Node.js >= 18。数据库用 SQLite，无需额外安装。环境变量（微信/Aliyun key等）默认空值即可本地开发。
 ## 运行中服务
 
 | 服务 | 端口 | 状态 |

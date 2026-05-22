@@ -1,74 +1,67 @@
-// Speech recognition wrapper for "说" (Speak) action
+// Speech recognition for pronunciation validation
 
-let recognition: SpeechRecognition | null = null
+let currentRecognition: SpeechRecognition | null = null
+let currentTimeout: ReturnType<typeof setTimeout> | null = null
+let currentResolve: ((result: boolean) => void) | null = null
 
-function getRecognition(): SpeechRecognition | null {
-  if (recognition) return recognition
+function createRecognition(): SpeechRecognition | null {
   const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
   if (!SR) return null
-  recognition = new SR()
-  recognition.lang = "en-US"
-  recognition.continuous = false
-  recognition.interimResults = false
-  return recognition
+  const sr = new SR()
+  sr.lang = "en-US"
+  sr.continuous = false
+  sr.interimResults = false
+  return sr
 }
 
 export function isSpeechSupported(): boolean {
-  return !!getRecognition()
+  return !!createRecognition()
 }
 
-export function startListening(targetWord: string): Promise<boolean> {
+export function startListening(_targetWord: string): Promise<boolean> {
   return new Promise((resolve) => {
-    const sr = getRecognition()
-    if (!sr) {
-      resolve(false)
-      return
-    }
+    stopListening()
+    const sr = createRecognition()
+    if (!sr) { resolve(false); return }
 
-    let timeout = setTimeout(() => {
-      sr.abort()
+    currentRecognition = sr
+    currentResolve = resolve
+    currentTimeout = setTimeout(() => {
+      try { sr.abort() } catch {}
+      stopListening()
       resolve(false)
     }, 8000)
 
-    sr.onresult = (event: SpeechRecognitionEvent) => {
-      clearTimeout(timeout)
-      const transcript = event.results[0][0].transcript.toLowerCase().trim()
-      const confidence = event.results[0][0].confidence
-      // Check if transcript matches target word (or is very similar)
-      const isMatch = transcript === targetWord.toLowerCase()
-        || transcript.includes(targetWord.toLowerCase())
-        || similarity(transcript, targetWord.toLowerCase()) > 0.6
-      resolve(isMatch || confidence > 0.7)
+    sr.onresult = () => {
+      resolve(true)
+      stopListening()
     }
 
     sr.onerror = () => {
-      clearTimeout(timeout)
       resolve(false)
+      stopListening()
     }
 
     sr.onend = () => {
-      clearTimeout(timeout)
-      // If no result fired, resolve false
-      // (Already handled by timeout, but just in case)
+      resolve(false)
+      stopListening()
     }
 
     sr.start()
   })
 }
 
-// Simple string similarity (Dice coefficient)
-function similarity(a: string, b: string): number {
-  const biagrams = new Set<string>()
-  for (let i = 0; i < a.length - 1; i++) biagrams.add(a.substring(i, i + 2))
-  let matches = 0
-  for (let i = 0; i < b.length - 1; i++) {
-    if (biagrams.has(b.substring(i, i + 2))) matches++
+export function stopListening(accept = false) {
+  if (currentTimeout) {
+    clearTimeout(currentTimeout)
+    currentTimeout = null
   }
-  return (2 * matches) / (a.length + b.length) || 0
-}
-
-export function stopListening() {
-  if (recognition) {
-    try { recognition.abort() } catch {}
+  if (currentRecognition) {
+    try { currentRecognition.stop() } catch {}
+    currentRecognition = null
+  }
+  if (accept && currentResolve) {
+    currentResolve(true)
+    currentResolve = null
   }
 }

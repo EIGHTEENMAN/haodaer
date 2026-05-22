@@ -1,38 +1,71 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
 
+const isLoggedIn = ref(!!sessionStorage.getItem('admin_token'))
+const adminUser = ref(sessionStorage.getItem('admin_user') || '')
+
 const navItems = [
   { path: '/', label: '仪表盘', icon: '📊' },
   { path: '/questions', label: '题库管理', icon: '❓' },
   { path: '/users', label: '用户管理', icon: '👥' },
+  // HIDDEN: 论坛管理, will re-enable later
+  // { path: '/forum', label: '论坛管理', icon: '💬' },
   { path: '/analytics', label: '运营分析', icon: '📈' },
 ]
+
+onMounted(() => {
+  // Verify token validity
+  const token = sessionStorage.getItem('admin_token')
+  if (token) {
+    fetch('/api/verify', {
+      headers: { Authorization: 'Bearer ' + token }
+    }).then(r => {
+      if (!r.ok) {
+        sessionStorage.removeItem('admin_token')
+        sessionStorage.removeItem('admin_user')
+        isLoggedIn.value = false
+        router.push('/login')
+      }
+    }).catch(() => {})
+  }
+})
+
+function doLogout() {
+  sessionStorage.removeItem('admin_token')
+  sessionStorage.removeItem('admin_user')
+  isLoggedIn.value = false
+  router.push('/login')
+}
 </script>
 
 <template>
-  <div class="admin-layout">
+  <div class="admin-layout" v-if="route.path !== '/login'">
     <aside class="sidebar">
       <div class="sidebar-header">
-        <a href="https://grandand.com" class="sidebar-logo">好大儿</a>
+        <router-link to="/" class="sidebar-logo">好大儿</router-link>
         <span class="sidebar-badge">管理</span>
       </div>
       <nav class="sidebar-nav">
-        <a
+        <router-link
           v-for="item in navItems"
           :key="item.path"
-          href="#"
+          :to="item.path"
           class="nav-item"
-          :class="{ active: route.path === item.path }"
-          @click.prevent="router.push(item.path)"
+          :class="{ active: route.path.startsWith(item.path) && (item.path !== '/' ? true : route.path === '/') }"
         >
           <span class="nav-icon">{{ item.icon }}</span>
           <span class="nav-label">{{ item.label }}</span>
-        </a>
+        </router-link>
       </nav>
       <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <span class="user-name">{{ adminUser }}</span>
+          <a href="#" class="logout-link" @click.prevent="doLogout">退出</a>
+        </div>
         <a href="https://grandand.com" target="_blank" class="footer-link">← 返回主站</a>
       </div>
     </aside>
@@ -50,6 +83,7 @@ const navItems = [
       </div>
     </main>
   </div>
+  <router-view v-else />
 </template>
 
 <style>
@@ -81,7 +115,14 @@ body {
 .nav-item:hover { background: #f1f5f9; color: #0f172a; }
 .nav-item.active { background: #eff6ff; color: #2563eb; font-weight: 600; }
 .nav-icon { font-size: 16px; width: 22px; text-align: center; }
-.sidebar-footer { padding: 16px 10px; border-top: 1px solid #e2e8f0; }
+.sidebar-footer { padding: 12px 10px; border-top: 1px solid #e2e8f0; }
+.sidebar-user {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 14px 10px; font-size: 13px;
+}
+.user-name { color: #0f172a; font-weight: 600; }
+.logout-link { color: #dc2626; text-decoration: none; font-size: 12px; }
+.logout-link:hover { text-decoration: underline; }
 .footer-link {
   display: block; padding: 8px 14px; font-size: 13px; color: #94a3b8; text-decoration: none; border-radius: 8px;
 }
@@ -120,6 +161,8 @@ body {
 .btn-danger { background: #ef4444; color: #fff; }
 .btn-danger:hover { background: #dc2626; }
 .btn-sm { padding: 5px 12px; font-size: 12px; border-radius: 8px; }
+.btn-warning { background: #f59e0b; color: #fff; }
+.btn-warning:hover { background: #d97706; }
 
 /* Inputs */
 .input {
@@ -194,8 +237,18 @@ select.input { cursor: pointer; }
 .tag-red { background: #fef2f2; color: #dc2626; }
 .tag-purple { background: #faf5ff; color: #9333ea; }
 .tag-gray { background: #f1f5f9; color: #64748b; }
+.tag-orange { background: #fff7ed; color: #ea580c; }
 
 /* Section */
 .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .section-title { font-size: 15px; font-weight: 700; color: #0f172a; }
+
+/* Tab bar */
+.tab-bar { display: flex; gap: 4px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 4px; }
+.tab-item {
+  flex: 1; text-align: center; padding: 8px 16px; border-radius: 10px; font-size: 13px; font-weight: 500;
+  color: #64748b; text-decoration: none; transition: all 0.15s;
+}
+.tab-item:hover { background: #f1f5f9; color: #0f172a; }
+.tab-item.active { background: #2563eb; color: #fff; }
 </style>

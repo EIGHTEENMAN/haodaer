@@ -96,6 +96,33 @@ app.post('/api/redeem', auth, (req, res) => {
   })();
 });
 
+// Proxy /api/auth/* to auth-service for shared login (cross-app sync)
+app.all(/^\/api\/auth\//, async (req, res) => {
+  try {
+    const targetUrl = 'http://127.0.0.1:3007' + req.originalUrl;
+    const r = await fetch(targetUrl, {
+      method: req.method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': req.headers.authorization || '',
+        'Cookie': req.headers.cookie || '',
+      },
+      body: req.method !== 'GET' && req.method !== 'HEAD' ? JSON.stringify(req.body) : undefined,
+    });
+    // Forward Set-Cookie headers (auth-service sets haodaer_token/access_token cookies)
+    if (typeof r.headers.getSetCookie === 'function') {
+      const setCookie = r.headers.getSetCookie();
+      if (setCookie && setCookie.length > 0) {
+        res.setHeader('Set-Cookie', setCookie);
+      }
+    }
+    const data = await r.json();
+    res.status(r.status).json(data);
+  } catch {
+    res.status(502).json({ code: 'ERROR', message: 'auth-service unavailable' });
+  }
+});
+
 // Serve frontend
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use((_req, res) => {

@@ -105,7 +105,7 @@ function showDetail(rec: any) {
   position: fixed;
   inset: 0;
   background: #1a1a2e;
-  z-index: 800;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -158,7 +158,7 @@ function showDetail(rec: any) {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.7);
   display: flex; align-items: center; justify-content: center;
-  z-index: 900;
+  z-index: 1100;
 }
 .detail-box {
   background: #2a1a4e; border: 2px solid #ffd700; 

@@ -9,7 +9,8 @@ db.pragma('journal_mode = WAL');
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY, username TEXT NOT NULL, avatar TEXT DEFAULT '',
-    role TEXT DEFAULT 'user', created_at TEXT DEFAULT (datetime('now'))
+    role TEXT DEFAULT 'user', suspended INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now'))
   );
 
   CREATE TABLE IF NOT EXISTS boards (
@@ -50,7 +51,18 @@ db.exec(`
     type TEXT NOT NULL, content TEXT, related_id TEXT,
     is_read INTEGER DEFAULT 0, created_at TEXT DEFAULT (datetime('now'))
   );
+
+  CREATE TABLE IF NOT EXISTS reports (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    target_type TEXT NOT NULL, target_id TEXT NOT NULL,
+    reporter_id TEXT NOT NULL, reason TEXT NOT NULL,
+    status TEXT DEFAULT 'pending',
+    created_at TEXT DEFAULT (datetime('now')), handled_at TEXT
+  );
 `);
+
+// Migration: add suspended column for existing databases
+try { db.exec('ALTER TABLE users ADD COLUMN suspended INTEGER DEFAULT 0'); } catch {}
 
 // Seed boards
 const boardCount = db.prepare('SELECT COUNT(*) as cnt FROM boards').get();

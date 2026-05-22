@@ -1,25 +1,31 @@
 const TOKEN_KEY = 'haodaer_token'
 const USER_KEY = 'haodaer_user'
 const NEW_USER_KEY = 'haodaer_isNewUser'
+const ACTIVE_PROFILE_KEY = 'haodaer_active_profile'
 const AUTH_SERVICE = 'http://localhost:3007'
 
-export function getToken(): string | null {
-  return localStorage.getItem(TOKEN_KEY)
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(?:^| )' + name + '=([^;]+)'))
+  return match ? decodeURIComponent(match[1]) : null
 }
 
-export function setToken(token: string) {
-  localStorage.setItem(TOKEN_KEY, token)
-  document.cookie = 'haodaer_token=' + encodeURIComponent(token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax'
+export function getToken(): string | null {
+  return sessionStorage.getItem(TOKEN_KEY)
+}
+
+export function setToken(token: string, syncToken?: string) {
+  sessionStorage.setItem(TOKEN_KEY, token)
+  document.cookie = 'haodaer_token=' + encodeURIComponent(syncToken || token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax'
 }
 
 export function removeToken() {
-  localStorage.removeItem(TOKEN_KEY)
+  sessionStorage.removeItem(TOKEN_KEY)
   document.cookie = 'haodaer_token=; domain=.grandand.com; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
 }
 
 export function getUser(): any | null {
   try {
-    const raw = localStorage.getItem(USER_KEY)
+    const raw = sessionStorage.getItem(USER_KEY)
     return raw ? JSON.parse(raw) : null
   } catch {
     return null
@@ -27,11 +33,11 @@ export function getUser(): any | null {
 }
 
 export function setUser(user: any) {
-  localStorage.setItem(USER_KEY, JSON.stringify(user))
+  sessionStorage.setItem(USER_KEY, JSON.stringify(user))
 }
 
 export function removeUser() {
-  localStorage.removeItem(USER_KEY)
+  sessionStorage.removeItem(USER_KEY)
 }
 
 export function isLoggedIn(): boolean {
@@ -51,6 +57,27 @@ export function logout() {
   removeToken()
   removeUser()
   setIsNewUser(false)
+  localStorage.removeItem(ACTIVE_PROFILE_KEY)
+}
+
+// Active profile (which person is currently displayed)
+export function getActiveProfile(): any | null {
+  try {
+    const raw = localStorage.getItem(ACTIVE_PROFILE_KEY)
+    return raw ? JSON.parse(raw) : null
+  } catch { return null }
+}
+
+export function setActiveProfile(profile: any) {
+  if (profile) localStorage.setItem(ACTIVE_PROFILE_KEY, JSON.stringify(profile))
+  else localStorage.removeItem(ACTIVE_PROFILE_KEY)
+}
+
+export function getDisplayName(): string {
+  const profile = getActiveProfile()
+  if (profile) return profile.nickname || '用户'
+  const user = getUser()
+  return user?.nickname || user?.username || '用户'
 }
 
 // API calls
@@ -63,11 +90,29 @@ export async function sendCode(phone: string) {
   return res.json()
 }
 
-export async function phoneLogin(phone: string, code: string) {
+export async function phoneLogin(phone: string, code: string, extra?: Record<string, any>) {
   const res = await fetch('/api/auth/phone-login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ phone, code }),
+    body: JSON.stringify({ phone, code, ...extra }),
+  })
+  return res.json()
+}
+
+export async function usernameLogin(username: string, password: string) {
+  const res = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+  })
+  return res.json()
+}
+
+export async function usernameRegister(data: { username: string; password: string }) {
+  const res = await fetch('/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   })
   return res.json()
 }
@@ -103,7 +148,7 @@ export async function saveProfile(data: { nickname: string; avatar?: string }) {
   return res.json()
 }
 
-export async function addChild(data: { nickname: string; gender?: string; age?: number }) {
+export async function addChild(data: { nickname: string; gender?: string; birthday?: string; avatar?: string; phone?: string }) {
   const token = getToken()
   const res = await fetch('/api/user/children', {
     method: 'POST',
@@ -133,12 +178,90 @@ export async function deleteChild(id: string) {
   return res.json()
 }
 
-export async function updateChild(id: string, data: { nickname: string; gender?: string; age?: number }) {
+export async function updateChild(id: string, data: { nickname?: string; gender?: string; birthday?: string; avatar?: string; phone?: string }) {
   const token = getToken()
   const res = await fetch('/api/user/children/' + id, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify(data),
+  })
+  return res.json()
+}
+
+// ─── Game Data Sync ────────────────────────────────────────
+
+export async function updateGameData(childId: string, data: { gameLevel?: number; gameScore?: number }) {
+  const token = getToken()
+  const res = await fetch('/api/user/children/' + childId + '/game-data', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(data),
+  })
+  return res.json()
+}
+
+export async function updateChallengePoints(childId: string, challengePoints: number) {
+  const token = getToken()
+  const res = await fetch('/api/user/children/' + childId + '/challenge-points', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ challengePoints }),
+  })
+  return res.json()
+}
+
+export async function getRanking(childId: string) {
+  const token = getToken()
+  const res = await fetch('/api/user/ranking?childId=' + encodeURIComponent(childId), {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  return res.json()
+}
+
+// ─── Learning Progress ─────────────────────────────────────
+
+export async function getLearningProgress(childId?: string) {
+  const token = getToken()
+  const url = childId ? '/api/user/learning-progress?childId=' + encodeURIComponent(childId) : '/api/user/learning-progress'
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } })
+  return res.json()
+}
+
+export async function updateLearningProgress(data: { childId: string; subject: string; itemsLearned?: number; timeSpentMinutes?: number; accuracy?: number }) {
+  const token = getToken()
+  const res = await fetch('/api/user/learning-progress', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(data),
+  })
+  return res.json()
+}
+
+// ─── Child Independent Password ──────────────────────────────
+
+export async function setChildPassword(childId: string, password: string) {
+  const token = getToken()
+  const res = await fetch('/api/user/children/set-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ childId, password }),
+  })
+  return res.json()
+}
+
+export async function getLearningSummary() {
+  const token = getToken()
+  const res = await fetch('/api/user/learning-progress/summary', {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  return res.json()
+}
+
+export async function deleteAccount() {
+  const token = getToken()
+  const res = await fetch('/api/user/account', {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
   })
   return res.json()
 }

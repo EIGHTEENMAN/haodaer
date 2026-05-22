@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { navLinks } from '@shared/config/navLinks'
 
 const q = ref('')
 const results = ref<any[]>([])
@@ -108,6 +109,10 @@ const searchInput = ref('')
 
 function getContentUrl(doc: any): string {
   const baseUrl = doc.sourceUrl || ''
+  const source = doc.source || ''
+  if (source === 'shici') return baseUrl + '#detail/' + doc.id.replace('shici-', '')
+  if (source === 'guoxue') return baseUrl + '#reader/' + doc.id.replace('guoxue-', '')
+  if (source === 'tongshi') return baseUrl + '#reader/' + doc.id.replace('tongshi-', '')
   return baseUrl + '?q=' + encodeURIComponent(doc.title)
 }
 
@@ -195,9 +200,7 @@ onMounted(async () => {
           <a href="https://travel.grandand.com" class="s-app-nav-link">走天下</a>
         </nav>
         <div class="s-header-links">
-          <a href="https://forum.grandand.com" class="s-header-link">💬 论坛</a>
-          <a href="https://store.grandand.com" class="s-header-link">🎁 商城</a>
-          <a href="/faq" class="s-header-link">❓ 帮助</a>
+          <a v-for="link in navLinks.filter(l => !l.hidden)" :key="link.label" :href="link.href" class="s-header-link">{{ link.icon }} {{ link.label }}</a>
         </div>
         <a href="https://grandand.com" class="s-home-btn">🏠 首页</a>
       </div>

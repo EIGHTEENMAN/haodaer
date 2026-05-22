@@ -6,23 +6,23 @@ const NEW_USER_KEY = 'haodaer_isNewUser';
 
 export function getToken(): string | null {
   if (typeof window === 'undefined') return null;
-  return localStorage.getItem(TOKEN_KEY);
+  return sessionStorage.getItem(TOKEN_KEY);
 }
 
-export function setToken(token: string) {
-  localStorage.setItem(TOKEN_KEY, token);
-  document.cookie = 'haodaer_token=' + encodeURIComponent(token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax';
+export function setToken(token: string, syncToken?: string) {
+  sessionStorage.setItem(TOKEN_KEY, token);
+  document.cookie = 'haodaer_token=' + encodeURIComponent(syncToken || token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax';
 }
 
 export function removeToken() {
-  localStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
   document.cookie = 'haodaer_token=; domain=.grandand.com; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 }
 
 export function getUser(): any | null {
   if (typeof window === 'undefined') return null;
   try {
-    const raw = localStorage.getItem(USER_KEY);
+    const raw = sessionStorage.getItem(USER_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -30,11 +30,11 @@ export function getUser(): any | null {
 }
 
 export function setUser(user: any) {
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  sessionStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
 export function removeUser() {
-  localStorage.removeItem(USER_KEY);
+  sessionStorage.removeItem(USER_KEY);
 }
 
 export function isLoggedIn(): boolean {

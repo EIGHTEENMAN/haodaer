@@ -17,18 +17,37 @@
   }
 
   function getToken() {
-    var t = localStorage.getItem(TOKEN_KEY);
+    var t = sessionStorage.getItem(TOKEN_KEY);
     if (t) return t;
     var c = getCookie(COOKIE_NAME);
     if (c) {
-      localStorage.setItem(TOKEN_KEY, c);
+      sessionStorage.setItem(TOKEN_KEY, c);
       return c;
     }
     return null;
   }
 
   var token = getToken();
-  if (token) return;
+  if (token) {
+    // Ensure user data is synced to localStorage for this subdomain
+    if (!sessionStorage.getItem('haodaer_user')) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/api/auth/me', true);
+      xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          try {
+            var d = JSON.parse(xhr.responseText);
+            if (d.code === 'OK') {
+              sessionStorage.setItem('haodaer_user', JSON.stringify(d.data));
+            }
+          } catch(e) {}
+        }
+      };
+      xhr.send();
+    }
+    return;
+  }
 
   // --- Build modal ---
   var alreadyShown = sessionStorage.getItem('haodaer_auth_dismissed');
@@ -63,12 +82,24 @@
   style.textContent += '.haodaer-auth-terms a{color:#2563eb;text-decoration:none}';
   style.textContent += '.haodaer-auth-guest{display:block;margin-top:12px;padding:10px;background:transparent;color:#64748b;border:1px solid #d1d5db;border-radius:12px;font-size:14px;cursor:pointer;width:100%;transition:background .2s}';
   style.textContent += '.haodaer-auth-guest:hover{background:#f9fafb}';
+  // Mobile responsive
+  style.textContent += '@media(max-width:767px){#haodaer-auth-box{max-width:100%;margin:0 8px;border-radius:12px}}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-left{padding:24px 16px}}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-right{padding:24px 16px}}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-left h2{font-size:17px;margin-bottom:16px}}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-field{margin-bottom:12px}}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-sub{margin-bottom:16px;font-size:13px}}';
+  // Mobile tabs
+  style.textContent += '.haodaer-auth-mobile-tabs{display:none}';
+  style.textContent += '@media(max-width:767px){.haodaer-auth-mobile-tabs{display:flex;border-bottom:1px solid #e2e8f0}}';
+  style.textContent += '.haodaer-mtab{flex:1;padding:12px 8px;background:transparent;border:none;color:#94a3b8;font-size:14px;cursor:pointer;transition:all .2s}';
+  style.textContent += '.haodaer-mtab-active{color:#2563eb;border-bottom:2px solid #2563eb;font-weight:500}';
   document.head.appendChild(style);
 
   var overlay = document.createElement('div');
   overlay.id = 'haodaer-auth-overlay';
 
-  var phone = '', code = '', countdown = 0, loading = false, error = '', timer = null;
+  var phone = '', code = '', countdown = 0, loading = false, error = '', timer = null, mobileTab = 'phone';
 
   function render() {
     overlay.innerHTML = '';
@@ -76,8 +107,12 @@
     box.id = 'haodaer-auth-box';
     box.innerHTML = '' +
       '<button id="haodaer-auth-close">✕</button>' +
+      '<div class="haodaer-auth-mobile-tabs" id="haodaer-auth-mobile-tabs">' +
+        '<button class="haodaer-mtab' + (mobileTab === 'phone' ? ' haodaer-mtab-active' : '') + '" data-tab="phone">手机号登录</button>' +
+        '<button class="haodaer-mtab' + (mobileTab === 'qrcode' ? ' haodaer-mtab-active' : '') + '" data-tab="qrcode">扫码登录</button>' +
+      '</div>' +
       '<div class="haodaer-auth-body">' +
-        '<div class="haodaer-auth-left">' +
+        '<div class="haodaer-auth-left" id="haodaer-auth-left"' + (window.innerWidth < 768 && mobileTab === 'phone' ? ' style="display:none"' : '') + '>' +
           '<h2>扫码登录</h2>' +
           '<div style="width:192px;height:192px;background:#fff;border-radius:12px;padding:12px;margin-bottom:16px;display:flex;align-items:center;justify-content:center">' +
             '<div style="width:100%;height:100%;border:2px dashed #d1d5db;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center">' +
@@ -88,13 +123,16 @@
           '<p style="font-size:14px;opacity:0.8;margin-bottom:24px">打开 App 或微信扫一扫</p>' +
           '<div style="width:100%">' +
             ['📱好大儿 App', '🧳走天下 App', '💬微信'].map(function(s) {
+              var chars = Array.from(s);
+              var icon = chars[0];
+              var text = chars.slice(1).join('');
               return '<div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.1);border-radius:8px;padding:10px 16px;margin-bottom:8px">' +
-                '<span style="font-size:20px">' + s[0] + '</span>' +
-                '<div><p style="font-size:14px;font-weight:500">' + s.slice(1) + '</p><p style="font-size:12px;opacity:0.6">打开' + s.slice(1) + '扫一扫</p></div></div>';
+                '<span style="font-size:20px">' + icon + '</span>' +
+                '<div><p style="font-size:14px;font-weight:500">' + text + '</p><p style="font-size:12px;opacity:0.6">打开' + text + '扫一扫</p></div></div>';
             }).join('') +
           '</div>' +
         '</div>' +
-        '<div class="haodaer-auth-right">' +
+        '<div class="haodaer-auth-right"' + (window.innerWidth < 768 && mobileTab === 'qrcode' ? ' style="display:none"' : '') + '>' +
           '<h2>手机号登录</h2>' +
           '<p class="haodaer-auth-sub">输入手机号，验证后自动注册/登录</p>' +
           (error ? '<div class="haodaer-auth-error">' + error + '</div>' : '') +
@@ -135,6 +173,17 @@
       code = this.value.replace(/\D/g, '').slice(0, 6);
       this.value = code;
     };
+
+    // Mobile tab switching
+    var tabs = document.getElementById('haodaer-auth-mobile-tabs');
+    if (tabs) {
+      Array.from(tabs.querySelectorAll('[data-tab]')).forEach(function(btn) {
+        btn.onclick = function() {
+          mobileTab = this.getAttribute('data-tab');
+          render();
+        };
+      });
+    }
 
     document.getElementById('haodaer-send-code').onclick = function() {
       if (loading || countdown > 0) return;
@@ -189,9 +238,9 @@
         loading = false;
         if (d.code === 'OK') {
           var tok = d.data.accessToken;
-          localStorage.setItem(TOKEN_KEY, tok);
+          sessionStorage.setItem(TOKEN_KEY, tok);
           setCookie(COOKIE_NAME, tok);
-          if (d.data.user) localStorage.setItem(USER_KEY, JSON.stringify(d.data.user));
+          if (d.data.user) sessionStorage.setItem(USER_KEY, JSON.stringify(d.data.user));
           if (d.data.isNewUser) localStorage.setItem('haodaer_isNewUser', 'true');
           overlay.remove();
           style.remove();

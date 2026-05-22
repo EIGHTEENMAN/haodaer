@@ -81,31 +81,45 @@ export class Player {
     if (this.scene.textures.exists("__PLAYER_NEW")) return
     const gfx = this.scene.add.graphics()
 
-    // Body / armor (blue)
-    gfx.fillStyle(0x4488cc)
-    gfx.fillRect(10, 20, 36, 30)
-
-    // Head (smaller for bullet dodge hitbox)
+    // Head (skin tone)
     gfx.fillStyle(0xffcc99)
     gfx.fillRect(14, 5, 28, 22)
 
+    // Black hair on top of head
+    gfx.fillStyle(0x111111)
+    gfx.fillRect(14, 5, 28, 6)
+
     // Eyes
     gfx.fillStyle(0x000000)
-    gfx.fillRect(19, 10, 6, 6)
-    gfx.fillRect(31, 10, 6, 6)
+    gfx.fillRect(19, 11, 6, 5)
+    gfx.fillRect(31, 11, 6, 5)
 
     // Mouth (determined)
     gfx.fillStyle(0x000000)
     gfx.fillRect(22, 18, 12, 2)
 
-    // Helmet visor
-    gfx.fillStyle(0x88ccff)
-    gfx.fillRect(14, 6, 28, 4)
+    // Body — yellow jumpsuit (Bruce Lee Game of Death style)
+    gfx.fillStyle(0xeebb00)
+    gfx.fillRect(10, 27, 36, 24)
 
-    // Legs
-    gfx.fillStyle(0x335599)
-    gfx.fillRect(14, 50, 12, 14)
-    gfx.fillRect(30, 50, 12, 14)
+    // Black stripe down the middle of the jumpsuit
+    gfx.fillStyle(0x222222)
+    gfx.fillRect(26, 27, 4, 24)
+
+    // Arms — skin color (sleeveless)
+    gfx.fillStyle(0xffcc99)
+    gfx.fillRect(3, 28, 7, 18)
+    gfx.fillRect(46, 28, 7, 18)
+
+    // Legs — black pants
+    gfx.fillStyle(0x222222)
+    gfx.fillRect(14, 51, 12, 14)
+    gfx.fillRect(30, 51, 12, 14)
+
+    // Barefoot / black shoes
+    gfx.fillStyle(0x333333)
+    gfx.fillRect(14, 62, 12, 4)
+    gfx.fillRect(30, 62, 12, 4)
 
     gfx.generateTexture("__PLAYER_NEW", 56, 66)
     gfx.destroy()

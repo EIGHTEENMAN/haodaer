@@ -26,8 +26,9 @@ function LoginForm() {
       });
       const d = await res.json();
       if (d.code === 'OK') {
-        localStorage.setItem('token', d.data.token);
-        localStorage.setItem('user', JSON.stringify(d.data.user));
+        sessionStorage.setItem('haodaer_token', d.data.token);
+        sessionStorage.setItem('haodaer_user', JSON.stringify(d.data.user));
+        document.cookie = 'haodaer_token=' + encodeURIComponent(d.data.token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax';
         router.push(redirect);
       } else {
         setError(d.message || '登录失败');

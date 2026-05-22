@@ -1,6 +1,7 @@
 import { reactive } from "vue"
+import { WORLDS } from "../data/stages"
 
-export type GameScreen = "start" | "worldSelect" | "stageMap" | "playing" | "stageClear" | "gameover"
+export type GameScreen = "start" | "worldSelect" | "stageMap" | "wordPreview" | "playing" | "stageClear" | "gameover" | "wordSummary"
 
 export interface SkillInfo {
   id: number
@@ -44,13 +45,10 @@ export interface WordData {
 
 export const gameStore = reactive({
   screen: "start" as GameScreen,
-  selectedSkill: 0,
+  selectedSkill: -1,
   isPaused: false,
   showQuestion: false,
   showSkillSelect: false,
-  questionSkillIndex: 0,
-  currentMonsterId: -1,
-  currentWord: null as WordData | null,
   damageNumbers: [] as DamageNum[],
 
   // Stage/world progression
@@ -62,6 +60,7 @@ export const gameStore = reactive({
   wordsLearnedInStage: 0,
   showStageClear: false,
   showGameOver: false,
+  stageWords: [] as WordData[],
 })
 
 let dnId = 0
@@ -97,22 +96,57 @@ export function unlockSkillsForStage(stageNumber: number) {
   if (stageNumber >= 4) SKILLS[4].unlocked = true // SPECIAL at Stage 4
 }
 
-// Progress persistence: { "ANIMAL": [1,2,3,4,5,6], "FOOD": [1,2], ... }
+// Progress persistence: { completedStages: { "ANIMAL": [1,2,3,4,5,6] }, unlockedWorlds: ["ANIMAL", "FOOD"] }
 export function saveProgress(worldId: string, stageNumber: number) {
   try {
     const raw = localStorage.getItem("ultraman_progress")
-    const progress: Record<string, number[]> = raw ? JSON.parse(raw) : {}
-    if (!progress[worldId]) progress[worldId] = []
-    if (!progress[worldId].includes(stageNumber)) {
-      progress[worldId].push(stageNumber)
+    let progress: { unlockedWorlds: string[]; completedStages: Record<string, number[]> }
+    if (raw) {
+      progress = JSON.parse(raw)
+      // Normalize old flat format: { "ANIMAL": [1] } → { completedStages: { "ANIMAL": [1] } }
+      if (!progress.completedStages) {
+        const flat = progress as unknown as Record<string, number[]>
+        progress = { unlockedWorlds: ["ANIMAL"], completedStages: {} }
+        for (const key of Object.keys(flat)) {
+          if (Array.isArray(flat[key])) {
+            progress.completedStages[key] = flat[key]
+          }
+        }
+      }
+    } else {
+      progress = { unlockedWorlds: ["ANIMAL"], completedStages: {} }
+    }
+    if (!progress.completedStages[worldId]) progress.completedStages[worldId] = []
+    if (!progress.completedStages[worldId].includes(stageNumber)) {
+      progress.completedStages[worldId].push(stageNumber)
+    }
+    // Unlock next world when all 6 stages are completed
+    if (progress.completedStages[worldId].length >= 6) {
+      const idx = WORLDS.findIndex(w => w.id === worldId)
+      if (idx >= 0 && idx < WORLDS.length - 1) {
+        const next = WORLDS[idx + 1].id
+        if (!progress.unlockedWorlds.includes(next)) {
+          progress.unlockedWorlds.push(next)
+        }
+      }
     }
     localStorage.setItem("ultraman_progress", JSON.stringify(progress))
   } catch {}
 }
 
-export function getProgress(): Record<string, number[]> {
+export function getProgress() {
   try {
     const raw = localStorage.getItem("ultraman_progress")
-    return raw ? JSON.parse(raw) : {}
-  } catch { return {} }
+    if (!raw) return { unlockedWorlds: ["ANIMAL"], completedStages: {} as Record<string, number[]> }
+    const data = JSON.parse(raw)
+    // Handle old flat format
+    if (!data.completedStages) {
+      const completedStages: Record<string, number[]> = {}
+      for (const key of Object.keys(data)) {
+        if (Array.isArray(data[key])) completedStages[key] = data[key]
+      }
+      return { unlockedWorlds: ["ANIMAL"], completedStages }
+    }
+    return data
+  } catch { return { unlockedWorlds: ["ANIMAL"], completedStages: {} as Record<string, number[]> } }
 }

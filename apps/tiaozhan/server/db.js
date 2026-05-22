@@ -59,6 +59,7 @@ db.exec(`
     total_questions INTEGER DEFAULT 0,
     total_correct INTEGER DEFAULT 0,
     games_played INTEGER DEFAULT 0,
+    best_streak INTEGER DEFAULT 0,
     updated_at TEXT DEFAULT (datetime('now')),
     PRIMARY KEY (user_id, category)
   );

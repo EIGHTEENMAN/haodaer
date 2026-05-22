@@ -14,11 +14,11 @@ const difficulty = ref('all')
 
 const categories = [
   { value: 'all', label: '全部分类' },
-  { value: 'chinese', label: '语文' },
-  { value: 'science', label: '科学' },
+  { value: 'shici', label: '诗词' },
+  { value: 'guoxue', label: '国学' },
   { value: 'english', label: '英语' },
-  { value: 'general', label: '常识' },
-  { value: 'math', label: '数学' },
+  { value: 'science', label: '科学' },
+  { value: 'general', label: '通识' },
 ]
 
 const difficulties = [
@@ -29,7 +29,11 @@ const difficulties = [
 ]
 
 const diffLabel = (d: number) => ['简单', '中等', '困难'][d - 1] || '简单'
-const catLabel: Record<string, string> = { chinese: '语文', science: '科学', english: '英语', general: '常识', math: '数学' }
+const catLabel: Record<string, string> = { shici: '诗词', guoxue: '国学', science: '科学', english: '英语', general: '通识' }
+
+function authHeaders() {
+  return { Authorization: 'Bearer ' + sessionStorage.getItem('admin_token') }
+}
 
 async function search() {
   loading.value = true
@@ -41,7 +45,7 @@ async function search() {
     params.set('page', String(page.value))
     params.set('pageSize', String(pageSize.value))
 
-    const r = await fetch('/api/admin/questions?' + params.toString())
+    const r = await fetch('/api/admin/questions?' + params.toString(), { headers: authHeaders() })
     const d = await r.json()
     questions.value = d.list
     total.value = d.total
@@ -60,7 +64,7 @@ async function downloadWord() {
     if (category.value !== 'all') params.set('category', category.value)
     if (difficulty.value !== 'all') params.set('difficulty', difficulty.value)
 
-    const r = await fetch('/api/admin/questions/download?' + params.toString())
+    const r = await fetch('/api/admin/questions/download?' + params.toString(), { headers: authHeaders() })
     const blob = await r.blob()
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -100,6 +104,12 @@ onMounted(search)
 </script>
 
 <template>
+  <!-- 页内标签页导航 -->
+  <div class="tab-bar" style="margin-bottom:16px">
+    <router-link to="/questions" class="tab-item" :class="{ active: $route.path === '/questions' }">📋 题库列表</router-link>
+    <router-link to="/questions/rules" class="tab-item" :class="{ active: $route.path === '/questions/rules' }">📖 出题规则</router-link>
+  </div>
+
   <div class="card" style="margin-bottom:16px">
     <div class="toolbar">
       <div class="search-box" style="max-width:300px">
@@ -121,6 +131,7 @@ onMounted(search)
         </select>
       </div>
       <div style="flex:1"></div>
+      <button class="btn btn-outline btn-sm" @click="$router.push('/questions/rules')">📋 出题规则</button>
       <button class="btn btn-primary" :disabled="downloading" @click="downloadWord">
         {{ downloading ? '生成中...' : '📥 下载 Word' }}
       </button>

@@ -7,20 +7,26 @@ const stats = ref<any>({})
 const health = ref<any>({})
 const moderation = ref<any>({ pendingCount: 0, pendingList: [] })
 const analytics = ref<any>({ totalViews: 0, todayViews: 0, uniquePages: 0, eventCount: 0 })
+const adminStats = ref<any>({})
 const loading = ref(true)
 const error = ref('')
-const autoRefresh = ref(true)
 let timer: any = null
+
+function authHeaders() {
+  const token = sessionStorage.getItem('admin_token')
+  return { Authorization: 'Bearer ' + token }
+}
 
 async function fetchData() {
   try {
-    const [s, sy, st, h, m, a] = await Promise.all([
-      fetch('/api/services').then(r => r.json()),
-      fetch('/api/system').then(r => r.json()),
-      fetch('/api/stats').then(r => r.json()),
-      fetch('/api/health').then(r => r.json()),
-      fetch('/api/moderation').then(r => r.json()),
-      fetch('/api/analytics').then(r => r.json()),
+    const [s, sy, st, h, m, a, admin] = await Promise.all([
+      fetch('/api/services', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/system', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/stats', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/health', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/moderation', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/analytics', { headers: authHeaders() }).then(r => r.json()),
+      fetch('/api/admin/analytics/overview', { headers: authHeaders() }).then(r => r.json()).catch(() => ({})),
     ])
     services.value = s
     system.value = sy
@@ -28,6 +34,7 @@ async function fetchData() {
     health.value = h
     moderation.value = m
     analytics.value = a
+    adminStats.value = admin
     error.value = ''
   } catch (e: any) {
     error.value = e.message
@@ -38,7 +45,7 @@ async function fetchData() {
 
 onMounted(() => {
   fetchData()
-  if (autoRefresh.value) timer = setInterval(fetchData, 30000)
+  timer = setInterval(fetchData, 30000)
 })
 
 function formatTime(ts: number) {
@@ -72,25 +79,63 @@ function contentTypeLabel(ct: string) {
   <div v-if="loading" class="loading-state">加载中...</div>
 
   <template v-if="!loading">
-    <!-- Stats Cards -->
-    <div class="stat-grid">
-      <div class="stat-card"><div class="stat-label">用户</div><div class="stat-value" style="color:#2563eb">{{ stats.users ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">攻略</div><div class="stat-value" style="color:#16a34a">{{ stats.guides ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">段落</div><div class="stat-value" style="color:#9333ea">{{ stats.sections ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">评分</div><div class="stat-value" style="color:#ca8a04">{{ stats.ratings ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">评论</div><div class="stat-value" style="color:#ec4899">{{ stats.comments ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">点赞</div><div class="stat-value" style="color:#f97316">{{ stats.likes ?? '-' }}</div></div>
-      <div class="stat-card"><div class="stat-label">收藏</div><div class="stat-value" style="color:#dc2626">{{ stats.favorites ?? '-' }}</div></div>
+    <!-- Admin Stats -->
+    <div class="card" style="margin-bottom:16px">
+      <div class="section-header"><h3 class="section-title">平台概况</h3></div>
+      <div class="stat-grid" style="margin-bottom:0">
+        <div class="stat-card">
+          <div class="stat-label">注册用户</div>
+          <div class="stat-value" style="color:#2563eb">{{ adminStats?.users?.total ?? '-' }}</div>
+          <div v-if="adminStats?.users?.suspendedCount > 0" class="stat-sub">已暂停 {{ adminStats.users.suspendedCount }} 人</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">总题目数</div>
+          <div class="stat-value" style="color:#16a34a">{{ adminStats?.quiz?.totalQuestions ?? '-' }}</div>
+        </div>
+        <!-- HIDDEN: forum stats, will re-enable later
+        <div class="stat-card">
+          <div class="stat-label">论坛帖子</div>
+          <div class="stat-value" style="color:#9333ea">{{ adminStats?.forum?.totalPosts ?? '-' }}</div>
+          <div v-if="adminStats?.forum?.hiddenPosts > 0" class="stat-sub">已隐藏 {{ adminStats.forum.hiddenPosts }} 帖</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">论坛评论</div>
+          <div class="stat-value" style="color:#f97316">{{ adminStats?.forum?.totalComments ?? '-' }}</div>
+        </div>
+        -->
+        <div class="stat-card">
+          <div class="stat-label">挑战玩家</div>
+          <div class="stat-value" style="color:#ec4899">{{ adminStats?.quiz?.totalPlayers ?? '-' }}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">总对局数</div>
+          <div class="stat-value" style="color:#ca8a04">{{ adminStats?.quiz?.totalGames ?? '-' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Travel-Guide Stats -->
+    <div class="card" style="margin-bottom:16px">
+      <div class="section-header"><h3 class="section-title">走天下运营</h3></div>
+      <div class="stat-grid" style="margin-bottom:0">
+        <div class="stat-card"><div class="stat-label">用户</div><div class="stat-value" style="color:#2563eb">{{ stats.users ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">攻略</div><div class="stat-value" style="color:#16a34a">{{ stats.guides ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">段落</div><div class="stat-value" style="color:#9333ea">{{ stats.sections ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">评分</div><div class="stat-value" style="color:#ca8a04">{{ stats.ratings ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">评论</div><div class="stat-value" style="color:#ec4899">{{ stats.comments ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">点赞</div><div class="stat-value" style="color:#f97316">{{ stats.likes ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">收藏</div><div class="stat-value" style="color:#dc2626">{{ stats.favorites ?? '-' }}</div></div>
+      </div>
     </div>
 
     <!-- Analytics -->
     <div class="card" style="margin-bottom:16px">
       <div class="section-header"><h3 class="section-title">流量分析</h3></div>
       <div class="stat-grid" style="margin-bottom:0">
-        <div class="stat-card"><div class="stat-label">总浏览量</div><div class="stat-value" style="color:#2563eb">{{ analytics.totalViews }}</div></div>
-        <div class="stat-card"><div class="stat-label">今日访问</div><div class="stat-value" style="color:#16a34a">{{ analytics.todayViews }}</div></div>
-        <div class="stat-card"><div class="stat-label">独立页面</div><div class="stat-value" style="color:#9333ea">{{ analytics.uniquePages }}</div></div>
-        <div class="stat-card"><div class="stat-label">总事件数</div><div class="stat-value" style="color:#ca8a04">{{ analytics.eventCount }}</div></div>
+        <div class="stat-card"><div class="stat-label">总浏览量</div><div class="stat-value" style="color:#2563eb">{{ analytics.totalViews ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">今日访问</div><div class="stat-value" style="color:#16a34a">{{ analytics.todayViews ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">独立页面</div><div class="stat-value" style="color:#9333ea">{{ analytics.uniquePages ?? '-' }}</div></div>
+        <div class="stat-card"><div class="stat-label">总事件数</div><div class="stat-value" style="color:#ca8a04">{{ analytics.eventCount ?? '-' }}</div></div>
       </div>
     </div>
 
