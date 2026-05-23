@@ -13,6 +13,7 @@ import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
+import PointReader from '@shared/components/PointReader.vue'
 
 // Auth state
 const { token, user } = useAuth()
@@ -447,7 +448,7 @@ onUnmounted(() => {
               <button class="gx-block-play" @click="speaking ? stopAudio() : playText(currentSection.original)">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
             <div class="gx-original-text">
-              <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="gx-original-line">{{ line }}</p>
+              <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="gx-original-line"><PointReader :text="line" /></p>
             </div>
           </div>
           <div class="gx-content-block">

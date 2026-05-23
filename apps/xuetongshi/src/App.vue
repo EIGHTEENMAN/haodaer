@@ -13,6 +13,7 @@ import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
+import PointReader from '@shared/components/PointReader.vue'
 
 // Navigation
 type View = 'home' | 'detail' | 'reader' | 'search'
@@ -398,7 +399,7 @@ onUnmounted(() => {
               <span>{{ currentSection.title }}</span>
               <button class="ts-block-play" @click="speaking ? stopAudio() : playText(currentSection.content)">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
-            <p class="ts-content-text">{{ currentSection.content }}</p>
+            <p class="ts-content-text"><PointReader :text="currentSection.content" /></p>
           </div>
         </div>
 

@@ -13,6 +13,7 @@ import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
+import PointReader from '@shared/components/PointReader.vue'
 
 // Lazy loading state for full poem data
 const fullData = ref<Poem[] | null>(null)
@@ -474,7 +475,7 @@ onUnmounted(() => {
               <button class="sc-block-play" @click="speaking ? stopAudio() : playOriginalText()">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
             <div class="sc-original-text">
-              <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="sc-original-line">{{ line }}</p>
+              <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="sc-original-line"><PointReader :text="line" /></p>
             </div>
           </div>
           <div class="sc-content-block">
