@@ -150,6 +150,39 @@ const conicGradient = computed(() => {
 
 const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 
+// Learning path levels
+const PATH_LEVELS = [
+  { id: 'enlightenment', icon: '👶', label: '启蒙', desc: '开始学习之旅', minItems: 0 },
+  { id: 'beginner', icon: '📚', label: '入门', desc: '掌握基础知识', minItems: 30 },
+  { id: 'intermediate', icon: '🎯', label: '进阶', desc: '深入探索领域', minItems: 100 },
+  { id: 'advanced', icon: '🏆', label: '深造', desc: '成为小专家', minItems: 300 },
+]
+const pathLevels = computed(() => {
+  const totals = learningReport.value?.totals?.items || 0
+  let currentFound = false
+  return PATH_LEVELS.map((level: any, i: number) => {
+    const nextLevel = PATH_LEVELS[i + 1]
+    const unlocked = totals >= level.minItems
+    let isCurrent = false
+    if (!currentFound) {
+      if (unlocked && (!nextLevel || totals < nextLevel.minItems)) {
+        isCurrent = true
+        currentFound = true
+      }
+    }
+    const nextMin = nextLevel ? nextLevel.minItems : level.minItems + 1
+    const prevMin = level.minItems
+    const range = nextMin - prevMin
+    const current = Math.max(0, Math.min(range, totals - prevMin))
+    const progress = range > 0 ? Math.round((current / range) * 100) : 100
+    return { ...level, unlocked, isCurrent, progress, currentItems: current }
+  })
+})
+const currentLevelLabel = computed(() => {
+  const cur = pathLevels.value.find((l: any) => l.isCurrent)
+  return cur ? cur.label : '启蒙'
+})
+
 //
 
 const totalAppCount = computed(() => progress.value.totalVisits)
@@ -325,6 +358,36 @@ function handleLogout() {
           <view v-for="a in achievements" :key="a.id" class="ach-badge" :class="a.unlocked ? 'ach-unlocked' : 'ach-locked'">
             <text class="ach-icon">{{ a.unlocked ? a.icon : '🔒' }}</text>
             <text class="ach-name">{{ a.name }}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- Learning Path -->
+      <view class="report-path">
+        <view class="path-header">
+          <text>🎯 学习路径</text>
+          <text class="path-level-tag">{{ currentLevelLabel }}</text>
+        </view>
+        <view class="path-ladder">
+          <view v-for="(item, i) in pathLevels" :key="item.id" class="path-step">
+            <view v-if="i > 0" class="path-connector" :class="item.unlocked ? 'path-conn-done' : ''"></view>
+            <view class="path-body" :class="item.isCurrent ? 'path-body-cur' : ''">
+              <view class="path-icon">{{ item.icon }}</view>
+              <view class="path-info">
+                <view class="path-top">
+                  <text class="path-name">{{ item.label }}</text>
+                  <text v-if="item.isCurrent" class="path-badge">当前</text>
+                  <text v-else-if="item.unlocked" class="path-badge path-badge-done">已解锁</text>
+                  <text v-else class="path-badge path-badge-locked">🔒</text>
+                </view>
+                <text class="path-desc">{{ item.desc }}</text>
+                <view v-if="item.isCurrent" class="path-bar-wrap">
+                  <view class="path-bar" :style="{ width: item.progress + '%' }"></view>
+                </view>
+                <text v-if="item.isCurrent" class="path-bar-text">{{ item.currentItems }} / {{ i < PATH_LEVELS.length - 1 ? PATH_LEVELS[i + 1].minItems : '∞' }} 项</text>
+                <text v-if="!item.unlocked && !item.isCurrent" class="path-lock-msg">学完 {{ item.minItems }} 项后解锁</text>
+              </view>
+            </view>
           </view>
         </view>
       </view>
@@ -516,6 +579,96 @@ function handleLogout() {
 .ach-locked .ach-name { color: #94a3b8; }
 
 /* Hover */
+/* Learning Path */
+.report-path {
+  margin-top: 20rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f1f5f9;
+}
+.path-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 16rpx;
+}
+.path-level-tag {
+  font-size: 24rpx;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 4rpx 20rpx;
+  border-radius: 20rpx;
+}
+.path-ladder { position: relative; }
+.path-step { position: relative; }
+.path-connector {
+  width: 4rpx;
+  height: 40rpx;
+  background: #e2e8f0;
+  margin-left: 36rpx;
+}
+.path-conn-done { background: #2563eb; }
+.path-body {
+  display: flex;
+  gap: 20rpx;
+  align-items: flex-start;
+  padding: 16rpx;
+  border-radius: 16rpx;
+  transition: all 0.2s;
+}
+.path-body-cur {
+  background: #f0f9ff;
+  border: 1rpx solid #bfdbfe;
+}
+.path-icon {
+  font-size: 36rpx;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+.path-body-cur .path-icon { background: #eff6ff; }
+.path-info { flex: 1; min-width: 0; }
+.path-top {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 4rpx;
+}
+.path-name { font-size: 28rpx; font-weight: 600; color: #0f172a; }
+.path-desc { font-size: 22rpx; color: #94a3b8; margin-bottom: 8rpx; }
+.path-badge {
+  font-size: 20rpx;
+  padding: 2rpx 16rpx;
+  border-radius: 20rpx;
+  background: #f1f5f9;
+  color: #64748b;
+  font-weight: 500;
+}
+.path-badge-done { background: #dcfce7; color: #16a34a; }
+.path-badge-locked { background: #f1f5f9; color: #94a3b8; }
+.path-bar-wrap {
+  height: 10rpx;
+  background: #e2e8f0;
+  border-radius: 5rpx;
+  overflow: hidden;
+  margin-top: 8rpx;
+}
+.path-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border-radius: 5rpx;
+}
+.path-bar-text { font-size: 20rpx; color: #64748b; margin-top: 6rpx; }
+.path-lock-msg { font-size: 22rpx; color: #94a3b8; margin-top: 6rpx; }
+.path-step:not(.path-unlocked) .path-name { color: #94a3b8; }
+.path-step:not(.path-unlocked) .path-icon { opacity: 0.5; }
 .hover-opacity { opacity: 0.7; }
 .hover-logout { background: #fef2f2; }
 </style>

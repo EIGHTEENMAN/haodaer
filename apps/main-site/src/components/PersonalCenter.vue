@@ -4,6 +4,7 @@ import { getToken, fetchUser, saveProfile, getChildren, addChild, updateChild, d
 import StudyCalendar from '@shared/components/StudyCalendar.vue'
 import CategoryChart from '@shared/components/CategoryChart.vue'
 import AchievementWall from '@shared/components/AchievementWall.vue'
+import LearningPath from '@shared/components/LearningPath.vue'
 
 const props = defineProps<{ open: boolean }>()
 const emit = defineEmits<{ close: []; logout: [] }>()
@@ -772,6 +773,9 @@ const ageOptions = Array.from({ length: 18 }, (_, i) => i + 1)
                 :totals="learningReport.totals || { items: 0, minutes: 0 }"
               />
             </div>
+            <div class="pc-report-path">
+              <LearningPath :totals="learningReport.totals || { items: 0 }" />
+            </div>
           </template>
         </section>
 
@@ -1214,5 +1218,8 @@ const ageOptions = Array.from({ length: 18 }, (_, i) => i + 1)
 }
 .pc-report-achievements {
   margin-top: 4px;
+}
+.pc-report-path {
+  margin-top: 16px;
 }
 </style>
