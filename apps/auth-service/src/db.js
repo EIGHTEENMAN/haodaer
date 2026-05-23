@@ -134,9 +134,22 @@ db.exec(`
     UNIQUE(user_id, date)
   );
 
+  CREATE TABLE IF NOT EXISTS study_logs (
+    id TEXT PRIMARY KEY,
+    child_id TEXT NOT NULL,
+    date TEXT NOT NULL,
+    subject TEXT NOT NULL,
+    items_learned INTEGER DEFAULT 0,
+    time_spent_minutes INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (child_id) REFERENCES children(id),
+    UNIQUE(child_id, date, subject)
+  );
+
   CREATE INDEX IF NOT EXISTS idx_children_user ON children(user_id);
   CREATE INDEX IF NOT EXISTS idx_learning_progress_child ON learning_progress(child_id);
   CREATE INDEX IF NOT EXISTS idx_daily_usage_user ON daily_usage(user_id, date);
+  CREATE INDEX IF NOT EXISTS idx_study_logs_child_date ON study_logs(child_id, date);
 `);
 
 // Add new columns to users (safe migration)

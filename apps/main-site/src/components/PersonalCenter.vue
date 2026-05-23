@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { getToken, fetchUser, saveProfile, getChildren, addChild, updateChild, deleteChild, logout, getUser, getActiveProfile, setActiveProfile, getLearningSummary, setUser, setChildPassword, deleteAccount } from '@/api/auth'
+import StudyCalendar from '@shared/components/StudyCalendar.vue'
+import CategoryChart from '@shared/components/CategoryChart.vue'
+import AchievementWall from '@shared/components/AchievementWall.vue'
 
 const props = defineProps<{ open: boolean }>()
 const emit = defineEmits<{ close: []; logout: [] }>()
@@ -42,6 +45,26 @@ const editingYouthLimit = ref(false)
 const youthLimitInput = ref(40)
 
 const avatars = ['🦁', '🐯', '🐼', '🐨', '🐸', '🦊', '🐰', '🐙', '🦄', '🐲']
+
+// ─── Learning Report ──────────────────────────────────────────
+const learningReport = ref<any>(null)
+const reportLoading = ref(false)
+
+async function loadLearningReport(childId: string) {
+  reportLoading.value = true
+  try {
+    const res = await fetch(`/api/user/learning-report?childId=${childId}`, {
+      headers: { Authorization: 'Bearer ' + getToken() }
+    })
+    const data = await res.json()
+    if (data.code === 'OK') learningReport.value = data.data
+  } catch { /* ignore */ }
+  finally { reportLoading.value = false }
+}
+
+watch(activeChild, (child) => {
+  if (child?.id) loadLearningReport(child.id)
+})
 
 // ─── Computed ───────────────────────────────────────────────
 const displayName = computed(() => {
@@ -729,6 +752,29 @@ const ageOptions = Array.from({ length: 18 }, (_, i) => i + 1)
           </div>
         </section>
 
+        <!-- Learning Report -->
+        <section class="pc-card">
+          <h2 class="pc-section-title">📊 学习报告</h2>
+          <div v-if="reportLoading" class="pc-report-loading">加载中...</div>
+          <div v-else-if="!learningReport" class="pc-report-loading">暂无数据</div>
+          <template v-else>
+            <div class="pc-report-grid">
+              <StudyCalendar
+                :daily-logs="learningReport.dailyLogs || []"
+                :streak="learningReport.streak || { current: 0, longest: 0 }"
+              />
+              <CategoryChart :subject-summary="learningReport.subjectSummary || []" />
+            </div>
+            <div class="pc-report-achievements">
+              <AchievementWall
+                :subject-summary="learningReport.subjectSummary || []"
+                :streak="learningReport.streak || { current: 0, longest: 0 }"
+                :totals="learningReport.totals || { items: 0, minutes: 0 }"
+              />
+            </div>
+          </template>
+        </section>
+
         <!-- Children Management (same cards but editable) -->
         <section class="pc-card">
           <div class="pc-card-header">
@@ -1149,9 +1195,24 @@ const ageOptions = Array.from({ length: 18 }, (_, i) => i + 1)
   .pc-child-grid { grid-template-columns: 1fr; }
   .pc-subject-grid { grid-template-columns: repeat(2, 1fr); }
   .pc-info-grid { grid-template-columns: 1fr 1fr; }
+  .pc-report-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .pc-subject-grid { grid-template-columns: 1fr; }
   .pc-info-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Learning Report ─────────────────────────────── */
+.pc-report-loading {
+  text-align: center; padding: 24px; color: #94a3b8; font-size: 14px;
+}
+.pc-report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.pc-report-achievements {
+  margin-top: 4px;
 }
 </style>

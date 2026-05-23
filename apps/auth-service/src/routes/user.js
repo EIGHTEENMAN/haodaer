@@ -275,6 +275,24 @@ router.put('/learning-progress', authenticate, (req, res) => {
     `).run(id, childId, subject, itemsLearned || 0, timeSpentMinutes || 0, accuracy || 0);
   }
 
+  // Log daily study activity
+  const today = new Date().toISOString().split('T')[0];
+  const existingLog = db.prepare(`SELECT * FROM study_logs WHERE child_id = ? AND date = ? AND subject = ?`).get(childId, today, subject);
+  if (existingLog) {
+    const updates = [];
+    const vals = [];
+    if (itemsLearned !== undefined) { updates.push('items_learned = items_learned + ?'); vals.push(itemsLearned); }
+    if (timeSpentMinutes !== undefined) { updates.push('time_spent_minutes = time_spent_minutes + ?'); vals.push(timeSpentMinutes); }
+    if (updates.length > 0) {
+      vals.push(childId, today, subject);
+      db.prepare(`UPDATE study_logs SET ${updates.join(', ')} WHERE child_id = ? AND date = ? AND subject = ?`).run(...vals);
+    }
+  } else {
+    const logId = uuidv4();
+    db.prepare(`INSERT INTO study_logs (id, child_id, date, subject, items_learned, time_spent_minutes) VALUES (?, ?, ?, ?, ?, ?)`)
+      .run(logId, childId, today, subject, itemsLearned || 0, timeSpentMinutes || 0);
+  }
+
   const progress = db.prepare(`SELECT * FROM learning_progress WHERE child_id = ? AND subject = ?`).get(childId, subject);
   res.json({ code: 'OK', data: progress });
 });
@@ -295,6 +313,87 @@ router.get('/learning-progress/summary', authenticate, (req, res) => {
   }));
 
   res.json({ code: 'OK', data: summary });
+});
+
+// GET /api/user/learning-report - Get detailed learning report for calendar & achievements
+router.get('/learning-report', authenticate, (req, res) => {
+  const { childId } = req.query;
+  if (!childId) return res.status(400).json({ code: 'INVALID_INPUT', message: 'childId 必填' });
+
+  // Verify child belongs to this user
+  const child = db.prepare(`SELECT * FROM children WHERE id = ? AND user_id = ?`).get(childId, req.user.id);
+  if (!child) return res.status(403).json({ code: 'FORBIDDEN', message: '无权限访问' });
+
+  // 1. Daily logs for the last 365 days
+  const logs = db.prepare(`
+    SELECT date, subject, items_learned, time_spent_minutes
+    FROM study_logs WHERE child_id = ? AND date >= date('now', '-365 days')
+    ORDER BY date ASC
+  `).all(childId);
+
+  // Group logs by date
+  const dailyMap = {};
+  logs.forEach(log => {
+    if (!dailyMap[log.date]) dailyMap[log.date] = {};
+    dailyMap[log.date][log.subject] = {
+      items: log.items_learned,
+      minutes: log.time_spent_minutes,
+    };
+  });
+
+  // 2. Subject summary
+  const summary = db.prepare(`SELECT * FROM learning_progress WHERE child_id = ?`).all(childId);
+
+  // 3. Streak calculation
+  const allDates = [...new Set(logs.map(l => l.date))].sort();
+  const dateSet = new Set(allDates);
+
+  // Current streak: consecutive days ending with the most recent study day (must be today or yesterday)
+  let currentStreak = 0;
+  if (allDates.length > 0) {
+    const lastDate = new Date(allDates[allDates.length - 1]);
+    const now = new Date();
+    const daysSince = Math.round((now - lastDate) / (1000 * 60 * 60 * 24));
+    if (daysSince <= 1) {
+      currentStreak = 1;
+      for (let i = allDates.length - 2; i >= 0; i--) {
+        const curr = new Date(allDates[i]);
+        const prev = new Date(allDates[i + 1]);
+        const diff = Math.round((prev - curr) / (1000 * 60 * 60 * 24));
+        if (diff === 1) currentStreak++;
+        else break;
+      }
+    }
+  }
+
+  // Longest streak
+  let longestStreak = 0;
+  let tempStreak = 1;
+  for (let i = 1; i < allDates.length; i++) {
+    const prev = new Date(allDates[i - 1]);
+    const curr = new Date(allDates[i]);
+    const diff = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+    if (diff === 1) tempStreak++;
+    else {
+      longestStreak = Math.max(longestStreak, tempStreak);
+      tempStreak = 1;
+    }
+  }
+  longestStreak = Math.max(longestStreak, tempStreak);
+
+  // 4. Total stats
+  const totalItems = summary.reduce((s, p) => s + p.items_learned, 0);
+  const totalMinutes = summary.reduce((s, p) => s + p.time_spent_minutes, 0);
+
+  res.json({
+    code: 'OK',
+    data: {
+      dailyLogs: Object.entries(dailyMap).map(([date, subjects]) => ({ date, subjects })),
+      subjectSummary: summary,
+      streak: { current: currentStreak, longest: longestStreak },
+      totals: { items: totalItems, minutes: totalMinutes },
+    },
+  });
 });
 
 // ─── Child Independent Login ─────────────────────────────────
