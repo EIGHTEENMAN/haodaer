@@ -12,6 +12,7 @@ import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
+import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 
 // Navigation
 type View = 'home' | 'detail' | 'reader' | 'search'
@@ -19,6 +20,8 @@ const currentView = ref<View>('home')
 const currentTopic = ref<Topic | null>(null)
 const currentSection = ref<Section | null>(null)
 const readerEntryTime = ref(0)
+const showChallenge = ref(false)
+const challengeSectionRef = ref('')
 const { token, user } = useAuth()
 const stats = useLearningStats('xuetongshi')
 
@@ -46,9 +49,13 @@ watch(currentView, (newView, oldView) => {
       reportLearningProgress(childId, 'general', 1, Math.max(1, elapsed))
     }
     readerEntryTime.value = 0
+    if (challengeSectionRef.value) showChallenge.value = true
   }
   if (newView === 'reader') {
     readerEntryTime.value = Date.now()
+    if (currentTopic.value && currentSection.value) {
+      challengeSectionRef.value = `general:${currentTopic.value.id}:${currentSection.value.id}`
+    }
   }
 })
 
@@ -407,6 +414,13 @@ onUnmounted(() => {
     <div v-if="currentView === 'home'" class="hd-copyright"><p>通识内容为百科知识汇编，仅供学习参考。部分资料参考公开文献，如涉及版权请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p></div>
     <!-- ===== FOOTER ===== -->
     <FooterBar v-if="currentView === 'home'" />
+    <ReadingChallenge
+      :visible="showChallenge"
+      subject="general"
+      :sectionRef="challengeSectionRef"
+      server-url="https://tiaozhan.grandand.com"
+      @close="showChallenge = false"
+    />
   </div>
   </YouthModeGate>
 </template>

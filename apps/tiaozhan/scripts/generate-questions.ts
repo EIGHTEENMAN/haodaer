@@ -82,6 +82,7 @@ type QuestionRow = {
   options: string // JSON.stringify of string[]
   answer: number
   difficulty: number
+  section_ref: string
 }
 
 // ===================== 诗词 Generator (4,000 题, category: chinese) =====================
@@ -94,6 +95,8 @@ function generateShiciQuestions(): QuestionRow[] {
     poemTitle: string
     author: string
     dynasty: string
+    poemId: number
+    sectionId: number
   }
 
   const allLines: LineInfo[] = []
@@ -114,6 +117,8 @@ function generateShiciQuestions(): QuestionRow[] {
               poemTitle: poem.title,
               author: poem.author,
               dynasty: poem.dynasty,
+              poemId: poem.id,
+              sectionId: section.id,
             })
           }
         }
@@ -164,6 +169,8 @@ function generateShiciQuestions(): QuestionRow[] {
               poemTitle: poem.title,
               author: poem.author,
               dynasty: poem.dynasty,
+              poemId: poem.id,
+              sectionId: section.id,
             })
           }
         }
@@ -191,6 +198,8 @@ function generateShiciQuestions(): QuestionRow[] {
               poemTitle: poem.title,
               author: poem.author,
               dynasty: poem.dynasty,
+              poemId: poem.id,
+              sectionId: section.id,
             })
           }
         }
@@ -252,6 +261,7 @@ function generateShiciQuestions(): QuestionRow[] {
           options: JSON.stringify(options),
           answer,
           difficulty: diff,
+          section_ref: `shici:${poem.id}:${section.id}`,
         })
       }
     }
@@ -296,6 +306,7 @@ function generateShiciQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer,
       difficulty: diff,
+      section_ref: `shici:${line.poemId}:${line.sectionId}`,
     })
   }
   console.log(`  已生成 作者是谁: ${results.filter(r => r.question.includes('哪位诗人')).length} 题`)
@@ -329,6 +340,7 @@ function generateShiciQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer,
       difficulty: diff,
+      section_ref: `shici:${line.poemId}:${line.sectionId}`,
     })
   }
   console.log(`  已生成 出自哪首: ${results.filter(r => r.question.includes('出自哪首')).length} 题`)
@@ -369,15 +381,18 @@ function generateGuoxueQuestions(): QuestionRow[] {
     text: string
     classicTitle: string
     author: string
+    classicId: string
+    sectionId: string
   }
   const allLines: ClassicLine[] = []
 
   for (const classic of classicData) {
     for (const section of classic.sections) {
+      if (!section) continue
       const parts = (section.original || '').split(/[，。？！\n；：、]/).filter(s => s.trim().length > 0)
       for (const part of parts) {
         if (part.length >= 3) {
-          allLines.push({ text: part, classicTitle: classic.title, author: classic.author })
+          allLines.push({ text: part, classicTitle: classic.title, author: classic.author, classicId: classic.id, sectionId: section.id })
         }
       }
     }
@@ -389,6 +404,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
     const seenLong = new Set<string>()
     for (const classic of classicData) {
       for (const section of classic.sections) {
+        if (!section) continue
         const lines = (section.original || '').split('\n').filter(s => s.trim().length > 0)
         for (const line of lines) {
           const cleaned = line.trim()
@@ -399,6 +415,8 @@ function generateGuoxueQuestions(): QuestionRow[] {
               text: cleaned,
               classicTitle: classic.title,
               author: classic.author,
+              classicId: classic.id,
+              sectionId: section.id,
             })
           }
         }
@@ -433,6 +451,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer,
       difficulty: 2,
+      section_ref: `guoxue:${line.classicId}:${line.sectionId}`,
     })
   }
   console.log(`  已生成 出自哪部: ${results.length - countA_start} 题`)
@@ -463,6 +482,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer,
       difficulty: 2,
+      section_ref: `guoxue:${classic.id}:${classic.sections[0]?.id || ''}`,
     })
   }
   console.log(`  已生成 经典作者: ${results.length - countB_start} 题`)
@@ -471,7 +491,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
   const countC_start = results.length
   const targetC = 900
 
-  const summaryQuestions: Array<{ text: string; answer: string; classicTitle: string; category?: string }> = []
+  const summaryQuestions: Array<{ text: string; answer: string; classicTitle: string; category?: string; classicId: string }> = []
 
   for (const classic of classicData) {
     if (classic.summary && classic.summary.length > 0) {
@@ -480,6 +500,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
         answer: classic.title,
         classicTitle: classic.title,
         category: classic.category,
+        classicId: classic.id,
       })
     }
   }
@@ -494,20 +515,23 @@ function generateGuoxueQuestions(): QuestionRow[] {
     const options = shuffle([sq.answer, ...distractors])
     const answerIdx = options.indexOf(sq.answer)
 
+    const sqClassic = classicData.find(c => c.id === sq.classicId)
     results.push({
       category: 'guoxue',
       question: `以下哪部经典的介绍是："${sq.text}"？`,
       options: JSON.stringify(options),
       answer: answerIdx,
       difficulty: 2,
+      section_ref: `guoxue:${sq.classicId}:${sqClassic?.sections[0]?.id || ''}`,
     })
   }
 
-  const sectionItems: Array<{ text: string; classicTitle: string; category?: string }> = []
+  const sectionItems: Array<{ text: string; classicTitle: string; category?: string; classicId: string; sectionId: string }> = []
   for (const classic of classicData) {
     for (const section of classic.sections) {
+      if (!section) continue
       if (section.translation && section.translation.length > 0 && section.translation.length < 60) {
-        sectionItems.push({ text: section.translation, classicTitle: classic.title, category: classic.category })
+        sectionItems.push({ text: section.translation, classicTitle: classic.title, category: classic.category, classicId: classic.id, sectionId: section.id })
       }
     }
   }
@@ -528,6 +552,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer: answerIdx,
       difficulty: 2,
+      section_ref: `guoxue:${item.classicId}:${item.sectionId}`,
     })
   }
 
@@ -538,11 +563,12 @@ function generateGuoxueQuestions(): QuestionRow[] {
   const countE_start = results.length
   const targetE = 200
 
-  const interpItems: Array<{ text: string; classicTitle: string; category?: string }> = []
+  const interpItems: Array<{ text: string; classicTitle: string; category?: string; classicId: string; sectionId: string }> = []
   for (const classic of classicData) {
     for (const section of classic.sections) {
+      if (!section) continue
       if (section.interpretation && section.interpretation.length > 0 && section.interpretation.length < 50) {
-        interpItems.push({ text: section.interpretation, classicTitle: classic.title, category: classic.category })
+        interpItems.push({ text: section.interpretation, classicTitle: classic.title, category: classic.category, classicId: classic.id, sectionId: section.id })
       }
     }
   }
@@ -563,6 +589,7 @@ function generateGuoxueQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer: ansIdx,
       difficulty: 2,
+      section_ref: `guoxue:${item.classicId}:${item.sectionId}`,
     })
   }
 
@@ -648,6 +675,7 @@ function generateEnglishQuestions(): QuestionRow[] {
 
     results.push({
       category: 'english',
+      section_ref: '',
       question: `"${word.meaning}" 的英文是？`,
       options: JSON.stringify(options),
       answer: ansIdx,
@@ -677,6 +705,7 @@ function generateEnglishQuestions(): QuestionRow[] {
 
     results.push({
       category: 'english',
+      section_ref: '',
       question: `"${word.word}" 的中文意思是？`,
       options: JSON.stringify(options),
       answer: ansIdx,
@@ -714,6 +743,7 @@ function generateEnglishQuestions(): QuestionRow[] {
 
     results.push({
       category: 'english',
+      section_ref: '',
       question: `选择正确的词填空：${filledSentence}`,
       options: JSON.stringify(options),
       answer: ansIdx,
@@ -775,6 +805,7 @@ function generateTongshiQuestions(): QuestionRow[] {
     dbCat: string
     difficulty: number
     topicId: string
+    sectionId: string
   }
 
   const allFacts: Fact[] = []
@@ -818,11 +849,11 @@ function generateTongshiQuestions(): QuestionRow[] {
 
         // Build clean question
         const q = `${cleanedClue}是指什么？`
-        allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+        allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
 
         // Also add reverse phrasing for variety
         const q2 = `什么是${cleanedClue}？`
-        allFacts.push({ q: q2, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+        allFacts.push({ q: q2, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
       }
     }
   }
@@ -852,7 +883,7 @@ function generateTongshiQuestions(): QuestionRow[] {
         // Distractors: other section titles from same topic
         const distractors = pickDistractors(title, 3, topicTitles.filter(t => t !== title), [])
         if (distractors.length >= 3) {
-          allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+          allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
         }
         continue
       }
@@ -867,7 +898,7 @@ function generateTongshiQuestions(): QuestionRow[] {
 
         const distractors = pickDistractors(title, 3, topicTitles.filter(t => t !== title), [])
         if (distractors.length >= 3) {
-          allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+          allFacts.push({ q, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
         }
       }
     }
@@ -945,7 +976,7 @@ function generateTongshiQuestions(): QuestionRow[] {
 
         const distractors = pickDistractors(value, 3, otherNums, [])
         if (distractors.length >= 3) {
-          allFacts.push({ q, answer: value, dbCat, difficulty: diff, topicId: topic.id })
+          allFacts.push({ q, answer: value, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
         }
       }
     }
@@ -978,7 +1009,7 @@ function generateTongshiQuestions(): QuestionRow[] {
           effect = effect.replace(/(就是|正是|就在于)$/, '').trim().replace(/[，,]+$/, '')
           if (effect.length < 6 || effect.length > 45) continue
           if (effect.startsWith(title) || effect.includes('是指')) continue
-          allFacts.push({ q: `为什么${effect}？`, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+          allFacts.push({ q: `为什么${effect}？`, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
           break // one per section
         }
       }
@@ -991,7 +1022,7 @@ function generateTongshiQuestions(): QuestionRow[] {
         start = start < 0 ? 0 : start + 1
         let effect = content.slice(start, m2.index!).trim().replace(/[，,]+$/, '')
         if (effect.length >= 6 && effect.length <= 45 && !effect.startsWith(title) && !effect.includes('是指')) {
-          allFacts.push({ q: `为什么${effect}？`, answer: title, dbCat, difficulty: diff, topicId: topic.id })
+          allFacts.push({ q: `为什么${effect}？`, answer: title, dbCat, difficulty: diff, topicId: topic.id, sectionId: section.id })
         }
       }
     }
@@ -1034,6 +1065,7 @@ function generateTongshiQuestions(): QuestionRow[] {
       options: JSON.stringify(options),
       answer: options.indexOf(fact.answer),
       difficulty: fact.difficulty,
+      section_ref: `general:${fact.topicId}:${fact.sectionId}`,
     })
   }
 
@@ -1050,6 +1082,189 @@ function generateTongshiQuestions(): QuestionRow[] {
   return results
 }
 
+// ===================== 理解题 Generators =====================
+
+/**
+ * Generate comprehension questions for 诗词 using interpretation field.
+ * Each section → "下列哪项是对《{title}》的正确理解？"
+ */
+function generateShiciComprehensionQuestions(): QuestionRow[] {
+  const results: QuestionRow[] = []
+  const allInterps: Array<{ text: string; poemTitle: string; poemId: number; sectionId: number }> = []
+
+  for (const poem of poemsData) {
+    for (const section of poem.sections) {
+      if (section.interpretation && section.interpretation.length >= 4) {
+        allInterps.push({
+          text: section.interpretation.trim(),
+          poemTitle: poem.title,
+          poemId: poem.id,
+          sectionId: section.id,
+        })
+      }
+    }
+  }
+
+  for (const interp of allInterps) {
+    // Distractors: other sections' interpretations from same poem, then others
+    const samePoemTexts = allInterps
+      .filter(i => i.poemTitle === interp.poemTitle && i.sectionId !== interp.sectionId)
+      .map(i => i.text.length > 35 ? i.text.slice(0, 35) + '…' : i.text)
+
+    const otherTexts = allInterps
+      .filter(i => i.poemTitle !== interp.poemTitle)
+      .map(i => i.text.length > 35 ? i.text.slice(0, 35) + '…' : i.text)
+
+    const answerText = interp.text.length > 35 ? interp.text.slice(0, 35) + '…' : interp.text
+    const distractors = pickDistractors(answerText, 3, samePoemTexts, otherTexts)
+    if (distractors.length < 3) continue
+
+    const options = shuffle([answerText, ...distractors])
+    results.push({
+      category: 'shici',
+      question: `下列哪项是对《${interp.poemTitle}》的正确理解？`,
+      options: JSON.stringify(options),
+      answer: options.indexOf(answerText),
+      difficulty: 2,
+      section_ref: `shici:${interp.poemId}:${interp.sectionId}`,
+    })
+  }
+
+  return results
+}
+
+/**
+ * Generate comprehension questions for 国学 using interpretation field.
+ */
+function generateGuoxueComprehensionQuestions(): QuestionRow[] {
+  const results: QuestionRow[] = []
+  const allInterps: Array<{ text: string; classicTitle: string; classicId: string; sectionId: string }> = []
+
+  for (const classic of classicData) {
+    for (const section of classic.sections) {
+      if (!section) continue
+      if (section.interpretation && section.interpretation.length >= 4) {
+        allInterps.push({
+          text: section.interpretation.trim(),
+          classicTitle: classic.title,
+          classicId: classic.id,
+          sectionId: section.id,
+        })
+      }
+    }
+  }
+
+  for (const interp of allInterps) {
+    const sameClassicTexts = allInterps
+      .filter(i => i.classicTitle === interp.classicTitle && i.sectionId !== interp.sectionId)
+      .map(i => i.text.length > 40 ? i.text.slice(0, 40) + '…' : i.text)
+
+    const otherTexts = allInterps
+      .filter(i => i.classicTitle !== interp.classicTitle)
+      .map(i => i.text.length > 40 ? i.text.slice(0, 40) + '…' : i.text)
+
+    const answerText = interp.text.length > 40 ? interp.text.slice(0, 40) + '…' : interp.text
+    const distractors = pickDistractors(answerText, 3, sameClassicTexts, otherTexts)
+    if (distractors.length < 3) continue
+
+    const options = shuffle([answerText, ...distractors])
+    results.push({
+      category: 'guoxue',
+      question: `《${interp.classicTitle}》——下列哪项是对这段文字的正确理解？`,
+      options: JSON.stringify(options),
+      answer: options.indexOf(answerText),
+      difficulty: 2,
+      section_ref: `guoxue:${interp.classicId}:${interp.sectionId}`,
+    })
+  }
+
+  return results
+}
+
+/**
+ * Generate comprehension questions for 通识 using content field.
+ * "根据上文，以下说法正确的是？" with one correct statement and three altered versions.
+ */
+function generateTongshiComprehensionQuestions(): QuestionRow[] {
+  const results: QuestionRow[] = []
+
+  for (const topic of knowledgeData) {
+    if (!topic || !topic.sections || topic.sections.length === 0) continue
+    const dbCat = topic.category === '科学' ? 'science' : 'general'
+    const diff = topic.category === '科学' ? 2 : 1
+
+    for (const section of topic.sections) {
+      if (!section.content || section.content.length < 20) continue
+      const content = section.content
+      const title = section.title
+
+      // Strategy: extract a factual sentence, create distractor by swapping numbers or terms
+      // Pattern: "XX是YZ" or "XX有N个" or "XX位于YY"
+      // Correct: the exact statement from content
+      // Wrong: same structure but with altered values
+
+      // Try to find a clean factual sentence in the content
+      const sentences = content.split(/[。！？\n]/).filter(s => s.trim().length >= 8).map(s => s.trim())
+      if (sentences.length === 0) continue
+
+      // Pick the first good sentence that has a clear subject
+      let factSentence = ''
+      for (const s of sentences) {
+        if (s.length >= 10 && s.length <= 50 && /[是有着位于在包含由]/.test(s)) {
+          factSentence = s
+          break
+        }
+      }
+      if (!factSentence) {
+        // Fallback: use the longest sentence
+        sentences.sort((a, b) => b.length - a.length)
+        factSentence = sentences[0]
+        if (factSentence.length > 50) factSentence = factSentence.slice(0, 50) + '…'
+        if (factSentence.length < 8) continue
+      }
+
+      const cleanFact = factSentence.length > 40 ? factSentence.slice(0, 40) + '…' : factSentence
+
+      // Build distractors: try numeric substitution first, else use other sections' content
+      const otherFacts = topic.sections
+        .filter(s => s.id !== section.id && s.content)
+        .map(s => {
+          const otherSentences = s.content!.split(/[。！？\n]/).filter(x => x.trim().length >= 8)
+          const otherFact = otherSentences[0] || (s.title ? s.title : '')
+          return otherFact.length > 40 ? otherFact.slice(0, 40) + '…' : otherFact
+        })
+        .filter(x => x.length >= 6)
+
+      // Try to create a numeric distractor if the fact contains numbers
+      const numDistractors: string[] = []
+      const numMatch = cleanFact.match(/(\d+)/)
+      if (numMatch) {
+        const num = parseInt(numMatch[1])
+        // Create altered versions: +1, -1, ×2
+        const variants = [num + 1, Math.max(1, num - 1), num * 2].filter(v => v !== num)
+        for (const v of variants.slice(0, 3)) {
+          numDistractors.push(cleanFact.replace(numMatch[1], String(v)))
+        }
+      }
+
+      const distractors = pickDistractors(cleanFact, 3, numDistractors, otherFacts)
+      if (distractors.length < 3) continue
+
+      const options = shuffle([cleanFact, ...distractors])
+      results.push({
+        category: dbCat,
+        question: `根据上文，以下说法正确的是？`,
+        options: JSON.stringify(options),
+        answer: options.indexOf(cleanFact),
+        difficulty: diff,
+        section_ref: `general:${topic.id}:${section.id}`,
+      })
+    }
+  }
+
+  return results
+}
+
 // ===================== Main =====================
 
 function main() {
@@ -1059,25 +1274,40 @@ function main() {
 
   let allQuestions: QuestionRow[] = []
 
-  console.log('📜 [1/4] 生成诗词题目 (target: 4,000)...')
+  console.log('📜 [1/7] 生成诗词题目 (target: 4,000)...')
   const shici = generateShiciQuestions()
   console.log(`   → 诗词题目: ${shici.length}\n`)
   allQuestions.push(...shici)
 
-  console.log('📚 [2/4] 生成国学题目 (target: 2,000)...')
+  console.log('📜 [2/7] 生成诗词理解题...')
+  const shiciComp = generateShiciComprehensionQuestions()
+  console.log(`   → 诗词理解题: ${shiciComp.length}\n`)
+  allQuestions.push(...shiciComp)
+
+  console.log('📚 [3/7] 生成国学题目 (target: 2,000)...')
   const guoxue = generateGuoxueQuestions()
   console.log(`   → 国学题目: ${guoxue.length}\n`)
   allQuestions.push(...guoxue)
 
-  console.log('🔤 [3/4] 生成英语题目 (target: 2,000)...')
+  console.log('📚 [4/7] 生成国学理解题...')
+  const guoxueComp = generateGuoxueComprehensionQuestions()
+  console.log(`   → 国学理解题: ${guoxueComp.length}\n`)
+  allQuestions.push(...guoxueComp)
+
+  console.log('🔤 [5/7] 生成英语题目 (target: 2,000)...')
   const eng = generateEnglishQuestions()
   console.log(`   → 英语题目: ${eng.length}\n`)
   allQuestions.push(...eng)
 
-  console.log('🌍 [4/4] 生成通识题目 (target: 2,000)...')
+  console.log('🌍 [6/7] 生成通识题目 (target: 2,000)...')
   const tongshi = generateTongshiQuestions()
   console.log(`   → 通识题目: ${tongshi.length}\n`)
   allQuestions.push(...tongshi)
+
+  console.log('🌍 [7/7] 生成通识理解题...')
+  const tongshiComp = generateTongshiComprehensionQuestions()
+  console.log(`   → 通识理解题: ${tongshiComp.length}\n`)
+  allQuestions.push(...tongshiComp)
 
   // Final stats
   console.log('========================================')
@@ -1099,14 +1329,16 @@ function main() {
   const db = new Database(DB_PATH)
   db.pragma('journal_mode = DELETE')
 
+  db.exec('DROP TABLE IF EXISTS quiz_questions')
   db.exec(`
-    CREATE TABLE IF NOT EXISTS quiz_questions (
+    CREATE TABLE quiz_questions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       category TEXT DEFAULT 'general',
       question TEXT NOT NULL,
       options TEXT NOT NULL,
       answer INTEGER NOT NULL,
-      difficulty INTEGER DEFAULT 1
+      difficulty INTEGER DEFAULT 1,
+      section_ref TEXT DEFAULT ''
     );
   `)
 
@@ -1114,7 +1346,7 @@ function main() {
   db.exec("DELETE FROM sqlite_sequence WHERE name='quiz_questions'")
 
   const insert = db.prepare(
-    'INSERT INTO quiz_questions (category, question, options, answer, difficulty) VALUES (?, ?, ?, ?, ?)'
+    'INSERT INTO quiz_questions (category, question, options, answer, difficulty, section_ref) VALUES (?, ?, ?, ?, ?, ?)'
   )
 
   const batchSize = 500
@@ -1124,7 +1356,7 @@ function main() {
     const batch = allQuestions.slice(i, i + batchSize)
     const tx = db.transaction((qs: QuestionRow[]) => {
       for (const q of qs) {
-        insert.run(q.category, q.question, q.options, q.answer, q.difficulty)
+        insert.run(q.category, q.question, q.options, q.answer, q.difficulty, q.section_ref || '')
         inserted++
       }
     })

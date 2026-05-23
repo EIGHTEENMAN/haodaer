@@ -48,7 +48,8 @@ db.exec(`
     question TEXT NOT NULL,
     options TEXT NOT NULL,
     answer INTEGER NOT NULL,
-    difficulty INTEGER DEFAULT 1
+    difficulty INTEGER DEFAULT 1,
+    section_ref TEXT DEFAULT ''
   );
 
   DROP TABLE IF EXISTS solo_scores;
@@ -65,8 +66,13 @@ db.exec(`
   );
 `);
 
+// Migrate: add section_ref column if it doesn't exist
+try {
+  db.exec('ALTER TABLE quiz_questions ADD COLUMN section_ref TEXT DEFAULT \'\'');
+} catch { /* column already exists */ }
+
 const insertQuestion = db.prepare(
-  `INSERT INTO quiz_questions (category, question, options, answer, difficulty) VALUES (?, ?, ?, ?, ?)`
+  `INSERT INTO quiz_questions (category, question, options, answer, difficulty, section_ref) VALUES (?, ?, ?, ?, ?, ?)`
 );
 
 const countQuestions = db.prepare(`SELECT COUNT(*) as cnt FROM quiz_questions`).get();
@@ -124,10 +130,12 @@ if (countQuestions.cnt === 0) {
     ['math', '一个直角三角形的两个锐角之和是？', JSON.stringify(['45°', '90°', '180°', '360°']), 1, 3],
     ['math', '圆的周长公式是？', JSON.stringify(['2πr', 'πr', 'πr²', '2πr²']), 0, 3],
   ];
+  // Add empty section_ref to all fallback questions
+  const fallbackQs = questions.map(q => [...q, '']);
   const insertMany = db.transaction((qs) => {
     for (const q of qs) insertQuestion.run(...q);
   });
-  insertMany(questions);
+  insertMany(fallbackQs);
 }
 
 export default db;

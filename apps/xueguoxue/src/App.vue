@@ -12,6 +12,7 @@ import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
+import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 
 // Auth state
 const { token, user } = useAuth()
@@ -41,6 +42,8 @@ const currentView = ref<View>('home')
 const currentClassic = ref<Classic | null>(null)
 const currentSection = ref<Section | null>(null)
 const readerEntryTime = ref(0)
+const showChallenge = ref(false)
+const challengeSectionRef = ref('')
 
 watch(currentView, (newView, oldView) => {
   if (oldView === 'reader' && newView !== 'reader' && readerEntryTime.value > 0) {
@@ -50,9 +53,13 @@ watch(currentView, (newView, oldView) => {
       reportLearningProgress(childId, 'classics', 1, Math.max(1, elapsed))
     }
     readerEntryTime.value = 0
+    if (challengeSectionRef.value) showChallenge.value = true
   }
   if (newView === 'reader') {
     readerEntryTime.value = Date.now()
+    if (currentClassic.value && currentSection.value) {
+      challengeSectionRef.value = `guoxue:${currentClassic.value.id}:${currentSection.value.id}`
+    }
   }
 })
 
@@ -472,6 +479,13 @@ onUnmounted(() => {
     <div v-if="currentView === 'home'" class="hd-copyright"><p>平台上的古典文献均为公有领域作品。内容仅供学习参考，如涉及版权问题请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p></div>
     <!-- ===== FOOTER ===== -->
     <FooterBar v-if="currentView === 'home'" />
+    <ReadingChallenge
+      :visible="showChallenge"
+      subject="guoxue"
+      :sectionRef="challengeSectionRef"
+      server-url="https://tiaozhan.grandand.com"
+      @close="showChallenge = false"
+    />
   </div>
   </YouthModeGate>
 </template>

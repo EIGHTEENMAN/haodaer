@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
+import cors from 'cors';
 import db from './db.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -18,6 +19,7 @@ const app = express();
 const server = createServer(app);
 
 app.use(express.json());
+app.use(cors());
 
 // Auth middleware — verify auth-service JWT
 function auth(req, res, next) {
@@ -118,16 +120,21 @@ app.post('/api/quiz/solo/record', auth, (req, res) => {
   res.json({ ok: true });
 });
 
-// Solo practice: fetch questions by subjects & difficulty
+// Solo practice: fetch questions by subjects, difficulty & section_ref
 app.get('/api/quiz/solo', (_req, res) => {
   const subjects = _req.query.subjects ? _req.query.subjects.split(',') : [];
   const difficulty = parseInt(_req.query.difficulty) || 0;
+  const limit = Math.min(parseInt(_req.query.limit) || 15, 50);
+  const sectionRef = _req.query.section_ref || '';
 
   let sql = 'SELECT * FROM quiz_questions';
   const params = [];
   const conditions = [];
 
-  if (subjects.length > 0) {
+  if (sectionRef) {
+    conditions.push('section_ref = ?');
+    params.push(sectionRef);
+  } else if (subjects.length > 0) {
     conditions.push(`category IN (${subjects.map(() => '?').join(',')})`);
     params.push(...subjects);
   }
@@ -138,7 +145,8 @@ app.get('/api/quiz/solo', (_req, res) => {
   if (conditions.length > 0) {
     sql += ' WHERE ' + conditions.join(' AND ');
   }
-  sql += ' ORDER BY RANDOM() LIMIT 15';
+  sql += ' ORDER BY RANDOM() LIMIT ?';
+  params.push(limit);
 
   const questions = db.prepare(sql).all(...params);
   res.json(questions);

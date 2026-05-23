@@ -12,6 +12,7 @@ import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
+import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 
 // Lazy loading state for full poem data
 const fullData = ref<Poem[] | null>(null)
@@ -55,6 +56,8 @@ const dailyQuote = computed(() => {
 
 // Learning progress tracking
 const readerEntryTime = ref(0)
+const showChallenge = ref(false)
+const challengeSectionRef = ref('')
 const { token, user } = useAuth()
 const stats = useLearningStats('xueshici')
 
@@ -66,9 +69,13 @@ watch(currentView, (newView, oldView) => {
       reportLearningProgress(childId, 'poetry', 1, Math.max(1, elapsed))
     }
     readerEntryTime.value = 0
+    if (challengeSectionRef.value) showChallenge.value = true
   }
   if (newView === 'reader') {
     readerEntryTime.value = Date.now()
+    if (currentPoem.value && currentSection.value) {
+      challengeSectionRef.value = `shici:${currentPoem.value.id}:${currentSection.value.id}`
+    }
   }
 })
 
@@ -499,6 +506,13 @@ onUnmounted(() => {
       <p>本平台所收录的古典诗词均为公有领域作品。现代作品片段仅作教学引用，版权归原作者所有。如涉及侵权，请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p>
     </div>
     <FooterBar v-if="currentView === 'home'" />
+    <ReadingChallenge
+      :visible="showChallenge"
+      subject="shici"
+      :sectionRef="challengeSectionRef"
+      server-url="https://tiaozhan.grandand.com"
+      @close="showChallenge = false"
+    />
   </div>
   </YouthModeGate>
 </template>
