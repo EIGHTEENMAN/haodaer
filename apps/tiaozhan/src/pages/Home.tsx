@@ -36,6 +36,7 @@ const SUBJECTS = [
   { id: 'guoxue', name: '国学', icon: '📖' },
   { id: 'shici', name: '诗词', icon: '📜' },
   { id: 'tongshi', name: '通识', icon: '🌍' },
+  { id: 'english', name: '英语', icon: '🔤' },
   { id: 'mixed', name: '混合', icon: '🔀' },
 ]
 const LEADER_TABS = [
@@ -43,6 +44,7 @@ const LEADER_TABS = [
   { id: 'guoxue', name: '国学榜' },
   { id: 'shici', name: '诗词榜' },
   { id: 'tongshi', name: '通识榜' },
+  { id: 'english', name: '英语榜' },
 ]
 const LEADER_MODES = [
   { id: 'global', name: '🌐 全球对战' },

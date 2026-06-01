@@ -54,7 +54,8 @@ export class BootScene extends Phaser.Scene {
         if (progress >= 1) {
           this.cameras.main.fadeOut(500, 0, 0, 0)
           this.time.delayedCall(500, () => {
-            // GameScene starts when user enters a stage
+            // Clear the fade effect so it doesn't keep drawing a black overlay
+            this.cameras.main.fadeEffect.reset()
           })
         }
       },

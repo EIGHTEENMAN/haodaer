@@ -49,28 +49,20 @@ export const gameStore = reactive({
   isPaused: false,
   showQuestion: false,
   showSkillSelect: false,
-  damageNumbers: [] as DamageNum[],
+  showStageClear: false,
+  showGameOver: false,
 
-  // Stage/world progression
+  // World progression
   currentWorld: "",
   currentStage: 1,
-  remainingTime: 0,
+  stageWords: [] as WordData[],
+
+  // Stage state
   stageMonstersAlive: 0,
   stageMonstersTotal: 0,
   wordsLearnedInStage: 0,
-  showStageClear: false,
-  showGameOver: false,
-  stageWords: [] as WordData[],
+  remainingTime: 0,
 })
-
-let dnId = 0
-export function addDamageNumber(text: string, x: number, y: number, color = "#ff0") {
-  const id = ++dnId
-  gameStore.damageNumbers.push({ id, text, x, y, color })
-  setTimeout(() => {
-    gameStore.damageNumbers = gameStore.damageNumbers.filter(d => d.id !== id)
-  }, 1500)
-}
 
 export function selectSkill(index: number) {
   const skill = SKILLS[index]
@@ -103,7 +95,7 @@ export function saveProgress(worldId: string, stageNumber: number) {
     let progress: { unlockedWorlds: string[]; completedStages: Record<string, number[]> }
     if (raw) {
       progress = JSON.parse(raw)
-      // Normalize old flat format: { "ANIMAL": [1] } → { completedStages: { "ANIMAL": [1] } }
+      // Normalize old flat format
       if (!progress.completedStages) {
         const flat = progress as unknown as Record<string, number[]>
         progress = { unlockedWorlds: ["ANIMAL"], completedStages: {} }
@@ -139,7 +131,6 @@ export function getProgress() {
     const raw = localStorage.getItem("ultraman_progress")
     if (!raw) return { unlockedWorlds: ["ANIMAL"], completedStages: {} as Record<string, number[]> }
     const data = JSON.parse(raw)
-    // Handle old flat format
     if (!data.completedStages) {
       const completedStages: Record<string, number[]> = {}
       for (const key of Object.keys(data)) {

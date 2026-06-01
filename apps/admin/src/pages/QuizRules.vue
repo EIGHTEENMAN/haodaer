@@ -4,10 +4,10 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const overview = [
-  { subject: '诗词', count: 4400, types: 3, source: 'xueshici/src/data/poems.ts（934 首）' },
-  { subject: '国学', count: 1510, types: 4, source: 'xueguoxue/src/data/classics.ts（92 部）' },
+  { subject: '诗词', count: 5917, types: 5, source: 'xueshici/src/data/poems.ts（934 首）' },
+  { subject: '国学', count: 2801, types: 4, source: 'xueguoxue/src/data/classics.ts（92 部）' },
   { subject: '英语', count: 2000, types: 3, source: 'english/src/data/words.ts（3000 词）' },
-  { subject: '通识', count: 1366, types: 4, source: 'xuetongshi/src/data/knowledge.ts（243 主题）' },
+  { subject: '通识', count: 3477, types: 4, source: 'xuetongshi/src/data/knowledge.ts（243 主题）' },
 ]
 
 interface RuleRow {
@@ -20,8 +20,10 @@ interface RuleRow {
 
 const shiciRules: RuleRow[] = [
   { type: '下一句', template: '「{上句}」的下一句是？', target: '2,200', difficulty: '知名作者=1 / 唐宋=1 / 其他=2', strategy: '同诗 → 同作者 → 同朝代 → 任意' },
-  { type: '作者是谁', template: '「{诗句}」是哪位诗人写的？', target: '1,100', difficulty: '极知名作者=1 / 其他=2', strategy: '同朝代作者 → 其他作者' },
+  { type: '作者是谁', template: '「{诗句}」是哪位诗人写的？', target: '1,102', difficulty: '极知名作者=1 / 其他=2', strategy: '同朝代作者 → 其他作者' },
   { type: '出自哪首诗', template: '「{诗句}」出自哪首诗？', target: '1,100', difficulty: '随机 [1, 2, 2]', strategy: '同作者其他诗 → 全部诗' },
+  { type: '意境题', template: '《{诗名}》营造了怎样的意境？', target: '620', difficulty: '固定 2', strategy: '按标签映射（田园/边塞/爱情等 28 类）+ 知名诗人风格兜底' },
+  { type: '理解题', template: '下列哪项是对《{诗名}》的正确理解？', target: '897', difficulty: '固定 2', strategy: '同诗其他章节理解 → 其他诗理解' },
 ]
 
 const guoxueRules: RuleRow[] = [
@@ -79,7 +81,7 @@ const diffColors = (d: string) => {
   <div class="card" style="margin-bottom:16px">
     <div class="section-header">
       <h3 class="section-title">📜 诗词</h3>
-      <span class="tag tag-blue">shici · 4,400 题</span>
+      <span class="tag tag-blue">shici · 5,917 题</span>
     </div>
     <table class="data-table">
       <thead><tr><th style="width:100px">题型</th><th>问题模板</th><th style="width:80px">数量</th><th style="width:140px">难度</th><th>干扰项优先级</th></tr></thead>
@@ -99,7 +101,7 @@ const diffColors = (d: string) => {
   <div class="card" style="margin-bottom:16px">
     <div class="section-header">
       <h3 class="section-title">📚 国学</h3>
-      <span class="tag tag-blue">guoxue · ~1,510 题</span>
+      <span class="tag tag-blue">guoxue · 2,801 题</span>
     </div>
     <table class="data-table">
       <thead><tr><th style="width:100px">题型</th><th>问题模板</th><th style="width:80px">数量</th><th style="width:140px">难度</th><th>干扰项优先级</th></tr></thead>
@@ -139,7 +141,7 @@ const diffColors = (d: string) => {
   <div class="card">
     <div class="section-header">
       <h3 class="section-title">🌍 通识</h3>
-      <span class="tag tag-blue">general/science · 1,344 题</span>
+      <span class="tag tag-blue">general/science · 3,477 题</span>
     </div>
     <table class="data-table">
       <thead><tr><th style="width:100px">题型</th><th>问题模板</th><th style="width:80px">数量</th><th style="width:200px">难度</th><th>干扰项优先级</th></tr></thead>

@@ -4,7 +4,9 @@ import eventBus, { GameEvents } from "../scenes/EventBus"
 const SPEED = 250
 
 export class Player {
-  sprite: Phaser.Physics.Arcade.Sprite
+  container: Phaser.GameObjects.Container
+  graphics: Phaser.GameObjects.Graphics
+  physicsSprite: Phaser.Physics.Arcade.Image
   private scene: Phaser.Scene
   private keys: {
     W: Phaser.Input.Keyboard.Key
@@ -26,11 +28,21 @@ export class Player {
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     this.scene = scene
-    this.createPlayerTexture()
-    this.sprite = scene.physics.add.sprite(x, y, "__PLAYER_NEW")
-    this.sprite.setCollideWorldBounds(true)
-    this.sprite.setSize(36, 50)
-    this.sprite.setDepth(10)
+
+    // Container (visual root)
+    this.container = scene.add.container(x, y).setDepth(10)
+
+    // Graphics — draw the player character
+    this.graphics = scene.add.graphics()
+    this.container.add(this.graphics)
+    this.drawPlayer()
+
+    // Physics sprite (invisible, for colliders and world bounds)
+    this.physicsSprite = scene.physics.add.image(x, y, "__PIXEL")
+    this.physicsSprite.setVisible(false)
+    this.physicsSprite.body.setSize(36, 50)
+    this.physicsSprite.setCollideWorldBounds(true)
+    this.physicsSprite.setDepth(10)
 
     // Keyboard
     if (scene.input.keyboard) {
@@ -62,7 +74,7 @@ export class Player {
         const dy = p.y - this.touchStartY
         const len = Math.sqrt(dx * dx + dy * dy)
         if (len > 15) {
-          this.sprite.setVelocity(
+          this.physicsSprite.setVelocity(
             (dx / len) * SPEED,
             (dy / len) * SPEED
           )
@@ -72,61 +84,67 @@ export class Player {
     scene.input.on("pointerup", (p: Phaser.Input.Pointer) => {
       if (p.id === this.touchId) {
         this.touchActive = false
-        this.sprite.setVelocity(0, 0)
+        this.physicsSprite.setVelocity(0, 0)
       }
     })
   }
 
-  private createPlayerTexture() {
-    if (this.scene.textures.exists("__PLAYER_NEW")) return
-    const gfx = this.scene.add.graphics()
+  private drawPlayer() {
+    this.graphics.clear()
+    const gfx = this.graphics
 
     // Head (skin tone)
     gfx.fillStyle(0xffcc99)
-    gfx.fillRect(14, 5, 28, 22)
+    gfx.fillRect(14 - 28, 5 - 33, 28, 22)
 
     // Black hair on top of head
     gfx.fillStyle(0x111111)
-    gfx.fillRect(14, 5, 28, 6)
+    gfx.fillRect(14 - 28, 5 - 33, 28, 6)
 
     // Eyes
     gfx.fillStyle(0x000000)
-    gfx.fillRect(19, 11, 6, 5)
-    gfx.fillRect(31, 11, 6, 5)
+    gfx.fillRect(19 - 28, 11 - 33, 6, 5)
+    gfx.fillRect(31 - 28, 11 - 33, 6, 5)
 
     // Mouth (determined)
     gfx.fillStyle(0x000000)
-    gfx.fillRect(22, 18, 12, 2)
+    gfx.fillRect(22 - 28, 18 - 33, 12, 2)
 
-    // Body — yellow jumpsuit (Bruce Lee Game of Death style)
+    // Body — yellow jumpsuit
     gfx.fillStyle(0xeebb00)
-    gfx.fillRect(10, 27, 36, 24)
+    gfx.fillRect(10 - 28, 27 - 33, 36, 24)
 
-    // Black stripe down the middle of the jumpsuit
+    // Black stripe
     gfx.fillStyle(0x222222)
-    gfx.fillRect(26, 27, 4, 24)
+    gfx.fillRect(26 - 28, 27 - 33, 4, 24)
 
-    // Arms — skin color (sleeveless)
+    // Arms
     gfx.fillStyle(0xffcc99)
-    gfx.fillRect(3, 28, 7, 18)
-    gfx.fillRect(46, 28, 7, 18)
+    gfx.fillRect(3 - 28, 28 - 33, 7, 18)
+    gfx.fillRect(46 - 28, 28 - 33, 7, 18)
 
-    // Legs — black pants
+    // Legs
     gfx.fillStyle(0x222222)
-    gfx.fillRect(14, 51, 12, 14)
-    gfx.fillRect(30, 51, 12, 14)
+    gfx.fillRect(14 - 28, 51 - 33, 12, 14)
+    gfx.fillRect(30 - 28, 51 - 33, 12, 14)
 
-    // Barefoot / black shoes
+    // Shoes
     gfx.fillStyle(0x333333)
-    gfx.fillRect(14, 62, 12, 4)
-    gfx.fillRect(30, 62, 12, 4)
-
-    gfx.generateTexture("__PLAYER_NEW", 56, 66)
-    gfx.destroy()
+    gfx.fillRect(14 - 28, 62 - 33, 12, 4)
+    gfx.fillRect(30 - 28, 62 - 33, 12, 4)
   }
 
+  /** Sync container to physics sprite position */
+  syncVisual() {
+    this.container.setPosition(this.physicsSprite.x, this.physicsSprite.y)
+  }
+
+  /** Proxy getters */
+  get x() { return this.physicsSprite.x }
+  get y() { return this.physicsSprite.y }
+  get sprite() { return this.physicsSprite }
+
   update() {
-    // WASD + Arrow keys movement
     let vx = 0, vy = 0
     if (this.keys) {
       if (this.keys.W.isDown || this.keys.UP.isDown) vy = -1
@@ -140,7 +158,7 @@ export class Player {
         vx *= 0.707
         vy *= 0.707
       }
-      this.sprite.setVelocity(vx * SPEED, vy * SPEED)
+      this.physicsSprite.setVelocity(vx * SPEED, vy * SPEED)
     }
 
     // Space to trigger skill select / question
@@ -150,10 +168,12 @@ export class Player {
   }
 
   getPosition() {
-    return { x: this.sprite.x, y: this.sprite.y }
+    return { x: this.physicsSprite.x, y: this.physicsSprite.y }
   }
 
   destroy() {
-    this.sprite.destroy()
+    this.graphics.destroy()
+    this.physicsSprite.destroy()
+    this.container.destroy()
   }
 }

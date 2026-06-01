@@ -10,7 +10,14 @@ function getCookie(name: string): string | null {
 }
 
 export function getToken(): string | null {
-  return sessionStorage.getItem(TOKEN_KEY)
+  const t = sessionStorage.getItem(TOKEN_KEY)
+  if (t) return t
+  const c = getCookie(TOKEN_KEY)
+  if (c) {
+    sessionStorage.setItem(TOKEN_KEY, c)
+    return c
+  }
+  return null
 }
 
 export function setToken(token: string, syncToken?: string) {

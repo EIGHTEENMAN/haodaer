@@ -49,6 +49,7 @@ const UI_CATEGORY_MAP: Record<string, string[]> = {
   guoxue: ['guoxue'],
   shici: ['shici'],
   tongshi: ['general', 'science'],
+  english: ['english'],
   mixed: [],
 }
 
@@ -210,7 +211,8 @@ export default function QuizBattle({ user, onBack, initialMode, initialCategory,
       try { wsRef.current.close() } catch {}
     }
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
-    const url = `${protocol}//${location.hostname}:${location.port}/?token=${encodeURIComponent(user.token)}`
+    const wsPort = import.meta.env.DEV ? '3001' : location.port
+    const url = `${protocol}//${location.hostname}:${wsPort}/?token=${encodeURIComponent(user.token)}`
     const socket = new WebSocket(url)
     wsRef.current = socket
 

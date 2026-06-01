@@ -7,7 +7,7 @@ import { playWordAudio, playBruceLeeShout, getSkillPitch } from "../../utils/aud
 import { gameStore, SKILLS, startCooldown, unlockSkillsForStage, saveProgress } from "../../stores/gameStore"
 import { recordAnswer } from "../../stores/wordStore"
 import { SkillEffects } from "../skills/SkillEffects"
-import { WORLDS, WORLD_BG_COLORS, WORLD_OBSTACLE_COLORS } from "../../data/stages"
+import { WORLDS, WORLD_BG_COLORS, WORLD_OBSTACLE_COLORS, StageConfig } from "../../data/stages"
 import { words as allWords } from "../../data/words"
 import { WordData } from "../../stores/gameStore"
 
@@ -80,6 +80,15 @@ export class GameScene extends Phaser.Scene {
     this.invulnerableTimer = 0
     this.monsterGroup = this.add.group()
 
+    // Generate 1x1 pixel texture for invisible physics sprites
+    if (!this.textures.exists("__PIXEL")) {
+      const g = this.add.graphics()
+      g.fillStyle(0xffffff, 1)
+      g.fillRect(0, 0, 1, 1)
+      g.generateTexture("__PIXEL", 1, 1)
+      g.destroy()
+    }
+
     const worldId = gameStore.currentWorld
     const stageNum = gameStore.currentStage
     const world = WORLDS.find(w => w.id === worldId)
@@ -87,14 +96,19 @@ export class GameScene extends Phaser.Scene {
     const stageConfig = world.stages.find(s => s.stage === stageNum)
     if (!stageConfig) { console.error("Stage config not found:", worldId, stageNum); return }
 
+    // Provide defaults for optional arena fields
+    const monsterCount = stageConfig.monsterCount ?? 2
+    const timeLimit = stageConfig.timeLimit ?? 0
+    const bulletSpeed = stageConfig.bulletSpeed ?? 1
+
     gameStore.showQuestion = false
     gameStore.showSkillSelect = false
     gameStore.showStageClear = false
     gameStore.showGameOver = false
-    gameStore.stageMonstersAlive = stageConfig.monsterCount
-    gameStore.stageMonstersTotal = stageConfig.monsterCount
+    gameStore.stageMonstersAlive = monsterCount
+    gameStore.stageMonstersTotal = monsterCount
     gameStore.wordsLearnedInStage = 0
-    gameStore.remainingTime = stageConfig.timeLimit
+    gameStore.remainingTime = timeLimit
 
     unlockSkillsForStage(stageNum)
 
@@ -102,19 +116,19 @@ export class GameScene extends Phaser.Scene {
 
     // Player
     this.playerEntity = new Player(this, ARENA_W / 2, ARENA_H * 0.8)
-    this.physics.world.addCollider(this.playerEntity.sprite, this.walls)
+    this.physics.world.addCollider(this.playerEntity.physicsSprite, this.walls)
 
-    // Camera follows player
+    // Camera follows player's physics sprite
     this.cameras.main.setBounds(0, 0, ARENA_W, ARENA_H)
-    this.cameras.main.startFollow(this.playerEntity.sprite, true, 0.08, 0.08)
+    this.cameras.main.startFollow(this.playerEntity.physicsSprite, true, 0.08, 0.08)
 
     // Spawn monsters
-    const monsterPositions = this.getMonsterPositions(stageConfig.monsterCount, stageConfig.stage === 6)
+    const monsterPositions = this.getMonsterPositions(monsterCount, stageConfig.stage === 6)
     this.spawnMonsters(monsterPositions, stageConfig, world)
 
     // Obstacles
     this.obstacles = this.generateObstacles(worldId, monsterPositions)
-    this.physics.world.addCollider(this.playerEntity.sprite, this.obstacles)
+    this.physics.world.addCollider(this.playerEntity.physicsSprite, this.obstacles)
     this.physics.world.addCollider(this.monsterGroup, this.obstacles)
 
     // Monster ↔ walls
@@ -138,14 +152,14 @@ export class GameScene extends Phaser.Scene {
 
     // Stage timer
     this.stageStartTime = this.time.now
-    if (stageConfig.timeLimit > 0) {
-      this.stageTimer = stageConfig.timeLimit * 1000
+    if (timeLimit > 0) {
+      this.stageTimer = timeLimit * 1000
       this.timerEvent = this.time.addEvent({
         delay: 1000,
         loop: true,
         callback: () => {
           const elapsed = this.time.now - this.stageStartTime
-          const remaining = Math.max(0, stageConfig.timeLimit - Math.floor(elapsed / 1000))
+          const remaining = Math.max(0, timeLimit - Math.floor(elapsed / 1000))
           gameStore.remainingTime = remaining
           if (remaining <= 0) this.onStageTimeout()
         },
@@ -276,27 +290,32 @@ export class GameScene extends Phaser.Scene {
 
   private spawnMonsters(
     positions: { x: number; y: number }[],
-    stageConfig: { stage: number; wordDifficulty: number; bulletSpeed: number; monsterCount: number; timeLimit: number },
+    stageConfig: StageConfig,
     world: typeof WORLDS[0]
   ) {
-    let pool = allWords.filter(w => w.theme === world.theme && w.difficulty === stageConfig.wordDifficulty)
-    const fallbackPool = allWords.filter(w => w.difficulty === stageConfig.wordDifficulty)
-    if (pool.length < stageConfig.monsterCount) {
+    // Arena mode uses first difficulty value from the [min, max] tuple
+    const diff = stageConfig.wordDifficulty[0]
+    const mCount = stageConfig.monsterCount ?? 2
+    const bSpeed = stageConfig.bulletSpeed ?? 1
+    let pool = allWords.filter(w => w.theme === world.theme && w.difficulty === diff)
+    const fallbackPool = allWords.filter(w => w.difficulty === diff)
+    if (pool.length < mCount) {
       pool = fallbackPool
     }
     const isBoss = stageConfig.stage === 6
-    const monsterCount = isBoss ? 1 : stageConfig.monsterCount
+    const monsterCount = isBoss ? 1 : mCount
 
     // Offset each stage's slice so consecutive stages don't repeat words
     let offset = 0
     for (const s of world.stages) {
       if (s.stage >= stageConfig.stage) break
-      if (s.wordDifficulty === stageConfig.wordDifficulty) offset += s.monsterCount
+      const sDiff = Array.isArray(s.wordDifficulty) ? s.wordDifficulty[0] : s.wordDifficulty
+      if (sDiff === diff) offset += (s as any).monsterCount ?? 2
     }
     offset = offset % (pool.length || 1)
 
     // Map old bulletSpeed to chase speed index
-    const speedIdx = Math.min(stageConfig.bulletSpeed, 4)
+    const speedIdx = Math.min(bSpeed, 4)
     const chaseSpeed = CHASE_SPEEDS[speedIdx]
     const meleeDamage = MELEE_DAMAGES[speedIdx]
 
@@ -306,10 +325,9 @@ export class GameScene extends Phaser.Scene {
         : { id: 0, word: "HELLO", meaning: "你好", phonetic: "/həˈloʊ/", difficulty: 1, theme: world.theme, emoji: "👾", sentence: "Hello!", sentenceCn: "你好！" }
 
       const pos = positions[i]
-      Monster.preCreateTexture(this, wordData.id, wordData.difficulty, isBoss)
       const monster = new Monster(this, pos.x, pos.y, wordData, chaseSpeed, meleeDamage, isBoss)
       this.monsters.push(monster)
-      this.monsterGroup.add(monster)
+      this.monsterGroup.add(monster.physicsSprite)
     }
 
     // Save stage words (deduplicated) for the word summary page
@@ -519,14 +537,14 @@ export class GameScene extends Phaser.Scene {
     const types: ('audio' | 'chinese' | 'emoji')[] = ['audio', 'chinese', 'emoji']
     this.hintType = types[Math.floor(Math.random() * types.length)]
 
-    // Highlight target visually (add a glow indicator)
-    target.setTint(0xffff88)
+    // Highlight target visually (add a glow indicator via alpha pulse)
+    target.container.setAlpha(0.7)
     this.time.delayedCall(200, () => {
-      if (target.active) target.clearTint()
+      if (target.active) target.container.setAlpha(1)
     })
 
     // Emit hint to Vue HUD
-    eventBus.emit('hint:update', {
+    eventBus.emit(GameEvents.HINT_UPDATE, {
       word: target.wordData,
       hintType: this.hintType,
     })
@@ -724,7 +742,7 @@ export class GameScene extends Phaser.Scene {
           // Knockback player away from monster
           const dx = pos.x - m.x, dy = pos.y - m.y
           const dist = Math.sqrt(dx * dx + dy * dy) || 1
-          this.playerEntity.sprite.setVelocity(dx / dist * 200, dy / dist * 200)
+          this.playerEntity.physicsSprite.setVelocity(dx / dist * 200, dy / dist * 200)
         }
       }
     }
@@ -790,18 +808,22 @@ export class GameScene extends Phaser.Scene {
     // Update invulnerability timer
     if (this.invulnerableTimer > 0) {
       this.invulnerableTimer -= this.game.loop.delta
-      // Player blinks
-      this.playerEntity.sprite.setAlpha(Math.sin(this.time.now * 0.02) > 0 ? 1 : 0.4)
+      // Player blinks via container alpha
+      this.playerEntity.container.setAlpha(Math.sin(this.time.now * 0.02) > 0 ? 1 : 0.4)
     } else {
-      this.playerEntity.sprite.setAlpha(1)
+      this.playerEntity.container.setAlpha(1)
     }
 
     this.playerEntity.update()
+    this.playerEntity.syncVisual()
     this.checkMonsterMelee()
 
-    // Update monster labels
+    // Update monster labels and sync visuals
     for (const m of this.monsters) {
-      if (m.active) m.updateLabels()
+      if (m.active) {
+        m.updateLabels()
+        m.syncVisual()
+      }
     }
 
     // Skill key presses (1-5): select skill (selection mode)

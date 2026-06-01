@@ -28,7 +28,7 @@ jobs:
           username: root
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cd /app/${{ github.event.repository.name }}
+            cd /haodaer/${{ github.event.repository.name }}
             git pull
             npm ci --omit=dev
             pm2 restart ${{ github.event.repository.name }}

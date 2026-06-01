@@ -33,7 +33,7 @@ app.get('/api/system', (req, res) => {
     const mem = execSync("free -h | grep Mem | awk '{print $3 \"/\" $2}'", { encoding: 'utf8', timeout: 3000 }).trim();
     const load = execSync("uptime | awk -F'load average:' '{print $2}'", { encoding: 'utf8', timeout: 3000 }).trim();
     const node = execSync('node -v', { encoding: 'utf8', timeout: 3000 }).trim();
-    res.json({ disk, memory: mem, load, node, hostname: '121.196.230.54' });
+    res.json({ disk, memory: mem, load, node, hostname: '47.114.77.124' });
   } catch {
     res.json({});
   }
@@ -42,7 +42,7 @@ app.get('/api/system', (req, res) => {
 // Travel-guide DB stats
 app.get('/api/stats', (req, res) => {
   try {
-    const env = readFileSync('/app/travel-guide/.env', 'utf8');
+    const env = readFileSync('/haodaer/apps/travel-guide/.env', 'utf8');
     const line = env.split('\n').find(l => l.startsWith('DATABASE_URL='));
     if (!line) return res.json({});
     const dbUrl = line.substring('DATABASE_URL='.length).replace(/\?schema=.*$/, '');

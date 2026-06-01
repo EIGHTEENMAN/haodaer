@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
 const { generateTokens, verifyRefreshToken, revokeSession, revokeAllUserSessions, setTokenCookie } = require('../utils/jwt');
 const { authenticate } = require('../middleware/auth');
+const { sendSms } = require('../sms');
 
 const router = express.Router();
 
@@ -145,7 +146,7 @@ router.post('/logout', (req, res) => {
 });
 
 // POST /api/auth/send-code - Send SMS verification code
-router.post('/send-code', (req, res) => {
+router.post('/send-code', async (req, res) => {
   const { phone, purpose } = req.body;
   if (!phone) {
     return res.status(400).json({ code: 'INVALID_INPUT', message: '手机号不能为空' });
@@ -158,10 +159,13 @@ router.post('/send-code', (req, res) => {
     `INSERT INTO verification_codes (id, phone, code, purpose, expires_at) VALUES (?, ?, ?, ?, ?)`
   ).run(uuidv4(), phone, code, purpose || 'register', expiresAt);
 
-  // TODO: Integrate with Aliyun SMS service
-  console.log(`[SMS] Code for ${phone}: ${code} (purpose: ${purpose || 'register'})`);
-
-  res.json({ code: 'OK', message: '验证码已发送（开发模式）' });
+  try {
+    await sendSms(phone, code, purpose);
+    res.json({ code: 'OK', message: '验证码已发送' });
+  } catch (err) {
+    console.error('[SMS] Failed to send:', err.message);
+    res.status(500).json({ code: 'SMS_FAILED', message: '短信发送失败，请稍后重试' });
+  }
 });
 
 // POST /api/auth/parent-consent - Parent consent for under-14 users

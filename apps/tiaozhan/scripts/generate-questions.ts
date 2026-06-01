@@ -1082,6 +1082,151 @@ function generateTongshiQuestions(): QuestionRow[] {
   return results
 }
 
+// ===================== 意境题 Generator =====================
+
+/**
+ * Mood/意境 descriptor mapping by poem tag category.
+ * Each tag maps to 2-3 distinct mood descriptors for variety.
+ */
+const YIJING_DESCRIPTORS: Record<string, string[]> = {
+  '田园': ['恬淡清新的田园意境', '闲适自然的归隐之乐', '质朴生动的农家生活'],
+  '边塞': ['雄浑壮阔的边塞风光', '苍凉悲壮的征战情怀', '慷慨豪迈的报国之志'],
+  '爱情': ['婉约缠绵的相思之情', '真挚动人的爱情吟咏', '含蓄隽永的深情眷恋'],
+  '感怀': ['深沉悠远的感怀之情', '悲凉慷慨的人生感慨', '孤寂落寞的内心独白'],
+  '写景': ['优美动人的山水画卷', '壮丽雄奇的自然风光', '清新明丽的景色描绘'],
+  '送别': ['依依惜别的深厚情谊', '豪迈旷达的送别情怀', '伤感惆怅的离别之情'],
+  '思乡': ['魂牵梦萦的思乡之情', '孤寂凄凉的羁旅之思', '深切浓郁的故园之恋'],
+  '怀古': ['悠远苍茫的历史感怀', '物是人非的沧桑之叹', '借古讽今的深沉感慨'],
+  '咏物': ['托物言志的巧妙寄寓', '细致入微的物态描摹', '借物抒怀的深沉寄托'],
+  '哲理': ['深邃睿智的人生哲思', '通透豁达的处世之道', '直指人心的哲理启示'],
+  '情感': ['真挚深沉的情感抒发', '细腻动人的内心写照', '直抒胸臆的情感表达'],
+  '民生': ['忧国忧民的深沉情怀', '心系苍生的悲悯之心', '关切民瘼的现实写照'],
+  '叙事': ['质朴生动的叙事风格', '平实流畅的娓娓道来', '以小见大的生活实录'],
+  '战争': ['悲壮惨烈的战争画卷', '慷慨激昂的报国热情', '硝烟弥漫的沙场风云'],
+  '讽刺': ['辛辣犀利的讽刺笔法', '针砭时弊的深刻揭露', '寓庄于谐的巧妙批判'],
+  '抒情': ['直抒胸臆的情感抒发', '酣畅淋漓的心灵独白', '真挚感人的肺腑之言'],
+  '咏史': ['以古鉴今的历史沉思', '兴亡更替的沧桑感慨', '借史抒怀的深沉咏叹'],
+  '励志': ['积极昂扬的奋发精神', '百折不挠的坚定信念', '追求理想的执着情怀'],
+  '神话': ['奇幻瑰丽的浪漫想象', '神秘悠远的远古传说', '瑰丽多彩的神话世界'],
+  '友谊': ['真挚深厚的友人情谊', '肝胆相照的知己之情', '志同道合的深厚交谊'],
+  '宴饮': ['欢快酣畅的宴饮之乐', '豪爽洒脱的饮酒情怀', '宾主尽欢的热烈场面'],
+  '农事': ['朴实自然的田园劳作', '辛勤耕耘的农家生活', '春华秋实的丰收喜悦'],
+  '民歌': ['质朴清新的民歌风味', '生动活泼的民间生活', '朗朗上口的民间歌谣'],
+  '亲情': ['血浓于水的骨肉亲情', '温馨感人的家庭温暖', '殷切深沉的慈爱之心'],
+  '思念': ['刻骨铭心的深切思念', '望眼欲穿的殷切期盼', '魂牵梦萦的相思之苦'],
+  '悼亡': ['阴阳两隔的悲恸哀思', '睹物思人的无尽怀念', '生死茫茫的凄楚哀伤'],
+  '颂歌': ['热情洋溢的赞美歌颂', '崇高庄严的礼赞之情', '振奋人心的颂扬之歌'],
+  '寓言': ['寓意深远的哲理寓言', '借物喻理的巧妙构思', '言近旨远的深刻启示'],
+  '婚嫁': ['喜庆祥和的婚嫁场景', '美好真挚的爱情祝福', '幸福美满的婚姻礼赞'],
+}
+
+/// Known poet signature styles for 经典-tagged poems without specific mood tag
+const POET_STYLE: Record<string, string[]> = {
+  '李白': ['豪放飘逸的浪漫情怀', '天马行空的瑰丽想象', '狂放不羁的醉歌人生'],
+  '杜甫': ['沉郁顿挫的家国之忧', '苍凉深沉的乱世悲歌', '忧国忧民的赤子之心'],
+  '王维': ['清新空灵的山水意境', '诗中有画的禅意境界', '恬淡悠远的自然之趣'],
+  '白居易': ['平易浅切的现实关怀', '通俗晓畅的叙事风格', '关切民生的真挚情怀'],
+  '李商隐': ['婉约含蓄的深情绵邈', '朦胧凄美的无题诗境', '缠绵悱恻的相思情愫'],
+  '杜牧': ['俊爽清丽的怀古幽思', '明丽隽永的秋景描绘', '风流蕴藉的历史感怀'],
+  '王昌龄': ['雄浑豪放的边塞气概', '深沉婉约的宫怨闺情', '慷慨悲壮的军旅情怀'],
+  '高适': ['悲壮苍凉的边塞诗风', '慷慨豪迈的报国之志', '雄浑质直的塞外壮歌'],
+  '岑参': ['雄奇壮丽的边塞奇景', '瑰丽奇幻的异域风光', '豪迈乐观的戍边情怀'],
+  '孟浩然': ['恬淡自然的山水之趣', '清新质朴的田园风光', '闲适淡泊的隐逸情怀'],
+  '韩愈': ['雄奇险怪的独特诗风', '以文为诗的革新气魄', '气势磅礴的宏伟格局'],
+  '柳宗元': ['清冷孤峭的山水意境', '孤寂高洁的贬谪情怀', '峻洁深沉的幽独境界'],
+  '李贺': ['奇崛瑰丽的浪漫想象', '幽冷凄艳的鬼魅诗境', '惊心动魄的奇特意象'],
+  '刘禹锡': ['豪迈昂扬的乐观精神', '隽永含蓄的怀古咏史', '清新明快的民歌风味'],
+  '温庭筠': ['婉约绮丽的闺怨诗情', '浓艳精美的辞藻雕琢', '含蓄深沉的离愁别绪'],
+  '苏轼': ['豪放旷达的人生境界', '挥洒自如的洒脱气度', '超然物外的豁达胸怀'],
+  '辛弃疾': ['悲壮激昂的爱国豪情', '雄浑豪放的金戈铁马', '壮志未酬的慷慨悲歌'],
+  '李清照': ['婉约含蓄的细腻情感', '凄婉动人的离愁别绪', '清新自然的女性视角'],
+  '陆游': ['雄浑悲壮的爱国情怀', '慷慨激昂的收复之志', '壮志难酬的悲愤感慨'],
+  '柳永': ['婉约缠绵的离情别绪', '清丽婉转的都市风情', '浅斟低唱的市井生活'],
+  '陶渊明': ['恬淡自然的归隐之乐', '超然物外的田园境界', '淡泊明志的高洁情怀'],
+  '曹操': ['雄浑悲壮的慷慨之歌', '气韵沉雄的壮阔胸怀', '求贤若渴的宏大气度'],
+  '王安石': ['精练深沉的怀古咏史', '雄健峭拔的独特风格', '意境开阔的山水之作'],
+  '杨万里': ['清新活泼的自然之趣', '幽默风趣的日常生活', '明快自然的山水小景'],
+  '范成大': ['平实自然的田园风光', '细腻入微的农事描写', '质朴清新的乡土气息'],
+  '纳兰性德': ['哀感顽艳的深情词章', '清丽婉转的相思离愁', '真挚动人的情感世界'],
+  '李煜': ['凄婉哀绝的亡国之痛', '纯真深情的赤子之词', '血泪交加的故国之思'],
+  '岳飞': ['气壮山河的爱国豪情', '壮志未酬的悲愤情怀', '慷慨激昂的英雄气概'],
+  '文天祥': ['慷慨悲壮的民族气节', '视死如归的凛然正气', '坚贞不屈的爱国精神'],
+  '班固': ['典雅庄重的史笔诗风', '铺陈排比的赋体风格', '宏阔壮丽的历史画卷'],
+  '屈原': ['激越悲壮的爱国忧思', '瑰丽奇特的浪漫想象', '香草美人的比兴寄托'],
+}
+
+/**
+ * Generate mood/意境 questions for 诗词.
+ * Maps poem tags to artistic conception descriptors.
+ * Each poem → "《{title}》营造了怎样的意境？"
+ */
+function generateShiciMoodQuestions(): QuestionRow[] {
+  const results: QuestionRow[] = []
+  const usedPoems = new Set<string>()
+
+  // Collect all mood descriptors for distractor pool
+  const allDescriptors = new Set<string>()
+  for (const descs of Object.values(YIJING_DESCRIPTORS)) {
+    for (const d of descs) allDescriptors.add(d)
+  }
+  for (const descs of Object.values(POET_STYLE)) {
+    for (const d of descs) allDescriptors.add(d)
+  }
+  const descriptorPool = [...allDescriptors]
+
+  for (const poem of poemsData) {
+    const poemKey = `${poem.id}`
+    if (usedPoems.has(poemKey)) continue
+    usedPoems.add(poemKey)
+
+    // Extract the mood tag (second part of tags, e.g. "唐,田园" → "田园")
+    const tagParts = poem.tags.split(',')
+    const moodTag = tagParts.length >= 2 ? tagParts[1].trim() : ''
+
+    // Determine the correct descriptor for this poem
+    let correctDescriptor = ''
+
+    if (YIJING_DESCRIPTORS[moodTag]) {
+      // Use tag-based descriptor
+      const descs = YIJING_DESCRIPTORS[moodTag]
+      const idx = poem.id % descs.length
+      correctDescriptor = descs[idx]
+    } else if (POET_STYLE[poem.author]) {
+      // Fall back to author style for 经典-tagged poems by famous poets
+      const descs = POET_STYLE[poem.author]
+      const idx = poem.id % descs.length
+      correctDescriptor = descs[idx]
+    }
+
+    if (!correctDescriptor) continue
+
+    // Pick distractors from other descriptors (not the same tag group)
+    const sameTagDescs = YIJING_DESCRIPTORS[moodTag] || POET_STYLE[poem.author] || []
+    const diffPool = descriptorPool.filter(d => !sameTagDescs.includes(d))
+    const distractors = pickDistractors(correctDescriptor, 3, diffPool)
+
+    if (distractors.length < 3) continue
+
+    const options = shuffle([correctDescriptor, ...distractors])
+    const answer = options.indexOf(correctDescriptor)
+
+    // Use first section for section_ref
+    const section = poem.sections[0]
+    if (!section) continue
+
+    results.push({
+      category: 'shici',
+      question: `《${poem.title}》营造了怎样的意境？`,
+      options: JSON.stringify(options),
+      answer,
+      difficulty: 2,
+      section_ref: `shici:${poem.id}:${section.id}`,
+    })
+  }
+
+  return results
+}
+
 // ===================== 理解题 Generators =====================
 
 /**
@@ -1279,32 +1424,37 @@ function main() {
   console.log(`   → 诗词题目: ${shici.length}\n`)
   allQuestions.push(...shici)
 
-  console.log('📜 [2/7] 生成诗词理解题...')
+  console.log('📜 [2/7] 生成诗词意境题...')
+  const shiciMood = generateShiciMoodQuestions()
+  console.log(`   → 诗词意境题: ${shiciMood.length}\n`)
+  allQuestions.push(...shiciMood)
+
+  console.log('📜 [3/7] 生成诗词理解题...')
   const shiciComp = generateShiciComprehensionQuestions()
   console.log(`   → 诗词理解题: ${shiciComp.length}\n`)
   allQuestions.push(...shiciComp)
 
-  console.log('📚 [3/7] 生成国学题目 (target: 2,000)...')
+  console.log('📚 [5/8] 生成国学题目 (target: 2,000)...')
   const guoxue = generateGuoxueQuestions()
   console.log(`   → 国学题目: ${guoxue.length}\n`)
   allQuestions.push(...guoxue)
 
-  console.log('📚 [4/7] 生成国学理解题...')
+  console.log('📚 [6/8] 生成国学理解题...')
   const guoxueComp = generateGuoxueComprehensionQuestions()
   console.log(`   → 国学理解题: ${guoxueComp.length}\n`)
   allQuestions.push(...guoxueComp)
 
-  console.log('🔤 [5/7] 生成英语题目 (target: 2,000)...')
+  console.log('🔤 [7/8] 生成英语题目 (target: 2,000)...')
   const eng = generateEnglishQuestions()
   console.log(`   → 英语题目: ${eng.length}\n`)
   allQuestions.push(...eng)
 
-  console.log('🌍 [6/7] 生成通识题目 (target: 2,000)...')
+  console.log('🌍 [8/8] 生成通识题目 (target: 2,000)...')
   const tongshi = generateTongshiQuestions()
   console.log(`   → 通识题目: ${tongshi.length}\n`)
   allQuestions.push(...tongshi)
 
-  console.log('🌍 [7/7] 生成通识理解题...')
+  console.log('🌍 生成通识理解题...')
   const tongshiComp = generateTongshiComprehensionQuestions()
   console.log(`   → 通识理解题: ${tongshiComp.length}\n`)
   allQuestions.push(...tongshiComp)

@@ -12,6 +12,6 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, '../shared/src'),
     },
   },
-  server: { port: 3001, proxy: { '/api': 'http://localhost:3001' } },
+  server: { port: 3011, proxy: { '/api': 'http://localhost:3001' } },
   build: { outDir: 'dist' },
 })

@@ -12,7 +12,8 @@
 
 ## 快速信息
 
-- 服务器：121.196.230.54 (阿里云 ECS, root/Hdet@2026)
+- 服务器：47.114.77.124 (阿里云 ECS, root/Hde@2026)
+- 服务器路径：`/haodaer/`（好大儿所有项目）⚠️ 不要与其他项目文件夹混用
 - GitHub 组织：github.com/EIGHTEENMAN (12个仓库)
 - 完整方案：`项目建设方案/好大儿项目建设方案（v3.2 终极版）.txt`
 
@@ -70,6 +71,10 @@ cd apps/auth-service && npm run dev
 
 # 新开终端，启动主站或其他应用
 cd apps/main-site && npm run dev
+
+# ⚠️ tiaozhan（来挑战）需要同时启动前后端：
+cd apps/tiaozhan && npm run server-dev   # 终端1：Express 后端 (端口 3001)
+cd apps/tiaozhan && npm run dev          # 终端2：Vite 前端 (端口 3011，API代理到3001)
 ```
 
 **要求：** Node.js >= 18。数据库用 SQLite，无需额外安装。环境变量（微信/Aliyun key等）默认空值即可本地开发。
@@ -85,7 +90,7 @@ cd apps/main-site && npm run dev
 | xueguoxue | 3003 | ✅ (壳子) |
 | xuetongshi | 3004 | ✅ (壳子) |
 | ultraman-english | 3002 | ✅ (壳子) |
-| haodaer-tiaozhan | 3001 | ✅ tiaozhan.grandand.com |
+| haodaer-tiaozhan | 3001 / 3011 | ✅ tiaozhan.grandand.com (后端3001, 前端dev端口3011) |
 | haodaer-forum | 3005 | ✅ forum.grandand.com |
 | haodaer-store | 3006 | ✅ store.grandand.com |
 | haodaer-moderation | 3020 | ✅ 内部审核服务 |

@@ -1,30 +1,41 @@
 <template>
   <YouthModeGate>
-  <div class="game-container">
+  <div class="game-container" :class="{ 'game-playing': screen === 'playing' }">
     <!-- Non-playing screens -->
-    <StartScreen v-if="screen === 'start'" @start="screen = 'worldSelect'" @words="showReview = true" @profile="showProfile = true" />
+    <StartScreen v-if="screen === 'start'" @quest="startQuestMode" @arena="startArenaMode" @words="showReview = true" @profile="showProfile = true" />
     <WorldSelect v-else-if="screen === 'worldSelect'" @select="onSelectWorld" @back="screen = 'start'" />
-    <StageMap v-else-if="screen === 'stageMap'" :world-id="currentWorld" @start="onStartStage" @back="screen = 'worldSelect'" />
+    <StageMap v-else-if="screen === 'stageSelect'" :world-id="selectedWorld" @start="onStartStage" @back="screen = 'worldSelect'" />
 
-    <!-- Word preview before battle -->
-    <WordPreview v-if="screen === 'wordPreview'" @start="startBattle" />
+    <!-- Playing screen — Phaser scenes handle all UI -->
+    <div v-show="screen === 'playing'">
+      <!-- Quest mode overlay -->
+      <div v-if="gameMode === 'quest'" class="phaser-overlay">
+        <div class="overlay-controls">
+          <span class="back-btn" @click="goToWorldSelect">← WORLDS</span>
+          <span class="collection-btn" @click="showPokedex = true">📖</span>
+        </div>
+      </div>
 
-    <!-- Word summary after stage clear -->
-    <WordSummary v-if="screen === 'wordSummary'" @next="onWordSummaryNext" />
+      <!-- Arena mode overlays -->
+      <div v-if="gameMode === 'arena'">
+        <StageHUD v-if="!gameStore.showQuestion && !gameStore.showSkillSelect && !gameStore.showStageClear && !gameStore.showGameOver" />
+        <WordPreview v-if="gameStore.showQuestion" @answer="onWordAnswer" />
+        <SkillBar v-if="gameStore.showSkillSelect" @select="onSkillSelect" />
+        <div v-if="gameStore.showStageClear || gameStore.showGameOver" class="arena-overlay-bg">
+          <!-- empty backdrop while modal shows -->
+        </div>
+        <!-- Arena quit button -->
+        <div class="arena-quit-btn" @click="goToWorldSelect" v-if="!gameStore.showQuestion && !gameStore.showStageClear && !gameStore.showGameOver">
+          ← EXIT
+        </div>
+      </div>
+    </div>
 
-    <!-- Playing screen -->
-    <StageHUD
-      v-if="screen === 'playing'"
-      :world-index="worldIndex"
-      :stage-number="gameStore.currentStage"
-      :time-limit="timeLimit"
-      :remaining-time="gameStore.remainingTime"
-      :alive-count="gameStore.stageMonstersAlive"
-      :total-count="gameStore.stageMonstersTotal"
-      :words-learned="gameStore.wordsLearnedInStage"
-      :show-stage-clear="gameStore.showStageClear"
-      :show-game-over="gameStore.showGameOver"
-    />
+    <!-- WordSummary (arena game completion) -->
+    <WordSummary v-if="screen === 'wordSummary'" @back="screen = 'stageSelect'" />
+
+    <!-- Pokedex overlay -->
+    <Pokedex v-if="showPokedex" @back="showPokedex = false" />
 
     <!-- Copyright -->
     <div class="game-copyright">英语单词学习内容仅供教学参考。<a href="https://grandand.com/legal#complaint" target="_blank" style="color:#94a3b8;">侵权投诉</a></div>
@@ -32,31 +43,29 @@
     <!-- Overlay screens -->
     <ReviewPage v-if="showReview" @back="showReview = false" />
     <PersonalCenter v-if="showProfile" @back="showProfile = false" />
-
-    <!-- Damage numbers are now rendered as Phaser text in GameScene -->
   </div>
   </YouthModeGate>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from "vue"
+import { ref, onMounted, onUnmounted, computed, watch } from "vue"
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import StartScreen from "./components/StartScreen.vue"
 import WorldSelect from "./components/WorldSelect.vue"
 import StageMap from "./components/StageMap.vue"
 import StageHUD from "./components/StageHUD.vue"
 import WordPreview from "./components/WordPreview.vue"
+import SkillBar from "./components/SkillBar.vue"
 import WordSummary from "./components/WordSummary.vue"
 import ReviewPage from "./components/ReviewPage.vue"
 import PersonalCenter from "./components/PersonalCenter.vue"
+import Pokedex from "./components/Pokedex.vue"
 import { gameStore } from "./stores/gameStore"
-import { player } from "./stores/playerStore"
 import { wordStore } from "./stores/wordStore"
-import { restartGameScene, gameRef } from "./game/index"
-import { WORLDS } from "./data/stages"
+import { startOverworld, startArenaGame, gameRef } from "./game/index"
+import { loadPokedex } from "./stores/pokedexStore"
 import eventBus, { GameEvents } from "./game/scenes/EventBus"
 import { loadFromStorage, saveToStorage } from "./utils/storage"
-import { syncGameData } from "./utils/sync"
 import { registerWordAudio } from "./utils/audio"
 import { words as wordData } from "./data/words"
 
@@ -65,86 +74,101 @@ const screen = computed({
   set: (v: string) => { gameStore.screen = v as any },
 })
 
-const currentWorld = computed(() => gameStore.currentWorld)
-
-const worldIndex = computed(() => {
-  const idx = WORLDS.findIndex(w => w.id === gameStore.currentWorld)
-  return idx >= 0 ? idx + 1 : 1
-})
-
-const timeLimit = computed(() => {
-  const world = WORLDS.find(w => w.id === gameStore.currentWorld)
-  if (!world) return 0
-  const stage = world.stages.find(s => s.stage === gameStore.currentStage)
-  return stage?.timeLimit || 0
-})
-
 const showReview = ref(false)
 const showProfile = ref(false)
+const showPokedex = ref(false)
+const gameMode = ref<'quest' | 'arena'>('quest')
+const selectedWorld = ref('')
+
+// Allow clicks through to Phaser canvas when playing (Vue #app sits above canvas in z-order)
+watch(screen, (val) => {
+  const app = document.getElementById('app')
+  if (app) {
+    if (val === 'playing') {
+      app.style.pointerEvents = 'none'
+    } else {
+      app.style.pointerEvents = ''
+    }
+  }
+}, { immediate: true })
+
+function startQuestMode() {
+  gameMode.value = 'quest'
+  screen.value = "worldSelect"
+}
+
+function startArenaMode() {
+  gameMode.value = 'arena'
+  screen.value = "worldSelect"
+}
 
 function onSelectWorld(worldId: string) {
   gameStore.currentWorld = worldId
-  screen.value = "stageMap"
+  if (gameMode.value === 'arena') {
+    selectedWorld.value = worldId
+    screen.value = "stageSelect"
+  } else {
+    screen.value = "playing"
+    startOverworld(worldId)
+  }
 }
 
 function onStartStage(stageNumber: number) {
+  const game = gameRef.current
+  if (!game) return
   gameStore.currentStage = stageNumber
-  // Go to word preview first
-  screen.value = "wordPreview"
-}
-
-function startBattle() {
-  player.hp = player.maxHp
-  player.score = 0
-  player.combo = 0
-  player.maxCombo = 0
-  player.monstersKilled = 0
-  player.correctCount = 0
-  player.wrongCount = 0
-  gameStore.selectedSkill = 0
-  restartGameScene()
   screen.value = "playing"
+  // Stop any running Phaser scenes
+  if (game.scene.isActive('OverworldScene')) game.scene.stop('OverworldScene')
+  if (game.scene.isActive('BattleScene')) game.scene.stop('BattleScene')
+  if (game.scene.isActive('GameScene')) game.scene.stop('GameScene')
+  if (game.scene.isActive('BootScene')) game.scene.stop('BootScene')
+  startArenaGame()
 }
 
-function advanceStage() {
-  syncGameData(player.level, player.score)
-  gameStore.currentStage++
-  player.hp = player.maxHp
-  player.combo = 0
-  // Stop current game scene
-  const game = gameRef.current
-  if (game && game.scene.isActive('GameScene')) {
-    game.scene.stop('GameScene')
-  }
-  screen.value = "wordPreview"
-}
-
-function onWordSummaryNext() {
-  if (gameStore.currentStage < 6) {
-    // Advance to next stage's word preview
-    advanceStage()
-  } else {
-    // Stage 6 complete, back to map
-    goBackToMap()
-  }
-}
-
-function goBackToMap() {
-  syncGameData(player.level, player.score)
-  gameStore.screen = "stageMap"
+function onWordAnswer(correct: boolean) {
+  eventBus.emit(GameEvents.PLAYER_ATTACK, correct)
   gameStore.showQuestion = false
+}
+
+function onSkillSelect(skillIndex: number) {
+  gameStore.selectedSkill = skillIndex
   gameStore.showSkillSelect = false
-  gameStore.showStageClear = false
-  gameStore.showGameOver = false
-  gameStore.isPaused = false
+}
+
+function goToWorldSelect() {
+  screen.value = "worldSelect"
+  // Stop Phaser scenes
   const game = gameRef.current
-  if (game && game.scene.isActive('GameScene')) {
-    game.scene.stop('GameScene')
+  if (game) {
+    if (game.scene.isActive('OverworldScene')) game.scene.stop('OverworldScene')
+    if (game.scene.isActive('BattleScene')) game.scene.stop('BattleScene')
+    if (game.scene.isActive('GameScene')) game.scene.stop('GameScene')
+    if (game.scene.isActive('BootScene')) game.scene.stop('BootScene')
   }
 }
 
 onMounted(() => {
   loadFromStorage()
+  loadPokedex()
+
+  // Listen for Phaser scene events
+  eventBus.on(GameEvents.BACK_TO_MAP, goToWorldSelect)
+  eventBus.on(GameEvents.BATTLE_END, () => {
+    requestAnimationFrame(() => {
+      const game = gameRef.current
+      if (!game) return
+      if (game.scene.isActive('BattleScene')) game.scene.stop('BattleScene')
+      // Wake overworld if it was sleeping / resume movement
+      const ow = game.scene.getScene('OverworldScene')
+      if (ow) {
+        if (ow.scene.isSleeping()) game.scene.wake('OverworldScene')
+        if (typeof (ow as any).resumeExploration === 'function') {
+          (ow as any).resumeExploration()
+        }
+      }
+    })
+  })
 
   // Clear stale word records from testing/dev
   if (wordStore.records.size > 0 && wordStore.lastStudyDate !== new Date().toDateString()) {
@@ -181,13 +205,11 @@ onMounted(() => {
   }
 
   setInterval(saveToStorage, 30000)
-  eventBus.on(GameEvents.ADVANCE_STAGE, advanceStage)
-  eventBus.on(GameEvents.BACK_TO_MAP, goBackToMap)
 })
 
 onUnmounted(() => {
-  eventBus.off(GameEvents.ADVANCE_STAGE, advanceStage)
-  eventBus.off(GameEvents.BACK_TO_MAP, goBackToMap)
+  eventBus.off(GameEvents.BACK_TO_MAP, goToWorldSelect)
+  eventBus.off(GameEvents.BATTLE_END)
 })
 </script>
 
@@ -208,7 +230,15 @@ html, body {
   height: 100%;
   position: relative;
 }
-#phaser-container canvas { display: block; }
+/* When Phaser is active:
+   - #app (z-index:1) set to pointer-events:none by JS so clicks fall through to the canvas
+   - Only Vue overlay controls have pointer-events:auto
+*/
+.game-playing .phaser-overlay { pointer-events: auto; }
+.game-playing .pokedex-overlay,
+.game-playing .review-page,
+.game-playing .profile-screen { pointer-events: auto; }
+.game-playing .game-copyright { pointer-events: none; }
 .game-copyright {
   position: fixed; bottom: 0; left: 0; right: 0;
   text-align: center; padding: 4px 16px;
@@ -217,4 +247,39 @@ html, body {
   background: rgba(26, 26, 46, 0.8);
   z-index: 1000;
 }
+.phaser-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  pointer-events: none;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.overlay-controls {
+  pointer-events: auto;
+  display: flex;
+  gap: 8px;
+}
+.back-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #ffffff;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+.back-btn:hover { background: rgba(0,0,0,0.7); }
+.collection-btn {
+  font-size: 20px;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 10px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+.collection-btn:hover { background: rgba(0,0,0,0.7); }
 </style>

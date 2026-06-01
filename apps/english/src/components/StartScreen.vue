@@ -2,7 +2,7 @@
   <div class="start-screen">
     <div class="start-box">
       <h1 class="title">ENGLISH<br>QUEST</h1>
-      <div class="subtitle">Bullet Hell Word Game</div>
+      <div class="subtitle">Word Monster Quest</div>
 
       <!-- Auth info -->
       <div class="auth-area">
@@ -24,31 +24,43 @@
         <p>WORDS LEARNED: {{ wordCount }} · MASTERED: {{ masteredCount }}</p>
       </div>
 
-      <button class="start-btn" @click="$emit('start')">
-        PLAY
+      <button class="start-btn quest-btn" @click="$emit('quest')">
+        QUEST
       </button>
+      <div class="mode-desc">探索世界，回合制战斗</div>
+
+      <div class="mode-divider">— or —</div>
+
+      <button class="start-btn arena-btn" @click="$emit('arena')">
+        ARENA
+      </button>
+      <div class="mode-desc">实时打斗，单词攻击</div>
 
       <div class="action-row">
+        <button class="action-btn" @click="showHowToPlay = true">HOW TO PLAY</button>
         <button class="action-btn" @click="$emit('words')">WORDS</button>
         <button class="action-btn" @click="$emit('profile')">PROFILE</button>
       </div>
 
       <div class="controls-hint">
-        <p>WASD Dodge · SPACE Attack</p>
+        <p>WASD / Arrow Keys to Move</p>
       </div>
     </div>
 
     <LoginModal v-if="showLogin" @logged-in="onLoggedIn" />
+    <HowToPlay v-if="showHowToPlay" @back="showHowToPlay = false" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue"
 import LoginModal from "./LoginModal.vue"
+import HowToPlay from "./HowToPlay.vue"
 import { wordStore, getMasteredCount } from "../stores/wordStore"
 
-const emit = defineEmits<{ start: []; words: []; profile: [] }>()
+const emit = defineEmits<{ quest: []; arena: []; words: []; profile: [] }>()
 const showLogin = ref(false)
+const showHowToPlay = ref(false)
 
 const loggedIn = ref(false)
 const userName = ref("")
@@ -235,7 +247,7 @@ const masteredCount = computed(() => getMasteredCount())
 }
 .start-btn {
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 4px;
   padding: 16px 60px;
   border: 3px solid #ffd700;
   background: #d4a017;
@@ -246,9 +258,25 @@ const masteredCount = computed(() => getMasteredCount())
   cursor: pointer;
   transition: all 0.1s;
 }
+.quest-btn { border-color: #ffd700; background: #d4a017; }
+.arena-btn { border-color: #ff6b6b; background: #c0392b; color: #fff; }
+.arena-btn:hover { background: #e74c3c; }
 .start-btn:hover {
   transform: scale(1.05);
   filter: brightness(1.1);
+}
+.mode-desc {
+  font-size: 10px;
+  color: #888;
+  margin-bottom: 12px;
+  font-family: 'Press Start 2P', monospace;
+}
+.mode-divider {
+  text-align: center;
+  color: #555;
+  font-size: 12px;
+  margin: 8px 0;
+  font-family: 'Press Start 2P', monospace;
 }
 .action-row {
   display: flex;

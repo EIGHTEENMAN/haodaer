@@ -41,11 +41,8 @@ export function addXp(amount: number) {
   return false
 }
 
-export function addScore(base: number) {
-  const multiplier = player.combo >= 20 ? 10 : player.combo >= 10 ? 5 : player.combo >= 5 ? 3 : player.combo >= 3 ? 2 : 1
-  const points = base * multiplier
-  player.score += points
-  return { points, multiplier }
+export function addScore(amount: number) {
+  player.score += amount
 }
 
 export function addCombo() {

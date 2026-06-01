@@ -6,8 +6,9 @@ const config = {
     refreshExpiresIn: '7d',
   },
   sms: {
-    accessKeyId: process.env.SMS_ACCESS_KEY_ID || '',
-    accessKeySecret: process.env.SMS_ACCESS_KEY_SECRET || '',
+    // ECS 实例 RAM 角色方案 — SDK 自动获取临时凭证，不配任何密钥
+    // 阿里云控制台操作：创建 RAM 角色 → 绑定到 ECS 实例
+    regionId: process.env.SMS_REGION_ID || 'cn-hangzhou',
     signName: process.env.SMS_SIGN_NAME || '好大儿',
     templateCode: process.env.SMS_TEMPLATE_CODE || '',
   },

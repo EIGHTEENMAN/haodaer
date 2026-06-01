@@ -24,9 +24,12 @@ const SIZES: Record<ProjectileType, number> = {
 }
 
 const MAX_LIFETIME = 8000
-const TRAIL_INTERVAL = 40 // ms between trail particles
+const TRAIL_INTERVAL = 40
 
-export class Projectile extends Phaser.Physics.Arcade.Sprite {
+export class Projectile {
+  container: Phaser.GameObjects.Container
+  graphics: Phaser.GameObjects.Graphics
+  physicsSprite: Phaser.Physics.Arcade.Image
   bulletType: ProjectileType
   letter: string
   private vx: number
@@ -36,6 +39,12 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
   private target: { x: number; y: number } | null
   private lastTrail = 0
   private fireColors: number[]
+  private scene: Phaser.Scene
+  private label: Phaser.GameObjects.Text | null = null
+
+  get x() { return this.physicsSprite.x }
+  get y() { return this.physicsSprite.y }
+  get active() { return this.physicsSprite.active }
 
   constructor(
     scene: Phaser.Scene,
@@ -47,9 +56,7 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
     letter = "",
     target?: { x: number; y: number }
   ) {
-    const key = `__PROJ_${type}_${Math.random().toString(36).slice(2, 6)}`
-    createProjectileTexture(scene, key, type)
-    super(scene, x, y, key)
+    this.scene = scene
     this.bulletType = type
     this.letter = letter
     this.born = scene.time.now
@@ -62,15 +69,23 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
     this.vx = (dirX / len) * speed
     this.vy = (dirY / len) * speed
 
-    scene.add.existing(this)
-    scene.physics.add.existing(this)
+    // Container
+    this.container = scene.add.container(x, y).setDepth(8)
 
-    this.setDepth(8)
-    this.setSize(SIZES[type] * 0.7, SIZES[type] * 0.7)
+    // Graphics — draw projectile
+    this.graphics = scene.add.graphics()
+    this.container.add(this.graphics)
+    this.drawProjectile(type)
+
+    // Physics sprite (invisible)
+    this.physicsSprite = scene.physics.add.image(x, y, "__PIXEL")
+    this.physicsSprite.setVisible(false)
+    this.physicsSprite.body.setSize(SIZES[type] * 0.7, SIZES[type] * 0.7)
+    this.physicsSprite.setDepth(8)
 
     // Letter label for LETTER type
     if (type === "LETTER" && letter) {
-      const label = scene.add.text(x, y, letter.toUpperCase(), {
+      this.label = scene.add.text(0, 0, letter.toUpperCase(), {
         fontSize: "11px",
         color: "#ffffff",
         stroke: "#000000",
@@ -78,15 +93,105 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
         fontFamily: "monospace",
         fontStyle: "bold",
       }).setOrigin(0.5).setDepth(9)
-      this.on("destroy", () => {
-        if (label.active) label.destroy()
-      })
-      scene.events.on("update", () => {
-        if (this.active) label.setPosition(this.x, this.y)
-      })
+      this.container.add(this.label)
     }
 
     this.setVelocity(this.vx, this.vy)
+  }
+
+  private drawProjectile(type: ProjectileType) {
+    this.graphics.clear()
+    const size = SIZES[type]
+    const cx = size / 2
+    const cy = size / 2
+
+    switch (type) {
+      case "FIREBALL": {
+        this.graphics.fillStyle(0xff2200, 0.15)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.65)
+        this.graphics.fillStyle(0xff4400, 0.30)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.5)
+        this.graphics.fillStyle(0xff4400, 1)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.42)
+        this.graphics.fillStyle(0xff8800, 0.9)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.3)
+        this.graphics.fillStyle(0xffcc00, 0.85)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.18)
+        this.graphics.fillStyle(0xffffff, 0.8)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.08)
+
+        const spikeCount = 7
+        for (let i = 0; i < spikeCount; i++) {
+          const angle = (i / spikeCount) * Math.PI * 2 + 0.1
+          const spikeDist = size * 0.4
+          const sx = (cx - size / 2) + Math.cos(angle) * spikeDist
+          const sy = (cy - size / 2) + Math.sin(angle) * spikeDist
+          this.graphics.fillStyle(0xff6600, 0.5)
+          this.graphics.fillCircle(sx, sy, 2.5 + Math.random() * 1.5)
+          const outerDist = size * 0.48
+          this.graphics.fillStyle(0xff2200, 0.25)
+          this.graphics.fillCircle(
+            (cx - size / 2) + Math.cos(angle) * outerDist,
+            (cy - size / 2) + Math.sin(angle) * outerDist,
+            1.5
+          )
+        }
+        break
+      }
+      case "LETTER": {
+        const s = size
+        this.graphics.fillStyle(0x222244, 1)
+        this.graphics.fillRect(0, 0, s, s)
+        this.graphics.fillStyle(COLORS.LETTER, 1)
+        this.graphics.fillRect(1, 1, s - 2, s - 2)
+        break
+      }
+      case "SCATTER": {
+        this.graphics.fillStyle(COLORS.SCATTER, 1)
+        this.graphics.fillTriangle(size / 2, 0, 0, size, size, size)
+        this.graphics.fillTriangle(size / 2, size, 0, 0, size, 0)
+        break
+      }
+      case "BOSS": {
+        this.graphics.fillStyle(0x440000, 0.25)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.7)
+        this.graphics.fillStyle(0x880000, 0.4)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.55)
+        this.graphics.fillStyle(0xcc0000, 1)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.45)
+        this.graphics.fillStyle(0xff2200, 1)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.32)
+        this.graphics.fillStyle(0xff6600, 0.9)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.2)
+        this.graphics.fillStyle(0xffcc00, 0.8)
+        this.graphics.fillCircle(cx - size / 2, cy - size / 2, size * 0.1)
+        this.graphics.fillStyle(0xffffff, 0.15)
+        this.graphics.fillRect((cx - size / 2) - 4, (cy - size / 2) - 3, 8, 2)
+        this.graphics.fillRect((cx - size / 2) - 3, (cy - size / 2) + 1, 6, 1)
+        for (let i = 0; i < 10; i++) {
+          const angle = (i / 10) * Math.PI * 2
+          const dist = size * 0.42
+          this.graphics.fillStyle(0xcc0000, 0.5)
+          this.graphics.fillCircle(
+            (cx - size / 2) + Math.cos(angle) * dist,
+            (cy - size / 2) + Math.sin(angle) * dist,
+            3
+          )
+        }
+        break
+      }
+    }
+  }
+
+  /** Sync container position to physics sprite */
+  syncVisual() {
+    this.container.setPosition(this.physicsSprite.x, this.physicsSprite.y)
+  }
+
+  setVelocity(vx: number, vy: number) {
+    this.vx = vx
+    this.vy = vy
+    this.physicsSprite.setVelocity(vx, vy)
   }
 
   update(playerX: number, playerY: number) {
@@ -114,14 +219,14 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    // Rotate for visual flair
+    // Rotate container for visual flair
     if (this.bulletType === "FIREBALL" || this.bulletType === "BOSS") {
-      this.rotation += 0.15
+      this.container.rotation += 0.15
     } else {
-      this.rotation += 0.1
+      this.container.rotation += 0.1
     }
 
-    // 🔥 Fire trail particles (FIREBALL and BOSS)
+    // Fire trail particles
     if ((this.bulletType === "FIREBALL" || this.bulletType === "BOSS") && this.scene) {
       const now = this.scene.time.now
       if (now - this.lastTrail > TRAIL_INTERVAL) {
@@ -164,7 +269,6 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
   }
 
   kill() {
-    // 🔥 Enhanced particle burst on destruction
     const type = this.bulletType
     const isFire = type === "FIREBALL" || type === "BOSS"
     const particleCount = isFire ? 12 : 4
@@ -174,12 +278,10 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
       const dist = 10 + Math.random() * 25
 
       if (isFire) {
-        // Fire-colored particles
         const colors = [0xff2200, 0xff4400, 0xff6600, 0xffaa00, 0xffdd00]
         const color = colors[Math.floor(Math.random() * colors.length)]
         const size = 2 + Math.random() * 3
         const p = this.scene.add.circle(this.x, this.y, size, color, 0.8).setDepth(8)
-
         this.scene.tweens.add({
           targets: p,
           x: this.x + Math.cos(angle) * dist,
@@ -205,7 +307,10 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    this.destroy()
+    this.label?.destroy()
+    this.graphics.destroy()
+    this.physicsSprite.destroy()
+    this.container.destroy()
   }
 
   static spawnScatter(scene: Phaser.Scene, x: number, y: number, targetX: number, targetY: number) {
@@ -221,122 +326,4 @@ export class Projectile extends Phaser.Physics.Arcade.Sprite {
     }
     return bullets
   }
-}
-
-function createProjectileTexture(scene: Phaser.Scene, key: string, type: ProjectileType) {
-  if (scene.textures.exists(key)) return
-  const gfx = scene.add.graphics()
-  const size = SIZES[type]
-
-  switch (type) {
-    case "FIREBALL": {
-      // 🔥 Multi-layered fireball with outer glow and flame spikes
-      const cx = size / 2
-      const cy = size / 2
-
-      // Outer glow layer
-      gfx.fillStyle(0xff2200, 0.15)
-      gfx.fillCircle(cx, cy, size * 0.65)
-
-      // Mid glow
-      gfx.fillStyle(0xff4400, 0.30)
-      gfx.fillCircle(cx, cy, size * 0.5)
-
-      // Main body (bright red-orange)
-      gfx.fillStyle(0xff4400, 1)
-      gfx.fillCircle(cx, cy, size * 0.42)
-
-      // Mid layer (orange)
-      gfx.fillStyle(0xff8800, 0.9)
-      gfx.fillCircle(cx, cy, size * 0.3)
-
-      // Inner (bright yellow)
-      gfx.fillStyle(0xffcc00, 0.85)
-      gfx.fillCircle(cx, cy, size * 0.18)
-
-      // Core (white-hot)
-      gfx.fillStyle(0xffffff, 0.8)
-      gfx.fillCircle(cx, cy, size * 0.08)
-
-      // Flame spikes around the edge
-      const spikeCount = 7
-      for (let i = 0; i < spikeCount; i++) {
-        const angle = (i / spikeCount) * Math.PI * 2 + 0.1
-        const spikeDist = size * 0.4
-        const sx = cx + Math.cos(angle) * spikeDist
-        const sy = cy + Math.sin(angle) * spikeDist
-        const spikeSize = 2.5 + Math.random() * 1.5
-        gfx.fillStyle(0xff6600, 0.5)
-        gfx.fillCircle(sx, sy, spikeSize)
-        // Smaller outer spike
-        const outerDist = size * 0.48
-        const ox = cx + Math.cos(angle) * outerDist
-        const oy = cy + Math.sin(angle) * outerDist
-        gfx.fillStyle(0xff2200, 0.25)
-        gfx.fillCircle(ox, oy, 1.5)
-      }
-      break
-    }
-    case "LETTER": {
-      // Square with border
-      gfx.fillStyle(0x222244, 1)
-      gfx.fillRect(0, 0, size, size)
-      gfx.fillStyle(COLORS.LETTER, 1)
-      gfx.fillRect(1, 1, size - 2, size - 2)
-      break
-    }
-    case "SCATTER": {
-      // Small diamond
-      gfx.fillStyle(COLORS.SCATTER, 1)
-      gfx.fillTriangle(size / 2, 0, 0, size, size, size)
-      gfx.fillTriangle(size / 2, size, 0, 0, size, 0)
-      break
-    }
-    case "BOSS": {
-      // 🔥 Menacing dark fireball
-      const cx = size / 2
-      const cy = size / 2
-
-      // Dark outer aura
-      gfx.fillStyle(0x440000, 0.25)
-      gfx.fillCircle(cx, cy, size * 0.7)
-
-      // Outer ring
-      gfx.fillStyle(0x880000, 0.4)
-      gfx.fillCircle(cx, cy, size * 0.55)
-
-      // Main body
-      gfx.fillStyle(0xcc0000, 1)
-      gfx.fillCircle(cx, cy, size * 0.45)
-
-      // Mid layer
-      gfx.fillStyle(0xff2200, 1)
-      gfx.fillCircle(cx, cy, size * 0.32)
-
-      // Inner glow
-      gfx.fillStyle(0xff6600, 0.9)
-      gfx.fillCircle(cx, cy, size * 0.2)
-
-      // Core (white-hot)
-      gfx.fillStyle(0xffcc00, 0.8)
-      gfx.fillCircle(cx, cy, size * 0.1)
-
-      // Skull-like pattern
-      gfx.fillStyle(0xffffff, 0.15)
-      gfx.fillRect(cx - 4, cy - 3, 8, 2)
-      gfx.fillRect(cx - 3, cy + 1, 6, 1)
-
-      // Menacing flame spikes
-      for (let i = 0; i < 10; i++) {
-        const angle = (i / 10) * Math.PI * 2
-        const dist = size * 0.42
-        gfx.fillStyle(0xcc0000, 0.5)
-        gfx.fillCircle(cx + Math.cos(angle) * dist, cy + Math.sin(angle) * dist, 3)
-      }
-      break
-    }
-  }
-
-  gfx.generateTexture(key, size + 6, size + 6)
-  gfx.destroy()
 }

@@ -40,8 +40,8 @@ async function loadQuestions() {
     const url = `${base}/api/quiz/solo?subjects=${props.subject}&section_ref=${encodeURIComponent(props.sectionRef)}&limit=3`
     const res = await fetch(url)
     const d = await res.json()
-    if (d.code === 'OK' && d.data && d.data.length > 0) {
-      questions.value = d.data
+    if (Array.isArray(d) && d.length > 0) {
+      questions.value = d
     } else {
       emit('close')
     }

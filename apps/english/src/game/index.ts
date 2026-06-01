@@ -1,5 +1,7 @@
 import Phaser from "phaser"
 import { BootScene } from "./scenes/BootScene"
+import { OverworldScene } from "./scenes/OverworldScene"
+import { BattleScene } from "./scenes/BattleScene"
 import { GameScene } from "./scenes/GameScene"
 
 export const gameRef = { current: null as Phaser.Game | null }
@@ -12,7 +14,8 @@ export function createGame() {
     parent: "phaser-container",
     width: 800,
     height: 600,
-    backgroundColor: "#3a7d44",
+    backgroundColor: "#1a1a2e",
+    preserveDrawingBuffer: true,
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -21,26 +24,40 @@ export function createGame() {
       default: "arcade",
       arcade: { gravity: { x: 0, y: 0 }, debug: false },
     },
-    scene: [BootScene, GameScene],
+    scene: [BootScene, OverworldScene, BattleScene, GameScene],
   })
   gameRef.current = phaserGame
+  // Expose for E2E testing
+  if (typeof window !== 'undefined') (window as any).__PHASER_GAME__ = phaserGame
   return phaserGame
 }
 
-export function restartGameScene() {
+export function startArenaGame() {
   if (!phaserGame) return
   try {
+    if (phaserGame.scene.isActive('OverworldScene')) phaserGame.scene.stop('OverworldScene')
+    if (phaserGame.scene.isActive('BattleScene')) phaserGame.scene.stop('BattleScene')
+    if (phaserGame.scene.isActive('BootScene')) phaserGame.scene.stop('BootScene')
+    phaserGame.scene.start('GameScene')
+  } catch {
+    phaserGame.scene.start('GameScene')
+  }
+}
+
+export function startOverworld(worldId: string) {
+  if (!phaserGame) return
+  try {
+    if (phaserGame.scene.isActive('BattleScene')) {
+      phaserGame.scene.stop('BattleScene')
+    }
     if (phaserGame.scene.isActive('BootScene')) {
       phaserGame.scene.stop('BootScene')
     }
-    // Force stop and restart GameScene fresh
-    if (phaserGame.scene.isActive('GameScene')) {
-      phaserGame.scene.stop('GameScene')
+    if (phaserGame.scene.isActive('OverworldScene')) {
+      phaserGame.scene.stop('OverworldScene')
     }
-    phaserGame.scene.start('GameScene')
+    phaserGame.scene.start('OverworldScene', { worldId })
   } catch {
-    phaserGame.scene.stop('BootScene')
-    phaserGame.scene.stop('GameScene')
-    phaserGame.scene.start('GameScene')
+    phaserGame.scene.start('OverworldScene', { worldId })
   }
 }

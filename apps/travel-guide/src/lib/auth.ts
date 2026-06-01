@@ -4,9 +4,21 @@ const TOKEN_KEY = 'haodaer_token';
 const USER_KEY = 'haodaer_user';
 const NEW_USER_KEY = 'haodaer_isNewUser';
 
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(?:^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 export function getToken(): string | null {
   if (typeof window === 'undefined') return null;
-  return sessionStorage.getItem(TOKEN_KEY);
+  const t = sessionStorage.getItem(TOKEN_KEY);
+  if (t) return t;
+  const c = getCookie(TOKEN_KEY);
+  if (c) {
+    sessionStorage.setItem(TOKEN_KEY, c);
+    return c;
+  }
+  return null;
 }
 
 export function setToken(token: string, syncToken?: string) {
