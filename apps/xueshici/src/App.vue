@@ -14,6 +14,7 @@ import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 import PointReader from '@shared/components/PointReader.vue'
+import PoemIllustration from './components/PoemIllustration.vue'
 
 // Lazy loading state for full poem data
 const fullData = ref<Poem[] | null>(null)
@@ -436,6 +437,15 @@ onUnmounted(() => {
       <div class="sc-detail-wrap">
         <button class="sc-back" @click="goBack()">← 返回</button>
         <div class="sc-detail-card">
+          <!-- 诗配画（详情页缩小版） -->
+          <PoemIllustration
+            v-if="currentPoem"
+            :poemId="currentPoem.id"
+            :poemTitle="currentPoem.title"
+            :poemAuthor="currentPoem.author"
+            :poemDynasty="currentPoem.dynasty"
+            :color="categoryColors[currentPoem.category]"
+          />
           <h1 class="sc-detail-title">{{ currentPoem.title }}</h1>
           <p class="sc-detail-meta">{{ currentPoem.author }} · {{ currentPoem.dynasty }}</p>
           <div class="sc-detail-tags">
@@ -467,6 +477,16 @@ onUnmounted(() => {
           <button class="sc-back" @click="goBack()">← 返回</button>
           <span class="sc-reader-title">{{ currentPoem?.title }} · {{ currentSection.title || '全文' }}</span>
         </div>
+
+        <!-- 诗配画 -->
+        <PoemIllustration
+          v-if="currentPoem"
+          :poemId="currentPoem.id"
+          :poemTitle="currentPoem.title"
+          :poemAuthor="currentPoem.author"
+          :poemDynasty="currentPoem.dynasty"
+          :color="categoryColors[currentPoem.category]"
+        />
 
         <div class="sc-content-sections">
           <div class="sc-content-block">

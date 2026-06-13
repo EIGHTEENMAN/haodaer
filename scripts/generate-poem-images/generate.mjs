@@ -1,0 +1,322 @@
+/**
+ * 诗配画引擎 — 主生成脚本
+ *
+ * 用法：
+ *   node generate.mjs              # 批量生成所有待处理的诗词配图
+ *   MOCK=true node generate.mjs    # 模拟模式（不调用真实 API）
+ *   node generate.mjs --status     # 查看生成状态
+ *   node generate.mjs --retry      # 重试失败项
+ *   node generate.mjs --clean      # 清空已完成状态重新生成
+ *
+ * 环境变量：
+ *   AI_PROVIDER=mock|dall-e|tongyi  API 后端选择
+ *   OPENAI_API_KEY=sk-xxx          OpenAI API Key
+ *   ALIBABA_ACCESS_KEY_ID=xxx      阿里云 AccessKey
+ *   ALIBABA_ACCESS_KEY_SECRET=xxx  阿里云 AccessKey Secret
+ */
+
+import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'fs'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { CONFIG, IMAGE_EXT } from './config.mjs'
+import { buildPrompt } from './promptBuilder.mjs'
+import { Tracker } from './tracker.mjs'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// ===== 日志颜色 =====
+const C = {
+  reset: '\x1b[0m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  red: '\x1b[31m',
+  blue: '\x1b[34m',
+  cyan: '\x1b[36m',
+  dim: '\x1b[2m',
+}
+
+function log(color, tag, msg) {
+  console.log(`${color}[${tag}]${C.reset} ${msg}`)
+}
+
+// ===== 主流程 =====
+async function main() {
+  const args = process.argv.slice(2)
+  const isStatus = args.includes('--status')
+  const isRetry = args.includes('--retry')
+  const isClean = args.includes('--clean')
+  const isMock = process.env.MOCK === 'true' || CONFIG.provider === 'mock'
+
+  // === 加载诗词数据（从预导出的 JSON） ===
+  const jsonPath = resolve(__dirname, '../../apps/xueshici/public/images/poems/poems-data.json')
+  if (!existsSync(jsonPath)) {
+    console.error(`❌ 未找到导出的诗词数据 JSON: ${jsonPath}`)
+    console.error('请先运行: cd scripts/generate-poem-images && npx tsx export-data.mjs')
+    process.exit(1)
+  }
+  const poems = JSON.parse(readFileSync(jsonPath, 'utf-8'))
+  console.log(`📚 加载了 ${poems.length} 首诗词数据`)
+
+  // === 初始化 ===
+  const tracker = new Tracker()
+  tracker.registerPoems(poems)
+
+  // === 只看状态 ===
+  if (isStatus) {
+    tracker.printStats()
+    return
+  }
+
+  // === 清理 ===
+  if (isClean) {
+    console.log('🧹 清空所有完成状态...')
+    for (const [id, info] of Object.entries(tracker.data.poems)) {
+      if (info.status === 'done' || info.status === 'skipped') {
+        info.status = 'pending'
+      }
+    }
+    tracker._save()
+    console.log('✅ 已重置，准备重新生成')
+    return
+  }
+
+  // === 准备输出目录 ===
+  const outputDir = resolve(__dirname, CONFIG.generation.outputDir)
+  if (!existsSync(outputDir)) {
+    mkdirSync(outputDir, { recursive: true })
+    log(C.blue, 'DIR', `创建输出目录: ${outputDir}`)
+  }
+
+  // === 获取待生成列表 ===
+  let pendingIds = tracker.getPending(isRetry)
+  if (pendingIds.length === 0) {
+    console.log('\n🎉 所有诗词配图已生成完毕！')
+    tracker.printStats()
+    return
+  }
+
+  console.log(`\n🖼️  准备生成 ${pendingIds.length} 张诗词配图`)
+  if (isMock) {
+    console.log(`${C.yellow}⚠️  模拟模式 — 不会调用真实 API${C.reset}`)
+  }
+
+  // === 批量生成（带并发控制） ===
+  const concurrency = CONFIG.generation.concurrency
+  const total = pendingIds.length
+  let completed = 0
+  let successCount = 0
+  let failCount = 0
+
+  console.log(`\n🚀 开始生成 (并发: ${concurrency})...\n`)
+
+  // 分批处理
+  for (let i = 0; i < pendingIds.length; i += concurrency) {
+    const batch = pendingIds.slice(i, i + concurrency)
+    const batchPromises = batch.map(poemId =>
+      generateOneImage(poemId, poems, tracker, outputDir, isMock)
+    )
+
+    const results = await Promise.allSettled(batchPromises)
+    for (const r of results) {
+      completed++
+      if (r.status === 'fulfilled' && r.value) {
+        successCount++
+      } else {
+        failCount++
+      }
+    }
+
+    // 显示进度
+    const pct = ((completed / total) * 100).toFixed(1)
+    log(C.cyan, '进度', `[${completed}/${total}] ${pct}% 成功:${successCount} 失败:${failCount}`)
+
+    // 请求间隔
+    if (i + concurrency < pendingIds.length) {
+      await sleep(CONFIG.generation.delayMs)
+    }
+  }
+
+  // === 最终报告 ===
+  console.log('\n' + '='.repeat(50))
+  if (failCount === 0) {
+    console.log(`${C.green}🎉 全部生成完成！${C.reset}`)
+  } else {
+    console.log(`${C.yellow}⚠️  完成 (成功:${successCount}, 失败:${failCount})${C.reset}`)
+    console.log(`   运行 node generate.mjs --retry 重试失败项`)
+  }
+  tracker.printStats()
+}
+
+// ===== 单首诗词配图生成 =====
+async function generateOneImage(poemId, poems, tracker, outputDir, isMock) {
+  const poem = poems.find(p => String(p.id) === poemId)
+  if (!poem) {
+    log(C.red, 'SKIP', `未找到ID=${poemId} 的诗词`)
+    return false
+  }
+
+  const imgPath = resolve(outputDir, `${poemId}${IMAGE_EXT}`)
+
+  // 检查图片是否已存在
+  if (existsSync(imgPath)) {
+    tracker.markSkipped(poemId)
+    log(C.dim, '跳过', `《${poem.title}》图片已存在`)
+    return true
+  }
+
+  tracker.markGenerating(poemId)
+
+  try {
+    if (isMock) {
+      // 模拟模式：生成一个简单的 SVG 占位图
+      await generateMockImage(poem, imgPath)
+    } else if (CONFIG.provider === 'dall-e') {
+      await generateDalleImage(poem, imgPath)
+    } else if (CONFIG.provider === 'tongyi') {
+      await generateTongyiImage(poem, imgPath)
+    } else {
+      throw new Error(`未知的 API 提供商: ${CONFIG.provider}。设置 AI_PROVIDER=mock|dall-e|tongyi`)
+    }
+
+    tracker.markDone(poemId)
+    log(C.green, '完成', `《${poem.title}》(${poem.author})`)
+    return true
+  } catch (err) {
+    tracker.markFailed(poemId, err)
+    log(C.red, '失败', `《${poem.title}》: ${err.message}`)
+    return false
+  }
+}
+
+// ===== Mock 模式：生成彩色 SVG 占位图 =====
+async function generateMockImage(poem, imgPath) {
+  const colors = [
+    ['#fef3c7', '#d97706'], // 暖黄
+    ['#ecfdf5', '#059669'], // 翠绿
+    ['#eff6ff', '#2563eb'], // 湛蓝
+    ['#fdf2f8', '#db2777'], // 粉紫
+    ['#f5f3ff', '#7c3aed'], // 淡紫
+  ]
+  const [bg, accent] = colors[poem.id % colors.length]
+
+  // 提取标题首字作为装饰
+  const titleChar = poem.title.charAt(0)
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:${bg};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mount" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:${accent};stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:${accent};stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)" />
+  <!-- 远山 -->
+  <path d="M0 700 Q150 500 300 600 Q400 550 500 500 Q600 450 750 550 Q850 500 1024 600 L1024 1024 L0 1024 Z" fill="url(#mount)" opacity="0.3"/>
+  <path d="M0 750 Q200 600 400 680 Q550 600 700 650 Q800 600 1024 680 L1024 1024 L0 1024 Z" fill="url(#mount)" opacity="0.5"/>
+  <!-- 装饰圆 -->
+  <circle cx="512" cy="350" r="120" fill="${accent}" opacity="0.08"/>
+  <circle cx="512" cy="350" r="80" fill="${accent}" opacity="0.06"/>
+  <!-- 诗词标题 -->
+  <text x="512" y="340" text-anchor="middle" font-family="serif" font-size="48" fill="${accent}" opacity="0.4">${titleChar}</text>
+  <text x="512" y="900" text-anchor="middle" font-family="sans-serif" font-size="24" fill="${accent}" opacity="0.5">《${poem.title}》${poem.author}</text>
+  <!-- 水墨飞鸟 -->
+  <path d="M350 480 Q380 460 400 480" stroke="${accent}" stroke-width="2" fill="none" opacity="0.2"/>
+  <path d="M600 450 Q630 430 650 450" stroke="${accent}" stroke-width="2" fill="none" opacity="0.2"/>
+  <text x="512" y="560" text-anchor="middle" font-family="sans-serif" font-size="16" fill="${accent}" opacity="0.2">MOCK · 配图待生成</text>
+</svg>`
+
+  writeFileSync(imgPath.replace(IMAGE_EXT, '.svg'), svg)
+  // 把 .svg 保存为图片路径（前端直接引用）
+  // 实际使用时我们会引用 .svg
+  writeFileSync(imgPath, svg)
+
+  // Mock 模式下也保存一个占位标记
+  writeFileSync(imgPath + '.mock', new Date().toISOString())
+}
+
+// ===== DALL-E 3 生成 =====
+async function generateDalleImage(poem, imgPath) {
+  const { default: OpenAI } = await import('openai')
+  const openai = new OpenAI({ apiKey: CONFIG.openai.apiKey })
+
+  if (!CONFIG.openai.apiKey) {
+    throw new Error('未设置 OPENAI_API_KEY 环境变量')
+  }
+
+  const prompt = buildPrompt(poem)
+
+  const response = await openai.images.generate({
+    model: CONFIG.openai.model,
+    prompt: prompt,
+    n: 1,
+    size: CONFIG.openai.size,
+    quality: CONFIG.openai.quality,
+    response_format: 'b64_json',
+  })
+
+  const b64 = response.data[0]?.b64_json
+  if (!b64) throw new Error('API 返回为空')
+
+  const buffer = Buffer.from(b64, 'base64')
+  writeFileSync(imgPath, buffer)
+  log(C.dim, 'DALL-E', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
+}
+
+// ===== 通义万相生成 =====
+async function generateTongyiImage(poem, imgPath) {
+  const { accessKeyId, accessKeySecret, endpoint, model, size } = CONFIG.tongyi
+  if (!accessKeyId || !accessKeySecret) {
+    throw new Error('未设置阿里云 AccessKey。设置 ALIBABA_ACCESS_KEY_ID / ALIBABA_ACCESS_KEY_SECRET')
+  }
+
+  // 构建 prompt（通义万相支持中文 prompt）
+  const dynasty = poem.dynasty
+  const styleHint = CONFIG.prompt.dynastyStyles[dynasty] || '中国古典山水'
+  const prompt = `中国水墨画风格，${styleHint}。画面灵感来自${poem.dynasty}诗人${poem.author}的《${poem.title}》：${poem.sections?.[0]?.original?.slice(0, 80) || ''}`
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessKeyId}`,
+      'X-DashScope-Async': 'enable',
+    },
+    body: JSON.stringify({
+      model: model,
+      input: { prompt },
+      parameters: { size, n: 1 },
+    }),
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    throw new Error(`通义万相 API 错误: ${response.status} ${text}`)
+  }
+
+  const data = await response.json()
+  const imageUrl = data.output?.results?.[0]?.url
+  if (!imageUrl) throw new Error('通义万相返回结果为空')
+
+  // 下载图片
+  const imgResp = await fetch(imageUrl)
+  const buffer = Buffer.from(await imgResp.arrayBuffer())
+  writeFileSync(imgPath, buffer)
+  log(C.dim, '通义万相', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
+}
+
+// ===== 工具函数 =====
+
+// ===== 工具函数 =====
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+// ===== 启动 =====
+main().catch(err => {
+  console.error(`\n${C.red}❌ 生成脚本异常:${C.reset}`, err)
+  process.exit(1)
+})
