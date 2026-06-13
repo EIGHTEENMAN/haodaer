@@ -20,10 +20,12 @@ const imgStatus = ref<'loading' | 'loaded' | 'error' | 'empty'>('loading')
 const showFullscreen = ref(false)
 const imgNaturalSize = ref({ w: 0, h: 0 })
 
-// ===== 图片 URL =====
+// ===== 图片 URL（优先 .webp，回退 .svg） =====
+const useSvgFallback = ref(false)
+
 const imageUrl = computed(() => {
-  // 图片存储在 public/images/poems/{id}.webp
-  return `/images/poems/${props.poemId}.webp`
+  // 如果 .webp 加载失败，自动回退到 .svg（Mock 模式生成的是 SVG 占位图）
+  return `/images/poems/${props.poemId}${useSvgFallback.value ? '.svg' : '.webp'}`
 })
 
 // ===== 朝代颜色（备用） =====
@@ -49,8 +51,18 @@ function handleImgLoad(e: Event) {
 }
 
 function handleImgError() {
-  // 图片不存在时显示空状态
-  imgStatus.value = 'empty'
+  if (!useSvgFallback.value) {
+    // .webp 加载失败，回退尝试 .svg（Mock 模式生成的 SVG 占位图）
+    useSvgFallback.value = true
+    imgStatus.value = 'loading'
+    const img = new Image()
+    img.onload = (e) => handleImgLoad(e)
+    img.onerror = () => { imgStatus.value = 'empty' }
+    img.src = imageUrl.value
+  } else {
+    // .svg 也失败，显示空状态
+    imgStatus.value = 'empty'
+  }
 }
 
 // ===== 检查图片是否存在（预加载） =====
