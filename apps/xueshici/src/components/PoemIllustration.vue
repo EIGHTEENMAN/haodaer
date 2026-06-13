@@ -20,12 +20,12 @@ const imgStatus = ref<'loading' | 'loaded' | 'error' | 'empty'>('loading')
 const showFullscreen = ref(false)
 const imgNaturalSize = ref({ w: 0, h: 0 })
 
-// ===== 图片 URL（优先 .webp，回退 .svg） =====
-const useSvgFallback = ref(false)
+// ===== 图片 URL（优先 .webp → 回退 .jpg → 回退 .svg） =====
+type FallbackStage = 'webp' | 'jpg' | 'svg'
+const fallbackStage = ref<FallbackStage>('webp')
 
 const imageUrl = computed(() => {
-  // 如果 .webp 加载失败，自动回退到 .svg（Mock 模式生成的是 SVG 占位图）
-  return `/images/poems/${props.poemId}${useSvgFallback.value ? '.svg' : '.webp'}`
+  return `/images/poems/${props.poemId}.${fallbackStage.value}`
 })
 
 // ===== 朝代颜色（备用） =====
@@ -51,30 +51,36 @@ function handleImgLoad(e: Event) {
 }
 
 function handleImgError() {
-  if (!useSvgFallback.value) {
-    // .webp 加载失败，回退尝试 .svg（Mock 模式生成的 SVG 占位图）
-    useSvgFallback.value = true
+  if (fallbackStage.value === 'webp') {
+    // .webp 加载失败，回退尝试 .jpg（MiniMax 生成的 JPEG 格式）
+    fallbackStage.value = 'jpg'
     imgStatus.value = 'loading'
-    const img = new Image()
-    img.onload = (e) => handleImgLoad(e)
-    img.onerror = () => { imgStatus.value = 'empty' }
-    img.src = imageUrl.value
+    reloadImage()
+  } else if (fallbackStage.value === 'jpg') {
+    // .jpg 也失败，回退尝试 .svg（Mock 模式占位图）
+    fallbackStage.value = 'svg'
+    imgStatus.value = 'loading'
+    reloadImage()
   } else {
     // .svg 也失败，显示空状态
     imgStatus.value = 'empty'
   }
 }
 
-// ===== 检查图片是否存在（预加载） =====
-onMounted(() => {
+function reloadImage() {
   const img = new Image()
   img.onload = (e) => handleImgLoad(e)
   img.onerror = () => handleImgError()
-  // 超时保护
+  img.src = imageUrl.value
+}
+
+// ===== 检查图片是否存在（预加载） =====
+onMounted(() => {
+  reloadImage()
+  // 超时保护（首次 webp 加载超时）
   const timer = setTimeout(() => {
     if (imgStatus.value === 'loading') handleImgError()
   }, 8000)
-  img.src = imageUrl.value
   onUnmounted(() => clearTimeout(timer))
 })
 

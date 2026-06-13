@@ -34,6 +34,15 @@ export const CONFIG = {
     size: '1024x1024',
   },
 
+  // ===== MiniMax (海螺AI) =====
+  minimax: {
+    apiKey: process.env.MINIMAX_API_KEY || '',
+    endpoint: 'https://api.minimaxi.com/v1/image_generation',
+    model: 'image-01',
+    size: '1024x1024',
+    // MiniMax 支持中文 prompt，价格 ¥49/月（Plus套餐每天50张）
+  },
+
   // ===== 生成控制 =====
   generation: {
     // 每首诗生成的图片数量
@@ -71,4 +80,14 @@ export const CONFIG = {
 
 // ===== 常量 =====
 export const IMAGE_EXT = CONFIG.generation.format === 'webp' ? '.webp' : '.png'
+
+// MiniMax 返回 JPEG，需单独定义扩展名
+export const MINIMAX_IMAGE_EXT = '.jpg'
+
+// ===== 根据提供商获取图片扩展名 =====
+export function getImageExt(provider) {
+  if (provider === 'minimax') return MINIMAX_IMAGE_EXT
+  if (provider === 'mock') return '.webp'
+  return IMAGE_EXT
+}
 export const STATUS_FILE = './generation-status.json'

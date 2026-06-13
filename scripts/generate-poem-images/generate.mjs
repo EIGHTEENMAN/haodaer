@@ -9,16 +9,18 @@
  *   node generate.mjs --clean      # 清空已完成状态重新生成
  *
  * 环境变量：
- *   AI_PROVIDER=mock|dall-e|tongyi  API 后端选择
+ *   AI_PROVIDER=mock|dall-e|tongyi|minimax  API 后端选择
  *   OPENAI_API_KEY=sk-xxx          OpenAI API Key
  *   ALIBABA_ACCESS_KEY_ID=xxx      阿里云 AccessKey
  *   ALIBABA_ACCESS_KEY_SECRET=xxx  阿里云 AccessKey Secret
+ *   MINIMAX_API_KEY=xxx            MiniMax API Key
  */
 
-import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'fs'
+import { readFileSync, existsSync, mkdirSync, writeFileSync, createWriteStream } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { CONFIG, IMAGE_EXT } from './config.mjs'
+import { get } from 'https'
+import { CONFIG, IMAGE_EXT, getImageExt } from './config.mjs'
 import { buildPrompt } from './promptBuilder.mjs'
 import { Tracker } from './tracker.mjs'
 
@@ -155,13 +157,23 @@ async function generateOneImage(poemId, poems, tracker, outputDir, isMock) {
     return false
   }
 
-  const imgPath = resolve(outputDir, `${poemId}${IMAGE_EXT}`)
+  // 根据提供商使用对应的图片扩展名
+  const provider = isMock ? 'mock' : CONFIG.provider
+  const ext = getImageExt(provider)
+  const imgPath = resolve(outputDir, `${poemId}${ext}`)
 
-  // 检查图片是否已存在
+  // 检查当前格式的图片是否已存在
   if (existsSync(imgPath)) {
     tracker.markSkipped(poemId)
-    log(C.dim, '跳过', `《${poem.title}》图片已存在`)
+    log(C.dim, '跳过', `《${poem.title}》图片已存在 (${ext})`)
     return true
+  }
+
+  // 如果是真实 API 生成（非 Mock），忽略旧 Mock 的 .webp 占位图，重新生成
+  // 这样可以平滑从 Mock 过渡到真实图片
+  const mockWebp = resolve(outputDir, `${poemId}.webp`)
+  if (provider !== 'mock' && existsSync(mockWebp)) {
+    log(C.dim, '覆盖', `《${poem.title}》将覆盖旧 Mock 占位图`)
   }
 
   tracker.markGenerating(poemId)
@@ -174,8 +186,10 @@ async function generateOneImage(poemId, poems, tracker, outputDir, isMock) {
       await generateDalleImage(poem, imgPath)
     } else if (CONFIG.provider === 'tongyi') {
       await generateTongyiImage(poem, imgPath)
+    } else if (CONFIG.provider === 'minimax') {
+      await generateMiniMaxImage(poem, imgPath)
     } else {
-      throw new Error(`未知的 API 提供商: ${CONFIG.provider}。设置 AI_PROVIDER=mock|dall-e|tongyi`)
+      throw new Error(`未知的 API 提供商: ${CONFIG.provider}。设置 AI_PROVIDER=mock|dall-e|tongyi|minimax`)
     }
 
     tracker.markDone(poemId)
@@ -308,9 +322,70 @@ async function generateTongyiImage(poem, imgPath) {
   log(C.dim, '通义万相', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
 }
 
-// ===== 工具函数 =====
+// ===== MiniMax 生成 =====
+async function generateMiniMaxImage(poem, imgPath) {
+  const { apiKey, endpoint, model } = CONFIG.minimax
+  if (!apiKey) {
+    throw new Error('未设置 MINIMAX_API_KEY 环境变量')
+  }
 
-// ===== 工具函数 =====
+  // 构建中文 prompt（MiniMax 原生支持中文，无需翻译）
+  const originalPreview = poem.sections?.[0]?.original?.slice(0, 100) || ''
+  const dynastyHint = dynastyStyleCn(poem.dynasty)
+  const prompt = `中国传统水墨画风格，${dynastyHint}。画面灵感来自${poem.dynasty}诗人${poem.author}的《${poem.title}》：${originalPreview}。构图简洁，意境深远，留白有韵，淡彩渲染。`
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: model,
+      prompt: prompt,
+      aspect_ratio: '1:1',
+      response_format: 'url',
+      n: 1,
+    }),
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    throw new Error(`MiniMax API 错误: ${response.status} ${text}`)
+  }
+
+  const data = await response.json()
+  if (data.base_resp?.status_code !== 0) {
+    throw new Error(`MiniMax API 返回错误: ${data.base_resp?.status_msg || '未知错误'}`)
+  }
+
+  const imageUrl = data.data?.image_urls?.[0]
+  if (!imageUrl) throw new Error('MiniMax 返回结果为空')
+
+  // 下载图片（MiniMax 返回 JPEG）
+  const imgResp = await fetch(imageUrl)
+  const buffer = Buffer.from(await imgResp.arrayBuffer())
+  writeFileSync(imgPath, buffer)
+  log(C.dim, 'MiniMax', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
+}
+
+// 朝代→中文风格描述（用于 MiniMax 中文 prompt）
+function dynastyStyleCn(dynasty) {
+  const map = {
+    '春秋战国': '先秦古朴简雅，远山淡雾',
+    '汉': '汉风古拙，浑厚苍茫',
+    '三国': '雄浑壮阔，风云变幻',
+    '魏晋南北朝': '魏晋风骨，清逸洒脱',
+    '唐': '盛唐气象，山水壮丽，色彩明快',
+    '宋': '宋画清雅，水墨淡彩，留白深远',
+    '元': '元人笔意，疏朗空灵，墨色淋漓',
+    '明': '明代秀丽，工写结合，文人意趣',
+    '清': '清代精致，笔墨细腻，意境悠远',
+    '近现代': '现代水墨，中西融合，清新自然',
+  }
+  return map[dynasty] || '中国古典山水，诗意朦胧'
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
