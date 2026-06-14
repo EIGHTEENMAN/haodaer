@@ -20,9 +20,11 @@ const imgStatus = ref<'loading' | 'loaded' | 'error' | 'empty'>('loading')
 const showFullscreen = ref(false)
 const imgNaturalSize = ref({ w: 0, h: 0 })
 
-// ===== 图片 URL（优先 .webp → 回退 .jpg → 回退 .svg） =====
-type FallbackStage = 'webp' | 'jpg' | 'svg'
-const fallbackStage = ref<FallbackStage>('webp')
+// ===== 图片 URL（优先 .jpg → 回退 .svg） =====
+// 2026-06-14 简化：去掉 .webp 这一层（之前 .webp 是 mock 占位被错改扩展名，内容是 SVG）
+// 现在 .jpg 才是真图（MiniMax 生成），.svg 是 mock 占位兜底
+type FallbackStage = 'jpg' | 'svg'
+const fallbackStage = ref<FallbackStage>('jpg')
 
 const imageUrl = computed(() => {
   return `/images/poems/${props.poemId}.${fallbackStage.value}`
@@ -51,13 +53,8 @@ function handleImgLoad(e: Event) {
 }
 
 function handleImgError() {
-  if (fallbackStage.value === 'webp') {
-    // .webp 加载失败，回退尝试 .jpg（MiniMax 生成的 JPEG 格式）
-    fallbackStage.value = 'jpg'
-    imgStatus.value = 'loading'
-    reloadImage()
-  } else if (fallbackStage.value === 'jpg') {
-    // .jpg 也失败，回退尝试 .svg（Mock 模式占位图）
+  if (fallbackStage.value === 'jpg') {
+    // .jpg 失败（这首诗没生成真图），回退尝试 .svg（Mock 模式占位图）
     fallbackStage.value = 'svg'
     imgStatus.value = 'loading'
     reloadImage()
@@ -77,7 +74,7 @@ function reloadImage() {
 // ===== 检查图片是否存在（预加载） =====
 onMounted(() => {
   reloadImage()
-  // 超时保护（首次 webp 加载超时）
+  // 超时保护（首次 jpg 加载超时）
   const timer = setTimeout(() => {
     if (imgStatus.value === 'loading') handleImgError()
   }, 8000)

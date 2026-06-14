@@ -329,10 +329,30 @@ async function generateMiniMaxImage(poem, imgPath) {
     throw new Error('未设置 MINIMAX_API_KEY 环境变量')
   }
 
-  // 构建中文 prompt（MiniMax 原生支持中文，无需翻译）
-  const originalPreview = poem.sections?.[0]?.original?.slice(0, 100) || ''
+  // 提取 1-2 句具象诗句（主体明确、有具体人物/动物/物品/动作）
+  const concreteLines = extractConcreteLines(poem)
   const dynastyHint = dynastyStyleCn(poem.dynasty)
-  const prompt = `中国传统水墨画风格，${dynastyHint}。画面灵感来自${poem.dynasty}诗人${poem.author}的《${poem.title}》：${originalPreview}。构图简洁，意境深远，留白有韵，淡彩渲染。`
+  const genderHint = genderHintFn(poem)
+  const figureHint = hasFigureInConcrete(concreteLines) ? `
+人物要求：
+- 性别：${genderHint}
+- 服饰：传统汉服（宽袍大袖、深衣或襦裙），不要现代服装
+- 发型：传统发髻（高髻/道髻/束发/盘髻），不要现代发型
+- 鞋履：传统布履或木屐，不要现代鞋袜
+- 面部：五官清晰端正，性别特征明显，无扭曲变形
+- 避免：模糊脸部、变形五官、错误手指数、丑陋` : ''
+  // C 版 prompt（具象+人物质量+服饰约束）
+  const prompt = `中国传统水墨画风格，${dynastyHint}。请直接具象描绘以下场景（不要抽象、不要以留白为主、主体要清晰可辨）：
+《${poem.title}》— ${poem.author}（${poem.dynasty}）
+场景内容：${concreteLines}
+
+要求：
+1. 主体鲜明，主要人物或动物占据画面中心或显著位置，占画面 1/3 以上
+2. 背景山水为辅，不可喧宾夺主
+3. 色彩淡雅但内容丰富，细节清晰
+4. 不要任何文字、签名、印章、题款、边框、装饰
+5. 风格：水墨淡彩，类似宋代院体画或文人小品
+6. 不要额外添加原诗没有的花鸟、人物、物品${figureHint}`
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -384,6 +404,48 @@ function dynastyStyleCn(dynasty) {
     '近现代': '现代水墨，中西融合，清新自然',
   }
   return map[dynasty] || '中国古典山水，诗意朦胧'
+}
+
+// 从诗的 sections 中提取 1-2 句"具象句"
+// 规则：长度 4-25 字的短句优先，按标点断句，组合成画面描述
+function extractConcreteLines(poem) {
+  const orig = poem.sections?.[0]?.original
+  if (!orig) return '古典诗意场景，有具体的人物或动物和动作'
+
+  // 按中文标点断句，去空白
+  const sentences = orig
+    .split(/[，。！？；\n]/)
+    .map(s => s.trim())
+    .filter(s => s.length >= 4 && s.length <= 25)
+
+  if (sentences.length === 0) {
+    // fallback：截前 60 字
+    return orig.slice(0, 60)
+  }
+
+  // 取前 1-2 句（最画面感）
+  return sentences.slice(0, 2).join('，')
+}
+
+// 判断具象句里是否含人物（用于决定要不要加人物质量约束）
+function hasFigureInConcrete(concrete) {
+  // 包含常见人物指示词
+  return /人|女|男|子|君|妇|翁|叟|童|士|将|臣|王|侯|妾|郎|娘|僧|道|客|夫|妻|父|母|兄|弟|姐|妹|儿|女/.test(concrete)
+}
+
+// 根据作者+诗题+朝代推断人物性别
+// 已知女诗人 + 佚名/女性词牌 → 女；其他 → 男（古代诗人多为男性，AI 默认女是错的）
+function genderHintFn(poem) {
+  const FEMALE_AUTHORS = ['李清照', '薛涛', '鱼玄机', '上官婉儿', '班婕妤', '蔡文姬', '管道升', '朱淑真', '吴藻', '顾太清']
+  const MALE_AUTHORS = ['李白', '杜甫', '王维', '孟浩然', '白居易', '王昌龄', '苏轼', '辛弃疾', '陆游', '李商隐', '杜牧', '王勃', '骆宾王', '王之涣', '刘禹锡', '韩愈', '柳宗元', '欧阳修', '王安石', '杨万里', '范成大', '陆游', '文天祥', '纳兰性德', '曹雪芹', '屈原', '陶渊明', '谢灵运', '王维']
+  if (FEMALE_AUTHORS.some(a => poem.author?.includes(a))) return '女性（古代女性，婉约端庄）'
+  // 男性作者 + 自述/自画像类诗 → 男
+  if (MALE_AUTHORS.some(a => poem.author?.includes(a))) return '男性（古代士人/书生）'
+  // 佚名：看诗中代词
+  const orig = poem.sections?.[0]?.original || ''
+  if (/我|吾|余|妾|奴|女儿|红颜|闺/.test(orig)) return '女性（古代女子）'
+  if (/吾|男儿|壮志|丈夫|老夫|愚|予/.test(orig)) return '男性（古代士人）'
+  return '性别由诗中主语决定（"我"=诗人本人）'
 }
 
 function sleep(ms) {
