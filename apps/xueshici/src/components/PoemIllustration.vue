@@ -4,6 +4,14 @@
  *
  * 在诗词阅读器中展示 AI 生成的水墨风格配图。
  * 状态覆盖：加载中、成功、失败、无图、全屏查看
+ *
+ * 媒体回退链（按优先级）：
+ *   .mp4 (动画) → .jpg (静态图) → .svg (占位) → 文字占位
+ *
+ * 动画效果（CSS keyframes，GPU 加速）：
+ *   - Ken Burns 推拉（scale 1.0 → 1.08 over 6s）
+ *   - 诗词标题 + 作者淡入（0-2.5s）
+ *   - 角标延迟出现（2.5s+）
  */
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
@@ -20,13 +28,15 @@ const imgStatus = ref<'loading' | 'loaded' | 'error' | 'empty'>('loading')
 const showFullscreen = ref(false)
 const imgNaturalSize = ref({ w: 0, h: 0 })
 
-// ===== 图片 URL（优先 .jpg → 回退 .svg） =====
-// 2026-06-14 简化：去掉 .webp 这一层（之前 .webp 是 mock 占位被错改扩展名，内容是 SVG）
-// 现在 .jpg 才是真图（MiniMax 生成），.svg 是 mock 占位兜底
-type FallbackStage = 'jpg' | 'svg'
-const fallbackStage = ref<FallbackStage>('jpg')
+// ===== 媒体回退链 =====
+// 2026-06-15 增加 .mp4 优先级最高（诗配动画）
+// 回退：.mp4 → .jpg → .svg → 文字占位
+type FallbackStage = 'mp4' | 'jpg' | 'svg'
+const fallbackStage = ref<FallbackStage>('mp4')
+const videoReady = ref(false)
+const imgReady = ref(false)
 
-const imageUrl = computed(() => {
+const mediaUrl = computed(() => {
   return `/images/poems/${props.poemId}.${fallbackStage.value}`
 })
 
@@ -46,38 +56,52 @@ const dynastyColorMap: Record<string, string> = {
 const accentColor = computed(() => props.color || dynastyColorMap[props.poemDynasty] || '#94a3b8')
 
 // ===== 加载处理 =====
+// 视频加载成功（第一帧已渲染）—— 视频是首选，直接 loaded
+function handleVideoReady() {
+  videoReady.value = true
+  imgStatus.value = 'loaded'
+  imgNaturalSize.value = { w: 720, h: 720 }
+}
+
+// 视频加载失败 → 回退到静态图 .jpg
+function handleVideoError() {
+  if (fallbackStage.value === 'mp4') {
+    fallbackStage.value = 'jpg'
+    // 触发图片加载（template 的 <img> 会根据 fallbackStage 自动选 jpg）
+    imgStatus.value = 'loading'
+  } else {
+    handleImgError()
+  }
+}
+
+// 图片加载成功
 function handleImgLoad(e: Event) {
   const img = e.target as HTMLImageElement
   imgNaturalSize.value = { w: img.naturalWidth, h: img.naturalHeight }
+  imgReady.value = true
   imgStatus.value = 'loaded'
 }
 
+// 图片加载失败 → 回退 .svg
 function handleImgError() {
   if (fallbackStage.value === 'jpg') {
-    // .jpg 失败（这首诗没生成真图），回退尝试 .svg（Mock 模式占位图）
     fallbackStage.value = 'svg'
     imgStatus.value = 'loading'
-    reloadImage()
   } else {
     // .svg 也失败，显示空状态
     imgStatus.value = 'empty'
   }
 }
 
-function reloadImage() {
-  const img = new Image()
-  img.onload = (e) => handleImgLoad(e)
-  img.onerror = () => handleImgError()
-  img.src = imageUrl.value
-}
-
-// ===== 检查图片是否存在（预加载） =====
+// ===== 视频自动超时探测 =====
+// 如果 5 秒后 video 还没 canplay，主动降级（部分老浏览器/慢网）
 onMounted(() => {
-  reloadImage()
-  // 超时保护（首次 jpg 加载超时）
   const timer = setTimeout(() => {
-    if (imgStatus.value === 'loading') handleImgError()
-  }, 8000)
+    if (imgStatus.value === 'loading' && fallbackStage.value === 'mp4') {
+      // 主动降级到 jpg
+      fallbackStage.value = 'jpg'
+    }
+  }, 5000)
   onUnmounted(() => clearTimeout(timer))
 })
 
@@ -123,20 +147,41 @@ onMounted(() => {
       tabindex="0"
       @keydown.enter="toggleFullscreen"
     >
+      <!-- 视频模式：诗配动画（Ken Burns 推拉） -->
+      <video
+        v-if="fallbackStage === 'mp4' && videoReady"
+        :src="mediaUrl"
+        :poster="`/images/poems/${poemId}.jpg`"
+        class="pi-image pi-image-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        @canplay="handleVideoReady"
+        @error="handleVideoError"
+      ></video>
+      <!-- 静态图模式（.jpg 或 .svg 回退） -->
       <img
-        :src="imageUrl"
+        v-else-if="fallbackStage === 'jpg' || fallbackStage === 'svg'"
+        :src="mediaUrl"
         :alt="`《${poemTitle}》${poemAuthor} · ${poemDynasty} 配图`"
         class="pi-image"
         @load="handleImgLoad"
         @error="handleImgError"
         loading="lazy"
       />
+      <!-- 标题水墨叠加（视频模式下显示） -->
+      <div v-if="fallbackStage === 'mp4' && videoReady" class="pi-title-overlay">
+        <div class="pi-title-text">《{{ poemTitle }}》</div>
+        <div class="pi-author-text">{{ poemAuthor }} · {{ poemDynasty }}</div>
+      </div>
       <!-- 悬浮信息 -->
       <div class="pi-overlay">
         <span class="pi-expand-hint">🔍 点击查看大图</span>
       </div>
-      <!-- 诗词角标 -->
-      <div class="pi-badge">
+      <!-- 诗词角标（视频模式有标题叠加就不重复显示） -->
+      <div v-if="fallbackStage !== 'mp4' || !videoReady" class="pi-badge">
         <span class="pi-badge-dynasty">{{ poemDynasty }}</span>
         <span class="pi-badge-author">{{ poemAuthor }}</span>
       </div>
@@ -169,7 +214,7 @@ onMounted(() => {
       <div class="pi-fullscreen-overlay" @click.self="closeFullscreen">
         <button class="pi-fullscreen-close" @click="closeFullscreen" aria-label="关闭全屏">✕</button>
         <div class="pi-fullscreen-content">
-          <img :src="imageUrl" :alt="`《${poemTitle}》配图`" class="pi-fullscreen-img" />
+          <img :src="mediaUrl" :alt="`《${poemTitle}》配图`" class="pi-fullscreen-img" />
           <p class="pi-fullscreen-caption">
             《{{ poemTitle }}》 · {{ poemAuthor }}（{{ poemDynasty }}）
           </p>
@@ -279,8 +324,73 @@ onMounted(() => {
   transition: transform 0.4s ease;
 }
 
+/* ===== 视频模式：Ken Burns 推拉（GPU 加速） ===== */
+.pi-image-video {
+  animation: pi-ken-burns 6s ease-out infinite;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+
+@keyframes pi-ken-burns {
+  0% {
+    transform: scale(1.0) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, -0.5%);
+  }
+}
+
+/* ===== 标题水墨叠加（视频模式） ===== */
+.pi-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pi-title-text {
+  color: #fff;
+  font-family: 'STKaiti', 'KaiTi', '楷体', 'Songti SC', '宋体', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: pi-title-in 6s ease-out infinite;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+.pi-author-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: pi-title-in 6s ease-out infinite;
+  animation-delay: 1.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes pi-title-in {
+  0%, 5% { opacity: 0; transform: translateY(8px); }
+  20%, 80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
 .pi-image-wrap:hover .pi-image {
   transform: scale(1.03);
+  animation-play-state: paused; /* hover 暂停动画 */
+}
+
+.pi-image-wrap:hover .pi-title-overlay {
+  opacity: 0;  /* hover 时隐藏标题（让放大图更纯粹） */
+  transition: opacity 0.3s;
 }
 
 .pi-image-wrap:hover .pi-overlay {
