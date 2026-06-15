@@ -69,12 +69,12 @@ const CONFIG = {
   // 状态文件
   statusFile: resolve(__dirname, 'tts-status.json'),
   // 并发
-  concurrency: 2,
+  concurrency: 4,
   // 重试
-  maxRetries: 3,
-  retryDelay: 1000,
+  maxRetries: 5,
+  retryDelay: 3000,
   // 速率限制
-  requestDelay: 100,
+  requestDelay: 1000,
   // 日志
   logLevel: 'summary',  // all | summary | error
 }
@@ -203,8 +203,10 @@ async function generateOne(poem, type, status) {
       return { ok: true, size, voiceId, chars: text.length }
     } catch (err) {
       lastErr = err
+      const isRateLimit = String(err).includes('rate limit')
+      const delay = CONFIG.retryDelay * attempt + (isRateLimit ? 8000 : 0)
       if (attempt < CONFIG.maxRetries) {
-        await new Promise(r => setTimeout(r, CONFIG.retryDelay * attempt))
+        await new Promise(r => setTimeout(r, delay))
       }
     }
   }
