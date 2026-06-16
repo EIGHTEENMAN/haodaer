@@ -32,8 +32,8 @@ async function ensureFullData() {
   await fullDataPromise
 }
 
-// Navigation: home -> poet -> detail -> reader
-type View = 'home' | 'poet' | 'detail' | 'reader' | 'search'
+// Navigation: home -> poet -> reader (详情页已合并到 reader 顶部)
+type View = 'home' | 'poet' | 'reader' | 'search'
 const currentView = ref<View>('home')
 const currentPoet = ref<string>('')
 const currentPoem = ref<Poem | null>(null)
@@ -152,9 +152,11 @@ function openPoet(name: string) {
 function openDetail(p: Poem) {
   stopSpeaking()
   stats.markRead(p.id)
+  // 直接进 reader（详情页已合并），默认进入第一段
+  if (!p.sections || p.sections.length === 0) return
   currentPoem.value = p
-  currentSection.value = null
-  currentView.value = 'detail'
+  currentSection.value = p.sections[0]
+  currentView.value = 'reader'
   saveHash()
 }
 
@@ -190,8 +192,6 @@ function saveHash() {
   let hash = ''
   if (currentView.value === 'poet' && currentPoet.value) {
     hash = `poet/${encodeURIComponent(currentPoet.value)}`
-  } else if (currentView.value === 'detail' && currentPoem.value) {
-    hash = `detail/${currentPoem.value.id}`
   } else if (currentView.value === 'reader' && currentSection.value) {
     hash = `reader/${currentSection.value.id}`
   }
@@ -208,9 +208,16 @@ async function restoreFromHash() {
     currentPoet.value = decodeURIComponent(id)
     currentView.value = 'poet'
   } else if (view === 'detail') {
+    // 旧详情页链接 → 重定向到该诗第一段的 reader
     await ensureFullData()
     const item = fullData.value?.find(p => p.id == id)
-    if (item) { currentPoem.value = item; currentView.value = 'detail' }
+    if (item && item.sections.length > 0) {
+      currentPoem.value = item
+      currentSection.value = item.sections[0]
+      currentView.value = 'reader'
+      // 重写 hash 为新的 reader 格式
+      history.replaceState(null, '', `#reader/${item.sections[0].id}`)
+    }
   } else if (view === 'reader') {
     await ensureFullData()
     for (const p of fullData.value!) {
@@ -430,47 +437,9 @@ onUnmounted(() => {
     </template>
 
     <!-- ===== LOADING ===== -->
-    <div v-if="loadingData && (currentView === 'detail' || currentView === 'reader')" class="sc-empty" style="padding:80px 24px;font-size:16px">数据加载中...</div>
+    <div v-if="loadingData && currentView === 'reader'" class="sc-empty" style="padding:80px 24px;font-size:16px">数据加载中...</div>
 
-    <!-- ===== DETAIL VIEW ===== -->
-    <template v-if="!loadingData && currentView === 'detail' && currentPoem">
-      <div class="sc-detail-wrap">
-        <button class="sc-back" @click="goBack()">← 返回</button>
-        <div class="sc-detail-card">
-          <!-- 诗配画（详情页缩小版） -->
-          <PoemIllustration
-            v-if="currentPoem"
-            :poemId="currentPoem.id"
-            :poemTitle="currentPoem.title"
-            :poemAuthor="currentPoem.author"
-            :poemDynasty="currentPoem.dynasty"
-            :color="categoryColors[currentPoem.category]"
-          />
-          <h1 class="sc-detail-title">{{ currentPoem.title }}</h1>
-          <p class="sc-detail-meta">{{ currentPoem.author }} · {{ currentPoem.dynasty }}</p>
-          <div class="sc-detail-tags">
-            <span v-for="tag in (typeof currentPoem.tags === 'string' ? currentPoem.tags.split(',') : currentPoem.tags)" :key="tag" class="sc-detail-tag">{{ tag }}</span>
-          </div>
-          <p class="sc-detail-summary" style="white-space: pre-line">{{ currentPoem.summary }}</p>
-        </div>
-
-        <h3 class="sc-sections-title">诵读</h3>
-        <div class="sc-sections">
-          <div v-for="sec in currentPoem.sections" :key="sec.id" class="sc-section-item" @click="openReader(sec)">
-            <div class="sc-section-info">
-              <span class="sc-section-name">{{ sec.title || '全文' }}</span>
-              <p class="sc-section-preview">{{ sec.original.split('\n')[0].substring(0, 40) }}{{ sec.original.split('\n')[0].length > 40 ? '...' : '' }}</p>
-            </div>
-            <button class="sc-section-fav" @click.stop="toggleFavorite(currentPoem.id + '-' + sec.id)"
-              :style="{ color: isFavorite(currentPoem.id + '-' + sec.id) ? '#eab308' : '#94a3b8' }">
-              {{ isFavorite(currentPoem.id + '-' + sec.id) ? '★' : '☆' }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </template>
-
-    <!-- ===== READER VIEW ===== -->
+    <!-- ===== READER VIEW (含 inline 作品信息卡片) ===== -->
     <template v-if="!loadingData && currentView === 'reader' && currentSection">
       <div class="sc-reader-wrap">
         <div class="sc-reader-header">
@@ -487,6 +456,39 @@ onUnmounted(() => {
           :poemDynasty="currentPoem.dynasty"
           :color="categoryColors[currentPoem.category]"
         />
+
+        <!-- 作品信息卡片（吸收原详情页内容） -->
+        <div class="sc-poem-info-card">
+          <div class="sc-info-header">
+            <h1 class="sc-info-title">{{ currentPoem?.title }}</h1>
+            <p class="sc-info-meta">{{ currentPoem?.author }} · {{ currentPoem?.dynasty }}</p>
+            <div class="sc-info-tags" v-if="currentPoem?.tags">
+              <span v-for="tag in (typeof currentPoem.tags === 'string' ? currentPoem.tags.split(',') : currentPoem.tags)" :key="tag" class="sc-info-tag">{{ tag }}</span>
+            </div>
+          </div>
+
+          <p class="sc-info-summary" style="white-space: pre-line" v-if="currentPoem?.summary">{{ currentPoem.summary }}</p>
+
+          <!-- 段落 chips（横向滚动，多 section 诗可切换；单 section 也显示，视觉一致） -->
+          <div class="sc-section-chips" v-if="currentPoem && currentPoem.sections.length > 0">
+            <span class="sc-chips-label">段落：</span>
+            <button v-for="sec in currentPoem.sections" :key="sec.id"
+              class="sc-section-chip"
+              :class="sec.id === currentSection.id ? 'sc-section-chip-active' : ''"
+              @click="openReader(sec)">
+              {{ sec.title || ('第 ' + sec.id) }}
+            </button>
+          </div>
+
+          <!-- 收藏按钮 -->
+          <div class="sc-info-actions">
+            <button class="sc-fav-btn"
+              :class="isFavorite(currentPoem?.id + '-' + currentSection.id) ? 'sc-fav-btn-active' : ''"
+              @click="toggleFavorite(currentPoem?.id + '-' + currentSection.id)">
+              {{ isFavorite(currentPoem?.id + '-' + currentSection.id) ? '★ 已收藏' : '☆ 收藏' }}
+            </button>
+          </div>
+        </div>
 
         <div class="sc-content-sections">
           <div class="sc-content-block">
@@ -643,35 +645,6 @@ body {
 .sc-back { background: none; border: none; font-size: 13px; color: #d97706; cursor: pointer; padding: 4px 0; display: block;  }
 .sc-back:hover { color: #b45309; }
 
-/* ===== Detail View ===== */
-.sc-detail-wrap { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
-.sc-detail-card {
-  background: white; border-radius: 18px; padding: 28px; margin: 10px 0 20px;
-  border: 1px solid #e2e8f0;
-}
-.sc-detail-title { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-.sc-detail-meta { font-size: 13px; color: #64748b; margin-bottom: 10px; }
-.sc-detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-.sc-detail-tag { padding: 2px 10px; background: #fef3c7; color: #d97706; border-radius: 8px; font-size: 11px; font-weight: 500; }
-.sc-detail-summary { font-size: 13px; color: #64748b; line-height: 1.7; }
-.sc-sections-title { font-size: 16px; font-weight: 600; margin: 0 0 10px; color: #0f172a; }
-.sc-sections { display: flex; flex-direction: column; gap: 8px; }
-.sc-section-item {
-  display: flex; align-items: center; justify-content: space-between;
-  background: white; border-radius: 14px; padding: 14px 18px;
-  border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s;
-}
-.sc-section-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.04); border-color: #fde68a; }
-.sc-section-info { flex: 1; min-width: 0; }
-.sc-section-name { font-size: 14px; font-weight: 600; color: #0f172a; display: block; margin-bottom: 3px; }
-.sc-section-preview { font-size: 12px; color: #94a3b8; overflow: hidden; text-overflow: ellipsis;  }
-.sc-section-fav {
-  width: 36px; height: 36px; border-radius: 50%; border: none;
-  background: #f8fafc; font-size: 18px; cursor: pointer;
-  flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
-}
-.sc-section-fav:hover { background: #fefce8; transform: scale(1.15); }
-
 /* ===== Reader View ===== */
 .sc-reader-wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
 .sc-reader-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
@@ -698,6 +671,53 @@ body {
 .sc-action-btn { padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
 .sc-action-play { background: #d97706; color: white; }
 .sc-action-play:hover { background: #b45309; }
+
+/* ===== Poem Info Card (原详情页内容) ===== */
+.sc-poem-info-card {
+  background: white; border-radius: 18px; padding: 24px 28px; margin: 16px 0 20px;
+  border: 1px solid #e2e8f0;
+}
+.sc-info-header { margin-bottom: 12px; }
+.sc-info-title { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 6px; letter-spacing: 1px; }
+.sc-info-meta { font-size: 13px; color: #64748b; margin-bottom: 10px; }
+.sc-info-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.sc-info-tag { padding: 2px 10px; background: #fef3c7; color: #d97706; border-radius: 8px; font-size: 11px; font-weight: 500; }
+.sc-info-summary { font-size: 13px; color: #475569; line-height: 1.7; margin: 12px 0 16px; padding: 12px 14px; background: #fffbeb; border-left: 3px solid #d97706; border-radius: 6px; }
+
+/* Section chips 横向滚动 */
+.sc-section-chips {
+  display: flex; align-items: center; gap: 8px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 8px 0; margin: 12px 0;
+  scrollbar-width: thin;
+}
+.sc-section-chips::-webkit-scrollbar { height: 4px; }
+.sc-section-chips::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sc-chips-label {
+  font-size: 13px; color: #64748b; font-weight: 500;
+  flex-shrink: 0; padding-right: 4px;
+}
+.sc-section-chip {
+  padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;
+  cursor: pointer; border: 2px solid #e2e8f0; background: white; color: #475569;
+  transition: all 0.2s; flex-shrink: 0; scroll-snap-align: start;
+  white-space: nowrap;
+}
+.sc-section-chip:hover { border-color: #d97706; color: #d97706; }
+.sc-section-chip-active {
+  background: #d97706; color: white; border-color: #d97706;
+}
+.sc-section-chip-active:hover { background: #b45309; border-color: #b45309; color: white; }
+
+.sc-info-actions { display: flex; gap: 8px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+.sc-fav-btn {
+  padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b;
+  transition: all 0.2s;
+}
+.sc-fav-btn:hover { background: #fefce8; border-color: #fde68a; }
+.sc-fav-btn-active { background: #fef3c7; color: #d97706; border-color: #fde68a; }
 
 /* ===== Search Results ===== */
 .sc-search-header { margin: 10px 0 20px; }
@@ -726,10 +746,12 @@ body {
   .sc-quote-box { text-align: left; white-space: normal; }
   .sc-quote-text { font-size: 16px; }
   .sc-grid { grid-template-columns: repeat(2, 1fr); }
-  .sc-detail-card { margin: 8px 0; padding: 20px; }
+  .sc-poem-info-card { padding: 18px 20px; margin: 12px 0 16px; }
+  .sc-info-title { font-size: 22px; }
   .sc-poet-header { padding: 18px; }
   .sc-reader-wrap { padding: 14px; }
   .sc-content-block { padding: 16px; }
   .sc-original-line { font-size: 15px; }
+  .sc-section-chip { padding: 5px 12px; font-size: 12px; }
 }
 </style>
