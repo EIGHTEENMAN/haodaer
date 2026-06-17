@@ -222,7 +222,7 @@ async function restoreFromHash() {
 
 // Audio — 使用预生成的 MiniMax TTS mp3 真人朗诵 + 自动 BGM
 const speaking = ref(false)
-const playingTarget = ref<'' | 'original' | 'translation' | 'interpretation' | 'full'>('')
+const playingTarget = ref<'' | 'original' | 'translation' | 'interpretation'>('')
 
 function playOriginalText() {
   if (!currentPoem.value || !currentSection.value) return
@@ -270,54 +270,8 @@ function playInterpretation() {
   })
 }
 
-function playFull() {
-  // 播放全文：原文 + 译文 串接
-  if (!currentPoem.value || !currentSection.value) return
-  stopAll()
-  speaking.value = true
-  playingTarget.value = 'full'
-  const origSrc = `/audio/poems/${currentPoem.value.id}_original.mp3`
-  const bgm = selectBgm(currentPoem.value)
-  const audio = new Audio(origSrc)
-  audio.preload = 'auto'
-  audio.playbackRate = 0.85
-  // @ts-ignore
-  if ('preservesPitch' in audio) audio.preservesPitch = true
-  // @ts-ignore
-  ;(audio as any).mozPreservesPitch = true
-  ;(audio as any).webkitPreservesPitch = true
-  audio.onended = () => {
-    // 原文播完后播译文
-    const transSrc = `/audio/poems/${currentPoem.value!.id}_translation.mp3`
-    const a2 = new Audio(transSrc)
-    a2.playbackRate = 0.85
-    // @ts-ignore
-    if ('preservesPitch' in a2) a2.preservesPitch = true
-    // @ts-ignore
-    ;(a2 as any).mozPreservesPitch = true
-    ;(a2 as any).webkitPreservesPitch = true
-    a2.onended = () => { speaking.value = false; playingTarget.value = ''; stopBgmInline() }
-    a2.play().catch(() => { speaking.value = false; playingTarget.value = '' })
-  }
-  audio.onerror = () => { speaking.value = false; playingTarget.value = '' }
-  audio.play().catch(() => { speaking.value = false; playingTarget.value = '' })
-
-  // BGM
-  const bgmAudio = new Audio(bgm)
-  bgmAudio.loop = true
-  bgmAudio.volume = 0.25
-  bgmAudio.play().catch(() => {})
-  // 暴露给 stopAudio
-  ;(window as any).__bgmAudio = bgmAudio
-}
-function stopBgmInline() {
-  const b = (window as any).__bgmAudio
-  if (b) { b.pause(); b.src = '' }
-}
-
 function stopAudio() {
   stopAll()
-  stopBgmInline()
   speaking.value = false
   playingTarget.value = ''
 }
@@ -722,14 +676,6 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div class="sc-reader-actions">
-          <button class="sc-action-btn sc-action-play"
-            :class="playingTarget === 'full' ? 'sc-action-playing' : ''"
-            @click="speaking ? stopAudio() : playFull()">
-            <span v-if="playingTarget === 'full'">⏹ 停止播放</span>
-            <span v-else>🎵 播放全文（原文+译文）</span>
-          </button>
-        </div>
       </div>
     </template>
 
@@ -872,11 +818,6 @@ body {
 .sc-block-play:hover { background: #d97706; color: white; }
 .sc-block-playing { background: #d97706 !important; color: white !important; }
 .sc-content-label-text { font-size: 14px; font-weight: 700; color: #d97706; }
-.sc-reader-actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
-.sc-action-btn { padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
-.sc-action-play { background: #d97706; color: white; }
-.sc-action-play:hover { background: #b45309; }
-.sc-action-playing { background: #b45309 !important; animation: pi-pulse 1.5s ease-in-out infinite; }
 @keyframes pi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 /* ===== Poem Info Card (原详情页内容) ===== */
