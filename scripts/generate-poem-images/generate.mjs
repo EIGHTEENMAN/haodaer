@@ -9,11 +9,12 @@
  *   node generate.mjs --clean      # 清空已完成状态重新生成
  *
  * 环境变量：
- *   AI_PROVIDER=mock|dall-e|tongyi|minimax  API 后端选择
+ *   AI_PROVIDER=mock|dall-e|tongyi|minimax|agnes  API 后端选择
  *   OPENAI_API_KEY=sk-xxx          OpenAI API Key
  *   ALIBABA_ACCESS_KEY_ID=xxx      阿里云 AccessKey
  *   ALIBABA_ACCESS_KEY_SECRET=xxx  阿里云 AccessKey Secret
  *   MINIMAX_API_KEY=xxx            MiniMax API Key
+ *   AGNES_API_KEY=sk-xxx           Agnes AI API Key
  */
 
 import { readFileSync, existsSync, mkdirSync, writeFileSync, createWriteStream } from 'fs'
@@ -188,8 +189,10 @@ async function generateOneImage(poemId, poems, tracker, outputDir, isMock) {
       await generateTongyiImage(poem, imgPath)
     } else if (CONFIG.provider === 'minimax') {
       await generateMiniMaxImage(poem, imgPath)
+    } else if (CONFIG.provider === 'agnes') {
+      await generateAgnesImage(poem, imgPath)
     } else {
-      throw new Error(`未知的 API 提供商: ${CONFIG.provider}。设置 AI_PROVIDER=mock|dall-e|tongyi|minimax`)
+      throw new Error(`未知的 API 提供商: ${CONFIG.provider}。设置 AI_PROVIDER=mock|dall-e|tongyi|minimax|agnes`)
     }
 
     tracker.markDone(poemId)
@@ -387,6 +390,68 @@ async function generateMiniMaxImage(poem, imgPath) {
   const buffer = Buffer.from(await imgResp.arrayBuffer())
   writeFileSync(imgPath, buffer)
   log(C.dim, 'MiniMax', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
+}
+
+// ===== Agnes AI 生成 =====
+async function generateAgnesImage(poem, imgPath) {
+  const { apiKey, endpoint, model } = CONFIG.agnes
+  if (!apiKey) {
+    throw new Error('未设置 AGNES_API_KEY 环境变量')
+  }
+
+  // 构造中文 prompt（Agnes 中文支持好）
+  const concreteLines = extractConcreteLines(poem)
+  const dynastyHint = dynastyStyleCn(poem.dynasty)
+  const genderHint = genderHintFn(poem)
+  const figureHint = hasFigureInConcrete(concreteLines) ? `
+人物要求：
+- 性别：${genderHint}
+- 服饰：传统汉服（宽袍大袖），不要现代服装
+- 发型：传统发髻，不要现代发型
+- 面部：五官清晰端正，性别特征明显
+- 避免：模糊脸部、变形五官、错误手指数` : ''
+
+  const prompt = `中国传统水墨画，${dynastyHint}。请直接具象描绘以下场景（主体要清晰可辨）：
+《${poem.title}》— ${poem.author}（${poem.dynasty}）
+场景内容：${concreteLines}
+
+要求：
+1. 主体鲜明，主要人物或动物占据画面中心或显著位置
+2. 背景山水为辅，不可喧宾夺主
+3. 色彩淡雅但内容丰富，细节清晰
+4. 不要任何文字、签名、印章、题款、边框、装饰
+5. 风格：水墨淡彩，类似宋代院体画或文人小品
+6. 不要额外添加原诗没有的花鸟、人物、物品${figureHint}`
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: model,
+      prompt: prompt,
+      n: 1,
+      size: CONFIG.agnes.size,
+    }),
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    throw new Error(`Agnes API 错误: ${response.status} ${text}`)
+  }
+
+  const data = await response.json()
+
+  const imageUrl = data.data?.[0]?.url
+  if (!imageUrl) throw new Error('Agnes 返回结果为空')
+
+  // 下载图片
+  const imgResp = await fetch(imageUrl)
+  const buffer = Buffer.from(await imgResp.arrayBuffer())
+  writeFileSync(imgPath, buffer)
+  log(C.dim, 'Agnes', `《${poem.title}》生成成功 (${(buffer.length / 1024).toFixed(0)}KB)`)
 }
 
 // 朝代→中文风格描述（用于 MiniMax 中文 prompt）

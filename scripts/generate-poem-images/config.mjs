@@ -43,12 +43,20 @@ export const CONFIG = {
     // MiniMax 支持中文 prompt，价格 ¥49/月（Plus套餐每天50张）
   },
 
+  // ===== Agnes AI (API Hub) =====
+  agnes: {
+    apiKey: process.env.AGNES_API_KEY || '',
+    endpoint: 'https://apihub.agnes-ai.com/v1/images/generations',
+    model: 'agnes-image-2.1-flash',
+    size: '1024x1024',
+  },
+
   // ===== 生成控制 =====
   generation: {
     // 每首诗生成的图片数量
     imagesPerPoem: 1,
     // 并发请求数
-    concurrency: 3,
+    concurrency: 5,
     // 失败重试次数
     maxRetries: 2,
     // 请求间延迟 (ms) — 避免限流
@@ -83,10 +91,13 @@ export const IMAGE_EXT = CONFIG.generation.format === 'webp' ? '.webp' : '.png'
 
 // MiniMax 返回 JPEG，需单独定义扩展名
 export const MINIMAX_IMAGE_EXT = '.jpg'
+// Agnes AI 返回 PNG
+export const AGNES_IMAGE_EXT = '.jpg'
 
 // ===== 根据提供商获取图片扩展名 =====
 export function getImageExt(provider) {
   if (provider === 'minimax') return MINIMAX_IMAGE_EXT
+  if (provider === 'agnes') return AGNES_IMAGE_EXT
   if (provider === 'mock') return '.webp'
   return IMAGE_EXT
 }

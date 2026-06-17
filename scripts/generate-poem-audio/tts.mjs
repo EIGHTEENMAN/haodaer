@@ -1,33 +1,34 @@
 /**
- * 诗词听书 — MiniMax TTS 批量生成朗诵音频
+ * 诗词听书 — Edge TTS 批量生成朗诵音频
  *
- * 为 905+ 首诗生成朗诵 mp3：
+ * 为 2028+ 首诗生成朗诵 mp3：
  *   - original.mp3  : 原文朗诵（按诗人性别选音色）
- *   - translation.mp3: 译文+讲解词 朗诵
+ *   - translation.mp3: 译文+赏析 朗诵
  *
  * 用法：
  *   node tts.mjs                  # 批量生成所有诗的朗诵
  *   node tts.mjs --poc 1004       # PoC 验证，只处理 ID=1004
  *   node tts.mjs --ids 1,2,3      # 指定 ID
- *   node tts.mjs --concurrency 4 # 并发数（默认 2）
+ *   node tts.mjs --concurrency 2  # 并发数（默认 2）
  *   node tts.mjs --type original  # 只生成原文 / translation
  *   node tts.mjs --status         # 查看进度
+ *   node tts.mjs --reset          # 重置状态（重跑所有）
  *
  * 输出：
- *   ../../apps/xueshici/public/audio/poems/{id}_{type}.mp3
+ *   apps/xueshici/public/audio/poems/{id}_{type}.mp3
  *
- * 音色策略：
- *   - 男诗人 (李白/杜甫/苏轼/王维/...) → male-qn-jingying (精英青年)
- *   - 女诗人 (李清照/薛涛/鱼玄机/...) → female-chengshu (成熟女性)
- *   - 佚名/未识别 → male-qn-jingying (默认稳健男声)
+ * 音色策略（Edge TTS 中文语音）：
+ *   - 男诗人 (李白/杜甫/苏轼/王维/...) → zh-CN-YunxiNeural（阳光活泼，叙事感强）
+ *   - 女诗人 (李清照/薛涛/鱼玄机/...) → zh-CN-XiaoxiaoNeural（温暖柔和）
+ *   - 佚名/未识别 → zh-CN-YunxiNeural（默认）
  *
- * 成本估算：
- *   - 906 段 × 2 (原文+译文) = 1812 段 mp3
- *   - 每段 ~100KB，1812 × 100KB = ~180MB
- *   - MiniMax 月度套餐 ¥29 覆盖
+ * 优势：
+ *   - 免费，无需 API Key
+ *   - 中文神经语音，质量堪比真人
+ *   - 支持多音色、语速控制
  */
 
-import { readFileSync, existsSync, mkdirSync, statSync, writeFileSync, readdirSync } from 'fs'
+import { readFileSync, existsSync, mkdirSync, writeFileSync, unlinkSync, copyFileSync, statSync, renameSync as fsRenameSync } from 'fs'
 import { resolve, dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
@@ -51,15 +52,10 @@ const CONFIG = {
     resolve(__dirname, '../../apps/xueshici/dist/audio/poems'),
     resolve(__dirname, '../../apps/xueshici/public/images/poems'),  // 兼容旧路径
   ],
-  // MiniMax API
-  apiUrl: process.env.ANTHROPIC_BASE_URL || 'https://api.minimaxi.com/anthropic',
-  apiKey: process.env.ANTHROPIC_AUTH_TOKEN || '',
-  // TTS 端点（与 t2a_pro 文档一致）
-  ttsEndpoint: 'https://api.minimaxi.com/v1/t2a_pro',
-  // 音色映射
+  // Edge TTS 音色映射
   voices: {
-    male: 'male-qn-jingying',     // 精英青年 - 沉稳儒雅
-    female: 'female-chengshu',    // 成熟女性 - 端庄大方
+    male: 'zh-CN-YunxiNeural',       // 阳光叙事男声
+    female: 'zh-CN-XiaoxiaoNeural',  // 温暖柔和女声
   },
   // 女诗人列表
   femaleAuthors: [
@@ -68,13 +64,15 @@ const CONFIG = {
   ],
   // 状态文件
   statusFile: resolve(__dirname, 'tts-status.json'),
-  // 并发
-  concurrency: 4,
+  // 并发（edge-tts 是免费服务，并发太高可能被限流）
+  concurrency: 2,
   // 重试
-  maxRetries: 5,
-  retryDelay: 3000,
-  // 速率限制
-  requestDelay: 1000,
+  maxRetries: 3,
+  retryDelay: 2000,
+  // 每段请求间隔（毫秒）
+  requestDelay: 500,
+  // 朗读语速（负值=慢，+0% 正常）
+  rate: '-10%',
   // 日志
   logLevel: 'summary',  // all | summary | error
 }
@@ -99,6 +97,11 @@ class Status {
       ? JSON.parse(readFileSync(CONFIG.statusFile, 'utf-8'))
       : { done: {}, failed: {}, totalChars: 0 }
   }
+  reset() {
+    this.data = { done: {}, failed: {}, totalChars: 0 }
+    this._save()
+    log(C.yellow, '重置', '状态已清空')
+  }
   markDone(key, size, chars) {
     this.data.done[key] = { size, chars, at: new Date().toISOString() }
     this.data.totalChars += chars
@@ -109,69 +112,60 @@ class Status {
     this._save()
   }
   isDone(key) { return !!this.data.done[key] }
+  isFailed(key) { return !!this.data.failed[key] }
   _save() { writeFileSync(CONFIG.statusFile, JSON.stringify(this.data, null, 2)) }
   printStats() {
     log(C.cyan, '状态', `已完成 ${Object.keys(this.data.done).length} 段，失败 ${Object.keys(this.data.failed).length} 段，文本总 ${this.data.totalChars} 字`)
   }
 }
 
-// ===== TTS API 调用 =====
-async function callTTS(text, voiceId) {
-  if (!CONFIG.apiKey) throw new Error('ANTHROPIC_AUTH_TOKEN not set')
+// ===== Edge TTS 调用（使用文本文件避免 shell 长度/转义问题） =====
+async function callEdgeTTS(text, voiceId, outputPath) {
   if (!text || !text.trim()) throw new Error('Empty text')
 
-  const resp = await fetch(CONFIG.ttsEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${CONFIG.apiKey}`,
-    },
-    body: JSON.stringify({
-      model: 'speech-02',
-      text: text.slice(0, 5000),  // 限制单次长度
-      voice_id: voiceId,
-      audio_setting: {
-        sample_rate: 32000,
-        bitrate: 128000,
-        format: 'mp3',
-      },
-    }),
-  })
+  const tmpMp3 = outputPath + '.tmp.mp3'
+  const tmpTxt = outputPath + '.tmp.txt'
 
-  if (!resp.ok) {
-    const text = await resp.text()
-    throw new Error(`HTTP ${resp.status}: ${text.slice(0, 200)}`)
-  }
-  const data = await resp.json()
-  if (data.base_resp?.status_code !== 0) {
-    throw new Error(`API error: ${data.base_resp?.status_msg}`)
-  }
-  if (!data.audio_file) {
-    throw new Error('No audio_file in response')
-  }
-  return data.audio_file
-}
+  try {
+    // 确保输出目录存在
+    mkdirSync(dirname(outputPath), { recursive: true })
 
-// ===== 下载远程 mp3 =====
-async function downloadMp3(url, destPath) {
-  const resp = await fetch(url)
-  if (!resp.ok) throw new Error(`Download failed: HTTP ${resp.status}`)
-  const buffer = Buffer.from(await resp.arrayBuffer())
-  // 复制到所有输出目录
-  const { copyFileSync } = await import('fs')
-  writeFileSync(destPath, buffer)
-  for (let i = 1; i < CONFIG.outputDirs.length; i++) {
-    try {
-      const altDest = join(CONFIG.outputDirs[i], destPath.split('/').pop())
-      if (!existsSync(altDest)) copyFileSync(destPath, altDest)
-    } catch (e) { /* 忽略 */ }
+    // 写入文本到临时文件（避免 shell 参数过长/转义问题）
+    writeFileSync(tmpTxt, text, 'utf-8')
+
+    // 调用 edge-tts Python 模块生成音频
+    const rate = CONFIG.rate ? `--rate=${CONFIG.rate}` : ''
+    const cmd = `python3 -m edge_tts --voice ${voiceId} ${rate} --file ${JSON.stringify(tmpTxt)} --write-media ${JSON.stringify(tmpMp3)}`
+    execSync(cmd, { timeout: 300000, stdio: 'pipe' })
+
+    // 检查生成的文件
+    if (!existsSync(tmpMp3)) throw new Error('No output file generated')
+
+    const size = statSync(tmpMp3)?.size || 0
+    if (size < 100) {
+      try { unlinkSync(tmpMp3) } catch {}
+      throw new Error('Output too small (' + size + 'B)')
+    }
+
+    // 清理临时文本文件
+    try { unlinkSync(tmpTxt) } catch {}
+
+    // 移到目标路径
+    try { fsRenameSync(tmpMp3, outputPath) } catch (e) {
+      copyFileSync(tmpMp3, outputPath)
+      unlinkSync(tmpMp3)
+    }
+    return size
+  } catch (err) {
+    try { if (existsSync(tmpMp3)) unlinkSync(tmpMp3) } catch {}
+    try { if (existsSync(tmpTxt)) unlinkSync(tmpTxt) } catch {}
+    throw err
   }
-  return buffer.length
 }
 
 // ===== 生成单段音频 =====
 async function generateOne(poem, type, status) {
-  const sec = poem.sections[0]
+  const sec = poem.sections && poem.sections[0]
   if (!sec) return { ok: false, reason: 'no_section' }
 
   // 准备文本
@@ -179,11 +173,10 @@ async function generateOne(poem, type, status) {
   if (type === 'original') {
     text = `《${poem.title}》${poem.author}，${poem.dynasty}。\n${sec.original.replace(/\n/g, '，')}`
   } else if (type === 'translation') {
-    // 译文 = 译文 + 赏析（朗读页面"解读"区完整内容）
+    // 译文 = 译文 + 赏析
     text = (sec.translation || '') + '\n\n' + (sec.interpretation || '')
     text = text.trim()
   } else if (type === 'interpretation') {
-    // 赏析 = 仅赏析
     text = sec.interpretation || sec.translation || ''
   } else {
     return { ok: false, reason: 'invalid_type' }
@@ -201,14 +194,23 @@ async function generateOne(poem, type, status) {
   let lastErr = null
   for (let attempt = 1; attempt <= CONFIG.maxRetries; attempt++) {
     try {
-      const audioUrl = await callTTS(text, voiceId)
-      const size = await downloadMp3(audioUrl, outputPath)
+      const size = await callEdgeTTS(text, voiceId, outputPath)
+      // 复制到其他输出目录
+      for (let i = 1; i < CONFIG.outputDirs.length; i++) {
+        try {
+          const altDest = join(CONFIG.outputDirs[i], `${poem.id}_${type}.mp3`)
+          if (!existsSync(altDest)) {
+            const { copyFileSync } = await import('fs')
+            copyFileSync(outputPath, altDest)
+          }
+        } catch (e) { /* 忽略 */ }
+      }
       status.markDone(key, size, text.length)
       return { ok: true, size, voiceId, chars: text.length }
     } catch (err) {
       lastErr = err
-      const isRateLimit = String(err).includes('rate limit')
-      const delay = CONFIG.retryDelay * attempt + (isRateLimit ? 8000 : 0)
+      const isRateLimit = String(err).includes('rate limit') || String(err).includes('429')
+      const delay = CONFIG.retryDelay * attempt * (isRateLimit ? 5 : 1)
       if (attempt < CONFIG.maxRetries) {
         await new Promise(r => setTimeout(r, delay))
       }
@@ -230,12 +232,9 @@ async function main() {
   const typeIdx = args.indexOf('--type')
   const onlyType = typeIdx >= 0 ? args[typeIdx + 1] : null
   const isStatus = args.includes('--status')
+  const isReset = args.includes('--reset')
 
-  // 检查
-  if (!CONFIG.apiKey) {
-    log(C.red, '错误', 'ANTHROPIC_AUTH_TOKEN 未设置')
-    process.exit(1)
-  }
+  // 检查 poems-data.json
   if (!existsSync(CONFIG.poemsFile)) {
     log(C.red, '错误', `未找到 ${CONFIG.poemsFile}`)
     process.exit(1)
@@ -251,6 +250,10 @@ async function main() {
   log(C.blue, '加载', `${poems.length} 首诗`)
 
   const status = new Status()
+  if (isReset) {
+    status.reset()
+    return
+  }
   if (isStatus) {
     status.printStats()
     return
@@ -280,9 +283,14 @@ async function main() {
   }
   log(C.cyan, '任务', `共 ${tasks.length} 段待生成`)
 
-  if (tasks.length === 0) {
-    log(C.yellow, '提示', '没有任务')
+  // 过滤已完成的
+  const remaining = tasks.filter(t => !status.isDone(`${t.poem.id}-${t.type}`))
+  if (remaining.length === 0) {
+    log(C.yellow, '提示', '所有任务已完成！')
     return
+  }
+  if (remaining.length < tasks.length) {
+    log(C.dim, '跳过', `${tasks.length - remaining.length} 段已存在`)
   }
 
   // 并发执行
@@ -291,7 +299,7 @@ async function main() {
   const failures = []
   let lastProgressLog = 0
 
-  const queue = [...tasks]
+  const queue = [...remaining]
   const workers = []
   for (let w = 0; w < CONFIG.concurrency; w++) {
     workers.push((async () => {
@@ -313,15 +321,16 @@ async function main() {
             log(C.red, '失败', `ID=${task.poem.id} ${task.type}: ${result.reason} ${result.error || ''}`)
           }
         }
-        // 速率限制
+        // 请求间隔
         await new Promise(r => setTimeout(r, CONFIG.requestDelay))
 
         // 进度日志
         const done = success + failed + skipped
-        if (tasks.length > 20 && done - lastProgressLog >= Math.max(20, Math.floor(tasks.length / 20))) {
+        const total = remaining.length
+        if (total > 10 && done - lastProgressLog >= Math.max(10, Math.floor(total / 20))) {
           const elapsed = ((Date.now() - startTime) / 1000).toFixed(0)
           const speed = (success / Math.max(1, elapsed) * 60).toFixed(1)
-          log(C.cyan, '进度', `[${done}/${tasks.length}] 成功:${success} 跳过:${skipped} 失败:${failed} 速度:${speed}段/分钟 耗时:${elapsed}s`)
+          log(C.cyan, '进度', `[${done}/${total}] 成功:${success} 跳过:${skipped} 失败:${failed} 速度:${speed}段/分钟 耗时:${elapsed}s`)
           lastProgressLog = done
         }
       }
@@ -331,9 +340,9 @@ async function main() {
 
   // 汇总
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
-  const speed = success > 0 ? (success / parseFloat(elapsed) * 60).toFixed(1) : '0'
+  const rate = success > 0 ? (success / parseFloat(elapsed) * 60).toFixed(1) : '0'
   console.log('\n' + '='.repeat(60))
-  log(C.green, '汇总', `完成 ${success} 段，跳过 ${skipped} 段，失败 ${failed} 段（耗时 ${elapsed}s，速度 ${speed}段/分钟）`)
+  log(C.green, '汇总', `完成 ${success} 段，跳过 ${skipped} 段，失败 ${failed} 段（耗时 ${elapsed}s，速度 ${rate}段/分钟）`)
   if (failures.length > 0) {
     console.log('\n失败列表（前 10）：')
     for (const f of failures.slice(0, 10)) console.log(`  ID=${f.id} ${f.type}: ${f.error}`)
