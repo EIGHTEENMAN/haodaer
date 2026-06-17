@@ -24,7 +24,7 @@ const props = defineProps<{
 }>()
 
 // ===== 状态 =====
-const imgStatus = ref<'loading' | 'loaded' | 'error' | 'empty'>('loading')
+const imgStatus = ref<'loading' | 'loaded' | 'empty'>('loading')
 const showFullscreen = ref(false)
 const imgNaturalSize = ref({ w: 0, h: 0 })
 
@@ -33,6 +33,7 @@ const imgNaturalSize = ref({ w: 0, h: 0 })
 // 回退：.mp4 → .jpg → .svg → 文字占位
 type FallbackStage = 'mp4' | 'jpg' | 'svg'
 const fallbackStage = ref<FallbackStage>('mp4')
+// videoReady 控制是否显示标题水墨叠加（不再控制 video 渲染，避免空白框）
 const videoReady = ref(false)
 const imgReady = ref(false)
 
@@ -56,19 +57,19 @@ const dynastyColorMap: Record<string, string> = {
 const accentColor = computed(() => props.color || dynastyColorMap[props.poemDynasty] || '#94a3b8')
 
 // ===== 加载处理 =====
-// 视频加载成功（第一帧已渲染）—— 视频是首选，直接 loaded
+// 视频加载成功（第一帧已渲染）—— 用于显示标题水墨叠加
 function handleVideoReady() {
   videoReady.value = true
+  // 不再阻塞 imgStatus，组件挂载时立即标记 loaded，避免空白框
   imgStatus.value = 'loaded'
   imgNaturalSize.value = { w: 720, h: 720 }
 }
 
-// 视频加载失败 → 回退到静态图 .jpg
+// 视频加载失败 → 回退到静态图 .jpg（不要切回 loading，保持 loaded 让容器可见）
 function handleVideoError() {
   if (fallbackStage.value === 'mp4') {
     fallbackStage.value = 'jpg'
-    // 触发图片加载（template 的 <img> 会根据 fallbackStage 自动选 jpg）
-    imgStatus.value = 'loading'
+    // imgStatus 保持 'loaded'，<img> 会根据 fallbackStage 自动渲染
   } else {
     handleImgError()
   }
@@ -82,27 +83,38 @@ function handleImgLoad(e: Event) {
   imgStatus.value = 'loaded'
 }
 
-// 图片加载失败 → 回退 .svg
+// 图片加载失败 → 回退 .svg（保持 loaded）
 function handleImgError() {
   if (fallbackStage.value === 'jpg') {
     fallbackStage.value = 'svg'
-    imgStatus.value = 'loading'
+    // imgStatus 保持 'loaded'，<img> 会渲染 svg
   } else {
     // .svg 也失败，显示空状态
     imgStatus.value = 'empty'
   }
 }
 
-// ===== 视频自动超时探测 =====
-// 如果 5 秒后 video 还没 canplay，主动降级（部分老浏览器/慢网）
+// ===== 视频自动超时探测 + ESC 关闭全屏 =====
 onMounted(() => {
+  // 立即进入 loaded 状态，触发媒体渲染（避免空白框）
+  if (imgStatus.value === 'loading') {
+    imgStatus.value = 'loaded'
+  }
+  // 5 秒后视频还没 canplay，主动降级到 jpg
   const timer = setTimeout(() => {
-    if (imgStatus.value === 'loading' && fallbackStage.value === 'mp4') {
-      // 主动降级到 jpg
+    if (fallbackStage.value === 'mp4' && !videoReady.value) {
       fallbackStage.value = 'jpg'
     }
   }, 5000)
-  onUnmounted(() => clearTimeout(timer))
+  // ESC 关闭全屏
+  const onEsc = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') showFullscreen.value = false
+  }
+  document.addEventListener('keydown', onEsc)
+  onUnmounted(() => {
+    clearTimeout(timer)
+    document.removeEventListener('keydown', onEsc)
+  })
 })
 
 // ===== 全屏预览 =====
@@ -113,13 +125,6 @@ function toggleFullscreen() {
 function closeFullscreen() {
   showFullscreen.value = false
 }
-
-// ESC 关闭全屏
-onMounted(() => {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') showFullscreen.value = false
-  })
-})
 </script>
 
 <template>
@@ -147,9 +152,9 @@ onMounted(() => {
       tabindex="0"
       @keydown.enter="toggleFullscreen"
     >
-      <!-- 视频模式：诗配动画（Ken Burns 推拉） -->
+      <!-- 视频模式：诗配动画（Ken Burns 推拉），先渲染以便有高度，ready 后才显示标题 -->
       <video
-        v-if="fallbackStage === 'mp4' && videoReady"
+        v-if="fallbackStage === 'mp4'"
         :src="mediaUrl"
         :poster="`/images/poems/${poemId}.jpg`"
         class="pi-image pi-image-video"
@@ -171,7 +176,7 @@ onMounted(() => {
         @error="handleImgError"
         loading="lazy"
       />
-      <!-- 标题水墨叠加（视频模式下显示） -->
+      <!-- 标题水墨叠加（视频 ready 后才显示） -->
       <div v-if="fallbackStage === 'mp4' && videoReady" class="pi-title-overlay">
         <div class="pi-title-text">《{{ poemTitle }}》</div>
         <div class="pi-author-text">{{ poemAuthor }} · {{ poemDynasty }}</div>
@@ -214,7 +219,9 @@ onMounted(() => {
       <div class="pi-fullscreen-overlay" @click.self="closeFullscreen">
         <button class="pi-fullscreen-close" @click="closeFullscreen" aria-label="关闭全屏">✕</button>
         <div class="pi-fullscreen-content">
-          <img :src="mediaUrl" :alt="`《${poemTitle}》配图`" class="pi-fullscreen-img" />
+          <!-- 全屏优先用 jpg 高清静态图（mp4 容器内清晰度够，全屏放大反而糊） -->
+          <img :src="`/images/poems/${poemId}.jpg`" :alt="`《${poemTitle}》配图`" class="pi-fullscreen-img"
+            @error="(e) => ((e.target as HTMLImageElement).src = mediaUrl)" />
           <p class="pi-fullscreen-caption">
             《{{ poemTitle }}》 · {{ poemAuthor }}（{{ poemDynasty }}）
           </p>
@@ -516,6 +523,14 @@ onMounted(() => {
   max-height: 80vh;
   border-radius: 8px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.pi-fullscreen-video {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: #000;
 }
 
 .pi-fullscreen-caption {

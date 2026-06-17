@@ -2,7 +2,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from "vue"
 import { poemsIndex, categories, categoryColors, poetBios, type PoemMeta } from './data/poems-meta'
 import type { Poem, Section } from './data/poems'
-import { speak, stopSpeaking } from './lib/audio'
+import { speak, stopSpeaking, playMp3, stopAll, selectBgm, detectMood } from './lib/audio'
 import { filterApps } from '@shared/composables/useSearch'
 import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
 import { useLearningStats } from '@shared/composables/useLearningStats'
@@ -12,7 +12,6 @@ import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
-import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 import PointReader from '@shared/components/PointReader.vue'
 import PoemIllustration from './components/PoemIllustration.vue'
 
@@ -58,8 +57,6 @@ const dailyQuote = computed(() => {
 
 // Learning progress tracking
 const readerEntryTime = ref(0)
-const showChallenge = ref(false)
-const challengeSectionRef = ref('')
 const { token, user } = useAuth()
 const stats = useLearningStats('xueshici')
 
@@ -71,13 +68,9 @@ watch(currentView, (newView, oldView) => {
       reportLearningProgress(childId, 'poetry', 1, Math.max(1, elapsed))
     }
     readerEntryTime.value = 0
-    if (challengeSectionRef.value) showChallenge.value = true
   }
   if (newView === 'reader') {
     readerEntryTime.value = Date.now()
-    if (currentPoem.value && currentSection.value) {
-      challengeSectionRef.value = `shici:${currentPoem.value.id}:${currentSection.value.id}`
-    }
   }
 })
 
@@ -227,24 +220,239 @@ async function restoreFromHash() {
   }
 }
 
-// Audio
+// Audio — 使用预生成的 MiniMax TTS mp3 真人朗诵 + 自动 BGM
 const speaking = ref(false)
-function playText(text: string) {
-  stopSpeaking()
-  if (!text.trim()) return
-  speaking.value = true
-  speak(text, 0.8, () => { speaking.value = false })
-}
+const playingTarget = ref<'' | 'original' | 'translation' | 'interpretation' | 'full'>('')
+
 function playOriginalText() {
   if (!currentPoem.value || !currentSection.value) return
-  const info = `《${currentPoem.value.title}》${currentPoem.value.author}，${currentPoem.value.dynasty}。`
-  playText(info + '\n' + currentSection.value.original)
+  stopAll()
+  speaking.value = true
+  playingTarget.value = 'original'
+  const src = `/audio/poems/${currentPoem.value.id}_original.mp3`
+  const bgm = selectBgm(currentPoem.value)
+  playMp3({
+    src,
+    bgmSrc: bgm,
+    bgmVolume: 0.25,
+    onEnd: () => { speaking.value = false; playingTarget.value = '' }
+  })
 }
-function stopAudio() { stopSpeaking(); speaking.value = false }
+
+function playTranslation() {
+  if (!currentPoem.value || !currentSection.value) return
+  stopAll()
+  speaking.value = true
+  playingTarget.value = 'translation'
+  const src = `/audio/poems/${currentPoem.value.id}_translation.mp3`
+  const bgm = selectBgm(currentPoem.value)
+  playMp3({
+    src,
+    bgmSrc: bgm,
+    bgmVolume: 0.25,
+    onEnd: () => { speaking.value = false; playingTarget.value = '' }
+  })
+}
+
+function playInterpretation() {
+  if (!currentPoem.value || !currentSection.value) return
+  stopAll()
+  speaking.value = true
+  playingTarget.value = 'interpretation'
+  // 赏析：用译文 mp3（没有独立的赏析 mp3）
+  const src = `/audio/poems/${currentPoem.value.id}_translation.mp3`
+  const bgm = selectBgm(currentPoem.value)
+  playMp3({
+    src,
+    bgmSrc: bgm,
+    bgmVolume: 0.25,
+    onEnd: () => { speaking.value = false; playingTarget.value = '' }
+  })
+}
+
+function playFull() {
+  // 播放全文：原文 + 译文 串接
+  if (!currentPoem.value || !currentSection.value) return
+  stopAll()
+  speaking.value = true
+  playingTarget.value = 'full'
+  const origSrc = `/audio/poems/${currentPoem.value.id}_original.mp3`
+  const bgm = selectBgm(currentPoem.value)
+  const audio = new Audio(origSrc)
+  audio.preload = 'auto'
+  audio.playbackRate = 0.85
+  // @ts-ignore
+  if ('preservesPitch' in audio) audio.preservesPitch = true
+  // @ts-ignore
+  ;(audio as any).mozPreservesPitch = true
+  ;(audio as any).webkitPreservesPitch = true
+  audio.onended = () => {
+    // 原文播完后播译文
+    const transSrc = `/audio/poems/${currentPoem.value!.id}_translation.mp3`
+    const a2 = new Audio(transSrc)
+    a2.playbackRate = 0.85
+    // @ts-ignore
+    if ('preservesPitch' in a2) a2.preservesPitch = true
+    // @ts-ignore
+    ;(a2 as any).mozPreservesPitch = true
+    ;(a2 as any).webkitPreservesPitch = true
+    a2.onended = () => { speaking.value = false; playingTarget.value = ''; stopBgmInline() }
+    a2.play().catch(() => { speaking.value = false; playingTarget.value = '' })
+  }
+  audio.onerror = () => { speaking.value = false; playingTarget.value = '' }
+  audio.play().catch(() => { speaking.value = false; playingTarget.value = '' })
+
+  // BGM
+  const bgmAudio = new Audio(bgm)
+  bgmAudio.loop = true
+  bgmAudio.volume = 0.25
+  bgmAudio.play().catch(() => {})
+  // 暴露给 stopAudio
+  ;(window as any).__bgmAudio = bgmAudio
+}
+function stopBgmInline() {
+  const b = (window as any).__bgmAudio
+  if (b) { b.pause(); b.src = '' }
+}
+
+function stopAudio() {
+  stopAll()
+  stopBgmInline()
+  speaking.value = false
+  playingTarget.value = ''
+}
 function getReaderContent(): string {
   if (!currentPoem.value || !currentSection.value) return ''
   const info = `《${currentPoem.value.title}》${currentPoem.value.author}，${currentPoem.value.dynasty}。`
-  return info + '\n' + currentSection.value.original
+  const sentences = splitBySentence(currentSection.value.original, currentPoem.value).join('\n')
+  return info + '\n' + sentences
+}
+
+// 智能断句（适配绝句/律诗/楚辞/诗经/词）：
+//   1. 先按 \n 分行 → 每行视作一段
+//   2. 每段内：若以「兮/哉/也/矣/焉/乎」结尾（楚辞特征），原样保留为完整句
+//   3. 否则按字数自动断句（5/6/7 字，优先 7 字）
+//   4. 最后按 2 句一组（古诗对仗联），联内「，」联末「。」
+const CHUCI_ENDINGS = /[兮哉也矣焉乎]$/
+
+function smartSplitLine(line: string): string[] {
+  if (!line) return []
+  const trimmed = line.trim()
+  if (!trimmed) return []
+
+  // 楚辞体：以语气词结尾视为完整一句，不切
+  if (CHUCI_ENDINGS.test(trimmed)) {
+    return [trimmed]
+  }
+
+  // 否则按字数断
+  const len = trimmed.length
+  if (len <= 8) return [trimmed]  // 单句不切
+
+  // 选最佳断句字数
+  const candidates = [7, 5, 6, 4]
+  let bestUnit = 5
+  let bestScore = Infinity
+  for (const u of candidates) {
+    if (u > len) continue
+    const score = (len % u) + Math.abs(len / Math.ceil(len / u) - u) * 0.5
+    if (score < bestScore) {
+      bestScore = score
+      bestUnit = u
+    }
+  }
+
+  const out: string[] = []
+  for (let i = 0; i < len; i += bestUnit) {
+    out.push(trimmed.slice(i, i + bestUnit))
+  }
+  // 尾部不足整句的合并到上一句（避免单字尾巴）
+  if (out.length > 1 && out[out.length - 1].length < bestUnit / 2) {
+    const last = out.pop()!
+    out[out.length - 1] += last
+  }
+  return out
+}
+
+/**
+ * 散文体断句（古文观止/陶渊明/韩愈/柳宗元等散文）
+ * 策略：在「也/矣/焉/乎/哉/者/耳/尔」等虚词前断句，每句长度不固定（4-12 字都正常）
+ */
+function splitProseLine(line: string): string[] {
+  if (!line) return []
+  const trimmed = line.trim()
+  if (!trimmed) return []
+
+  // 散文特征：在虚词前断句（保留虚词在句首）
+  // 也/矣/焉/乎/哉/者/耳/尔 前通常是句末标记
+  const markers = /([。？！，；]|[也矣焉乎哉者耳尔])/g
+  const result: string[] = []
+  let buf = ''
+  for (let i = 0; i < trimmed.length; i++) {
+    buf += trimmed[i]
+    // 遇到虚词：把它保留到当前 buffer，结束一句
+    if (markers.test(trimmed[i])) {
+      // 重置 lastIndex（因为 g flag）
+      markers.lastIndex = 0
+      if (buf.length >= 4) {
+        result.push(buf)
+        buf = ''
+      }
+    }
+  }
+  if (buf.length > 0) result.push(buf)
+  return result
+}
+
+/**
+ * 判断是否为散文（不是诗）
+ */
+function isProse(poem: { title?: string; tags?: string; author?: string } | null): boolean {
+  if (!poem) return false
+  const text = `${poem.title || ''} ${poem.tags || ''} ${poem.author || ''}`
+  // 标题特征
+  if (/[（(].*节选.*[)）]/.test(poem.title || '')) return true
+  if (/传$|记$|序$|书$|赋$|论$|说$|表$|铭$|志$|颂$|赞$|碑$|诔$/.test(poem.title || '')) return true
+  // tags
+  if (/古文|散文|古文观止/.test(poem.tags || '')) return true
+  return false
+}
+
+function splitBySentence(text: string, poem: { title?: string; tags?: string; author?: string } | null = null): string[] {
+  if (!text) return []
+
+  // 散文体：按虚词断句，每句独立显示（不强制对仗联）
+  if (isProse(poem)) {
+    const rawLines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0)
+    const lines: string[] = []
+    for (const l of rawLines) {
+      lines.push(...splitProseLine(l))
+    }
+    if (lines.length === 0) return []
+    return lines.map(l => /[。？！]$/.test(l) ? l : l + '。')
+  }
+
+  // 诗体：先按 \n 分行
+  const rawLines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0)
+  // 每行内部再做楚辞/字数切分
+  const lines: string[] = []
+  for (const l of rawLines) {
+    lines.push(...smartSplitLine(l))
+  }
+  if (lines.length === 0) return []
+
+  // 2 句一组（古诗对仗联），联内「，」联末「。」
+  const result: string[] = []
+  for (let i = 0; i < lines.length; i += 2) {
+    const pair = lines.slice(i, i + 2)
+    if (pair.length === 2) {
+      result.push(pair[0] + '，' + pair[1] + '。')
+    } else {
+      const last = pair[0]
+      result.push(/[。？！]$/.test(last) ? last : last + '。')
+    }
+  }
+  return result
 }
 
 async function doSearch() {
@@ -298,6 +506,13 @@ onMounted(async () => {
   const params = new URLSearchParams(window.location.search)
   const qParam = params.get('q')
   if (qParam) { searchQuery.value = qParam }
+
+  // 预加载诗词详情数据（用户在浏览器空闲时下载，点击诗时零延迟）
+  if ('requestIdleCallback' in window) {
+    ;(window as any).requestIdleCallback(() => ensureFullData(), { timeout: 2000 })
+  } else {
+    setTimeout(ensureFullData, 1000)
+  }
 
   // Restore view state from URL hash (supports browser refresh and back/forward)
   await restoreFromHash()
@@ -467,19 +682,6 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <p class="sc-info-summary" style="white-space: pre-line" v-if="currentPoem?.summary">{{ currentPoem.summary }}</p>
-
-          <!-- 段落 chips（横向滚动，多 section 诗可切换；单 section 也显示，视觉一致） -->
-          <div class="sc-section-chips" v-if="currentPoem && currentPoem.sections.length > 0">
-            <span class="sc-chips-label">段落：</span>
-            <button v-for="sec in currentPoem.sections" :key="sec.id"
-              class="sc-section-chip"
-              :class="sec.id === currentSection.id ? 'sc-section-chip-active' : ''"
-              @click="openReader(sec)">
-              {{ sec.title || ('第 ' + sec.id) }}
-            </button>
-          </div>
-
           <!-- 收藏按钮 -->
           <div class="sc-info-actions">
             <button class="sc-fav-btn"
@@ -493,32 +695,39 @@ onUnmounted(() => {
         <div class="sc-content-sections">
           <div class="sc-content-block">
             <div class="sc-content-label">
-              <span>原文</span>
-              <button class="sc-block-play" @click="speaking ? stopAudio() : playOriginalText()">{{ speaking ? '⏹' : '▶' }}</button>
+              <span class="sc-content-label-text">📜 原文</span>
+              <button class="sc-block-play"
+                :class="playingTarget === 'original' ? 'sc-block-playing' : ''"
+                @click="speaking ? stopAudio() : playOriginalText()">
+                <span v-if="playingTarget === 'original'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读原文</span>
+              </button>
             </div>
             <div class="sc-original-text">
-              <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="sc-original-line"><PointReader :text="line" /></p>
+              <p v-for="(line, i) in splitBySentence(currentSection.original, currentPoem)" :key="i" class="sc-original-line"><PointReader :text="line" /></p>
             </div>
           </div>
           <div class="sc-content-block">
             <div class="sc-content-label">
-              <span>译文</span>
-              <button class="sc-block-play" @click="speaking ? stopAudio() : playText(currentSection.translation)">{{ speaking ? '⏹' : '▶' }}</button>
+              <span class="sc-content-label-text">📖 解读</span>
+              <button class="sc-block-play"
+                :class="playingTarget === 'translation' ? 'sc-block-playing' : ''"
+                @click="speaking ? stopAudio() : playTranslation()">
+                <span v-if="playingTarget === 'translation'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读解读</span>
+              </button>
             </div>
             <p class="sc-translation-text">{{ currentSection.translation }}</p>
-          </div>
-          <div class="sc-content-block">
-            <div class="sc-content-label">
-              <span>赏析</span>
-              <button class="sc-block-play" @click="speaking ? stopAudio() : playText(currentSection.interpretation)">{{ speaking ? '⏹' : '▶' }}</button>
-            </div>
-            <p class="sc-translation-text">{{ currentSection.interpretation }}</p>
+            <p class="sc-translation-text" style="margin-top:14px;padding-top:14px;border-top:1px dashed #e2e8f0;color:#78716c;font-style:italic;">{{ currentSection.interpretation }}</p>
           </div>
         </div>
 
         <div class="sc-reader-actions">
-          <button class="sc-action-btn sc-action-play" @click="speaking ? stopAudio() : playText(getReaderContent())">
-            {{ speaking ? '⏹ 停止' : '▶ 播放全文' }}
+          <button class="sc-action-btn sc-action-play"
+            :class="playingTarget === 'full' ? 'sc-action-playing' : ''"
+            @click="speaking ? stopAudio() : playFull()">
+            <span v-if="playingTarget === 'full'">⏹ 停止播放</span>
+            <span v-else>🎵 播放全文（原文+译文）</span>
           </button>
         </div>
       </div>
@@ -529,13 +738,6 @@ onUnmounted(() => {
       <p>本平台所收录的古典诗词均为公有领域作品。现代作品片段仅作教学引用，版权归原作者所有。如涉及侵权，请联系我们处理。 · <a href="https://grandand.com/legal#complaint" style="color:#94a3b8;text-decoration:underline;">侵权投诉</a></p>
     </div>
     <FooterBar v-if="currentView === 'home'" />
-    <ReadingChallenge
-      :visible="showChallenge"
-      subject="shici"
-      :sectionRef="challengeSectionRef"
-      server-url="https://tiaozhan.grandand.com"
-      @close="showChallenge = false"
-    />
   </div>
   </YouthModeGate>
 </template>
@@ -659,18 +861,23 @@ body {
   display: flex; align-items: center; justify-content: space-between;
 }
 .sc-original-text { font-family: "Noto Serif SC", "STSong", serif; }
-.sc-original-line { font-size: 17px; line-height: 2.2; color: #0f172a; }
+.sc-original-line { font-size: 17px; line-height: 2.2; color: #0f172a; margin-bottom: 4px; }
 .sc-translation-text { font-size: 14px; line-height: 1.9; color: #475569; white-space: pre-line; }
 .sc-block-play {
-  width: 32px; height: 32px; border-radius: 50%; border: none;
-  background: #fef3c7; color: #d97706; font-size: 13px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  padding: 6px 14px; border-radius: 20px; border: none;
+  background: #fef3c7; color: #d97706; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+  transition: all 0.2s;
 }
 .sc-block-play:hover { background: #d97706; color: white; }
+.sc-block-playing { background: #d97706 !important; color: white !important; }
+.sc-content-label-text { font-size: 14px; font-weight: 700; color: #d97706; }
 .sc-reader-actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
 .sc-action-btn { padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
 .sc-action-play { background: #d97706; color: white; }
 .sc-action-play:hover { background: #b45309; }
+.sc-action-playing { background: #b45309 !important; animation: pi-pulse 1.5s ease-in-out infinite; }
+@keyframes pi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 /* ===== Poem Info Card (原详情页内容) ===== */
 .sc-poem-info-card {

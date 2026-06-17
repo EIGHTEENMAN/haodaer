@@ -179,8 +179,12 @@ async function generateOne(poem, type, status) {
   if (type === 'original') {
     text = `《${poem.title}》${poem.author}，${poem.dynasty}。\n${sec.original.replace(/\n/g, '，')}`
   } else if (type === 'translation') {
-    // 译文 = 翻译 + 讲解词（已经在 poems-data.json 合并好）
-    text = sec.translation
+    // 译文 = 译文 + 赏析（朗读页面"解读"区完整内容）
+    text = (sec.translation || '') + '\n\n' + (sec.interpretation || '')
+    text = text.trim()
+  } else if (type === 'interpretation') {
+    // 赏析 = 仅赏析
+    text = sec.interpretation || sec.translation || ''
   } else {
     return { ok: false, reason: 'invalid_type' }
   }
