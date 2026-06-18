@@ -1,9 +1,9 @@
 /**
  * 诗词听书 — Edge TTS 批量生成朗诵音频
  *
- * 为 2028+ 首诗生成朗诵 mp3：
- *   - original.mp3  : 原文朗诵（按诗人性别选音色）
- *   - translation.mp3: 译文+赏析 朗诵
+ * 为 2026+ 首诗生成朗诵 mp3：
+ *   - original.mp3  : 原文朗诵（按 6 情绪 × 2 性别 = 12 音色矩阵选音色 + 情感）
+ *   - translation.mp3: 译文+赏析 朗诵（无 style，保持中性讲解）
  *
  * 用法：
  *   node tts.mjs                  # 批量生成所有诗的朗诵
@@ -13,25 +13,36 @@
  *   node tts.mjs --type original  # 只生成原文 / translation
  *   node tts.mjs --status         # 查看进度
  *   node tts.mjs --reset          # 重置状态（重跑所有）
+ *   node tts.mjs --regen-all      # 把 done 备份到 done.bak-{ts} 后重做所有 original
  *
  * 输出：
  *   apps/xueshici/public/audio/poems/{id}_{type}.mp3
  *
- * 音色策略（Edge TTS 中文语音）：
- *   - 男诗人 (李白/杜甫/苏轼/王维/...) → zh-CN-YunxiNeural（阳光活泼，叙事感强）
- *   - 女诗人 (李清照/薛涛/鱼玄机/...) → zh-CN-XiaoxiaoNeural（温暖柔和）
- *   - 佚名/未识别 → zh-CN-YunxiNeural（默认）
+ * 音色策略（Edge TTS 6 情绪 × 2 性别矩阵，详见 moodClassifier.mjs）：
+ *
+ *   mood      │ male voice              │ male style  │ female voice        │ female style  │ rate
+ *   ──────────┼─────────────────────────┼─────────────┼─────────────────────┼───────────────┼─────
+ *   heroic    │ zh-CN-YunyangNeural     │ assertive   │ zh-CN-XiaoxiaoNeural│ cheerful      │ -5%
+ *   graceful  │ zh-CN-YunxiNeural       │ gentle      │ zh-CN-XiaoxiaoNeural│ gentle        │ -15%
+ *   pastoral  │ zh-CN-YunxiNeural       │ calm        │ zh-CN-XiaoxiaoNeural│ gentle        │ -20%
+ *   frontier  │ zh-CN-YunjianNeural     │ serious     │ zh-CN-XiaoxiaoNeural│ serious       │ -5%
+ *   lyric     │ zh-CN-YunxiNeural       │ calm        │ zh-CN-XiaoxiaoNeural│ affectionate  │ -15%
+ *   narrative │ zh-CN-YunxiNeural       │ narration   │ zh-CN-XiaoxiaoNeural│ calm          │ -10%
+ *
+ * 情绪判断复刻前端 apps/xueshici/src/lib/audio.ts::detectMood()：
+ *   frontier → pastoral(楚辞) → heroic → lyric → pastoral(王维) → narrative → graceful
  *
  * 优势：
  *   - 免费，无需 API Key
- *   - 中文神经语音，质量堪比真人
- *   - 支持多音色、语速控制
+ *   - 中文神经语音 + SSML emotion/style，质量堪比真人
+ *   - 与 BGM 选曲（bgm.mjs）同 6 情绪体系，听感一致
  */
 
 import { readFileSync, existsSync, mkdirSync, writeFileSync, unlinkSync, copyFileSync, statSync, renameSync as fsRenameSync } from 'fs'
 import { resolve, dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-import { execSync } from 'child_process'
+import { execSync, spawnSync } from 'child_process'
+import { getVoiceProfile } from './moodClassifier.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -52,16 +63,7 @@ const CONFIG = {
     resolve(__dirname, '../../apps/xueshici/dist/audio/poems'),
     resolve(__dirname, '../../apps/xueshici/public/images/poems'),  // 兼容旧路径
   ],
-  // Edge TTS 音色映射
-  voices: {
-    male: 'zh-CN-YunxiNeural',       // 阳光叙事男声
-    female: 'zh-CN-XiaoxiaoNeural',  // 温暖柔和女声
-  },
-  // 女诗人列表
-  femaleAuthors: [
-    '李清照', '薛涛', '鱼玄机', '上官婉儿', '班婕妤', '蔡文姬',
-    '管道升', '朱淑真', '吴藻', '顾太清', '柳如是',
-  ],
+  // Edge TTS 音色/情感/语速统一在 moodClassifier.mjs 维护（6 情绪 × 2 性别矩阵）
   // 状态文件
   statusFile: resolve(__dirname, 'tts-status.json'),
   // 并发（edge-tts 是免费服务，并发太高可能被限流）
@@ -78,16 +80,26 @@ const CONFIG = {
 }
 
 // ===== 工具：判断作者性别 =====
-function getAuthorGender(author) {
-  if (!author) return 'male'
-  for (const f of CONFIG.femaleAuthors) {
-    if (author.includes(f)) return 'female'
-  }
-  return 'male'
+// 已迁移到 moodClassifier.mjs::getAuthorGender / getVoiceProfile
+
+// ===== XML 转义（SSML 需要） =====
+function escapeXml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
 }
 
-function getVoiceId(poem) {
-  return CONFIG.voices[getAuthorGender(poem.author)]
+// ===== 构建 SSML（用于带 style 的情感朗诵） =====
+function buildSsml(text, voice, style, styleDegree, rate) {
+  const escaped = escapeXml(text)
+  const prosody = `<prosody rate="${rate}">${escaped}</prosody>`
+  if (style) {
+    return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="zh-CN"><voice name="${voice}"><mstts:express-as style="${style}" styledegree="${styleDegree}">${prosody}</mstts:express-as></voice></speak>`
+  }
+  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${voice}">${prosody}</voice></speak>`
 }
 
 // ===== 状态管理 =====
@@ -120,9 +132,11 @@ class Status {
 }
 
 // ===== Edge TTS 调用（使用文本文件避免 shell 长度/转义问题） =====
-async function callEdgeTTS(text, voiceId, outputPath) {
+// profile = { voice, style, styleDegree, rate }
+async function callEdgeTTS(text, profile, outputPath) {
   if (!text || !text.trim()) throw new Error('Empty text')
 
+  const { voice, style, styleDegree, rate } = profile
   const tmpMp3 = outputPath + '.tmp.mp3'
   const tmpTxt = outputPath + '.tmp.txt'
 
@@ -130,13 +144,23 @@ async function callEdgeTTS(text, voiceId, outputPath) {
     // 确保输出目录存在
     mkdirSync(dirname(outputPath), { recursive: true })
 
-    // 写入文本到临时文件（避免 shell 参数过长/转义问题）
-    writeFileSync(tmpTxt, text, 'utf-8')
-
-    // 调用 edge-tts Python 模块生成音频
-    const rate = CONFIG.rate ? `--rate=${CONFIG.rate}` : ''
-    const cmd = `python3 -m edge_tts --voice ${voiceId} ${rate} --file ${JSON.stringify(tmpTxt)} --write-media ${JSON.stringify(tmpMp3)}`
-    execSync(cmd, { timeout: 300000, stdio: 'pipe' })
+    // 写入文件：有 style 时写 SSML，无 style 时写纯文本
+    const args = style
+      ? ['-m', 'edge_tts', '--voice', voice, '--file', tmpTxt, '--write-media', tmpMp3]
+      : ['-m', 'edge_tts', '--voice', voice, '--rate', rate, '--file', tmpTxt, '--write-media', tmpMp3]
+    if (style) {
+      writeFileSync(tmpTxt, buildSsml(text, voice, style, styleDegree, rate), 'utf-8')
+    } else {
+      writeFileSync(tmpTxt, text, 'utf-8')
+    }
+    const r = spawnSync('python3', args, { timeout: 300000, encoding: 'utf-8' })
+    if (r.error) throw r.error
+    if (r.status !== 0) {
+      const e = new Error(`edge-tts exit ${r.status}: ${(r.stderr || r.stdout || '').slice(0, 1500)}`)
+      e.stderr = r.stderr || ''
+      e.stdout = r.stdout || ''
+      throw e
+    }
 
     // 检查生成的文件
     if (!existsSync(tmpMp3)) throw new Error('No output file generated')
@@ -187,14 +211,20 @@ async function generateOne(poem, type, status) {
     return { ok: true, reason: 'already_exists', skipped: true }
   }
 
-  const voiceId = getVoiceId(poem)
+  // 解析 voice profile（mood × gender → voice/style/rate）
+  const profile = getVoiceProfile(poem, type)
   const outputPath = join(CONFIG.outputDirs[0], `${poem.id}_${type}.mp3`)
 
-  // 多次重试
+  // 多次重试：style 不被支持时降级为 plain + prosody rate
   let lastErr = null
+  let downgradeTried = false
   for (let attempt = 1; attempt <= CONFIG.maxRetries; attempt++) {
     try {
-      const size = await callEdgeTTS(text, voiceId, outputPath)
+      // 构造本次调用的 profile（可能降级 style）
+      const callProfile = (downgradeTried || !profile.style)
+        ? { ...profile, style: null }
+        : profile
+      const size = await callEdgeTTS(text, callProfile, outputPath)
       // 复制到其他输出目录
       for (let i = 1; i < CONFIG.outputDirs.length; i++) {
         try {
@@ -206,11 +236,30 @@ async function generateOne(poem, type, status) {
         } catch (e) { /* 忽略 */ }
       }
       status.markDone(key, size, text.length)
-      return { ok: true, size, voiceId, chars: text.length }
+      return { ok: true, size, profile: callProfile, chars: text.length, downgraded: downgradeTried }
     } catch (err) {
       lastErr = err
-      const isRateLimit = String(err).includes('rate limit') || String(err).includes('429')
-      const delay = CONFIG.retryDelay * attempt * (isRateLimit ? 5 : 1)
+      const errStr = String(err)
+      const stderrStr = err.stderr ? err.stderr.toString() : ''
+      const fullErr = errStr + ' ' + stderrStr
+      const isRateLimit = fullErr.includes('rate limit') || fullErr.includes('429')
+      const isTransient = isRateLimit
+        || fullErr.includes('Connection reset')
+        || fullErr.includes('ConnectionResetError')
+        || fullErr.includes('ConnectError')
+        || fullErr.includes('Cannot connect')
+        || fullErr.includes('ServerDisconnected')
+        || fullErr.includes('TimeoutError')
+        || fullErr.includes('RemoteDisconnected')
+      const isStyleUnsupported = !downgradeTried && (fullErr.includes('style') || fullErr.includes('not supported') || fullErr.includes('express-as') || fullErr.includes('Unknown style'))
+      if (isStyleUnsupported) {
+        log(C.yellow, '降级', `ID=${poem.id} ${type}: voice=${profile.voice} style=${profile.style} 不被支持，改用 plain+rate=${profile.rate}`)
+        downgradeTried = true
+        continue
+      }
+      // 瞬断：等更久再重试（默认 3s × attempt，429/严重瞬断 ×5）
+      const delay = CONFIG.retryDelay * attempt * (isTransient ? (isRateLimit ? 5 : 3) : 1)
+      log(C.dim, '重试', `ID=${poem.id} ${type} attempt=${attempt}/${CONFIG.maxRetries} ${isTransient ? '(瞬断)' : ''} 等 ${delay}ms err=${(fullErr.split('\n')[0] || '').slice(0, 80)}`)
       if (attempt < CONFIG.maxRetries) {
         await new Promise(r => setTimeout(r, delay))
       }
@@ -233,6 +282,7 @@ async function main() {
   const onlyType = typeIdx >= 0 ? args[typeIdx + 1] : null
   const isStatus = args.includes('--status')
   const isReset = args.includes('--reset')
+  const isRegenAll = args.includes('--regen-all')
 
   // 检查 poems-data.json
   if (!existsSync(CONFIG.poemsFile)) {
@@ -252,6 +302,16 @@ async function main() {
   const status = new Status()
   if (isReset) {
     status.reset()
+    return
+  }
+  if (isRegenAll) {
+    // 把 done 备份到 done.bak-{timestamp}，让下一轮重做所有 original
+    const ts = new Date().toISOString().replace(/[:.]/g, '-')
+    status.data[`done.bak.${ts}`] = status.data.done
+    status.data.done = {}
+    status.data.totalChars = 0
+    status._save()
+    log(C.yellow, '备份', `原 done 备份到 done.bak.${ts}，已清空 done，准备重做`)
     return
   }
   if (isStatus) {
@@ -312,7 +372,8 @@ async function main() {
         } else if (result.ok) {
           success++
           if (CONFIG.logLevel === 'all') {
-            log(C.green, '完成', `ID=${task.poem.id} ${task.type} ${result.size}B voice=${result.voiceId}`)
+            const p = result.profile || {}
+            log(C.green, '完成', `ID=${task.poem.id} ${task.type} ${result.size}B voice=${p.voice} style=${p.style || '(none)'} rate=${p.rate} mood=${p.mood}${result.downgraded ? ' [降级]' : ''}`)
           }
         } else {
           failed++
