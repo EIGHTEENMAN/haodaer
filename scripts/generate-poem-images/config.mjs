@@ -10,6 +10,41 @@
  *   - 以下默认值
  */
 
+import { readFileSync, existsSync } from 'fs'
+import { dirname, join } from 'path'
+import { homedir } from 'os'
+import { fileURLToPath } from 'url'
+
+const __confDirname = dirname(fileURLToPath(import.meta.url))
+
+// 加载 secrets.env（项目外，git 不跟踪）
+const userEnvPath = join(homedir(), '.config/haodaer/secrets.env')
+if (existsSync(userEnvPath)) {
+  try {
+    const envText = readFileSync(userEnvPath, 'utf-8')
+    for (const line of envText.split('\n')) {
+      const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.+?)\s*$/)
+      if (m && !process.env[m[1]]) {
+        process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '')
+      }
+    }
+  } catch {}
+}
+
+// 加载项目内 .env
+const localEnvPath = join(__confDirname, '.env')
+if (existsSync(localEnvPath)) {
+  try {
+    const envText = readFileSync(localEnvPath, 'utf-8')
+    for (const line of envText.split('\n')) {
+      const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.+?)\s*$/)
+      if (m && !process.env[m[1]]) {
+        process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '')
+      }
+    }
+  } catch {}
+}
+
 export const CONFIG = {
   // ===== API 选择 =====
   // 可选: 'dall-e' | 'tongyi' | 'mock'
@@ -58,9 +93,9 @@ export const CONFIG = {
     // 并发请求数
     concurrency: 5,
     // 失败重试次数
-    maxRetries: 2,
+    maxRetries: 4,
     // 请求间延迟 (ms) — 避免限流
-    delayMs: 500,
+    delayMs: 1500,
     // 输出目录（相对于脚本路径）
     outputDir: '../../apps/xueshici/public/images/poems',
     // 图片格式: webp | png | jpg

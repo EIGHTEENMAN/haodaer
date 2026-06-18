@@ -18,7 +18,8 @@
  */
 
 import { readFileSync, existsSync, mkdirSync, writeFileSync, createWriteStream } from 'fs'
-import { resolve, dirname } from 'path'
+import { resolve, dirname, join } from 'path'
+import { homedir } from 'os'
 import { fileURLToPath } from 'url'
 import { get } from 'https'
 import { CONFIG, IMAGE_EXT, getImageExt } from './config.mjs'
@@ -26,6 +27,34 @@ import { buildPrompt } from './promptBuilder.mjs'
 import { Tracker } from './tracker.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// ===== 加载 .env（如存在）=====
+const envPath = join(__dirname, '.env')
+if (existsSync(envPath)) {
+  try {
+    const envText = readFileSync(envPath, 'utf-8')
+    for (const line of envText.split('\n')) {
+      const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.+?)\s*$/)
+      if (m && !process.env[m[1]]) {
+        process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '')
+      }
+    }
+  } catch {}
+}
+
+// ===== 加载 ~/.config/haodaer/secrets.env（项目外，git 不跟踪）=====
+const userEnvPath = join(homedir(), '.config/haodaer/secrets.env')
+if (existsSync(userEnvPath)) {
+  try {
+    const envText = readFileSync(userEnvPath, 'utf-8')
+    for (const line of envText.split('\n')) {
+      const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.+?)\s*$/)
+      if (m && !process.env[m[1]]) {
+        process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '')
+      }
+    }
+  } catch {}
+}
 
 // ===== 日志颜色 =====
 const C = {
@@ -48,6 +77,8 @@ async function main() {
   const isStatus = args.includes('--status')
   const isRetry = args.includes('--retry')
   const isClean = args.includes('--clean')
+  const idsIdx = args.indexOf('--ids')
+  const specifiedIds = idsIdx >= 0 ? args[idsIdx + 1].split(',').map(s => parseInt(s.trim())).filter(Boolean) : null
   const isMock = process.env.MOCK === 'true' || CONFIG.provider === 'mock'
 
   // === 加载诗词数据（从预导出的 JSON） ===
@@ -92,6 +123,18 @@ async function main() {
 
   // === 获取待生成列表 ===
   let pendingIds = tracker.getPending(isRetry)
+  if (specifiedIds) {
+    // --ids 模式：只生成指定 ID（强制重置这些 ID 的 status）
+    for (const id of specifiedIds) {
+      const key = String(id)
+      if (tracker.data.poems[key]) {
+        tracker.data.poems[key].status = 'pending'
+      }
+    }
+    tracker._save()
+    pendingIds = specifiedIds
+    console.log(`\n🎯 --ids 模式：指定生成 ${pendingIds.length} 张`)
+  }
   if (pendingIds.length === 0) {
     console.log('\n🎉 所有诗词配图已生成完毕！')
     tracker.printStats()
@@ -116,7 +159,7 @@ async function main() {
   for (let i = 0; i < pendingIds.length; i += concurrency) {
     const batch = pendingIds.slice(i, i + concurrency)
     const batchPromises = batch.map(poemId =>
-      generateOneImage(poemId, poems, tracker, outputDir, isMock)
+      generateOneImage(String(poemId), poems, tracker, outputDir, isMock)
     )
 
     const results = await Promise.allSettled(batchPromises)

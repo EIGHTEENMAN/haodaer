@@ -18,6 +18,17 @@
 - GitHub 组织：github.com/EIGHTEENMAN (12个仓库)
 - 完整方案：`项目建设方案/好大儿项目建设方案（v3.2 终极版）.txt`
 
+## TTS 音频系统
+
+学诗词站（xueshici）使用 Edge TTS 免费服务 + 6 情绪 × 2 性别 = 12 音色组合，详见 `scripts/generate-poem-audio/moodClassifier.mjs`：
+
+- **mood** 复刻前端 `apps/xueshici/src/lib/audio.ts::detectMood()` 1:1 同步
+- **translation**（译文+赏析）强制 plain voice（保持讲解中性）
+- **original**（原文朗诵）应用 mood×gender → voice/style/rate 矩阵
+- hero/male=Yunyang+assertive、graceful/male=Yunxi+gentle、frontier/male=Yunjian+serious 等
+
+生成：`node scripts/generate-poem-audio/tts.mjs [--poc ID | --ids a,b,c | --type original|translation] [--regen-all]`，详细用法见脚本头部注释。
+
 ## 当前进度
 
 总进度约 65%（自主运营阶段 137h 已完成约 89h）
