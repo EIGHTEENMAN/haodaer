@@ -3,4 +3,6 @@
 *.svg
 *.webp
 *.webp.mock
+*.mp4
+*.mp3
 !poems-data.json

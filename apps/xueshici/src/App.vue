@@ -210,12 +210,26 @@ async function restoreFromHash() {
       currentView.value = 'reader'
       // 重写 hash 为新的 reader 格式
       history.replaceState(null, '', `#reader/${item.sections[0].id}`)
+    } else {
+      // 诗找不到（已被删除），回到首页
+      currentView.value = 'home'
+      currentPoem.value = null
+      currentSection.value = null
+      history.replaceState(null, '', window.location.pathname)
     }
   } else if (view === 'reader') {
     await ensureFullData()
+    let found = false
     for (const p of fullData.value!) {
       const sec = p.sections.find(s => s.id == id)
-      if (sec) { currentPoem.value = p; currentSection.value = sec; currentView.value = 'reader'; break }
+      if (sec) { currentPoem.value = p; currentSection.value = sec; currentView.value = 'reader'; found = true; break }
+    }
+    if (!found) {
+      // 段找不到（已被删除），回到首页，避免默认停留在第一首
+      currentView.value = 'home'
+      currentPoem.value = null
+      currentSection.value = null
+      history.replaceState(null, '', window.location.pathname)
     }
   }
 }
@@ -229,7 +243,7 @@ function playOriginalText() {
   stopAll()
   speaking.value = true
   playingTarget.value = 'original'
-  const src = `/audio/poems/${currentPoem.value.id}_original.mp3`
+  const src = `/audio/poems/${currentPoem.value.id}_original.mp3?v=2`
   const bgm = selectBgm(currentPoem.value)
   playMp3({
     src,
@@ -244,7 +258,7 @@ function playTranslation() {
   stopAll()
   speaking.value = true
   playingTarget.value = 'translation'
-  const src = `/audio/poems/${currentPoem.value.id}_translation.mp3`
+  const src = `/audio/poems/${currentPoem.value.id}_translation.mp3?v=2`
   const bgm = selectBgm(currentPoem.value)
   playMp3({
     src,
@@ -259,8 +273,7 @@ function playInterpretation() {
   stopAll()
   speaking.value = true
   playingTarget.value = 'interpretation'
-  // 赏析：用译文 mp3（没有独立的赏析 mp3）
-  const src = `/audio/poems/${currentPoem.value.id}_translation.mp3`
+  const src = `/audio/poems/${currentPoem.value.id}_interpretation.mp3?v=3`
   const bgm = selectBgm(currentPoem.value)
   playMp3({
     src,
@@ -663,16 +676,27 @@ onUnmounted(() => {
           </div>
           <div class="sc-content-block">
             <div class="sc-content-label">
-              <span class="sc-content-label-text">📖 解读</span>
+              <span class="sc-content-label-text">📖 译文</span>
               <button class="sc-block-play"
                 :class="playingTarget === 'translation' ? 'sc-block-playing' : ''"
                 @click="speaking ? stopAudio() : playTranslation()">
                 <span v-if="playingTarget === 'translation'">⏹ 停止朗读</span>
-                <span v-else>▶ 朗读解读</span>
+                <span v-else>▶ 朗读译文</span>
               </button>
             </div>
             <p class="sc-translation-text">{{ currentSection.translation }}</p>
-            <p class="sc-translation-text" style="margin-top:14px;padding-top:14px;border-top:1px dashed #e2e8f0;color:#78716c;font-style:italic;">{{ currentSection.interpretation }}</p>
+          </div>
+          <div class="sc-content-block">
+            <div class="sc-content-label">
+              <span class="sc-content-label-text">💡 赏析</span>
+              <button class="sc-block-play"
+                :class="playingTarget === 'interpretation' ? 'sc-block-playing' : ''"
+                @click="speaking ? stopAudio() : playInterpretation()">
+                <span v-if="playingTarget === 'interpretation'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读赏析</span>
+              </button>
+            </div>
+            <p class="sc-translation-text sc-interpretation-text">{{ currentSection.interpretation }}</p>
           </div>
         </div>
 
@@ -809,6 +833,7 @@ body {
 .sc-original-text { font-family: "Noto Serif SC", "STSong", serif; }
 .sc-original-line { font-size: 17px; line-height: 2.2; color: #0f172a; margin-bottom: 4px; }
 .sc-translation-text { font-size: 14px; line-height: 1.9; color: #475569; white-space: pre-line; }
+.sc-interpretation-text { color: #78716c; font-style: italic; font-size: 13.5px; }
 .sc-block-play {
   padding: 6px 14px; border-radius: 20px; border: none;
   background: #fef3c7; color: #d97706; font-size: 13px; font-weight: 600;

@@ -7,7 +7,7 @@
  *   - 朗读时自动循环背景音乐（按诗体选曲）
  *
  * 资源路径：
- *   - 朗诵：/audio/poems/{id}_original.mp3 / {id}_translation.mp3
+ *   - 朗诵：/audio/poems/{id}_original.mp3 / {id}_translation.mp3 / {id}_interpretation.mp3
  *   - BGM：  /audio/bgm/{heroic|lyric|pastoral|frontier|narrative|graceful}.mp3
  */
 

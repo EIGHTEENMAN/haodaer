@@ -2,8 +2,9 @@
  * 诗词听书 — Edge TTS 批量生成朗诵音频
  *
  * 为 2026+ 首诗生成朗诵 mp3：
- *   - original.mp3  : 原文朗诵（按 6 情绪 × 2 性别 = 12 音色矩阵选音色 + 情感）
- *   - translation.mp3: 译文+赏析 朗诵（无 style，保持中性讲解）
+ *   - original.mp3       : 原文朗诵（按 6 情绪 × 2 性别 = 12 音色矩阵选音色 + 情感）
+ *   - translation.mp3    : 译文朗诵（中性 voice，无 style）
+ *   - interpretation.mp3 : 赏析朗诵（中性 voice，无 style）
  *
  * 用法：
  *   node tts.mjs                  # 批量生成所有诗的朗诵
@@ -93,9 +94,10 @@ function escapeXml(text) {
 }
 
 // ===== 构建 SSML（用于带 style 的情感朗诵） =====
-function buildSsml(text, voice, style, styleDegree, rate) {
-  const escaped = escapeXml(text)
-  const prosody = `<prosody rate="${rate}">${escaped}</prosody>`
+// rawSsml: text 已包含 SSML 标签（如 <break/>），不再转义也不包 prosody rate
+function buildSsml(text, voice, style, styleDegree, rate, rawSsml = false) {
+  const body = rawSsml ? text : escapeXml(text)
+  const prosody = rawSsml ? body : `<prosody rate="${rate}">${body}</prosody>`
   if (style) {
     return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="zh-CN"><voice name="${voice}"><mstts:express-as style="${style}" styledegree="${styleDegree}">${prosody}</mstts:express-as></voice></speak>`
   }
@@ -133,7 +135,8 @@ class Status {
 
 // ===== Edge TTS 调用（使用文本文件避免 shell 长度/转义问题） =====
 // profile = { voice, style, styleDegree, rate }
-async function callEdgeTTS(text, profile, outputPath) {
+// opts.rawSsml: text 已含 SSML 标签，传给 buildSsml
+async function callEdgeTTS(text, profile, outputPath, opts = {}) {
   if (!text || !text.trim()) throw new Error('Empty text')
 
   const { voice, style, styleDegree, rate } = profile
@@ -147,9 +150,9 @@ async function callEdgeTTS(text, profile, outputPath) {
     // 写入文件：有 style 时写 SSML，无 style 时写纯文本
     const args = style
       ? ['-m', 'edge_tts', '--voice', voice, '--file', tmpTxt, '--write-media', tmpMp3]
-      : ['-m', 'edge_tts', '--voice', voice, '--rate', rate, '--file', tmpTxt, '--write-media', tmpMp3]
+      : ['-m', 'edge_tts', '--voice', voice, `--rate=${rate}`, '--file', tmpTxt, '--write-media', tmpMp3]
     if (style) {
-      writeFileSync(tmpTxt, buildSsml(text, voice, style, styleDegree, rate), 'utf-8')
+      writeFileSync(tmpTxt, buildSsml(text, voice, style, styleDegree, rate, opts.rawSsml), 'utf-8')
     } else {
       writeFileSync(tmpTxt, text, 'utf-8')
     }
@@ -193,15 +196,22 @@ async function generateOne(poem, type, status) {
   if (!sec) return { ok: false, reason: 'no_section' }
 
   // 准备文本
-  let text
+  let text, isSsmlText
   if (type === 'original') {
-    text = `《${poem.title}》${poem.author}，${poem.dynasty}。\n${sec.original.replace(/\n/g, '，')}`
+    // SSML 文本：诗行间插 <break/> 自然停顿 — 不要 prosody rate 机械减速
+    const lines = sec.original.split('\n').filter(l => l.trim())
+    const titleIntro = escapeXml(`《${poem.title}》${poem.author}，${poem.dynasty}。`)
+    const escapedLines = lines.map(l => escapeXml(l.trim()))
+    text = titleIntro + '<break time="600ms"/>' + escapedLines.join('<break time="400ms"/>')
+    isSsmlText = true
   } else if (type === 'translation') {
-    // 译文 = 译文 + 赏析
-    text = (sec.translation || '') + '\n\n' + (sec.interpretation || '')
-    text = text.trim()
+    // 仅译文（独立于赏析）
+    text = (sec.translation || '').trim()
+    isSsmlText = false
   } else if (type === 'interpretation') {
-    text = sec.interpretation || sec.translation || ''
+    // 仅赏析（独立于译文）
+    text = (sec.interpretation || '').trim()
+    isSsmlText = false
   } else {
     return { ok: false, reason: 'invalid_type' }
   }
@@ -224,7 +234,17 @@ async function generateOne(poem, type, status) {
       const callProfile = (downgradeTried || !profile.style)
         ? { ...profile, style: null }
         : profile
-      const size = await callEdgeTTS(text, callProfile, outputPath)
+      // SSML 原文：有 style 时用 break 文本，降级时剥掉 SSML 标签用纯文本
+      let callText = text
+      let callRawSsml = false
+      if (isSsmlText && callProfile.style) {
+        callText = text
+        callRawSsml = true
+      } else if (isSsmlText && !callProfile.style) {
+        callText = text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+        callRawSsml = false
+      }
+      const size = await callEdgeTTS(callText, callProfile, outputPath, { rawSsml: callRawSsml })
       // 复制到其他输出目录
       for (let i = 1; i < CONFIG.outputDirs.length; i++) {
         try {
@@ -328,11 +348,11 @@ async function main() {
     target = poems.filter(p => specifiedIds.includes(p.id))
     log(C.cyan, '指定', `处理 ${target.length} 首诗`)
   } else {
-    log(C.cyan, '批量', `处理所有 ${target.length} 首诗 × 2 段`)
+    log(C.cyan, '批量', `处理所有 ${target.length} 首诗 × 3 段（原文 + 译文 + 赏析）`)
   }
 
-  // 段类型
-  const types = onlyType ? [onlyType] : ['original', 'translation']
+  // 段类型：原文、译文、赏析 三段独立
+  const types = onlyType ? [onlyType] : ['original', 'translation', 'interpretation']
 
   // 构建任务列表（诗 × 段类型）
   const tasks = []

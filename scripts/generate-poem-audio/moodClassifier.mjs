@@ -15,7 +15,7 @@
  *   - gender = getAuthorGender(poem.author)
  *   - mood = detectMood(poem)
  *   - profile = VOICE_MATRIX[mood][gender]
- *   - type === 'translation' 时强制 style = null（赏析保持中性讲解，不上朗诵腔）
+ *   - type === 'translation' / 'interpretation' 时强制 style = null（译文/赏析保持中性讲解，不上朗诵腔）
  */
 
 // ===== 6 种 mood =====
@@ -97,8 +97,8 @@ export function getVoiceProfile(poem, type = 'original') {
   const mood = detectMood(poem)
   const profile = VOICE_MATRIX[mood][gender]
 
-  // translation 强制无 style，保持赏析解说的中性
-  const isTranslation = type === 'translation' || type === 'commentary'
+  // translation / interpretation 强制无 style，保持讲解中性
+  const isTranslation = type === 'translation' || type === 'commentary' || type === 'interpretation'
   return {
     voice: profile.voice,
     style: isTranslation ? null : profile.style,
