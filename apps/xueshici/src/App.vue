@@ -181,12 +181,14 @@ function goBack() {
 }
 
 // Hash-based URL persistence for browser refresh / back-forward
+// 关键修复（2026-06-19）：所有诗的 section.id 都是 1，导致 #reader/1 总是
+// 匹配到第一首（关雎）。新格式用 poem.id 和 section.id 组合：#reader/{poemId}-{sectionId}
 function saveHash() {
   let hash = ''
   if (currentView.value === 'poet' && currentPoet.value) {
     hash = `poet/${encodeURIComponent(currentPoet.value)}`
-  } else if (currentView.value === 'reader' && currentSection.value) {
-    hash = `reader/${currentSection.value.id}`
+  } else if (currentView.value === 'reader' && currentSection.value && currentPoem.value) {
+    hash = `reader/${currentPoem.value.id}-${currentSection.value.id}`
   }
   history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
 }
@@ -209,7 +211,7 @@ async function restoreFromHash() {
       currentSection.value = item.sections[0]
       currentView.value = 'reader'
       // 重写 hash 为新的 reader 格式
-      history.replaceState(null, '', `#reader/${item.sections[0].id}`)
+      history.replaceState(null, '', `#reader/${item.id}-${item.sections[0].id}`)
     } else {
       // 诗找不到（已被删除），回到首页
       currentView.value = 'home'
@@ -219,10 +221,44 @@ async function restoreFromHash() {
     }
   } else if (view === 'reader') {
     await ensureFullData()
+    // 解析 poemId-sectionId（兼容旧的纯 section id）
+    const dashIdx = id.indexOf('-')
+    let poemId: string | null = null
+    let sectionId: string = id
+    if (dashIdx >= 0) {
+      poemId = id.slice(0, dashIdx)
+      sectionId = id.slice(dashIdx + 1)
+    }
     let found = false
     for (const p of fullData.value!) {
-      const sec = p.sections.find(s => s.id == id)
-      if (sec) { currentPoem.value = p; currentSection.value = sec; currentView.value = 'reader'; found = true; break }
+      // 优先按 (poemId, sectionId) 匹配，避免 section.id 不唯一导致的"总是跳到关雎"
+      if (poemId != null && p.id == poemId) {
+        const sec = p.sections.find(s => s.id == sectionId)
+        if (sec) {
+          currentPoem.value = p
+          currentSection.value = sec
+          currentView.value = 'reader'
+          found = true
+          // 升级旧 hash 为新格式
+          history.replaceState(null, '', `#reader/${p.id}-${sec.id}`)
+          break
+        }
+      }
+    }
+    // 兼容极旧链接：纯 sectionId（此时按 section 找，但因不唯一会取第一首——所以加警告）
+    if (!found && poemId == null) {
+      for (const p of fullData.value!) {
+        const sec = p.sections.find(s => s.id == id)
+        if (sec) {
+          currentPoem.value = p
+          currentSection.value = sec
+          currentView.value = 'reader'
+          found = true
+          // 升级为新格式
+          history.replaceState(null, '', `#reader/${p.id}-${sec.id}`)
+          break
+        }
+      }
     }
     if (!found) {
       // 段找不到（已被删除），回到首页，避免默认停留在第一首

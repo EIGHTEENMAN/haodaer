@@ -1,5 +1,5 @@
 /**
- * 诗词朗读 — 使用预生成的 MiniMax TTS mp3 真人朗诵 + 背景音乐
+ * 诗词朗读 — 使用预生成的 Edge TTS mp3 真人朗诵 + 背景音乐
  *
  * 优势：
  *   - 真人音色，发音自然有感情（vs Web Speech 机械）
@@ -11,9 +11,11 @@
  *   - BGM：  /audio/bgm/{heroic|lyric|pastoral|frontier|narrative|graceful}.mp3
  */
 
-// 当前正在朗读的 audio 元素（用于停止）
-let currentAudio: HTMLAudioElement | null = null
-let currentBgm: HTMLAudioElement | null = null
+// ===== 活跃 audio 追踪（修复用户连点多个按钮时残留音频的 bug）=====
+// 必须用 Set 追踪所有正在播放的 audio 实例，不能只用单个 currentAudio
+// 否则点完"朗读原文"立刻点"朗读译文"时，第一个 audio 没引用会残留播放
+const activeAudios = new Set<HTMLAudioElement>()
+const activeBgms = new Set<HTMLAudioElement>()
 
 // ===== 朗诵 =====
 
@@ -26,31 +28,36 @@ export interface PlayOptions {
 }
 
 export function playMp3(opts: PlayOptions): void {
+  // 先停掉所有正在播放的音频（包括之前残留的）
   stopAll()
 
   const audio = new Audio(opts.src)
   audio.preload = 'auto'
-  // 慢速播放 + 保持音调自然（避免变成花栗鼠声）
-  audio.playbackRate = opts.playbackRate ?? 0.85
-  // @ts-ignore preservesPitch 是标准属性但 TS 旧版可能没声明
-  if ('preservesPitch' in audio) audio.preservesPitch = true
-  // @ts-ignore 同上 moz/webkit 前缀
-  ;(audio as any).mozPreservesPitch = true
-  ;(audio as any).webkitPreservesPitch = true
-  currentAudio = audio
+  // 不再用 playbackRate + preservesPitch——某些浏览器（iOS Safari 16+）上会触发 onerror
+  // 让浏览器用默认 1.0 速度播放，保证稳定
+  // 注册到活跃集合，确保后续 stopAll 能停掉
+  activeAudios.add(audio)
+
+  const cleanup = () => {
+    activeAudios.delete(audio)
+    try { audio.pause() } catch {}
+    try { audio.src = '' } catch {}
+  }
 
   audio.onended = () => {
+    cleanup()
     opts.onEnd?.()
-    // 朗诵结束，停 BGM（也可选保留淡出）
     stopBgm()
   }
   audio.onerror = () => {
-    console.warn('[audio] mp3 load failed, falling back to Web Speech:', opts.src)
+    cleanup()
+    console.warn('[audio] mp3 load failed:', opts.src)
     opts.onEnd?.()
     stopBgm()
   }
   audio.play().catch(err => {
-    console.warn('[audio] mp3 play failed:', err)
+    cleanup()
+    console.warn('[audio] play failed:', err, opts.src)
     opts.onEnd?.()
   })
 
@@ -61,11 +68,17 @@ export function playMp3(opts: PlayOptions): void {
 }
 
 export function stopAll(): void {
-  if (currentAudio) {
-    currentAudio.pause()
-    currentAudio.src = ''
-    currentAudio = null
+  // 停止所有活跃的朗诵 audio
+  // 关键修复（2026-06-19）：必须先把 onended/onerror handler 置 null，
+  // 否则 a.src = '' 会异步触发 onerror → opts.onEnd → 清空新设的 playingTarget，
+  // 导致连续播放时按钮永远不变 ⏹ 停止朗读
+  for (const a of activeAudios) {
+    try { a.onended = null } catch {}
+    try { a.onerror = null } catch {}
+    try { a.pause() } catch {}
+    try { a.src = '' } catch {}
   }
+  activeAudios.clear()
   stopBgm()
 }
 
@@ -82,22 +95,27 @@ export function playBgm(src: string, volume: number = 0.3): void {
   bgm.loop = true
   bgm.volume = volume
   bgm.preload = 'auto'
-  currentBgm = bgm
+  activeBgms.add(bgm)
   bgm.play().catch(err => {
+    activeBgms.delete(bgm)
     console.warn('[audio] bgm play failed:', err)
   })
 }
 
 export function stopBgm(): void {
-  if (currentBgm) {
-    currentBgm.pause()
-    currentBgm.src = ''
-    currentBgm = null
+  for (const b of activeBgms) {
+    try { b.onended = null } catch {}
+    try { b.onerror = null } catch {}
+    try { b.pause() } catch {}
+    try { b.src = '' } catch {}
   }
+  activeBgms.clear()
 }
 
 export function setBgmVolume(v: number): void {
-  if (currentBgm) currentBgm.volume = Math.max(0, Math.min(1, v))
+  for (const b of activeBgms) {
+    b.volume = Math.max(0, Math.min(1, v))
+  }
 }
 
 // ===== Web Speech 兜底（mp3 加载失败时） =====
