@@ -2,7 +2,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { classicIndex, categories, categoryColors, type ClassicMeta } from './data/classics-meta'
 import type { Classic, Section } from './data/classics'
-import { speak, stopSpeaking } from './lib/audio'
+import { playSectionAudioWithFallback, stopAll, speak, stopSpeaking } from './lib/audio'
 import { useAuth } from '@shared/composables/useAuth'
 import { filterApps } from '@shared/composables/useSearch'
 import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
@@ -150,8 +150,7 @@ function toggleFavorite(id: string) {
   saveFavorites()
 }
 
-// Audio state
-const speaking = ref(false)
+
 
 // Filtered classics
 const filteredClassics = computed(() => {
@@ -265,17 +264,56 @@ async function restoreFromHash() {
   }
 }
 
-// Audio playback
-function playText(text: string) {
+// Audio playback - try pre-generated mp3 first, fallback to Web Speech TTS
+let playingType: 'original' | 'translation' | 'interpretation' | 'full' | null = null
+const speaking = ref(false)
+
+function getAudioType(): 'original' | 'translation' | 'interpretation' {
+  if (playingType === 'original') return 'original'
+  if (playingType === 'translation') return 'translation'
+  return 'interpretation'
+}
+
+function playText(text: string, type?: 'original' | 'translation' | 'interpretation') {
   stopSpeaking()
   if (!text.trim()) return
+
   speaking.value = true
-  speak(text, 0.8, () => { speaking.value = false })
+  if (type && currentClassic.value && currentSection.value) {
+    playingType = type
+    playSectionAudioWithFallback(
+      currentClassic.value.title,
+      currentSection.value.title,
+      type,
+      text,
+      () => { speaking.value = false; playingType = null }
+    )
+  } else {
+    // Fallback to Web Speech (e.g. for full-text play all)
+    playingType = 'full'
+    speak(text, 0.8, () => { speaking.value = false; playingType = null })
+  }
+}
+
+function playOriginal() {
+  if (!currentSection.value) return
+  playText(currentSection.value.original, 'original')
+}
+
+function playTranslation() {
+  if (!currentSection.value) return
+  playText(currentSection.value.translation, 'translation')
+}
+
+function playInterpretation() {
+  if (!currentSection.value) return
+  playText(currentSection.value.interpretation, 'interpretation')
 }
 
 function stopAudio() {
-  stopSpeaking()
+  stopAll()
   speaking.value = false
+  playingType = null
 }
 
 function getReaderContent(): string {
@@ -285,7 +323,7 @@ function getReaderContent(): string {
 
 onMounted(async () => {
   favoriteIds.value = loadFavorites()
-  window.addEventListener('beforeunload', stopSpeaking)
+  window.addEventListener('beforeunload', stopAll)
   // Check for ?q= param from main-site search results
   const params = new URLSearchParams(window.location.search)
   const qParam = params.get('q')
@@ -297,7 +335,7 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('beforeunload', stopSpeaking)
+  window.removeEventListener('beforeunload', stopAll)
   window.removeEventListener('popstate', restoreFromHash)
 })
 </script>
@@ -452,7 +490,7 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span>原文</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playText(currentSection.original)">{{ speaking ? '⏹' : '▶' }}</button>
+              <button class="gx-block-play" @click="speaking ? stopAudio() : playOriginal()">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
             <div class="gx-original-text">
               <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="gx-original-line"><PointReader :text="line" /></p>
@@ -461,14 +499,14 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span>翻译</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playText(currentSection.translation)">{{ speaking ? '⏹' : '▶' }}</button>
+              <button class="gx-block-play" @click="speaking ? stopAudio() : playTranslation()">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
             <p class="gx-translation-text">{{ currentSection.translation }}</p>
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span>解读</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playText(currentSection.interpretation)">{{ speaking ? '⏹' : '▶' }}</button>
+              <button class="gx-block-play" @click="speaking ? stopAudio() : playInterpretation()">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
             <p class="gx-translation-text">{{ currentSection.interpretation }}</p>
           </div>
@@ -476,7 +514,7 @@ onUnmounted(() => {
 
         <!-- Play full text -->
         <div class="gx-reader-actions">
-          <button class="gx-action-btn gx-action-play" @click="speaking ? stopAudio() : playText(getReaderContent())">
+          <button class="gx-action-btn gx-action-play" @click="speaking ? stopAudio() : playOriginal()">
             {{ speaking ? '⏹ 停止' : '▶ 播放全文' }}
           </button>
         </div>

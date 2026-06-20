@@ -24,7 +24,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'meng-16', title: '童蒙训', author: '吕本中', dynasty: '宋', category: '蒙学', summary: '宋代学者编写的童蒙教育读本，讲授立身处世的基本道理。', tags: ["启蒙", "修身", "处世"], color: '#dc2626', sectionCount: 20 },
   { id: 'meng-17', title: '小学诗', author: '佚名', dynasty: '清', category: '蒙学', summary: '以诗歌形式编写的小学道德教育读物，语言生动易懂。', tags: ["诗歌", "道德", "启蒙"], color: '#dc2626', sectionCount: 15 },
   { id: 'meng-18', title: '性理字训', author: '程端蒙', dynasty: '宋', category: '蒙学', summary: '朱熹门人编写的理学启蒙教材，以简明语言阐述性理之学的基本概念。', tags: ["理学", "哲学", "启蒙"], color: '#dc2626', sectionCount: 8 },
-  { id: 'jing-1', title: '论语', author: '孔子及弟子', dynasty: '春秋', category: '经部', summary: '记录孔子及其弟子言行的经典，儒家思想的基石。', tags: ["儒家", "修身", "学习"], color: '#ca8a04', sectionCount: 10 },
+  { id: 'jing-1', title: '论语', author: '孔子及弟子', dynasty: '春秋', category: '经部', summary: '记录孔子及其弟子言行的经典，儒家思想的基石。', tags: ["儒家", "修身", "学习"], color: '#ca8a04', sectionCount: 22 },
   { id: 'jing-2', title: '大学', author: '曾子', dynasty: '春秋', category: '经部', summary: '儒家四书之一，阐述修身、齐家、治国、平天下之道。', tags: ["儒家", "修身", "治国"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-3', title: '中庸', author: '子思', dynasty: '战国', category: '经部', summary: '儒家四书之一，阐述中庸之为德的核心思想，强调不偏不倚、执中和谐的处世哲学。', tags: ["儒家", "哲学", "和谐"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-4', title: '孟子', author: '孟子', dynasty: '战国', category: '经部', summary: '儒家四书之一，主张性善论、民贵君轻、仁政王道。', tags: ["儒家", "性善", "仁政"], color: '#ca8a04', sectionCount: 10 },
@@ -116,7 +116,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'zi-31', title: '荀子', author: '荀况', dynasty: '战国', category: '子部', summary: '儒家学派的重要代表，主张性恶论但强调后天学习，劝学篇是千古流传的励志名篇。', tags: ["儒家", "劝学", "性恶论"], color: '#6366f1', sectionCount: 10 },
 ]
 
-export const categories = ['蒙学', '经部', '史部', '子部', '医部']
+export const categories = ["蒙学", "经部", "史部", "子部", "医部"]
 
 export const categoryColors: Record<string, string> = {
   '蒙学': '#dc2626',
