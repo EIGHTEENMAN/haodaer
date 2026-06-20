@@ -129,6 +129,11 @@ const poetsByDynasty = computed<DynastyGroup[]>(() => {
   }).filter(g => g.poets.length > 0)
 })
 
+// 全部不重复诗人数量（用于"学习进度"展示）
+const totalPoets = computed(() => {
+  return new Set(poemsIndex.map(p => p.author)).size
+})
+
 // Poems of current poet (for poet view)
 const currentPoetPoems = computed(() => {
   return poemsIndex.filter(p => p.author === currentPoet.value)
@@ -565,12 +570,12 @@ onUnmounted(() => {
         <template v-if="token && user">
           <span class="ls-user">{{ user.nickname || user.username }}</span>
           <span class="ls-dot"></span>
-          <span>👤 已认识 {{ stats.openedCount }}/299 位诗人</span>
+          <span>👤 已认识 {{ stats.openedCount }}/{{ totalPoets }} 位诗人</span>
           <span class="ls-dot"></span>
-          <span>📜 已学习 {{ stats.readCount }}/934 首诗词</span>
+          <span>📜 已学习 {{ stats.readCount }}/{{ poemsIndex.length }} 首诗词</span>
         </template>
         <template v-else>
-          <span>👤 学习进度：0/299 位诗人，0/934 首诗词 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
+          <span>👤 学习进度：0/{{ totalPoets }} 位诗人，0/{{ poemsIndex.length }} 首诗词 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
         </template>
       </div>
 

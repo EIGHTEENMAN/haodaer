@@ -164,6 +164,13 @@ const filteredClassics = computed(() => {
   return list
 })
 
+// 全站统计：经典书数 + 节选总数
+const totalBooks = computed(() => classicIndex.length)
+const totalSections = computed(() => {
+  if (!fullData.value) return 0
+  return fullData.value.reduce((sum, c) => sum + (c.sections?.length || 0), 0)
+})
+
 // Group classics by category for home display
 const categoriesWithClassics = computed(() => {
   const cats = activeCategory.value === '全部' ? categories : [activeCategory.value]
@@ -332,12 +339,12 @@ onUnmounted(() => {
         <template v-if="token && user">
           <span class="ls-user">{{ user.nickname || user.username }}</span>
           <span class="ls-dot"></span>
-          <span>📖 已打开 {{ stats.openedCount }}/92 本书</span>
+          <span>📖 已打开 {{ stats.openedCount }}/{{ totalBooks }} 本书</span>
           <span class="ls-dot"></span>
-          <span>📝 已学习 {{ stats.readCount }}/613 个节选</span>
+          <span>📝 已学习 {{ stats.readCount }}/{{ totalSections }} 个节选</span>
         </template>
         <template v-else>
-          <span>📖 学习进度：0/92 本书，0/613 个节选 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
+          <span>📖 学习进度：0/{{ totalBooks }} 本书，0/{{ totalSections }} 个节选 — <a href="https://grandand.com?login=1" class="ls-login-link">登录后同步记录</a></span>
         </template>
       </div>
 
