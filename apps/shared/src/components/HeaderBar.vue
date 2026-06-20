@@ -264,6 +264,7 @@ function missingSubjects(progress: any[]): string[] {
   padding: 8px 20px; background: var(--hd-accent, #2563eb); color: white; border: none;
   border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer;
   text-decoration: none; transition: background 0.2s;
+  white-space: nowrap;
 }
 .hd-login-btn:hover { background: var(--hd-accent-hover, #1d4ed8); }
 .hd-logout-btn {
@@ -342,5 +343,18 @@ function missingSubjects(progress: any[]): string[] {
   .hd-header-links { display: none; }
   .hd-search-input { width: 100px; }
   .hd-learning-label { display: none; }
+  /* 移动端：登录按钮降饱和为细线描边，避免在阅读场景中过于抢眼 */
+  .hd-login-btn {
+    padding: 5px 14px;
+    background: transparent;
+    color: var(--hd-accent, #2563eb);
+    border: 1px solid var(--hd-accent, #2563eb);
+    border-radius: 999px;
+    font-size: 13px;
+  }
+  .hd-login-btn:hover {
+    background: var(--hd-accent, #2563eb);
+    color: white;
+  }
 }
 </style>
