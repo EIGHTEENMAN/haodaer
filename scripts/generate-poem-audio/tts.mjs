@@ -94,12 +94,17 @@ function escapeXml(text) {
 }
 
 // ===== 构建 SSML（用于带 style 的情感朗诵） =====
-// 2026-06-19：原文已改为纯文本 + \n 换行，不再有 raw SSML 路径
+// 2026-06-19：原文已改为纯文本 + \n 换行
+// 2026-06-20 v5：原文朗诵强制走 style=null 路径（见 moodClassifier.mjs），
+//                所以 buildSsml 的 style 分支实际不会触发，
+//                这里保留 SSML 构造以防后续恢复 style（注释掉 mstts:express-as
+//                嵌套 prosody 的写法，因为实验证明嵌套会触发字面朗读乱码）
 function buildSsml(text, voice, style, styleDegree, rate) {
   const body = escapeXml(text)
   const prosody = `<prosody rate="${rate}">${body}</prosody>`
   if (style) {
-    return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="zh-CN"><voice name="${voice}"><mstts:express-as style="${style}" styledegree="${styleDegree}">${prosody}</mstts:express-as></voice></speak>`
+    // v5：不嵌套 prosody 到 mstts:express-as 里，让 style 直接修饰文本（实验证明嵌套会乱码）
+    return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="zh-CN"><voice name="${voice}"><mstts:express-as style="${style}" styledegree="${styleDegree}">${body}</mstts:express-as></voice></speak>`
   }
   return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${voice}">${prosody}</voice></speak>`
 }
@@ -134,11 +139,11 @@ class Status {
 }
 
 // ===== Edge TTS 调用（使用文本文件避免 shell 长度/转义问题） =====
-// profile = { voice, style, styleDegree, rate }
+// profile = { voice, style, styleDegree, rate, pitch }
 async function callEdgeTTS(text, profile, outputPath) {
   if (!text || !text.trim()) throw new Error('Empty text')
 
-  const { voice, style, styleDegree, rate } = profile
+  const { voice, style, styleDegree, rate, pitch } = profile
   const tmpMp3 = outputPath + '.tmp.mp3'
   const tmpTxt = outputPath + '.tmp.txt'
 
@@ -149,7 +154,7 @@ async function callEdgeTTS(text, profile, outputPath) {
     // 写入文件：有 style 时写 SSML，无 style 时写纯文本
     const args = style
       ? ['-m', 'edge_tts', '--voice', voice, '--file', tmpTxt, '--write-media', tmpMp3]
-      : ['-m', 'edge_tts', '--voice', voice, `--rate=${rate}`, '--file', tmpTxt, '--write-media', tmpMp3]
+      : ['-m', 'edge_tts', '--voice', voice, `--rate=${rate}`, `--pitch=${pitch || '+0Hz'}`, '--file', tmpTxt, '--write-media', tmpMp3]
     if (style) {
       writeFileSync(tmpTxt, buildSsml(text, voice, style, styleDegree, rate), 'utf-8')
     } else {

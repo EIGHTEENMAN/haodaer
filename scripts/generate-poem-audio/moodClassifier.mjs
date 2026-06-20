@@ -57,32 +57,37 @@ export function getAuthorGender(author) {
 }
 
 // ===== 音色 × 情绪 × 性别 矩阵 =====
-// style = null 时表示纯 voice + prosody rate（无情感样式）
-// styleDegree 推荐 1.5（中等强度），过强会失真
+// 2026-06-20：style 字段已废弃（mstts:express-as 触发字面朗读乱码）
+// 改用 pitch 表达情绪：
+//   heroic/frontier → +5Hz（高亢豪迈）
+//   lyric/pastoral  → -5Hz（低沉婉约）
+//   narrative       → +0Hz（中性）
+//   graceful        → -3Hz（略低沉温柔）
+// rate 控制语速，voice 控制音色，pitch 模拟"情绪张力"
 const VOICE_MATRIX = {
   heroic: {
-    male:   { voice: 'zh-CN-YunyangNeural',    style: 'assertive',   styleDegree: 1.5, rate: '-5%'  },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'cheerful',    styleDegree: 1.5, rate: '-5%'  },
+    male:   { voice: 'zh-CN-YunyangNeural',    style: null, styleDegree: 0, rate: '-10%', pitch: '+5Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-10%', pitch: '+5Hz' },
   },
   graceful: {
-    male:   { voice: 'zh-CN-YunxiNeural',      style: 'gentle',      styleDegree: 1.5, rate: '-15%' },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'gentle',      styleDegree: 1.5, rate: '-15%' },
+    male:   { voice: 'zh-CN-YunxiNeural',      style: null, styleDegree: 0, rate: '-20%', pitch: '-3Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-20%', pitch: '-3Hz' },
   },
   pastoral: {
-    male:   { voice: 'zh-CN-YunxiNeural',      style: 'calm',        styleDegree: 1.5, rate: '-20%' },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'gentle',      styleDegree: 1.5, rate: '-20%' },
+    male:   { voice: 'zh-CN-YunxiNeural',      style: null, styleDegree: 0, rate: '-25%', pitch: '-5Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-25%', pitch: '-5Hz' },
   },
   frontier: {
-    male:   { voice: 'zh-CN-YunjianNeural',    style: 'serious',     styleDegree: 1.5, rate: '-5%'  },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'serious',     styleDegree: 1.5, rate: '-5%'  },
+    male:   { voice: 'zh-CN-YunjianNeural',    style: null, styleDegree: 0, rate: '-10%', pitch: '+5Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-10%', pitch: '+5Hz' },
   },
   lyric: {
-    male:   { voice: 'zh-CN-YunxiNeural',      style: 'calm',        styleDegree: 1.5, rate: '-15%' },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'affectionate',styleDegree: 1.5, rate: '-15%' },
+    male:   { voice: 'zh-CN-YunxiNeural',      style: null, styleDegree: 0, rate: '-20%', pitch: '-5Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-20%', pitch: '-5Hz' },
   },
   narrative: {
-    male:   { voice: 'zh-CN-YunxiNeural',      style: 'narration',   styleDegree: 1.5, rate: '-10%' },
-    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: 'calm',        styleDegree: 1.5, rate: '-10%' },
+    male:   { voice: 'zh-CN-YunxiNeural',      style: null, styleDegree: 0, rate: '-15%', pitch: '+0Hz' },
+    female: { voice: 'zh-CN-XiaoxiaoNeural',   style: null, styleDegree: 0, rate: '-15%', pitch: '+0Hz' },
   },
 }
 
@@ -97,11 +102,13 @@ export function getVoiceProfile(poem, type = 'original') {
   const mood = detectMood(poem)
   const profile = VOICE_MATRIX[mood][gender]
 
-  // translation / interpretation 强制无 style，保持讲解中性
-  const isTranslation = type === 'translation' || type === 'commentary' || type === 'interpretation'
+  // 2026-06-20 v5：原文朗诵也强制无 style（避免 mstts:express-as 字面朗读乱码）
+  // 用 voice + rate + pitch 三参数表达"音色/语速/情绪张力"
+  // translation / interpretation 同样无 style（讲解中性）
+  const isPlain = type === 'translation' || type === 'commentary' || type === 'interpretation' || type === 'original'
   return {
     voice: profile.voice,
-    style: isTranslation ? null : profile.style,
+    style: isPlain ? null : profile.style,
     styleDegree: profile.styleDegree,
     rate: profile.rate,
     gender,
