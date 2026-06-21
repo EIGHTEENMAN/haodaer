@@ -102,7 +102,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'zi-28', title: '樵谈', author: '李纯甫', dynasty: '金', category: '子部', summary: '金代学者以樵夫对话形式阐述哲学思想的语录体著作。', tags: ["哲学", "语录", "经典"], color: '#6366f1', sectionCount: 5 },
   { id: 'yi-1', title: '黄帝内经', author: '岐伯与黄帝', dynasty: '战国至汉', category: '医部', summary: '中国最早的医学典籍之一，阐述人体与自然的关系、养生之道和疾病防治。', tags: ["中医", "养生", "经典"], color: '#7c3aed', sectionCount: 3 },
   { id: 'yi-2', title: '伤寒论', author: '张仲景', dynasty: '东汉', category: '医部', summary: '中医临床经典，系统论述外感热病的辨证论治体系，方书之祖。', tags: ["中医", "伤寒", "经典"], color: '#7c3aed', sectionCount: 12 },
-  { id: 'yi-3', title: '本草纲目', author: '李时珍', dynasty: '明', category: '医部', summary: '中国古代最完整的中药著作，收录药物1892种，附方11000余首。', tags: ["中药", "百科", "经典"], color: '#7c3aed', sectionCount: 0 },
+  { id: 'yi-3', title: '本草纲目', author: '李时珍', dynasty: '明', category: '医部', summary: '中国古代最完整的中药著作，收录药物1892种，附方11000余首。', tags: ["中药", "百科", "经典"], color: '#7c3aed', sectionCount: 10 },
   { id: 'yi-4', title: '千金要方', author: '孙思邈', dynasty: '唐', category: '医部', summary: '唐代医学巨著，系统论述医德、方剂、针灸等医学各科。', tags: ["中医", "方剂", "经典"], color: '#7c3aed', sectionCount: 10 },
   { id: 'yi-5', title: '食疗本草', author: '孟诜', dynasty: '唐', category: '医部', summary: '中国最早的食疗专著，记载食物药用价值和食疗方法。', tags: ["食疗", "养生", "中医"], color: '#7c3aed', sectionCount: 10 },
   { id: 'yi-6', title: '养生主', author: '佚名', dynasty: '先秦', category: '医部', summary: '以道家养生思想为指导的养生经典，倡导顺应自然、调养身心的理念。', tags: ["养生", "道家", "经典"], color: '#7c3aed', sectionCount: 10 },
@@ -111,9 +111,9 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'shi-25', title: '国语', author: '左丘明', dynasty: '春秋', category: '史部', summary: '中国最早的国别史，记录春秋时期各国君臣言论和事件，与《左传》互为补充。', tags: ["国别史", "春秋", "经典"], color: '#1d4ed8', sectionCount: 10 },
   { id: 'shi-26', title: '战国策', author: '刘向编订', dynasty: '西汉', category: '史部', summary: '记录战国时期谋臣策士游说诸侯的言论和事迹，是研究战国史的重要文献。', tags: ["战国", "纵横家", "经典"], color: '#1d4ed8', sectionCount: 9 },
   { id: 'shi-27', title: '资治通鉴', author: '司马光', dynasty: '北宋', category: '史部', summary: '北宋司马光编撰的编年体通史巨著，上起周威烈王，下至五代后周，涵盖1362年历史。', tags: ["编年体", "通史", "经典"], color: '#1d4ed8', sectionCount: 10 },
-  { id: 'zi-29', title: '墨子', author: '墨翟', dynasty: '战国', category: '子部', summary: '墨家学派的经典，倡导兼爱非攻尚贤天志，是与儒家并称的春秋战国显学之一。', tags: ["墨家", "兼爱", "非攻"], color: '#6366f1', sectionCount: 2 },
-  { id: 'zi-30', title: '韩非子', author: '韩非', dynasty: '战国', category: '子部', summary: '法家思想的集大成者，主张以法治国、赏罚分明，是理解秦统一六国思想基础的重要典籍。', tags: ["法家", "治国", "经典"], color: '#6366f1', sectionCount: 0 },
-  { id: 'zi-31', title: '荀子', author: '荀况', dynasty: '战国', category: '子部', summary: '儒家学派的重要代表，主张性恶论但强调后天学习，劝学篇是千古流传的励志名篇。', tags: ["儒家", "劝学", "性恶论"], color: '#6366f1', sectionCount: 0 },
+  { id: 'zi-29', title: '墨子', author: '墨翟', dynasty: '战国', category: '子部', summary: '墨家学派的经典，倡导兼爱非攻尚贤天志，是与儒家并称的春秋战国显学之一。', tags: ["墨家", "兼爱", "非攻"], color: '#6366f1', sectionCount: 10 },
+  { id: 'zi-30', title: '韩非子', author: '韩非', dynasty: '战国', category: '子部', summary: '法家思想的集大成者，主张以法治国、赏罚分明，是理解秦统一六国思想基础的重要典籍。', tags: ["法家", "治国", "经典"], color: '#6366f1', sectionCount: 10 },
+  { id: 'zi-31', title: '荀子', author: '荀况', dynasty: '战国', category: '子部', summary: '儒家学派的重要代表，主张性恶论但强调后天学习，劝学篇是千古流传的励志名篇。', tags: ["儒家", "劝学", "性恶论"], color: '#6366f1', sectionCount: 10 },
 ]
 
 export const categories = ["蒙学", "经部", "史部", "子部", "医部"]
