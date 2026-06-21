@@ -26,7 +26,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'meng-18', title: '性理字训', author: '程端蒙', dynasty: '宋', category: '蒙学', summary: '朱熹门人编写的理学启蒙教材，以简明语言阐述性理之学的基本概念。', tags: ["理学", "哲学", "启蒙"], color: '#dc2626', sectionCount: 8 },
   { id: 'jing-1', title: '论语', author: '孔子及弟子', dynasty: '春秋', category: '经部', summary: '记录孔子及其弟子言行的经典，儒家思想的基石。', tags: ["儒家", "修身", "学习"], color: '#ca8a04', sectionCount: 22 },
   { id: 'jing-2', title: '大学', author: '曾子', dynasty: '春秋', category: '经部', summary: '儒家四书之一，阐述修身、齐家、治国、平天下之道。', tags: ["儒家", "修身", "治国"], color: '#ca8a04', sectionCount: 15 },
-  { id: 'jing-3', title: '中庸', author: '子思', dynasty: '战国', category: '经部', summary: '儒家四书之一，阐述中庸之为德的核心思想，强调不偏不倚、执中和谐的处世哲学。', tags: ["儒家", "哲学", "和谐"], color: '#ca8a04', sectionCount: 10 },
+  { id: 'jing-3', title: '中庸', author: '子思', dynasty: '战国', category: '经部', summary: '儒家四书之一，阐述中庸之为德的核心思想，强调不偏不倚、执中和谐的处世哲学。', tags: ["儒家", "哲学", "和谐"], color: '#ca8a04', sectionCount: 20 },
   { id: 'jing-4', title: '孟子', author: '孟子', dynasty: '战国', category: '经部', summary: '儒家四书之一，主张性善论、民贵君轻、仁政王道。', tags: ["儒家", "性善", "仁政"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-5', title: '诗经', author: '佚名（孔子编订）', dynasty: '周', category: '经部', summary: '中国最早的诗歌总集，收录西周至春秋诗歌305篇，分风雅颂，中华诗歌的源头。', tags: ["诗歌", "风雅颂", "经典"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-6', title: '尚书', author: '佚名（孔子编订）', dynasty: '周', category: '经部', summary: '中国最早的政令文书汇编，记载上古帝王言论和治国方略。', tags: ["历史", "政令", "经典"], color: '#ca8a04', sectionCount: 10 },
