@@ -316,11 +316,6 @@ function stopAudio() {
   playingType = null
 }
 
-function getReaderContent(): string {
-  if (!currentSection.value) return ''
-  return currentSection.value.original
-}
-
 onMounted(async () => {
   favoriteIds.value = loadFavorites()
   window.addEventListener('beforeunload', stopAll)
@@ -490,7 +485,12 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span>原文</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playOriginal()">{{ speaking ? '⏹' : '▶' }}</button>
+              <button class="gx-block-play"
+                :class="playingType === 'original' ? 'gx-block-playing' : ''"
+                @click="playingType === 'original' ? stopAudio() : playOriginal()">
+                <span v-if="playingType === 'original'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读原文</span>
+              </button>
             </div>
             <div class="gx-original-text">
               <p v-for="(line, i) in currentSection.original.split('\n')" :key="i" class="gx-original-line"><PointReader :text="line" /></p>
@@ -498,25 +498,28 @@ onUnmounted(() => {
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
-              <span>翻译</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playTranslation()">{{ speaking ? '⏹' : '▶' }}</button>
+              <span>📖 译文</span>
+              <button class="gx-block-play"
+                :class="playingType === 'translation' ? 'gx-block-playing' : ''"
+                @click="playingType === 'translation' ? stopAudio() : playTranslation()">
+                <span v-if="playingType === 'translation'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读译文</span>
+              </button>
             </div>
             <p class="gx-translation-text">{{ currentSection.translation }}</p>
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
-              <span>解读</span>
-              <button class="gx-block-play" @click="speaking ? stopAudio() : playInterpretation()">{{ speaking ? '⏹' : '▶' }}</button>
+              <span>💡 解读</span>
+              <button class="gx-block-play"
+                :class="playingType === 'interpretation' ? 'gx-block-playing' : ''"
+                @click="playingType === 'interpretation' ? stopAudio() : playInterpretation()">
+                <span v-if="playingType === 'interpretation'">⏹ 停止朗读</span>
+                <span v-else>▶ 朗读解读</span>
+              </button>
             </div>
             <p class="gx-translation-text">{{ currentSection.interpretation }}</p>
           </div>
-        </div>
-
-        <!-- Play full text -->
-        <div class="gx-reader-actions">
-          <button class="gx-action-btn gx-action-play" @click="speaking ? stopAudio() : playOriginal()">
-            {{ speaking ? '⏹ 停止' : '▶ 播放全文' }}
-          </button>
         </div>
       </div>
     </template>
@@ -713,15 +716,7 @@ body {
   transition: all 0.2s;
 }
 .gx-block-play:hover { background: #2563eb; color: white; }
-.gx-reader-actions {
-  display: flex; gap: 12px; justify-content: center; margin-top: 20px;
-}
-.gx-action-btn {
-  padding: 12px 28px; border-radius: 12px; font-size: 14px; font-weight: 600;
-  border: none; cursor: pointer; transition: all 0.2s;
-}
-.gx-action-play { background: #2563eb; color: white; }
-.gx-action-play:hover { background: #1d4ed8; }
+.gx-block-playing { background: #ef4444 !important; color: white !important; }
 
 /* ===== Search Results ===== */
 .gx-search-summary {
