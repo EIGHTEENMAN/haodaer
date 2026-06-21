@@ -30,11 +30,12 @@ else:
     next_idx = len(text)
 
 # The area between sections_start and before next book
-# Find the closing pattern }, in this area
+# Find the closing pattern: last }  followed by "    ] },"
+# We want REPLACEMENT_END at the start of "    ] }," so expanded content's trailing
+# `},` plus the close pattern doesn't double up
 search_area = text[idx:next_idx]
-# Find the last section closing followed by sections array close
-# Pattern: `},    ] },` or similar
-close_pattern = "},    ] },"
+# Find the last `    ] },` (the sections array close + book close, not the section close)
+close_pattern = "    ] },"
 close_idx = search_area.rfind(close_pattern)
 
 if close_idx < 0:
