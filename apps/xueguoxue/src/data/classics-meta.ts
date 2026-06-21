@@ -80,7 +80,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'zi-6', title: '荀子', author: '荀子', dynasty: '战国', category: '子部', summary: '儒家著作，主张性恶论、隆礼重法，提出青出于蓝而胜于蓝等名句。', tags: ["儒家", "哲学", "性恶"], color: '#6366f1', sectionCount: 22 },
   { id: 'zi-7', title: '韩非子', author: '韩非', dynasty: '战国', category: '子部', summary: '法家集大成之作，主张以法治国，提出法、术、势相结合的治国理念。', tags: ["法家", "哲学", "法治"], color: '#6366f1', sectionCount: 22 },
   { id: 'zi-8', title: '孙子兵法', author: '孙武', dynasty: '春秋', category: '子部', summary: '中国古代最著名的军事著作，提出了知己知彼、百战不殆等军事思想。', tags: ["兵法", "军事", "经典"], color: '#6366f1', sectionCount: 20 },
-  { id: 'zi-9', title: '鬼谷子', author: '鬼谷子', dynasty: '春秋', category: '子部', summary: '纵横家经典，论述谋略、辩论和游说之术。', tags: ["纵横", "谋略", "哲学"], color: '#6366f1', sectionCount: 10 },
+  { id: 'zi-9', title: '鬼谷子', author: '鬼谷子', dynasty: '春秋', category: '子部', summary: '纵横家经典，论述谋略、辩论和游说之术。', tags: ["纵横", "谋略", "哲学"], color: '#6366f1', sectionCount: 18 },
   { id: 'zi-10', title: '管子', author: '管仲', dynasty: '春秋', category: '子部', summary: '记载管仲政治经济思想的著作，涉及治国、经济、军事等多方面。', tags: ["法家", "经济", "治国"], color: '#6366f1', sectionCount: 10 },
   { id: 'zi-11', title: '商君书', author: '商鞅', dynasty: '战国', category: '子部', summary: '法家重要著作，记载商鞅变法的理论和政策。', tags: ["法家", "变法", "政治"], color: '#6366f1', sectionCount: 10 },
   { id: 'zi-12', title: '吕氏春秋', author: '吕不韦编', dynasty: '战国', category: '子部', summary: '秦相吕不韦召集门客编纂的杂家著作，融合百家学说。', tags: ["杂家", "百科", "经典"], color: '#6366f1', sectionCount: 10 },
