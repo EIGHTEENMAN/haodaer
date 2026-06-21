@@ -21,7 +21,7 @@ export interface PlayOptions {
   src: string
   onEnd?: () => void
   bgmSrc?: string
-  bgmVolume?: number  // 0-1，默认 0.3
+  bgmVolume?: number  // 0-1，默认 0.15
 }
 
 export function playMp3(opts: PlayOptions): void {
@@ -54,7 +54,7 @@ export function playMp3(opts: PlayOptions): void {
   })
 
   if (opts.bgmSrc) {
-    playBgm(opts.bgmSrc, opts.bgmVolume ?? 0.3)
+    playBgm(opts.bgmSrc, opts.bgmVolume ?? 0.15)
   }
 }
 
@@ -71,11 +71,11 @@ export function stopAll(): void {
 
 // ===== 背景音乐 =====
 
-export function playBgm(src: string, volume: number = 0.3): void {
+export function playBgm(src: string, volume: number = 0.15): void {
   stopBgm()
   const bgm = new Audio(src)
   bgm.loop = true
-  bgm.volume = volume
+  bgm.volume = volume       // 默认 0.15 已在 playMp3 设定
   bgm.preload = 'auto'
   activeBgms.add(bgm)
   bgm.play().catch(err => {
