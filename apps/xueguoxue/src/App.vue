@@ -43,7 +43,7 @@ const currentView = ref<View>('home')
 const currentClassic = ref<Classic | null>(null)
 const currentSection = ref<Section | null>(null)
 const readerEntryTime = ref(0)
-const showChallenge = ref(false)
+const showChallenge = ref(false) // 答题功能暂时隐藏，待后续优化再启用
 const challengeSectionRef = ref('')
 
 watch(currentView, (newView, oldView) => {
@@ -54,7 +54,7 @@ watch(currentView, (newView, oldView) => {
       reportLearningProgress(childId, 'classics', 1, Math.max(1, elapsed))
     }
     readerEntryTime.value = 0
-    if (challengeSectionRef.value) showChallenge.value = true
+    // 答题功能暂时隐藏，待后续优化再启用：if (challengeSectionRef.value) showChallenge.value = true
   }
   if (newView === 'reader') {
     readerEntryTime.value = Date.now()
