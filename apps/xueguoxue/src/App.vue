@@ -484,7 +484,7 @@ onUnmounted(() => {
         <div class="gx-content-sections">
           <div class="gx-content-block">
             <div class="gx-content-label">
-              <span>原文</span>
+              <span class="gx-content-label-text">📜 原文</span>
               <button class="gx-block-play"
                 :class="playingType === 'original' ? 'gx-block-playing' : ''"
                 @click="playingType === 'original' ? stopAudio() : playOriginal()">
@@ -498,7 +498,7 @@ onUnmounted(() => {
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
-              <span>📖 译文</span>
+              <span class="gx-content-label-text">📖 译文</span>
               <button class="gx-block-play"
                 :class="playingType === 'translation' ? 'gx-block-playing' : ''"
                 @click="playingType === 'translation' ? stopAudio() : playTranslation()">
@@ -510,7 +510,7 @@ onUnmounted(() => {
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
-              <span>💡 解读</span>
+              <span class="gx-content-label-text">💡 解读</span>
               <button class="gx-block-play"
                 :class="playingType === 'interpretation' ? 'gx-block-playing' : ''"
                 @click="playingType === 'interpretation' ? stopAudio() : playInterpretation()">
@@ -698,9 +698,10 @@ body {
 .gx-content-label {
   font-size: 14px; font-weight: 700; color: #2563eb;
   margin-bottom: 12px; padding-bottom: 8px;
-  border-bottom: 2px solid #eff6ff;
+  border-bottom: 2px solid #dbeafe;
   display: flex; align-items: center; justify-content: space-between;
 }
+.gx-content-label-text { font-size: 14px; font-weight: 700; color: #2563eb; }
 .gx-original-text { font-family: "Noto Serif SC", "STSong", serif; }
 .gx-original-line {
   font-size: 17px; line-height: 2.2; color: #0f172a;
@@ -710,13 +711,13 @@ body {
   white-space: pre-line;
 }
 .gx-block-play {
-  width: 32px; height: 32px; border-radius: 50%; border: none;
-  background: #eff6ff; color: #2563eb; font-size: 13px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 6px 14px; border-radius: 20px; border: none;
+  background: #dbeafe; color: #2563eb; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
   transition: all 0.2s;
 }
 .gx-block-play:hover { background: #2563eb; color: white; }
-.gx-block-playing { background: #ef4444 !important; color: white !important; }
+.gx-block-playing { background: #2563eb !important; color: white !important; }
 
 /* ===== Search Results ===== */
 .gx-search-summary {
