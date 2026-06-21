@@ -33,7 +33,7 @@ export const classicIndex: ClassicMeta[] = [
   { id: 'jing-7', title: '礼记', author: '戴圣编', dynasty: '西汉', category: '经部', summary: '儒家礼制经典，记载古代礼仪制度、社会规范和教育理念。', tags: ["礼仪", "制度", "经典"], color: '#ca8a04', sectionCount: 15 },
   { id: 'jing-8', title: '周易', author: '周文王等', dynasty: '周', category: '经部', summary: '群经之首，以阴阳八卦阐释天地万物变化规律的哲学经典。', tags: ["哲学", "卜筮", "经典"], color: '#ca8a04', sectionCount: 15 },
   { id: 'jing-9', title: '春秋左传', author: '左丘明', dynasty: '春秋', category: '经部', summary: '以鲁国史为主线，详细记载春秋时期重大历史事件的编年史。', tags: ["历史", "编年", "经典"], color: '#ca8a04', sectionCount: 10 },
-  { id: 'jing-10', title: '孝经', author: '曾子', dynasty: '春秋', category: '经部', summary: '儒家论述孝道的经典，阐述孝为德之本、教之所由生的思想。', tags: ["孝道", "伦理", "经典"], color: '#ca8a04', sectionCount: 10 },
+  { id: 'jing-10', title: '孝经', author: '曾子', dynasty: '春秋', category: '经部', summary: '儒家论述孝道的经典，阐述孝为德之本、教之所由生的思想。', tags: ["孝道", "伦理", "经典"], color: '#ca8a04', sectionCount: 15 },
   { id: 'jing-11', title: '仪礼', author: '佚名', dynasty: '周', category: '经部', summary: '记载古代冠、婚、丧、祭、射、乡、朝、聘等礼仪制度的经典。', tags: ["礼仪", "制度", "经典"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-12', title: '周礼', author: '佚名', dynasty: '周', category: '经部', summary: '记载周代官制和治国制度的经典，系统展示古代国家治理体系。', tags: ["官制", "制度", "经典"], color: '#ca8a04', sectionCount: 10 },
   { id: 'jing-13', title: '尔雅', author: '佚名', dynasty: '西汉', category: '经部', summary: '中国最早的解释词义的专著，按义类编排的百科辞典。', tags: ["训诂", "百科", "经典"], color: '#ca8a04', sectionCount: 10 },
