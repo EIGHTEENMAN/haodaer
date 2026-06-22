@@ -66,22 +66,43 @@ const searchQuery = ref('')
 const apiResults = ref<any[]>([])
 const searchResults = ref<{ topic: Topic; sections: Section[] }[]>([])
 
-// --- 难度等级（基于 sectionCount 与类目） ---
-// P1 入门认知（节数 6-8，250-350 字/节）：安全/节气/生肖/基础
-// P2 通识科普（节数 10-12，300-400 字/节）：节日/传统艺术/礼仪
-// P3 深度知识（节数 12+，350-450 字/节）：中医/武术/古建/四大名著
+// --- 难度等级（按类目统一分级） ---
+// P1 入门：基础安全/生活常识/日常认知
+// P2 通识：自然科学/历史/文化/艺术
+// P3 深度：抽象思维/经济规律/前沿科技
 const getDifficulty = (t: TopicMeta): 'P1' | 'P2' | 'P3' => {
-  // 中国传统文化类目用 topic id 前缀区分（已知分布）
-  const p3Ids = new Set(['ct-chinese-medicine', 'ct-chinese-martial-arts', 'ct-four-great', 'ct-chinese-architecture', 'ct-chinese-porcelain', 'ct-silk-road', 'ct-four-classics', 'ct-mythology'])
-  if (p3Ids.has(t.id)) return 'P3'
-  // 其余 ct-* 都是 P1/P2，按 id 前缀判断
-  const p1Ids = new Set(['ct-water-safety', 'ct-electricity-safety', 'ct-food-safety', 'ct-fire-safety', 'ct-traffic-safety', 'ct-first-aid', 'ct-zodiac', 'ct-solar-terms-spring', 'ct-solar-terms-summer', 'ct-solar-terms-autumn', 'ct-solar-terms-winter', 'ct-lantern-festival', 'ct-qixi', 'ct-papermaking', 'ct-chinese-chess'])
-  if (p1Ids.has(t.id)) return 'P1'
-  if (t.id.startsWith('ct-')) return 'P2'
-  // 非 ct-* topic 按 sectionCount 判断
-  if (t.sectionCount <= 8) return 'P1'
-  if (t.sectionCount <= 12) return 'P2'
-  return 'P3'
+  // 中国传统文化 ct-* 用静态映射
+  if (t.id.startsWith('ct-')) {
+    const ctP3 = new Set(['ct-chinese-medicine', 'ct-chinese-martial-arts', 'ct-four-great',
+                          'ct-chinese-architecture', 'ct-chinese-porcelain', 'ct-silk-road',
+                          'ct-four-classics', 'ct-mythology'])
+    if (ctP3.has(t.id)) return 'P3'
+    const ctP1 = new Set(['ct-water-safety', 'ct-electricity-safety', 'ct-food-safety',
+                          'ct-fire-safety', 'ct-traffic-safety', 'ct-first-aid',
+                          'ct-zodiac', 'ct-solar-terms-spring', 'ct-solar-terms-summer',
+                          'ct-solar-terms-autumn', 'ct-solar-terms-winter',
+                          'ct-lantern-festival', 'ct-qixi', 'ct-papermaking', 'ct-chinese-chess'])
+    if (ctP1.has(t.id)) return 'P1'
+    return 'P2'
+  }
+  // 健康生活 → P1
+  if (t.category === '健康生活') return 'P1'
+  // 逻辑思维 + 经济社会 → P3
+  if (t.category === '逻辑思维' || t.category === '经济社会') return 'P3'
+  // 科技工程：基础 → P2，前沿 → P3
+  if (t.category === '科技工程') {
+    const techP3 = new Set(['5g-iot', 'blockchain', 'quantum', 'nano-tech', 'biotech', 'env-eng'])
+    return techP3.has(t.id) ? 'P3' : 'P2'
+  }
+  // 自然：基础动物认知 → P1，专业生态 → P2
+  if (t.category === '自然') {
+    const natureP1 = new Set(['insects', 'amphibians', 'microbes', 'marine-life', 'ecosystem',
+                              'insect-world', 'amphibians-reptiles', 'mammals', 'bird-world',
+                              'rare-animals'])
+    return natureP1.has(t.id) ? 'P1' : 'P2'
+  }
+  // 其余类目（地理/历史人物/科学/艺术/语言文字）→ P2
+  return 'P2'
 }
 
 const difficultyLabel: Record<'P1' | 'P2' | 'P3', { name: string; color: string; emoji: string }> = {
