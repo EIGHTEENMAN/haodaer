@@ -12,6 +12,7 @@ import AppSearchResults from '@shared/components/AppSearchResults.vue'
 import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
+import KnowledgeIllustration from './components/KnowledgeIllustration.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 import PointReader from '@shared/components/PointReader.vue'
 
@@ -422,12 +423,24 @@ onUnmounted(() => {
       <div class="ts-detail-wrap">
         <button class="ts-back" @click="goBack()">← 返回</button>
         <div class="ts-detail-card">
-          <h1 class="ts-detail-title">{{ currentTopic.title }}</h1>
-          <p class="ts-detail-meta">{{ currentTopic.category }}</p>
-          <div class="ts-detail-tags">
-            <span v-for="tag in currentTopic.tags" :key="tag" class="ts-detail-tag">{{ tag }}</span>
+          <div class="ts-detail-grid">
+            <div class="ts-detail-content">
+              <h1 class="ts-detail-title">{{ currentTopic.title }}</h1>
+              <p class="ts-detail-meta">{{ currentTopic.category }}</p>
+              <div class="ts-detail-tags">
+                <span v-for="tag in currentTopic.tags" :key="tag" class="ts-detail-tag">{{ tag }}</span>
+              </div>
+              <p class="ts-detail-summary">{{ currentTopic.summary }}</p>
+            </div>
+            <div class="ts-detail-illu">
+              <KnowledgeIllustration
+                :topic-id="currentTopic.id"
+                :topic-title="currentTopic.title"
+                :category="currentTopic.category"
+                :color="categoryColors[currentTopic.category] || '#94a3b8'"
+              />
+            </div>
           </div>
-          <p class="ts-detail-summary">{{ currentTopic.summary }}</p>
         </div>
 
         <h3 class="ts-sections-title">知识点（{{ currentTopic.sections.length }}）</h3>
@@ -462,12 +475,6 @@ onUnmounted(() => {
             </div>
             <p class="ts-content-text"><PointReader :text="currentSection.content" /></p>
           </div>
-        </div>
-
-        <div class="ts-reader-actions">
-          <button class="ts-action-btn ts-action-play" @click="speaking ? stopAudio() : playText(getReaderContent())">
-            {{ speaking ? '⏹ 停止' : '▶ 播放全文' }}
-          </button>
         </div>
       </div>
     </template>
@@ -623,6 +630,9 @@ body {
 .ts-back { background: none; border: none; font-size: 13px; color: #06b6d4; cursor: pointer; padding: 4px 0; display: block; white-space: nowrap; }
 .ts-back:hover { color: #0891b2; }
 .ts-detail-card { background: white; border-radius: 18px; padding: 28px; margin: 16px 24px; border: 1px solid #e2e8f0; }
+.ts-detail-grid { display: grid; grid-template-columns: 1fr 240px; gap: 24px; align-items: start; }
+.ts-detail-content { min-width: 0; }
+.ts-detail-illu { position: sticky; top: 16px; }
 .ts-detail-title { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
 .ts-detail-meta { font-size: 13px; color: #64748b; margin-bottom: 10px; }
 .ts-detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -685,6 +695,8 @@ body {
   .ts-quote-text { font-size: 16px; }
   .ts-grid { grid-template-columns: repeat(2, 1fr); }
   .ts-detail-card { margin: 12px 12px; padding: 20px; }
+  .ts-detail-grid { grid-template-columns: 1fr; }
+  .ts-detail-illu { position: static; }
   .ts-sections-title { margin: 0 12px 10px; }
   .ts-sections { padding: 0 12px 16px; }
   .ts-reader-wrap { padding: 14px; }
