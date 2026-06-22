@@ -22,7 +22,7 @@
 import { readFileSync, existsSync, mkdirSync, writeFileSync, statSync, unlinkSync, renameSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { spawnSync } from 'child_process'
+import { spawnSync, spawn } from 'child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const APP_DIR = resolve(__dirname, '..')
@@ -74,15 +74,16 @@ function buildSsml(text, voice, style, styleDegree, rate) {
 }
 
 // ===== 解析 classics.ts 全部书籍 =====
+// 兼容单/双引号 id 和 title（新增的书用双引号）
 function parseAllBooks(fileContent) {
   const books = []
-  const bookRegex = /\{ id: '(jing|zi|shi|yi|meng)-\d+', title: '([^']+)',[\s\S]*?sections: \[/g
+  const bookRegex = /\{ id: ['"](jing|zi|shi|yi|meng)-\d+['"],\s*title: ['"]([^'"]+)['"],[\s\S]*?sections: \[/g
   let m
   while ((m = bookRegex.exec(fileContent)) !== null) {
-    const id = m[1] + '-' + m[0].match(/'((?:jing|zi|shi|yi|meng)-\d+)'/)[1]
+    const fullId = m[0].match(/['"]((?:jing|zi|shi|yi|meng)-\d+)['"]/)[1]
     const title = m[2]
     const startIdx = m.index + m[0].length
-    books.push({ id: id.match(/'((?:jing|zi|shi|yi|meng)-\d+)'/)[1], title, startIdx })
+    books.push({ id: fullId, title, startIdx })
   }
   return books
 }
@@ -202,20 +203,38 @@ async function callEdgeTTS(text, profile, outputPath) {
     writeFileSync(tmpTxt, text, 'utf-8')
   }
 
-  const r = spawnSync('python3', args, { timeout: 300000, encoding: 'utf-8' })
-  if (r.error) throw r.error
-  if (r.status !== 0) {
-    throw new Error(`edge-tts exit ${r.status}: ${(r.stderr || r.stdout || '').slice(0, 1500)}`)
-  }
-  if (!existsSync(tmpMp3)) throw new Error('No output file')
-  const size = statSync(tmpMp3).size
-  if (size < 100) {
-    try { unlinkSync(tmpMp3) } catch {}
-    throw new Error('File too small (' + size + 'B)')
-  }
-  renameSync(tmpMp3, outputPath)
-  try { unlinkSync(tmpTxt) } catch {}
-  return size
+  // 用异步 spawn 避免 macOS edge-tts 偶发挂死卡住整个进程
+  // 单条 60s 超时，超时后 SIGKILL 子进程
+  const PER_TIMEOUT = 60000
+  return new Promise((resolveP, rejectP) => {
+    const child = spawn('python3', args, { encoding: 'utf-8' })
+    let stderr = ''
+    let timer = setTimeout(() => {
+      try { child.kill('SIGKILL') } catch {}
+      try { unlinkSync(tmpMp3) } catch {}
+      rejectP(new Error(`edge-tts timeout ${PER_TIMEOUT/1000}s killed`))
+    }, PER_TIMEOUT)
+    child.stderr?.on('data', d => { stderr += d.toString() })
+    child.on('error', err => { clearTimeout(timer); rejectP(err) })
+    child.on('close', code => {
+      clearTimeout(timer)
+      if (code !== 0) {
+        try { unlinkSync(tmpMp3) } catch {}
+        rejectP(new Error(`edge-tts exit ${code}: ${stderr.slice(0, 1500)}`))
+        return
+      }
+      if (!existsSync(tmpMp3)) { rejectP(new Error('No output file')); return }
+      const size = statSync(tmpMp3).size
+      if (size < 100) {
+        try { unlinkSync(tmpMp3) } catch {}
+        rejectP(new Error('File too small (' + size + 'B)'))
+        return
+      }
+      renameSync(tmpMp3, outputPath)
+      try { unlinkSync(tmpTxt) } catch {}
+      resolveP(size)
+    })
+  })
 }
 
 // ===== 主流程 =====
