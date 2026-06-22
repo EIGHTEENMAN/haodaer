@@ -61,9 +61,34 @@ watch(currentView, (newView, oldView) => {
 })
 
 const activeCategory = ref('全部')
+const activeDifficulty = ref<'all' | 'P1' | 'P2' | 'P3'>('all')
 const searchQuery = ref('')
 const apiResults = ref<any[]>([])
 const searchResults = ref<{ topic: Topic; sections: Section[] }[]>([])
+
+// --- 难度等级（基于 sectionCount 与类目） ---
+// P1 入门认知（节数 6-8，250-350 字/节）：安全/节气/生肖/基础
+// P2 通识科普（节数 10-12，300-400 字/节）：节日/传统艺术/礼仪
+// P3 深度知识（节数 12+，350-450 字/节）：中医/武术/古建/四大名著
+const getDifficulty = (t: TopicMeta): 'P1' | 'P2' | 'P3' => {
+  // 中国传统文化类目用 topic id 前缀区分（已知分布）
+  const p3Ids = new Set(['ct-chinese-medicine', 'ct-chinese-martial-arts', 'ct-four-great', 'ct-chinese-architecture', 'ct-chinese-porcelain', 'ct-silk-road', 'ct-four-classics', 'ct-mythology'])
+  if (p3Ids.has(t.id)) return 'P3'
+  // 其余 ct-* 都是 P1/P2，按 id 前缀判断
+  const p1Ids = new Set(['ct-water-safety', 'ct-electricity-safety', 'ct-food-safety', 'ct-fire-safety', 'ct-traffic-safety', 'ct-first-aid', 'ct-zodiac', 'ct-solar-terms-spring', 'ct-solar-terms-summer', 'ct-solar-terms-autumn', 'ct-solar-terms-winter', 'ct-lantern-festival', 'ct-qixi', 'ct-papermaking', 'ct-chinese-chess'])
+  if (p1Ids.has(t.id)) return 'P1'
+  if (t.id.startsWith('ct-')) return 'P2'
+  // 非 ct-* topic 按 sectionCount 判断
+  if (t.sectionCount <= 8) return 'P1'
+  if (t.sectionCount <= 12) return 'P2'
+  return 'P3'
+}
+
+const difficultyLabel: Record<'P1' | 'P2' | 'P3', { name: string; color: string; emoji: string }> = {
+  P1: { name: '入门', color: '#10b981', emoji: '🌱' },
+  P2: { name: '进阶', color: '#f59e0b', emoji: '📚' },
+  P3: { name: '深度', color: '#ef4444', emoji: '🏆' },
+}
 
 const filteredApps = computed(() => filterApps(searchQuery.value))
 
@@ -205,6 +230,7 @@ async function doSearch() {
 const filteredTopics = computed(() => {
   let list = knowledgeIndex
   if (activeCategory.value !== '全部') list = list.filter(t => t.category === activeCategory.value)
+  if (activeDifficulty.value !== 'all') list = list.filter(t => getDifficulty(t) === activeDifficulty.value)
   return list
 })
 
@@ -278,6 +304,16 @@ onUnmounted(() => {
               {{ cat }}
             </button>
           </div>
+          <div class="ts-diff-tags animate-fadeIn">
+            <span class="ts-diff-label">难度：</span>
+            <button v-for="d in [{k:'all',n:'全部',c:'#64748b',e:'📋'},{k:'P1',n:'入门',c:difficultyLabel.P1.color,e:difficultyLabel.P1.emoji},{k:'P2',n:'进阶',c:difficultyLabel.P2.color,e:difficultyLabel.P2.emoji},{k:'P3',n:'深度',c:difficultyLabel.P3.color,e:difficultyLabel.P3.emoji}]" :key="d.k"
+              @click="activeDifficulty = d.k as any"
+              class="ts-diff-tag"
+              :class="activeDifficulty === d.k ? 'ts-diff-tag-active' : ''"
+              :style="activeDifficulty === d.k ? { backgroundColor: d.c, color: 'white', borderColor: d.c } : { color: d.c, borderColor: d.c + '40' }">
+              <span class="ts-diff-emoji">{{ d.e }}</span>{{ d.n }}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -303,6 +339,9 @@ onUnmounted(() => {
         <div class="ts-grid">
           <div v-for="t in g.items" :key="t.id" class="ts-card" @click="openDetailFromMeta(t)">
             <div class="ts-card-top" :style="{ backgroundColor: g.color + '18' }">
+              <span class="ts-card-diff" :style="{ backgroundColor: difficultyLabel[getDifficulty(t)].color }">
+                {{ difficultyLabel[getDifficulty(t)].emoji }}{{ difficultyLabel[getDifficulty(t)].name }}
+              </span>
               <svg class="ts-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -310,6 +349,7 @@ onUnmounted(() => {
             <h3 class="ts-card-title">{{ t.title }}</h3>
             <span class="ts-card-cat" :style="{ backgroundColor: g.color + '18', color: g.color }">{{ t.category }}</span>
             <p class="ts-card-summary">{{ t.summary }}</p>
+            <span class="ts-card-count">{{ t.sectionCount }} 节</span>
           </div>
         </div>
         <p v-if="g.items.length === 0" class="ts-empty">暂无内容</p>
@@ -493,6 +533,19 @@ body {
 .ts-card-top {
   width: 56px; height: 56px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+  position: relative;
+}
+.ts-card-diff {
+  position: absolute;
+  top: -8px; right: -8px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  white-space: nowrap;
 }
 .ts-card-icon { width: 28px; height: 28px; color: #06b6d4; }
 .ts-card-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
@@ -500,6 +553,26 @@ body {
   display: inline-block; padding: 2px 10px; border-radius: 8px; font-size: 11px; font-weight: 500; margin-bottom: 8px;
 }
 .ts-card-summary { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+.ts-card-count { display: block; margin-top: 8px; font-size: 11px; color: #64748b; font-weight: 500; }
+
+/* 难度筛选 */
+.ts-diff-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.ts-diff-label { font-size: 12px; color: #64748b; font-weight: 500; }
+.ts-diff-tag {
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  background: white;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.ts-diff-tag:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.ts-diff-emoji { font-size: 11px; }
 .ts-empty { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
 
 /* ===== Search Results ===== */

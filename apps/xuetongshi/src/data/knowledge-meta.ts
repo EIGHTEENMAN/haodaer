@@ -2432,7 +2432,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-spring-festival",
@@ -2443,7 +2443,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-dragon-boat",
@@ -2454,7 +2454,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-mid-autumn",
@@ -2465,7 +2465,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-qingming",
@@ -2476,7 +2476,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-new-year",
@@ -2487,7 +2487,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-lantern-festival",
@@ -2498,7 +2498,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-double-ninth",
@@ -2509,7 +2509,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-qixi",
@@ -2520,7 +2520,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-solar-terms-spring",
@@ -2531,7 +2531,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-solar-terms-summer",
@@ -2542,7 +2542,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-solar-terms-autumn",
@@ -2553,7 +2553,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-solar-terms-winter",
@@ -2564,7 +2564,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-zodiac",
@@ -2575,7 +2575,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-calligraphy",
@@ -2586,7 +2586,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-painting",
@@ -2597,7 +2597,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-peking-opera",
@@ -2608,7 +2608,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-tea-culture",
@@ -2619,7 +2619,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-medicine",
@@ -2630,7 +2630,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-architecture",
@@ -2641,7 +2641,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-hanfu",
@@ -2652,7 +2652,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-mythology",
@@ -2663,7 +2663,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-four-classics",
@@ -2674,7 +2674,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-silk-road",
@@ -2685,7 +2685,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-porcelain",
@@ -2696,7 +2696,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-martial-arts",
@@ -2707,7 +2707,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-music",
@@ -2718,7 +2718,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-tang-poetry",
@@ -2751,7 +2751,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-papermaking",
@@ -2762,7 +2762,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-chess",
@@ -2773,7 +2773,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-lion-dance",
@@ -2784,7 +2784,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-chinese-cuisine",
@@ -2795,7 +2795,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-fire-safety",
@@ -2806,7 +2806,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-traffic-safety",
@@ -2817,7 +2817,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   },
   {
     "id": "ct-water-safety",
@@ -2828,7 +2828,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 2
+    "sectionCount": 10
   },
   {
     "id": "ct-electricity-safety",
@@ -2839,7 +2839,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 2
+    "sectionCount": 10
   },
   {
     "id": "ct-food-safety",
@@ -2850,7 +2850,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 2
+    "sectionCount": 10
   },
   {
     "id": "ct-first-aid",
@@ -2861,7 +2861,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 5
+    "sectionCount": 10
   },
   {
     "id": "ct-home-etiquette",
@@ -2872,7 +2872,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-school-etiquette",
@@ -2883,7 +2883,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-public-etiquette",
@@ -2894,7 +2894,7 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 4
+    "sectionCount": 10
   },
   {
     "id": "ct-social-etiquette",
@@ -2905,6 +2905,6 @@ export const knowledgeIndex: TopicMeta[] = [
       "传统文化"
     ],
     "color": "#b91c1c",
-    "sectionCount": 3
+    "sectionCount": 10
   }
 ];
