@@ -130,7 +130,8 @@ function isFavorite(id: string) { return favoriteIds.value.includes(id) }
 function pushHash(view: string, topicId?: string, sectionId?: string) {
   let hash = ''
   if (view === 'detail' && topicId) hash = 'detail/' + topicId
-  else if (view === 'reader' && sectionId) hash = 'reader/' + sectionId
+  else if (view === 'reader' && topicId && sectionId) hash = 'reader/' + topicId + '/' + sectionId
+  else if (view === 'reader' && sectionId) hash = 'reader/' + sectionId  // 兼容旧 hash
   history.pushState(null, '', hash ? '#' + hash : window.location.pathname)
 }
 
@@ -139,18 +140,26 @@ async function restoreFromHash() {
   if (!hash) return
   const parts = hash.split('/')
   const view = parts[0]
-  const id = parts[1]
-  if ((view === 'detail' || view === 'reader') && id) {
+  if (view === 'detail' && parts[1]) {
     await ensureFullData()
     if (!fullData.value) return
-    if (view === 'detail') {
-      const item = fullData.value.find(t => t.id === id)
-      if (item) { currentTopic.value = item; currentView.value = 'detail' }
-    } else if (view === 'reader') {
-      for (const t of fullData.value) {
-        const sec = t.sections.find(s => s.id === id)
-        if (sec) { currentTopic.value = t; currentSection.value = sec; currentView.value = 'reader'; break }
-      }
+    const item = fullData.value.find(t => t.id === parts[1])
+    if (item) { currentTopic.value = item; currentView.value = 'detail' }
+  } else if (view === 'reader' && parts[1]) {
+    await ensureFullData()
+    if (!fullData.value) return
+    // 新格式 reader/topicId/sectionId，兼容旧 reader/sectionId
+    let topicId, sectionId
+    if (parts.length >= 3) {
+      topicId = parts[1]
+      sectionId = parts[2]
+    } else {
+      sectionId = parts[1]
+    }
+    for (const t of fullData.value) {
+      if (topicId && t.id !== topicId) continue
+      const sec = t.sections.find(s => s.id === sectionId)
+      if (sec) { currentTopic.value = t; currentSection.value = sec; currentView.value = 'reader'; break }
     }
   }
 }
@@ -473,7 +482,20 @@ onUnmounted(() => {
               <span>{{ currentSection.title }}</span>
               <button class="ts-block-play" @click="speaking ? stopAudio() : playText(currentSection.content)">{{ speaking ? '⏹' : '▶' }}</button>
             </div>
-            <p class="ts-content-text"><PointReader :text="currentSection.content" /></p>
+            <div class="ts-content-grid">
+              <div class="ts-content-text">
+                <PointReader :text="currentSection.content" />
+              </div>
+              <div class="ts-content-illu">
+                <KnowledgeIllustration
+                  :topic-id="currentSection.id"
+                  :topic-title="currentSection.title"
+                  :category="currentTopic?.category || ''"
+                  :color="categoryColors[currentTopic?.category || ''] || '#94a3b8'"
+                  :parent-topic-id="currentTopic?.id || ''"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -670,6 +692,8 @@ body {
   display: flex; align-items: center; justify-content: space-between;
 }
 .ts-content-text { font-size: 14px; line-height: 1.9; color: #475569; white-space: pre-line; }
+.ts-content-grid { display: grid; grid-template-columns: 1fr 200px; gap: 20px; align-items: start; margin-top: 8px; }
+.ts-content-illu { position: sticky; top: 16px; }
 .ts-block-play {
   width: 32px; height: 32px; border-radius: 50%; border: none;
   background: #cffafe; color: #06b6d4; font-size: 13px;
@@ -701,6 +725,8 @@ body {
   .ts-sections { padding: 0 12px 16px; }
   .ts-reader-wrap { padding: 14px; }
   .ts-content-block { padding: 16px; }
+  .ts-content-grid { grid-template-columns: 1fr; }
+  .ts-content-illu { position: static; }
   .ts-search-results { padding: 14px; }
 }
 </style>

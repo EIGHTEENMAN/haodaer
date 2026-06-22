@@ -15,6 +15,7 @@ const props = defineProps<{
   topicTitle: string
   category: string
   color?: string
+  parentTopicId?: string  // 章节所属的 topic（用于 section 图片文件名）
 }>()
 
 type FallbackStage = 'jpg' | 'svg'
@@ -23,6 +24,10 @@ const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
 
 const mediaUrl = computed(() => {
+  // 如果有 parentTopicId → 这是节图片，路径 = sections/{parentTopicId}-{sectionId}
+  if (props.parentTopicId) {
+    return `/images/sections/${props.parentTopicId}-${props.topicId}.${fallbackStage.value}`
+  }
   return `/images/knowledge/${props.topicId}.${fallbackStage.value}`
 })
 
