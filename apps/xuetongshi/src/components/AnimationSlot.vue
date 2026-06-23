@@ -1,19 +1,19 @@
 <script setup lang="ts">
 /**
- * AnimationSlot — 学通识配图/动画统一入口
+ * AnimationSlot — 学通识配图统一入口（v4）
  *
- * 4 级回退链（按优先级）：
- *   1. 组件动画（Canvas/SVG）  ← 来自 animations/ 注册表
- *   2. .jpg AI 真图           ← /images/{knowledge|sections}/<id>.jpg
- *   3. .svg 水墨占位          ← /images/{knowledge|sections}/<id>.svg
- *   4. 文字占位               ← KnowledgeIllustration 内的 ki-fallback
+ * 行为：
+ *   - 默认显示静态图（jpg → svg → 文字）+ 右下角"🔍 点击全屏"提示
+ *   - 点击图片全屏查看：动画模式显示放大的动画，否则显示静态大图
+ *   - 不再有"启动动画/暂停"按钮
  *
- * 设计：与原 KnowledgeIllustration 行为完全兼容，未匹配动画时透传原图片回退链。
- * 性能：动态 import 懒加载，不进首屏 bundle。
+ * 设计：
+ *   - 静态图为入口（0 延迟看到内容）
+ *   - 全屏是奖励（动画在这里展现）
+ *   - 动画组件按需在 ANIM_MAP 注册，新加动画无需改这里
  */
-import { ref, computed, shallowRef, watch, type Component } from 'vue'
+import { ref, computed, type Component } from 'vue'
 import { findAnimation } from './animations'
-// 同步导入所有动画（每个 chunk 才 0.4-3KB，懒加载收益不抵复杂度）
 import SolarSystem from './animations/SolarSystem.vue'
 import EarthMoon from './animations/EarthMoon.vue'
 import ForceMotion from './animations/ForceMotion.vue'
@@ -48,30 +48,17 @@ const props = defineProps<{
 
 type FallbackStage = 'jpg' | 'svg' | 'none'
 const fallbackStage = ref<FallbackStage>('jpg')
-// 默认 false：等异步组件就绪再切到动画（避免闪静态图）
-const showAnimation = ref(false)
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
 
-// 当前是否在动画模式（用于全屏时分流：动画全屏放大 vs 静态图全屏）
-const isAnimMode = computed(() => showAnimation.value && !!AnimationComp.value)
+/** 是否有动画（决定全屏渲染动画还是静态图） */
+const sectionId = computed(() => (props.parentTopicId ? props.topicId : undefined))
+const lookupTopicId = computed(() => props.parentTopicId || props.topicId)
+const hasAnimation = computed(() => !!findAnimation(lookupTopicId.value, sectionId.value))
 
-// 计算 section id（用于精确匹配动画）
-const sectionId = computed(() => {
-  // 章节场景：topicId 实际是 section.id，parentTopicId 是父 topic
-  return props.parentTopicId ? props.topicId : undefined
-})
-
-// 计算父 topic id（用于查找动画）
-const lookupTopicId = computed(() => {
-  return props.parentTopicId || props.topicId
-})
-
-// 查找匹配的动画（同步查表，无异步加载问题）
-const animDef = computed(() => findAnimation(lookupTopicId.value, sectionId.value))
-const animReady = ref(false)
-const AnimationComp = computed<Component | null>(() => {
-  const def = animDef.value
+/** 全屏时用哪个动画组件 */
+const FullscreenAnim = computed<Component | null>(() => {
+  const def = findAnimation(lookupTopicId.value, sectionId.value)
   if (!def) return null
   const ids = Array.isArray(def.match) ? def.match : [def.match]
   for (const id of ids) {
@@ -80,9 +67,8 @@ const AnimationComp = computed<Component | null>(() => {
   return null
 })
 
-// 计算图片 URL（动画关闭 或 无动画定义时使用）
+/** 静态图 URL */
 const mediaUrl = computed(() => {
-  if (showAnimation.value && AnimationComp.value) return null
   const base = props.parentTopicId
     ? `/images/sections/${props.parentTopicId}-${props.topicId}`
     : `/images/knowledge/${props.topicId}`
@@ -101,33 +87,17 @@ function handleImgError() {
     fallbackStage.value = 'none'
   }
 }
-
-// 暴露给父组件：手动关闭动画
-defineExpose({
-  disableAnimation: () => {
-    showAnimation.value = false
-  },
-})
 </script>
 
 <template>
-  <div class="as-banner" :style="{ backgroundColor: (color || '#94a3b8') + '15' }">
-    <!-- 第 1 级：动画组件 -->
-    <div
-      v-if="showAnimation && AnimationComp"
-      class="as-animation"
-      :class="{ 'as-animation-clickable': !showFullscreen }"
-      @click="!showFullscreen && (showFullscreen = true)"
-    >
-      <component
-        :is="AnimationComp"
-        :topic-id="topicId"
-        :parent-topic-id="parentTopicId"
-      />
-    </div>
-
-    <!-- 第 2/3 级：jpg / svg 回退 -->
-    <template v-else-if="mediaUrl">
+  <div
+    class="as-banner"
+    :class="{ 'as-banner-clickable': imgStatus === 'loaded' || mediaUrl === null }"
+    :style="{ backgroundColor: (color || '#94a3b8') + '15' }"
+    @click="(imgStatus === 'loaded' || mediaUrl === null) && (showFullscreen = true)"
+  >
+    <!-- 静态图入口 -->
+    <template v-if="mediaUrl">
       <img
         :src="mediaUrl"
         :alt="topicTitle"
@@ -135,11 +105,10 @@ defineExpose({
         :class="{ 'as-img-loaded': imgStatus === 'loaded' }"
         @load="handleImgLoad"
         @error="handleImgError"
-        @click="imgStatus === 'loaded' && (showFullscreen = true)"
       />
     </template>
 
-    <!-- 第 4 级：文字占位（完全无图） -->
+    <!-- 文字占位 -->
     <div v-else class="as-fallback">
       <div class="as-fallback-char">{{ topicTitle.slice(0, 1) }}</div>
       <div class="as-fallback-title">{{ topicTitle }}</div>
@@ -150,32 +119,37 @@ defineExpose({
       {{ category }}
     </div>
 
-    <!-- 动画开关：未启动时显眼的"启动动画"按钮，已启动时变小图标 -->
-    <button
-      v-if="animDef"
-      class="as-toggle"
-      :class="{ 'as-toggle-active': showAnimation }"
-      :title="showAnimation ? '切回静态图' : '启动动画看效果'"
-      @click="showAnimation = !showAnimation"
-    >
-      {{ showAnimation ? '⏸' : '🎬 启动动画' }}
-    </button>
+    <!-- "点击全屏"提示：有动画时显示"看动效"，否则显示"点击全屏" -->
+    <div v-if="imgStatus === 'loaded' || mediaUrl === null" class="as-hint">
+      <span class="as-hint-icon">{{ hasAnimation ? '🎬' : '🔍' }}</span>
+      <span>{{ hasAnimation ? '点击看动效' : '点击全屏' }}</span>
+    </div>
 
     <!-- 全屏查看 -->
     <Teleport to="body" v-if="showFullscreen">
       <div class="as-fullscreen" @click="showFullscreen = false">
-        <!-- 动画模式：放大渲染一份独立动画（点击蒙层关闭） -->
-        <div
-          v-if="AnimationComp"
-          class="as-fullscreen-anim"
-          @click.stop
-        >
-          <component :is="AnimationComp" :topic-id="topicId" :parent-topic-id="parentTopicId" />
+        <!-- 有动画：渲染独立动画实例 -->
+        <div v-if="FullscreenAnim" class="as-fullscreen-anim" @click.stop>
+          <component
+            :is="FullscreenAnim"
+            :topic-id="topicId"
+            :parent-topic-id="parentTopicId"
+          />
           <div class="as-fullscreen-hint">点击任意位置关闭</div>
         </div>
-        <!-- 静态模式：放大大图 -->
-        <template v-else-if="mediaUrl">
-          <img :src="mediaUrl" :alt="topicTitle" class="as-fullscreen-img" @click.stop />
+        <!-- 无动画：放大大图 -->
+        <template v-else>
+          <img
+            v-if="mediaUrl"
+            :src="mediaUrl"
+            :alt="topicTitle"
+            class="as-fullscreen-img"
+            @click.stop
+          />
+          <div v-else class="as-fullscreen-fallback">
+            <div class="as-fullscreen-char">{{ topicTitle.slice(0, 1) }}</div>
+            <div class="as-fullscreen-title">{{ topicTitle }}</div>
+          </div>
         </template>
         <button class="as-close" @click.stop="showFullscreen = false">×</button>
       </div>
@@ -193,11 +167,7 @@ defineExpose({
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.as-animation {
-  width: 100%;
-  height: 100%;
+  cursor: zoom-in;
 }
 
 .as-img {
@@ -206,7 +176,6 @@ defineExpose({
   object-fit: cover;
   opacity: 0;
   transition: opacity 0.4s ease;
-  cursor: zoom-in;
 }
 .as-img-loaded {
   opacity: 1;
@@ -224,43 +193,34 @@ defineExpose({
   letter-spacing: 0.5px;
   backdrop-filter: blur(4px);
   z-index: 2;
+  pointer-events: none;
 }
 
-.as-toggle {
+.as-hint {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 16px;
-  border: none;
-  background: rgba(15, 23, 42, 0.85);
-  color: #facc15;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  z-index: 2;
+  bottom: 14px;
+  right: 14px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 4px;
-  transition: all 0.2s;
-  white-space: nowrap;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.7);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: as-hint-pulse 2.5s ease-in-out infinite;
 }
-.as-toggle:hover {
-  background: rgba(15, 23, 42, 0.95);
-  transform: scale(1.05);
+.as-hint-icon {
+  font-size: 12px;
 }
-.as-toggle-active {
-  width: 32px;
-  padding: 0;
-  color: #475569;
-  background: rgba(255, 255, 255, 0.85);
-}
-.as-toggle-active:hover {
-  background: rgba(255, 255, 255, 1);
+@keyframes as-hint-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
 }
 
 .as-fallback {
@@ -299,7 +259,7 @@ defineExpose({
   cursor: zoom-out;
 }
 
-/* 动画全屏：占据整个屏幕、保持原动画色主题 */
+/* 动画全屏：占满 + 动画继续运行 */
 .as-fullscreen-anim {
   width: 100%;
   height: 100%;
@@ -322,17 +282,34 @@ defineExpose({
   pointer-events: none;
   backdrop-filter: blur(4px);
 }
+
 .as-fullscreen-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   cursor: default;
 }
-
-/* 动画模式可点击放大（鼠标手势） */
-.as-animation-clickable {
-  cursor: zoom-in;
+.as-fullscreen-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
 }
+.as-fullscreen-char {
+  font-size: 240px;
+  font-weight: 900;
+  font-family: serif;
+  opacity: 0.5;
+  line-height: 1;
+}
+.as-fullscreen-title {
+  margin-top: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
 .as-close {
   position: absolute;
   top: 20px;
@@ -346,6 +323,7 @@ defineExpose({
   border-radius: 50%;
   cursor: pointer;
   backdrop-filter: blur(4px);
+  z-index: 10000;
 }
 .as-close:hover {
   background: rgba(255, 255, 255, 0.3);
