@@ -1,17 +1,13 @@
 <script setup lang="ts">
 /**
- * SolarSystem — 太阳系行星轨道动画
+ * SolarSystem — 太阳系行星轨道动画（SVG 版）
  *
- * 设计：
- * - 8 大行星按真实相对距离缩放后绕日运行
- * - 公转周期按"水星 4s = 1 实际年"等比压缩（孩子能看清"水星快/海王星慢"）
- * - 自转：每个行星 SVG 自身缓慢旋转
+ * 实现：
+ * - 单一 SVG 视口，行星用 <g> + transform-origin: center + animateTransform 绕中心旋转
+ * - 8 大行星按真实相对距离缩放（容器归一化）
+ * - 公转周期按"水星 4s = 1 实际年"等比压缩
  * - 交互：点击行星显示该行星的数据卡
- * - 性能：纯 CSS animation + SVG，移动端无压力
- *
- * Props（可选）：
- *   - speed: 1=默认速度，0.5=半速，2=倍速
- *   - showLabels: true=显示行星名
+ * - 性能：纯 SVG 动画，移动端无压力
  */
 import { ref, computed } from 'vue'
 
@@ -28,28 +24,34 @@ interface Planet {
   name: string
   zh: string
   color: string
-  /** 距日相对距离（用于轨道半径） */
+  /** 距日相对距离（0-1，1=视口半径） */
   orbit: number
-  /** 公转周期（秒，实际年=4s/水星） */
+  /** 公转周期（秒） */
   period: number
-  /** 行星大小（SVG r） */
+  /** 行星半径（SVG 单位） */
   size: number
   fact: string
 }
 
 const planets: Planet[] = [
-  { id: 'mercury', name: 'Mercury', zh: '水星', color: '#a3a3a3', orbit: 18, period: 4, size: 2.5, fact: '离太阳最近，白天 430℃，晚上 -180℃' },
-  { id: 'venus', name: 'Venus', zh: '金星', color: '#fcd34d', orbit: 26, period: 7, size: 4, fact: '太阳系最热的行星，表面 460℃' },
-  { id: 'earth', name: 'Earth', zh: '地球', color: '#3b82f6', orbit: 36, period: 10, size: 4.2, fact: '我们的家，71% 被水覆盖' },
-  { id: 'mars', name: 'Mars', zh: '火星', color: '#dc2626', orbit: 46, period: 15, size: 3.2, fact: '红色行星，有太阳系最大的山' },
-  { id: 'jupiter', name: 'Jupiter', zh: '木星', color: '#fb923c', orbit: 60, period: 40, size: 9, fact: '太阳系最大的行星，能装下 1300 个地球' },
-  { id: 'saturn', name: 'Saturn', zh: '土星', color: '#fde68a', orbit: 76, period: 60, size: 7.5, fact: '有壮观的土星环，由冰和岩石组成' },
-  { id: 'uranus', name: 'Uranus', zh: '天王星', color: '#5eead4', orbit: 90, period: 90, size: 5, fact: '侧着身子转，像在"滚"着走' },
-  { id: 'neptune', name: 'Neptune', zh: '海王星', color: '#60a5fa', orbit: 102, period: 120, size: 4.8, fact: '太阳系最远，风速可达 2100 km/h' },
+  { id: 'mercury', name: 'Mercury', zh: '水星', color: '#a3a3a3', orbit: 0.18, period: 4, size: 3, fact: '离太阳最近，白天 430℃，晚上 -180℃' },
+  { id: 'venus', name: 'Venus', zh: '金星', color: '#fcd34d', orbit: 0.26, period: 7, size: 4.5, fact: '太阳系最热的行星，表面 460℃' },
+  { id: 'earth', name: 'Earth', zh: '地球', color: '#3b82f6', orbit: 0.36, period: 10, size: 5, fact: '我们的家，71% 被水覆盖' },
+  { id: 'mars', name: 'Mars', zh: '火星', color: '#dc2626', orbit: 0.46, period: 15, size: 4, fact: '红色行星，有太阳系最大的山' },
+  { id: 'jupiter', name: 'Jupiter', zh: '木星', color: '#fb923c', orbit: 0.60, period: 40, size: 10, fact: '太阳系最大的行星，能装下 1300 个地球' },
+  { id: 'saturn', name: 'Saturn', zh: '土星', color: '#fde68a', orbit: 0.76, period: 60, size: 8.5, fact: '有壮观的土星环，由冰和岩石组成' },
+  { id: 'uranus', name: 'Uranus', zh: '天王星', color: '#5eead4', orbit: 0.90, period: 90, size: 6, fact: '侧着身子转，像在"滚"着走' },
+  { id: 'neptune', name: 'Neptune', zh: '海王星', color: '#60a5fa', orbit: 1.02, period: 120, size: 5.5, fact: '太阳系最远，风速可达 2100 km/h' },
 ]
 
 const selected = ref<Planet | null>(null)
 const showOrbits = ref(true)
+
+/** 视口中心（100 单位半径） */
+const VIEW_RADIUS = 100
+
+/** 把 orbit 0-1 换算成 SVG 半径 */
+const orbitRadius = (o: number) => o * VIEW_RADIUS
 
 function selectPlanet(p: Planet) {
   selected.value = selected.value?.id === p.id ? null : p
@@ -62,41 +64,70 @@ function duration(period: number) {
 
 <template>
   <div class="ss-wrap" @click.stop>
-    <!-- 太阳 -->
-    <div class="ss-sun">
-      <div class="ss-sun-core" />
-      <div class="ss-sun-glow" />
-    </div>
-
-    <!-- 轨道与行星 -->
-    <div
-      v-for="p in planets"
-      :key="p.id"
-      class="ss-orbit"
-      :style="{
-        width: `${p.orbit * 2}px`,
-        height: `${p.orbit * 2}px`,
-        animationDuration: duration(p.period),
-      }"
+    <svg
+      class="ss-svg"
+      :viewBox="`-${VIEW_RADIUS + 8} -${VIEW_RADIUS + 8} ${(VIEW_RADIUS + 8) * 2} ${(VIEW_RADIUS + 8) * 2}`"
+      preserveAspectRatio="xMidYMid meet"
     >
-      <div
-        v-if="showOrbits"
-        class="ss-orbit-ring"
-        :style="{ width: `${p.orbit * 2}px`, height: `${p.orbit * 2}px` }"
-      />
-      <button
-        class="ss-planet"
-        :class="{ 'ss-planet-active': selected?.id === p.id }"
-        :style="{
-          backgroundColor: p.color,
-          width: `${p.size * 2}px`,
-          height: `${p.size * 2}px`,
-        }"
-        :title="p.zh"
-        @click.stop="selectPlanet(p)"
-      />
-      <span v-if="showLabels" class="ss-label">{{ p.zh }}</span>
-    </div>
+      <!-- 太阳 -->
+      <g class="ss-sun">
+        <circle r="8" fill="#facc15" opacity="0.3">
+          <animate attributeName="r" values="8;14;8" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle r="6" fill="url(#sunGrad)" />
+        <defs>
+          <radialGradient id="sunGrad">
+            <stop offset="0%" stop-color="#fef08a" />
+            <stop offset="60%" stop-color="#facc15" />
+            <stop offset="100%" stop-color="#f59e0b" />
+          </radialGradient>
+        </defs>
+      </g>
+
+      <!-- 轨道线（静态） -->
+      <g v-if="showOrbits">
+        <circle
+          v-for="p in planets"
+          :key="`ring-${p.id}`"
+          :r="orbitRadius(p.orbit)"
+          fill="none"
+          stroke="rgba(148, 163, 184, 0.25)"
+          stroke-width="0.2"
+          stroke-dasharray="2,2"
+        />
+      </g>
+
+      <!-- 行星（每颗一个 g 绕中心旋转） -->
+      <g
+        v-for="p in planets"
+        :key="p.id"
+        :transform="`translate(${orbitRadius(p.orbit)} 0)`"
+        :style="{ animation: `ss-spin ${duration(p.period)} linear infinite`, transformOrigin: `${-orbitRadius(p.orbit)}px 0px` }"
+      >
+        <circle
+          :r="p.size"
+          :fill="p.color"
+          :stroke="selected?.id === p.id ? '#facc15' : 'rgba(255,255,255,0.3)'"
+          :stroke-width="selected?.id === p.id ? 0.6 : 0.2"
+          class="ss-planet"
+          @click.stop="selectPlanet(p)"
+        >
+          <title>{{ p.zh }}</title>
+        </circle>
+        <text
+          v-if="showLabels"
+          :y="-p.size - 2"
+          text-anchor="middle"
+          font-size="3.5"
+          fill="rgba(255,255,255,0.75)"
+          font-weight="600"
+          class="ss-label"
+        >
+          {{ p.zh }}
+        </text>
+      </g>
+    </svg>
 
     <!-- 选中信息卡 -->
     <transition name="ss-fade">
@@ -106,7 +137,7 @@ function duration(period: number) {
         <div class="ss-info-en">{{ selected.name }}</div>
         <p class="ss-info-fact">{{ selected.fact }}</p>
         <div class="ss-info-meta">
-          距日：{{ selected.orbit }} 像素（实际 {{ (selected.orbit / 36 * 1.496).toFixed(2) }} 亿 km）
+          公转周期：{{ selected.period }}s（实际 {{ Math.round(selected.period / 4 * 88) }} 天 - {{ Math.round(selected.period / 4 * 165) }} 年）
         </div>
       </div>
     </transition>
@@ -137,94 +168,30 @@ function duration(period: number) {
   justify-content: center;
 }
 
-/* 太阳 */
-.ss-sun {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  z-index: 5;
-}
-.ss-sun-core {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fef08a 0%, #facc15 40%, #f59e0b 100%);
-  box-shadow: 0 0 24px #facc15, 0 0 48px #f59e0b;
-  animation: ss-pulse 3s ease-in-out infinite;
-}
-.ss-sun-glow {
-  position: absolute;
-  inset: -16px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.3) 0%, transparent 70%);
-  animation: ss-pulse 3s ease-in-out infinite;
-}
-@keyframes ss-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.85; }
+.ss-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-/* 轨道容器 - 用 animation rotate */
-.ss-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: v-bind('"-50%"');
-  margin-left: v-bind('"-50%"');
-  transform: translate(-50%, -50%);
-  animation: ss-spin linear infinite;
-  pointer-events: none;
-}
+/* 关键：行星 g 容器绕中心旋转 */
 @keyframes ss-spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* 静态轨道线 */
-.ss-orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px dashed rgba(148, 163, 184, 0.25);
-  border-radius: 50%;
-}
-
-/* 行星按钮 */
 .ss-planet {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: none;
   cursor: pointer;
-  pointer-events: auto;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: r 0.2s;
 }
 .ss-planet:hover {
-  transform: translate(-50%, -50%) scale(1.3);
-  box-shadow: 0 0 16px currentColor;
-}
-.ss-planet-active {
-  transform: translate(-50%, -50%) scale(1.5);
-  box-shadow: 0 0 20px currentColor;
-  outline: 2px solid #facc15;
-  outline-offset: 2px;
+  filter: brightness(1.3);
 }
 
-/* 行星名标签（跟着轨道转） */
 .ss-label {
-  position: absolute;
-  top: 12%;
-  left: 100%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
   pointer-events: none;
+  user-select: none;
 }
 
 /* 信息卡 */
@@ -256,7 +223,7 @@ function duration(period: number) {
   line-height: 1;
 }
 .ss-info-zh {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: #facc15;
 }
@@ -268,7 +235,7 @@ function duration(period: number) {
 }
 .ss-info-fact {
   margin: 8px 0 6px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: #e2e8f0;
 }
@@ -279,7 +246,7 @@ function duration(period: number) {
   padding-top: 6px;
 }
 
-/* 控制条 - 挪到左下角，避开 AnimationSlot 右上角的 ⏸ 按钮 */
+/* 控制条 - 左下角，避开 ⏸ 按钮 */
 .ss-controls {
   position: absolute;
   bottom: 12px;
