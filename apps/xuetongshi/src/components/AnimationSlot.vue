@@ -30,6 +30,9 @@ import LightSound from './animations/LightSound.vue'
 import Evolution from './animations/Evolution.vue'
 import FoodChains from './animations/FoodChains.vue'
 import PlantWorld from './animations/PlantWorld.vue'
+import EnergyPower from './animations/EnergyPower.vue'
+import Oceans from './animations/Oceans.vue'
+import Robots from './animations/Robots.vue'
 
 const ANIM_MAP: Record<string, Component> = {
   'solar-system': SolarSystem,
@@ -48,6 +51,9 @@ const ANIM_MAP: Record<string, Component> = {
   'evolution': Evolution,
   'food-chains': FoodChains,
   'plant-world': PlantWorld,
+  'energy-power': EnergyPower,
+  'oceans': Oceans,
+  'robots': Robots,
 }
 
 const props = defineProps<{
