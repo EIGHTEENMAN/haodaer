@@ -104,13 +104,13 @@ function duration(period: number) {
         :key="p.id"
         :transform="`translate(${orbitRadius(p.orbit)} 0)`"
       >
-        <!-- 内层 g 负责旋转，绕自身原点(0,0) = 外层定位后的太阳位置 -->
+        <!-- 内层 g 负责旋转，绕 g 局部原点(0,0) = 外层定位后的 SVG 全局太阳位置 -->
         <g>
           <animateTransform
             attributeName="transform"
             type="rotate"
-            from="0"
-            to="360"
+            from="0 0 0"
+            to="360 0 0"
             :dur="duration(p.period)"
             repeatCount="indefinite"
           />
