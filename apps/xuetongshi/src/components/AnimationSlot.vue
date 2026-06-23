@@ -28,6 +28,9 @@ const showAnimation = ref(true)
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
 
+// 当前是否在动画模式（用于全屏时分流：动画全屏放大 vs 静态图全屏）
+const isAnimMode = computed(() => showAnimation.value && !!AnimationComp.value)
+
 // 计算 section id（用于精确匹配动画）
 const sectionId = computed(() => {
   // 章节场景：topicId 实际是 section.id，parentTopicId 是父 topic
@@ -88,7 +91,12 @@ defineExpose({
 <template>
   <div class="as-banner" :style="{ backgroundColor: (color || '#94a3b8') + '15' }">
     <!-- 第 1 级：动画组件 -->
-    <div v-if="showAnimation && AnimationComp" class="as-animation">
+    <div
+      v-if="showAnimation && AnimationComp"
+      class="as-animation"
+      :class="{ 'as-animation-clickable': !showFullscreen }"
+      @click="!showFullscreen && (showFullscreen = true)"
+    >
       <component :is="AnimationComp" :topic-id="topicId" :parent-topic-id="parentTopicId" />
     </div>
 
@@ -129,7 +137,19 @@ defineExpose({
     <!-- 全屏查看 -->
     <Teleport to="body" v-if="showFullscreen">
       <div class="as-fullscreen" @click="showFullscreen = false">
-        <img :src="mediaUrl" :alt="topicTitle" class="as-fullscreen-img" />
+        <!-- 动画模式：放大渲染一份独立动画（点击蒙层关闭） -->
+        <div
+          v-if="AnimationComp"
+          class="as-fullscreen-anim"
+          @click.stop
+        >
+          <component :is="AnimationComp" :topic-id="topicId" :parent-topic-id="parentTopicId" />
+          <div class="as-fullscreen-hint">点击任意位置关闭</div>
+        </div>
+        <!-- 静态模式：放大大图 -->
+        <template v-else-if="mediaUrl">
+          <img :src="mediaUrl" :alt="topicTitle" class="as-fullscreen-img" @click.stop />
+        </template>
         <button class="as-close" @click.stop="showFullscreen = false">×</button>
       </div>
     </Teleport>
@@ -237,10 +257,40 @@ defineExpose({
   padding: 24px;
   cursor: zoom-out;
 }
+
+/* 动画全屏：占据整个屏幕、保持原动画色主题 */
+.as-fullscreen-anim {
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  max-height: 720px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: default;
+  position: relative;
+}
+.as-fullscreen-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
 .as-fullscreen-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  cursor: default;
+}
+
+/* 动画模式可点击放大（鼠标手势） */
+.as-animation-clickable {
+  cursor: zoom-in;
 }
 .as-close {
   position: absolute;

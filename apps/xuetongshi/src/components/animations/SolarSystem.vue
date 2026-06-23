@@ -61,7 +61,7 @@ function duration(period: number) {
 </script>
 
 <template>
-  <div class="ss-wrap">
+  <div class="ss-wrap" @click.stop>
     <!-- 太阳 -->
     <div class="ss-sun">
       <div class="ss-sun-core" />
@@ -279,11 +279,11 @@ function duration(period: number) {
   padding-top: 6px;
 }
 
-/* 控制条 */
+/* 控制条 - 挪到左下角，避开 AnimationSlot 右上角的 ⏸ 按钮 */
 .ss-controls {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 12px;
+  left: 12px;
   z-index: 10;
   display: flex;
   gap: 6px;
