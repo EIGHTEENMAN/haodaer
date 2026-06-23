@@ -13,6 +13,7 @@ import ContentSearchResults from '@shared/components/ContentSearchResults.vue'
 import FooterBar from '@shared/components/FooterBar.vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import KnowledgeIllustration from './components/KnowledgeIllustration.vue'
+import AnimationSlot from './components/AnimationSlot.vue'
 import ReadingChallenge from '@shared/components/ReadingChallenge.vue'
 import PointReader from '@shared/components/PointReader.vue'
 
@@ -442,7 +443,7 @@ onUnmounted(() => {
               <p class="ts-detail-summary">{{ currentTopic.summary }}</p>
             </div>
             <div class="ts-detail-illu">
-              <KnowledgeIllustration
+              <AnimationSlot
                 :topic-id="currentTopic.id"
                 :topic-title="currentTopic.title"
                 :category="currentTopic.category"
@@ -487,7 +488,7 @@ onUnmounted(() => {
                 <PointReader :text="currentSection.content" />
               </div>
               <div class="ts-content-illu">
-                <KnowledgeIllustration
+                <AnimationSlot
                   :topic-id="currentSection.id"
                   :topic-title="currentSection.title"
                   :category="currentTopic?.category || ''"
