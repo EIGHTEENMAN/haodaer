@@ -11,8 +11,32 @@
  * 设计：与原 KnowledgeIllustration 行为完全兼容，未匹配动画时透传原图片回退链。
  * 性能：动态 import 懒加载，不进首屏 bundle。
  */
-import { ref, computed, shallowRef, watch } from 'vue'
-import { findAnimation, createAnimationComponent } from './animations'
+import { ref, computed, shallowRef, watch, type Component } from 'vue'
+import { findAnimation } from './animations'
+// 同步导入所有动画（每个 chunk 才 0.4-3KB，懒加载收益不抵复杂度）
+import SolarSystem from './animations/SolarSystem.vue'
+import EarthMoon from './animations/EarthMoon.vue'
+import ForceMotion from './animations/ForceMotion.vue'
+import SimpleMachines from './animations/SimpleMachines.vue'
+import HumanBodySystems from './animations/HumanBodySystems.vue'
+import Dinosaurs from './animations/Dinosaurs.vue'
+import Aerospace from './animations/Aerospace.vue'
+import BasicCircuits from './animations/BasicCircuits.vue'
+import VolcanoEarthquake from './animations/VolcanoEarthquake.vue'
+import WaterCycle from './animations/WaterCycle.vue'
+
+const ANIM_MAP: Record<string, Component> = {
+  'solar-system': SolarSystem,
+  'earth-moon': EarthMoon,
+  'force-motion': ForceMotion,
+  'simple-machines': SimpleMachines,
+  'human-body': HumanBodySystems,
+  'dinosaurs': Dinosaurs,
+  'space-explore': Aerospace,
+  'basic-circuits': BasicCircuits,
+  'volcanoes': VolcanoEarthquake,
+  'weather-climate': WaterCycle,
+}
 
 const props = defineProps<{
   topicId: string
@@ -43,33 +67,22 @@ const lookupTopicId = computed(() => {
   return props.parentTopicId || props.topicId
 })
 
-// 查找匹配的动画
+// 查找匹配的动画（同步查表，无异步加载问题）
 const animDef = computed(() => findAnimation(lookupTopicId.value, sectionId.value))
-const AnimationComp = shallowRef<ReturnType<typeof createAnimationComponent> | null>(null)
-// 异步组件是否就绪
 const animReady = ref(false)
-
-watch(
-  animDef,
-  (def) => {
-    animReady.value = false
-    if (def) {
-      AnimationComp.value = createAnimationComponent(def)
-    } else {
-      AnimationComp.value = null
-    }
-  },
-  { immediate: true }
-)
-
-// 监听组件渲染完成：第一次 onMounted 后才认为就绪
-function handleAnimLoaded() {
-  animReady.value = true
-}
+const AnimationComp = computed<Component | null>(() => {
+  const def = animDef.value
+  if (!def) return null
+  const ids = Array.isArray(def.match) ? def.match : [def.match]
+  for (const id of ids) {
+    if (ANIM_MAP[id]) return ANIM_MAP[id]
+  }
+  return null
+})
 
 // 计算图片 URL（动画关闭 或 无动画定义时使用）
 const mediaUrl = computed(() => {
-  if (showAnimation.value && animDef.value) return null
+  if (showAnimation.value && AnimationComp.value) return null
   const base = props.parentTopicId
     ? `/images/sections/${props.parentTopicId}-${props.topicId}`
     : `/images/knowledge/${props.topicId}`
@@ -110,7 +123,6 @@ defineExpose({
         :is="AnimationComp"
         :topic-id="topicId"
         :parent-topic-id="parentTopicId"
-        @vue:mounted="handleAnimLoaded"
       />
     </div>
 
