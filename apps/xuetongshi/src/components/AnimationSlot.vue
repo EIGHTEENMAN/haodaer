@@ -36,6 +36,11 @@ import Robots from './animations/Robots.vue'
 import TempHeat from './animations/TempHeat.vue'
 import TimeSpace from './animations/TimeSpace.vue'
 import Camouflage from './animations/Camouflage.vue'
+import Computers from './animations/Computers.vue'
+import Communication from './animations/Communication.vue'
+import Inventions from './animations/Inventions.vue'
+import Transport from './animations/Transport.vue'
+import PlantsBasic from './animations/PlantsBasic.vue'
 
 const ANIM_MAP: Record<string, Component> = {
   'solar-system': SolarSystem,
@@ -60,6 +65,11 @@ const ANIM_MAP: Record<string, Component> = {
   'temp-heat': TempHeat,
   'time-space': TimeSpace,
   'camouflage': Camouflage,
+  'computers': Computers,
+  'communication': Communication,
+  'inventions': Inventions,
+  'transport': Transport,
+  'plants-basic': PlantsBasic,
 }
 
 const props = defineProps<{
