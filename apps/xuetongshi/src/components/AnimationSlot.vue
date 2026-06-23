@@ -13,7 +13,6 @@
  */
 import { ref, computed, shallowRef, watch } from 'vue'
 import { findAnimation, createAnimationComponent } from './animations'
-import KnowledgeIllustration from './KnowledgeIllustration.vue'
 
 const props = defineProps<{
   topicId: string
@@ -27,6 +26,7 @@ type FallbackStage = 'jpg' | 'svg' | 'none'
 const fallbackStage = ref<FallbackStage>('jpg')
 const showAnimation = ref(true)
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
+const showFullscreen = ref(false)
 
 // 计算 section id（用于精确匹配动画）
 const sectionId = computed(() => {
@@ -101,6 +101,7 @@ defineExpose({
         :class="{ 'as-img-loaded': imgStatus === 'loaded' }"
         @load="handleImgLoad"
         @error="handleImgError"
+        @click="imgStatus === 'loaded' && (showFullscreen = true)"
       />
     </template>
 
@@ -124,6 +125,14 @@ defineExpose({
     >
       {{ showAnimation ? '⏸' : '▶' }}
     </button>
+
+    <!-- 全屏查看 -->
+    <Teleport to="body" v-if="showFullscreen">
+      <div class="as-fullscreen" @click="showFullscreen = false">
+        <img :src="mediaUrl" :alt="topicTitle" class="as-fullscreen-img" />
+        <button class="as-close" @click.stop="showFullscreen = false">×</button>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -214,5 +223,40 @@ defineExpose({
   font-size: 16px;
   font-weight: 600;
   color: #64748b;
+}
+
+/* 全屏查看 */
+.as-fullscreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.as-fullscreen-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.as-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.as-close:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 </style>
