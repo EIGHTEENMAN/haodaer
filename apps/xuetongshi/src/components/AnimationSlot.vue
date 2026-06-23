@@ -24,6 +24,12 @@ import Aerospace from './animations/Aerospace.vue'
 import BasicCircuits from './animations/BasicCircuits.vue'
 import VolcanoEarthquake from './animations/VolcanoEarthquake.vue'
 import WaterCycle from './animations/WaterCycle.vue'
+import MatterElements from './animations/MatterElements.vue'
+import AtomsMolecules from './animations/AtomsMolecules.vue'
+import LightSound from './animations/LightSound.vue'
+import Evolution from './animations/Evolution.vue'
+import FoodChains from './animations/FoodChains.vue'
+import PlantWorld from './animations/PlantWorld.vue'
 
 const ANIM_MAP: Record<string, Component> = {
   'solar-system': SolarSystem,
@@ -36,6 +42,12 @@ const ANIM_MAP: Record<string, Component> = {
   'basic-circuits': BasicCircuits,
   'volcanoes': VolcanoEarthquake,
   'weather-climate': WaterCycle,
+  'matter-elements': MatterElements,
+  'atoms-molecules': AtomsMolecules,
+  'light-sound': LightSound,
+  'evolution': Evolution,
+  'food-chains': FoodChains,
+  'plant-world': PlantWorld,
 }
 
 const props = defineProps<{
