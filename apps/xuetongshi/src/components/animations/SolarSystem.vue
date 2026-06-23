@@ -98,34 +98,44 @@ function duration(period: number) {
         />
       </g>
 
-      <!-- 行星（每颗一个 g 绕中心旋转） -->
+      <!-- 行星（每颗用嵌套 g：外层定位 + 内层旋转） -->
       <g
         v-for="p in planets"
         :key="p.id"
         :transform="`translate(${orbitRadius(p.orbit)} 0)`"
-        :style="{ animation: `ss-spin ${duration(p.period)} linear infinite`, transformOrigin: `${-orbitRadius(p.orbit)}px 0px` }"
       >
-        <circle
-          :r="p.size"
-          :fill="p.color"
-          :stroke="selected?.id === p.id ? '#facc15' : 'rgba(255,255,255,0.3)'"
-          :stroke-width="selected?.id === p.id ? 0.6 : 0.2"
-          class="ss-planet"
-          @click.stop="selectPlanet(p)"
-        >
-          <title>{{ p.zh }}</title>
-        </circle>
-        <text
-          v-if="showLabels"
-          :y="-p.size - 2"
-          text-anchor="middle"
-          font-size="3.5"
-          fill="rgba(255,255,255,0.75)"
-          font-weight="600"
-          class="ss-label"
-        >
-          {{ p.zh }}
-        </text>
+        <!-- 内层 g 负责旋转，绕自身原点(0,0) = 外层定位后的太阳位置 -->
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0"
+            to="360"
+            :dur="duration(p.period)"
+            repeatCount="indefinite"
+          />
+          <circle
+            :r="p.size"
+            :fill="p.color"
+            :stroke="selected?.id === p.id ? '#facc15' : 'rgba(255,255,255,0.3)'"
+            :stroke-width="selected?.id === p.id ? 0.6 : 0.2"
+            class="ss-planet"
+            @click.stop="selectPlanet(p)"
+          >
+            <title>{{ p.zh }}</title>
+          </circle>
+          <text
+            v-if="showLabels"
+            :y="-p.size - 2"
+            text-anchor="middle"
+            font-size="3.5"
+            fill="rgba(255,255,255,0.75)"
+            font-weight="600"
+            class="ss-label"
+          >
+            {{ p.zh }}
+          </text>
+        </g>
       </g>
     </svg>
 
