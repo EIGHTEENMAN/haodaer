@@ -24,7 +24,8 @@ const props = defineProps<{
 
 type FallbackStage = 'jpg' | 'svg' | 'none'
 const fallbackStage = ref<FallbackStage>('jpg')
-const showAnimation = ref(true)
+// 默认 false：等异步组件就绪再切到动画（避免闪静态图）
+const showAnimation = ref(false)
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
 
@@ -45,10 +46,13 @@ const lookupTopicId = computed(() => {
 // 查找匹配的动画
 const animDef = computed(() => findAnimation(lookupTopicId.value, sectionId.value))
 const AnimationComp = shallowRef<ReturnType<typeof createAnimationComponent> | null>(null)
+// 异步组件是否就绪
+const animReady = ref(false)
 
 watch(
   animDef,
   (def) => {
+    animReady.value = false
     if (def) {
       AnimationComp.value = createAnimationComponent(def)
     } else {
@@ -57,6 +61,11 @@ watch(
   },
   { immediate: true }
 )
+
+// 监听组件渲染完成：第一次 onMounted 后才认为就绪
+function handleAnimLoaded() {
+  animReady.value = true
+}
 
 // 计算图片 URL（动画关闭 或 无动画定义时使用）
 const mediaUrl = computed(() => {
@@ -97,7 +106,12 @@ defineExpose({
       :class="{ 'as-animation-clickable': !showFullscreen }"
       @click="!showFullscreen && (showFullscreen = true)"
     >
-      <component :is="AnimationComp" :topic-id="topicId" :parent-topic-id="parentTopicId" />
+      <component
+        :is="AnimationComp"
+        :topic-id="topicId"
+        :parent-topic-id="parentTopicId"
+        @vue:mounted="handleAnimLoaded"
+      />
     </div>
 
     <!-- 第 2/3 级：jpg / svg 回退 -->
@@ -124,14 +138,15 @@ defineExpose({
       {{ category }}
     </div>
 
-    <!-- 动画开关：右上角小按钮（让用户切回静态图） -->
+    <!-- 动画开关：未启动时显眼的"启动动画"按钮，已启动时变小图标 -->
     <button
       v-if="animDef"
       class="as-toggle"
-      :title="showAnimation ? '切换为静态图' : '切换为动画'"
+      :class="{ 'as-toggle-active': showAnimation }"
+      :title="showAnimation ? '切回静态图' : '启动动画看效果'"
       @click="showAnimation = !showAnimation"
     >
-      {{ showAnimation ? '⏸' : '▶' }}
+      {{ showAnimation ? '⏸' : '🎬 启动动画' }}
     </button>
 
     <!-- 全屏查看 -->
@@ -203,22 +218,36 @@ defineExpose({
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 32px;
+  min-width: 32px;
   height: 32px;
-  border-radius: 50%;
+  padding: 0 12px;
+  border-radius: 16px;
   border: none;
-  background: rgba(255, 255, 255, 0.85);
-  color: #475569;
-  font-size: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #facc15;
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
   backdrop-filter: blur(4px);
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  gap: 4px;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 .as-toggle:hover {
+  background: rgba(15, 23, 42, 0.95);
+  transform: scale(1.05);
+}
+.as-toggle-active {
+  width: 32px;
+  padding: 0;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.85);
+}
+.as-toggle-active:hover {
   background: rgba(255, 255, 255, 1);
 }
 

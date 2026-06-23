@@ -100,3 +100,14 @@ export function createAnimationComponent(def: AnimationDef) {
     timeout: 5000,
   })
 }
+
+/**
+ * 简单的 loading 占位组件：保持透明 + 不占位
+ * （防止异步组件未就绪时被外层 fallback 静态图抢渲染）
+ */
+export const AnimLoading = {
+  name: 'AnimLoading',
+  render() {
+    return null
+  },
+}
