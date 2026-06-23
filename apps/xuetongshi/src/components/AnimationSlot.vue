@@ -43,6 +43,9 @@ import Transport from './animations/Transport.vue'
 import PlantsBasic from './animations/PlantsBasic.vue'
 import HistoryFigures from './animations/HistoryFigures.vue'
 import Geography from './animations/Geography.vue'
+import Arts from './animations/Arts.vue'
+import Folklore from './animations/Folklore.vue'
+import Architecture from './animations/Architecture.vue'
 
 const ANIM_MAP: Record<string, Component> = {
   'solar-system': SolarSystem,
@@ -83,6 +86,21 @@ const ANIM_MAP: Record<string, Component> = {
   'mountains': Geography,
   'deserts': Geography,
   'polar': Geography,
+  // 艺术
+  'calligraphy': Arts,
+  'chinese-painting': Arts,
+  'music-world': Arts,
+  'dance-drama': Arts,
+  'sculpture-art': Arts,
+  'chinese-opera': Arts,
+  // 民俗
+  'dragon-dance': Folklore,
+  'chinese-food': Folklore,
+  'chinese-tea': Folklore,
+  'chess': Folklore,
+  // 建筑
+  'architecture-art': Architecture,
+  'ceramic-art': Architecture,
 }
 
 const props = defineProps<{
