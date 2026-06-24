@@ -496,6 +496,12 @@ async function doSearch() {
   history.replaceState(null, '', window.location.pathname)
 }
 
+// HeaderBar 搜索回调
+function handleSearch(q: string) {
+  searchQuery.value = q
+  doSearch()
+}
+
 function goToSection(poem: Poem, section: Section) {
   stopSpeaking()
   stats.markRead(poem.id)
@@ -536,7 +542,7 @@ onUnmounted(() => {
 <template>
   <YouthModeGate>
   <div class="page" style="--hd-accent:#2563eb;--hd-accent-hover:#1d4ed8;--hd-accent-light:#bfdbfe;--hd-accent-shadow:rgba(59,130,246,0.1);--hd-accent-bg:#f0f9ff">
-    <HeaderBar v-model="searchQuery" @search="doSearch" />
+    <HeaderBar v-model="searchQuery" :on-search="handleSearch" />
 
     <!-- ===== HOME VIEW: Dynasty -> Poets ===== -->
     <template v-if="currentView === 'home'">
