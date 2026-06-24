@@ -24,8 +24,22 @@ export interface PlayOptions {
   bgmVolume?: number  // 0-1，默认 0.15
 }
 
-export function playMp3(opts: PlayOptions): void {
-  stopAll()
+export interface PlayResult {
+  audio: HTMLAudioElement
+  src: string
+}
+
+export function playMp3(opts: PlayOptions): PlayResult | null {
+  // 不再 stopAll：让多按钮（原文/译文/解读）可同时播放
+  // 只停止 BGM（如果当前 BGM 不在 opts.bgmSrc 列表）
+  stopBgm()
+  // 同 src 已播：先停旧的再播新的（防止叠播同一文件）
+  for (const a of Array.from(activeAudios)) {
+    if (a.src && a.src.includes(opts.src.split('/').pop()!)) {
+      try { a.onended = null; a.onerror = null; a.pause(); a.src = '' } catch {}
+      activeAudios.delete(a)
+    }
+  }
   const audio = new Audio(opts.src)
   audio.preload = 'auto'
   activeAudios.add(audio)
@@ -39,13 +53,11 @@ export function playMp3(opts: PlayOptions): void {
   audio.onended = () => {
     cleanup()
     opts.onEnd?.()
-    stopBgm()
   }
   audio.onerror = () => {
     cleanup()
     console.warn('[audio] mp3 load failed:', opts.src)
     opts.onEnd?.()
-    stopBgm()
   }
   audio.play().catch(err => {
     cleanup()
@@ -56,6 +68,17 @@ export function playMp3(opts: PlayOptions): void {
   if (opts.bgmSrc) {
     playBgm(opts.bgmSrc, opts.bgmVolume ?? 0.15)
   }
+
+  return { audio, src: opts.src }
+}
+
+// 停止单个播放实例（从 activeAudios 中移除并停止）
+export function stopOne(audio: HTMLAudioElement): void {
+  try { audio.onended = null } catch {}
+  try { audio.onerror = null } catch {}
+  try { audio.pause() } catch {}
+  try { audio.src = '' } catch {}
+  activeAudios.delete(audio)
 }
 
 export function stopAll(): void {
@@ -122,7 +145,7 @@ export async function playSectionAudioWithFallback(
   type: 'original' | 'translation' | 'interpretation',
   text: string,
   onEnd?: () => void
-): Promise<void> {
+): Promise<HTMLAudioElement | null> {
   const src = buildAudioPath(classicTitle, sectionTitle, type)
 
   // 尝试 HEAD 检测 mp3 是否存在
@@ -134,9 +157,11 @@ export async function playSectionAudioWithFallback(
 
   if (mp3Exists) {
     const bgm = selectBgmByBook(classicTitle)
-    playMp3({ src, onEnd, bgmSrc: bgm })
+    const result = playMp3({ src, onEnd, bgmSrc: bgm })
+    return result?.audio || null
   } else {
     speakWithFallback(text, onEnd)
+    return null
   }
 }
 

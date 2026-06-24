@@ -32,24 +32,27 @@ const CONFIG = {
   // 要处理的书籍（空数组 = 扫描所有）
   bookIds: [],
   poc: process.argv.includes('--poc'),
-  // ===== 最终确认配置 =====
+  // ===== v2 配置（2026-06-24 修订：去掉 SSML/style，纯文本 + rate/pitch）=====
+  // 原因：edge-tts 的 mstts:express-as style="narration" 对带中文双引号 /
+  // 多段落的古典文（论语、道德经等）经常解析失败，回退成技术字符乱码。
+  // 改成纯文本传 edge-tts（和蒙学一致），语音配置不变。
   originalVoice: {
-    voice: 'zh-CN-YunyangNeural',   // 磁性中年
-    style: 'narration',              // 沉稳叙事
-    styleDegree: '1.0',
-    rate: '-35%',                    // 慢速
+    voice: 'zh-CN-YunyangNeural',   // 磁性中年男声
+    style: null,                     // 去掉 style（避免乱码）
+    styleDegree: null,
+    rate: '-30%',                    // 慢速，适合儿童跟读
     pitch: '+0Hz',
   },
   translationVoice: {
-    voice: 'zh-CN-YunyangNeural',   // 同音色
-    style: null,                     // 中性讲解
+    voice: 'zh-CN-YunyangNeural',
+    style: null,
     styleDegree: null,
-    rate: '-35%',
+    rate: '-25%',
     pitch: '+0Hz',
   },
-  maxRetries: 3,
-  retryDelay: 2000,
-  requestDelay: 500,
+  maxRetries: 5,
+  retryDelay: 5000,
+  requestDelay: 1500,
 }
 
 // 解析命令行 --book jing-1,jing-2
@@ -204,8 +207,8 @@ async function callEdgeTTS(text, profile, outputPath) {
   }
 
   // 用异步 spawn 避免 macOS edge-tts 偶发挂死卡住整个进程
-  // 单条 60s 超时，超时后 SIGKILL 子进程
-  const PER_TIMEOUT = 60000
+  // 单条 90s 超时，超时后 SIGKILL 子进程
+  const PER_TIMEOUT = 90000
   return new Promise((resolveP, rejectP) => {
     const child = spawn('python3', args, { encoding: 'utf-8' })
     let stderr = ''
@@ -239,7 +242,7 @@ async function callEdgeTTS(text, profile, outputPath) {
 
 // ===== 主流程 =====
 async function main() {
-  log(C.cyan, '国学TTS', `音色: YunyangNeural | 语速: -35%`)
+  log(C.cyan, '国学TTS', `音色: YunyangNeural | 语速: -30%（纯文本，无 SSML）`)
   const fileContent = readFileSync(resolve(APP_DIR, 'src/data/classics.ts'), 'utf-8')
 
   // 确定要处理的书籍

@@ -2,7 +2,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { classicIndex, categories, categoryColors, type ClassicMeta } from './data/classics-meta'
 import type { Classic, Section } from './data/classics'
-import { playSectionAudioWithFallback, stopAll, speak, stopSpeaking } from './lib/audio'
+import { playSectionAudioWithFallback, stopAll, stopOne, speak, stopSpeaking } from './lib/audio'
 import { useAuth } from '@shared/composables/useAuth'
 import { filterApps } from '@shared/composables/useSearch'
 import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
@@ -271,55 +271,97 @@ async function restoreFromHash() {
 }
 
 // Audio playback - try pre-generated mp3 first, fallback to Web Speech TTS
-let playingType: 'original' | 'translation' | 'interpretation' | 'full' | null = null
+// 3 个独立按钮的播放状态（Set 同时支持多个按钮播放）
+const playingTypes = ref(new Set<'original' | 'translation' | 'interpretation' | 'full'>())
+const audioInstances = new Map<'original' | 'translation' | 'interpretation' | 'full', HTMLAudioElement>()
 const speaking = ref(false)
 
-function getAudioType(): 'original' | 'translation' | 'interpretation' {
-  if (playingType === 'original') return 'original'
-  if (playingType === 'translation') return 'translation'
-  return 'interpretation'
+function isPlaying(type: 'original' | 'translation' | 'interpretation'): boolean {
+  return playingTypes.value.has(type)
 }
 
 function playText(text: string, type?: 'original' | 'translation' | 'interpretation') {
-  stopSpeaking()
   if (!text.trim()) return
 
   speaking.value = true
   if (type && currentClassic.value && currentSection.value) {
-    playingType = type
+    // 切换该 type 的播放状态：先停该 type 的音频
+    if (playingTypes.value.has(type)) {
+      stopAudioType(type)
+      return
+    }
+    playingTypes.value.add(type)
     playSectionAudioWithFallback(
       currentClassic.value.title,
       currentSection.value.title,
       type,
       text,
-      () => { speaking.value = false; playingType = null }
-    )
+      () => {
+        playingTypes.value.delete(type)
+        audioInstances.delete(type)
+        if (playingTypes.value.size === 0) speaking.value = false
+      }
+    ).then(audio => {
+      // 缓存 audio 实例以便单独停止
+      const old = audioInstances.get(type)
+      if (old) audioInstances.delete(type)
+      if (audio) audioInstances.set(type, audio)
+    })
   } else {
     // Fallback to Web Speech (e.g. for full-text play all)
-    playingType = 'full'
-    speak(text, 0.8, () => { speaking.value = false; playingType = null })
+    playingTypes.value.clear()
+    audioInstances.clear()
+    playingTypes.value.add('full')
+    speak(text, 0.8, () => {
+      playingTypes.value.clear()
+      speaking.value = false
+    })
   }
+}
+
+function stopAudioType(type: 'original' | 'translation' | 'interpretation') {
+  const audio = audioInstances.get(type)
+  if (audio) {
+    stopOne(audio)
+    audioInstances.delete(type)
+  }
+  playingTypes.value.delete(type)
+  if (playingTypes.value.size === 0) speaking.value = false
 }
 
 function playOriginal() {
   if (!currentSection.value) return
-  playText(currentSection.value.original, 'original')
+  // 如果当前该 type 在播 → 停（toggle）
+  if (playingTypes.value.has('original')) {
+    stopAudioType('original')
+  } else {
+    playText(currentSection.value.original, 'original')
+  }
 }
 
 function playTranslation() {
   if (!currentSection.value) return
-  playText(currentSection.value.translation, 'translation')
+  if (playingTypes.value.has('translation')) {
+    stopAudioType('translation')
+  } else {
+    playText(currentSection.value.translation, 'translation')
+  }
 }
 
 function playInterpretation() {
   if (!currentSection.value) return
-  playText(currentSection.value.interpretation, 'interpretation')
+  if (playingTypes.value.has('interpretation')) {
+    stopAudioType('interpretation')
+  } else {
+    playText(currentSection.value.interpretation, 'interpretation')
+  }
 }
 
 function stopAudio() {
   stopAll()
+  playingTypes.value.clear()
+  audioInstances.clear()
   speaking.value = false
-  playingType = null
 }
 
 onMounted(async () => {
@@ -492,9 +534,9 @@ onUnmounted(() => {
             <div class="gx-content-label">
               <span class="gx-content-label-text">📜 原文</span>
               <button class="gx-block-play"
-                :class="playingType === 'original' ? 'gx-block-playing' : ''"
-                @click="playingType === 'original' ? stopAudio() : playOriginal()">
-                <span v-if="playingType === 'original'">⏹ 停止朗读</span>
+                :class="isPlaying('original') ? 'gx-block-playing' : ''"
+                @click="playOriginal()">
+                <span v-if="isPlaying('original')">⏹ 停止朗读</span>
                 <span v-else>▶ 朗读原文</span>
               </button>
             </div>
@@ -506,9 +548,9 @@ onUnmounted(() => {
             <div class="gx-content-label">
               <span class="gx-content-label-text">📖 译文</span>
               <button class="gx-block-play"
-                :class="playingType === 'translation' ? 'gx-block-playing' : ''"
-                @click="playingType === 'translation' ? stopAudio() : playTranslation()">
-                <span v-if="playingType === 'translation'">⏹ 停止朗读</span>
+                :class="isPlaying('translation') ? 'gx-block-playing' : ''"
+                @click="playTranslation()">
+                <span v-if="isPlaying('translation')">⏹ 停止朗读</span>
                 <span v-else>▶ 朗读译文</span>
               </button>
             </div>
@@ -518,9 +560,9 @@ onUnmounted(() => {
             <div class="gx-content-label">
               <span class="gx-content-label-text">💡 解读</span>
               <button class="gx-block-play"
-                :class="playingType === 'interpretation' ? 'gx-block-playing' : ''"
-                @click="playingType === 'interpretation' ? stopAudio() : playInterpretation()">
-                <span v-if="playingType === 'interpretation'">⏹ 停止朗读</span>
+                :class="isPlaying('interpretation') ? 'gx-block-playing' : ''"
+                @click="playInterpretation()">
+                <span v-if="isPlaying('interpretation')">⏹ 停止朗读</span>
                 <span v-else>▶ 朗读解读</span>
               </button>
             </div>
