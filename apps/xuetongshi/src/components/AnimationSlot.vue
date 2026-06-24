@@ -111,7 +111,7 @@ const props = defineProps<{
   parentTopicId?: string
 }>()
 
-type FallbackStage = 'jpg' | 'svg' | 'none'
+type FallbackStage = 'jpg' | 'none'
 const fallbackStage = ref<FallbackStage>('jpg')
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
@@ -146,11 +146,9 @@ function handleImgLoad() {
 }
 
 function handleImgError() {
-  if (fallbackStage.value === 'jpg') {
-    fallbackStage.value = 'svg'
-  } else {
-    fallbackStage.value = 'none'
-  }
+  // jpg 失败直接跳到文字占位，不再走 SVG fallback
+  // （SVG 是 v1 水彩风格，已不符合现代百科调性）
+  fallbackStage.value = 'none'
 }
 </script>
 

@@ -18,7 +18,7 @@ const props = defineProps<{
   parentTopicId?: string  // 章节所属的 topic（用于 section 图片文件名）
 }>()
 
-type FallbackStage = 'jpg' | 'svg'
+type FallbackStage = 'jpg' | 'none'
 const fallbackStage = ref<FallbackStage>('jpg')
 const imgStatus = ref<'loading' | 'loaded' | 'error'>('loading')
 const showFullscreen = ref(false)
@@ -36,11 +36,8 @@ function handleLoad() {
 }
 
 function handleError() {
-  if (fallbackStage.value === 'jpg') {
-    fallbackStage.value = 'svg'
-  } else {
-    imgStatus.value = 'error'
-  }
+  // jpg 失败直接文字占位（SVG 是 v1 水墨风，已不符合调性）
+  imgStatus.value = 'error'
 }
 </script>
 
