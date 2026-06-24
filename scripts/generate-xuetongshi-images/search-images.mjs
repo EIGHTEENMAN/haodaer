@@ -118,7 +118,8 @@ function loadTasks() {
           outPath: resolve(SECTIONS_DIR, `${t.id}-${sec.id}.jpg`),
           title: sec.title,
           category: t.category,
-          summary: sec.summary,
+          summary: sec.summary || '',
+          description: sec.content, // 完整 content 给 AI prompt（section.summary 为空，用 content）
         })
       }
     }
@@ -193,11 +194,37 @@ function simplifyZhTitle(title) {
   return title
 }
 
-async function searchWiki(task) {
-  // v2：全类目都搜，topic 和 section 都搜
-  // 链路：title 直查 → 剥后缀重查 → en wiki（langlinks 拿英文标题）
+// category-aware 关键词扩展：电路/物理/经济等抽象类，AI 兜底容易跑偏
+// 在 wiki 搜不到时，给出更可能命中的兜底搜索词
+function expandByCategory(title, category) {
+  const expansions = {
+    '科学': [title + '电路', title + '图', title + '示意图', 'Electric ' + title, 'Physical ' + title],
+    '经济': [title + '概念', title + '图示', title + '示例', 'Finance ' + title, 'Money ' + title],
+    '逻辑思维': [title + '示意图', title + '例子', title + '示例'],
+    '科技工程': [title + '图', title + '结构', title + '工作原理'],
+    '健康生活': [title + '示意图', title + '示例', title + '健康'],
+    '地理': [title + '地图', title + '地形', title + '景观', title + '河'],
+    '语言文字': [title + '典故', title + '故事', title + '示例'],
+  }
+  return expansions[category] || []
+}
 
-  const candidates = [task.title]
+async function searchWiki(task) {
+  // v3：全类目都搜，topic 和 section 都搜
+  // 链路：category-aware 兜底词优先（电路/经济类需要具体名词）→ title → 剥后缀 → en wiki
+
+  const candidates = []
+
+  // 1. category-aware 扩展（电路/经济/物理类必须放最前，AI 兜底完全不可用）
+  if (task.type === 'section' && task.category) {
+    const expanded = expandByCategory(task.title, task.category)
+    candidates.push(...expanded)
+  }
+
+  // 2. title 直查
+  candidates.push(task.title)
+
+  // 3. 剥后缀
   const simplified = simplifyZhTitle(task.title)
   if (simplified !== task.title) candidates.push(simplified)
 
@@ -207,7 +234,7 @@ async function searchWiki(task) {
     if (result) return result
   }
 
-  // 2) 英文 wiki：通过 langlinks 拿英文标题
+  // 2) 英文 wiki：通过 langlinks 拿英文标题（只对原始 title 试）
   for (const cand of candidates) {
     const enTitle = await fetchZhEnLink(cand)
     if (enTitle) {
@@ -240,44 +267,50 @@ async function fetchZhEnLink(zhTitle) {
 
 // ============ AI 兜底 ============
 async function generateAI(task) {
-  // v3 友好科普插图风（不写实，避免吓到孩子）
-  // 用于：人体奥秘、血液循环、细胞结构、抽象概念、安全教育等
-  const baseStyle = `Friendly children's science illustration, soft pastel colors, gentle cartoon-realistic style. Like a page from Usborne See Inside Your Body or a friendly textbook diagram. NOT photorealistic, NOT scary, NOT blood-red, NOT graphic medical illustration. Warm, inviting, age-appropriate for children aged 6-12.
+  // v4 友好科普插图风（强化文字禁令 + 类别细化）
+  // 2026-06-24 修订：解决 v3 的 bc5 串联、bc6 并联等跑偏/带英文问题
+  const baseStyle = `A simple, clear, friendly children's science illustration in a flat cartoon style with soft pastel colors. Think Usborne Look Inside or DK Eyewitness style — NOT photorealistic, NOT watercolor, NOT sketchy, NOT abstract.
 
-Style guidelines:
-- Soft watercolor-like edges with clean cartoon outlines
-- Gentle smiling characters or cute friendly depictions
-- Bright but not oversaturated colors
-- Simplified shapes, clear visual hierarchy
-- Approachable and educational feel (not clinical/medical textbook)
+ABSOLUTE PROHIBITIONS (these MUST NOT appear in the image):
+- ZERO text of any kind: no English letters, no Chinese characters, no numbers, no symbols, no math formulas, no scientific notation, no watermarks, no signatures, no labels, no annotations, no captions, no legends, no borders, no signs, no banners
+- NO abstract metaphors, no random body parts, no unrelated objects
+- NO scary imagery (no blood, no wounds, no weapons, no violence)
+- The image MUST depict the actual subject directly, not symbols or metaphors
 
-Strict requirements:
-- No text, letters, numbers, Chinese characters, symbols anywhere
-- No labels, captions, annotations, legends, watermarks, signatures, borders
-- No scary imagery (no blood, no wounds, no violence)
-- 16:9 horizontal composition`
+Composition:
+- 16:9 horizontal, simple flat cartoon illustration
+- One clear main subject occupying 1/3+ of frame
+- Soft pastel palette (pink, peach, sky blue, mint, cream, lavender)
+- Clean outlines, simplified shapes suitable for children aged 6-12`
+
+  // 类别特化（避免跑偏）
+  const categoryHint = task.category ? {
+    '科学': ' For science topics: show real-world objects or simple scientific phenomena (e.g. circuits, planets, animals, plants), NOT abstract symbols.',
+    '历史人物': ' For historical figures: show a portrait-style depiction of the person in appropriate historical dress, NO modern settings.',
+    '地理': ' For geography: show the actual landscape or famous landmark with natural colors.',
+    '自然': ' For nature topics: show real animals or plants in their natural habitat.',
+    '经济': ' For economics: show real objects like coins, markets, shops — NOT abstract diagrams.',
+    '逻辑思维': ' For logic topics: show simple real-world scenes or objects that illustrate the concept.',
+    '艺术': ' For art topics: show artistic objects like paintings, instruments, crafts.',
+    '健康生活': ' For health topics: show friendly depictions of body, food, exercise — NO scary medical imagery.',
+    '语言文字': ' For language topics: NO Chinese characters or text in image — show illustrations of stories or objects only.',
+    '科技工程': ' For technology: show real devices, machines, vehicles, buildings.',
+    '中国传统文化': ' For Chinese culture: show traditional Chinese cultural objects or scenes (NOT generic Asian imagery).',
+  }[task.category] || '' : ''
+
   const prompt = task.type === 'topic'
-    ? `${baseStyle}
+    ? `${baseStyle}${categoryHint}
 
 Subject: ${task.title} (${task.category})
 ${task.summary ? `Context: ${task.summary}` : ''}
 
-Composition:
-- Friendly depiction suitable for children
-- Clear main subject, soft focus on details
-- Warm inviting color palette (avoid pure red for blood/heart themes — use pink, coral, soft red)
-- Educational but not intimidating
-- Suitable for a kids' encyclopedia illustration`
-    : `${baseStyle}
+DEPICT THE SUBJECT LITERALLY — show "${task.title}" directly, not a metaphor.`
+    : `${baseStyle}${categoryHint}
 
-Knowledge point: ${task.title} - ${task.id}
-${task.summary ? `Background: ${task.summary}` : ''}
+Subject: ${task.title}
+${task.description ? `Context: ${task.description.slice(0, 200)}` : task.summary ? `Context: ${task.summary}` : ''}
 
-Composition:
-- Specific concept visualized in friendly cartoon style
-- Clear and understandable for children
-- Approachable visual metaphor or simplified diagram
-- Suitable for a kids' encyclopedia illustration`
+DEPICT "${task.title}" LITERALLY — show the actual thing or scene described above, not an abstract collage or unrelated objects. The image must contain elements DIRECTLY related to "${task.title}". Use the context description to understand what to draw.`
 
   const res = await fetch('https://api.minimaxi.com/v1/image_generation', {
     method: 'POST',
@@ -304,6 +337,21 @@ Composition:
 }
 
 // ============ 图像处理 ============
+// 检测全黑/全白图（API 偶发返回空响应）
+async function isBlankImage(buffer) {
+  try {
+    const { data, info } = await sharp(buffer).resize(50, 50).raw().toBuffer({ resolveWithObject: true })
+    // 计算平均亮度（0-255）
+    let sum = 0
+    for (const v of data) sum += v
+    const avg = sum / data.length
+    // 平均亮度 < 5 或 > 250 视为空白图
+    return avg < 5 || avg > 250
+  } catch (e) {
+    return false
+  }
+}
+
 async function processImage(buffer, format) {
   // wiki thumb 已是 800px，AI 输出也是 800+；这里只做 jpg 压缩
   // 仅对超过 1600px 的图才 resize（兜底：某些 wiki 原图可能很大）
@@ -358,6 +406,10 @@ async function processTask(task) {
     try {
       const { buffer } = await generateAI(task)
       const processed = await processImage(buffer)
+      // Sanity check：全黑/全白图视为失败（API 偶发返回空响应）
+      if (await isBlankImage(processed)) {
+        return { id: task.id, status: 'fail', error: 'blank image (all-black/white)' }
+      }
       writeFileSync(task.outPath, processed)
       return { id: task.id, status: 'ok', source: 'ai', size: processed.length }
     } catch (err) {
