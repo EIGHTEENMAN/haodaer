@@ -403,9 +403,6 @@ onUnmounted(() => {
         </div>
         <div class="ts-search-summary">搜索 "{{ searchQuery }}"</div>
 
-        <AppSearchResults :apps="filteredApps" />
-        <ContentSearchResults :results="apiResults" :query="searchQuery" />
-
         <!-- Content search results -->
         <div v-if="searchResults.length > 0" class="ts-section">
           <h3 class="ts-section-title">📚 内容搜索结果</h3>
