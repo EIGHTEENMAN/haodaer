@@ -190,6 +190,13 @@ function buildFilename(bookTitle, sectionTitle, typeLabel) {
 
 async function callEdgeTTS(text, profile, outputPath) {
   if (!text || !text.trim()) throw new Error('Empty text')
+  // 预处理：去掉英文双引号（edge-tts 会读成 "quote" 怪声），
+  // 把段落分隔符 \n 替换为 `。`（古典文每段都是独立句）
+  text = text
+    .replace(/"/g, '')         // 去掉所有英文双引号
+    .replace(/\n+/g, '。')     // 多换行合并为一个句号（古典文无段落标记）
+    .replace(/。+/g, '。')     // 避免多个连续句号
+    .trim()
   const { voice, style, styleDegree, rate, pitch } = profile
   const tmpMp3 = outputPath + '.tmp.mp3'
   const tmpTxt = outputPath + '.tmp.txt'
