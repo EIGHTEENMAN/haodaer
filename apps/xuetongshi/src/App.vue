@@ -235,7 +235,7 @@ async function doSearch() {
 
   for (const topic of list) {
     const matched: Section[] = []
-    const topicMatch = topic.title.includes(lower) || topic.tags.some(t => t.includes(lower))
+    const topicMatch = topic.title.includes(lower) || topic.tags.some(t => t.toLowerCase().includes(lower))
     for (const sec of topic.sections) {
       if (sec.title.includes(lower) || sec.content.includes(lower) || topicMatch) {
         matched.push(sec)
@@ -256,6 +256,12 @@ async function doSearch() {
   } catch { apiResults.value = [] }
   stopSpeaking()
   history.replaceState(null, '', window.location.pathname)
+}
+
+// HeaderBar 搜索回调（取代无效的 @search 事件）
+function handleSearch(q: string) {
+  searchQuery.value = q
+  doSearch()
 }
 
 // --- Home filtering ---
@@ -312,7 +318,7 @@ onUnmounted(() => {
 <template>
   <YouthModeGate>
   <div class="page" style="--hd-accent:#2563eb;--hd-accent-hover:#1d4ed8;--hd-accent-light:#bfdbfe;--hd-accent-shadow:rgba(59,130,246,0.1);--hd-accent-bg:#f0f9ff">
-    <HeaderBar v-model="searchQuery" placeholder="搜索知识..." @search="doSearch" />
+    <HeaderBar v-model="searchQuery" placeholder="搜索知识..." :on-search="handleSearch" />
 
     <!-- ===== HOME VIEW ===== -->
     <template v-if="currentView === 'home'">

@@ -3,8 +3,9 @@ import { ref, onMounted, computed } from 'vue'
 import { isLoggedIn, getUser, useAuth } from '../composables/useAuth'
 import { navLinks } from '../config/navLinks'
 
-defineProps<{
+const props = defineProps<{
   placeholder?: string
+  onSearch?: (query: string) => void
 }>()
 
 const searchQuery = defineModel<string>('modelValue', { required: true })
@@ -31,8 +32,13 @@ function getActiveProfile(): any | null {
 function getToken() { return sessionStorage.getItem('haodaer_token') }
 
 function doSearch() {
-  if (searchQuery.value.trim()) {
-    window.location.href = 'https://grandand.com/search?q=' + encodeURIComponent(searchQuery.value.trim())
+  const q = searchQuery.value.trim()
+  if (!q) return
+  // 优先用自定义搜索处理器（子 app 传入），否则 redirect 到主站全局搜索
+  if (props.onSearch) {
+    props.onSearch(q)
+  } else {
+    window.location.href = 'https://grandand.com/search?q=' + encodeURIComponent(q)
   }
 }
 
