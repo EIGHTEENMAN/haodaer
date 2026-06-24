@@ -85,7 +85,7 @@ function handleError() {
 .ki-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;  /* contain 而非 cover：保留完整图，不裁剪 */
   opacity: 0;
   transition: opacity 0.4s ease;
   cursor: zoom-in;
