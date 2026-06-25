@@ -747,6 +747,18 @@ onUnmounted(() => {
           </div>
         </div>
 
+        <!-- Previous / Next arrows -->
+        <div class="sc-reader-nav">
+          <button class="sc-nav-btn" :class="{ 'sc-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
+            <span class="sc-nav-arrow">‹</span>
+            <span class="sc-nav-label">上一篇</span>
+          </button>
+          <div class="sc-nav-position">{{ sectionIndex + 1 }} / {{ currentPoem?.sections.length || 0 }}</div>
+          <button class="sc-nav-btn" :class="{ 'sc-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
+            <span class="sc-nav-label">下一篇</span>
+            <span class="sc-nav-arrow">›</span>
+          </button>
+        </div>
       </div>
     </template>
 
@@ -870,6 +882,28 @@ body {
 .sc-reader-header .sc-back { margin-bottom: 0; }
 .sc-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
 .sc-content-sections { display: flex; flex-direction: column; gap: 20px; }
+
+/* Previous / Next navigation */
+.sc-reader-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 24px; padding: 16px 0; gap: 12px;
+}
+.sc-nav-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 12px;
+  background: white; border: 2px solid #e2e8f0;
+  font-size: 14px; font-weight: 600; color: #0f172a;
+  cursor: pointer; transition: all 0.2s;
+}
+.sc-nav-btn:hover:not(:disabled) { border-color: #d97706; color: #d97706; }
+.sc-nav-btn:active:not(:disabled) { transform: translateY(1px); }
+.sc-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.sc-nav-arrow { font-size: 22px; line-height: 1; }
+.sc-nav-label { font-size: 13px; white-space: nowrap; }
+.sc-nav-position {
+  font-size: 13px; color: #94a3b8; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+}
 .sc-content-block { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
 .sc-content-label {
   font-size: 14px; font-weight: 700; color: #d97706;

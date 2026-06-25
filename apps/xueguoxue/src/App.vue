@@ -43,6 +43,29 @@ const currentView = ref<View>('home')
 const currentClassic = ref<Classic | null>(null)
 const currentSection = ref<Section | null>(null)
 const readerEntryTime = ref(0)
+
+// Previous/next section navigation
+const sectionIndex = computed(() => {
+  if (!currentClassic.value || !currentSection.value) return -1
+  return currentClassic.value.sections.findIndex(s => s.id === currentSection.value?.id)
+})
+const hasPrev = computed(() => sectionIndex.value > 0)
+const hasNext = computed(() => {
+  if (!currentClassic.value) return false
+  return sectionIndex.value >= 0 && sectionIndex.value < currentClassic.value.sections.length - 1
+})
+function goPrevSection() {
+  if (!hasPrev.value || !currentClassic.value) return
+  stopSpeaking()
+  currentSection.value = currentClassic.value.sections[sectionIndex.value - 1]
+  saveHash()
+}
+function goNextSection() {
+  if (!hasNext.value || !currentClassic.value) return
+  stopSpeaking()
+  currentSection.value = currentClassic.value.sections[sectionIndex.value + 1]
+  saveHash()
+}
 const showChallenge = ref(false) // 答题功能暂时隐藏，待后续优化再启用
 const challengeSectionRef = ref('')
 
@@ -569,6 +592,19 @@ onUnmounted(() => {
             <p class="gx-translation-text">{{ currentSection.interpretation }}</p>
           </div>
         </div>
+
+        <!-- Previous / Next arrows -->
+        <div class="gx-reader-nav">
+          <button class="gx-nav-btn" :class="{ 'gx-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
+            <span class="gx-nav-arrow">‹</span>
+            <span class="gx-nav-label">上一篇</span>
+          </button>
+          <div class="gx-nav-position">{{ sectionIndex + 1 }} / {{ currentClassic?.sections.length || 0 }}</div>
+          <button class="gx-nav-btn" :class="{ 'gx-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
+            <span class="gx-nav-label">下一篇</span>
+            <span class="gx-nav-arrow">›</span>
+          </button>
+        </div>
       </div>
     </template>
 
@@ -736,6 +772,28 @@ body {
 }
 .gx-reader-header .gx-back { margin-bottom: 0; }
 .gx-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
+
+/* Previous / Next navigation */
+.gx-reader-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 24px; padding: 16px 0; gap: 12px;
+}
+.gx-nav-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 12px;
+  background: white; border: 2px solid #e2e8f0;
+  font-size: 14px; font-weight: 600; color: #0f172a;
+  cursor: pointer; transition: all 0.2s;
+}
+.gx-nav-btn:hover:not(:disabled) { border-color: #3b82f6; color: #3b82f6; }
+.gx-nav-btn:active:not(:disabled) { transform: translateY(1px); }
+.gx-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.gx-nav-arrow { font-size: 22px; line-height: 1; }
+.gx-nav-label { font-size: 13px; white-space: nowrap; }
+.gx-nav-position {
+  font-size: 13px; color: #94a3b8; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+}
 
 /* Vertical content sections */
 .gx-content-sections { display: flex; flex-direction: column; gap: 20px; }

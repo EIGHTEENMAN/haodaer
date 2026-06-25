@@ -23,6 +23,29 @@ const currentView = ref<View>('home')
 const currentTopic = ref<Topic | null>(null)
 const currentSection = ref<Section | null>(null)
 const readerEntryTime = ref(0)
+
+// Previous/next section navigation
+const sectionIndex = computed(() => {
+  if (!currentTopic.value || !currentSection.value) return -1
+  return currentTopic.value.sections.findIndex(s => s.id === currentSection.value?.id)
+})
+const hasPrev = computed(() => sectionIndex.value > 0)
+const hasNext = computed(() => {
+  if (!currentTopic.value) return false
+  return sectionIndex.value >= 0 && sectionIndex.value < currentTopic.value.sections.length - 1
+})
+function goPrevSection() {
+  if (!hasPrev.value || !currentTopic.value) return
+  stopSpeaking()
+  currentSection.value = currentTopic.value.sections[sectionIndex.value - 1]
+  pushHash('reader', currentTopic.value.id, currentSection.value.id)
+}
+function goNextSection() {
+  if (!hasNext.value || !currentTopic.value) return
+  stopSpeaking()
+  currentSection.value = currentTopic.value.sections[sectionIndex.value + 1]
+  pushHash('reader', currentTopic.value.id, currentSection.value.id)
+}
 const showChallenge = ref(false) // 答题功能暂时隐藏，待后续优化再启用
 const challengeSectionRef = ref('')
 const { token, user } = useAuth()
@@ -502,6 +525,19 @@ onUnmounted(() => {
             </div>
           </div>
         </div>
+
+        <!-- Previous / Next arrows -->
+        <div class="ts-reader-nav">
+          <button class="ts-nav-btn" :class="{ 'ts-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
+            <span class="ts-nav-arrow">‹</span>
+            <span class="ts-nav-label">上一篇</span>
+          </button>
+          <div class="ts-nav-position">{{ sectionIndex + 1 }} / {{ currentTopic?.sections.length || 0 }}</div>
+          <button class="ts-nav-btn" :class="{ 'ts-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
+            <span class="ts-nav-label">下一篇</span>
+            <span class="ts-nav-arrow">›</span>
+          </button>
+        </div>
       </div>
     </template>
 
@@ -688,6 +724,28 @@ body {
 .ts-reader-header .ts-back { margin-bottom: 0; }
 .ts-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
 .ts-content-sections { display: flex; flex-direction: column; gap: 20px; }
+
+/* Previous / Next navigation */
+.ts-reader-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 24px; padding: 16px 0; gap: 12px;
+}
+.ts-nav-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 12px;
+  background: white; border: 2px solid #e2e8f0;
+  font-size: 14px; font-weight: 600; color: #0f172a;
+  cursor: pointer; transition: all 0.2s;
+}
+.ts-nav-btn:hover:not(:disabled) { border-color: #06b6d4; color: #06b6d4; }
+.ts-nav-btn:active:not(:disabled) { transform: translateY(1px); }
+.ts-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.ts-nav-arrow { font-size: 22px; line-height: 1; }
+.ts-nav-label { font-size: 13px; white-space: nowrap; }
+.ts-nav-position {
+  font-size: 13px; color: #94a3b8; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+}
 .ts-content-block { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
 .ts-content-label {
   font-size: 14px; font-weight: 700; color: #06b6d4;
