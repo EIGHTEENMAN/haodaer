@@ -4,7 +4,7 @@ import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import TopHeader from './components/TopHeader.vue'
 import BottomNav from './components/BottomNav.vue'
 import LoginModal from './components/LoginModal.vue'
-import { router } from './router'
+import { router, type Route } from './router'
 import { syncAuthFromCookie } from '@shared/utils/authSync'
 import { registerAllWordAudio } from './utils/wordAudio'
 import { loadFromStorage } from './utils/storage'
@@ -43,18 +43,28 @@ const studyPath = ref(parseStudyHash())
 const chatPath = ref(parseChatHash())
 const profilePath = ref(parseProfileHash())
 
+// 当前路由用 ref 镜像 — 确保 template 响应式追踪
+const currentRoute = ref<Route>(router.current)
+
 function onHashChange() {
   // hash 任何变化都重新解析所有 path
   studyPath.value = parseStudyHash()
   chatPath.value = parseChatHash()
   profilePath.value = parseProfileHash()
+  currentRoute.value = router.current
 }
 
 onMounted(() => {
-  syncAuthFromCookie()
-  loadFromStorage()
-  registerAllWordAudio()
-  window.addEventListener('hashchange', onHashChange)
+  console.log('[App] mounted, hash=', window.location.hash, 'router=', router.current)
+  try {
+    syncAuthFromCookie()
+    loadFromStorage()
+    registerAllWordAudio()
+    window.addEventListener('hashchange', onHashChange)
+    console.log('[App] ready')
+  } catch (e) {
+    console.error('[App] init failed:', e)
+  }
 })
 
 onUnmounted(() => {
@@ -62,6 +72,11 @@ onUnmounted(() => {
 })
 
 const showLogin = ref(false)
+const showContent = ref(true)
+
+// 显式暴露 router 给 template（保险起见）
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _router = router
 </script>
 
 <template>
@@ -69,7 +84,13 @@ const showLogin = ref(false)
     <div class="app-root">
       <TopHeader />
       <main class="app-main">
-        <template v-if="router.current === 'study'">
+        <div class="debug-banner" style="background:red;color:white;padding:8px;font-size:12px;word-break:break-all">
+          路由: {{ router.current }} | study: {{ JSON.stringify(studyPath) }} | chat: {{ chatPath }} | profile: {{ profilePath }}
+        </div>
+        <div v-if="!router" style="background:yellow;padding:20px;font-size:24px">
+          ⚠️ router 对象未初始化
+        </div>
+        <template v-if="currentRoute === 'study'">
           <StudyReview v-if="studyPath.themeId === '__review__'" />
           <StudyFlashCard
             v-else-if="studyPath.themeId && studyPath.stage"
@@ -81,12 +102,12 @@ const showLogin = ref(false)
           <StudyHome v-else />
         </template>
 
-        <template v-else-if="router.current === 'chat'">
+        <template v-else-if="currentRoute === 'chat'">
           <ChatPanel v-if="chatPath" :character-id="chatPath" />
           <ChatHome v-else />
         </template>
 
-        <template v-else-if="router.current === 'profile'">
+        <template v-else-if="currentRoute === 'profile'">
           <SettingsPanel v-if="profilePath === 'settings'" />
           <ProfileScreen v-else />
         </template>

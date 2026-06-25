@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 
 /**
- * 轻量 hash 路由（参考 xuetongshi 站点 #detail/topicId 模式）
+ * 轻量 hash 路由
  * - #/study             → 学习 Tab（默认）
  * - #/study/动物/1      → 学习子页（关卡）
  * - #/study/__review__  → 复习
@@ -23,18 +23,19 @@ export function parseRoute(): Route {
   return (VALID_ROUTES as string[]).includes(first) ? (first as Route) : 'study'
 }
 
+/**
+ * 路由 store：使用 reactive 模块单例
+ * Vue 3 <script setup> 模板会自动追踪 reactive 对象属性的依赖
+ */
 export const router = reactive({
   current: 'study' as Route,
   navigate(r: Route) {
-    if (this.current === r) return
-    // 如果当前有子路由，切到顶级（清掉子路由）；否则保持
-    const current = window.location.hash.replace(/^#\/?/, '')
-    const hasSubroute = current.split('/').length > 1
     window.location.hash = '#/' + r
-    // navigate 不直接改 current — 让 hashchange 统一处理
+    // 直接同步改 current（避免 hashchange 异步触发空窗）
+    router.current = r
   },
   back() {
-    this.navigate('study')
+    router.navigate('study')
   }
 })
 
