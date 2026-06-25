@@ -24,6 +24,7 @@ const currentIndex = ref(0)
 const spellInput = ref('')
 const correctCount = ref(0)
 const showResult = ref<'correct' | 'wrong' | null>(null)
+const hideWord = ref(false)  // 拼写框 focus 时隐藏单词主词+音标，防照抄
 
 const currentWord = computed(() => sessionWords.value[currentIndex.value])
 
@@ -101,6 +102,7 @@ function prev() {
   // 上一张不计入成绩（浏览模式）
   showResult.value = null
   spellInput.value = ''
+  hideWord.value = false
   currentIndex.value--
 }
 
@@ -135,11 +137,11 @@ function nextManual() {
     <main class="content" v-if="currentWord">
       <div class="word-card">
         <div class="word-emoji">{{ currentWord.emoji || '📘' }}</div>
-        <div class="word-row">
-          <h1 class="word-main">{{ currentWord.word }}</h1>
+        <div class="word-row" :class="{ blurred: hideWord }">
+          <h1 class="word-main">{{ hideWord ? '?' : currentWord.word }}</h1>
           <button class="audio-btn" @click="playAudio" title="听发音">🔊</button>
         </div>
-        <div class="word-phonetic">{{ currentWord.phonetic }}</div>
+        <div class="word-phonetic" v-if="!hideWord">{{ currentWord.phonetic }}</div>
         <div class="word-meaning">{{ currentWord.meaning }}</div>
 
         <div class="divider"></div>
@@ -183,6 +185,8 @@ function nextManual() {
           <input
             v-model="spellInput"
             @keyup.enter="checkSpell"
+            @focus="hideWord = true"
+            @blur="hideWord = false"
             type="text"
             class="spell-input"
             :class="{
@@ -270,9 +274,9 @@ function nextManual() {
 .word-card {
   width: 100%;
   background: var(--color-card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  border: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  /* 减色：去掉彩色边框和阴影，跟主背景融合更干净 */
+  border: 1px solid var(--color-border);
   padding: var(--gap-md) var(--gap-lg);
   text-align: center;
 }
@@ -289,6 +293,13 @@ function nextManual() {
   justify-content: center;
   gap: var(--gap-sm);
   margin-bottom: 2px;
+  transition: filter 0.2s;
+}
+
+.word-row.blurred {
+  filter: blur(12px);
+  user-select: none;
+  pointer-events: none;
 }
 
 .word-main {
@@ -305,8 +316,10 @@ function nextManual() {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-secondary);
-  color: white;
+  /* 减色：去掉橙色实心背景，改用浅灰描边 */
+  background: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -328,7 +341,7 @@ function nextManual() {
 .word-meaning {
   font-size: var(--text-h3);
   font-weight: 600;
-  color: var(--color-tertiary);
+  color: var(--color-text);
 }
 
 .divider {
@@ -362,8 +375,10 @@ function nextManual() {
   gap: 4px;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: var(--color-tertiary-light);
-  color: var(--color-tertiary);
+  /* 减色：去掉绿色背景，改透明 + 灰描边 */
+  background: transparent;
+  color: var(--color-text-sub);
+  border: 1px solid var(--color-border);
   font-size: var(--text-tiny);
   font-weight: 700;
   font-family: var(--font-display);
@@ -405,31 +420,26 @@ function nextManual() {
   font-family: var(--font-display);
   font-size: var(--text-body);
   font-weight: 700;
-  box-shadow: var(--shadow-card);
+  /* 减色：去掉 box-shadow */
   transition: all 0.15s;
 }
 
-.nav-btn--prev {
-  background: var(--color-card);
-  color: var(--color-text);
-  border: 2px solid var(--color-border);
-}
-
+.nav-btn--prev,
 .nav-btn--next {
-  background: var(--color-secondary);
-  color: white;
-  border: 2px solid var(--color-secondary);
+  /* 上下张按钮统一：透明背景 + 灰色描边 + 文字色 */
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
 }
 
 .nav-btn:disabled {
-  opacity: 0.35;
+  opacity: 0.3;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
 .nav-btn:not(:disabled):active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-card-active);
+  transform: translateY(1px);
+  background: var(--color-card);
 }
 
 .spell-wrap {
@@ -490,7 +500,7 @@ function nextManual() {
   color: white;
   font-size: var(--text-h3);
   font-weight: 700;
-  box-shadow: var(--shadow-card);
+  /* 减色：去掉阴影（主操作按钮保留蓝色实心） */
   font-family: var(--font-display);
 }
 

@@ -41,14 +41,42 @@ export function registerWordAudio(word: string, url: string) {
 
 // 朗读英文例句（浏览器内置 TTS，零成本、即时）
 // rate 0.85 让例句节奏稍慢便于跟读
+// 选男童声：优先 zh-CN male child / en-US male；高 pitch + 中速
+let maleChildVoice: SpeechSynthesisVoice | null = null
+function pickMaleChildVoice(): SpeechSynthesisVoice | null {
+  if (maleChildVoice) return maleChildVoice
+  const voices = window.speechSynthesis.getVoices()
+  if (!voices.length) return null
+  // 优先级：中文男童 → 英文男声 → 任意英文男声
+  const candidates = [
+    (v: SpeechSynthesisVoice) => /zh-?CN/i.test(v.lang) && /child|kid|boy|young|male/i.test(v.name),
+    (v: SpeechSynthesisVoice) => /zh-?CN/i.test(v.lang),
+    (v: SpeechSynthesisVoice) => /male/i.test(v.name) && /en/i.test(v.lang),
+    (v: SpeechSynthesisVoice) => /^en/i.test(v.lang) && !/female/i.test(v.name)
+  ]
+  for (const test of candidates) {
+    const found = voices.find(test)
+    if (found) { maleChildVoice = found; return found }
+  }
+  return null
+}
+
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+  // voices 异步加载，需监听
+  window.speechSynthesis.onvoiceschanged = () => {
+    pickMaleChildVoice()
+  }
+}
+
 export function speakSentence(text: string) {
   if (!("speechSynthesis" in window)) return
-  // 取消任何正在朗读的内容，避免叠加
   speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
   u.lang = "en-US"
   u.rate = 0.85
-  u.pitch = 1.0
+  u.pitch = 1.4  // 男童声偏高 pitch
+  const voice = pickMaleChildVoice()
+  if (voice) u.voice = voice
   speechSynthesis.speak(u)
 }
 
