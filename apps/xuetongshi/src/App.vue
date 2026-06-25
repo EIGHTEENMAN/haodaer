@@ -501,6 +501,11 @@ onUnmounted(() => {
         <div class="ts-reader-header">
           <button class="ts-back" @click="goBack()">← 返回</button>
           <span class="ts-reader-title">{{ currentTopic?.title }} · {{ currentSection.title }}</span>
+          <div class="ts-nav-inline">
+            <button class="ts-nav-arrow-btn" :disabled="!hasPrev" @click="goPrevSection()">‹</button>
+            <span class="ts-nav-pos">{{ sectionIndex + 1 }}/{{ currentTopic?.sections.length || 0 }}</span>
+            <button class="ts-nav-arrow-btn" :disabled="!hasNext" @click="goNextSection()">›</button>
+          </div>
         </div>
 
         <div class="ts-content-sections">
@@ -524,19 +529,6 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Previous / Next arrows -->
-        <div class="ts-reader-nav">
-          <button class="ts-nav-btn" :class="{ 'ts-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
-            <span class="ts-nav-arrow">‹</span>
-            <span class="ts-nav-label">上一篇</span>
-          </button>
-          <div class="ts-nav-position">{{ sectionIndex + 1 }} / {{ currentTopic?.sections.length || 0 }}</div>
-          <button class="ts-nav-btn" :class="{ 'ts-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
-            <span class="ts-nav-label">下一篇</span>
-            <span class="ts-nav-arrow">›</span>
-          </button>
         </div>
       </div>
     </template>
@@ -722,30 +714,24 @@ body {
 .ts-reader-wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
 .ts-reader-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 .ts-reader-header .ts-back { margin-bottom: 0; }
-.ts-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
+.ts-reader-title { font-size: 15px; font-weight: 600; color: #475569; flex: 1; }
 .ts-content-sections { display: flex; flex-direction: column; gap: 20px; }
 
-/* Previous / Next navigation */
-.ts-reader-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 24px; padding: 16px 0; gap: 12px;
+/* Inline previous / next arrows in header */
+.ts-nav-inline {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
 }
-.ts-nav-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 20px; border-radius: 12px;
+.ts-nav-arrow-btn {
+  width: 32px; height: 32px; border-radius: 50%;
   background: white; border: 2px solid #e2e8f0;
-  font-size: 14px; font-weight: 600; color: #0f172a;
-  cursor: pointer; transition: all 0.2s;
+  font-size: 18px; font-weight: 700; color: #0f172a;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; padding: 0;
 }
-.ts-nav-btn:hover:not(:disabled) { border-color: #06b6d4; color: #06b6d4; }
-.ts-nav-btn:active:not(:disabled) { transform: translateY(1px); }
-.ts-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.ts-nav-arrow { font-size: 22px; line-height: 1; }
-.ts-nav-label { font-size: 13px; white-space: nowrap; }
-.ts-nav-position {
-  font-size: 13px; color: #94a3b8; font-weight: 500;
-  white-space: nowrap; flex-shrink: 0;
-}
+.ts-nav-arrow-btn:hover:not(:disabled) { border-color: #06b6d4; color: #06b6d4; background: #ecfeff; }
+.ts-nav-arrow-btn:active:not(:disabled) { transform: translateY(1px); }
+.ts-nav-arrow-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.ts-nav-pos { font-size: 12px; color: #94a3b8; font-weight: 500; min-width: 40px; text-align: center; }
 .ts-content-block { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
 .ts-content-label {
   font-size: 14px; font-weight: 700; color: #06b6d4;

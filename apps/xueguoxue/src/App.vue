@@ -549,6 +549,11 @@ onUnmounted(() => {
         <div class="gx-reader-header">
           <button class="gx-back" @click="goBack()">← 返回</button>
           <span class="gx-reader-title">{{ currentClassic?.title }} · {{ currentSection.title }}</span>
+          <div class="gx-nav-inline">
+            <button class="gx-nav-arrow-btn" :disabled="!hasPrev" @click="goPrevSection()">‹</button>
+            <span class="gx-nav-pos">{{ sectionIndex + 1 }}/{{ currentClassic?.sections.length || 0 }}</span>
+            <button class="gx-nav-arrow-btn" :disabled="!hasNext" @click="goNextSection()">›</button>
+          </div>
         </div>
 
         <!-- Vertical sections: 原文 / 翻译 / 解读 -->
@@ -591,19 +596,6 @@ onUnmounted(() => {
             </div>
             <p class="gx-translation-text">{{ currentSection.interpretation }}</p>
           </div>
-        </div>
-
-        <!-- Previous / Next arrows -->
-        <div class="gx-reader-nav">
-          <button class="gx-nav-btn" :class="{ 'gx-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
-            <span class="gx-nav-arrow">‹</span>
-            <span class="gx-nav-label">上一篇</span>
-          </button>
-          <div class="gx-nav-position">{{ sectionIndex + 1 }} / {{ currentClassic?.sections.length || 0 }}</div>
-          <button class="gx-nav-btn" :class="{ 'gx-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
-            <span class="gx-nav-label">下一篇</span>
-            <span class="gx-nav-arrow">›</span>
-          </button>
         </div>
       </div>
     </template>
@@ -771,29 +763,23 @@ body {
   display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
 }
 .gx-reader-header .gx-back { margin-bottom: 0; }
-.gx-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
+.gx-reader-title { font-size: 15px; font-weight: 600; color: #475569; flex: 1; }
 
-/* Previous / Next navigation */
-.gx-reader-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 24px; padding: 16px 0; gap: 12px;
+/* Inline previous / next arrows in header */
+.gx-nav-inline {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
 }
-.gx-nav-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 20px; border-radius: 12px;
+.gx-nav-arrow-btn {
+  width: 32px; height: 32px; border-radius: 50%;
   background: white; border: 2px solid #e2e8f0;
-  font-size: 14px; font-weight: 600; color: #0f172a;
-  cursor: pointer; transition: all 0.2s;
+  font-size: 18px; font-weight: 700; color: #0f172a;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; padding: 0;
 }
-.gx-nav-btn:hover:not(:disabled) { border-color: #3b82f6; color: #3b82f6; }
-.gx-nav-btn:active:not(:disabled) { transform: translateY(1px); }
-.gx-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.gx-nav-arrow { font-size: 22px; line-height: 1; }
-.gx-nav-label { font-size: 13px; white-space: nowrap; }
-.gx-nav-position {
-  font-size: 13px; color: #94a3b8; font-weight: 500;
-  white-space: nowrap; flex-shrink: 0;
-}
+.gx-nav-arrow-btn:hover:not(:disabled) { border-color: #3b82f6; color: #3b82f6; background: #eff6ff; }
+.gx-nav-arrow-btn:active:not(:disabled) { transform: translateY(1px); }
+.gx-nav-arrow-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.gx-nav-pos { font-size: 12px; color: #94a3b8; font-weight: 500; min-width: 40px; text-align: center; }
 
 /* Vertical content sections */
 .gx-content-sections { display: flex; flex-direction: column; gap: 20px; }

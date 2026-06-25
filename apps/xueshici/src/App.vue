@@ -57,6 +57,36 @@ const dailyQuote = computed(() => {
 
 // Learning progress tracking
 const readerEntryTime = ref(0)
+
+// Previous/next poem navigation by same author
+const sameAuthorPoems = computed(() => {
+  if (!currentPoet.value || !currentPoem.value) return []
+  const source = fullData.value || []
+  return source.filter((p: Poem) => p.author === currentPoet.value)
+})
+const poemIndex = computed(() => {
+  if (!currentPoem.value) return -1
+  return sameAuthorPoems.value.findIndex((p: Poem) => p.id === currentPoem.value?.id)
+})
+const hasPrev = computed(() => poemIndex.value > 0)
+const hasNext = computed(() => poemIndex.value >= 0 && poemIndex.value < sameAuthorPoems.value.length - 1)
+function goPrevPoem() {
+  if (!hasPrev.value) return
+  stopAudio()
+  const prev = sameAuthorPoems.value[poemIndex.value - 1]
+  currentPoem.value = prev
+  currentSection.value = prev.sections[0] || null
+  saveHash()
+}
+function goNextPoem() {
+  if (!hasNext.value) return
+  stopAudio()
+  const next = sameAuthorPoems.value[poemIndex.value + 1]
+  currentPoem.value = next
+  currentSection.value = next.sections[0] || null
+  saveHash()
+}
+
 const { token, user } = useAuth()
 const stats = useLearningStats('xueshici')
 
@@ -674,6 +704,11 @@ onUnmounted(() => {
         <div class="sc-reader-header">
           <button class="sc-back" @click="goBack()">← 返回</button>
           <span class="sc-reader-title">{{ currentPoem?.title }} · {{ currentSection.title || '全文' }}</span>
+          <div class="sc-nav-inline">
+            <button class="sc-nav-arrow-btn" :disabled="!hasPrev" @click="goPrevPoem()">‹</button>
+            <span class="sc-nav-pos">{{ poemIndex + 1 }}/{{ sameAuthorPoems.length }}</span>
+            <button class="sc-nav-arrow-btn" :disabled="!hasNext" @click="goNextPoem()">›</button>
+          </div>
         </div>
 
         <!-- 诗配画 -->
@@ -745,19 +780,6 @@ onUnmounted(() => {
             </div>
             <p class="sc-translation-text sc-interpretation-text">{{ currentSection.interpretation }}</p>
           </div>
-        </div>
-
-        <!-- Previous / Next arrows -->
-        <div class="sc-reader-nav">
-          <button class="sc-nav-btn" :class="{ 'sc-nav-disabled': !hasPrev }" :disabled="!hasPrev" @click="goPrevSection()">
-            <span class="sc-nav-arrow">‹</span>
-            <span class="sc-nav-label">上一篇</span>
-          </button>
-          <div class="sc-nav-position">{{ sectionIndex + 1 }} / {{ currentPoem?.sections.length || 0 }}</div>
-          <button class="sc-nav-btn" :class="{ 'sc-nav-disabled': !hasNext }" :disabled="!hasNext" @click="goNextSection()">
-            <span class="sc-nav-label">下一篇</span>
-            <span class="sc-nav-arrow">›</span>
-          </button>
         </div>
       </div>
     </template>
@@ -880,30 +902,24 @@ body {
 .sc-reader-wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
 .sc-reader-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 .sc-reader-header .sc-back { margin-bottom: 0; }
-.sc-reader-title { font-size: 15px; font-weight: 600; color: #475569; }
+.sc-reader-title { font-size: 15px; font-weight: 600; color: #475569; flex: 1; }
 .sc-content-sections { display: flex; flex-direction: column; gap: 20px; }
 
-/* Previous / Next navigation */
-.sc-reader-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 24px; padding: 16px 0; gap: 12px;
+/* Inline previous / next arrows in header */
+.sc-nav-inline {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
 }
-.sc-nav-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 20px; border-radius: 12px;
+.sc-nav-arrow-btn {
+  width: 32px; height: 32px; border-radius: 50%;
   background: white; border: 2px solid #e2e8f0;
-  font-size: 14px; font-weight: 600; color: #0f172a;
-  cursor: pointer; transition: all 0.2s;
+  font-size: 18px; font-weight: 700; color: #0f172a;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; padding: 0;
 }
-.sc-nav-btn:hover:not(:disabled) { border-color: #d97706; color: #d97706; }
-.sc-nav-btn:active:not(:disabled) { transform: translateY(1px); }
-.sc-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.sc-nav-arrow { font-size: 22px; line-height: 1; }
-.sc-nav-label { font-size: 13px; white-space: nowrap; }
-.sc-nav-position {
-  font-size: 13px; color: #94a3b8; font-weight: 500;
-  white-space: nowrap; flex-shrink: 0;
-}
+.sc-nav-arrow-btn:hover:not(:disabled) { border-color: #d97706; color: #d97706; background: #fffbeb; }
+.sc-nav-arrow-btn:active:not(:disabled) { transform: translateY(1px); }
+.sc-nav-arrow-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.sc-nav-pos { font-size: 12px; color: #94a3b8; font-weight: 500; min-width: 40px; text-align: center; }
 .sc-content-block { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
 .sc-content-label {
   font-size: 14px; font-weight: 700; color: #d97706;
