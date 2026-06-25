@@ -84,12 +84,6 @@ const _router = router
     <div class="app-root">
       <TopHeader />
       <main class="app-main">
-        <div class="debug-banner" style="background:red;color:white;padding:8px;font-size:12px;word-break:break-all">
-          路由: {{ router.current }} | study: {{ JSON.stringify(studyPath) }} | chat: {{ chatPath }} | profile: {{ profilePath }}
-        </div>
-        <div v-if="!router" style="background:yellow;padding:20px;font-size:24px">
-          ⚠️ router 对象未初始化
-        </div>
         <template v-if="currentRoute === 'study'">
           <StudyReview v-if="studyPath.themeId === '__review__'" />
           <StudyFlashCard
