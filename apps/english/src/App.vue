@@ -44,13 +44,10 @@ const chatPath = ref(parseChatHash())
 const profilePath = ref(parseProfileHash())
 
 function onHashChange() {
-  if (router.current === 'study') {
-    studyPath.value = parseStudyHash()
-  } else if (router.current === 'chat') {
-    chatPath.value = parseChatHash()
-  } else if (router.current === 'profile') {
-    profilePath.value = parseProfileHash()
-  }
+  // hash 任何变化都重新解析所有 path
+  studyPath.value = parseStudyHash()
+  chatPath.value = parseChatHash()
+  profilePath.value = parseProfileHash()
 }
 
 onMounted(() => {

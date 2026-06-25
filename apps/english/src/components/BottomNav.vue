@@ -1,24 +1,30 @@
 <script setup lang="ts">
 import { router } from '../router'
+
+function goTab(tab: 'study' | 'chat' | 'profile') {
+  if (router.current === tab) return
+  // 直接写顶级 hash（清掉子路由）
+  window.location.hash = '#/' + tab
+}
 </script>
 
 <template>
   <nav class="bottom-nav">
     <button
       :class="['tab', { active: router.current === 'study' }]"
-      @click="router.navigate('study')"
+      @click="goTab('study')"
     >
       学习
     </button>
     <button
       :class="['tab', { active: router.current === 'chat' }]"
-      @click="router.navigate('chat')"
+      @click="goTab('chat')"
     >
       AI 对话
     </button>
     <button
       :class="['tab', { active: router.current === 'profile' }]"
-      @click="router.navigate('profile')"
+      @click="goTab('profile')"
     >
       我的
     </button>
