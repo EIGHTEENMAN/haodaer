@@ -1,7 +1,404 @@
 {
-  "solar-system": {
-    "id": "solar-system",
+  "bc5": {
+    "id": "bc5",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "am6": {
+    "id": "am6",
     "status": "skip"
+  },
+  "bc2": {
+    "id": "bc2",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "m3": {
+    "id": "m3",
+    "status": "skip"
+  },
+  "bc7": {
+    "id": "bc7",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "m8": {
+    "id": "m8",
+    "status": "skip"
+  },
+  "z1": {
+    "id": "z1",
+    "status": "skip"
+  },
+  "a4": {
+    "id": "a4",
+    "status": "skip"
+  },
+  "s2": {
+    "id": "s2",
+    "status": "skip"
+  },
+  "a7": {
+    "id": "a7",
+    "status": "skip"
+  },
+  "o9": {
+    "id": "o9",
+    "status": "skip"
+  },
+  "w2": {
+    "id": "w2",
+    "status": "skip"
+  },
+  "mg4": {
+    "id": "mg4",
+    "status": "skip"
+  },
+  "sc2": {
+    "id": "sc2",
+    "status": "skip"
+  },
+  "in5": {
+    "id": "in5",
+    "status": "skip"
+  },
+  "tl9": {
+    "id": "tl9",
+    "status": "skip"
+  },
+  "dk7": {
+    "id": "dk7",
+    "status": "skip"
+  },
+  "qu6": {
+    "id": "qu6",
+    "status": "skip"
+  },
+  "business-mgmt": {
+    "id": "business-mgmt",
+    "status": "skip"
+  },
+  "ecommerce": {
+    "id": "ecommerce",
+    "status": "skip"
+  },
+  "rhetoric": {
+    "id": "rhetoric",
+    "status": "skip"
+  },
+  "tax-basics": {
+    "id": "tax-basics",
+    "status": "skip"
+  },
+  "insurance": {
+    "id": "insurance",
+    "status": "skip"
+  },
+  "riddles": {
+    "id": "riddles",
+    "status": "ok",
+    "source": "ai",
+    "size": 32802
+  },
+  "xiangjinzi": {
+    "id": "xiangjinzi",
+    "status": "ok",
+    "source": "ai",
+    "size": 10965
+  },
+  "punctuation": {
+    "id": "punctuation",
+    "status": "ok",
+    "source": "ai",
+    "size": 16993
+  },
+  "sharing-economy": {
+    "id": "sharing-economy",
+    "status": "ok",
+    "source": "ai",
+    "size": 39446
+  },
+  "monetary-policy": {
+    "id": "monetary-policy",
+    "status": "ok",
+    "source": "ai",
+    "size": 17063
+  },
+  "rural-economy": {
+    "id": "rural-economy",
+    "status": "ok",
+    "source": "ai",
+    "size": 64531
+  },
+  "internet-economy": {
+    "id": "internet-economy",
+    "status": "ok",
+    "source": "ai",
+    "size": 62143
+  },
+  "smart-money": {
+    "id": "smart-money",
+    "status": "ok",
+    "source": "ai",
+    "size": 21665
+  },
+  "common-errors": {
+    "id": "common-errors",
+    "status": "ok",
+    "source": "ai",
+    "size": 11854
+  },
+  "ancient-poetry": {
+    "id": "ancient-poetry",
+    "status": "ok",
+    "source": "ai",
+    "size": 25033
+  },
+  "new-words": {
+    "id": "new-words",
+    "status": "ok",
+    "source": "ai",
+    "size": 21554
+  },
+  "lateral-thinking": {
+    "id": "lateral-thinking",
+    "status": "ok",
+    "source": "ai",
+    "size": 23512
+  },
+  "truth-lie": {
+    "id": "truth-lie",
+    "status": "ok",
+    "source": "ai",
+    "size": 12745
+  },
+  "chinese-dialects": {
+    "id": "chinese-dialects",
+    "status": "ok",
+    "source": "ai",
+    "size": 21098
+  },
+  "information-org": {
+    "id": "information-org",
+    "status": "ok",
+    "source": "ai",
+    "size": 24406
+  },
+  "chinese-arch": {
+    "id": "chinese-arch",
+    "status": "ok",
+    "source": "ai",
+    "size": 23587
+  },
+  "fashion": {
+    "id": "fashion",
+    "status": "ok",
+    "source": "ai",
+    "size": 9454
+  },
+  "5g-iot": {
+    "id": "5g-iot",
+    "status": "ok",
+    "source": "ai",
+    "size": 52434
+  },
+  "music-genres": {
+    "id": "music-genres",
+    "status": "ok",
+    "source": "ai",
+    "size": 18575
+  },
+  "environment-health": {
+    "id": "environment-health",
+    "status": "ok",
+    "source": "ai",
+    "size": 27485
+  },
+  "grow-puberty": {
+    "id": "grow-puberty",
+    "status": "ok",
+    "source": "ai",
+    "size": 20386
+  },
+  "ct-chinese-new-year": {
+    "id": "ct-chinese-new-year",
+    "status": "ok",
+    "source": "ai",
+    "size": 99610
+  },
+  "exercise-plan": {
+    "id": "exercise-plan",
+    "status": "ok",
+    "source": "ai",
+    "size": 26552
+  },
+  "blockchain": {
+    "id": "blockchain",
+    "status": "ok",
+    "source": "ai",
+    "size": 29475
+  },
+  "ct-double-ninth": {
+    "id": "ct-double-ninth",
+    "status": "ok",
+    "source": "ai",
+    "size": 31324
+  },
+  "ct-qixi": {
+    "id": "ct-qixi",
+    "status": "ok",
+    "source": "ai",
+    "size": 63386
+  },
+  "ct-zodiac": {
+    "id": "ct-zodiac",
+    "status": "ok",
+    "source": "ai",
+    "size": 16073
+  },
+  "ct-hanfu": {
+    "id": "ct-hanfu",
+    "status": "ok",
+    "source": "ai",
+    "size": 22778
+  },
+  "ct-solar-terms-summer": {
+    "id": "ct-solar-terms-summer",
+    "status": "ok",
+    "source": "ai",
+    "size": 51526
+  },
+  "ct-solar-terms-spring": {
+    "id": "ct-solar-terms-spring",
+    "status": "ok",
+    "source": "ai",
+    "size": 27015
+  },
+  "ct-chinese-porcelain": {
+    "id": "ct-chinese-porcelain",
+    "status": "ok",
+    "source": "ai",
+    "size": 39756
+  },
+  "ct-chinese-martial-arts": {
+    "id": "ct-chinese-martial-arts",
+    "status": "ok",
+    "source": "ai",
+    "size": 5417
+  },
+  "ct-chinese-music": {
+    "id": "ct-chinese-music",
+    "status": "ok",
+    "source": "ai",
+    "size": 11625
+  },
+  "ct-tang-poetry": {
+    "id": "ct-tang-poetry",
+    "status": "ok",
+    "source": "ai",
+    "size": 18850
+  },
+  "ct-song-ci": {
+    "id": "ct-song-ci",
+    "status": "ok",
+    "source": "ai",
+    "size": 41553
+  },
+  "ct-chinese-new-year-customs": {
+    "id": "ct-chinese-new-year-customs",
+    "status": "ok",
+    "source": "ai",
+    "size": 44935
+  },
+  "ct-papermaking": {
+    "id": "ct-papermaking",
+    "status": "ok",
+    "source": "ai",
+    "size": 57646
+  },
+  "ct-lion-dance": {
+    "id": "ct-lion-dance",
+    "status": "ok",
+    "source": "ai",
+    "size": 40587
+  },
+  "ct-chinese-cuisine": {
+    "id": "ct-chinese-cuisine",
+    "status": "ok",
+    "source": "ai",
+    "size": 28234
+  },
+  "ct-fire-safety": {
+    "id": "ct-fire-safety",
+    "status": "ok",
+    "source": "ai",
+    "size": 57705
+  },
+  "ct-water-safety": {
+    "id": "ct-water-safety",
+    "status": "ok",
+    "source": "ai",
+    "size": 7970
+  },
+  "ct-electricity-safety": {
+    "id": "ct-electricity-safety",
+    "status": "ok",
+    "source": "ai",
+    "size": 54460
+  },
+  "ct-first-aid": {
+    "id": "ct-first-aid",
+    "status": "ok",
+    "source": "ai",
+    "size": 116296
+  },
+  "ct-home-etiquette": {
+    "id": "ct-home-etiquette",
+    "status": "ok",
+    "source": "ai",
+    "size": 28655
+  },
+  "ct-school-etiquette": {
+    "id": "ct-school-etiquette",
+    "status": "ok",
+    "source": "ai",
+    "size": 65284
+  },
+  "ct-solar-terms-autumn": {
+    "id": "ct-solar-terms-autumn",
+    "status": "ok",
+    "source": "ai",
+    "size": 72019
+  },
+  "ct-social-etiquette": {
+    "id": "ct-social-etiquette",
+    "status": "ok",
+    "source": "ai",
+    "size": 21731
+  },
+  "ct-solar-terms-winter": {
+    "id": "ct-solar-terms-winter",
+    "status": "ok",
+    "source": "ai",
+    "size": 26558
+  },
+  "ct-silk-road": {
+    "id": "ct-silk-road",
+    "status": "ok",
+    "source": "ai",
+    "size": 37014
+  },
+  "ct-mythology": {
+    "id": "ct-mythology",
+    "status": "ok",
+    "source": "ai",
+    "size": 16246
+  },
+  "ct-public-etiquette": {
+    "id": "ct-public-etiquette",
+    "status": "ok",
+    "source": "ai",
+    "size": 46553
   },
   "ss1": {
     "id": "ss1",
@@ -41,10 +438,6 @@
   },
   "ss10": {
     "id": "ss10",
-    "status": "skip"
-  },
-  "human-body": {
-    "id": "human-body",
     "status": "skip"
   },
   "hb1": {
@@ -87,10 +480,6 @@
     "id": "hb10",
     "status": "skip"
   },
-  "force-motion": {
-    "id": "force-motion",
-    "status": "skip"
-  },
   "fm1": {
     "id": "fm1",
     "status": "skip"
@@ -129,10 +518,6 @@
   },
   "fm10": {
     "id": "fm10",
-    "status": "skip"
-  },
-  "matter-elements": {
-    "id": "matter-elements",
     "status": "skip"
   },
   "me1": {
@@ -175,10 +560,6 @@
     "id": "me10",
     "status": "skip"
   },
-  "light-sound": {
-    "id": "light-sound",
-    "status": "skip"
-  },
   "ls1": {
     "id": "ls1",
     "status": "skip"
@@ -219,10 +600,6 @@
     "id": "ls10",
     "status": "skip"
   },
-  "energy-power": {
-    "id": "energy-power",
-    "status": "skip"
-  },
   "ep1": {
     "id": "ep1",
     "status": "fail",
@@ -234,18 +611,21 @@
   },
   "ep3": {
     "id": "ep3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 12355
   },
   "ep4": {
     "id": "ep4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 17248
   },
   "ep5": {
     "id": "ep5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 19564
   },
   "ep6": {
     "id": "ep6",
@@ -271,10 +651,6 @@
     "id": "ep10",
     "status": "fail",
     "error": "AI 未识别响应"
-  },
-  "time-space": {
-    "id": "time-space",
-    "status": "skip"
   },
   "ts1": {
     "id": "ts1",
@@ -314,10 +690,6 @@
   },
   "ts10": {
     "id": "ts10",
-    "status": "skip"
-  },
-  "space-explore": {
-    "id": "space-explore",
     "status": "skip"
   },
   "se1": {
@@ -360,10 +732,6 @@
     "id": "se10",
     "status": "skip"
   },
-  "atoms-molecules": {
-    "id": "atoms-molecules",
-    "status": "skip"
-  },
   "am1": {
     "id": "am1",
     "status": "skip"
@@ -384,34 +752,20 @@
     "id": "am5",
     "status": "skip"
   },
-  "am6": {
-    "id": "am6",
-    "status": "skip"
-  },
   "am7": {
     "id": "am7",
     "status": "skip"
   },
   "am8": {
     "id": "am8",
-    "status": "ok",
-    "source": "ai",
-    "size": 15845
+    "status": "skip"
   },
   "am9": {
     "id": "am9",
-    "status": "ok",
-    "source": "ai",
-    "size": 22615
+    "status": "skip"
   },
   "am10": {
     "id": "am10",
-    "status": "ok",
-    "source": "ai",
-    "size": 43917
-  },
-  "earth-moon": {
-    "id": "earth-moon",
     "status": "skip"
   },
   "em1": {
@@ -454,63 +808,65 @@
     "id": "em10",
     "status": "skip"
   },
-  "simple-machines": {
-    "id": "simple-machines",
-    "status": "skip"
-  },
   "sm1": {
     "id": "sm1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 26653
   },
   "sm2": {
     "id": "sm2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16708
   },
   "sm3": {
     "id": "sm3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 47611
   },
   "sm4": {
     "id": "sm4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16495
   },
   "sm5": {
     "id": "sm5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 37103
   },
   "sm6": {
     "id": "sm6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 63587
   },
   "sm7": {
     "id": "sm7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 57817
   },
   "sm8": {
     "id": "sm8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 17880
   },
   "sm9": {
     "id": "sm9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16011
   },
   "sm10": {
     "id": "sm10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "plants-basic": {
-    "id": "plants-basic",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 29312
   },
   "pb1": {
     "id": "pb1",
@@ -550,10 +906,6 @@
   },
   "pb10": {
     "id": "pb10",
-    "status": "skip"
-  },
-  "temp-heat": {
-    "id": "temp-heat",
     "status": "skip"
   },
   "th1": {
@@ -599,16 +951,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "basic-circuits": {
-    "id": "basic-circuits",
-    "status": "skip"
-  },
   "bc1": {
     "id": "bc1",
-    "status": "skip"
-  },
-  "bc2": {
-    "id": "bc2",
     "status": "skip"
   },
   "bc3": {
@@ -617,14 +961,6 @@
   },
   "bc4": {
     "id": "bc4",
-    "status": "skip"
-  },
-  "bc5": {
-    "id": "bc5",
-    "status": "skip"
-  },
-  "bc7": {
-    "id": "bc7",
     "status": "skip"
   },
   "bc8": {
@@ -637,10 +973,6 @@
   },
   "bc10": {
     "id": "bc10",
-    "status": "skip"
-  },
-  "earth-structure": {
-    "id": "earth-structure",
     "status": "skip"
   },
   "es1": {
@@ -683,10 +1015,6 @@
     "id": "es10",
     "status": "skip"
   },
-  "oceans": {
-    "id": "oceans",
-    "status": "skip"
-  },
   "oc1": {
     "id": "oc1",
     "status": "skip"
@@ -725,10 +1053,6 @@
   },
   "oc10": {
     "id": "oc10",
-    "status": "skip"
-  },
-  "weather-climate": {
-    "id": "weather-climate",
     "status": "skip"
   },
   "wc1": {
@@ -771,10 +1095,6 @@
     "id": "wc10",
     "status": "skip"
   },
-  "china-geo": {
-    "id": "china-geo",
-    "status": "skip"
-  },
   "cg1": {
     "id": "cg1",
     "status": "skip"
@@ -813,10 +1133,6 @@
   },
   "cg10": {
     "id": "cg10",
-    "status": "skip"
-  },
-  "world-geo": {
-    "id": "world-geo",
     "status": "skip"
   },
   "wg1": {
@@ -859,10 +1175,6 @@
     "id": "wg10",
     "status": "skip"
   },
-  "rivers-lakes": {
-    "id": "rivers-lakes",
-    "status": "skip"
-  },
   "rl1": {
     "id": "rl1",
     "status": "skip"
@@ -901,10 +1213,6 @@
   },
   "rl10": {
     "id": "rl10",
-    "status": "skip"
-  },
-  "mountains": {
-    "id": "mountains",
     "status": "skip"
   },
   "mt1": {
@@ -947,10 +1255,6 @@
     "id": "mt10",
     "status": "skip"
   },
-  "forests": {
-    "id": "forests",
-    "status": "skip"
-  },
   "fo1": {
     "id": "fo1",
     "status": "skip"
@@ -961,9 +1265,7 @@
   },
   "fo3": {
     "id": "fo3",
-    "status": "ok",
-    "source": "ai",
-    "size": 53765
+    "status": "skip"
   },
   "fo4": {
     "id": "fo4",
@@ -971,21 +1273,15 @@
   },
   "fo5": {
     "id": "fo5",
-    "status": "ok",
-    "source": "ai",
-    "size": 61304
+    "status": "skip"
   },
   "fo6": {
     "id": "fo6",
-    "status": "ok",
-    "source": "ai",
-    "size": 105397
+    "status": "skip"
   },
   "fo7": {
     "id": "fo7",
-    "status": "ok",
-    "source": "ai",
-    "size": 55136
+    "status": "skip"
   },
   "fo8": {
     "id": "fo8",
@@ -993,25 +1289,15 @@
   },
   "fo9": {
     "id": "fo9",
-    "status": "ok",
-    "source": "ai",
-    "size": 53067
+    "status": "skip"
   },
   "fo10": {
     "id": "fo10",
-    "status": "ok",
-    "source": "ai",
-    "size": 60985
-  },
-  "deserts": {
-    "id": "deserts",
     "status": "skip"
   },
   "de1": {
     "id": "de1",
-    "status": "ok",
-    "source": "ai",
-    "size": 26446
+    "status": "skip"
   },
   "de2": {
     "id": "de2",
@@ -1019,109 +1305,95 @@
   },
   "de3": {
     "id": "de3",
-    "status": "ok",
-    "source": "ai",
-    "size": 7941
+    "status": "skip"
   },
   "de4": {
     "id": "de4",
-    "status": "ok",
-    "source": "ai",
-    "size": 44798
+    "status": "skip"
   },
   "de5": {
     "id": "de5",
-    "status": "ok",
-    "source": "ai",
-    "size": 34486
+    "status": "skip"
   },
   "de6": {
     "id": "de6",
-    "status": "ok",
-    "source": "ai",
-    "size": 32305
+    "status": "skip"
   },
   "de7": {
     "id": "de7",
-    "status": "ok",
-    "source": "ai",
-    "size": 25437
+    "status": "skip"
   },
   "de8": {
     "id": "de8",
-    "status": "ok",
-    "source": "ai",
-    "size": 29433
+    "status": "skip"
   },
   "de9": {
     "id": "de9",
-    "status": "ok",
-    "source": "ai",
-    "size": 20205
+    "status": "skip"
   },
   "de10": {
     "id": "de10",
-    "status": "ok",
-    "source": "ai",
-    "size": 28428
-  },
-  "polar": {
-    "id": "polar",
     "status": "skip"
   },
   "po1": {
     "id": "po1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 19850
   },
   "po2": {
     "id": "po2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20500
   },
   "po3": {
     "id": "po3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 12490
   },
   "po4": {
     "id": "po4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 18403
   },
   "po5": {
     "id": "po5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 34111
   },
   "po6": {
     "id": "po6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 28974
   },
   "po7": {
     "id": "po7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 35073
   },
   "po8": {
     "id": "po8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 38854
   },
   "po9": {
     "id": "po9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 48883
   },
   "po10": {
     "id": "po10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "volcanoes": {
-    "id": "volcanoes",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 33444
   },
   "vo1": {
     "id": "vo1",
@@ -1161,10 +1433,6 @@
   },
   "vo10": {
     "id": "vo10",
-    "status": "skip"
-  },
-  "islands": {
-    "id": "islands",
     "status": "skip"
   },
   "is1": {
@@ -1207,10 +1475,6 @@
     "id": "is10",
     "status": "skip"
   },
-  "natural-hazards": {
-    "id": "natural-hazards",
-    "status": "skip"
-  },
   "nh1": {
     "id": "nh1",
     "status": "skip"
@@ -1249,10 +1513,6 @@
   },
   "nh10": {
     "id": "nh10",
-    "status": "skip"
-  },
-  "animal-kingdom": {
-    "id": "animal-kingdom",
     "status": "skip"
   },
   "ak1": {
@@ -1295,10 +1555,6 @@
     "id": "ak10",
     "status": "skip"
   },
-  "plant-world": {
-    "id": "plant-world",
-    "status": "skip"
-  },
   "pw1": {
     "id": "pw1",
     "status": "skip"
@@ -1339,19 +1595,17 @@
     "id": "pw10",
     "status": "skip"
   },
-  "ecosystem": {
-    "id": "ecosystem",
-    "status": "skip"
-  },
   "ec1": {
     "id": "ec1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 77748
   },
   "ec2": {
     "id": "ec2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 86651
   },
   "ec3": {
     "id": "ec3",
@@ -1363,37 +1617,39 @@
   },
   "ec5": {
     "id": "ec5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20010
   },
   "ec6": {
     "id": "ec6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 53630
   },
   "ec7": {
     "id": "ec7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 32891
   },
   "ec8": {
     "id": "ec8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49333
   },
   "ec9": {
     "id": "ec9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36777
   },
   "ec10": {
     "id": "ec10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "dinosaurs": {
-    "id": "dinosaurs",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 38501
   },
   "di1": {
     "id": "di1",
@@ -1433,10 +1689,6 @@
   },
   "di10": {
     "id": "di10",
-    "status": "skip"
-  },
-  "micro-world": {
-    "id": "micro-world",
     "status": "skip"
   },
   "mw1": {
@@ -1479,56 +1731,39 @@
     "id": "mw10",
     "status": "skip"
   },
-  "evolution": {
-    "id": "evolution",
-    "status": "skip"
-  },
   "ev1": {
     "id": "ev1",
-    "status": "ok",
-    "source": "ai",
-    "size": 42468
+    "status": "skip"
   },
   "ev2": {
     "id": "ev2",
-    "status": "ok",
-    "source": "ai",
-    "size": 63711
+    "status": "skip"
   },
   "ev3": {
     "id": "ev3",
-    "status": "ok",
-    "source": "ai",
-    "size": 61137
+    "status": "skip"
   },
   "ev4": {
     "id": "ev4",
-    "status": "ok",
-    "source": "ai",
-    "size": 34871
+    "status": "skip"
   },
   "ev5": {
     "id": "ev5",
-    "status": "ok",
-    "source": "ai",
-    "size": 38296
+    "status": "skip"
   },
   "ev6": {
     "id": "ev6",
-    "status": "ok",
-    "source": "ai",
-    "size": 76323
+    "status": "skip"
   },
   "ev7": {
     "id": "ev7",
-    "status": "ok",
-    "source": "ai",
-    "size": 41003
+    "status": "skip"
   },
   "ev8": {
     "id": "ev8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 80258
   },
   "ev9": {
     "id": "ev9",
@@ -1536,12 +1771,6 @@
   },
   "ev10": {
     "id": "ev10",
-    "status": "ok",
-    "source": "ai",
-    "size": 45528
-  },
-  "rare-animals": {
-    "id": "rare-animals",
     "status": "skip"
   },
   "ra1": {
@@ -1584,10 +1813,6 @@
     "id": "ra10",
     "status": "skip"
   },
-  "ocean-life": {
-    "id": "ocean-life",
-    "status": "skip"
-  },
   "ol1": {
     "id": "ol1",
     "status": "skip"
@@ -1626,10 +1851,6 @@
   },
   "ol10": {
     "id": "ol10",
-    "status": "skip"
-  },
-  "bird-world": {
-    "id": "bird-world",
     "status": "skip"
   },
   "bw1": {
@@ -1672,10 +1893,6 @@
     "id": "bw10",
     "status": "skip"
   },
-  "insect-world": {
-    "id": "insect-world",
-    "status": "skip"
-  },
   "iw1": {
     "id": "iw1",
     "status": "skip"
@@ -1714,10 +1931,6 @@
   },
   "iw10": {
     "id": "iw10",
-    "status": "skip"
-  },
-  "amphibians-reptiles": {
-    "id": "amphibians-reptiles",
     "status": "skip"
   },
   "ar1": {
@@ -1760,10 +1973,6 @@
     "id": "ar10",
     "status": "skip"
   },
-  "mammals": {
-    "id": "mammals",
-    "status": "skip"
-  },
   "ml1": {
     "id": "ml1",
     "status": "skip"
@@ -1804,14 +2013,11 @@
     "id": "ml10",
     "status": "skip"
   },
-  "nature-wonders": {
-    "id": "nature-wonders",
-    "status": "skip"
-  },
   "nw1": {
     "id": "nw1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23324
   },
   "nw2": {
     "id": "nw2",
@@ -1823,72 +2029,81 @@
   },
   "nw4": {
     "id": "nw4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31797
   },
   "nw5": {
     "id": "nw5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 65180
   },
   "nw6": {
     "id": "nw6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 53013
   },
   "nw7": {
     "id": "nw7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20959
   },
   "nw8": {
     "id": "nw8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36642
   },
   "nw9": {
     "id": "nw9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 18685
   },
   "nw10": {
     "id": "nw10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "camouflage": {
-    "id": "camouflage",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 88998
   },
   "ca1": {
     "id": "ca1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 45763
   },
   "ca2": {
     "id": "ca2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 39434
   },
   "ca3": {
     "id": "ca3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 90374
   },
   "ca4": {
     "id": "ca4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 76578
   },
   "ca5": {
     "id": "ca5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 41158
   },
   "ca6": {
     "id": "ca6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 59382
   },
   "ca7": {
     "id": "ca7",
@@ -1897,22 +2112,21 @@
   },
   "ca8": {
     "id": "ca8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 33437
   },
   "ca9": {
     "id": "ca9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55468
   },
   "ca10": {
     "id": "ca10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "food-chains": {
-    "id": "food-chains",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 47304
   },
   "fc1": {
     "id": "fc1",
@@ -1952,10 +2166,6 @@
   },
   "fc10": {
     "id": "fc10",
-    "status": "skip"
-  },
-  "confucius": {
-    "id": "confucius",
     "status": "skip"
   },
   "c1": {
@@ -1998,10 +2208,6 @@
     "id": "c10",
     "status": "skip"
   },
-  "qin-shihuang": {
-    "id": "qin-shihuang",
-    "status": "skip"
-  },
   "q1": {
     "id": "q1",
     "status": "skip"
@@ -2040,10 +2246,6 @@
   },
   "q10": {
     "id": "q10",
-    "status": "skip"
-  },
-  "edison": {
-    "id": "edison",
     "status": "skip"
   },
   "e1": {
@@ -2086,14 +2288,6 @@
     "id": "e10",
     "status": "skip"
   },
-  "zhuge-liang": {
-    "id": "zhuge-liang",
-    "status": "skip"
-  },
-  "z1": {
-    "id": "z1",
-    "status": "skip"
-  },
   "z2": {
     "id": "z2",
     "status": "skip"
@@ -2128,10 +2322,6 @@
   },
   "z10": {
     "id": "z10",
-    "status": "skip"
-  },
-  "li-bai": {
-    "id": "li-bai",
     "status": "skip"
   },
   "l1": {
@@ -2174,10 +2364,6 @@
     "id": "l10",
     "status": "skip"
   },
-  "newton": {
-    "id": "newton",
-    "status": "skip"
-  },
   "n1": {
     "id": "n1",
     "status": "skip"
@@ -2218,20 +2404,12 @@
     "id": "n10",
     "status": "skip"
   },
-  "madame-curie": {
-    "id": "madame-curie",
-    "status": "skip"
-  },
   "m1": {
     "id": "m1",
     "status": "skip"
   },
   "m2": {
     "id": "m2",
-    "status": "skip"
-  },
-  "m3": {
-    "id": "m3",
     "status": "skip"
   },
   "m4": {
@@ -2250,10 +2428,6 @@
     "id": "m7",
     "status": "skip"
   },
-  "m8": {
-    "id": "m8",
-    "status": "skip"
-  },
   "m9": {
     "id": "m9",
     "status": "skip"
@@ -2262,43 +2436,25 @@
     "id": "m10",
     "status": "skip"
   },
-  "sima-qian": {
-    "id": "sima-qian",
-    "status": "skip"
-  },
   "s1": {
     "id": "s1",
     "status": "skip"
   },
-  "s2": {
-    "id": "s2",
-    "status": "ok",
-    "source": "ai",
-    "size": 25702
-  },
   "s3": {
     "id": "s3",
-    "status": "ok",
-    "source": "ai",
-    "size": 28466
+    "status": "skip"
   },
   "s4": {
     "id": "s4",
-    "status": "ok",
-    "source": "ai",
-    "size": 31343
+    "status": "skip"
   },
   "s5": {
     "id": "s5",
-    "status": "ok",
-    "source": "ai",
-    "size": 13964
+    "status": "skip"
   },
   "s6": {
     "id": "s6",
-    "status": "ok",
-    "source": "ai",
-    "size": 21493
+    "status": "skip"
   },
   "s7": {
     "id": "s7",
@@ -2310,24 +2466,10 @@
   },
   "s9": {
     "id": "s9",
-    "status": "ok",
-    "source": "ai",
-    "size": 63552
+    "status": "skip"
   },
   "s10": {
     "id": "s10",
-    "status": "skip"
-  },
-  "zu-chongzhi": {
-    "id": "zu-chongzhi",
-    "status": "skip"
-  },
-  "zheng-he": {
-    "id": "zheng-he",
-    "status": "skip"
-  },
-  "yue-fei": {
-    "id": "yue-fei",
     "status": "skip"
   },
   "y1": {
@@ -2370,18 +2512,6 @@
     "id": "y10",
     "status": "skip"
   },
-  "caocao": {
-    "id": "caocao",
-    "status": "skip"
-  },
-  "einstein": {
-    "id": "einstein",
-    "status": "skip"
-  },
-  "archimedes": {
-    "id": "archimedes",
-    "status": "skip"
-  },
   "a1": {
     "id": "a1",
     "status": "skip"
@@ -2394,20 +2524,12 @@
     "id": "a3",
     "status": "skip"
   },
-  "a4": {
-    "id": "a4",
-    "status": "skip"
-  },
   "a5": {
     "id": "a5",
     "status": "skip"
   },
   "a6": {
     "id": "a6",
-    "status": "skip"
-  },
-  "a7": {
-    "id": "a7",
     "status": "skip"
   },
   "a8": {
@@ -2420,10 +2542,6 @@
   },
   "a10": {
     "id": "a10",
-    "status": "skip"
-  },
-  "da-vinci": {
-    "id": "da-vinci",
     "status": "skip"
   },
   "d1": {
@@ -2466,10 +2584,6 @@
     "id": "d10",
     "status": "skip"
   },
-  "gandhi": {
-    "id": "gandhi",
-    "status": "skip"
-  },
   "g1": {
     "id": "g1",
     "status": "skip"
@@ -2508,38 +2622,6 @@
   },
   "g10": {
     "id": "g10",
-    "status": "skip"
-  },
-  "socrates": {
-    "id": "socrates",
-    "status": "skip"
-  },
-  "chinese-painting": {
-    "id": "chinese-painting",
-    "status": "skip"
-  },
-  "music-world": {
-    "id": "music-world",
-    "status": "skip"
-  },
-  "architecture": {
-    "id": "architecture",
-    "status": "skip"
-  },
-  "calligraphy": {
-    "id": "calligraphy",
-    "status": "skip"
-  },
-  "dance-theater": {
-    "id": "dance-theater",
-    "status": "skip"
-  },
-  "sculpture": {
-    "id": "sculpture",
-    "status": "skip"
-  },
-  "famous-paintings": {
-    "id": "famous-paintings",
     "status": "skip"
   },
   "f1": {
@@ -2582,18 +2664,6 @@
     "id": "f10",
     "status": "skip"
   },
-  "folk-art": {
-    "id": "folk-art",
-    "status": "skip"
-  },
-  "ceramics": {
-    "id": "ceramics",
-    "status": "skip"
-  },
-  "photography": {
-    "id": "photography",
-    "status": "skip"
-  },
   "p1": {
     "id": "p1",
     "status": "skip"
@@ -2634,14 +2704,6 @@
     "id": "p10",
     "status": "skip"
   },
-  "film-art": {
-    "id": "film-art",
-    "status": "skip"
-  },
-  "opera": {
-    "id": "opera",
-    "status": "skip"
-  },
   "o1": {
     "id": "o1",
     "status": "skip"
@@ -2674,24 +2736,8 @@
     "id": "o8",
     "status": "skip"
   },
-  "o9": {
-    "id": "o9",
-    "status": "skip"
-  },
   "o10": {
     "id": "o10",
-    "status": "skip"
-  },
-  "modern-art": {
-    "id": "modern-art",
-    "status": "skip"
-  },
-  "ancient-invent": {
-    "id": "ancient-invent",
-    "status": "skip"
-  },
-  "transport": {
-    "id": "transport",
     "status": "skip"
   },
   "t1": {
@@ -2734,18 +2780,6 @@
     "id": "t10",
     "status": "skip"
   },
-  "communication": {
-    "id": "communication",
-    "status": "skip"
-  },
-  "computer": {
-    "id": "computer",
-    "status": "skip"
-  },
-  "robots": {
-    "id": "robots",
-    "status": "skip"
-  },
   "r1": {
     "id": "r1",
     "status": "skip"
@@ -2784,22 +2818,6 @@
   },
   "r10": {
     "id": "r10",
-    "status": "skip"
-  },
-  "aerospace": {
-    "id": "aerospace",
-    "status": "skip"
-  },
-  "materials": {
-    "id": "materials",
-    "status": "skip"
-  },
-  "energy-tech": {
-    "id": "energy-tech",
-    "status": "skip"
-  },
-  "bridge-tunnel": {
-    "id": "bridge-tunnel",
     "status": "skip"
   },
   "b1": {
@@ -2842,72 +2860,9 @@
     "id": "b10",
     "status": "skip"
   },
-  "agricultural-tech": {
-    "id": "agricultural-tech",
-    "status": "skip"
-  },
-  "smartphone": {
-    "id": "smartphone",
-    "status": "skip"
-  },
-  "medical-tech": {
-    "id": "medical-tech",
-    "status": "skip"
-  },
-  "diet-nutrition": {
-    "id": "diet-nutrition",
-    "status": "skip"
-  },
-  "sport-health": {
-    "id": "sport-health",
-    "status": "skip"
-  },
-  "disease-prevent": {
-    "id": "disease-prevent",
-    "status": "skip"
-  },
-  "mental-health": {
-    "id": "mental-health",
-    "status": "skip"
-  },
-  "first-aid": {
-    "id": "first-aid",
-    "status": "skip"
-  },
-  "good-habits": {
-    "id": "good-habits",
-    "status": "skip"
-  },
-  "sleep-rest": {
-    "id": "sleep-rest",
-    "status": "skip"
-  },
-  "eye-care": {
-    "id": "eye-care",
-    "status": "skip"
-  },
-  "dental-care": {
-    "id": "dental-care",
-    "status": "skip"
-  },
-  "bc6": {
-    "id": "bc6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "growth-body": {
-    "id": "growth-body",
-    "status": "skip"
-  },
-  "immune-system": {
-    "id": "immune-system",
-    "status": "skip"
-  },
   "i1": {
     "id": "i1",
-    "status": "ok",
-    "source": "ai",
-    "size": 41176
+    "status": "skip"
   },
   "i2": {
     "id": "i2",
@@ -2915,15 +2870,11 @@
   },
   "i3": {
     "id": "i3",
-    "status": "ok",
-    "source": "ai",
-    "size": 29614
+    "status": "skip"
   },
   "i4": {
     "id": "i4",
-    "status": "ok",
-    "source": "ai",
-    "size": 24671
+    "status": "skip"
   },
   "i5": {
     "id": "i5",
@@ -2931,9 +2882,7 @@
   },
   "i6": {
     "id": "i6",
-    "status": "ok",
-    "source": "ai",
-    "size": 32637
+    "status": "skip"
   },
   "i7": {
     "id": "i7",
@@ -2941,140 +2890,18 @@
   },
   "i8": {
     "id": "i8",
-    "status": "ok",
-    "source": "ai",
-    "size": 44522
+    "status": "skip"
   },
   "i9": {
     "id": "i9",
-    "status": "ok",
-    "source": "ai",
-    "size": 60987
+    "status": "skip"
   },
   "i10": {
     "id": "i10",
-    "status": "ok",
-    "source": "ai",
-    "size": 24574
-  },
-  "classification": {
-    "id": "classification",
-    "status": "skip"
-  },
-  "cause-effect": {
-    "id": "cause-effect",
-    "status": "skip"
-  },
-  "analogy": {
-    "id": "analogy",
-    "status": "skip"
-  },
-  "observe-find": {
-    "id": "observe-find",
-    "status": "skip"
-  },
-  "creativity": {
-    "id": "creativity",
-    "status": "skip"
-  },
-  "critical-thinking": {
-    "id": "critical-thinking",
-    "status": "skip"
-  },
-  "memory-methods": {
-    "id": "memory-methods",
-    "status": "skip"
-  },
-  "problem-solving": {
-    "id": "problem-solving",
-    "status": "skip"
-  },
-  "brain-power": {
-    "id": "brain-power",
-    "status": "skip"
-  },
-  "decision-making": {
-    "id": "decision-making",
-    "status": "skip"
-  },
-  "time-management": {
-    "id": "time-management",
-    "status": "skip"
-  },
-  "money-trade": {
-    "id": "money-trade",
-    "status": "skip"
-  },
-  "market-price": {
-    "id": "market-price",
-    "status": "skip"
-  },
-  "career": {
-    "id": "career",
-    "status": "skip"
-  },
-  "saving-spending": {
-    "id": "saving-spending",
-    "status": "skip"
-  },
-  "trade-global": {
-    "id": "trade-global",
-    "status": "skip"
-  },
-  "law-rules": {
-    "id": "law-rules",
-    "status": "skip"
-  },
-  "city-life": {
-    "id": "city-life",
-    "status": "skip"
-  },
-  "festivals": {
-    "id": "festivals",
-    "status": "skip"
-  },
-  "family-economics": {
-    "id": "family-economics",
-    "status": "skip"
-  },
-  "advertising": {
-    "id": "advertising",
-    "status": "skip"
-  },
-  "charity": {
-    "id": "charity",
-    "status": "skip"
-  },
-  "chinese-char": {
-    "id": "chinese-char",
-    "status": "skip"
-  },
-  "chengyu": {
-    "id": "chengyu",
-    "status": "skip"
-  },
-  "poetry-rhythm": {
-    "id": "poetry-rhythm",
-    "status": "skip"
-  },
-  "myths": {
-    "id": "myths",
-    "status": "skip"
-  },
-  "fables": {
-    "id": "fables",
-    "status": "skip"
-  },
-  "expression": {
-    "id": "expression",
     "status": "skip"
   },
   "w1": {
     "id": "w1",
-    "status": "skip"
-  },
-  "w2": {
-    "id": "w2",
     "status": "skip"
   },
   "w3": {
@@ -3089,8 +2916,8 @@
     "id": "w5",
     "status": "skip"
   },
-  "world-lang": {
-    "id": "world-lang",
+  "w6": {
+    "id": "w6",
     "status": "skip"
   },
   "w7": {
@@ -3101,45 +2928,13 @@
     "id": "w8",
     "status": "skip"
   },
-  "w10": {
-    "id": "w10",
-    "status": "skip"
-  },
-  "reading": {
-    "id": "reading",
-    "status": "skip"
-  },
-  "w6": {
-    "id": "w6",
-    "status": "skip"
-  },
   "w9": {
     "id": "w9",
     "status": "skip"
   },
-  "writing-tools": {
-    "id": "writing-tools",
+  "w10": {
+    "id": "w10",
     "status": "skip"
-  },
-  "storytelling": {
-    "id": "storytelling",
-    "status": "skip"
-  },
-  "idioms": {
-    "id": "idioms",
-    "status": "ok",
-    "source": "ai",
-    "size": 26939
-  },
-  "sw1": {
-    "id": "sw1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "sw2": {
-    "id": "sw2",
-    "status": "fail",
-    "error": "AI 未识别响应"
   },
   "sw3": {
     "id": "sw3",
@@ -3157,8 +2952,28 @@
     "id": "sw6",
     "status": "skip"
   },
+  "sw1": {
+    "id": "sw1",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "bc6": {
+    "id": "bc6",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "sw2": {
+    "id": "sw2",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
   "sw7": {
     "id": "sw7",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "sw10": {
+    "id": "sw10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3172,13 +2987,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "sw10": {
-    "id": "sw10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "lo1": {
-    "id": "lo1",
+  "lo3": {
+    "id": "lo3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3187,13 +2997,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "lo3": {
-    "id": "lo3",
+  "lo4": {
+    "id": "lo4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "lo4": {
-    "id": "lo4",
+  "lo1": {
+    "id": "lo1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3202,13 +3012,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "lo6": {
-    "id": "lo6",
+  "lo9": {
+    "id": "lo9",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "lo7": {
-    "id": "lo7",
+  "lo6": {
+    "id": "lo6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3217,81 +3027,63 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "lo9": {
-    "id": "lo9",
+  "lo7": {
+    "id": "lo7",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "mg5": {
+    "id": "mg5",
+    "status": "ok",
+    "source": "ai",
+    "size": 37820
   },
   "lo10": {
     "id": "lo10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "light-optics": {
-    "id": "light-optics",
-    "status": "ok",
-    "source": "ai",
-    "size": 30884
-  },
   "mg1": {
     "id": "mg1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21291
   },
   "mg2": {
     "id": "mg2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23582
   },
   "mg3": {
     "id": "mg3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "mg4": {
-    "id": "mg4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "mg5": {
-    "id": "mg5",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "mg6": {
-    "id": "mg6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 33249
   },
   "mg7": {
     "id": "mg7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 70460
   },
-  "mg8": {
-    "id": "mg8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "mg6": {
+    "id": "mg6",
+    "status": "ok",
+    "source": "ai",
+    "size": 40374
   },
   "mg9": {
     "id": "mg9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "mg10": {
-    "id": "mg10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "thermo": {
-    "id": "thermo",
-    "status": "skip"
-  },
-  "magnetism": {
-    "id": "magnetism",
     "status": "ok",
     "source": "ai",
-    "size": 19497
+    "size": 51812
+  },
+  "mg8": {
+    "id": "mg8",
+    "status": "ok",
+    "source": "ai",
+    "size": 30542
   },
   "ms1": {
     "id": "ms1",
@@ -3313,18 +3105,24 @@
     "id": "ms5",
     "status": "skip"
   },
+  "mg10": {
+    "id": "mg10",
+    "status": "ok",
+    "source": "ai",
+    "size": 55780
+  },
   "ms6": {
     "id": "ms6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ms7": {
-    "id": "ms7",
+  "ms8": {
+    "id": "ms8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ms8": {
-    "id": "ms8",
+  "ms7": {
+    "id": "ms7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3338,14 +3136,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "sound-wave": {
-    "id": "sound-wave",
-    "status": "ok",
-    "source": "ai",
-    "size": 11609
-  },
-  "cl1": {
-    "id": "cl1",
+  "cl3": {
+    "id": "cl3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3354,8 +3146,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "cl3": {
-    "id": "cl3",
+  "cl1": {
+    "id": "cl1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -3369,35 +3161,9 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "cl6": {
-    "id": "cl6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "cl7": {
-    "id": "cl7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "cl8": {
-    "id": "cl8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "cl9": {
-    "id": "cl9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "cl10": {
     "id": "cl10",
     "status": "skip"
-  },
-  "matter-state": {
-    "id": "matter-state",
-    "status": "ok",
-    "source": "ai",
-    "size": 18774
   },
   "rv1": {
     "id": "rv1",
@@ -3419,11 +3185,9 @@
     "id": "rv5",
     "status": "skip"
   },
-  "rivers": {
-    "id": "rivers",
-    "status": "ok",
-    "source": "ai",
-    "size": 26538
+  "rv6": {
+    "id": "rv6",
+    "status": "skip"
   },
   "rv7": {
     "id": "rv7",
@@ -3437,39 +3201,25 @@
     "id": "rv9",
     "status": "skip"
   },
-  "chemistry-life": {
-    "id": "chemistry-life",
-    "status": "ok",
-    "source": "ai",
-    "size": 31323
-  },
   "rv10": {
     "id": "rv10",
-    "status": "ok",
-    "source": "ai",
-    "size": 41858
+    "status": "skip"
   },
-  "glacier": {
-    "id": "glacier",
-    "status": "ok",
-    "source": "ai",
-    "size": 9929
+  "gl1": {
+    "id": "gl1",
+    "status": "skip"
   },
-  "rv6": {
-    "id": "rv6",
-    "status": "ok",
-    "source": "ai",
-    "size": 21186
+  "gl2": {
+    "id": "gl2",
+    "status": "skip"
   },
   "gl3": {
     "id": "gl3",
     "status": "skip"
   },
-  "gl1": {
-    "id": "gl1",
-    "status": "ok",
-    "source": "ai",
-    "size": 25150
+  "gl4": {
+    "id": "gl4",
+    "status": "skip"
   },
   "gl5": {
     "id": "gl5",
@@ -3479,11 +3229,9 @@
     "id": "gl6",
     "status": "skip"
   },
-  "gl2": {
-    "id": "gl2",
-    "status": "ok",
-    "source": "ai",
-    "size": 17329
+  "gl7": {
+    "id": "gl7",
+    "status": "skip"
   },
   "gl8": {
     "id": "gl8",
@@ -3493,104 +3241,52 @@
     "id": "gl9",
     "status": "skip"
   },
-  "gl4": {
-    "id": "gl4",
-    "status": "ok",
-    "source": "ai",
-    "size": 19216
-  },
-  "gl7": {
-    "id": "gl7",
-    "status": "ok",
-    "source": "ai",
-    "size": 19153
-  },
   "gl10": {
     "id": "gl10",
-    "status": "ok",
-    "source": "ai",
-    "size": 36467
-  },
-  "desert": {
-    "id": "desert",
-    "status": "ok",
-    "source": "ai",
-    "size": 16829
-  },
-  "grassland": {
-    "id": "grassland",
-    "status": "ok",
-    "source": "ai",
-    "size": 25278
+    "status": "skip"
   },
   "gr1": {
     "id": "gr1",
-    "status": "ok",
-    "source": "ai",
-    "size": 50213
+    "status": "skip"
   },
   "gr2": {
     "id": "gr2",
-    "status": "ok",
-    "source": "ai",
-    "size": 34712
+    "status": "skip"
   },
   "gr3": {
     "id": "gr3",
-    "status": "ok",
-    "source": "ai",
-    "size": 28451
+    "status": "skip"
   },
   "gr4": {
     "id": "gr4",
-    "status": "ok",
-    "source": "ai",
-    "size": 41442
+    "status": "skip"
   },
   "gr5": {
     "id": "gr5",
-    "status": "ok",
-    "source": "ai",
-    "size": 44391
+    "status": "skip"
   },
   "gr6": {
     "id": "gr6",
-    "status": "ok",
-    "source": "ai",
-    "size": 41405
+    "status": "skip"
   },
   "gr7": {
     "id": "gr7",
-    "status": "ok",
-    "source": "ai",
-    "size": 35305
+    "status": "skip"
   },
   "gr8": {
     "id": "gr8",
-    "status": "ok",
-    "source": "ai",
-    "size": 41707
+    "status": "skip"
   },
   "gr9": {
     "id": "gr9",
-    "status": "ok",
-    "source": "ai",
-    "size": 23074
+    "status": "skip"
   },
   "gr10": {
     "id": "gr10",
-    "status": "ok",
-    "source": "ai",
-    "size": 13311
+    "status": "skip"
   },
-  "forest": {
-    "id": "forest",
-    "status": "ok",
-    "source": "ai",
-    "size": 45113
-  },
-  "wetland": {
-    "id": "wetland",
+  "we1": {
+    "id": "we1",
     "status": "skip"
   },
   "we2": {
@@ -3601,21 +3297,21 @@
     "id": "we3",
     "status": "skip"
   },
-  "we1": {
-    "id": "we1",
-    "status": "ok",
-    "source": "ai",
-    "size": 42841
+  "we4": {
+    "id": "we4",
+    "status": "skip"
+  },
+  "we5": {
+    "id": "we5",
+    "status": "skip"
   },
   "we6": {
     "id": "we6",
     "status": "skip"
   },
-  "we4": {
-    "id": "we4",
-    "status": "ok",
-    "source": "ai",
-    "size": 59368
+  "we7": {
+    "id": "we7",
+    "status": "skip"
   },
   "we8": {
     "id": "we8",
@@ -3625,496 +3321,326 @@
     "id": "we9",
     "status": "skip"
   },
-  "we5": {
-    "id": "we5",
-    "status": "ok",
-    "source": "ai",
-    "size": 58675
-  },
-  "we7": {
-    "id": "we7",
-    "status": "ok",
-    "source": "ai",
-    "size": 43974
-  },
-  "insects": {
-    "id": "insects",
-    "status": "ok",
-    "source": "ai",
-    "size": 55786
-  },
-  "in2": {
-    "id": "in2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "in3": {
-    "id": "in3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "in4": {
-    "id": "in4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "we10": {
     "id": "we10",
-    "status": "ok",
-    "source": "ai",
-    "size": 85636
-  },
-  "in6": {
-    "id": "in6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "in7": {
-    "id": "in7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "in8": {
-    "id": "in8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "in9": {
-    "id": "in9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "skip"
   },
   "in1": {
     "id": "in1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20853
   },
-  "in5": {
-    "id": "in5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "in2": {
+    "id": "in2",
+    "status": "ok",
+    "source": "ai",
+    "size": 38660
+  },
+  "in3": {
+    "id": "in3",
+    "status": "ok",
+    "source": "ai",
+    "size": 20224
+  },
+  "in4": {
+    "id": "in4",
+    "status": "ok",
+    "source": "ai",
+    "size": 23856
+  },
+  "in6": {
+    "id": "in6",
+    "status": "ok",
+    "source": "ai",
+    "size": 37437
+  },
+  "in7": {
+    "id": "in7",
+    "status": "ok",
+    "source": "ai",
+    "size": 12701
+  },
+  "in8": {
+    "id": "in8",
+    "status": "ok",
+    "source": "ai",
+    "size": 13575
+  },
+  "in9": {
+    "id": "in9",
+    "status": "ok",
+    "source": "ai",
+    "size": 30436
   },
   "in10": {
     "id": "in10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "amphibians": {
-    "id": "amphibians",
     "status": "ok",
     "source": "ai",
-    "size": 50151
-  },
-  "microbes": {
-    "id": "microbes",
-    "status": "ok",
-    "source": "ai",
-    "size": 46977
-  },
-  "mi2": {
-    "id": "mi2",
-    "status": "ok",
-    "source": "ai",
-    "size": 10506
+    "size": 42753
   },
   "mi1": {
     "id": "mi1",
-    "status": "ok",
-    "source": "ai",
-    "size": 32194
+    "status": "skip"
+  },
+  "mi2": {
+    "id": "mi2",
+    "status": "skip"
   },
   "mi3": {
     "id": "mi3",
-    "status": "ok",
-    "source": "ai",
-    "size": 22610
+    "status": "skip"
   },
   "mi4": {
     "id": "mi4",
-    "status": "ok",
-    "source": "ai",
-    "size": 21116
-  },
-  "mi6": {
-    "id": "mi6",
-    "status": "ok",
-    "source": "ai",
-    "size": 36594
+    "status": "skip"
   },
   "mi5": {
     "id": "mi5",
-    "status": "ok",
-    "source": "ai",
-    "size": 30913
+    "status": "skip"
+  },
+  "mi6": {
+    "id": "mi6",
+    "status": "skip"
   },
   "mi7": {
     "id": "mi7",
-    "status": "ok",
-    "source": "ai",
-    "size": 24178
-  },
-  "mi9": {
-    "id": "mi9",
-    "status": "ok",
-    "source": "ai",
-    "size": 67784
-  },
-  "mi10": {
-    "id": "mi10",
-    "status": "ok",
-    "source": "ai",
-    "size": 51063
-  },
-  "marine-life": {
-    "id": "marine-life",
-    "status": "ok",
-    "source": "ai",
-    "size": 44962
+    "status": "skip"
   },
   "mi8": {
     "id": "mi8",
-    "status": "ok",
-    "source": "ai",
-    "size": 20413
+    "status": "skip"
+  },
+  "mi9": {
+    "id": "mi9",
+    "status": "skip"
+  },
+  "mi10": {
+    "id": "mi10",
+    "status": "skip"
   },
   "ma1": {
     "id": "ma1",
-    "status": "ok",
-    "source": "ai",
-    "size": 37135
+    "status": "skip"
   },
   "ma2": {
     "id": "ma2",
-    "status": "ok",
-    "source": "ai",
-    "size": 13727
+    "status": "skip"
   },
   "ma3": {
     "id": "ma3",
-    "status": "ok",
-    "source": "ai",
-    "size": 35903
+    "status": "skip"
   },
   "ma4": {
     "id": "ma4",
-    "status": "ok",
-    "source": "ai",
-    "size": 14280
+    "status": "skip"
   },
   "ma5": {
     "id": "ma5",
-    "status": "ok",
-    "source": "ai",
-    "size": 10013
+    "status": "skip"
   },
   "ma6": {
     "id": "ma6",
-    "status": "ok",
-    "source": "ai",
-    "size": 18247
+    "status": "skip"
   },
   "ma7": {
     "id": "ma7",
-    "status": "ok",
-    "source": "ai",
-    "size": 12540
+    "status": "skip"
   },
   "ma8": {
     "id": "ma8",
-    "status": "ok",
-    "source": "ai",
-    "size": 8744
+    "status": "skip"
   },
-  "zhugeliang": {
-    "id": "zhugeliang",
+  "ma9": {
+    "id": "ma9",
+    "status": "skip"
+  },
+  "ma10": {
+    "id": "ma10",
     "status": "skip"
   },
   "zl1": {
     "id": "zl1",
     "status": "skip"
   },
-  "ma9": {
-    "id": "ma9",
-    "status": "ok",
-    "source": "ai",
-    "size": 11909
-  },
-  "ma10": {
-    "id": "ma10",
-    "status": "ok",
-    "source": "ai",
-    "size": 44148
-  },
   "zl2": {
     "id": "zl2",
-    "status": "ok",
-    "source": "ai",
-    "size": 34586
+    "status": "skip"
   },
   "zl3": {
     "id": "zl3",
-    "status": "ok",
-    "source": "ai",
-    "size": 40095
+    "status": "skip"
   },
   "zl4": {
     "id": "zl4",
-    "status": "ok",
-    "source": "ai",
-    "size": 22883
+    "status": "skip"
   },
   "zl5": {
     "id": "zl5",
-    "status": "ok",
-    "source": "ai",
-    "size": 30119
+    "status": "skip"
   },
   "zl6": {
     "id": "zl6",
-    "status": "ok",
-    "source": "ai",
-    "size": 15831
-  },
-  "zl9": {
-    "id": "zl9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "skip"
   },
   "zl7": {
     "id": "zl7",
-    "status": "ok",
-    "source": "ai",
-    "size": 34639
+    "status": "skip"
   },
   "zl8": {
     "id": "zl8",
-    "status": "ok",
-    "source": "ai",
-    "size": 37772
+    "status": "skip"
+  },
+  "cl6": {
+    "id": "cl6",
+    "status": "fail",
+    "error": "AI 未识别响应"
   },
   "zl10": {
     "id": "zl10",
-    "status": "ok",
-    "source": "ai",
-    "size": 91316
-  },
-  "libai": {
-    "id": "libai",
-    "status": "ok",
-    "source": "ai",
-    "size": 23431
+    "status": "skip"
   },
   "lb1": {
     "id": "lb1",
-    "status": "ok",
-    "source": "ai",
-    "size": 23466
+    "status": "skip"
   },
   "lb2": {
     "id": "lb2",
-    "status": "ok",
-    "source": "ai",
-    "size": 21200
+    "status": "skip"
   },
   "lb3": {
     "id": "lb3",
-    "status": "ok",
-    "source": "ai",
-    "size": 38691
+    "status": "skip"
   },
   "lb4": {
     "id": "lb4",
-    "status": "ok",
-    "source": "ai",
-    "size": 54586
+    "status": "skip"
   },
   "lb5": {
     "id": "lb5",
-    "status": "ok",
-    "source": "ai",
-    "size": 81504
+    "status": "skip"
   },
   "lb6": {
     "id": "lb6",
-    "status": "ok",
-    "source": "ai",
-    "size": 80815
-  },
-  "lb8": {
-    "id": "lb8",
-    "status": "ok",
-    "source": "ai",
-    "size": 13463
+    "status": "skip"
   },
   "lb7": {
     "id": "lb7",
-    "status": "ok",
-    "source": "ai",
-    "size": 30596
+    "status": "skip"
+  },
+  "lb8": {
+    "id": "lb8",
+    "status": "skip"
   },
   "lb9": {
     "id": "lb9",
-    "status": "ok",
-    "source": "ai",
-    "size": 23043
+    "status": "skip"
   },
   "lb10": {
     "id": "lb10",
-    "status": "ok",
-    "source": "ai",
-    "size": 21840
-  },
-  "dufu": {
-    "id": "dufu",
-    "status": "ok",
-    "source": "ai",
-    "size": 6011
+    "status": "skip"
   },
   "df1": {
     "id": "df1",
-    "status": "ok",
-    "source": "ai",
-    "size": 22593
+    "status": "skip"
   },
   "df2": {
     "id": "df2",
-    "status": "ok",
-    "source": "ai",
-    "size": 30449
+    "status": "skip"
   },
   "df3": {
     "id": "df3",
-    "status": "ok",
-    "source": "ai",
-    "size": 82049
+    "status": "skip"
   },
   "df4": {
     "id": "df4",
-    "status": "ok",
-    "source": "ai",
-    "size": 43671
-  },
-  "df6": {
-    "id": "df6",
-    "status": "ok",
-    "source": "ai",
-    "size": 53493
+    "status": "skip"
   },
   "df5": {
     "id": "df5",
-    "status": "ok",
-    "source": "ai",
-    "size": 28927
+    "status": "skip"
+  },
+  "df6": {
+    "id": "df6",
+    "status": "skip"
   },
   "df7": {
     "id": "df7",
-    "status": "ok",
-    "source": "ai",
-    "size": 64181
-  },
-  "df9": {
-    "id": "df9",
-    "status": "ok",
-    "source": "ai",
-    "size": 25735
+    "status": "skip"
   },
   "df8": {
     "id": "df8",
-    "status": "ok",
-    "source": "ai",
-    "size": 71524
+    "status": "skip"
+  },
+  "df9": {
+    "id": "df9",
+    "status": "skip"
   },
   "df10": {
     "id": "df10",
-    "status": "ok",
-    "source": "ai",
-    "size": 49263
-  },
-  "sc2": {
-    "id": "sc2",
-    "status": "ok",
-    "source": "ai",
-    "size": 4438
+    "status": "skip"
   },
   "sc1": {
     "id": "sc1",
-    "status": "ok",
-    "source": "ai",
-    "size": 15126
+    "status": "skip"
   },
   "sc3": {
     "id": "sc3",
-    "status": "ok",
-    "source": "ai",
-    "size": 16151
-  },
-  "sc6": {
-    "id": "sc6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "skip"
   },
   "sc4": {
     "id": "sc4",
-    "status": "ok",
-    "source": "ai",
-    "size": 89547
+    "status": "skip"
   },
   "sc5": {
     "id": "sc5",
-    "status": "ok",
-    "source": "ai",
-    "size": 77791
+    "status": "skip"
   },
-  "sc7": {
-    "id": "sc7",
-    "status": "ok",
-    "source": "ai",
-    "size": 43343
-  },
-  "sc8": {
-    "id": "sc8",
-    "status": "ok",
-    "source": "ai",
-    "size": 20142
-  },
-  "sc9": {
-    "id": "sc9",
-    "status": "ok",
-    "source": "ai",
-    "size": 18759
-  },
-  "sc10": {
-    "id": "sc10",
-    "status": "ok",
-    "source": "ai",
-    "size": 22328
-  },
-  "co1": {
-    "id": "co1",
+  "cl7": {
+    "id": "cl7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "comic-anime": {
-    "id": "comic-anime",
-    "status": "ok",
-    "source": "ai",
-    "size": 18600
+  "sc7": {
+    "id": "sc7",
+    "status": "skip"
+  },
+  "sc8": {
+    "id": "sc8",
+    "status": "skip"
+  },
+  "sc9": {
+    "id": "sc9",
+    "status": "skip"
+  },
+  "sc10": {
+    "id": "sc10",
+    "status": "skip"
+  },
+  "cl8": {
+    "id": "cl8",
+    "status": "fail",
+    "error": "AI 未识别响应"
   },
   "co2": {
     "id": "co2",
-    "status": "ok",
-    "source": "ai",
-    "size": 65423
+    "status": "skip"
+  },
+  "co3": {
+    "id": "co3",
+    "status": "skip"
+  },
+  "co4": {
+    "id": "co4",
+    "status": "skip"
   },
   "co5": {
     "id": "co5",
     "status": "skip"
   },
-  "co3": {
-    "id": "co3",
-    "status": "ok",
-    "source": "ai",
-    "size": 9627
+  "co6": {
+    "id": "co6",
+    "status": "skip"
   },
   "co7": {
     "id": "co7",
@@ -4124,33 +3650,21 @@
     "id": "co8",
     "status": "skip"
   },
-  "co4": {
-    "id": "co4",
-    "status": "ok",
-    "source": "ai",
-    "size": 13009
-  },
-  "co6": {
-    "id": "co6",
-    "status": "ok",
-    "source": "ai",
-    "size": 38703
-  },
   "co9": {
     "id": "co9",
-    "status": "ok",
-    "source": "ai",
-    "size": 19389
+    "status": "skip"
+  },
+  "co10": {
+    "id": "co10",
+    "status": "skip"
   },
   "da1": {
     "id": "da1",
     "status": "skip"
   },
-  "co10": {
-    "id": "co10",
-    "status": "ok",
-    "source": "ai",
-    "size": 75557
+  "da2": {
+    "id": "da2",
+    "status": "skip"
   },
   "da3": {
     "id": "da3",
@@ -4172,24 +3686,16 @@
     "id": "da7",
     "status": "skip"
   },
-  "dance": {
-    "id": "dance",
-    "status": "ok",
-    "source": "ai",
-    "size": 7209
+  "da8": {
+    "id": "da8",
+    "status": "skip"
   },
   "da9": {
     "id": "da9",
     "status": "skip"
   },
-  "da8": {
-    "id": "da8",
-    "status": "ok",
-    "source": "ai",
-    "size": 15864
-  },
-  "traffic-eng": {
-    "id": "traffic-eng",
+  "da10": {
+    "id": "da10",
     "status": "skip"
   },
   "te1": {
@@ -4212,21 +3718,17 @@
     "id": "te5",
     "status": "skip"
   },
-  "da10": {
-    "id": "da10",
-    "status": "ok",
-    "source": "ai",
-    "size": 18272
+  "te6": {
+    "id": "te6",
+    "status": "skip"
   },
   "te7": {
     "id": "te7",
     "status": "skip"
   },
-  "da2": {
-    "id": "da2",
-    "status": "ok",
-    "source": "ai",
-    "size": 15409
+  "te8": {
+    "id": "te8",
+    "status": "skip"
   },
   "te9": {
     "id": "te9",
@@ -4236,19 +3738,13 @@
     "id": "te10",
     "status": "skip"
   },
-  "water-eng": {
-    "id": "water-eng",
-    "status": "skip"
-  },
   "wt1": {
     "id": "wt1",
     "status": "skip"
   },
-  "te6": {
-    "id": "te6",
-    "status": "ok",
-    "source": "ai",
-    "size": 69141
+  "wt2": {
+    "id": "wt2",
+    "status": "skip"
   },
   "wt3": {
     "id": "wt3",
@@ -4270,24 +3766,16 @@
     "id": "wt7",
     "status": "skip"
   },
-  "te8": {
-    "id": "te8",
-    "status": "ok",
-    "source": "ai",
-    "size": 61361
+  "wt8": {
+    "id": "wt8",
+    "status": "skip"
   },
-  "wt2": {
-    "id": "wt2",
-    "status": "ok",
-    "source": "ai",
-    "size": 38907
+  "wt9": {
+    "id": "wt9",
+    "status": "skip"
   },
   "wt10": {
     "id": "wt10",
-    "status": "skip"
-  },
-  "biotech": {
-    "id": "biotech",
     "status": "skip"
   },
   "bt1": {
@@ -4296,9 +3784,7 @@
   },
   "bt2": {
     "id": "bt2",
-    "status": "ok",
-    "source": "ai",
-    "size": 15523
+    "status": "skip"
   },
   "bt3": {
     "id": "bt3",
@@ -4308,129 +3794,78 @@
     "id": "bt4",
     "status": "skip"
   },
-  "wt8": {
-    "id": "wt8",
-    "status": "ok",
-    "source": "ai",
-    "size": 77955
+  "bt5": {
+    "id": "bt5",
+    "status": "skip"
   },
   "bt6": {
     "id": "bt6",
     "status": "skip"
   },
-  "wt9": {
-    "id": "wt9",
-    "status": "ok",
-    "source": "ai",
-    "size": 44532
-  },
   "bt7": {
     "id": "bt7",
-    "status": "ok",
-    "source": "ai",
-    "size": 16814
+    "status": "skip"
   },
   "bt8": {
     "id": "bt8",
-    "status": "ok",
-    "source": "ai",
-    "size": 13696
-  },
-  "bt5": {
-    "id": "bt5",
-    "status": "ok",
-    "source": "ai",
-    "size": 51701
-  },
-  "bt10": {
-    "id": "bt10",
-    "status": "ok",
-    "source": "ai",
-    "size": 44148
-  },
-  "nano-tech": {
-    "id": "nano-tech",
-    "status": "ok",
-    "source": "ai",
-    "size": 43542
+    "status": "skip"
   },
   "bt9": {
     "id": "bt9",
-    "status": "ok",
-    "source": "ai",
-    "size": 76497
+    "status": "skip"
+  },
+  "bt10": {
+    "id": "bt10",
+    "status": "skip"
   },
   "na1": {
     "id": "na1",
-    "status": "ok",
-    "source": "ai",
-    "size": 28921
+    "status": "skip"
   },
   "na2": {
     "id": "na2",
-    "status": "ok",
-    "source": "ai",
-    "size": 29912
+    "status": "skip"
   },
   "na3": {
     "id": "na3",
-    "status": "ok",
-    "source": "ai",
-    "size": 24674
+    "status": "skip"
   },
   "na4": {
     "id": "na4",
-    "status": "ok",
-    "source": "ai",
-    "size": 77808
-  },
-  "na6": {
-    "id": "na6",
-    "status": "ok",
-    "source": "ai",
-    "size": 43891
+    "status": "skip"
   },
   "na5": {
     "id": "na5",
-    "status": "ok",
-    "source": "ai",
-    "size": 49007
+    "status": "skip"
+  },
+  "na6": {
+    "id": "na6",
+    "status": "skip"
   },
   "na7": {
     "id": "na7",
-    "status": "ok",
-    "source": "ai",
-    "size": 36075
-  },
-  "na9": {
-    "id": "na9",
-    "status": "ok",
-    "source": "ai",
-    "size": 41141
+    "status": "skip"
   },
   "na8": {
     "id": "na8",
-    "status": "ok",
-    "source": "ai",
-    "size": 35201
+    "status": "skip"
+  },
+  "na9": {
+    "id": "na9",
+    "status": "skip"
   },
   "na10": {
     "id": "na10",
-    "status": "ok",
-    "source": "ai",
-    "size": 49725
+    "status": "skip"
   },
-  "env-eng": {
-    "id": "env-eng",
-    "status": "ok",
-    "source": "ai",
-    "size": 44932
+  "cl9": {
+    "id": "cl9",
+    "status": "fail",
+    "error": "AI 未识别响应"
   },
-  "balanced-diet": {
-    "id": "balanced-diet",
-    "status": "ok",
-    "source": "ai",
-    "size": 17541
+  "bd1": {
+    "id": "bd1",
+    "status": "skip"
   },
   "bd2": {
     "id": "bd2",
@@ -4456,87 +3891,61 @@
     "id": "bd7",
     "status": "skip"
   },
-  "bd1": {
-    "id": "bd1",
-    "status": "ok",
-    "source": "ai",
-    "size": 9140
+  "bd8": {
+    "id": "bd8",
+    "status": "skip"
   },
   "bd9": {
     "id": "bd9",
     "status": "skip"
   },
-  "bd8": {
-    "id": "bd8",
-    "status": "ok",
-    "source": "ai",
-    "size": 22158
-  },
-  "food-safety": {
-    "id": "food-safety",
-    "status": "skip"
-  },
   "bd10": {
     "id": "bd10",
-    "status": "ok",
-    "source": "ai",
-    "size": 14920
+    "status": "skip"
   },
   "fs1": {
     "id": "fs1",
-    "status": "ok",
-    "source": "ai",
-    "size": 43295
+    "status": "skip"
   },
   "fs2": {
     "id": "fs2",
-    "status": "ok",
-    "source": "ai",
-    "size": 28036
+    "status": "skip"
   },
   "fs3": {
     "id": "fs3",
-    "status": "ok",
-    "source": "ai",
-    "size": 31766
+    "status": "skip"
   },
   "fs4": {
     "id": "fs4",
-    "status": "ok",
-    "source": "ai",
-    "size": 13715
+    "status": "skip"
+  },
+  "fs5": {
+    "id": "fs5",
+    "status": "skip"
+  },
+  "fs6": {
+    "id": "fs6",
+    "status": "skip"
   },
   "fs7": {
     "id": "fs7",
     "status": "skip"
   },
-  "fs6": {
-    "id": "fs6",
-    "status": "ok",
-    "source": "ai",
-    "size": 22303
-  },
   "fs8": {
     "id": "fs8",
-    "status": "ok",
-    "source": "ai",
-    "size": 18390
+    "status": "skip"
+  },
+  "fs9": {
+    "id": "fs9",
+    "status": "skip"
   },
   "fs10": {
     "id": "fs10",
     "status": "skip"
   },
-  "fs5": {
-    "id": "fs5",
-    "status": "ok",
-    "source": "ai",
-    "size": 9996
-  },
-  "drug-knowledge": {
-    "id": "drug-knowledge",
-    "status": "ok",
-    "source": "ai",
-    "size": 17266
+  "dk1": {
+    "id": "dk1",
+    "status": "skip"
   },
   "dk2": {
     "id": "dk2",
@@ -4546,461 +3955,289 @@
     "id": "dk3",
     "status": "skip"
   },
-  "fs9": {
-    "id": "fs9",
-    "status": "ok",
-    "source": "ai",
-    "size": 24744
-  },
   "dk4": {
     "id": "dk4",
-    "status": "ok",
-    "source": "ai",
-    "size": 15592
-  },
-  "dk1": {
-    "id": "dk1",
-    "status": "ok",
-    "source": "ai",
-    "size": 30670
-  },
-  "dk6": {
-    "id": "dk6",
-    "status": "ok",
-    "source": "ai",
-    "size": 33624
-  },
-  "dk7": {
-    "id": "dk7",
-    "status": "ok",
-    "source": "ai",
-    "size": 4601
-  },
-  "dk9": {
-    "id": "dk9",
-    "status": "ok",
-    "source": "ai",
-    "size": 18260
-  },
-  "dk8": {
-    "id": "dk8",
-    "status": "ok",
-    "source": "ai",
-    "size": 10206
+    "status": "skip"
   },
   "dk5": {
     "id": "dk5",
-    "status": "ok",
-    "source": "ai",
-    "size": 18581
+    "status": "skip"
+  },
+  "dk6": {
+    "id": "dk6",
+    "status": "skip"
+  },
+  "dk8": {
+    "id": "dk8",
+    "status": "skip"
+  },
+  "dk9": {
+    "id": "dk9",
+    "status": "skip"
   },
   "dk10": {
     "id": "dk10",
-    "status": "ok",
-    "source": "ai",
-    "size": 45998
-  },
-  "vaccination": {
-    "id": "vaccination",
-    "status": "ok",
-    "source": "ai",
-    "size": 13971
+    "status": "skip"
   },
   "va1": {
     "id": "va1",
-    "status": "ok",
-    "source": "ai",
-    "size": 34159
-  },
-  "va3": {
-    "id": "va3",
-    "status": "ok",
-    "source": "ai",
-    "size": 20080
+    "status": "skip"
   },
   "va2": {
     "id": "va2",
-    "status": "ok",
-    "source": "ai",
-    "size": 10739
+    "status": "skip"
+  },
+  "va3": {
+    "id": "va3",
+    "status": "skip"
   },
   "va4": {
     "id": "va4",
-    "status": "ok",
-    "source": "ai",
-    "size": 35271
-  },
-  "va6": {
-    "id": "va6",
-    "status": "ok",
-    "source": "ai",
-    "size": 17077
+    "status": "skip"
   },
   "va5": {
     "id": "va5",
-    "status": "ok",
-    "source": "ai",
-    "size": 13852
+    "status": "skip"
+  },
+  "va6": {
+    "id": "va6",
+    "status": "skip"
   },
   "va7": {
     "id": "va7",
-    "status": "ok",
-    "source": "ai",
-    "size": 11723
+    "status": "skip"
   },
   "va8": {
     "id": "va8",
-    "status": "ok",
-    "source": "ai",
-    "size": 27138
+    "status": "skip"
   },
   "va9": {
     "id": "va9",
-    "status": "ok",
-    "source": "ai",
-    "size": 30375
+    "status": "skip"
   },
   "va10": {
     "id": "va10",
-    "status": "ok",
-    "source": "ai",
-    "size": 29278
+    "status": "skip"
   },
   "mh1": {
     "id": "mh1",
-    "status": "ok",
-    "source": "ai",
-    "size": 16020
+    "status": "skip"
   },
-  "mh4": {
-    "id": "mh4",
-    "status": "ok",
-    "source": "ai",
-    "size": 57166
+  "mh2": {
+    "id": "mh2",
+    "status": "skip"
   },
   "mh3": {
     "id": "mh3",
-    "status": "ok",
-    "source": "ai",
-    "size": 18439
+    "status": "skip"
+  },
+  "mh4": {
+    "id": "mh4",
+    "status": "skip"
   },
   "mh5": {
     "id": "mh5",
-    "status": "ok",
-    "source": "ai",
-    "size": 42185
+    "status": "skip"
   },
   "mh6": {
     "id": "mh6",
-    "status": "ok",
-    "source": "ai",
-    "size": 15667
+    "status": "skip"
+  },
+  "mh7": {
+    "id": "mh7",
+    "status": "skip"
   },
   "mh8": {
     "id": "mh8",
     "status": "skip"
   },
-  "mh7": {
-    "id": "mh7",
-    "status": "ok",
-    "source": "ai",
-    "size": 39429
-  },
-  "mh2": {
-    "id": "mh2",
-    "status": "ok",
-    "source": "ai",
-    "size": 22450
-  },
   "mh9": {
     "id": "mh9",
-    "status": "ok",
-    "source": "ai",
-    "size": 13979
+    "status": "skip"
   },
   "mh10": {
     "id": "mh10",
-    "status": "ok",
-    "source": "ai",
-    "size": 38204
-  },
-  "home-safety": {
-    "id": "home-safety",
-    "status": "ok",
-    "source": "ai",
-    "size": 35532
+    "status": "skip"
   },
   "hs1": {
     "id": "hs1",
-    "status": "ok",
-    "source": "ai",
-    "size": 57365
-  },
-  "hs3": {
-    "id": "hs3",
-    "status": "ok",
-    "source": "ai",
-    "size": 33226
-  },
-  "hs4": {
-    "id": "hs4",
-    "status": "ok",
-    "source": "ai",
-    "size": 30623
+    "status": "skip"
   },
   "hs2": {
     "id": "hs2",
-    "status": "ok",
-    "source": "ai",
-    "size": 30185
+    "status": "skip"
+  },
+  "hs3": {
+    "id": "hs3",
+    "status": "skip"
+  },
+  "hs4": {
+    "id": "hs4",
+    "status": "skip"
   },
   "hs5": {
     "id": "hs5",
-    "status": "ok",
-    "source": "ai",
-    "size": 18636
+    "status": "skip"
+  },
+  "hs6": {
+    "id": "hs6",
+    "status": "skip"
+  },
+  "hs7": {
+    "id": "hs7",
+    "status": "skip"
   },
   "hs8": {
     "id": "hs8",
     "status": "skip"
   },
-  "hs6": {
-    "id": "hs6",
-    "status": "ok",
-    "source": "ai",
-    "size": 21801
-  },
-  "hs7": {
-    "id": "hs7",
-    "status": "ok",
-    "source": "ai",
-    "size": 41252
-  },
   "hs9": {
     "id": "hs9",
-    "status": "ok",
-    "source": "ai",
-    "size": 77092
+    "status": "skip"
   },
   "hs10": {
     "id": "hs10",
-    "status": "ok",
-    "source": "ai",
-    "size": 70210
+    "status": "skip"
   },
-  "logical-fallacy": {
-    "id": "logical-fallacy",
-    "status": "ok",
-    "source": "ai",
-    "size": 17818
+  "lf1": {
+    "id": "lf1",
+    "status": "skip"
+  },
+  "lf2": {
+    "id": "lf2",
+    "status": "skip"
   },
   "lf3": {
     "id": "lf3",
     "status": "skip"
   },
-  "lf1": {
-    "id": "lf1",
-    "status": "ok",
-    "source": "ai",
-    "size": 20081
+  "lf4": {
+    "id": "lf4",
+    "status": "skip"
   },
   "lf5": {
     "id": "lf5",
     "status": "skip"
   },
-  "lf4": {
-    "id": "lf4",
-    "status": "ok",
-    "source": "ai",
-    "size": 26466
+  "lf6": {
+    "id": "lf6",
+    "status": "skip"
   },
   "lf7": {
     "id": "lf7",
     "status": "skip"
   },
-  "lf6": {
-    "id": "lf6",
-    "status": "ok",
-    "source": "ai",
-    "size": 29371
+  "lf8": {
+    "id": "lf8",
+    "status": "skip"
   },
   "lf9": {
     "id": "lf9",
     "status": "skip"
   },
-  "lf8": {
-    "id": "lf8",
-    "status": "ok",
-    "source": "ai",
-    "size": 17972
-  },
   "lf10": {
     "id": "lf10",
-    "status": "ok",
-    "source": "ai",
-    "size": 39520
-  },
-  "reverse-thinking": {
-    "id": "reverse-thinking",
-    "status": "ok",
-    "source": "ai",
-    "size": 18299
-  },
-  "lf2": {
-    "id": "lf2",
-    "status": "ok",
-    "source": "ai",
-    "size": 10088
-  },
-  "rt2": {
-    "id": "rt2",
-    "status": "ok",
-    "source": "ai",
-    "size": 48540
-  },
-  "rt3": {
-    "id": "rt3",
-    "status": "ok",
-    "source": "ai",
-    "size": 28915
-  },
-  "rt4": {
-    "id": "rt4",
-    "status": "ok",
-    "source": "ai",
-    "size": 20328
-  },
-  "rt5": {
-    "id": "rt5",
-    "status": "ok",
-    "source": "ai",
-    "size": 13135
-  },
-  "rt6": {
-    "id": "rt6",
-    "status": "ok",
-    "source": "ai",
-    "size": 37134
-  },
-  "rt7": {
-    "id": "rt7",
-    "status": "ok",
-    "source": "ai",
-    "size": 18121
+    "status": "skip"
   },
   "rt1": {
     "id": "rt1",
-    "status": "ok",
-    "source": "ai",
-    "size": 27888
+    "status": "skip"
+  },
+  "rt2": {
+    "id": "rt2",
+    "status": "skip"
+  },
+  "rt3": {
+    "id": "rt3",
+    "status": "skip"
+  },
+  "rt4": {
+    "id": "rt4",
+    "status": "skip"
+  },
+  "rt5": {
+    "id": "rt5",
+    "status": "skip"
+  },
+  "rt6": {
+    "id": "rt6",
+    "status": "skip"
+  },
+  "rt7": {
+    "id": "rt7",
+    "status": "skip"
   },
   "rt8": {
     "id": "rt8",
-    "status": "ok",
-    "source": "ai",
-    "size": 19841
+    "status": "skip"
   },
   "rt9": {
     "id": "rt9",
-    "status": "ok",
-    "source": "ai",
-    "size": 31142
+    "status": "skip"
   },
   "rt10": {
     "id": "rt10",
-    "status": "ok",
-    "source": "ai",
-    "size": 8472
-  },
-  "divergent-thinking": {
-    "id": "divergent-thinking",
-    "status": "ok",
-    "source": "ai",
-    "size": 15674
+    "status": "skip"
   },
   "dt1": {
     "id": "dt1",
-    "status": "ok",
-    "source": "ai",
-    "size": 49795
+    "status": "skip"
   },
   "dt2": {
     "id": "dt2",
-    "status": "ok",
-    "source": "ai",
-    "size": 25361
+    "status": "skip"
   },
   "dt3": {
     "id": "dt3",
-    "status": "ok",
-    "source": "ai",
-    "size": 28785
+    "status": "skip"
   },
   "dt4": {
     "id": "dt4",
-    "status": "ok",
-    "source": "ai",
-    "size": 18592
-  },
-  "dt6": {
-    "id": "dt6",
-    "status": "ok",
-    "source": "ai",
-    "size": 15866
+    "status": "skip"
   },
   "dt5": {
     "id": "dt5",
-    "status": "ok",
-    "source": "ai",
-    "size": 34505
+    "status": "skip"
+  },
+  "dt6": {
+    "id": "dt6",
+    "status": "skip"
   },
   "dt7": {
     "id": "dt7",
-    "status": "ok",
-    "source": "ai",
-    "size": 19647
+    "status": "skip"
   },
   "dt8": {
     "id": "dt8",
-    "status": "ok",
-    "source": "ai",
-    "size": 49355
+    "status": "skip"
   },
   "dt9": {
     "id": "dt9",
-    "status": "ok",
-    "source": "ai",
-    "size": 28535
+    "status": "skip"
   },
   "dt10": {
     "id": "dt10",
-    "status": "ok",
-    "source": "ai",
-    "size": 25735
-  },
-  "abstract-thinking": {
-    "id": "abstract-thinking",
-    "status": "ok",
-    "source": "ai",
-    "size": 10416
+    "status": "skip"
   },
   "ab1": {
     "id": "ab1",
-    "status": "ok",
-    "source": "ai",
-    "size": 12437
+    "status": "skip"
   },
   "ab2": {
     "id": "ab2",
-    "status": "ok",
-    "source": "ai",
-    "size": 21052
+    "status": "skip"
+  },
+  "ab3": {
+    "id": "ab3",
+    "status": "skip"
+  },
+  "ab4": {
+    "id": "ab4",
+    "status": "skip"
   },
   "ab5": {
     "id": "ab5",
-    "status": "ok",
-    "source": "ai",
-    "size": 7410
+    "status": "skip"
   },
   "ab6": {
     "id": "ab6",
@@ -5010,108 +4247,84 @@
     "id": "ab7",
     "status": "skip"
   },
-  "ab3": {
-    "id": "ab3",
-    "status": "ok",
-    "source": "ai",
-    "size": 13020
-  },
   "ab8": {
     "id": "ab8",
-    "status": "ok",
-    "source": "ai",
-    "size": 23566
+    "status": "skip"
   },
   "ab9": {
     "id": "ab9",
-    "status": "ok",
-    "source": "ai",
-    "size": 29847
+    "status": "skip"
   },
   "ab10": {
     "id": "ab10",
-    "status": "ok",
-    "source": "ai",
-    "size": 11747
-  },
-  "ab4": {
-    "id": "ab4",
-    "status": "ok",
-    "source": "ai",
-    "size": 13326
-  },
-  "sudoku-logic": {
-    "id": "sudoku-logic",
-    "status": "ok",
-    "source": "ai",
-    "size": 38334
+    "status": "skip"
   },
   "su1": {
     "id": "su1",
-    "status": "ok",
-    "source": "ai",
-    "size": 13169
+    "status": "skip"
+  },
+  "su2": {
+    "id": "su2",
+    "status": "skip"
+  },
+  "su3": {
+    "id": "su3",
+    "status": "skip"
   },
   "su4": {
     "id": "su4",
-    "status": "ok",
-    "source": "ai",
-    "size": 45987
+    "status": "skip"
   },
-  "su5": {
-    "id": "su5",
+  "zl9": {
+    "id": "zl9",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "co1": {
+    "id": "co1",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "sc6": {
+    "id": "sc6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "su6": {
     "id": "su6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42697
   },
   "su7": {
     "id": "su7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 45098
+  },
+  "su5": {
+    "id": "su5",
+    "status": "ok",
+    "source": "ai",
+    "size": 18043
   },
   "su8": {
     "id": "su8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "su9": {
-    "id": "su9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "su10": {
-    "id": "su10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "business-mgmt": {
-    "id": "business-mgmt",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "bm1": {
-    "id": "bm1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "bm2": {
-    "id": "bm2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 32310
   },
   "bm3": {
     "id": "bm3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 10649
   },
-  "bm4": {
-    "id": "bm4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "su9": {
+    "id": "su9",
+    "status": "ok",
+    "source": "ai",
+    "size": 16901
   },
   "bm5": {
     "id": "bm5",
@@ -5125,340 +4338,347 @@
     "id": "bm7",
     "status": "skip"
   },
-  "bm8": {
-    "id": "bm8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "bm2": {
+    "id": "bm2",
+    "status": "ok",
+    "source": "ai",
+    "size": 85651
+  },
+  "su10": {
+    "id": "su10",
+    "status": "ok",
+    "source": "ai",
+    "size": 23976
+  },
+  "bm1": {
+    "id": "bm1",
+    "status": "ok",
+    "source": "ai",
+    "size": 37458
   },
   "bm9": {
     "id": "bm9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49349
+  },
+  "bm8": {
+    "id": "bm8",
+    "status": "ok",
+    "source": "ai",
+    "size": 93946
+  },
+  "bm4": {
+    "id": "bm4",
+    "status": "ok",
+    "source": "ai",
+    "size": 14048
   },
   "bm10": {
     "id": "bm10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ecommerce": {
-    "id": "ecommerce",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "insurance": {
-    "id": "insurance",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "su2": {
-    "id": "su2",
     "status": "ok",
     "source": "ai",
-    "size": 8865
-  },
-  "tax-basics": {
-    "id": "tax-basics",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "size": 42776
   },
   "ta1": {
     "id": "ta1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 59384
   },
   "ta2": {
     "id": "ta2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 39735
   },
   "ta3": {
     "id": "ta3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 65668
   },
   "ta4": {
     "id": "ta4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ta6": {
-    "id": "ta6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23455
   },
   "ta5": {
     "id": "ta5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42820
+  },
+  "ta6": {
+    "id": "ta6",
+    "status": "ok",
+    "source": "ai",
+    "size": 50748
   },
   "ta7": {
     "id": "ta7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 33563
   },
   "ta8": {
     "id": "ta8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 15938
   },
   "ta9": {
     "id": "ta9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 10638
   },
   "ta10": {
     "id": "ta10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "rhetoric": {
-    "id": "rhetoric",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 72145
   },
   "rh1": {
     "id": "rh1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 13419
   },
   "rh2": {
     "id": "rh2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49145
   },
   "rh3": {
     "id": "rh3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 167660
   },
   "rh4": {
     "id": "rh4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21224
   },
   "rh5": {
     "id": "rh5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 41946
   },
   "rh6": {
     "id": "rh6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 72851
   },
   "rh7": {
     "id": "rh7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 67955
   },
   "rh8": {
     "id": "rh8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31872
   },
   "rh9": {
     "id": "rh9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "rh10": {
-    "id": "rh10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "punctuation": {
-    "id": "punctuation",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 29748
   },
   "pu1": {
     "id": "pu1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 7486
   },
   "pu2": {
     "id": "pu2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 12784
   },
   "pu3": {
     "id": "pu3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 6609
   },
   "pu4": {
     "id": "pu4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11319
   },
   "pu5": {
     "id": "pu5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 8830
   },
   "pu6": {
     "id": "pu6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23862
   },
   "pu7": {
     "id": "pu7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11525
   },
   "pu8": {
     "id": "pu8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23162
   },
   "pu9": {
     "id": "pu9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "polyphone": {
-    "id": "polyphone",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 8717
   },
   "pu10": {
     "id": "pu10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "xiangjinzi": {
-    "id": "xiangjinzi",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 6620
   },
   "xj1": {
     "id": "xj1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11026
   },
   "xj2": {
     "id": "xj2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "xj3": {
-    "id": "xj3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "xj4": {
-    "id": "xj4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "xj5": {
-    "id": "xj5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 39353
   },
   "xj6": {
     "id": "xj6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 15594
   },
   "xj7": {
     "id": "xj7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23505
   },
   "xj8": {
     "id": "xj8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 6404
   },
   "xj9": {
     "id": "xj9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42941
   },
   "xj10": {
     "id": "xj10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "riddles": {
-    "id": "riddles",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21697
   },
   "ri1": {
     "id": "ri1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 6502
   },
   "ri2": {
     "id": "ri2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23277
   },
   "ri3": {
     "id": "ri3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 44329
   },
   "ri4": {
     "id": "ri4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 28124
   },
   "ri5": {
     "id": "ri5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 17267
   },
-  "ri6": {
-    "id": "ri6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "xj3": {
+    "id": "xj3",
+    "status": "ok",
+    "source": "ai",
+    "size": 10569
   },
-  "ri7": {
-    "id": "ri7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "rh10": {
+    "id": "rh10",
+    "status": "ok",
+    "source": "ai",
+    "size": 28047
   },
   "ri8": {
     "id": "ri8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 28632
   },
   "ri9": {
     "id": "ri9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 14889
   },
   "ri10": {
     "id": "ri10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "monetary-policy": {
-    "id": "monetary-policy",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 18377
   },
   "mp1": {
     "id": "mp1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 51493
   },
   "mp2": {
     "id": "mp2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "mp4": {
-    "id": "mp4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 57232
   },
   "mp3": {
     "id": "mp3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 37353
+  },
+  "mp4": {
+    "id": "mp4",
+    "status": "ok",
+    "source": "ai",
+    "size": 55777
   },
   "mp5": {
     "id": "mp5",
@@ -5467,288 +4687,327 @@
   },
   "mp6": {
     "id": "mp6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23610
   },
   "mp7": {
     "id": "mp7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31971
   },
   "mp8": {
     "id": "mp8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 32560
   },
-  "mp9": {
-    "id": "mp9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "xj4": {
+    "id": "xj4",
+    "status": "ok",
+    "source": "ai",
+    "size": 18648
   },
   "mp10": {
     "id": "mp10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "sharing-economy": {
-    "id": "sharing-economy",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 111856
   },
   "sh1": {
     "id": "sh1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 59400
   },
   "sh2": {
     "id": "sh2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 57392
   },
   "sh3": {
     "id": "sh3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 37604
   },
   "sh4": {
     "id": "sh4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55114
   },
   "sh5": {
     "id": "sh5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 58069
   },
   "sh6": {
     "id": "sh6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55740
   },
   "sh7": {
     "id": "sh7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 43221
   },
   "sh8": {
     "id": "sh8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "sh10": {
-    "id": "sh10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 47134
   },
   "sh9": {
     "id": "sh9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16062
   },
-  "smart-money": {
-    "id": "smart-money",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "xj5": {
+    "id": "xj5",
+    "status": "ok",
+    "source": "ai",
+    "size": 50003
   },
-  "internet-economy": {
-    "id": "internet-economy",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ri7": {
+    "id": "ri7",
+    "status": "ok",
+    "source": "ai",
+    "size": 32053
   },
-  "ie2": {
-    "id": "ie2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "mp9": {
+    "id": "mp9",
+    "status": "ok",
+    "source": "ai",
+    "size": 26793
   },
   "ie1": {
     "id": "ie1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 32290
+  },
+  "ie2": {
+    "id": "ie2",
+    "status": "ok",
+    "source": "ai",
+    "size": 52835
   },
   "ie3": {
     "id": "ie3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 70259
+  },
+  "ri6": {
+    "id": "ri6",
+    "status": "ok",
+    "source": "ai",
+    "size": 26572
   },
   "ie4": {
     "id": "ie4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 26492
   },
   "ie6": {
     "id": "ie6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ie5": {
-    "id": "ie5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 72628
   },
   "ie7": {
     "id": "ie7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 28285
   },
   "ie8": {
     "id": "ie8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55619
   },
   "ie9": {
     "id": "ie9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 19744
   },
   "ie10": {
     "id": "ie10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "rural-economy": {
-    "id": "rural-economy",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 40940
   },
   "re1": {
     "id": "re1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 53624
   },
   "re2": {
     "id": "re2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 58120
   },
   "re3": {
     "id": "re3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 76637
   },
   "re4": {
     "id": "re4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 94180
   },
   "re5": {
     "id": "re5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 132224
   },
   "re6": {
     "id": "re6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 69660
   },
   "re7": {
     "id": "re7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 62036
   },
   "re8": {
     "id": "re8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 131860
+  },
+  "sh10": {
+    "id": "sh10",
+    "status": "ok",
+    "source": "ai",
+    "size": 97754
   },
   "re9": {
     "id": "re9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 86835
   },
   "re10": {
     "id": "re10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "common-errors": {
-    "id": "common-errors",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55346
   },
   "ce1": {
     "id": "ce1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 75171
   },
   "ce2": {
     "id": "ce2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 27715
   },
   "ce3": {
     "id": "ce3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ce4": {
-    "id": "ce4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 40230
   },
   "ce5": {
     "id": "ce5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21415
+  },
+  "ce4": {
+    "id": "ce4",
+    "status": "ok",
+    "source": "ai",
+    "size": 27693
   },
   "ce6": {
     "id": "ce6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20210
   },
   "ce7": {
     "id": "ce7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 17685
   },
   "ce9": {
     "id": "ce9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55839
   },
   "ce8": {
     "id": "ce8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31662
   },
   "ce10": {
     "id": "ce10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ancient-poetry": {
-    "id": "ancient-poetry",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ap2": {
-    "id": "ap2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16662
   },
   "ap1": {
     "id": "ap1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 63868
+  },
+  "ap2": {
+    "id": "ap2",
+    "status": "ok",
+    "source": "ai",
+    "size": 41665
   },
   "ap3": {
     "id": "ap3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 70360
   },
   "ap4": {
     "id": "ap4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ap6": {
-    "id": "ap6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11351
   },
   "ap5": {
     "id": "ap5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 39660
+  },
+  "ap6": {
+    "id": "ap6",
+    "status": "ok",
+    "source": "ai",
+    "size": 9194
   },
   "ap8": {
     "id": "ap8",
@@ -5756,58 +5015,57 @@
   },
   "ap7": {
     "id": "ap7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ap9": {
-    "id": "ap9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 48955
   },
   "ap10": {
     "id": "ap10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 39694
   },
-  "new-words": {
-    "id": "new-words",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "chinese-dialects": {
-    "id": "chinese-dialects",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ap9": {
+    "id": "ap9",
+    "status": "ok",
+    "source": "ai",
+    "size": 25959
   },
   "cd1": {
     "id": "cd1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 27516
   },
   "cd2": {
     "id": "cd2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 63921
   },
   "cd3": {
     "id": "cd3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 83844
   },
   "cd4": {
     "id": "cd4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 89250
   },
   "cd5": {
     "id": "cd5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 27545
   },
   "cd6": {
     "id": "cd6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49290
   },
   "cd7": {
     "id": "cd7",
@@ -5816,179 +5074,179 @@
   },
   "cd8": {
     "id": "cd8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 62746
   },
   "cd9": {
     "id": "cd9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 66838
   },
   "cd10": {
     "id": "cd10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "lateral-thinking": {
-    "id": "lateral-thinking",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11651
   },
   "lt1": {
     "id": "lt1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 24793
   },
   "lt2": {
     "id": "lt2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 38619
   },
   "lt3": {
     "id": "lt3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 41531
   },
   "lt4": {
     "id": "lt4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 13281
   },
   "lt5": {
     "id": "lt5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 3681
   },
   "lt6": {
     "id": "lt6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16472
   },
   "lt7": {
     "id": "lt7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 27128
   },
   "lt8": {
     "id": "lt8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "lt9": {
-    "id": "lt9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "game-theory": {
-    "id": "game-theory",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 5653
   },
   "lt10": {
     "id": "lt10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 38574
   },
   "gt1": {
     "id": "gt1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 28572
   },
   "gt2": {
     "id": "gt2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 29061
   },
   "gt3": {
     "id": "gt3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11164
   },
   "gt4": {
     "id": "gt4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21753
   },
   "gt5": {
     "id": "gt5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 35231
+  },
+  "gt6": {
+    "id": "gt6",
+    "status": "ok",
+    "source": "ai",
+    "size": 25640
   },
   "gt7": {
     "id": "gt7",
     "status": "skip"
   },
-  "gt6": {
-    "id": "gt6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "gt8": {
     "id": "gt8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 40078
   },
   "gt9": {
     "id": "gt9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 72035
   },
   "gt10": {
     "id": "gt10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "truth-lie": {
-    "id": "truth-lie",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 24064
   },
   "tl1": {
     "id": "tl1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "tl2": {
-    "id": "tl2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36485
   },
   "tl3": {
     "id": "tl3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 37641
+  },
+  "tl2": {
+    "id": "tl2",
+    "status": "ok",
+    "source": "ai",
+    "size": 9768
   },
   "tl4": {
     "id": "tl4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21901
   },
   "tl5": {
     "id": "tl5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 4629
   },
   "tl6": {
     "id": "tl6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 26918
   },
   "tl7": {
     "id": "tl7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "tl9": {
-    "id": "tl9",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 10161
   },
   "tl10": {
     "id": "tl10",
     "status": "skip"
-  },
-  "tl8": {
-    "id": "tl8",
-    "status": "fail",
-    "error": "AI 未识别响应"
   },
   "io1": {
     "id": "io1",
@@ -5998,129 +5256,129 @@
     "id": "io2",
     "status": "skip"
   },
-  "information-org": {
-    "id": "information-org",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "tl8": {
+    "id": "tl8",
+    "status": "ok",
+    "source": "ai",
+    "size": 27071
   },
   "io3": {
     "id": "io3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 13826
   },
   "io4": {
     "id": "io4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 22986
   },
   "io5": {
     "id": "io5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 10453
   },
   "io6": {
     "id": "io6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 14289
   },
   "io7": {
     "id": "io7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 47743
   },
   "io8": {
     "id": "io8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42438
   },
   "io9": {
     "id": "io9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 13377
   },
   "io10": {
     "id": "io10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "chinese-arch": {
-    "id": "chinese-arch",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "music-genres": {
-    "id": "music-genres",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "fashion": {
-    "id": "fashion",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 24804
   },
   "fa1": {
     "id": "fa1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 30326
   },
   "fa2": {
     "id": "fa2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 60845
   },
   "fa3": {
     "id": "fa3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "fa5": {
-    "id": "fa5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36170
   },
   "fa4": {
     "id": "fa4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 62260
+  },
+  "fa5": {
+    "id": "fa5",
+    "status": "ok",
+    "source": "ai",
+    "size": 32243
   },
   "fa6": {
     "id": "fa6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20957
   },
   "fa7": {
     "id": "fa7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 26221
   },
   "fa8": {
     "id": "fa8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 12919
   },
   "fa9": {
     "id": "fa9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 27227
   },
   "fa10": {
     "id": "fa10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 15420
   },
-  "5g-iot": {
-    "id": "5g-iot",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "gi1": {
+    "id": "gi1",
+    "status": "ok",
+    "source": "ai",
+    "size": 25744
   },
   "gi2": {
     "id": "gi2",
     "status": "skip"
-  },
-  "gi1": {
-    "id": "gi1",
-    "status": "fail",
-    "error": "AI 未识别响应"
   },
   "gi3": {
     "id": "gi3",
@@ -6149,18 +5407,21 @@
   },
   "gi8": {
     "id": "gi8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49777
   },
   "gi9": {
     "id": "gi9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 50880
   },
   "gi10": {
     "id": "gi10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49427
   },
   "bl1": {
     "id": "bl1",
@@ -6170,15 +5431,17 @@
     "id": "bl2",
     "status": "skip"
   },
-  "blockchain": {
-    "id": "blockchain",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ie5": {
+    "id": "ie5",
+    "status": "ok",
+    "source": "ai",
+    "size": 54078
   },
   "bl3": {
     "id": "bl3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36813
   },
   "bl5": {
     "id": "bl5",
@@ -6186,8 +5449,9 @@
   },
   "bl4": {
     "id": "bl4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 29206
   },
   "bl6": {
     "id": "bl6",
@@ -6209,14 +5473,11 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "quantum": {
-    "id": "quantum",
-    "status": "skip"
-  },
   "bl10": {
     "id": "bl10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 50745
   },
   "qu2": {
     "id": "qu2",
@@ -6224,8 +5485,9 @@
   },
   "qu1": {
     "id": "qu1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20504
   },
   "qu4": {
     "id": "qu4",
@@ -6235,23 +5497,15 @@
     "id": "qu5",
     "status": "skip"
   },
-  "qu6": {
-    "id": "qu6",
-    "status": "skip"
-  },
   "qu7": {
     "id": "qu7",
     "status": "skip"
   },
   "qu3": {
     "id": "qu3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "qu8": {
-    "id": "qu8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36723
   },
   "qu9": {
     "id": "qu9",
@@ -6260,20 +5514,12 @@
   },
   "qu10": {
     "id": "qu10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42968
   },
   "gp1": {
     "id": "gp1",
-    "status": "skip"
-  },
-  "grow-puberty": {
-    "id": "grow-puberty",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "gp3": {
-    "id": "gp3",
     "status": "skip"
   },
   "gp2": {
@@ -6281,8 +5527,17 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "gp3": {
+    "id": "gp3",
+    "status": "skip"
+  },
   "gp4": {
     "id": "gp4",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "gp5": {
+    "id": "gp5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6292,26 +5547,17 @@
   },
   "gp7": {
     "id": "gp7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "gp5": {
-    "id": "gp5",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "gp9": {
-    "id": "gp9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 54398
   },
   "gp8": {
     "id": "gp8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "environment-health": {
-    "id": "environment-health",
+  "gp9": {
+    "id": "gp9",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6327,21 +5573,18 @@
   },
   "eh2": {
     "id": "eh2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20886
   },
   "eh3": {
     "id": "eh3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 9464
   },
   "eh4": {
     "id": "eh4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "eh6": {
-    "id": "eh6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6350,18 +5593,19 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "eh8": {
-    "id": "eh8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "eh6": {
+    "id": "eh6",
+    "status": "ok",
+    "source": "ai",
+    "size": 50105
   },
   "eh7": {
     "id": "eh7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "eh10": {
-    "id": "eh10",
+  "eh8": {
+    "id": "eh8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6370,14 +5614,17 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "exercise-plan": {
-    "id": "exercise-plan",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "eh10": {
+    "id": "eh10",
+    "status": "ok",
+    "source": "ai",
+    "size": 34646
   },
-  "ct-four-great": {
-    "id": "ct-four-great",
-    "status": "skip"
+  "lt9": {
+    "id": "lt9",
+    "status": "ok",
+    "source": "ai",
+    "size": 4331
   },
   "ct-four-great-s1": {
     "id": "ct-four-great-s1",
@@ -6417,12 +5664,9 @@
   },
   "ct-four-great-s9": {
     "id": "ct-four-great-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-spring-festival": {
-    "id": "ct-spring-festival",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 47705
   },
   "ct-four-great-s10": {
     "id": "ct-four-great-s10",
@@ -6455,8 +5699,9 @@
   },
   "ct-spring-festival-s6": {
     "id": "ct-spring-festival-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 47544
   },
   "ct-spring-festival-s7": {
     "id": "ct-spring-festival-s7",
@@ -6470,12 +5715,9 @@
   },
   "ct-spring-festival-s9": {
     "id": "ct-spring-festival-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-dragon-boat": {
-    "id": "ct-dragon-boat",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 67744
   },
   "ct-spring-festival-s10": {
     "id": "ct-spring-festival-s10",
@@ -6497,13 +5739,9 @@
   },
   "ct-dragon-boat-s4": {
     "id": "ct-dragon-boat-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-dragon-boat-s5": {
-    "id": "ct-dragon-boat-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 26324
   },
   "ct-dragon-boat-s6": {
     "id": "ct-dragon-boat-s6",
@@ -6525,12 +5763,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-mid-autumn": {
-    "id": "ct-mid-autumn",
-    "status": "skip"
-  },
   "ct-dragon-boat-s10": {
     "id": "ct-dragon-boat-s10",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "ct-mid-autumn-s1": {
+    "id": "ct-mid-autumn-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6538,20 +5777,17 @@
     "id": "ct-mid-autumn-s2",
     "status": "skip"
   },
-  "ct-mid-autumn-s1": {
-    "id": "ct-mid-autumn-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-mid-autumn-s3": {
     "id": "ct-mid-autumn-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 38613
   },
   "ct-mid-autumn-s4": {
     "id": "ct-mid-autumn-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 45452
   },
   "ct-mid-autumn-s5": {
     "id": "ct-mid-autumn-s5",
@@ -6578,10 +5814,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-qingming": {
-    "id": "ct-qingming",
-    "status": "skip"
-  },
   "ct-mid-autumn-s10": {
     "id": "ct-mid-autumn-s10",
     "status": "fail",
@@ -6599,8 +5831,9 @@
   },
   "ct-qingming-s3": {
     "id": "ct-qingming-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 41542
   },
   "ct-qingming-s4": {
     "id": "ct-qingming-s4",
@@ -6617,13 +5850,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-qingming-s7": {
-    "id": "ct-qingming-s7",
+  "ct-qingming-s8": {
+    "id": "ct-qingming-s8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-qingming-s8": {
-    "id": "ct-qingming-s8",
+  "ct-qingming-s7": {
+    "id": "ct-qingming-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6634,21 +5867,12 @@
   },
   "ct-qingming-s10": {
     "id": "ct-qingming-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 78131
   },
   "ct-chinese-new-year-s1": {
     "id": "ct-chinese-new-year-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-new-year": {
-    "id": "ct-chinese-new-year",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-new-year-s3": {
-    "id": "ct-chinese-new-year-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6657,23 +5881,23 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-new-year-s5": {
-    "id": "ct-chinese-new-year-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-new-year-s4": {
     "id": "ct-chinese-new-year-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-new-year-s7": {
-    "id": "ct-chinese-new-year-s7",
+  "ct-chinese-new-year-s5": {
+    "id": "ct-chinese-new-year-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "ct-chinese-new-year-s6": {
     "id": "ct-chinese-new-year-s6",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "ct-chinese-new-year-s7": {
+    "id": "ct-chinese-new-year-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6684,17 +5908,15 @@
   },
   "ct-chinese-new-year-s9": {
     "id": "ct-chinese-new-year-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-lantern-festival": {
-    "id": "ct-lantern-festival",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 33653
   },
   "ct-chinese-new-year-s10": {
     "id": "ct-chinese-new-year-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36318
   },
   "ct-lantern-festival-s1": {
     "id": "ct-lantern-festival-s1",
@@ -6723,8 +5945,9 @@
   },
   "ct-lantern-festival-s6": {
     "id": "ct-lantern-festival-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20494
   },
   "ct-lantern-festival-s7": {
     "id": "ct-lantern-festival-s7",
@@ -6738,16 +5961,12 @@
   },
   "ct-lantern-festival-s9": {
     "id": "ct-lantern-festival-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 95448
   },
   "ct-lantern-festival-s10": {
     "id": "ct-lantern-festival-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-double-ninth": {
-    "id": "ct-double-ninth",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6756,6 +5975,12 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "qu8": {
+    "id": "qu8",
+    "status": "ok",
+    "source": "ai",
+    "size": 20860
+  },
   "ct-double-ninth-s2": {
     "id": "ct-double-ninth-s2",
     "status": "fail",
@@ -6763,8 +5988,9 @@
   },
   "ct-double-ninth-s3": {
     "id": "ct-double-ninth-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 16564
   },
   "ct-double-ninth-s4": {
     "id": "ct-double-ninth-s4",
@@ -6786,28 +6012,25 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-double-ninth-s9": {
-    "id": "ct-double-ninth-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-double-ninth-s8": {
     "id": "ct-double-ninth-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 51287
+  },
+  "ct-double-ninth-s9": {
+    "id": "ct-double-ninth-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 39206
+  },
+  "ct-qixi-s1": {
+    "id": "ct-qixi-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "ct-double-ninth-s10": {
     "id": "ct-double-ninth-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-qixi": {
-    "id": "ct-qixi",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-qixi-s1": {
-    "id": "ct-qixi-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6818,21 +6041,17 @@
   },
   "ct-qixi-s3": {
     "id": "ct-qixi-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 37815
   },
-  "ct-qixi-s4": {
-    "id": "ct-qixi-s4",
+  "ct-qixi-s5": {
+    "id": "ct-qixi-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "ct-qixi-s6": {
     "id": "ct-qixi-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-qixi-s5": {
-    "id": "ct-qixi-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6843,13 +6062,9 @@
   },
   "ct-qixi-s8": {
     "id": "ct-qixi-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-qixi-s10": {
-    "id": "ct-qixi-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 57578
   },
   "ct-qixi-s9": {
     "id": "ct-qixi-s9",
@@ -6861,8 +6076,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-spring": {
-    "id": "ct-solar-terms-spring",
+  "ct-qixi-s10": {
+    "id": "ct-qixi-s10",
+    "status": "ok",
+    "source": "ai",
+    "size": 44956
+  },
+  "ct-solar-terms-spring-s2": {
+    "id": "ct-solar-terms-spring-s2",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6871,8 +6092,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-spring-s2": {
-    "id": "ct-solar-terms-spring-s2",
+  "ct-solar-terms-spring-s4": {
+    "id": "ct-solar-terms-spring-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6881,15 +6102,11 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-spring-s4": {
-    "id": "ct-solar-terms-spring-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-solar-terms-spring-s6": {
     "id": "ct-solar-terms-spring-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 49650
   },
   "ct-solar-terms-spring-s7": {
     "id": "ct-solar-terms-spring-s7",
@@ -6911,11 +6128,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-summer": {
-    "id": "ct-solar-terms-summer",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-solar-terms-summer-s1": {
     "id": "ct-solar-terms-summer-s1",
     "status": "fail",
@@ -6923,8 +6135,9 @@
   },
   "ct-solar-terms-summer-s2": {
     "id": "ct-solar-terms-summer-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 38440
   },
   "ct-solar-terms-summer-s3": {
     "id": "ct-solar-terms-summer-s3",
@@ -6956,20 +6169,17 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-summer-s9": {
-    "id": "ct-solar-terms-summer-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-solar-terms-summer-s10": {
     "id": "ct-solar-terms-summer-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 19440
   },
-  "ct-solar-terms-autumn": {
-    "id": "ct-solar-terms-autumn",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-solar-terms-summer-s9": {
+    "id": "ct-solar-terms-summer-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 42893
   },
   "ct-solar-terms-autumn-s1": {
     "id": "ct-solar-terms-autumn-s1",
@@ -6981,13 +6191,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-autumn-s3": {
-    "id": "ct-solar-terms-autumn-s3",
+  "ct-solar-terms-autumn-s4": {
+    "id": "ct-solar-terms-autumn-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-autumn-s4": {
-    "id": "ct-solar-terms-autumn-s4",
+  "ct-solar-terms-autumn-s3": {
+    "id": "ct-solar-terms-autumn-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -6998,8 +6208,9 @@
   },
   "ct-solar-terms-autumn-s6": {
     "id": "ct-solar-terms-autumn-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 45725
   },
   "ct-solar-terms-autumn-s7": {
     "id": "ct-solar-terms-autumn-s7",
@@ -7011,18 +6222,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-solar-terms-autumn-s9": {
-    "id": "ct-solar-terms-autumn-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-solar-terms-autumn-s10": {
     "id": "ct-solar-terms-autumn-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-solar-terms-winter": {
-    "id": "ct-solar-terms-winter",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7043,8 +6244,9 @@
   },
   "ct-solar-terms-winter-s4": {
     "id": "ct-solar-terms-winter-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 47938
   },
   "ct-solar-terms-winter-s5": {
     "id": "ct-solar-terms-winter-s5",
@@ -7061,6 +6263,12 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-dragon-boat-s5": {
+    "id": "ct-dragon-boat-s5",
+    "status": "ok",
+    "source": "ai",
+    "size": 36072
+  },
   "ct-solar-terms-winter-s8": {
     "id": "ct-solar-terms-winter-s8",
     "status": "fail",
@@ -7068,16 +6276,12 @@
   },
   "ct-solar-terms-winter-s9": {
     "id": "ct-solar-terms-winter-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 42094
   },
   "ct-solar-terms-winter-s10": {
     "id": "ct-solar-terms-winter-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-zodiac": {
-    "id": "ct-zodiac",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7108,8 +6312,9 @@
   },
   "ct-zodiac-s6": {
     "id": "ct-zodiac-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 55319
   },
   "ct-zodiac-s7": {
     "id": "ct-zodiac-s7",
@@ -7126,10 +6331,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-calligraphy": {
-    "id": "ct-calligraphy",
-    "status": "skip"
-  },
   "ct-zodiac-s10": {
     "id": "ct-zodiac-s10",
     "status": "fail",
@@ -7137,8 +6338,9 @@
   },
   "ct-calligraphy-s1": {
     "id": "ct-calligraphy-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 18368
   },
   "ct-calligraphy-s3": {
     "id": "ct-calligraphy-s3",
@@ -7153,24 +6355,19 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "su3": {
-    "id": "su3",
-    "status": "ok",
-    "source": "ai",
-    "size": 39657
-  },
   "ct-calligraphy-s5": {
     "id": "ct-calligraphy-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-calligraphy-s7": {
-    "id": "ct-calligraphy-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-calligraphy-s6": {
     "id": "ct-calligraphy-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 32058
+  },
+  "ct-calligraphy-s7": {
+    "id": "ct-calligraphy-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7179,12 +6376,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-painting": {
-    "id": "ct-chinese-painting",
-    "status": "skip"
-  },
   "ct-calligraphy-s9": {
     "id": "ct-calligraphy-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 18141
+  },
+  "ct-calligraphy-s10": {
+    "id": "ct-calligraphy-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7196,18 +6395,8 @@
     "id": "ct-chinese-painting-s3",
     "status": "skip"
   },
-  "ct-calligraphy-s10": {
-    "id": "ct-calligraphy-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-painting-s1": {
     "id": "ct-chinese-painting-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-painting-s4": {
-    "id": "ct-chinese-painting-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7216,10 +6405,16 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-painting-s6": {
-    "id": "ct-chinese-painting-s6",
+  "ct-chinese-painting-s4": {
+    "id": "ct-chinese-painting-s4",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-chinese-painting-s6": {
+    "id": "ct-chinese-painting-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 32083
   },
   "ct-chinese-painting-s7": {
     "id": "ct-chinese-painting-s7",
@@ -7231,10 +6426,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-peking-opera": {
-    "id": "ct-peking-opera",
-    "status": "skip"
-  },
   "ct-chinese-painting-s9": {
     "id": "ct-chinese-painting-s9",
     "status": "fail",
@@ -7245,18 +6436,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-peking-opera-s2": {
-    "id": "ct-peking-opera-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-peking-opera-s1": {
     "id": "ct-peking-opera-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-peking-opera-s3": {
-    "id": "ct-peking-opera-s3",
+  "ct-peking-opera-s2": {
+    "id": "ct-peking-opera-s2",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7267,16 +6453,12 @@
   },
   "ct-peking-opera-s5": {
     "id": "ct-peking-opera-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 6576
   },
   "ct-peking-opera-s6": {
     "id": "ct-peking-opera-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-peking-opera-s8": {
-    "id": "ct-peking-opera-s8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7285,9 +6467,10 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-tea-culture": {
-    "id": "ct-tea-culture",
-    "status": "skip"
+  "ct-peking-opera-s8": {
+    "id": "ct-peking-opera-s8",
+    "status": "fail",
+    "error": "AI 未识别响应"
   },
   "ct-peking-opera-s9": {
     "id": "ct-peking-opera-s9",
@@ -7296,8 +6479,9 @@
   },
   "ct-peking-opera-s10": {
     "id": "ct-peking-opera-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 23224
   },
   "ct-tea-culture-s1": {
     "id": "ct-tea-culture-s1",
@@ -7324,24 +6508,22 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-tea-culture-s7": {
-    "id": "ct-tea-culture-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-tea-culture-s6": {
     "id": "ct-tea-culture-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-tea-culture-s7": {
+    "id": "ct-tea-culture-s7",
+    "status": "ok",
+    "source": "ai",
+    "size": 16037
+  },
   "ct-tea-culture-s8": {
     "id": "ct-tea-culture-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-medicine": {
-    "id": "ct-chinese-medicine",
-    "status": "skip"
+    "status": "ok",
+    "source": "ai",
+    "size": 30274
   },
   "ct-tea-culture-s9": {
     "id": "ct-tea-culture-s9",
@@ -7363,6 +6545,12 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-chinese-new-year-s3": {
+    "id": "ct-chinese-new-year-s3",
+    "status": "ok",
+    "source": "ai",
+    "size": 74798
+  },
   "ct-chinese-medicine-s3": {
     "id": "ct-chinese-medicine-s3",
     "status": "fail",
@@ -7378,13 +6566,19 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-chinese-medicine-s7": {
+    "id": "ct-chinese-medicine-s7",
+    "status": "ok",
+    "source": "ai",
+    "size": 46264
+  },
   "ct-chinese-medicine-s6": {
     "id": "ct-chinese-medicine-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-medicine-s7": {
-    "id": "ct-chinese-medicine-s7",
+  "ct-chinese-medicine-s9": {
+    "id": "ct-chinese-medicine-s9",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7393,12 +6587,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-architecture": {
-    "id": "ct-chinese-architecture",
-    "status": "skip"
-  },
-  "ct-chinese-medicine-s9": {
-    "id": "ct-chinese-medicine-s9",
+  "ct-chinese-architecture-s1": {
+    "id": "ct-chinese-architecture-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7411,11 +6601,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-architecture-s1": {
-    "id": "ct-chinese-architecture-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-architecture-s3": {
     "id": "ct-chinese-architecture-s3",
     "status": "fail",
@@ -7423,11 +6608,6 @@
   },
   "ct-chinese-architecture-s4": {
     "id": "ct-chinese-architecture-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-architecture-s5": {
-    "id": "ct-chinese-architecture-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7443,11 +6623,17 @@
   },
   "ct-chinese-architecture-s8": {
     "id": "ct-chinese-architecture-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 69142
   },
   "ct-chinese-architecture-s9": {
     "id": "ct-chinese-architecture-s9",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
+  "ct-chinese-architecture-s10": {
+    "id": "ct-chinese-architecture-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7458,16 +6644,6 @@
   "ct-hanfu-s2": {
     "id": "ct-hanfu-s2",
     "status": "skip"
-  },
-  "ct-chinese-architecture-s10": {
-    "id": "ct-chinese-architecture-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-hanfu": {
-    "id": "ct-hanfu",
-    "status": "fail",
-    "error": "AI 未识别响应"
   },
   "ct-hanfu-s3": {
     "id": "ct-hanfu-s3",
@@ -7496,8 +6672,9 @@
   },
   "ct-hanfu-s8": {
     "id": "ct-hanfu-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 75874
   },
   "ct-hanfu-s9": {
     "id": "ct-hanfu-s9",
@@ -7509,6 +6686,11 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-mythology-s1": {
+    "id": "ct-mythology-s1",
+    "status": "fail",
+    "error": "AI 未识别响应"
+  },
   "ct-mythology-s2": {
     "id": "ct-mythology-s2",
     "status": "skip"
@@ -7517,18 +6699,8 @@
     "id": "ct-mythology-s3",
     "status": "skip"
   },
-  "ct-mythology": {
-    "id": "ct-mythology",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-mythology-s4": {
     "id": "ct-mythology-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-mythology-s1": {
-    "id": "ct-mythology-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7539,8 +6711,9 @@
   },
   "ct-mythology-s6": {
     "id": "ct-mythology-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31357
   },
   "ct-mythology-s7": {
     "id": "ct-mythology-s7",
@@ -7549,12 +6722,19 @@
   },
   "ct-mythology-s8": {
     "id": "ct-mythology-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 29345
+  },
+  "ct-mythology-s9": {
+    "id": "ct-mythology-s9",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-four-classics": {
-    "id": "ct-four-classics",
-    "status": "skip"
+  "ct-mythology-s10": {
+    "id": "ct-mythology-s10",
+    "status": "fail",
+    "error": "AI 未识别响应"
   },
   "ct-four-classics-s1": {
     "id": "ct-four-classics-s1",
@@ -7572,16 +6752,6 @@
     "id": "ct-four-classics-s4",
     "status": "skip"
   },
-  "ct-mythology-s9": {
-    "id": "ct-mythology-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-mythology-s10": {
-    "id": "ct-mythology-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-four-classics-s5": {
     "id": "ct-four-classics-s5",
     "status": "fail",
@@ -7589,8 +6759,9 @@
   },
   "ct-four-classics-s6": {
     "id": "ct-four-classics-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 62904
   },
   "ct-four-classics-s7": {
     "id": "ct-four-classics-s7",
@@ -7602,18 +6773,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-four-classics-s9": {
-    "id": "ct-four-classics-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-qixi-s4": {
+    "id": "ct-qixi-s4",
+    "status": "ok",
+    "source": "ai",
+    "size": 55834
   },
   "ct-four-classics-s10": {
     "id": "ct-four-classics-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-silk-road": {
-    "id": "ct-silk-road",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7622,15 +6789,22 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-silk-road-s2": {
-    "id": "ct-silk-road-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-peking-opera-s3": {
+    "id": "ct-peking-opera-s3",
+    "status": "ok",
+    "source": "ai",
+    "size": 26611
   },
   "ct-silk-road-s3": {
     "id": "ct-silk-road-s3",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-solar-terms-autumn-s9": {
+    "id": "ct-solar-terms-autumn-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 24992
   },
   "ct-silk-road-s4": {
     "id": "ct-silk-road-s4",
@@ -7642,43 +6816,40 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-silk-road-s7": {
-    "id": "ct-silk-road-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-silk-road-s6": {
     "id": "ct-silk-road-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-silk-road-s8": {
-    "id": "ct-silk-road-s8",
+  "ct-silk-road-s7": {
+    "id": "ct-silk-road-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-silk-road-s8": {
+    "id": "ct-silk-road-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 55628
+  },
   "ct-silk-road-s9": {
     "id": "ct-silk-road-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 72797
   },
   "ct-silk-road-s10": {
     "id": "ct-silk-road-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-porcelain": {
-    "id": "ct-chinese-porcelain",
+  "ct-chinese-porcelain-s1": {
+    "id": "ct-chinese-porcelain-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "ct-chinese-porcelain-s2": {
     "id": "ct-chinese-porcelain-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-porcelain-s1": {
-    "id": "ct-chinese-porcelain-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7689,16 +6860,12 @@
   },
   "ct-chinese-porcelain-s4": {
     "id": "ct-chinese-porcelain-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 11065
   },
   "ct-chinese-porcelain-s5": {
     "id": "ct-chinese-porcelain-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-porcelain-s6": {
-    "id": "ct-chinese-porcelain-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7712,18 +6879,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-porcelain-s10": {
-    "id": "ct-chinese-porcelain-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-martial-arts": {
-    "id": "ct-chinese-martial-arts",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-porcelain-s9": {
     "id": "ct-chinese-porcelain-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 43978
+  },
+  "ct-chinese-porcelain-s10": {
+    "id": "ct-chinese-porcelain-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7739,6 +6902,12 @@
   },
   "ct-chinese-martial-arts-s3": {
     "id": "ct-chinese-martial-arts-s3",
+    "status": "ok",
+    "source": "ai",
+    "size": 24691
+  },
+  "ct-chinese-martial-arts-s4": {
+    "id": "ct-chinese-martial-arts-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7747,23 +6916,19 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-martial-arts-s4": {
-    "id": "ct-chinese-martial-arts-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-martial-arts-s6": {
     "id": "ct-chinese-martial-arts-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 48185
+  },
+  "ct-chinese-martial-arts-s7": {
+    "id": "ct-chinese-martial-arts-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
   "ct-chinese-martial-arts-s8": {
     "id": "ct-chinese-martial-arts-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-martial-arts-s7": {
-    "id": "ct-chinese-martial-arts-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7774,11 +6939,6 @@
   },
   "ct-chinese-martial-arts-s10": {
     "id": "ct-chinese-martial-arts-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-music": {
-    "id": "ct-chinese-music",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7799,8 +6959,9 @@
   },
   "ct-chinese-music-s4": {
     "id": "ct-chinese-music-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 22185
   },
   "ct-chinese-music-s5": {
     "id": "ct-chinese-music-s5",
@@ -7814,13 +6975,15 @@
   },
   "ct-chinese-music-s7": {
     "id": "ct-chinese-music-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 24319
   },
-  "ct-chinese-music-s8": {
-    "id": "ct-chinese-music-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-chinese-architecture-s5": {
+    "id": "ct-chinese-architecture-s5",
+    "status": "ok",
+    "source": "ai",
+    "size": 42294
   },
   "ct-chinese-music-s9": {
     "id": "ct-chinese-music-s9",
@@ -7829,11 +6992,6 @@
   },
   "ct-chinese-music-s10": {
     "id": "ct-chinese-music-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-tang-poetry": {
-    "id": "ct-tang-poetry",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7849,18 +7007,15 @@
   },
   "ct-tang-poetry-s3": {
     "id": "ct-tang-poetry-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 43592
   },
   "ct-tang-poetry-s4": {
     "id": "ct-tang-poetry-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-song-ci": {
-    "id": "ct-song-ci",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 22260
   },
   "ct-song-ci-s1": {
     "id": "ct-song-ci-s1",
@@ -7869,16 +7024,12 @@
   },
   "ct-song-ci-s2": {
     "id": "ct-song-ci-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 30605
   },
   "ct-song-ci-s3": {
     "id": "ct-song-ci-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-new-year-customs": {
-    "id": "ct-chinese-new-year-customs",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -7904,18 +7055,27 @@
   },
   "ct-chinese-new-year-customs-s5": {
     "id": "ct-chinese-new-year-customs-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 63926
   },
-  "ct-chinese-new-year-customs-s6": {
-    "id": "ct-chinese-new-year-customs-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-silk-road-s2": {
+    "id": "ct-silk-road-s2",
+    "status": "ok",
+    "source": "ai",
+    "size": 58719
   },
   "ct-chinese-new-year-customs-s7": {
     "id": "ct-chinese-new-year-customs-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 36832
+  },
+  "ct-four-classics-s9": {
+    "id": "ct-four-classics-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 62836
   },
   "ct-chinese-new-year-customs-s8": {
     "id": "ct-chinese-new-year-customs-s8",
@@ -7932,15 +7092,11 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-papermaking": {
-    "id": "ct-papermaking",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-papermaking-s1": {
     "id": "ct-papermaking-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 31509
   },
   "ct-papermaking-s2": {
     "id": "ct-papermaking-s2",
@@ -7962,49 +7118,44 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-papermaking-s7": {
+    "id": "ct-papermaking-s7",
+    "status": "ok",
+    "source": "ai",
+    "size": 29671
+  },
   "ct-papermaking-s6": {
     "id": "ct-papermaking-s6",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-papermaking-s9": {
+    "id": "ct-papermaking-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 84952
   },
   "ct-papermaking-s8": {
     "id": "ct-papermaking-s8",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-papermaking-s7": {
-    "id": "ct-papermaking-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-chess": {
-    "id": "ct-chinese-chess",
-    "status": "skip"
-  },
   "ct-papermaking-s10": {
     "id": "ct-papermaking-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-papermaking-s9": {
-    "id": "ct-papermaking-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-chess-s1": {
     "id": "ct-chinese-chess-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-chinese-chess-s2": {
-    "id": "ct-chinese-chess-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 45034
   },
   "ct-chinese-chess-s3": {
     "id": "ct-chinese-chess-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 88142
   },
   "ct-chinese-chess-s4": {
     "id": "ct-chinese-chess-s4",
@@ -8033,8 +7184,15 @@
   },
   "ct-chinese-chess-s9": {
     "id": "ct-chinese-chess-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 40280
+  },
+  "ct-chinese-chess-s10": {
+    "id": "ct-chinese-chess-s10",
+    "status": "ok",
+    "source": "ai",
+    "size": 51105
   },
   "ct-lion-dance-s1": {
     "id": "ct-lion-dance-s1",
@@ -8044,25 +7202,22 @@
     "id": "ct-lion-dance-s2",
     "status": "skip"
   },
-  "ct-chinese-chess-s10": {
-    "id": "ct-chinese-chess-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-lion-dance-s3": {
     "id": "ct-lion-dance-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-lion-dance": {
-    "id": "ct-lion-dance",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-lion-dance-s4": {
     "id": "ct-lion-dance-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 14369
+  },
+  "ct-chinese-porcelain-s6": {
+    "id": "ct-chinese-porcelain-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 23129
   },
   "ct-lion-dance-s5": {
     "id": "ct-lion-dance-s5",
@@ -8098,8 +7253,8 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-chinese-cuisine": {
-    "id": "ct-chinese-cuisine",
+  "ct-chinese-cuisine-s2": {
+    "id": "ct-chinese-cuisine-s2",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8107,15 +7262,16 @@
     "id": "ct-chinese-cuisine-s4",
     "status": "skip"
   },
-  "ct-chinese-cuisine-s2": {
-    "id": "ct-chinese-cuisine-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-cuisine-s3": {
     "id": "ct-chinese-cuisine-s3",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-chinese-cuisine-s5": {
+    "id": "ct-chinese-cuisine-s5",
+    "status": "ok",
+    "source": "ai",
+    "size": 51996
   },
   "ct-chinese-cuisine-s6": {
     "id": "ct-chinese-cuisine-s6",
@@ -8126,11 +7282,6 @@
     "id": "ct-chinese-cuisine-s8",
     "status": "skip"
   },
-  "ct-chinese-cuisine-s5": {
-    "id": "ct-chinese-cuisine-s5",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-chinese-cuisine-s7": {
     "id": "ct-chinese-cuisine-s7",
     "status": "fail",
@@ -8138,18 +7289,15 @@
   },
   "ct-chinese-cuisine-s9": {
     "id": "ct-chinese-cuisine-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 46751
   },
   "ct-chinese-cuisine-s10": {
     "id": "ct-chinese-cuisine-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-fire-safety": {
-    "id": "ct-fire-safety",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 34736
   },
   "ct-fire-safety-s1": {
     "id": "ct-fire-safety-s1",
@@ -8171,11 +7319,6 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-fire-safety-s6": {
-    "id": "ct-fire-safety-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-fire-safety-s5": {
     "id": "ct-fire-safety-s5",
     "status": "fail",
@@ -8186,14 +7329,16 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-fire-safety-s8": {
-    "id": "ct-fire-safety-s8",
+  "ct-fire-safety-s6": {
+    "id": "ct-fire-safety-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-traffic-safety": {
-    "id": "ct-traffic-safety",
-    "status": "skip"
+  "ct-fire-safety-s8": {
+    "id": "ct-fire-safety-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 68942
   },
   "ct-fire-safety-s9": {
     "id": "ct-fire-safety-s9",
@@ -8207,11 +7352,6 @@
   },
   "ct-traffic-safety-s1": {
     "id": "ct-traffic-safety-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-traffic-safety-s2": {
-    "id": "ct-traffic-safety-s2",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8265,20 +7405,17 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-water-safety": {
-    "id": "ct-water-safety",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-water-safety-s3": {
     "id": "ct-water-safety-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 30500
   },
   "ct-water-safety-s4": {
     "id": "ct-water-safety-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 21806
   },
   "ct-water-safety-s5": {
     "id": "ct-water-safety-s5",
@@ -8292,26 +7429,24 @@
   },
   "ct-water-safety-s7": {
     "id": "ct-water-safety-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 51324
   },
   "ct-water-safety-s8": {
     "id": "ct-water-safety-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 61630
   },
   "ct-water-safety-s9": {
     "id": "ct-water-safety-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 57942
   },
   "ct-water-safety-s10": {
     "id": "ct-water-safety-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-electricity-safety": {
-    "id": "ct-electricity-safety",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8330,42 +7465,49 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-electricity-safety-s4": {
-    "id": "ct-electricity-safety-s4",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-electricity-safety-s6": {
-    "id": "ct-electricity-safety-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-chinese-new-year-customs-s6": {
+    "id": "ct-chinese-new-year-customs-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 114695
   },
   "ct-electricity-safety-s5": {
     "id": "ct-electricity-safety-s5",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-electricity-safety-s7": {
-    "id": "ct-electricity-safety-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-electricity-safety-s6": {
+    "id": "ct-electricity-safety-s6",
+    "status": "ok",
+    "source": "ai",
+    "size": 20786
   },
-  "ct-electricity-safety-s8": {
-    "id": "ct-electricity-safety-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-chinese-music-s8": {
+    "id": "ct-chinese-music-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 20788
   },
-  "ct-food-safety": {
-    "id": "ct-food-safety",
-    "status": "skip"
+  "ct-electricity-safety-s4": {
+    "id": "ct-electricity-safety-s4",
+    "status": "ok",
+    "source": "ai",
+    "size": 32681
   },
-  "ct-electricity-safety-s9": {
-    "id": "ct-electricity-safety-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-chinese-chess-s2": {
+    "id": "ct-chinese-chess-s2",
+    "status": "ok",
+    "source": "ai",
+    "size": 36868
   },
   "ct-electricity-safety-s10": {
     "id": "ct-electricity-safety-s10",
+    "status": "ok",
+    "source": "ai",
+    "size": 33698
+  },
+  "ct-food-safety-s1": {
+    "id": "ct-food-safety-s1",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8374,19 +7516,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-food-safety-s4": {
-    "id": "ct-food-safety-s4",
-    "status": "skip"
-  },
-  "ct-food-safety-s1": {
-    "id": "ct-food-safety-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-food-safety-s3": {
     "id": "ct-food-safety-s3",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-food-safety-s4": {
+    "id": "ct-food-safety-s4",
+    "status": "skip"
   },
   "ct-food-safety-s5": {
     "id": "ct-food-safety-s5",
@@ -8405,23 +7542,21 @@
   },
   "ct-food-safety-s8": {
     "id": "ct-food-safety-s8",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 33705
   },
-  "ct-food-safety-s9": {
-    "id": "ct-food-safety-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-traffic-safety-s2": {
+    "id": "ct-traffic-safety-s2",
+    "status": "ok",
+    "source": "ai",
+    "size": 58521
   },
   "ct-food-safety-s10": {
     "id": "ct-food-safety-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-first-aid": {
-    "id": "ct-first-aid",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 20334
   },
   "ct-first-aid-s1": {
     "id": "ct-first-aid-s1",
@@ -8433,13 +7568,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-first-aid-s4": {
-    "id": "ct-first-aid-s4",
+  "ct-first-aid-s3": {
+    "id": "ct-first-aid-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-first-aid-s3": {
-    "id": "ct-first-aid-s3",
+  "ct-first-aid-s4": {
+    "id": "ct-first-aid-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8448,13 +7583,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-first-aid-s7": {
-    "id": "ct-first-aid-s7",
+  "ct-first-aid-s6": {
+    "id": "ct-first-aid-s6",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-first-aid-s6": {
-    "id": "ct-first-aid-s6",
+  "ct-first-aid-s7": {
+    "id": "ct-first-aid-s7",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8465,23 +7600,20 @@
   },
   "ct-first-aid-s9": {
     "id": "ct-first-aid-s9",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 12728
   },
   "ct-first-aid-s10": {
     "id": "ct-first-aid-s10",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-home-etiquette": {
-    "id": "ct-home-etiquette",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
   "ct-home-etiquette-s1": {
     "id": "ct-home-etiquette-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 84233
   },
   "ct-home-etiquette-s2": {
     "id": "ct-home-etiquette-s2",
@@ -8490,8 +7622,9 @@
   },
   "ct-home-etiquette-s3": {
     "id": "ct-home-etiquette-s3",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 30597
   },
   "ct-home-etiquette-s4": {
     "id": "ct-home-etiquette-s4",
@@ -8510,8 +7643,9 @@
   },
   "ct-home-etiquette-s7": {
     "id": "ct-home-etiquette-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 35261
   },
   "ct-home-etiquette-s8": {
     "id": "ct-home-etiquette-s8",
@@ -8528,28 +7662,24 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-school-etiquette": {
-    "id": "ct-school-etiquette",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-school-etiquette-s1": {
-    "id": "ct-school-etiquette-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
+  "ct-electricity-safety-s7": {
+    "id": "ct-electricity-safety-s7",
+    "status": "ok",
+    "source": "ai",
+    "size": 80707
   },
   "ct-school-etiquette-s2": {
     "id": "ct-school-etiquette-s2",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-school-etiquette-s4": {
-    "id": "ct-school-etiquette-s4",
+  "ct-school-etiquette-s3": {
+    "id": "ct-school-etiquette-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-school-etiquette-s3": {
-    "id": "ct-school-etiquette-s3",
+  "ct-school-etiquette-s4": {
+    "id": "ct-school-etiquette-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8565,8 +7695,9 @@
   },
   "ct-school-etiquette-s7": {
     "id": "ct-school-etiquette-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 67888
   },
   "ct-school-etiquette-s8": {
     "id": "ct-school-etiquette-s8",
@@ -8583,18 +7714,14 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
+  "ct-electricity-safety-s8": {
+    "id": "ct-electricity-safety-s8",
+    "status": "ok",
+    "source": "ai",
+    "size": 36503
+  },
   "ct-public-etiquette-s1": {
     "id": "ct-public-etiquette-s1",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-public-etiquette-s2": {
-    "id": "ct-public-etiquette-s2",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-public-etiquette": {
-    "id": "ct-public-etiquette",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8603,10 +7730,16 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-public-etiquette-s4": {
-    "id": "ct-public-etiquette-s4",
+  "ct-public-etiquette-s2": {
+    "id": "ct-public-etiquette-s2",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-public-etiquette-s4": {
+    "id": "ct-public-etiquette-s4",
+    "status": "ok",
+    "source": "ai",
+    "size": 44520
   },
   "ct-public-etiquette-s5": {
     "id": "ct-public-etiquette-s5",
@@ -8615,13 +7748,9 @@
   },
   "ct-public-etiquette-s6": {
     "id": "ct-public-etiquette-s6",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-public-etiquette-s7": {
-    "id": "ct-public-etiquette-s7",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 70976
   },
   "ct-public-etiquette-s8": {
     "id": "ct-public-etiquette-s8",
@@ -8635,13 +7764,9 @@
   },
   "ct-public-etiquette-s10": {
     "id": "ct-public-etiquette-s10",
-    "status": "fail",
-    "error": "AI 未识别响应"
-  },
-  "ct-social-etiquette": {
-    "id": "ct-social-etiquette",
-    "status": "fail",
-    "error": "AI 未识别响应"
+    "status": "ok",
+    "source": "ai",
+    "size": 66112
   },
   "ct-social-etiquette-s1": {
     "id": "ct-social-etiquette-s1",
@@ -8653,13 +7778,13 @@
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-social-etiquette-s4": {
-    "id": "ct-social-etiquette-s4",
+  "ct-social-etiquette-s3": {
+    "id": "ct-social-etiquette-s3",
     "status": "fail",
     "error": "AI 未识别响应"
   },
-  "ct-social-etiquette-s3": {
-    "id": "ct-social-etiquette-s3",
+  "ct-social-etiquette-s4": {
+    "id": "ct-social-etiquette-s4",
     "status": "fail",
     "error": "AI 未识别响应"
   },
@@ -8692,5 +7817,29 @@
     "id": "ct-social-etiquette-s10",
     "status": "fail",
     "error": "AI 未识别响应"
+  },
+  "ct-electricity-safety-s9": {
+    "id": "ct-electricity-safety-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 39729
+  },
+  "ct-food-safety-s9": {
+    "id": "ct-food-safety-s9",
+    "status": "ok",
+    "source": "ai",
+    "size": 85033
+  },
+  "ct-school-etiquette-s1": {
+    "id": "ct-school-etiquette-s1",
+    "status": "ok",
+    "source": "ai",
+    "size": 50847
+  },
+  "ct-public-etiquette-s7": {
+    "id": "ct-public-etiquette-s7",
+    "status": "ok",
+    "source": "ai",
+    "size": 17035
   }
 }
