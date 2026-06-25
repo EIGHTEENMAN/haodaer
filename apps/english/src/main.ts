@@ -1,12 +1,9 @@
-import { createApp, ref } from "vue"
-import App from "./App.vue"
-import { createGame, gameRef } from "./game/index"
+import { createApp } from 'vue'
+import './styles/reset.css'
+import './styles/theme.css'
+import App from './App.vue'
+import { initRouter } from './router'
 
-const app = createApp(App)
-app.mount("#app")
+initRouter()
 
-// Provide game ref so Vue components can emit events to Phaser
-app.provide("gameRef", gameRef)
-
-// Start Phaser after Vue mounts
-createGame()
+createApp(App).mount('#app')

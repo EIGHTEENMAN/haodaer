@@ -27,6 +27,7 @@ export function setCookie(name: string, value: string) {
     name + '=' + encodeURIComponent(value) +
     '; domain=' + COOKIE_DOMAIN +
     '; path=/; Secure; SameSite=Lax'
+}
 
 export function removeCookie(name: string) {
   document.cookie =
