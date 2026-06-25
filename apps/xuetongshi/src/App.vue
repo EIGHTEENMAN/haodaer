@@ -457,7 +457,7 @@ onUnmounted(() => {
     <!-- ===== DETAIL VIEW ===== -->
     <template v-if="!loadingData && currentView === 'detail' && currentTopic">
       <div class="ts-detail-wrap">
-        <button class="ts-back" @click="goBack()">← 返回</button>
+        <button class="ts-back" @click="goHome()">← 返回</button>
         <div class="ts-detail-card">
           <div class="ts-detail-grid">
             <div class="ts-detail-content">

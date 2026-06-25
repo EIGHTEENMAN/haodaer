@@ -516,7 +516,7 @@ onUnmounted(() => {
     <!-- ===== DETAIL VIEW with Favorite ===== -->
     <template v-if="!loadingData && currentView === 'detail' && currentClassic">
       <div class="gx-detail-wrap">
-        <button class="gx-back" @click="goBack()">← 返回</button>
+        <button class="gx-back" @click="goHome()">← 返回</button>
 
         <div class="gx-detail-card">
           <h1 class="gx-detail-title">{{ currentClassic.title }}</h1>
