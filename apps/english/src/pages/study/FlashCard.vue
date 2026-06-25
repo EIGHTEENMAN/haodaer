@@ -4,7 +4,6 @@ import { words } from '../../data/words'
 import { wordStore } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
 import { playWordAudio } from '../../utils/audio'
-import { router } from '../../router'
 
 const props = defineProps<{
   themeId: string
@@ -22,14 +21,12 @@ const sessionWords = computed(() => {
 })
 
 const currentIndex = ref(0)
-const flipped = ref(false)
 const spellInput = ref('')
 const correctCount = ref(0)
 const showResult = ref<'correct' | 'wrong' | null>(null)
 
 const currentWord = computed(() => sessionWords.value[currentIndex.value])
 
-// 进度
 const progress = computed(() => {
   if (sessionWords.value.length === 0) return 0
   return (currentIndex.value / sessionWords.value.length) * 100
@@ -38,7 +35,6 @@ const progress = computed(() => {
 const isComplete = computed(() => currentIndex.value >= sessionWords.value.length)
 
 onMounted(() => {
-  // 记录开始
   studyStore.startSession(
     props.themeId,
     themeWords.value[0]?.theme || props.themeId,
@@ -50,10 +46,6 @@ onMounted(() => {
 onUnmounted(() => {
   if (!isComplete.value) studyStore.cancelSession()
 })
-
-function flip() {
-  flipped.value = !flipped.value
-}
 
 function playAudio() {
   if (currentWord.value) {
@@ -69,7 +61,7 @@ function checkSpell() {
     wordStore.recordAnswer(currentWord.value.id, currentWord.value.word, currentWord.value.meaning, true)
     studyStore.recordAnswer(true)
     correctCount.value++
-    setTimeout(() => next(), 800)
+    setTimeout(() => next(), 700)
   } else {
     showResult.value = 'wrong'
     wordStore.recordAnswer(currentWord.value.id, currentWord.value.word, currentWord.value.meaning, false)
@@ -77,16 +69,14 @@ function checkSpell() {
     setTimeout(() => {
       showResult.value = null
       spellInput.value = ''
-    }, 1200)
+    }, 1100)
   }
 }
 
 function next() {
   showResult.value = null
   spellInput.value = ''
-  flipped.value = false
   currentIndex.value++
-  // 完成 → 进入 ReadAlong
   if (currentIndex.value >= sessionWords.value.length) {
     studyStore.completeSession(
       sessionWords.value.map(w => ({ word: w.word, meaning: w.meaning })),
@@ -97,93 +87,118 @@ function next() {
 }
 
 function back() {
-  // 返回到该主题的 StageList（不是学英语首页 3 大卡）
   window.location.hash = `#/study/${props.themeId}`
 }
 </script>
 
 <template>
-  <div class="flash-card-page">
-    <!-- 进度条 -->
-    <div class="progress-wrap">
-      <div class="progress-bar">
-        <div class="progress-fill" :style="{ width: progress + '%' }"></div>
-      </div>
-      <div class="progress-text">
-        {{ currentIndex + 1 }} / {{ sessionWords.length }}
-      </div>
+  <div class="flash-page">
+    <!-- 顶栏：返回 + 进度 -->
+    <header class="top-bar">
+      <button class="back-btn" @click="back">← 退出</button>
+      <div class="progress-text">{{ currentIndex + 1 }} / {{ sessionWords.length }}</div>
+      <div class="top-spacer"></div>
+    </header>
+    <div class="progress-bar">
+      <div class="progress-fill" :style="{ width: progress + '%' }"></div>
     </div>
 
-    <!-- 主卡片 -->
-    <div v-if="currentWord" class="card-wrap" :class="{ flipped }">
-      <div class="card" @click="flip">
-        <!-- 正面 -->
-        <div class="card-face card-face--front">
-          <div class="word-main">{{ currentWord.word }}</div>
-          <div class="word-phonetic">{{ currentWord.phonetic }}</div>
-          <button class="audio-btn" @click.stop="playAudio">听发音</button>
+    <!-- 主区：单词卡（单屏内含例句） -->
+    <main class="content" v-if="currentWord">
+      <div class="word-card">
+        <div class="word-emoji">{{ currentWord.emoji || '📘' }}</div>
+        <div class="word-row">
+          <h1 class="word-main">{{ currentWord.word }}</h1>
+          <button class="audio-btn" @click="playAudio" title="听发音">🔊</button>
         </div>
-        <!-- 反面 -->
-        <div class="card-face card-face--back">
-          <div class="word-main">{{ currentWord.meaning }}</div>
-          <div class="word-sentence">{{ currentWord.sentence }}</div>
-          <div class="word-sentence-cn">{{ currentWord.sentenceCn }}</div>
+        <div class="word-phonetic">{{ currentWord.phonetic }}</div>
+        <div class="word-meaning">{{ currentWord.meaning }}</div>
+
+        <div class="divider"></div>
+
+        <div class="example">
+          <div class="example-label">例句</div>
+          <div class="example-en">{{ currentWord.sentence }}</div>
+          <div class="example-cn">{{ currentWord.sentenceCn }}</div>
         </div>
       </div>
-    </div>
+    </main>
 
-    <!-- 拼写输入 -->
-    <div class="spell-section" v-if="!flipped">
-      <p class="spell-hint">拼写单词</p>
-      <div class="spell-row">
-        <input
-          v-model="spellInput"
-          @keyup.enter="checkSpell"
-          type="text"
-          class="spell-input"
-          :class="{ 'spell-input--wrong': showResult === 'wrong', 'spell-input--correct': showResult === 'correct' }"
-          :placeholder="`第一个字母: ${currentWord?.word[0] || ''}`"
-          autocomplete="off"
-          autocapitalize="off"
-          autocorrect="off"
-          spellcheck="false"
-        />
-        <button class="spell-btn" @click="checkSpell">检查</button>
+    <!-- 底部：拼写输入 -->
+    <footer class="bottom-bar">
+      <div class="spell-wrap">
+        <p class="spell-hint">拼写单词</p>
+        <div class="spell-row">
+          <input
+            v-model="spellInput"
+            @keyup.enter="checkSpell"
+            type="text"
+            class="spell-input"
+            :class="{
+              'spell-input--wrong': showResult === 'wrong',
+              'spell-input--correct': showResult === 'correct'
+            }"
+            :placeholder="`首字母: ${currentWord?.word[0] || ''}`"
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+          <button class="spell-btn" @click="checkSpell">检查</button>
+        </div>
+        <p v-if="showResult === 'correct'" class="result-text result-text--correct">太棒了！</p>
+        <p v-else-if="showResult === 'wrong'" class="result-text result-text--wrong">
+          正确: <strong>{{ currentWord?.word }}</strong>
+        </p>
       </div>
-      <p v-if="showResult === 'correct'" class="result-text result-text--correct">太棒了！</p>
-      <p v-else-if="showResult === 'wrong'" class="result-text result-text--wrong">
-        再试一次，正确拼写是 <strong>{{ currentWord?.word }}</strong>
-      </p>
-    </div>
-
-    <!-- 翻面后显示下一张按钮 -->
-    <button v-if="flipped" class="next-btn" @click="next">下一张 →</button>
-
-    <!-- 返回按钮 -->
-    <button class="back-btn" @click="back">← 退出</button>
+    </footer>
   </div>
 </template>
 
 <style scoped>
-.flash-card-page {
-  padding: var(--gap-md) 0 var(--gap-xl);
+/* 单屏布局：100vh 减去 header 61 + bottomnav 80，flex 三段 */
+.flash-page {
+  height: calc(100vh - 61px - 80px);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 var(--gap-md);
 }
 
-/* 进度条 */
-.progress-wrap {
-  width: 100%;
-  margin-bottom: var(--gap-lg);
+/* 顶栏 */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-sm) 0;
+}
+
+.back-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  color: var(--color-text-sub);
+  font-size: var(--text-small);
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+}
+
+.top-spacer { width: 64px; }
+
+.progress-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: var(--text-body);
 }
 
 .progress-bar {
-  height: 12px;
+  height: 8px;
   background: var(--color-border);
   border-radius: var(--radius-pill);
   overflow: hidden;
-  margin-bottom: var(--gap-xs);
+  margin-bottom: var(--gap-md);
 }
 
 .progress-fill {
@@ -192,110 +207,126 @@ function back() {
   transition: width 0.3s ease;
 }
 
-.progress-text {
-  text-align: center;
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--color-text-sub);
-  font-size: var(--text-body);
+/* 主区：单词卡 */
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
 }
 
-/* 主卡片 */
-.card-wrap {
+.word-card {
   width: 100%;
-  max-width: 400px;
-  perspective: 1000px;
-  margin-bottom: var(--gap-lg);
-}
-
-.card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
   background: var(--color-card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   border: 3px solid var(--color-primary);
-  transition: transform 0.5s;
-  transform-style: preserve-3d;
-  cursor: pointer;
+  padding: var(--gap-md) var(--gap-lg);
+  text-align: center;
 }
 
-.card-wrap.flipped .card {
-  transform: rotateY(180deg);
+.word-emoji {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: var(--gap-xs);
 }
 
-.card-face {
-  position: absolute;
-  inset: 0;
+.word-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--gap-lg);
-  text-align: center;
-  backface-visibility: hidden;
-}
-
-.card-face--back {
-  transform: rotateY(180deg);
-  background: var(--color-primary-light);
+  gap: var(--gap-sm);
+  margin-bottom: 2px;
 }
 
 .word-main {
   font-family: var(--font-display);
-  font-size: var(--text-word-l);
+  font-size: 32px;
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: var(--gap-sm);
-  word-break: break-word;
   text-transform: lowercase;
-}
-
-.word-phonetic {
-  font-size: var(--text-h3);
-  color: var(--color-text-sub);
-  margin-bottom: var(--gap-md);
-}
-
-.word-sentence {
-  font-size: var(--text-body);
-  color: var(--color-text);
-  margin-bottom: var(--gap-xs);
-  font-style: italic;
-}
-
-.word-sentence-cn {
-  font-size: var(--text-small);
-  color: var(--color-text-sub);
+  letter-spacing: 0.5px;
+  word-break: break-word;
 }
 
 .audio-btn {
-  padding: 12px 24px;
-  border-radius: var(--radius-pill);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background: var(--color-secondary);
   color: white;
-  font-size: var(--text-body);
-  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   box-shadow: var(--shadow-card);
 }
 
 .audio-btn:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-card-active);
+  transform: translateY(1px);
 }
 
-/* 拼写 */
-.spell-section {
+.word-phonetic {
+  font-size: var(--text-small);
+  color: var(--color-text-sub);
+  margin-bottom: var(--gap-xs);
+}
+
+.word-meaning {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--color-tertiary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--gap-sm) 0;
+}
+
+.example {
+  text-align: left;
+}
+
+.example-label {
+  font-size: var(--text-tiny);
+  color: var(--color-text-sub);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.example-en {
+  font-size: var(--text-body);
+  color: var(--color-text);
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.example-cn {
+  font-size: var(--text-small);
+  color: var(--color-text-sub);
+}
+
+/* 底部：拼写 */
+.bottom-bar {
+  padding: var(--gap-sm) 0 var(--gap-md);
+}
+
+.spell-wrap {
   width: 100%;
-  max-width: 400px;
 }
 
 .spell-hint {
   text-align: center;
-  font-size: var(--text-body);
+  font-size: var(--text-small);
   color: var(--color-text-sub);
-  margin-bottom: var(--gap-sm);
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .spell-row {
@@ -305,8 +336,8 @@ function back() {
 
 .spell-input {
   flex: 1;
-  padding: 14px 16px;
-  border: 3px solid var(--color-border);
+  padding: 12px 14px;
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   font-family: var(--font-display);
   font-size: var(--text-h3);
@@ -338,60 +369,27 @@ function back() {
 }
 
 .spell-btn {
-  padding: 14px 24px;
+  padding: 0 22px;
   border-radius: var(--radius-md);
   background: var(--color-primary);
   color: white;
   font-size: var(--text-h3);
   font-weight: 700;
   box-shadow: var(--shadow-card);
+  font-family: var(--font-display);
 }
 
 .spell-btn:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-card-active);
+  transform: translateY(1px);
 }
 
 .result-text {
   text-align: center;
-  margin-top: var(--gap-sm);
-  font-size: var(--text-body);
-  font-weight: 600;
-}
-
-.result-text--correct {
-  color: var(--color-tertiary);
-}
-
-.result-text--wrong {
-  color: var(--color-secondary);
-}
-
-/* 下一张 */
-.next-btn {
-  width: 100%;
-  max-width: 400px;
-  padding: 16px;
-  border-radius: var(--radius-md);
-  background: var(--color-tertiary);
-  color: white;
-  font-size: var(--text-h3);
-  font-weight: 700;
-  box-shadow: var(--shadow-card);
-  margin-bottom: var(--gap-md);
-}
-
-.next-btn:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-card-active);
-}
-
-.back-btn {
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  background: var(--color-card);
-  color: var(--color-text-sub);
+  margin-top: 6px;
   font-size: var(--text-small);
   font-weight: 600;
 }
+
+.result-text--correct { color: var(--color-tertiary); }
+.result-text--wrong { color: var(--color-secondary); }
 </style>
