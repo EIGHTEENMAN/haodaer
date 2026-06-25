@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, shallowRef } from 'vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
+import TopHeader from './components/TopHeader.vue'
 import BottomNav from './components/BottomNav.vue'
 import LoginModal from './components/LoginModal.vue'
 import { router } from './router'
@@ -79,6 +80,7 @@ const showLogin = ref(false)
 <template>
   <YouthModeGate>
     <div class="app-root">
+      <TopHeader />
       <main class="app-main">
         <template v-if="router.current === 'study'">
           <component :is="StudyReview" v-if="studyPath.themeId === '__review__'" />
@@ -121,6 +123,6 @@ const showLogin = ref(false)
 .app-main {
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 var(--gap-md);
+  padding: var(--gap-md) var(--gap-md);
 }
 </style>
