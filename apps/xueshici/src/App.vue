@@ -212,6 +212,13 @@ function goHome() {
 
 function goBack() {
   stopSpeaking()
+  if (currentView.value === 'reader' && currentPoet.value) {
+    currentPoem.value = null
+    currentSection.value = null
+    currentView.value = 'poet'
+    saveHash()
+    return
+  }
   history.back()
 }
 

@@ -232,6 +232,13 @@ function goToSection(t: Topic, s: Section) {
 function goBack() {
   stopSpeaking()
   if (currentView.value === 'search') { goHome(); return }
+  // reader view → 回当前 topic 的 detail 页（不是历史里的上一个 hash）
+  if (currentView.value === 'reader' && currentTopic.value) {
+    currentSection.value = null
+    currentView.value = 'detail'
+    pushHash('detail', currentTopic.value.id)
+    return
+  }
   history.back()
 }
 

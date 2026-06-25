@@ -245,6 +245,12 @@ function goHome() {
 
 function goBack() {
   stopSpeaking()
+  if (currentView.value === 'reader' && currentClassic.value) {
+    currentSection.value = null
+    currentView.value = 'detail'
+    saveHash()
+    return
+  }
   history.back()
 }
 
