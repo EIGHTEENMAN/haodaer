@@ -109,7 +109,7 @@ const _router = router
         </template>
       </main>
 
-      <BottomNav />
+      <BottomNav v-if="!(currentRoute === 'study' && !studyPath.themeId)" />
 
       <LoginModal v-if="showLogin" @close="showLogin = false" />
     </div>
