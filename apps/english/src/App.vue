@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef } from 'vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import BottomNav from './components/BottomNav.vue'
 import LoginModal from './components/LoginModal.vue'
@@ -7,8 +7,6 @@ import { router } from './router'
 import { syncAuthFromCookie } from '@shared/utils/authSync'
 import { registerAllWordAudio } from './utils/wordAudio'
 import { loadFromStorage } from './utils/storage'
-import { isLoggedIn } from '@shared/composables/useAuth'
-import { ref, shallowRef } from 'vue'
 
 // ─── 路由懒加载（code-split） ───
 const StudyHome = shallowRef(null as any)
@@ -17,9 +15,10 @@ const StudyFlashCard = shallowRef(null as any)
 const StudyReadAlong = shallowRef(null as any)
 const StudyReview = shallowRef(null as any)
 const ChatPlaceholder = shallowRef(null as any)
-const ProfilePlaceholder = shallowRef(null as any)
+const ProfileScreen = shallowRef(null as any)
+const SettingsPanel = shallowRef(null as any)
 
-// 解析 #study/animals/1 格式
+// 解析 #/study/<themeId>/<stage> 格式
 function parseStudyHash(): { themeId: string | null, stage: number | null } {
   const h = window.location.hash.replace(/^#\/?study\/?/, '')
   const parts = h.split('/')
@@ -29,36 +28,50 @@ function parseStudyHash(): { themeId: string | null, stage: number | null } {
   }
 }
 
-const studyPath = ref(parseStudyHash())
+// 解析 #/profile/<sub>
+function parseProfileHash(): string | null {
+  const h = window.location.hash.replace(/^#\/?profile\/?/, '')
+  return h || null
+}
 
-// 监听 hash 变化更新 studyPath
-window.addEventListener('hashchange', () => {
+const studyPath = ref(parseStudyHash())
+const profilePath = ref(parseProfileHash())
+
+function onHashChange() {
   if (router.current === 'study') {
     studyPath.value = parseStudyHash()
+  } else if (router.current === 'profile') {
+    profilePath.value = parseProfileHash()
   }
-})
+}
 
 onMounted(async () => {
-  // 1. 跨域 auth 同步（从 cookie 恢复 sessionStorage）
+  // 1. 跨域 auth 同步
   syncAuthFromCookie()
-
   // 2. 加载本地学习数据
   loadFromStorage()
-
   // 3. 注册单词音频（修复版）
   registerAllWordAudio()
 
-  // 4. 懒加载学习 Tab 组件
+  // 4. 监听 hashchange
+  window.addEventListener('hashchange', onHashChange)
+
+  // 5. 懒加载所有页面
   StudyHome.value = (await import('./pages/study/StudyHome.vue')).default
   StudyStageList.value = (await import('./pages/study/StageList.vue')).default
   StudyFlashCard.value = (await import('./pages/study/FlashCard.vue')).default
   StudyReadAlong.value = (await import('./pages/study/ReadAlong.vue')).default
   StudyReview.value = (await import('./pages/study/ReviewPage.vue')).default
   ChatPlaceholder.value = (await import('./pages/chat/ChatPlaceholder.vue')).default
-  ProfilePlaceholder.value = (await import('./pages/profile/ProfilePlaceholder.vue')).default
+  ProfileScreen.value = (await import('./pages/profile/ProfileScreen.vue')).default
+  SettingsPanel.value = (await import('./pages/profile/SettingsPanel.vue')).default
 })
 
-// 登录弹窗（未登录时显示）
+onUnmounted(() => {
+  window.removeEventListener('hashchange', onHashChange)
+})
+
+// 登录弹窗
 const showLogin = ref(false)
 </script>
 
@@ -93,8 +106,11 @@ const showLogin = ref(false)
         <!-- AI 对话 Tab -->
         <component :is="ChatPlaceholder" v-else-if="router.current === 'chat'" />
 
-        <!-- 我的 Tab -->
-        <component :is="ProfilePlaceholder" v-else-if="router.current === 'profile'" />
+        <!-- 我的 Tab（子路由：settings） -->
+        <template v-else-if="router.current === 'profile'">
+          <component :is="SettingsPanel" v-if="profilePath === 'settings'" />
+          <component :is="ProfileScreen" v-else />
+        </template>
       </main>
 
       <BottomNav />
@@ -108,7 +124,6 @@ const showLogin = ref(false)
 .app-root {
   min-height: 100vh;
   background: var(--color-bg);
-  /* 给底部导航留空间 */
   padding-bottom: 80px;
 }
 
