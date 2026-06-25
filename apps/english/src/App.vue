@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, shallowRef } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import TopHeader from './components/TopHeader.vue'
 import BottomNav from './components/BottomNav.vue'
@@ -9,16 +9,16 @@ import { syncAuthFromCookie } from '@shared/utils/authSync'
 import { registerAllWordAudio } from './utils/wordAudio'
 import { loadFromStorage } from './utils/storage'
 
-// ─── 路由懒加载 ───
-const StudyHome = shallowRef(null as any)
-const StudyStageList = shallowRef(null as any)
-const StudyFlashCard = shallowRef(null as any)
-const StudyReadAlong = shallowRef(null as any)
-const StudyReview = shallowRef(null as any)
-const ChatHome = shallowRef(null as any)
-const ChatPanel = shallowRef(null as any)
-const ProfileScreen = shallowRef(null as any)
-const SettingsPanel = shallowRef(null as any)
+// ─── 同步 import — Vite 自动 code-split，构建时分 chunk ───
+import StudyHome from './pages/study/StudyHome.vue'
+import StudyStageList from './pages/study/StageList.vue'
+import StudyFlashCard from './pages/study/FlashCard.vue'
+import StudyReadAlong from './pages/study/ReadAlong.vue'
+import StudyReview from './pages/study/ReviewPage.vue'
+import ChatHome from './pages/chat/ChatHome.vue'
+import ChatPanel from './pages/chat/ChatPanel.vue'
+import ProfileScreen from './pages/profile/ProfileScreen.vue'
+import SettingsPanel from './pages/profile/SettingsPanel.vue'
 
 function parseStudyHash(): { themeId: string | null, stage: number | null } {
   const h = window.location.hash.replace(/^#\/?study\/?/, '')
@@ -53,21 +53,11 @@ function onHashChange() {
   }
 }
 
-onMounted(async () => {
+onMounted(() => {
   syncAuthFromCookie()
   loadFromStorage()
   registerAllWordAudio()
   window.addEventListener('hashchange', onHashChange)
-
-  StudyHome.value = (await import('./pages/study/StudyHome.vue')).default
-  StudyStageList.value = (await import('./pages/study/StageList.vue')).default
-  StudyFlashCard.value = (await import('./pages/study/FlashCard.vue')).default
-  StudyReadAlong.value = (await import('./pages/study/ReadAlong.vue')).default
-  StudyReview.value = (await import('./pages/study/ReviewPage.vue')).default
-  ChatHome.value = (await import('./pages/chat/ChatHome.vue')).default
-  ChatPanel.value = (await import('./pages/chat/ChatPanel.vue')).default
-  ProfileScreen.value = (await import('./pages/profile/ProfileScreen.vue')).default
-  SettingsPanel.value = (await import('./pages/profile/SettingsPanel.vue')).default
 })
 
 onUnmounted(() => {
@@ -83,26 +73,25 @@ const showLogin = ref(false)
       <TopHeader />
       <main class="app-main">
         <template v-if="router.current === 'study'">
-          <component :is="StudyReview" v-if="studyPath.themeId === '__review__'" />
-          <component
-            :is="StudyFlashCard"
+          <StudyReview v-if="studyPath.themeId === '__review__'" />
+          <StudyFlashCard
             v-else-if="studyPath.themeId && studyPath.stage"
             :theme-id="studyPath.themeId"
             :stage="studyPath.stage"
           />
-          <component :is="StudyReadAlong" v-else-if="studyPath.themeId === '__read__'" />
-          <component :is="StudyStageList" v-else-if="studyPath.themeId" :theme-id="studyPath.themeId" />
-          <component :is="StudyHome" v-else />
+          <StudyReadAlong v-else-if="studyPath.themeId === '__read__'" />
+          <StudyStageList v-else-if="studyPath.themeId" :theme-id="studyPath.themeId" />
+          <StudyHome v-else />
         </template>
 
         <template v-else-if="router.current === 'chat'">
-          <component :is="ChatPanel" v-if="chatPath" :character-id="chatPath" />
-          <component :is="ChatHome" v-else />
+          <ChatPanel v-if="chatPath" :character-id="chatPath" />
+          <ChatHome v-else />
         </template>
 
         <template v-else-if="router.current === 'profile'">
-          <component :is="SettingsPanel" v-if="profilePath === 'settings'" />
-          <component :is="ProfileScreen" v-else />
+          <SettingsPanel v-if="profilePath === 'settings'" />
+          <ProfileScreen v-else />
         </template>
       </main>
 
@@ -121,7 +110,7 @@ const showLogin = ref(false)
 }
 
 .app-main {
-  max-width: 640px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--gap-md) var(--gap-md);
 }
