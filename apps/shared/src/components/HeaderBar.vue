@@ -3,10 +3,16 @@ import { ref, onMounted, computed } from 'vue'
 import { isLoggedIn, getUser, useAuth } from '../composables/useAuth'
 import { navLinks } from '../config/navLinks'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   placeholder?: string
   onSearch?: (query: string) => void
-}>()
+  /** UI 变体：'default' = 完整（搜索+链接+登录），'minimal' = 仅 logo（儿童学习站避免抢视野） */
+  variant?: 'default' | 'minimal'
+}>(), {
+  variant: 'default'
+})
+
+const isMinimal = computed(() => props.variant === 'minimal')
 
 const searchQuery = defineModel<string>('modelValue', { required: true })
 const localUser = ref<any>(null)
@@ -106,7 +112,7 @@ onMounted(() => {
     <div class="hd-header-inner">
       <div class="hd-header-left">
         <a href="https://grandand.com" class="hd-logo">好大儿</a>
-        <form class="hd-search-form" @submit.prevent="doSearch">
+        <form v-if="!isMinimal" class="hd-search-form" @submit.prevent="doSearch">
           <svg class="hd-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="doSearch">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
@@ -117,7 +123,7 @@ onMounted(() => {
           />
         </form>
       </div>
-      <div class="hd-header-right">
+      <div v-if="!isMinimal" class="hd-header-right">
         <div class="hd-header-links">
           <a v-for="link in navLinks.filter(l => !l.hidden)" :key="link.label" :href="link.href" class="hd-header-link">{{ link.icon }} {{ link.label }}</a>
         </div>
