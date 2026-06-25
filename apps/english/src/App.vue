@@ -25,19 +25,20 @@ function parseStudyHash(): { themeId: string | null, stage: number | null } {
   const h = window.location.hash.replace(/^#\/?study\/?/, '')
   const parts = h.split('/')
   return {
-    themeId: parts[0] || null,
+    // themeId 可能含中文/空格/特殊字符，hash URL 会被浏览器自动 encode，读回要 decode
+    themeId: parts[0] ? decodeURIComponent(parts[0]) : null,
     stage: parts[1] ? parseInt(parts[1], 10) : null
   }
 }
 
 function parseChatHash(): string | null {
   const h = window.location.hash.replace(/^#\/?chat\/?/, '')
-  return h || null
+  return h ? decodeURIComponent(h) : null
 }
 
 function parseProfileHash(): string | null {
   const h = window.location.hash.replace(/^#\/?profile\/?/, '')
-  return h || null
+  return h ? decodeURIComponent(h) : null
 }
 
 const studyPath = ref(parseStudyHash())
@@ -45,6 +46,7 @@ const chatPath = ref(parseChatHash())
 const profilePath = ref(parseProfileHash())
 
 // 当前路由用 ref 镜像 — 确保 template 响应式追踪
+// router 模块顶层已自动执行 initRouter()，所以 router.current 已是正确值
 const currentRoute = ref<Route>(router.current)
 
 function onHashChange() {

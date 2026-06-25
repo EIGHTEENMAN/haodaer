@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { wordStore, getStreak, getMasteredCount, getAccuracy, getCorrectCount, getWrongCount } from '../stores/wordStore'
 import { studyStore } from '../stores/studyStore'
+import { characterStore } from '../stores/characterStore'
 
 /**
  * 把 wordStore.dailyStats 转成 StudyCalendar 期望的格式
@@ -29,7 +30,8 @@ export function useLearningData() {
     correct: getCorrectCount(),
     wrong: getWrongCount(),
     accuracy: getAccuracy(),
-    sessionsCompleted: studyStore.sessionsCompleted
+    sessionsCompleted: studyStore.sessionsCompleted,
+    chatMinutes: Math.floor(characterStore.totalChatMs / 60000)
   }))
 
   return { dailyLogs, streak, overview }

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useLearningData } from '../../composables/useLearningData'
 import { studyStore } from '../../stores/studyStore'
 import { wordStore, getStreak } from '../../stores/wordStore'
+import { characterStore } from '../../stores/characterStore'
 import { router } from '../../router'
 import { isLoggedIn, getUser } from '@shared/composables/useAuth'
 import StudyCalendar from '@shared/components/StudyCalendar.vue'
@@ -29,6 +30,7 @@ function clearProgress() {
   if (confirm('确定要清除所有学习记录吗？此操作不可撤销。')) {
     wordStore.clearAllProgress()
     studyStore.clearHistory()
+    characterStore.clearAll()
     alert('学习记录已清除')
   }
 }
@@ -45,7 +47,7 @@ function clearProgress() {
       </div>
     </header>
 
-    <!-- 4 张统计卡（蓝橙绿蓝） -->
+    <!-- 5 张统计卡（蓝橙绿蓝紫） -->
     <section class="stats-grid">
       <div class="stat-card stat-card--blue">
         <div class="stat-num">{{ overview.mastered }}</div>
@@ -62,6 +64,10 @@ function clearProgress() {
       <div class="stat-card stat-card--blue">
         <div class="stat-num">{{ streak.current }}</div>
         <div class="stat-label">连续天数</div>
+      </div>
+      <div class="stat-card stat-card--purple">
+        <div class="stat-num">{{ overview.chatMinutes }}<span class="stat-unit"> 分</span></div>
+        <div class="stat-label">AI 对话时长</div>
       </div>
     </section>
 
@@ -129,12 +135,21 @@ function clearProgress() {
   color: var(--color-text-sub);
 }
 
-/* 统计 4 卡 */
+/* 统计 5 卡（2 行 2+1 布局） */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--gap-md);
   margin-bottom: var(--gap-lg);
+}
+
+@media (min-width: 480px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stats-grid > :last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 .stat-card {
@@ -149,6 +164,14 @@ function clearProgress() {
 .stat-card--blue { border-color: var(--color-primary); }
 .stat-card--orange { border-color: var(--color-secondary); }
 .stat-card--green { border-color: var(--color-tertiary); }
+.stat-card--purple { border-color: #9b59b6; }
+
+.stat-unit {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text-sub);
+  margin-left: 2px;
+}
 
 .stat-num {
   font-family: var(--font-display);

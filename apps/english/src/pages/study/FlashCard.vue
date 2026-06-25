@@ -97,7 +97,8 @@ function next() {
 }
 
 function back() {
-  router.navigate('study')
+  // 返回到该主题的 StageList（不是学英语首页 3 大卡）
+  window.location.hash = `#/study/${props.themeId}`
 }
 </script>
 

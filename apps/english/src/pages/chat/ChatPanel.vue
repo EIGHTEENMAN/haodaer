@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, nextTick } from 'vue'
 import { getCharacter, type Character } from '../../config/characters'
 import { characterStore } from '../../stores/characterStore'
 import { studyStore } from '../../stores/studyStore'
@@ -29,6 +29,8 @@ onMounted(() => {
     namingInput.value = ''
   }
   characterStore.setLastCharacterId(props.characterId)
+  // 累计 AI 对话时长
+  characterStore.startChatSession(props.characterId)
   // 若有最近学习单词，自动发首条 user 消息
   if (studyStore.lastSession && studyStore.lastSession.words.length > 0) {
     const lastMsg = messages.value[messages.value.length - 1]
@@ -37,6 +39,11 @@ onMounted(() => {
       setTimeout(() => send(`我们刚学了 ${words}，你能跟我聊聊吗？`), 500)
     }
   }
+})
+
+onBeforeUnmount(() => {
+  // 累加本次对话时长
+  characterStore.endChatSession(props.characterId)
 })
 
 function confirmNaming() {

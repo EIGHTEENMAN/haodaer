@@ -64,7 +64,8 @@ function next() {
 }
 
 function back() {
-  router.navigate('study')
+  // 返回到 StudyHub（不是学英语首页 3 大卡）
+  window.location.hash = '#/study/__hub__'
 }
 
 function restart() {
