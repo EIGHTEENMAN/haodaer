@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { words } from '../../data/words'
-import { wordStore } from '../../stores/wordStore'
+import { wordStore, getAccuracy } from '../../stores/wordStore'
 import { playWordAudio } from '../../utils/audio'
 import { router } from '../../router'
 
@@ -27,7 +27,7 @@ const records = computed(() => {
 const stats = computed(() => ({
   total: records.value.filter(r => r.total > 0).length,
   mastered: records.value.filter(r => r.mastered).length,
-  accuracy: wordStore.getAccuracy()
+  accuracy: getAccuracy()
 }))
 
 const filteredWords = computed(() => {

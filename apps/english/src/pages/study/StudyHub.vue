@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { words } from '../../data/words'
-import { wordStore } from '../../stores/wordStore'
+import { wordStore, getMasteredCount, getAccuracy } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
 import { router } from '../../router'
 
@@ -37,8 +37,8 @@ const themes = computed<Theme[]>(() => {
 })
 
 const totalWords = computed(() => words.length)
-const totalMastered = computed(() => wordStore.getMasteredCount())
-const accuracy = computed(() => wordStore.getAccuracy())
+const totalMastered = computed(() => getMasteredCount())
+const accuracy = computed(() => getAccuracy())
 
 function openTheme(id: string) {
   window.location.hash = '#/study/' + id

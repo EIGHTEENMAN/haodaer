@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { wordStore, getStreak } from '../stores/wordStore'
+import { wordStore, getStreak, getMasteredCount, getAccuracy, getCorrectCount, getWrongCount } from '../stores/wordStore'
 import { studyStore } from '../stores/studyStore'
 
 /**
@@ -25,10 +25,10 @@ export function useLearningData() {
 
   const overview = computed(() => ({
     totalLearned: wordStore.records.size,
-    mastered: wordStore.getMasteredCount(),
-    correct: wordStore.getCorrectCount(),
-    wrong: wordStore.getWrongCount(),
-    accuracy: wordStore.getAccuracy(),
+    mastered: getMasteredCount(),
+    correct: getCorrectCount(),
+    wrong: getWrongCount(),
+    accuracy: getAccuracy(),
     sessionsCompleted: studyStore.sessionsCompleted
   }))
 

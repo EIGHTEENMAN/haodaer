@@ -40,6 +40,10 @@ export const router = reactive({
 })
 
 export function initRouter() {
+  // 幂等：避免 hashchange listener 重复注册
+  if ((router as any)._initialized) return
+  ;(router as any)._initialized = true
+
   router.current = parseRoute()
   if (!window.location.hash) {
     window.location.hash = '#/study'
@@ -48,4 +52,10 @@ export function initRouter() {
     router.current = parseRoute()
     window.scrollTo({ top: 0, behavior: 'smooth' })
   })
+}
+
+// 模块顶层立刻执行 — 这样 App.vue 在 setup 阶段读 router.current 时已是正确路由
+// （避免直接访问 #/profile 或 #/chat 的用户首屏空白）
+if (typeof window !== 'undefined') {
+  initRouter()
 }
