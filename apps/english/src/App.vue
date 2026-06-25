@@ -11,6 +11,7 @@ import { loadFromStorage } from './utils/storage'
 
 // ─── 同步 import — Vite 自动 code-split，构建时分 chunk ───
 import StudyHome from './pages/study/StudyHome.vue'
+import StudyHub from './pages/study/StudyHub.vue'
 import StudyStageList from './pages/study/StageList.vue'
 import StudyFlashCard from './pages/study/FlashCard.vue'
 import StudyReadAlong from './pages/study/ReadAlong.vue'
@@ -85,7 +86,8 @@ const _router = router
       <TopHeader />
       <main class="app-main">
         <template v-if="currentRoute === 'study'">
-          <StudyReview v-if="studyPath.themeId === '__review__'" />
+          <StudyHub v-if="studyPath.themeId === '__hub__'" />
+          <StudyReview v-else-if="studyPath.themeId === '__review__'" />
           <StudyFlashCard
             v-else-if="studyPath.themeId && studyPath.stage"
             :theme-id="studyPath.themeId"

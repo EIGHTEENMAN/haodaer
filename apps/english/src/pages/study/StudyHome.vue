@@ -1,344 +1,272 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { words } from '../../data/words'
-import { wordStore } from '../../stores/wordStore'
-import { studyStore } from '../../stores/studyStore'
 import { router } from '../../router'
 
-interface Theme {
-  id: string
-  name: string
-  iconWord: string      // 用一个英文单词作为图标（避免 emoji）
-  count: number
-  mastered: number
+interface EntryCard {
+  id: 'study' | 'chat' | 'profile'
+  title: string
+  subtitle: string
+  description: string
+  icon: string
+  accent: 'blue' | 'orange' | 'green'
+  badge?: string
 }
 
-// 聚合 20 个 theme
-const themes = computed<Theme[]>(() => {
-  const map = new Map<string, { name: string, count: number, mastered: number }>()
-  for (const w of words) {
-    if (!map.has(w.theme)) {
-      map.set(w.theme, { name: w.theme, count: 0, mastered: 0 })
-    }
-    const t = map.get(w.theme)!
-    t.count++
-    if (wordStore.records.get(w.id)?.mastered) t.mastered++
+const entries: EntryCard[] = [
+  {
+    id: 'study',
+    title: '单词学习',
+    subtitle: 'Vocabulary',
+    description: '5018 词精选主题宫格 · 看图拼写 · 跟读复习',
+    icon: 'Aa',
+    accent: 'blue',
+    badge: '主功能'
+  },
+  {
+    id: 'chat',
+    title: 'AI 对话',
+    subtitle: 'AI Chat',
+    description: '6 位性格朋友陪你练口语 · 偷偷夹英语',
+    icon: 'Hi',
+    accent: 'orange',
+    badge: '新功能'
+  },
+  {
+    id: 'profile',
+    title: '我的',
+    subtitle: 'Profile',
+    description: '学习进度 · 连续打卡 · 声音设置',
+    icon: 'Me',
+    accent: 'green'
   }
-  // 用主题首个单词作为图标
-  const iconWords = new Map<string, string>()
-  for (const w of words) {
-    if (!iconWords.has(w.theme)) iconWords.set(w.theme, w.word)
+]
+
+function go(id: 'study' | 'chat' | 'profile') {
+  // 学习入口：进二级枢纽页（统计/续聊/复习/主题）；其他 Tab 切底部导航
+  if (id === 'study') {
+    window.location.hash = '#/study/__hub__'
+  } else {
+    router.navigate(id)
   }
-  return [...map.entries()].map(([id, v]) => ({
-    id,
-    name: v.name,
-    iconWord: iconWords.get(id) || 'word',
-    count: v.count,
-    mastered: v.mastered
-  }))
-})
-
-const totalWords = computed(() => words.length)
-const totalMastered = computed(() => wordStore.getMasteredCount())
-const accuracy = computed(() => wordStore.getAccuracy())
-
-function openTheme(id: string) {
-  window.location.hash = '#/study/' + id
 }
-
-function startReview() {
-  window.location.hash = '#/study/__review__'
-}
-
-const lastWords = computed(() => studyStore.lastSession?.words || [])
 </script>
 
 <template>
-  <div class="study-home">
-    <!-- 顶部欢迎语 -->
-    <header class="header">
-      <h1 class="title">英语乐园</h1>
-      <p class="subtitle">每日一练，越学越棒</p>
+  <div class="hub">
+    <!-- 欢迎头部 -->
+    <header class="hub-header">
+      <h1 class="hub-title">英语乐园</h1>
+      <p class="hub-subtitle">选一个模块开始今天的英语冒险</p>
     </header>
 
-    <!-- 总览统计 3 张卡 -->
-    <section class="stats">
-      <div class="stat-card stat-card--blue">
-        <div class="stat-num">{{ totalMastered }}</div>
-        <div class="stat-label">已掌握</div>
-      </div>
-      <div class="stat-card stat-card--orange">
-        <div class="stat-num">{{ totalWords }}</div>
-        <div class="stat-label">总词数</div>
-      </div>
-      <div class="stat-card stat-card--green">
-        <div class="stat-num">{{ accuracy }}%</div>
-        <div class="stat-label">正确率</div>
-      </div>
-    </section>
-
-    <!-- 续聊大卡片（如果有最近学习） -->
-    <section v-if="lastWords.length" class="continue-card" @click="router.navigate('chat')">
-      <div class="continue-badge">刚刚学过</div>
-      <div class="continue-content">
-        <h2 class="continue-title">继续和 AI 朋友聊</h2>
-        <div class="continue-words">
-          <span v-for="w in lastWords.slice(0, 5)" :key="w" class="word-chip">{{ w }}</span>
+    <!-- 3 大入口卡片 -->
+    <section class="entries">
+      <button
+        v-for="(card, idx) in entries"
+        :key="card.id"
+        :class="['entry-card', `entry-card--${card.accent}`]"
+        :style="{ animationDelay: idx * 80 + 'ms' }"
+        @click="go(card.id)"
+      >
+        <div class="entry-card-top">
+          <div class="entry-icon">{{ card.icon }}</div>
+          <span v-if="card.badge" class="entry-badge">{{ card.badge }}</span>
         </div>
-        <p class="continue-hint">点击进入 AI 对话</p>
-      </div>
-    </section>
-
-    <!-- 复习入口 -->
-    <section class="actions">
-      <button class="action-btn action-btn--review" @click="startReview">
-        <div class="action-title">复习本课</div>
-        <div class="action-desc">已学 {{ totalMastered }} 词</div>
+        <div class="entry-body">
+          <h2 class="entry-title">{{ card.title }}</h2>
+          <p class="entry-subtitle">{{ card.subtitle }}</p>
+          <p class="entry-desc">{{ card.description }}</p>
+        </div>
+        <div class="entry-arrow">→</div>
       </button>
     </section>
 
-    <!-- 主题宫格 -->
-    <section class="themes">
-      <h2 class="section-title">选一个主题</h2>
-      <div class="theme-grid">
-        <button
-          v-for="t in themes"
-          :key="t.id"
-          class="theme-card"
-          @click="openTheme(t.id)"
-        >
-          <div class="theme-icon">{{ t.iconWord }}</div>
-          <div class="theme-name">{{ t.name }}</div>
-          <div class="theme-count">{{ t.mastered }} / {{ t.count }}</div>
-          <div class="theme-bar">
-            <div
-              class="theme-bar-fill"
-              :style="{ width: (t.count > 0 ? t.mastered / t.count * 100 : 0) + '%' }"
-            ></div>
-          </div>
-        </button>
-      </div>
-    </section>
+    <footer class="hub-footer">
+      <p>每日 5 分钟 · 越学越棒</p>
+    </footer>
   </div>
 </template>
 
 <style scoped>
-.study-home {
+.hub {
   padding: var(--gap-lg) 0 var(--gap-xl);
 }
 
-.header {
-  margin-bottom: var(--gap-lg);
+/* 头部 */
+.hub-header {
+  text-align: center;
+  margin-bottom: var(--gap-xl);
 }
 
-.title {
-  font-size: var(--text-title);
+.hub-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
   color: var(--color-primary);
   margin-bottom: var(--gap-xs);
+  letter-spacing: 1px;
 }
 
-.subtitle {
+.hub-subtitle {
   color: var(--color-text-sub);
   font-size: var(--text-body);
 }
 
-/* 统计 3 卡 */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap-sm);
-  margin-bottom: var(--gap-lg);
-}
-
-.stat-card {
-  padding: var(--gap-md);
-  border-radius: var(--radius-md);
-  background: var(--color-card);
-  box-shadow: var(--shadow-card);
-  text-align: center;
-}
-
-.stat-card--blue { border-bottom: 4px solid var(--color-primary); }
-.stat-card--orange { border-bottom: 4px solid var(--color-secondary); }
-.stat-card--green { border-bottom: 4px solid var(--color-tertiary); }
-
-.stat-num {
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: var(--text-small);
-  color: var(--color-text-sub);
-  margin-top: var(--gap-xs);
-}
-
-/* 续聊大卡片 */
-.continue-card {
+/* 3 大卡片网格 */
+.entries {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--gap-md);
-  padding: var(--gap-md) var(--gap-lg);
-  background: var(--color-card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  border: 2px solid var(--color-primary);
-  margin-bottom: var(--gap-lg);
-  cursor: pointer;
-  transition: all 0.15s;
+  margin-bottom: var(--gap-xl);
 }
 
-.continue-card:hover {
-  transform: translateY(-2px);
+.entry-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  padding: var(--gap-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+  border: 2px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  animation: slideUp 0.5s ease both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 主题色边线（左侧粗条） */
+.entry-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.entry-card--blue::before   { background: var(--color-primary); }
+.entry-card--orange::before { background: var(--color-secondary); }
+.entry-card--green::before  { background: var(--color-tertiary); }
+
+.entry-card:hover {
+  transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
 }
 
-.continue-card:active {
-  transform: translateY(2px);
+.entry-card:active {
+  transform: translateY(1px);
   box-shadow: var(--shadow-card-active);
 }
 
-.continue-badge {
+.entry-card--blue:hover   { border-color: var(--color-primary); }
+.entry-card--orange:hover { border-color: var(--color-secondary); }
+.entry-card--green:hover  { border-color: var(--color-tertiary); }
+
+/* 顶部：图标 + 角标 */
+.entry-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.entry-icon {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.entry-card--blue   .entry-icon { color: var(--color-primary); }
+.entry-card--orange .entry-icon { color: var(--color-secondary); }
+.entry-card--green  .entry-icon { color: var(--color-tertiary); }
+
+.entry-badge {
   background: var(--color-primary);
   color: white;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
   font-size: var(--text-tiny);
   font-weight: 600;
-  flex-shrink: 0;
 }
 
-.continue-content {
-  flex: 1;
-}
+.entry-card--orange .entry-badge { background: var(--color-secondary); }
+.entry-card--green  .entry-badge { background: var(--color-tertiary); }
 
-.continue-title {
-  font-size: var(--text-h3);
-  color: var(--color-text);
-  margin-bottom: var(--gap-xs);
-}
-
-.continue-words {
+/* 文字区 */
+.entry-body {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap-xs);
-  margin-bottom: var(--gap-xs);
+  flex-direction: column;
+  gap: 4px;
 }
 
-.word-chip {
-  background: var(--color-secondary-light);
-  color: var(--color-secondary);
-  padding: 2px 10px;
-  border-radius: var(--radius-pill);
-  font-size: var(--text-small);
-  font-weight: 600;
-}
-
-.continue-hint {
-  font-size: var(--text-small);
-  color: var(--color-text-sub);
-}
-
-/* 复习入口 */
-.actions {
-  margin-bottom: var(--gap-lg);
-}
-
-.action-btn {
-  width: 100%;
-  padding: var(--gap-md) var(--gap-lg);
-  border-radius: var(--radius-md);
-  background: var(--color-card);
-  box-shadow: var(--shadow-card);
-  text-align: left;
-  border: 2px solid var(--color-border);
-}
-
-.action-btn--review {
-  border-color: var(--color-tertiary);
-}
-
-.action-title {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.action-desc {
-  font-size: var(--text-small);
-  color: var(--color-text-sub);
-  margin-top: 2px;
-}
-
-.section-title {
-  font-size: var(--text-h3);
-  color: var(--color-text);
-  margin-bottom: var(--gap-md);
-}
-
-/* 主题宫格 */
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap-md);
-}
-
-.theme-card {
-  padding: var(--gap-md);
-  border-radius: var(--radius-md);
-  background: var(--color-card);
-  box-shadow: var(--shadow-card);
-  text-align: left;
-  border: 2px solid transparent;
-  transition: all 0.15s;
-}
-
-.theme-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-}
-
-.theme-card:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-card-active);
-}
-
-.theme-icon {
+.entry-title {
   font-family: var(--font-display);
   font-size: var(--text-h2);
   font-weight: 700;
-  color: var(--color-primary);
-  text-transform: lowercase;
-  margin-bottom: var(--gap-xs);
-}
-
-.theme-name {
-  font-size: var(--text-body);
-  font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 4px;
+  line-height: 1.2;
 }
 
-.theme-count {
+.entry-subtitle {
   font-size: var(--text-small);
   color: var(--color-text-sub);
-  margin-bottom: var(--gap-xs);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
-.theme-bar {
-  height: 6px;
-  background: var(--color-border);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
+.entry-desc {
+  font-size: var(--text-body);
+  color: var(--color-text);
+  margin-top: var(--gap-xs);
+  line-height: 1.5;
+  opacity: 0.8;
 }
 
-.theme-bar-fill {
-  height: 100%;
-  background: var(--color-tertiary);
-  transition: width 0.3s ease;
+/* 右下角箭头 */
+.entry-arrow {
+  position: absolute;
+  right: var(--gap-md);
+  bottom: var(--gap-md);
+  font-size: 24px;
+  color: var(--color-text-sub);
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+
+.entry-card:hover .entry-arrow {
+  transform: translateX(4px);
+  color: var(--color-text);
+}
+
+/* 页脚 */
+.hub-footer {
+  text-align: center;
+  color: var(--color-text-sub);
+  font-size: var(--text-small);
+  opacity: 0.7;
+}
+
+/* 桌面端横排 */
+@media (min-width: 720px) {
+  .entries {
+    flex-direction: row;
+  }
+  .entry-card {
+    flex: 1;
+    min-height: 280px;
+  }
+  .entry-icon {
+    font-size: 56px;
+  }
 }
 </style>
