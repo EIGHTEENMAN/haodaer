@@ -39,6 +39,19 @@ export function registerWordAudio(word: string, url: string) {
   audioCache.set(word, audio)
 }
 
+// 朗读英文例句（浏览器内置 TTS，零成本、即时）
+// rate 0.85 让例句节奏稍慢便于跟读
+export function speakSentence(text: string) {
+  if (!("speechSynthesis" in window)) return
+  // 取消任何正在朗读的内容，避免叠加
+  speechSynthesis.cancel()
+  const u = new SpeechSynthesisUtterance(text)
+  u.lang = "en-US"
+  u.rate = 0.85
+  u.pitch = 1.0
+  speechSynthesis.speak(u)
+}
+
 // === Bruce Lee "阿达!" Sound (Web Audio API synthesis) ===
 
 export function playBruceLeeShout(pitch = 1.0) {

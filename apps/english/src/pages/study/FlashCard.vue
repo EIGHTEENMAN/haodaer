@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { words } from '../../data/words'
 import { wordStore } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
-import { playWordAudio } from '../../utils/audio'
+import { playWordAudio, speakSentence } from '../../utils/audio'
 
 const props = defineProps<{
   themeId: string
@@ -50,6 +50,12 @@ onUnmounted(() => {
 function playAudio() {
   if (currentWord.value) {
     playWordAudio(currentWord.value.word.toLowerCase())
+  }
+}
+
+function playSentence() {
+  if (currentWord.value) {
+    speakSentence(currentWord.value.sentence)
   }
 }
 
@@ -139,7 +145,14 @@ function nextManual() {
         <div class="divider"></div>
 
         <div class="example">
-          <div class="example-label">例句</div>
+          <div class="example-head">
+            <span class="example-label">例句</span>
+            <button
+              class="example-audio-btn"
+              @click="playSentence"
+              title="听例句"
+            >🔊 听</button>
+          </div>
           <div class="example-en">{{ currentWord.sentence }}</div>
           <div class="example-cn">{{ currentWord.sentenceCn }}</div>
         </div>
@@ -328,13 +341,37 @@ function nextManual() {
   text-align: left;
 }
 
+.example-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
 .example-label {
   font-size: var(--text-tiny);
   color: var(--color-text-sub);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 600;
-  margin-bottom: 4px;
+}
+
+.example-audio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-tertiary-light);
+  color: var(--color-tertiary);
+  font-size: var(--text-tiny);
+  font-weight: 700;
+  font-family: var(--font-display);
+  transition: all 0.15s;
+}
+
+.example-audio-btn:active {
+  transform: scale(0.95);
 }
 
 .example-en {
