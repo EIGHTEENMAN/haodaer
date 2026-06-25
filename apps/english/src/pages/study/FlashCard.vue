@@ -89,6 +89,28 @@ function next() {
 function back() {
   window.location.hash = `#/study/${props.themeId}`
 }
+
+function prev() {
+  if (currentIndex.value <= 0) return
+  // 上一张不计入成绩（浏览模式）
+  showResult.value = null
+  spellInput.value = ''
+  currentIndex.value--
+}
+
+function nextManual() {
+  // 手动下一张：不检查拼写，直接跳过（不算成绩）
+  showResult.value = null
+  spellInput.value = ''
+  currentIndex.value++
+  if (currentIndex.value >= sessionWords.value.length) {
+    studyStore.completeSession(
+      sessionWords.value.map(w => ({ word: w.word, meaning: w.meaning })),
+      correctCount.value
+    )
+    window.location.hash = '#/study/__read__'
+  }
+}
 </script>
 
 <template>
@@ -126,6 +148,22 @@ function back() {
 
     <!-- 底部：拼写输入 -->
     <footer class="bottom-bar">
+      <div class="nav-row">
+        <button
+          class="nav-btn nav-btn--prev"
+          :disabled="currentIndex === 0"
+          @click="prev"
+        >
+          ← 上一张
+        </button>
+        <button
+          class="nav-btn nav-btn--next"
+          :disabled="currentIndex >= sessionWords.length - 1"
+          @click="nextManual"
+        >
+          下一张 →
+        </button>
+      </div>
       <div class="spell-wrap">
         <p class="spell-hint">拼写单词</p>
         <div class="spell-row">
@@ -315,6 +353,46 @@ function back() {
 /* 底部：拼写 */
 .bottom-bar {
   padding: var(--gap-sm) 0 var(--gap-md);
+}
+
+.nav-row {
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-sm);
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: 700;
+  box-shadow: var(--shadow-card);
+  transition: all 0.15s;
+}
+
+.nav-btn--prev {
+  background: var(--color-card);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+}
+
+.nav-btn--next {
+  background: var(--color-secondary);
+  color: white;
+  border: 2px solid var(--color-secondary);
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nav-btn:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-card-active);
 }
 
 .spell-wrap {
