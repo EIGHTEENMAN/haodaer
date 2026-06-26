@@ -1,13 +1,19 @@
 <script setup lang="ts">
 /**
- * 学英语顶部 Header — 复用 @shared/HeaderBar 但用 minimal 变体
+ * 学英语顶部 Header — 跟主站/学诗词/学国学/学通识 统一完整版
  *
- * 儿童学习站不需要主站全功能（搜索框 + 全站导航 + 登录/注册会抢视野、覆盖内容）
- * 只显示「好大儿」logo 点回主站即可
+ * 之前用 minimal（只 logo）导致用户视觉割裂；
+ * 改回 full 后内容会留出 header 高度的顶部 padding。
  */
+import { ref } from 'vue'
 import HeaderBar from '@shared/components/HeaderBar.vue'
+
+const searchQuery = ref('')
+function handleSearch(q: string) {
+  window.location.href = 'https://grandand.com/search?q=' + encodeURIComponent(q)
+}
 </script>
 
 <template>
-  <HeaderBar variant="minimal" />
+  <HeaderBar v-model="searchQuery" :on-search="handleSearch" />
 </template>
