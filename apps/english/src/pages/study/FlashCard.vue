@@ -55,9 +55,19 @@ function playAudio() {
 }
 
 function playSentence() {
-  if (currentWord.value) {
+  if (!currentWord.value) return
+  // 优先播预生成的 Edge TTS mp3（en-US-GuyNeural + 内容词 emphasis 重音）
+  // 缺失或加载失败 → 降级到浏览器 speechSynthesis
+  const word = currentWord.value.word.toLowerCase()
+  const audio = new Audio(`/audio/sentences/${word}.mp3`)
+  audio.onerror = () => {
+    // mp3 缺失或解码失败，降级到 TTS
     speakSentence(currentWord.value.sentence)
   }
+  audio.play().catch(() => {
+    // autoplay 策略拒绝时也降级
+    speakSentence(currentWord.value.sentence)
+  })
 }
 
 function checkSpell() {
