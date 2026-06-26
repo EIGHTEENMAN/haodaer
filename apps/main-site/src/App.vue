@@ -13,6 +13,7 @@ import LearningDashboard from '@/components/LearningDashboard.vue'
 import SearchPage from '@/components/SearchPage.vue'
 import DocPage from '@/components/DocPage.vue'
 import LegalPage from '@/components/LegalPage.vue'
+import FAQPage from '@/components/FAQPage.vue'
 import { navLinks } from '@shared/config/navLinks'
 
 const auth = useAuthStore()
@@ -26,6 +27,7 @@ const isDocPage = ref(false)
 const isProfileSetupPage = ref(false)
 const isPersonalCenterPage = ref(false)
 const isLegalPage = ref(false)
+const isFaqPage = ref(false)
 const showChildSwitcher = ref(false)
 
 // Active profile display name
@@ -88,7 +90,8 @@ onMounted(() => {
   isProfileSetupPage.value = window.location.pathname.startsWith('/profile-setup')
   isPersonalCenterPage.value = window.location.pathname === '/personal-center'
   isLegalPage.value = window.location.pathname === '/legal'
-  if (!isSearchPage.value && !isDocPage.value && !isProfileSetupPage.value && !isPersonalCenterPage.value && !isLegalPage.value) {
+  isFaqPage.value = window.location.pathname === '/faq'
+  if (!isSearchPage.value && !isDocPage.value && !isProfileSetupPage.value && !isPersonalCenterPage.value && !isLegalPage.value && !isFaqPage.value) {
     refreshUser()
     loadChildren()
     window.addEventListener('storage', () => {
@@ -187,7 +190,7 @@ const stats = [
 </script>
 
 <template>
-  <div class="page" v-if="!isSearchPage && !isDocPage && !isPersonalCenterPage && !isLegalPage">
+  <div class="page" v-if="!isSearchPage && !isDocPage && !isPersonalCenterPage && !isLegalPage && !isFaqPage">
     <!-- Header Nav -->
     <header class="header">
       <div class="header-inner">
@@ -378,6 +381,7 @@ const stats = [
 
   <!-- Legal Page (shown when path is /legal) -->
   <LegalPage v-if="isLegalPage" />
+  <FAQPage v-if="isFaqPage" />
 </template>
 
 <style>
