@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import YouthModeGate from '@shared/components/YouthModeGate.vue'
 import TopHeader from './components/TopHeader.vue'
 import BottomNav from './components/BottomNav.vue'
@@ -8,6 +8,8 @@ import { router, type Route } from './router'
 import { syncAuthFromCookie } from '@shared/utils/authSync'
 import { registerAllWordAudio } from './utils/wordAudio'
 import { loadFromStorage } from './utils/storage'
+import { studyStore } from './stores/studyStore'
+import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
 
 // ─── 同步 import — Vite 自动 code-split，构建时分 chunk ───
 import StudyHome from './pages/study/StudyHome.vue'
@@ -69,6 +71,22 @@ onMounted(() => {
     console.error('[App] init failed:', e)
   }
 })
+
+// 学习进度上报：完成会话 (lastSession 更新) → 上报 1 次
+// items_learned=会话单词数 (lastSession.total), time=会话时长分钟
+watch(
+  () => studyStore.lastSession,
+  (newSession, oldSession) => {
+    // 只在 lastSession 从 null 变成有值时上报（避免 reload 时重复上报老数据）
+    if (!newSession || (oldSession && newSession.completedAt === oldSession.completedAt)) return
+    const childId = getActiveChildId()
+    if (!childId) return
+    const minutes = newSession.completedAt && newSession.startedAt
+      ? Math.max(1, Math.round((newSession.completedAt - newSession.startedAt) / 60000))
+      : 1
+    reportLearningProgress(childId, 'english', newSession.total || 1, minutes)
+  }
+)
 
 onUnmounted(() => {
   window.removeEventListener('hashchange', onHashChange)
