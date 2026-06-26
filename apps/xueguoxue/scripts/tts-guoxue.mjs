@@ -253,7 +253,7 @@ async function main() {
   const fileContent = readFileSync(resolve(APP_DIR, 'src/data/classics.ts'), 'utf-8')
 
   // 确定要处理的书籍
-  const allBooks = parseAllBooks(fileContent)
+  const allBooks = parseAllBooks(fileContent).filter(b => !b.id.startsWith('meng-'))  // 排除蒙学
   const booksToProcess = CONFIG.bookIds.length > 0
     ? allBooks.filter(b => CONFIG.bookIds.includes(b.id))
     : allBooks
@@ -269,15 +269,22 @@ async function main() {
     if (sections.length === 0) continue
     const limit = CONFIG.poc ? 1 : sections.length
 
+    const onlyType = process.argv.includes('--only-original') ? 'original'
+      : process.argv.includes('--only-translation') ? 'translation'
+      : process.argv.includes('--only-interpretation') ? 'interpretation'
+      : null
+
     for (let si = 0; si < limit; si++) {
       const sec = sections[si]
       for (const [type, label] of [['original', '原文'], ['translation', '译文'], ['interpretation', '解读']]) {
+        if (onlyType && type !== onlyType) continue
         const text = type === 'original' ? sec.original : type === 'translation' ? sec.translation : sec.interpretation
         if (!text.trim()) continue
 
         const filename = buildFilename(book.title, sec.title, label)
         const path = resolve(CONFIG.outputDir, filename)
-        if (existsSync(path)) { totalSkipped++; continue }
+        const forceReplace = process.argv.includes('--replace-original') && type === 'original'
+        if (existsSync(path) && !forceReplace) { totalSkipped++; continue }
 
         const profile = type === 'original' ? CONFIG.originalVoice : CONFIG.translationVoice
         log(C.cyan, '生成', `[${book.title}] ${sec.title} · ${label}`)
