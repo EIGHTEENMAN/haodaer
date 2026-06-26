@@ -4093,18 +4093,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "cinnamon.mp3"
   },
-{
-    "id": 341,
-    "word": "clam",
-    "meaning": "蛤蜊",
-    "phonetic": "/cla/",
-    "difficulty": 2,
-    "theme": "食物 Food",
-    "sentence": "Would you like some clam?",
-    "sentenceCn": "你想要一些蛤蜊吗？",
-        "emoji": "📖",
-    "audioFile": "clam.mp3"
-  },
+
 {
     "id": 342,
     "word": "cocoa",
@@ -4165,18 +4154,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "corn.mp3"
   },
-{
-    "id": 347,
-    "word": "crab",
-    "meaning": "螃蟹",
-    "phonetic": "/cra/",
-    "difficulty": 2,
-    "theme": "食物 Food",
-    "sentence": "Mom made some crab for dinner.",
-    "sentenceCn": "妈妈做了螃蟹当晚餐。",
-        "emoji": "🦀",
-    "audioFile": "crab.mp3"
-  },
+
 {
     "id": 348,
     "word": "cracker",
@@ -4345,18 +4323,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "fig.mp3"
   },
-{
-    "id": 362,
-    "word": "fish",
-    "meaning": "鱼",
-    "phonetic": "/fis/",
-    "difficulty": 3,
-    "theme": "食物 Food",
-    "sentence": "Fish is very tasty.",
-    "sentenceCn": "鱼很好吃。",
-        "emoji": "🐟",
-    "audioFile": "fish.mp3"
-  },
+
 {
     "id": 363,
     "word": "flan",
@@ -4573,18 +4540,7 @@ export const words: WordEntry[] = [
         "emoji": "🍔",
     "audioFile": "hamburger.mp3"
   },
-{
-    "id": 381,
-    "word": "herring",
-    "meaning": "鲱鱼",
-    "phonetic": "/her/",
-    "difficulty": 3,
-    "theme": "食物 Food",
-    "sentence": "Mom made some herring for dinner.",
-    "sentenceCn": "妈妈做了鲱鱼当晚餐。",
-        "emoji": "📖",
-    "audioFile": "herring.mp3"
-  },
+
 {
     "id": 382,
     "word": "honey",
@@ -4693,18 +4649,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "ketchup.mp3"
   },
-{
-    "id": 391,
-    "word": "kiwi",
-    "meaning": "猕猴桃",
-    "phonetic": "/kiw/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "Would you like some kiwi?",
-    "sentenceCn": "你想要一些猕猴桃吗？",
-        "emoji": "🥝",
-    "audioFile": "kiwi.mp3"
-  },
+
 {
     "id": 392,
     "word": "kumquat",
@@ -4717,18 +4662,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "kumquat.mp3"
   },
-{
-    "id": 393,
-    "word": "lamb",
-    "meaning": "羊肉",
-    "phonetic": "/lam/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "Would you like some lamb?",
-    "sentenceCn": "你想要一些羊肉吗？",
-        "emoji": "🐑",
-    "audioFile": "lamb.mp3"
-  },
+
 {
     "id": 394,
     "word": "lasagna",
@@ -4813,18 +4747,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "lime.mp3"
   },
-{
-    "id": 401,
-    "word": "lobster",
-    "meaning": "龙虾",
-    "phonetic": "/lob/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "I love eating lobsters.",
-    "sentenceCn": "我爱吃龙虾。",
-        "emoji": "🦞",
-    "audioFile": "lobster.mp3"
-  },
+
 {
     "id": 402,
     "word": "mango",
@@ -5041,18 +4964,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "oat.mp3"
   },
-{
-    "id": 420,
-    "word": "octopus",
-    "meaning": "章鱼",
-    "phonetic": "/oct/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "I love eating octopuses.",
-    "sentenceCn": "我爱吃章鱼。",
-        "emoji": "🐙",
-    "audioFile": "octopus.mp3"
-  },
+
 {
     "id": 421,
     "word": "oil",
@@ -5125,18 +5037,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "oregano.mp3"
   },
-{
-    "id": 427,
-    "word": "oyster",
-    "meaning": "牡蛎",
-    "phonetic": "/oys/",
-    "difficulty": 5,
-    "theme": "食物 Food",
-    "sentence": "Mom made some oyster for dinner.",
-    "sentenceCn": "妈妈做了牡蛎当晚餐。",
-        "emoji": "📖",
-    "audioFile": "oyster.mp3"
-  },
+
 {
     "id": 428,
     "word": "pancake",
@@ -5557,18 +5458,7 @@ export const words: WordEntry[] = [
         "emoji": "🥗",
     "audioFile": "salad.mp3"
   },
-{
-    "id": 463,
-    "word": "salmon",
-    "meaning": "鲑鱼粉色",
-    "phonetic": "/sal/",
-    "difficulty": 6,
-    "theme": "食物 Food",
-    "sentence": "I love eating salmons.",
-    "sentenceCn": "我爱吃鲑鱼粉色。",
-        "emoji": "🐟",
-    "audioFile": "salmon.mp3"
-  },
+
 {
     "id": 464,
     "word": "salsa",
@@ -5605,18 +5495,7 @@ export const words: WordEntry[] = [
         "emoji": "🥪",
     "audioFile": "sandwich.mp3"
   },
-{
-    "id": 467,
-    "word": "sardine",
-    "meaning": "沙丁鱼",
-    "phonetic": "/sar/",
-    "difficulty": 6,
-    "theme": "食物 Food",
-    "sentence": "Would you like some sardine?",
-    "sentenceCn": "你想要一些沙丁鱼吗？",
-        "emoji": "📖",
-    "audioFile": "sardine.mp3"
-  },
+
 {
     "id": 468,
     "word": "sauce",
@@ -5653,18 +5532,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "scallion.mp3"
   },
-{
-    "id": 471,
-    "word": "scallop",
-    "meaning": "扇贝",
-    "phonetic": "/sca/",
-    "difficulty": 6,
-    "theme": "食物 Food",
-    "sentence": "Mom made some scallop for dinner.",
-    "sentenceCn": "妈妈做了扇贝当晚餐。",
-        "emoji": "📖",
-    "audioFile": "scallop.mp3"
-  },
+
 {
     "id": 472,
     "word": "sesame",
@@ -5689,18 +5557,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "shallot.mp3"
   },
-{
-    "id": 474,
-    "word": "shrimp",
-    "meaning": "虾",
-    "phonetic": "/shr/",
-    "difficulty": 6,
-    "theme": "食物 Food",
-    "sentence": "I love eating shrimps.",
-    "sentenceCn": "我爱吃虾。",
-        "emoji": "🦐",
-    "audioFile": "shrimp.mp3"
-  },
+
 {
     "id": 475,
     "word": "sorbet",
@@ -5761,18 +5618,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "squash.mp3"
   },
-{
-    "id": 480,
-    "word": "squid",
-    "meaning": "鱿鱼",
-    "phonetic": "/squ/",
-    "difficulty": 6,
-    "theme": "食物 Food",
-    "sentence": "Mom made some squid for dinner.",
-    "sentenceCn": "妈妈做了鱿鱼当晚餐。",
-        "emoji": "🦑",
-    "audioFile": "squid.mp3"
-  },
+
 {
     "id": 481,
     "word": "steak",
@@ -5941,30 +5787,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "truffle.mp3"
   },
-{
-    "id": 495,
-    "word": "tuna",
-    "meaning": "金枪鱼",
-    "phonetic": "/tun/",
-    "difficulty": 7,
-    "theme": "食物 Food",
-    "sentence": "Tuna is very tasty.",
-    "sentenceCn": "金枪鱼很好吃。",
-        "emoji": "📖",
-    "audioFile": "tuna.mp3"
-  },
-{
-    "id": 496,
-    "word": "turkey",
-    "meaning": "火鸡",
-    "phonetic": "/tur/",
-    "difficulty": 7,
-    "theme": "食物 Food",
-    "sentence": "Mom made some turkey for dinner.",
-    "sentenceCn": "妈妈做了火鸡当晚餐。",
-        "emoji": "📖",
-    "audioFile": "turkey.mp3"
-  },
+
 {
     "id": 497,
     "word": "turnip",
@@ -6745,18 +6568,7 @@ export const words: WordEntry[] = [
         "emoji": "🥣",
     "audioFile": "lentil_soup.mp3"
   },
-{
-    "id": 562,
-    "word": "licorice",
-    "meaning": "甘草糖",
-    "phonetic": "/ˈlɪkərɪʃ/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "Licorice is very tasty.",
-    "sentenceCn": "甘草糖很好吃。",
-        "emoji": "🖤",
-    "audioFile": "licorice.mp3"
-  },
+
 {
     "id": 563,
     "word": "macaroni",
@@ -6769,42 +6581,7 @@ export const words: WordEntry[] = [
         "emoji": "🍝",
     "audioFile": "macaroni.mp3"
   },
-{
-    "id": 564,
-    "word": "margarine",
-    "meaning": "人造黄油",
-    "phonetic": "/ˈmɑːrdʒərɪn/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "Would you like some margarine?",
-    "sentenceCn": "你想要一些人造黄油吗？",
-        "emoji": "🧈",
-    "audioFile": "margarine.mp3"
-  },
-{
-    "id": 565,
-    "word": "marmalade",
-    "meaning": "柑橘酱",
-    "phonetic": "/ˈmɑːrməleɪd/",
-    "difficulty": 4,
-    "theme": "食物 Food",
-    "sentence": "I love eating marmalades.",
-    "sentenceCn": "我爱吃柑橘酱。",
-        "emoji": "🍊",
-    "audioFile": "marmalade.mp3"
-  },
-{
-    "id": 566,
-    "word": "marshmallow",
-    "meaning": "棉花糖",
-    "phonetic": "/ˈmɑːrʃmæloʊ/",
-    "difficulty": 5,
-    "theme": "食物 Food",
-    "sentence": "I love eating marshmallows.",
-    "sentenceCn": "我爱吃棉花糖。",
-        "emoji": "🍡",
-    "audioFile": "marshmallow.mp3"
-  },
+
 {
     "id": 567,
     "word": "muesli",
@@ -6901,18 +6678,7 @@ export const words: WordEntry[] = [
         "emoji": "🫓",
     "audioFile": "pita_bread.mp3"
   },
-{
-    "id": 575,
-    "word": "popcorn",
-    "meaning": "爆米花",
-    "phonetic": "/ˈpɑːpkɔːrn/",
-    "difficulty": 3,
-    "theme": "食物 Food",
-    "sentence": "Would you like some popcorn?",
-    "sentenceCn": "你想要一些爆米花吗？",
-        "emoji": "🍿",
-    "audioFile": "popcorn.mp3"
-  },
+
 {
     "id": 576,
     "word": "potato chips",
@@ -7105,18 +6871,7 @@ export const words: WordEntry[] = [
         "emoji": "🥤",
     "audioFile": "soda.mp3"
   },
-{
-    "id": 592,
-    "word": "sorbet",
-    "meaning": "雪葩",
-    "phonetic": "/sɔːrˈbeɪ/",
-    "difficulty": 3,
-    "theme": "食物 Food",
-    "sentence": "Mom made some sorbet for dinner.",
-    "sentenceCn": "妈妈做了雪葩当晚餐。",
-        "emoji": "🍧",
-    "audioFile": "sorbet.mp3"
-  },
+
 {
     "id": 593,
     "word": "sourdough",
@@ -9601,18 +9356,7 @@ export const words: WordEntry[] = [
         "emoji": "💪",
     "audioFile": "pectoral.mp3"
   },
-{
-    "id": 800,
-    "word": "phalanx",
-    "meaning": "指骨",
-    "phonetic": "/ˈfeɪlæŋks/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "I have a phalanx.",
-    "sentenceCn": "我有一个指骨。",
-        "emoji": "🦴",
-    "audioFile": "phalanx.mp3"
-  },
+
 {
     "id": 801,
     "word": "plasma",
@@ -10045,30 +9789,7 @@ export const words: WordEntry[] = [
         "emoji": "🫃",
     "audioFile": "umbilical.mp3"
   },
-{
-    "id": 837,
-    "word": "ureter",
-    "meaning": "输尿管",
-    "phonetic": "/jʊˈriːtər/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "I have a ureter.",
-    "sentenceCn": "我有一个输尿管。",
-        "emoji": "🫀",
-    "audioFile": "ureter.mp3"
-  },
-{
-    "id": 838,
-    "word": "urethra",
-    "meaning": "尿道",
-    "phonetic": "/jʊˈriːθrə/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "I have a urethra.",
-    "sentenceCn": "我有一个尿道。",
-        "emoji": "🫀",
-    "audioFile": "urethra.mp3"
-  },
+
 {
     "id": 839,
     "word": "urine",
@@ -10093,18 +9814,7 @@ export const words: WordEntry[] = [
         "emoji": "👂",
     "audioFile": "utricle.mp3"
   },
-{
-    "id": 841,
-    "word": "uvula",
-    "meaning": "小舌",
-    "phonetic": "/ˈjuːvjʊlə/",
-    "difficulty": 2,
-    "theme": "身体 Body",
-    "sentence": "I have a uvula.",
-    "sentenceCn": "我有一个小舌。",
-        "emoji": "🫁",
-    "audioFile": "uvula.mp3"
-  },
+
 {
     "id": 842,
     "word": "vagus",
@@ -10141,18 +9851,7 @@ export const words: WordEntry[] = [
         "emoji": "🫀",
     "audioFile": "ventricle.mp3"
   },
-{
-    "id": 845,
-    "word": "vertebra",
-    "meaning": "椎骨",
-    "phonetic": "/ˈvɜːrtɪbrə/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "Use your vertebra to feel.",
-    "sentenceCn": "用你的椎骨去感受。",
-        "emoji": "🦴",
-    "audioFile": "vertebra.mp3"
-  },
+
 {
     "id": 846,
     "word": "vessel",
@@ -10213,30 +9912,7 @@ export const words: WordEntry[] = [
         "emoji": "🦴",
     "audioFile": "wrist_bone.mp3"
   },
-  {
-    "id": 851,
-    "word": "areola",
-    "meaning": "乳晕",
-    "phonetic": "/areo/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "Use your areola to feel.",
-    "sentenceCn": "用你的乳晕去感受。",
-        "emoji": "🫃",
-    "audioFile": "areola.mp3"
-  },
-  {
-    "id": 852,
-    "word": "atrium",
-    "meaning": "心房",
-    "phonetic": "/atri/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "Use your atrium to feel.",
-    "sentenceCn": "用你的心房去感受。",
-        "emoji": "🫀",
-    "audioFile": "atrium.mp3"
-  },
+
   {
     "id": 853,
     "word": "axon",
@@ -10609,366 +10285,7 @@ export const words: WordEntry[] = [
         "emoji": "👅",
     "audioFile": "papilla.mp3"
   },
-  {
-    "id": 884,
-    "word": "parotid",
-    "meaning": "腮腺",
-    "phonetic": "/paro/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "I have a parotid.",
-    "sentenceCn": "我有一个腮腺。",
-        "emoji": "🫁",
-    "audioFile": "parotid.mp3"
-  },
-  {
-    "id": 885,
-    "word": "pineal",
-    "meaning": "松果体",
-    "phonetic": "/pine/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "I have a pineal.",
-    "sentenceCn": "我有一个松果体。",
-        "emoji": "🧠",
-    "audioFile": "pineal.mp3"
-  },
-  {
-    "id": 886,
-    "word": "pinna",
-    "meaning": "耳廓",
-    "phonetic": "/pinn/",
-    "difficulty": 2,
-    "theme": "身体 Body",
-    "sentence": "My pinna is strong.",
-    "sentenceCn": "我的耳廓很强壮。",
-        "emoji": "👂",
-    "audioFile": "pinna.mp3"
-  },
-  {
-    "id": 887,
-    "word": "pituitary",
-    "meaning": "垂体",
-    "phonetic": "/pitu/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "I have a pituitary.",
-    "sentenceCn": "我有一个垂体。",
-        "emoji": "🧠",
-    "audioFile": "pituitary.mp3"
-  },
-  {
-    "id": 888,
-    "word": "placenta",
-    "meaning": "胎盘",
-    "phonetic": "/plac/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "My placenta is strong.",
-    "sentenceCn": "我的胎盘很强壮。",
-        "emoji": "🫃",
-    "audioFile": "placenta.mp3"
-  },
-  {
-    "id": 889,
-    "word": "pleura",
-    "meaning": "胸膜",
-    "phonetic": "/pleu/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "My pleura is strong.",
-    "sentenceCn": "我的胸膜很强壮。",
-        "emoji": "🫁",
-    "audioFile": "pleura.mp3"
-  },
-  {
-    "id": 890,
-    "word": "pylorus",
-    "meaning": "幽门",
-    "phonetic": "/pylo/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "My pylorus is strong.",
-    "sentenceCn": "我的幽门很强壮。",
-        "emoji": "🫃",
-    "audioFile": "pylorus.mp3"
-  },
-  {
-    "id": 891,
-    "word": "scrotum",
-    "meaning": "阴囊",
-    "phonetic": "/scro/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "Use your scrotum to feel.",
-    "sentenceCn": "用你的阴囊去感受。",
-        "emoji": "🫃",
-    "audioFile": "scrotum.mp3"
-  },
-  {
-    "id": 892,
-    "word": "sphincter",
-    "meaning": "括约肌",
-    "phonetic": "/sphi/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "I have a sphincter.",
-    "sentenceCn": "我有一个括约肌。",
-        "emoji": "💪",
-    "audioFile": "sphincter.mp3"
-  },
-  {
-    "id": 893,
-    "word": "stapes",
-    "meaning": "镫骨",
-    "phonetic": "/stap/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "Use your stapes to feel.",
-    "sentenceCn": "用你的镫骨去感受。",
-        "emoji": "👂",
-    "audioFile": "stapes.mp3"
-  },
-  {
-    "id": 894,
-    "word": "thalamus",
-    "meaning": "丘脑",
-    "phonetic": "/thal/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "I have a thalamus.",
-    "sentenceCn": "我有一个丘脑。",
-        "emoji": "🧠",
-    "audioFile": "thalamus.mp3"
-  },
-  {
-    "id": 895,
-    "word": "tympanic",
-    "meaning": "鼓膜",
-    "phonetic": "/tymp/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "I have a tympanic.",
-    "sentenceCn": "我有一个鼓膜。",
-        "emoji": "👂",
-    "audioFile": "tympanic.mp3"
-  },
-  {
-    "id": 896,
-    "word": "vulva",
-    "meaning": "外阴",
-    "phonetic": "/vulv/",
-    "difficulty": 2,
-    "theme": "身体 Body",
-    "sentence": "My vulva is strong.",
-    "sentenceCn": "我的外阴很强壮。",
-        "emoji": "🫃",
-    "audioFile": "vulva.mp3"
-  },
-  {
-    "id": 897,
-    "word": "palate",
-    "meaning": "上颚",
-    "phonetic": "/ˈpælət/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "👄",
-    "audioFile": "palate.mp3"
-  },
-  {
-    "id": 898,
-    "word": "retina",
-    "meaning": "视网膜",
-    "phonetic": "/ˈretɪnə/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "👁️",
-    "audioFile": "retina.mp3"
-  },
-  {
-    "id": 899,
-    "word": "tendon",
-    "meaning": "肌腱",
-    "phonetic": "/ˈtendən/",
-    "difficulty": 3,
-    "theme": "身体 Body",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "💪",
-    "audioFile": "tendon.mp3"
-  },
-  {
-    "id": 900,
-    "word": "vertebra",
-    "meaning": "椎骨",
-    "phonetic": "/ˈvɜːrtɪbrə/",
-    "difficulty": 4,
-    "theme": "身体 Body",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🦴",
-    "audioFile": "vertebra.mp3"
-  },
-{
-    "id": 901,
-    "word": "amber",
-    "meaning": "琥珀色",
-    "phonetic": "/amb/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a amber shape.",
-    "sentenceCn": "我看到一个琥珀色形状。",
-        "emoji": "📖",
-    "audioFile": "amber.mp3"
-  },
-{
-    "id": 902,
-    "word": "aqua",
-    "meaning": "浅绿色",
-    "phonetic": "/aqu/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color aqua is bright.",
-    "sentenceCn": "浅绿色很亮。",
-        "emoji": "📖",
-    "audioFile": "aqua.mp3"
-  },
-{
-    "id": 903,
-    "word": "aquamarine",
-    "meaning": "海蓝宝石色",
-    "phonetic": "/aqu/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a aquamarine on the paper.",
-    "sentenceCn": "在纸上画一个海蓝宝石色。",
-        "emoji": "📖",
-    "audioFile": "aquamarine.mp3"
-  },
-{
-    "id": 904,
-    "word": "auburn",
-    "meaning": "赤褐色",
-    "phonetic": "/aub/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color auburn is bright.",
-    "sentenceCn": "赤褐色很亮。",
-        "emoji": "📖",
-    "audioFile": "auburn.mp3"
-  },
-{
-    "id": 905,
-    "word": "azure",
-    "meaning": "天蓝色",
-    "phonetic": "/azu/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a azure on the paper.",
-    "sentenceCn": "在纸上画一个天蓝色。",
-        "emoji": "📖",
-    "audioFile": "azure.mp3"
-  },
-{
-    "id": 906,
-    "word": "beige",
-    "meaning": "米色",
-    "phonetic": "/bei/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color beige is bright.",
-    "sentenceCn": "米色很亮。",
-        "emoji": "📖",
-    "audioFile": "beige.mp3"
-  },
-{
-    "id": 907,
-    "word": "black",
-    "meaning": "黑色",
-    "phonetic": "/bla/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color black is bright.",
-    "sentenceCn": "黑色很亮。",
-        "emoji": "⚫",
-    "audioFile": "black.mp3"
-  },
-{
-    "id": 908,
-    "word": "blonde",
-    "meaning": "金色",
-    "phonetic": "/blo/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a blonde on the paper.",
-    "sentenceCn": "在纸上画一个金色。",
-        "emoji": "📖",
-    "audioFile": "blonde.mp3"
-  },
-{
-    "id": 909,
-    "word": "blue",
-    "meaning": "蓝色",
-    "phonetic": "/blu/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color blue is bright.",
-    "sentenceCn": "蓝色很亮。",
-        "emoji": "🔵",
-    "audioFile": "blue.mp3"
-  },
-{
-    "id": 910,
-    "word": "bronze",
-    "meaning": "青铜色",
-    "phonetic": "/bro/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a bronze on the paper.",
-    "sentenceCn": "在纸上画一个青铜色。",
-        "emoji": "📖",
-    "audioFile": "bronze.mp3"
-  },
-{
-    "id": 911,
-    "word": "brown",
-    "meaning": "棕色",
-    "phonetic": "/bro/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a brown shape.",
-    "sentenceCn": "我看到一个棕色形状。",
-        "emoji": "📖",
-    "audioFile": "brown.mp3"
-  },
-{
-    "id": 912,
-    "word": "burgundy",
-    "meaning": "酒红色",
-    "phonetic": "/bur/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color burgundy is bright.",
-    "sentenceCn": "酒红色很亮。",
-        "emoji": "📖",
-    "audioFile": "burgundy.mp3"
-  },
-{
-    "id": 913,
-    "word": "cerulean",
-    "meaning": "蔚蓝色",
-    "phonetic": "/cer/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a cerulean shape.",
-    "sentenceCn": "我看到一个蔚蓝色形状。",
-        "emoji": "📖",
-    "audioFile": "cerulean.mp3"
-  },
+
 {
     "id": 914,
     "word": "charcoal",
@@ -10981,66 +10298,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "charcoal.mp3"
   },
-{
-    "id": 915,
-    "word": "chartreuse",
-    "meaning": "黄绿色",
-    "phonetic": "/cha/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color chartreuse is bright.",
-    "sentenceCn": "黄绿色很亮。",
-        "emoji": "📖",
-    "audioFile": "chartreuse.mp3"
-  },
-{
-    "id": 916,
-    "word": "cherry",
-    "meaning": "樱桃红",
-    "phonetic": "/che/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cherry on the paper.",
-    "sentenceCn": "在纸上画一个樱桃红。",
-        "emoji": "🍒",
-    "audioFile": "cherry.mp3"
-  },
-{
-    "id": 917,
-    "word": "chestnut",
-    "meaning": "栗色",
-    "phonetic": "/che/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a chestnut on the paper.",
-    "sentenceCn": "在纸上画一个栗色。",
-        "emoji": "📖",
-    "audioFile": "chestnut.mp3"
-  },
-{
-    "id": 918,
-    "word": "cobalt",
-    "meaning": "钴蓝色",
-    "phonetic": "/cob/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a cobalt shape.",
-    "sentenceCn": "我看到一个钴蓝色形状。",
-        "emoji": "📖",
-    "audioFile": "cobalt.mp3"
-  },
-{
-    "id": 919,
-    "word": "copper",
-    "meaning": "铜色",
-    "phonetic": "/cop/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a copper shape.",
-    "sentenceCn": "我看到一个铜色形状。",
-        "emoji": "📖",
-    "audioFile": "copper.mp3"
-  },
+
 {
     "id": 920,
     "word": "coral",
@@ -11053,30 +10311,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "coral.mp3"
   },
-{
-    "id": 921,
-    "word": "crimson",
-    "meaning": "深红色",
-    "phonetic": "/cri/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color crimson is bright.",
-    "sentenceCn": "深红色很亮。",
-        "emoji": "📖",
-    "audioFile": "crimson.mp3"
-  },
-{
-    "id": 922,
-    "word": "cyan",
-    "meaning": "青色",
-    "phonetic": "/cya/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cyan on the paper.",
-    "sentenceCn": "在纸上画一个青色。",
-        "emoji": "📖",
-    "audioFile": "cyan.mp3"
-  },
+
 {
     "id": 923,
     "word": "denim",
@@ -11089,150 +10324,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "denim.mp3"
   },
-{
-    "id": 924,
-    "word": "ebony",
-    "meaning": "乌黑色",
-    "phonetic": "/ebo/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a ebony on the paper.",
-    "sentenceCn": "在纸上画一个乌黑色。",
-        "emoji": "📖",
-    "audioFile": "ebony.mp3"
-  },
-{
-    "id": 925,
-    "word": "emerald",
-    "meaning": "翡翠绿",
-    "phonetic": "/eme/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color emerald is bright.",
-    "sentenceCn": "翡翠绿很亮。",
-        "emoji": "📖",
-    "audioFile": "emerald.mp3"
-  },
-{
-    "id": 926,
-    "word": "fuchsia",
-    "meaning": "紫红色",
-    "phonetic": "/fuc/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a fuchsia shape.",
-    "sentenceCn": "我看到一个紫红色形状。",
-        "emoji": "📖",
-    "audioFile": "fuchsia.mp3"
-  },
-{
-    "id": 927,
-    "word": "gold",
-    "meaning": "金色",
-    "phonetic": "/gol/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color gold is bright.",
-    "sentenceCn": "金色很亮。",
-        "emoji": "📖",
-    "audioFile": "gold.mp3"
-  },
-{
-    "id": 928,
-    "word": "golden",
-    "meaning": "金黄色的",
-    "phonetic": "/gol/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a golden on the paper.",
-    "sentenceCn": "在纸上画一个金黄色的。",
-        "emoji": "📖",
-    "audioFile": "golden.mp3"
-  },
-{
-    "id": 929,
-    "word": "gray",
-    "meaning": "灰色",
-    "phonetic": "/gra/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color gray is bright.",
-    "sentenceCn": "灰色很亮。",
-        "emoji": "📖",
-    "audioFile": "gray.mp3"
-  },
-{
-    "id": 930,
-    "word": "green",
-    "meaning": "绿色",
-    "phonetic": "/gre/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a green shape.",
-    "sentenceCn": "我看到一个绿色形状。",
-        "emoji": "🟢",
-    "audioFile": "green.mp3"
-  },
-{
-    "id": 931,
-    "word": "grey",
-    "meaning": "灰色",
-    "phonetic": "/gre/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a grey shape.",
-    "sentenceCn": "我看到一个灰色形状。",
-        "emoji": "📖",
-    "audioFile": "grey.mp3"
-  },
-{
-    "id": 932,
-    "word": "indigo",
-    "meaning": "靛蓝色",
-    "phonetic": "/ind/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a indigo shape.",
-    "sentenceCn": "我看到一个靛蓝色形状。",
-        "emoji": "📖",
-    "audioFile": "indigo.mp3"
-  },
-{
-    "id": 933,
-    "word": "ivory",
-    "meaning": "象牙白色",
-    "phonetic": "/ivo/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a ivory on the paper.",
-    "sentenceCn": "在纸上画一个象牙白色。",
-        "emoji": "📖",
-    "audioFile": "ivory.mp3"
-  },
-{
-    "id": 934,
-    "word": "jade",
-    "meaning": "翡翠绿",
-    "phonetic": "/jad/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a jade on the paper.",
-    "sentenceCn": "在纸上画一个翡翠绿。",
-        "emoji": "📖",
-    "audioFile": "jade.mp3"
-  },
-{
-    "id": 935,
-    "word": "khaki",
-    "meaning": "卡其色",
-    "phonetic": "/kha/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a khaki shape.",
-    "sentenceCn": "我看到一个卡其色形状。",
-        "emoji": "📖",
-    "audioFile": "khaki.mp3"
-  },
+
 {
     "id": 936,
     "word": "lavender",
@@ -11257,162 +10349,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "lilac.mp3"
   },
-{
-    "id": 938,
-    "word": "lime",
-    "meaning": "青柠色",
-    "phonetic": "/lim/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a lime shape.",
-    "sentenceCn": "我看到一个青柠色形状。",
-        "emoji": "📖",
-    "audioFile": "lime.mp3"
-  },
-{
-    "id": 939,
-    "word": "magenta",
-    "meaning": "品红色",
-    "phonetic": "/mag/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a magenta shape.",
-    "sentenceCn": "我看到一个品红色形状。",
-        "emoji": "📖",
-    "audioFile": "magenta.mp3"
-  },
-{
-    "id": 940,
-    "word": "maroon",
-    "meaning": "栗红色",
-    "phonetic": "/mar/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a maroon on the paper.",
-    "sentenceCn": "在纸上画一个栗红色。",
-        "emoji": "📖",
-    "audioFile": "maroon.mp3"
-  },
-{
-    "id": 941,
-    "word": "mauve",
-    "meaning": "淡紫色",
-    "phonetic": "/mau/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a mauve shape.",
-    "sentenceCn": "我看到一个淡紫色形状。",
-        "emoji": "📖",
-    "audioFile": "mauve.mp3"
-  },
-{
-    "id": 942,
-    "word": "mustard",
-    "meaning": "芥末黄",
-    "phonetic": "/mus/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color mustard is bright.",
-    "sentenceCn": "芥末黄很亮。",
-        "emoji": "📖",
-    "audioFile": "mustard.mp3"
-  },
-{
-    "id": 943,
-    "word": "navy",
-    "meaning": "深蓝色",
-    "phonetic": "/nav/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color navy is bright.",
-    "sentenceCn": "深蓝色很亮。",
-        "emoji": "📖",
-    "audioFile": "navy.mp3"
-  },
-{
-    "id": 944,
-    "word": "olive",
-    "meaning": "橄榄绿",
-    "phonetic": "/oli/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color olive is bright.",
-    "sentenceCn": "橄榄绿很亮。",
-        "emoji": "📖",
-    "audioFile": "olive.mp3"
-  },
-{
-    "id": 945,
-    "word": "orange",
-    "meaning": "橙色",
-    "phonetic": "/ora/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color orange is bright.",
-    "sentenceCn": "橙色很亮。",
-        "emoji": "🟠",
-    "audioFile": "orange.mp3"
-  },
-{
-    "id": 946,
-    "word": "pearl",
-    "meaning": "珍珠白",
-    "phonetic": "/pea/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color pearl is bright.",
-    "sentenceCn": "珍珠白很亮。",
-        "emoji": "📖",
-    "audioFile": "pearl.mp3"
-  },
-{
-    "id": 947,
-    "word": "periwinkle",
-    "meaning": "长春花蓝",
-    "phonetic": "/per/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color periwinkle is bright.",
-    "sentenceCn": "长春花蓝很亮。",
-        "emoji": "📖",
-    "audioFile": "periwinkle.mp3"
-  },
-{
-    "id": 948,
-    "word": "pink",
-    "meaning": "粉色",
-    "phonetic": "/pin/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a pink shape.",
-    "sentenceCn": "我看到一个粉色形状。",
-        "emoji": "📖",
-    "audioFile": "pink.mp3"
-  },
-{
-    "id": 949,
-    "word": "plum",
-    "meaning": "李子紫",
-    "phonetic": "/plu/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a plum on the paper.",
-    "sentenceCn": "在纸上画一个李子紫。",
-        "emoji": "📖",
-    "audioFile": "plum.mp3"
-  },
-{
-    "id": 950,
-    "word": "purple",
-    "meaning": "紫色",
-    "phonetic": "/pur/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a purple on the paper.",
-    "sentenceCn": "在纸上画一个紫色。",
-        "emoji": "🟣",
-    "audioFile": "purple.mp3"
-  },
+
 {
     "id": 951,
     "word": "rainbow",
@@ -11425,18 +10362,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "rainbow.mp3"
   },
-{
-    "id": 952,
-    "word": "red",
-    "meaning": "红色",
-    "phonetic": "/red/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color red is bright.",
-    "sentenceCn": "红色很亮。",
-        "emoji": "🔴",
-    "audioFile": "red.mp3"
-  },
+
 {
     "id": 953,
     "word": "rose",
@@ -11449,90 +10375,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "rose.mp3"
   },
-{
-    "id": 954,
-    "word": "ruby",
-    "meaning": "红宝石色",
-    "phonetic": "/rub/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color ruby is bright.",
-    "sentenceCn": "红宝石色很亮。",
-        "emoji": "📖",
-    "audioFile": "ruby.mp3"
-  },
-{
-    "id": 955,
-    "word": "rust",
-    "meaning": "铁锈色",
-    "phonetic": "/rus/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a rust shape.",
-    "sentenceCn": "我看到一个铁锈色形状。",
-        "emoji": "📖",
-    "audioFile": "rust.mp3"
-  },
-{
-    "id": 956,
-    "word": "salmon",
-    "meaning": "鲑鱼粉色",
-    "phonetic": "/sal/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a salmon shape.",
-    "sentenceCn": "我看到一个鲑鱼粉色形状。",
-        "emoji": "🐟",
-    "audioFile": "salmon.mp3"
-  },
-{
-    "id": 957,
-    "word": "sapphire",
-    "meaning": "蓝宝石色",
-    "phonetic": "/sap/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a sapphire on the paper.",
-    "sentenceCn": "在纸上画一个蓝宝石色。",
-        "emoji": "📖",
-    "audioFile": "sapphire.mp3"
-  },
-{
-    "id": 958,
-    "word": "scarlet",
-    "meaning": "猩红色",
-    "phonetic": "/sca/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color scarlet is bright.",
-    "sentenceCn": "猩红色很亮。",
-        "emoji": "📖",
-    "audioFile": "scarlet.mp3"
-  },
-{
-    "id": 959,
-    "word": "sepia",
-    "meaning": "棕褐色",
-    "phonetic": "/sep/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a sepia on the paper.",
-    "sentenceCn": "在纸上画一个棕褐色。",
-        "emoji": "📖",
-    "audioFile": "sepia.mp3"
-  },
-{
-    "id": 960,
-    "word": "silver",
-    "meaning": "银色",
-    "phonetic": "/sil/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color silver is bright.",
-    "sentenceCn": "银色很亮。",
-        "emoji": "📖",
-    "audioFile": "silver.mp3"
-  },
+
 {
     "id": 961,
     "word": "sky",
@@ -11545,78 +10388,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "sky.mp3"
   },
-{
-    "id": 962,
-    "word": "slate",
-    "meaning": "石板灰",
-    "phonetic": "/sla/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a slate on the paper.",
-    "sentenceCn": "在纸上画一个石板灰。",
-        "emoji": "📖",
-    "audioFile": "slate.mp3"
-  },
-{
-    "id": 963,
-    "word": "tan",
-    "meaning": "棕褐色",
-    "phonetic": "/tan/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a tan shape.",
-    "sentenceCn": "我看到一个棕褐色形状。",
-        "emoji": "📖",
-    "audioFile": "tan.mp3"
-  },
-{
-    "id": 964,
-    "word": "taupe",
-    "meaning": "灰褐色",
-    "phonetic": "/tau/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color taupe is bright.",
-    "sentenceCn": "灰褐色很亮。",
-        "emoji": "📖",
-    "audioFile": "taupe.mp3"
-  },
-{
-    "id": 965,
-    "word": "teal",
-    "meaning": "蓝绿色",
-    "phonetic": "/tea/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a teal shape.",
-    "sentenceCn": "我看到一个蓝绿色形状。",
-        "emoji": "📖",
-    "audioFile": "teal.mp3"
-  },
-{
-    "id": 966,
-    "word": "tomato",
-    "meaning": "番茄红",
-    "phonetic": "/tom/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color tomato is bright.",
-    "sentenceCn": "番茄红很亮。",
-        "emoji": "🍅",
-    "audioFile": "tomato.mp3"
-  },
-{
-    "id": 967,
-    "word": "turquoise",
-    "meaning": "绿松石色",
-    "phonetic": "/tur/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a turquoise on the paper.",
-    "sentenceCn": "在纸上画一个绿松石色。",
-        "emoji": "📖",
-    "audioFile": "turquoise.mp3"
-  },
+
 {
     "id": 968,
     "word": "violet",
@@ -11629,66 +10401,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "violet.mp3"
   },
-{
-    "id": 969,
-    "word": "white",
-    "meaning": "白色",
-    "phonetic": "/whi/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a white on the paper.",
-    "sentenceCn": "在纸上画一个白色。",
-        "emoji": "⚪",
-    "audioFile": "white.mp3"
-  },
-{
-    "id": 970,
-    "word": "wine",
-    "meaning": "酒红色",
-    "phonetic": "/win/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color wine is bright.",
-    "sentenceCn": "酒红色很亮。",
-        "emoji": "📖",
-    "audioFile": "wine.mp3"
-  },
-{
-    "id": 971,
-    "word": "yellow",
-    "meaning": "黄色",
-    "phonetic": "/yel/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a yellow shape.",
-    "sentenceCn": "我看到一个黄色形状。",
-        "emoji": "🟡",
-    "audioFile": "yellow.mp3"
-  },
-{
-    "id": 972,
-    "word": "circle",
-    "meaning": "圆形",
-    "phonetic": "/cir/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a circle shape.",
-    "sentenceCn": "我看到一个圆形形状。",
-        "emoji": "📖",
-    "audioFile": "circle.mp3"
-  },
-{
-    "id": 973,
-    "word": "square",
-    "meaning": "正方形",
-    "phonetic": "/squ/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a square shape.",
-    "sentenceCn": "我看到一个正方形形状。",
-        "emoji": "📖",
-    "audioFile": "square.mp3"
-  },
+
 {
     "id": 974,
     "word": "triangle",
@@ -11701,30 +10414,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "triangle.mp3"
   },
-{
-    "id": 975,
-    "word": "rectangle",
-    "meaning": "长方形",
-    "phonetic": "/rec/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a rectangle shape.",
-    "sentenceCn": "我看到一个长方形形状。",
-        "emoji": "📖",
-    "audioFile": "rectangle.mp3"
-  },
-{
-    "id": 976,
-    "word": "oval",
-    "meaning": "椭圆形",
-    "phonetic": "/ova/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color oval is bright.",
-    "sentenceCn": "椭圆形很亮。",
-        "emoji": "📖",
-    "audioFile": "oval.mp3"
-  },
+
 {
     "id": 977,
     "word": "star",
@@ -11737,210 +10427,7 @@ export const words: WordEntry[] = [
         "emoji": "⭐",
     "audioFile": "star.mp3"
   },
-{
-    "id": 978,
-    "word": "heart",
-    "meaning": "心形",
-    "phonetic": "/hea/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a heart on the paper.",
-    "sentenceCn": "在纸上画一个心形。",
-        "emoji": "❤️",
-    "audioFile": "heart.mp3"
-  },
-{
-    "id": 979,
-    "word": "diamond",
-    "meaning": "菱形",
-    "phonetic": "/dia/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a diamond shape.",
-    "sentenceCn": "我看到一个菱形形状。",
-        "emoji": "📖",
-    "audioFile": "diamond.mp3"
-  },
-{
-    "id": 980,
-    "word": "hexagon",
-    "meaning": "六边形",
-    "phonetic": "/hex/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a hexagon shape.",
-    "sentenceCn": "我看到一个六边形形状。",
-        "emoji": "📖",
-    "audioFile": "hexagon.mp3"
-  },
-{
-    "id": 981,
-    "word": "octagon",
-    "meaning": "八边形",
-    "phonetic": "/oct/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a octagon shape.",
-    "sentenceCn": "我看到一个八边形形状。",
-        "emoji": "📖",
-    "audioFile": "octagon.mp3"
-  },
-{
-    "id": 982,
-    "word": "pentagon",
-    "meaning": "五边形",
-    "phonetic": "/pen/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pentagon on the paper.",
-    "sentenceCn": "在纸上画一个五边形。",
-        "emoji": "📖",
-    "audioFile": "pentagon.mp3"
-  },
-{
-    "id": 983,
-    "word": "crescent",
-    "meaning": "月牙形",
-    "phonetic": "/cre/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color crescent is bright.",
-    "sentenceCn": "月牙形很亮。",
-        "emoji": "📖",
-    "audioFile": "crescent.mp3"
-  },
-{
-    "id": 984,
-    "word": "cross",
-    "meaning": "十字形",
-    "phonetic": "/cro/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cross on the paper.",
-    "sentenceCn": "在纸上画一个十字形。",
-        "emoji": "📖",
-    "audioFile": "cross.mp3"
-  },
-{
-    "id": 985,
-    "word": "arrow",
-    "meaning": "箭头",
-    "phonetic": "/arr/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a arrow on the paper.",
-    "sentenceCn": "在纸上画一个箭头。",
-        "emoji": "📖",
-    "audioFile": "arrow.mp3"
-  },
-{
-    "id": 986,
-    "word": "curve",
-    "meaning": "曲线",
-    "phonetic": "/cur/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color curve is bright.",
-    "sentenceCn": "曲线很亮。",
-        "emoji": "📖",
-    "audioFile": "curve.mp3"
-  },
-{
-    "id": 987,
-    "word": "line",
-    "meaning": "线",
-    "phonetic": "/lin/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color line is bright.",
-    "sentenceCn": "线很亮。",
-        "emoji": "📖",
-    "audioFile": "line.mp3"
-  },
-{
-    "id": 988,
-    "word": "angle",
-    "meaning": "角",
-    "phonetic": "/ang/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a angle on the paper.",
-    "sentenceCn": "在纸上画一个角。",
-        "emoji": "📖",
-    "audioFile": "angle.mp3"
-  },
-{
-    "id": 989,
-    "word": "arc",
-    "meaning": "弧形",
-    "phonetic": "/arc/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a arc shape.",
-    "sentenceCn": "我看到一个弧形形状。",
-        "emoji": "📖",
-    "audioFile": "arc.mp3"
-  },
-{
-    "id": 990,
-    "word": "sphere",
-    "meaning": "球体",
-    "phonetic": "/sph/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a sphere on the paper.",
-    "sentenceCn": "在纸上画一个球体。",
-        "emoji": "📖",
-    "audioFile": "sphere.mp3"
-  },
-{
-    "id": 991,
-    "word": "cube",
-    "meaning": "立方体",
-    "phonetic": "/cub/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color cube is bright.",
-    "sentenceCn": "立方体很亮。",
-        "emoji": "📖",
-    "audioFile": "cube.mp3"
-  },
-{
-    "id": 992,
-    "word": "cone",
-    "meaning": "圆锥体",
-    "phonetic": "/con/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color cone is bright.",
-    "sentenceCn": "圆锥体很亮。",
-        "emoji": "📖",
-    "audioFile": "cone.mp3"
-  },
-{
-    "id": 993,
-    "word": "cylinder",
-    "meaning": "圆柱体",
-    "phonetic": "/cyl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a cylinder shape.",
-    "sentenceCn": "我看到一个圆柱体形状。",
-        "emoji": "📖",
-    "audioFile": "cylinder.mp3"
-  },
-{
-    "id": 994,
-    "word": "pyramid",
-    "meaning": "金字塔形",
-    "phonetic": "/pyr/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pyramid on the paper.",
-    "sentenceCn": "在纸上画一个金字塔形。",
-        "emoji": "📖",
-    "audioFile": "pyramid.mp3"
-  },
+
 {
     "id": 995,
     "word": "prism",
@@ -11953,1314 +10440,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "prism.mp3"
   },
-{
-    "id": 996,
-    "word": "torus",
-    "meaning": "圆环体",
-    "phonetic": "/tor/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a torus shape.",
-    "sentenceCn": "我看到一个圆环体形状。",
-        "emoji": "📖",
-    "audioFile": "torus.mp3"
-  },
-{
-    "id": 997,
-    "word": "spiral",
-    "meaning": "螺旋",
-    "phonetic": "/spi/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a spiral on the paper.",
-    "sentenceCn": "在纸上画一个螺旋。",
-        "emoji": "📖",
-    "audioFile": "spiral.mp3"
-  },
-{
-    "id": 998,
-    "word": "zigzag",
-    "meaning": "锯齿形",
-    "phonetic": "/zig/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a zigzag on the paper.",
-    "sentenceCn": "在纸上画一个锯齿形。",
-        "emoji": "📖",
-    "audioFile": "zigzag.mp3"
-  },
-{
-    "id": 999,
-    "word": "parallel",
-    "meaning": "平行线",
-    "phonetic": "/par/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color parallel is bright.",
-    "sentenceCn": "平行线很亮。",
-        "emoji": "📖",
-    "audioFile": "parallel.mp3"
-  },
-{
-    "id": 1000,
-    "word": "perpendicular",
-    "meaning": "垂直线",
-    "phonetic": "/per/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color perpendicular is bright.",
-    "sentenceCn": "垂直线很亮。",
-        "emoji": "📖",
-    "audioFile": "perpendicular.mp3"
-  },
-{
-    "id": 1001,
-    "word": "horizontal",
-    "meaning": "水平的",
-    "phonetic": "/hor/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a horizontal on the paper.",
-    "sentenceCn": "在纸上画一个水平的。",
-        "emoji": "📖",
-    "audioFile": "horizontal.mp3"
-  },
-{
-    "id": 1002,
-    "word": "vertical",
-    "meaning": "垂直的",
-    "phonetic": "/ver/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color vertical is bright.",
-    "sentenceCn": "垂直的很亮。",
-        "emoji": "📖",
-    "audioFile": "vertical.mp3"
-  },
-{
-    "id": 1003,
-    "word": "diagonal",
-    "meaning": "对角线的",
-    "phonetic": "/dia/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a diagonal shape.",
-    "sentenceCn": "我看到一个对角线的形状。",
-        "emoji": "📖",
-    "audioFile": "diagonal.mp3"
-  },
-{
-    "id": 1004,
-    "word": "coral",
-    "meaning": "珊瑚色",
-    "phonetic": "/cora/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a coral on the paper.",
-    "sentenceCn": "在纸上画一个珊瑚色。",
-        "emoji": "🪸",
-    "audioFile": "coral.mp3"
-  },
-{
-    "id": 1005,
-    "word": "crimson",
-    "meaning": "深红色",
-    "phonetic": "/ˈkrɪmzn/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color crimson is bright.",
-    "sentenceCn": "深红色很亮。",
-        "emoji": "🔴",
-    "audioFile": "crimson.mp3"
-  },
-{
-    "id": 1006,
-    "word": "cyan",
-    "meaning": "青色",
-    "phonetic": "/cyan/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color cyan is bright.",
-    "sentenceCn": "青色很亮。",
-        "emoji": "🩵",
-    "audioFile": "cyan.mp3"
-  },
-{
-    "id": 1007,
-    "word": "ebony",
-    "meaning": "乌黑色",
-    "phonetic": "/ebon/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a ebony on the paper.",
-    "sentenceCn": "在纸上画一个乌黑色。",
-        "emoji": "⚫",
-    "audioFile": "ebony.mp3"
-  },
-{
-    "id": 1008,
-    "word": "emerald",
-    "meaning": "翡翠绿",
-    "phonetic": "/emer/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color emerald is bright.",
-    "sentenceCn": "翡翠绿很亮。",
-        "emoji": "💚",
-    "audioFile": "emerald.mp3"
-  },
-{
-    "id": 1009,
-    "word": "golden",
-    "meaning": "金色",
-    "phonetic": "/gold/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a golden shape.",
-    "sentenceCn": "我看到一个金色形状。",
-        "emoji": "✨",
-    "audioFile": "golden.mp3"
-  },
-{
-    "id": 1010,
-    "word": "ivory",
-    "meaning": "象牙白",
-    "phonetic": "/ivor/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a ivory on the paper.",
-    "sentenceCn": "在纸上画一个象牙白。",
-        "emoji": "🦷",
-    "audioFile": "ivory.mp3"
-  },
-{
-    "id": 1011,
-    "word": "jade",
-    "meaning": "翡翠",
-    "phonetic": "/jade/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a jade on the paper.",
-    "sentenceCn": "在纸上画一个翡翠。",
-        "emoji": "💚",
-    "audioFile": "jade.mp3"
-  },
-{
-    "id": 1012,
-    "word": "khaki",
-    "meaning": "卡其色",
-    "phonetic": "/khak/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color khaki is bright.",
-    "sentenceCn": "卡其色很亮。",
-        "emoji": "🫒",
-    "audioFile": "khaki.mp3"
-  },
-{
-    "id": 1013,
-    "word": "lavender",
-    "meaning": "薰衣草紫",
-    "phonetic": "/ˈlævəndər/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a lavender on the paper.",
-    "sentenceCn": "在纸上画一个薰衣草紫。",
-        "emoji": "💜",
-    "audioFile": "lavender.mp3"
-  },
-{
-    "id": 1014,
-    "word": "lilac",
-    "meaning": "丁香紫",
-    "phonetic": "/lila/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a lilac on the paper.",
-    "sentenceCn": "在纸上画一个丁香紫。",
-        "emoji": "🌸",
-    "audioFile": "lilac.mp3"
-  },
-{
-    "id": 1015,
-    "word": "lime",
-    "meaning": "青柠色",
-    "phonetic": "/lime/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color lime is bright.",
-    "sentenceCn": "青柠色很亮。",
-        "emoji": "💚",
-    "audioFile": "lime.mp3"
-  },
-{
-    "id": 1016,
-    "word": "magenta",
-    "meaning": "品红",
-    "phonetic": "/məˈdʒentə/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a magenta shape.",
-    "sentenceCn": "我看到一个品红形状。",
-        "emoji": "💗",
-    "audioFile": "magenta.mp3"
-  },
-{
-    "id": 1017,
-    "word": "maroon",
-    "meaning": "栗色",
-    "phonetic": "/məˈruːn/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color maroon is bright.",
-    "sentenceCn": "栗色很亮。",
-        "emoji": "🟫",
-    "audioFile": "maroon.mp3"
-  },
-{
-    "id": 1018,
-    "word": "mauve",
-    "meaning": "淡紫",
-    "phonetic": "/mauv/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a mauve on the paper.",
-    "sentenceCn": "在纸上画一个淡紫。",
-        "emoji": "💜",
-    "audioFile": "mauve.mp3"
-  },
-{
-    "id": 1019,
-    "word": "mustard",
-    "meaning": "芥末黄",
-    "phonetic": "/must/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a mustard shape.",
-    "sentenceCn": "我看到一个芥末黄形状。",
-        "emoji": "💛",
-    "audioFile": "mustard.mp3"
-  },
-{
-    "id": 1020,
-    "word": "navy",
-    "meaning": "藏青",
-    "phonetic": "/ˈneɪvi/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a navy shape.",
-    "sentenceCn": "我看到一个藏青形状。",
-        "emoji": "💙",
-    "audioFile": "navy.mp3"
-  },
-{
-    "id": 1021,
-    "word": "olive",
-    "meaning": "橄榄绿",
-    "phonetic": "/ˈɑːlɪv/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a olive shape.",
-    "sentenceCn": "我看到一个橄榄绿形状。",
-        "emoji": "🫒",
-    "audioFile": "olive.mp3"
-  },
-{
-    "id": 1022,
-    "word": "pearl",
-    "meaning": "珍珠白",
-    "phonetic": "/pear/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a pearl shape.",
-    "sentenceCn": "我看到一个珍珠白形状。",
-        "emoji": "🤍",
-    "audioFile": "pearl.mp3"
-  },
-{
-    "id": 1023,
-    "word": "periwinkle",
-    "meaning": "长春花蓝",
-    "phonetic": "/peri/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a periwinkle shape.",
-    "sentenceCn": "我看到一个长春花蓝形状。",
-        "emoji": "💙",
-    "audioFile": "periwinkle.mp3"
-  },
-{
-    "id": 1024,
-    "word": "plum",
-    "meaning": "李子紫",
-    "phonetic": "/plum/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a plum shape.",
-    "sentenceCn": "我看到一个李子紫形状。",
-        "emoji": "🟣",
-    "audioFile": "plum.mp3"
-  },
-{
-    "id": 1025,
-    "word": "rainbow",
-    "meaning": "彩虹",
-    "phonetic": "/ˈreɪnboʊ/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a rainbow shape.",
-    "sentenceCn": "我看到一个彩虹形状。",
-        "emoji": "🌈",
-    "audioFile": "rainbow.mp3"
-  },
-{
-    "id": 1026,
-    "word": "rose",
-    "meaning": "玫瑰红",
-    "phonetic": "/rose/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a rose on the paper.",
-    "sentenceCn": "在纸上画一个玫瑰红。",
-        "emoji": "🌹",
-    "audioFile": "rose.mp3"
-  },
-{
-    "id": 1027,
-    "word": "ruby",
-    "meaning": "红宝石",
-    "phonetic": "/ruby/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color ruby is bright.",
-    "sentenceCn": "红宝石很亮。",
-        "emoji": "💎",
-    "audioFile": "ruby.mp3"
-  },
-{
-    "id": 1028,
-    "word": "rust",
-    "meaning": "铁锈色",
-    "phonetic": "/rust/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color rust is bright.",
-    "sentenceCn": "铁锈色很亮。",
-        "emoji": "🟤",
-    "audioFile": "rust.mp3"
-  },
-{
-    "id": 1029,
-    "word": "sapphire",
-    "meaning": "蓝宝石",
-    "phonetic": "/sapp/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a sapphire shape.",
-    "sentenceCn": "我看到一个蓝宝石形状。",
-        "emoji": "💎",
-    "audioFile": "sapphire.mp3"
-  },
-{
-    "id": 1030,
-    "word": "scarlet",
-    "meaning": "猩红",
-    "phonetic": "/scar/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a scarlet shape.",
-    "sentenceCn": "我看到一个猩红形状。",
-        "emoji": "❤️",
-    "audioFile": "scarlet.mp3"
-  },
-{
-    "id": 1031,
-    "word": "sepia",
-    "meaning": "深褐色",
-    "phonetic": "/sepi/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color sepia is bright.",
-    "sentenceCn": "深褐色很亮。",
-        "emoji": "🟤",
-    "audioFile": "sepia.mp3"
-  },
-{
-    "id": 1032,
-    "word": "silver",
-    "meaning": "银色",
-    "phonetic": "/silv/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a silver on the paper.",
-    "sentenceCn": "在纸上画一个银色。",
-        "emoji": "🥈",
-    "audioFile": "silver.mp3"
-  },
-{
-    "id": 1033,
-    "word": "slate",
-    "meaning": "石板灰",
-    "phonetic": "/slat/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color slate is bright.",
-    "sentenceCn": "石板灰很亮。",
-        "emoji": "🪨",
-    "audioFile": "slate.mp3"
-  },
-{
-    "id": 1034,
-    "word": "tan",
-    "meaning": "棕褐色",
-    "phonetic": "/tan/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a tan shape.",
-    "sentenceCn": "我看到一个棕褐色形状。",
-        "emoji": "🟤",
-    "audioFile": "tan.mp3"
-  },
-{
-    "id": 1035,
-    "word": "taupe",
-    "meaning": "灰褐色",
-    "phonetic": "/taup/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a taupe on the paper.",
-    "sentenceCn": "在纸上画一个灰褐色。",
-        "emoji": "🟫",
-    "audioFile": "taupe.mp3"
-  },
-{
-    "id": 1036,
-    "word": "teal",
-    "meaning": "蓝绿",
-    "phonetic": "/teal/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a teal on the paper.",
-    "sentenceCn": "在纸上画一个蓝绿。",
-        "emoji": "💙",
-    "audioFile": "teal.mp3"
-  },
-{
-    "id": 1037,
-    "word": "tomato",
-    "meaning": "番茄红",
-    "phonetic": "/toma/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a tomato on the paper.",
-    "sentenceCn": "在纸上画一个番茄红。",
-        "emoji": "🍅",
-    "audioFile": "tomato.mp3"
-  },
-{
-    "id": 1038,
-    "word": "turquoise",
-    "meaning": "绿松石",
-    "phonetic": "/ˈtɜːrkwɔɪz/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a turquoise on the paper.",
-    "sentenceCn": "在纸上画一个绿松石。",
-        "emoji": "💎",
-    "audioFile": "turquoise.mp3"
-  },
-{
-    "id": 1039,
-    "word": "violet",
-    "meaning": "紫罗兰",
-    "phonetic": "/ˈvaɪələt/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a violet on the paper.",
-    "sentenceCn": "在纸上画一个紫罗兰。",
-        "emoji": "💜",
-    "audioFile": "violet.mp3"
-  },
-{
-    "id": 1040,
-    "word": "wine",
-    "meaning": "酒红",
-    "phonetic": "/wine/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a wine shape.",
-    "sentenceCn": "我看到一个酒红形状。",
-        "emoji": "🍷",
-    "audioFile": "wine.mp3"
-  },
-{
-    "id": 1041,
-    "word": "octagon",
-    "meaning": "八边形",
-    "phonetic": "/ˈɑːktəɡɑːn/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color octagon is bright.",
-    "sentenceCn": "八边形很亮。",
-        "emoji": "🔶",
-    "audioFile": "octagon.mp3"
-  },
-{
-    "id": 1042,
-    "word": "crescent",
-    "meaning": "月牙",
-    "phonetic": "/ˈkresnt/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color crescent is bright.",
-    "sentenceCn": "月牙很亮。",
-        "emoji": "🌙",
-    "audioFile": "crescent.mp3"
-  },
-{
-    "id": 1043,
-    "word": "cross",
-    "meaning": "十字",
-    "phonetic": "/krɔːs/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color cross is bright.",
-    "sentenceCn": "十字很亮。",
-        "emoji": "✝️",
-    "audioFile": "cross.mp3"
-  },
-{
-    "id": 1044,
-    "word": "arrow",
-    "meaning": "箭头",
-    "phonetic": "/ˈæroʊ/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a arrow on the paper.",
-    "sentenceCn": "在纸上画一个箭头。",
-        "emoji": "➡️",
-    "audioFile": "arrow.mp3"
-  },
-{
-    "id": 1045,
-    "word": "curve",
-    "meaning": "曲线",
-    "phonetic": "/kɜːrv/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a curve shape.",
-    "sentenceCn": "我看到一个曲线形状。",
-        "emoji": "〰️",
-    "audioFile": "curve.mp3"
-  },
-{
-    "id": 1046,
-    "word": "line",
-    "meaning": "线",
-    "phonetic": "/laɪn/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a line on the paper.",
-    "sentenceCn": "在纸上画一个线。",
-        "emoji": "➖",
-    "audioFile": "line.mp3"
-  },
-{
-    "id": 1047,
-    "word": "angle",
-    "meaning": "角",
-    "phonetic": "/ˈæŋɡl/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a angle on the paper.",
-    "sentenceCn": "在纸上画一个角。",
-        "emoji": "📐",
-    "audioFile": "angle.mp3"
-  },
-{
-    "id": 1048,
-    "word": "arc",
-    "meaning": "弧",
-    "phonetic": "/ɑːrk/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a arc shape.",
-    "sentenceCn": "我看到一个弧形状。",
-        "emoji": "🌙",
-    "audioFile": "arc.mp3"
-  },
-{
-    "id": 1049,
-    "word": "sphere",
-    "meaning": "球体",
-    "phonetic": "/sfɪr/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a sphere shape.",
-    "sentenceCn": "我看到一个球体形状。",
-        "emoji": "⚪",
-    "audioFile": "sphere.mp3"
-  },
-{
-    "id": 1050,
-    "word": "cube",
-    "meaning": "立方体",
-    "phonetic": "/kjuːb/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cube on the paper.",
-    "sentenceCn": "在纸上画一个立方体。",
-        "emoji": "🧊",
-    "audioFile": "cube.mp3"
-  },
-{
-    "id": 1051,
-    "word": "cone",
-    "meaning": "圆锥",
-    "phonetic": "/koʊn/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cone on the paper.",
-    "sentenceCn": "在纸上画一个圆锥。",
-        "emoji": "🍦",
-    "audioFile": "cone.mp3"
-  },
-{
-    "id": 1052,
-    "word": "cylinder",
-    "meaning": "圆柱",
-    "phonetic": "/ˈsɪlɪndər/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a cylinder shape.",
-    "sentenceCn": "我看到一个圆柱形状。",
-        "emoji": "🥫",
-    "audioFile": "cylinder.mp3"
-  },
-{
-    "id": 1053,
-    "word": "pyramid",
-    "meaning": "金字塔",
-    "phonetic": "/ˈpɪrəmɪd/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pyramid on the paper.",
-    "sentenceCn": "在纸上画一个金字塔。",
-        "emoji": "🔺",
-    "audioFile": "pyramid.mp3"
-  },
-{
-    "id": 1054,
-    "word": "prism",
-    "meaning": "棱柱",
-    "phonetic": "/ˈprɪzəm/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a prism on the paper.",
-    "sentenceCn": "在纸上画一个棱柱。",
-        "emoji": "🔷",
-    "audioFile": "prism.mp3"
-  },
-{
-    "id": 1055,
-    "word": "torus",
-    "meaning": "圆环",
-    "phonetic": "/ˈtɔːrəs/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a torus shape.",
-    "sentenceCn": "我看到一个圆环形状。",
-        "emoji": "🍩",
-    "audioFile": "torus.mp3"
-  },
-{
-    "id": 1056,
-    "word": "spiral",
-    "meaning": "螺旋",
-    "phonetic": "/ˈspaɪrəl/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a spiral shape.",
-    "sentenceCn": "我看到一个螺旋形状。",
-        "emoji": "🌀",
-    "audioFile": "spiral.mp3"
-  },
-{
-    "id": 1057,
-    "word": "zigzag",
-    "meaning": "锯齿",
-    "phonetic": "/ˈzɪɡzæɡ/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color zigzag is bright.",
-    "sentenceCn": "锯齿很亮。",
-        "emoji": "⚡",
-    "audioFile": "zigzag.mp3"
-  },
-{
-    "id": 1058,
-    "word": "parallel",
-    "meaning": "平行",
-    "phonetic": "/ˈpærəlel/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a parallel shape.",
-    "sentenceCn": "我看到一个平行形状。",
-        "emoji": "〰️",
-    "audioFile": "parallel.mp3"
-  },
-{
-    "id": 1059,
-    "word": "perpendicular",
-    "meaning": "垂直",
-    "phonetic": "/ˌpɜːrpənˈdɪkjʊlər/",
-    "difficulty": 6,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color perpendicular is bright.",
-    "sentenceCn": "垂直很亮。",
-        "emoji": "📏",
-    "audioFile": "perpendicular.mp3"
-  },
-{
-    "id": 1060,
-    "word": "horizontal",
-    "meaning": "水平",
-    "phonetic": "/ˌhɔːrɪˈzɑːntl/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a horizontal shape.",
-    "sentenceCn": "我看到一个水平形状。",
-        "emoji": "➖",
-    "audioFile": "horizontal.mp3"
-  },
-{
-    "id": 1061,
-    "word": "vertical",
-    "meaning": "垂直",
-    "phonetic": "/ˈvɜːrtɪkl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a vertical shape.",
-    "sentenceCn": "我看到一个垂直形状。",
-        "emoji": "📏",
-    "audioFile": "vertical.mp3"
-  },
-{
-    "id": 1062,
-    "word": "diagonal",
-    "meaning": "对角",
-    "phonetic": "/daɪˈæɡənl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a diagonal on the paper.",
-    "sentenceCn": "在纸上画一个对角。",
-        "emoji": "📐",
-    "audioFile": "diagonal.mp3"
-  },
-{
-    "id": 1063,
-    "word": "aquamarine",
-    "meaning": "海蓝宝",
-    "phonetic": "/ˌækwəməˈriːn/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color aquamarine is bright.",
-    "sentenceCn": "海蓝宝很亮。",
-        "emoji": "💎",
-    "audioFile": "aquamarine.mp3"
-  },
-{
-    "id": 1064,
-    "word": "burgundy",
-    "meaning": "酒红",
-    "phonetic": "/ˈbɜːrɡəndi/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a burgundy on the paper.",
-    "sentenceCn": "在纸上画一个酒红。",
-        "emoji": "🍷",
-    "audioFile": "burgundy.mp3"
-  },
-{
-    "id": 1065,
-    "word": "cerulean",
-    "meaning": "蔚蓝",
-    "phonetic": "/səˈruːliən/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a cerulean on the paper.",
-    "sentenceCn": "在纸上画一个蔚蓝。",
-        "emoji": "💙",
-    "audioFile": "cerulean.mp3"
-  },
-{
-    "id": 1066,
-    "word": "charcoal",
-    "meaning": "炭灰",
-    "phonetic": "/ˈtʃɑːrkoʊl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a charcoal shape.",
-    "sentenceCn": "我看到一个炭灰形状。",
-        "emoji": "⚫",
-    "audioFile": "charcoal.mp3"
-  },
-{
-    "id": 1067,
-    "word": "chartreuse",
-    "meaning": "黄绿",
-    "phonetic": "/ʃɑːrˈtruːz/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color chartreuse is bright.",
-    "sentenceCn": "黄绿很亮。",
-        "emoji": "💚",
-    "audioFile": "chartreuse.mp3"
-  },
-{
-    "id": 1068,
-    "word": "cobalt",
-    "meaning": "钴蓝",
-    "phonetic": "/ˈkoʊbɔːlt/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a cobalt shape.",
-    "sentenceCn": "我看到一个钴蓝形状。",
-        "emoji": "💙",
-    "audioFile": "cobalt.mp3"
-  },
-{
-    "id": 1069,
-    "word": "fuchsia",
-    "meaning": "紫红",
-    "phonetic": "/ˈfjuːʃə/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a fuchsia shape.",
-    "sentenceCn": "我看到一个紫红形状。",
-        "emoji": "💗",
-    "audioFile": "fuchsia.mp3"
-  },
-{
-    "id": 1070,
-    "word": "indigo",
-    "meaning": "靛蓝",
-    "phonetic": "/ˈɪndɪɡoʊ/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a indigo on the paper.",
-    "sentenceCn": "在纸上画一个靛蓝。",
-        "emoji": "💙",
-    "audioFile": "indigo.mp3"
-  },
-{
-    "id": 1071,
-    "word": "bronze",
-    "meaning": "青铜",
-    "phonetic": "/bron/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color bronze is bright.",
-    "sentenceCn": "青铜很亮。",
-        "emoji": "🥉",
-    "audioFile": "bronze.mp3"
-  },
-{
-    "id": 1072,
-    "word": "copper",
-    "meaning": "铜色",
-    "phonetic": "/copp/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a copper on the paper.",
-    "sentenceCn": "在纸上画一个铜色。",
-        "emoji": "🪙",
-    "audioFile": "copper.mp3"
-  },
-{
-    "id": 1073,
-    "word": "denim",
-    "meaning": "牛仔蓝",
-    "phonetic": "/ˈdenɪm/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color denim is bright.",
-    "sentenceCn": "牛仔蓝很亮。",
-        "emoji": "👖",
-    "audioFile": "denim.mp3"
-  },
-{
-    "id": 1074,
-    "word": "auburn",
-    "meaning": "赤褐",
-    "phonetic": "/aubu/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a auburn shape.",
-    "sentenceCn": "我看到一个赤褐形状。",
-        "emoji": "🟤",
-    "audioFile": "auburn.mp3"
-  },
-{
-    "id": 1075,
-    "word": "beige",
-    "meaning": "米色",
-    "phonetic": "/beig/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a beige shape.",
-    "sentenceCn": "我看到一个米色形状。",
-        "emoji": "🟫",
-    "audioFile": "beige.mp3"
-  },
-{
-    "id": 1076,
-    "word": "blonde",
-    "meaning": "金色",
-    "phonetic": "/blon/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a blonde on the paper.",
-    "sentenceCn": "在纸上画一个金色。",
-        "emoji": "💛",
-    "audioFile": "blonde.mp3"
-  },
-{
-    "id": 1077,
-    "word": "chestnut",
-    "meaning": "栗色",
-    "phonetic": "/ches/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a chestnut on the paper.",
-    "sentenceCn": "在纸上画一个栗色。",
-        "emoji": "🟤",
-    "audioFile": "chestnut.mp3"
-  },
-{
-    "id": 1078,
-    "word": "circle",
-    "meaning": "圆形",
-    "phonetic": "/ˈsɜːrkl/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color circle is bright.",
-    "sentenceCn": "圆形很亮。",
-        "emoji": "⭕",
-    "audioFile": "circle.mp3"
-  },
-{
-    "id": 1079,
-    "word": "square",
-    "meaning": "正方形",
-    "phonetic": "/skwer/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a square on the paper.",
-    "sentenceCn": "在纸上画一个正方形。",
-        "emoji": "🟦",
-    "audioFile": "square.mp3"
-  },
-{
-    "id": 1080,
-    "word": "triangle",
-    "meaning": "三角形",
-    "phonetic": "/ˈtraɪæŋɡl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a triangle on the paper.",
-    "sentenceCn": "在纸上画一个三角形。",
-        "emoji": "🔺",
-    "audioFile": "triangle.mp3"
-  },
-{
-    "id": 1081,
-    "word": "rectangle",
-    "meaning": "长方形",
-    "phonetic": "/ˈrektæŋɡl/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a rectangle shape.",
-    "sentenceCn": "我看到一个长方形形状。",
-        "emoji": "🟧",
-    "audioFile": "rectangle.mp3"
-  },
-{
-    "id": 1082,
-    "word": "oval",
-    "meaning": "椭圆形",
-    "phonetic": "/ˈoʊvl/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color oval is bright.",
-    "sentenceCn": "椭圆形很亮。",
-        "emoji": "🥚",
-    "audioFile": "oval.mp3"
-  },
-{
-    "id": 1083,
-    "word": "star",
-    "meaning": "星形",
-    "phonetic": "/stɑːr/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a star on the paper.",
-    "sentenceCn": "在纸上画一个星形。",
-        "emoji": "⭐",
-    "audioFile": "star.mp3"
-  },
-{
-    "id": 1084,
-    "word": "heart",
-    "meaning": "心形",
-    "phonetic": "/hɑːrt/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color heart is bright.",
-    "sentenceCn": "心形很亮。",
-        "emoji": "❤️",
-    "audioFile": "heart.mp3"
-  },
-{
-    "id": 1085,
-    "word": "diamond",
-    "meaning": "菱形",
-    "phonetic": "/ˈdaɪmənd/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a diamond shape.",
-    "sentenceCn": "我看到一个菱形形状。",
-        "emoji": "💎",
-    "audioFile": "diamond.mp3"
-  },
-{
-    "id": 1086,
-    "word": "hexagon",
-    "meaning": "六边形",
-    "phonetic": "/ˈheksəɡɑːn/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a hexagon on the paper.",
-    "sentenceCn": "在纸上画一个六边形。",
-        "emoji": "🔶",
-    "audioFile": "hexagon.mp3"
-  },
-{
-    "id": 1087,
-    "word": "pentagon",
-    "meaning": "五边形",
-    "phonetic": "/ˈpentəɡɑːn/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pentagon on the paper.",
-    "sentenceCn": "在纸上画一个五边形。",
-        "emoji": "⬠",
-    "audioFile": "pentagon.mp3"
-  },
-{
-    "id": 1088,
-    "word": "octagon",
-    "meaning": "八边形",
-    "phonetic": "/ˈɑːktəɡɑːn/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color octagon is bright.",
-    "sentenceCn": "八边形很亮。",
-        "emoji": "⏹️",
-    "audioFile": "octagon.mp3"
-  },
-{
-    "id": 1089,
-    "word": "amber",
-    "meaning": "琥珀色",
-    "phonetic": "/ambe/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a amber on the paper.",
-    "sentenceCn": "在纸上画一个琥珀色。",
-        "emoji": "🟠",
-    "audioFile": "amber.mp3"
-  },
-{
-    "id": 1090,
-    "word": "aqua",
-    "meaning": "水绿色",
-    "phonetic": "/aqua/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color aqua is bright.",
-    "sentenceCn": "水绿色很亮。",
-        "emoji": "🩵",
-    "audioFile": "aqua.mp3"
-  },
-{
-    "id": 1091,
-    "word": "azure",
-    "meaning": "天蓝",
-    "phonetic": "/azur/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a azure shape.",
-    "sentenceCn": "我看到一个天蓝形状。",
-        "emoji": "💙",
-    "audioFile": "azure.mp3"
-  },
-{
-    "id": 1092,
-    "word": "black",
-    "meaning": "黑色",
-    "phonetic": "/blæk/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a black on the paper.",
-    "sentenceCn": "在纸上画一个黑色。",
-        "emoji": "⚫",
-    "audioFile": "black.mp3"
-  },
-{
-    "id": 1093,
-    "word": "blue",
-    "meaning": "蓝色",
-    "phonetic": "/bluː/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a blue on the paper.",
-    "sentenceCn": "在纸上画一个蓝色。",
-        "emoji": "🔵",
-    "audioFile": "blue.mp3"
-  },
-{
-    "id": 1094,
-    "word": "brown",
-    "meaning": "棕色",
-    "phonetic": "/braʊn/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a brown shape.",
-    "sentenceCn": "我看到一个棕色形状。",
-        "emoji": "🟤",
-    "audioFile": "brown.mp3"
-  },
-{
-    "id": 1095,
-    "word": "gold",
-    "meaning": "金色",
-    "phonetic": "/gold/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color gold is bright.",
-    "sentenceCn": "金色很亮。",
-        "emoji": "🥇",
-    "audioFile": "gold.mp3"
-  },
-{
-    "id": 1096,
-    "word": "gray",
-    "meaning": "灰色",
-    "phonetic": "/ɡreɪ/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color gray is bright.",
-    "sentenceCn": "灰色很亮。",
-        "emoji": "⬜",
-    "audioFile": "gray.mp3"
-  },
-{
-    "id": 1097,
-    "word": "green",
-    "meaning": "绿色",
-    "phonetic": "/ɡriːn/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a green on the paper.",
-    "sentenceCn": "在纸上画一个绿色。",
-        "emoji": "🟢",
-    "audioFile": "green.mp3"
-  },
-{
-    "id": 1098,
-    "word": "grey",
-    "meaning": "灰色",
-    "phonetic": "/grey/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a grey on the paper.",
-    "sentenceCn": "在纸上画一个灰色。",
-        "emoji": "⬜",
-    "audioFile": "grey.mp3"
-  },
-{
-    "id": 1099,
-    "word": "orange",
-    "meaning": "橙色",
-    "phonetic": "/oran/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a orange on the paper.",
-    "sentenceCn": "在纸上画一个橙色。",
-        "emoji": "🟠",
-    "audioFile": "orange.mp3"
-  },
-{
-    "id": 1100,
-    "word": "pink",
-    "meaning": "粉色",
-    "phonetic": "/pɪŋk/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pink on the paper.",
-    "sentenceCn": "在纸上画一个粉色。",
-        "emoji": "💗",
-    "audioFile": "pink.mp3"
-  },
-{
-    "id": 1101,
-    "word": "purple",
-    "meaning": "紫色",
-    "phonetic": "/ˈpɜːrpl/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a purple shape.",
-    "sentenceCn": "我看到一个紫色形状。",
-        "emoji": "🟣",
-    "audioFile": "purple.mp3"
-  },
-{
-    "id": 1102,
-    "word": "red",
-    "meaning": "红色",
-    "phonetic": "/red/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a red on the paper.",
-    "sentenceCn": "在纸上画一个红色。",
-        "emoji": "🔴",
-    "audioFile": "red.mp3"
-  },
-{
-    "id": 1103,
-    "word": "white",
-    "meaning": "白色",
-    "phonetic": "/waɪt/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a white on the paper.",
-    "sentenceCn": "在纸上画一个白色。",
-        "emoji": "⚪",
-    "audioFile": "white.mp3"
-  },
-{
-    "id": 1104,
-    "word": "yellow",
-    "meaning": "黄色",
-    "phonetic": "/ˈjeloʊ/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color yellow is bright.",
-    "sentenceCn": "黄色很亮。",
-        "emoji": "🟡",
-    "audioFile": "yellow.mp3"
-  },
+
   {
     "id": 1105,
     "word": "bubble",
@@ -13273,90 +10453,7 @@ export const words: WordEntry[] = [
         "emoji": "🫧",
     "audioFile": "bubble.mp3"
   },
-  {
-    "id": 1106,
-    "word": "checker",
-    "meaning": "棋盘格",
-    "phonetic": "/chec/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color checker is bright.",
-    "sentenceCn": "棋盘格很亮。",
-        "emoji": "🏁",
-    "audioFile": "checker.mp3"
-  },
-  {
-    "id": 1107,
-    "word": "chevron",
-    "meaning": "V形",
-    "phonetic": "/chev/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color chevron is bright.",
-    "sentenceCn": "V形很亮。",
-        "emoji": "🔽",
-    "audioFile": "chevron.mp3"
-  },
-  {
-    "id": 1108,
-    "word": "coil",
-    "meaning": "线圈",
-    "phonetic": "/coil/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a coil on the paper.",
-    "sentenceCn": "在纸上画一个线圈。",
-        "emoji": "🌀",
-    "audioFile": "coil.mp3"
-  },
-  {
-    "id": 1109,
-    "word": "curl",
-    "meaning": "卷曲",
-    "phonetic": "/curl/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a curl on the paper.",
-    "sentenceCn": "在纸上画一个卷曲。",
-        "emoji": "🌀",
-    "audioFile": "curl.mp3"
-  },
-  {
-    "id": 1110,
-    "word": "decagon",
-    "meaning": "十边形",
-    "phonetic": "/deca/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a decagon shape.",
-    "sentenceCn": "我看到一个十边形形状。",
-        "emoji": "🔟",
-    "audioFile": "decagon.mp3"
-  },
-  {
-    "id": 1111,
-    "word": "dotted",
-    "meaning": "点状",
-    "phonetic": "/dott/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color dotted is bright.",
-    "sentenceCn": "点状很亮。",
-        "emoji": "🔵",
-    "audioFile": "dotted.mp3"
-  },
-  {
-    "id": 1112,
-    "word": "ellipse",
-    "meaning": "椭圆",
-    "phonetic": "/elli/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a ellipse shape.",
-    "sentenceCn": "我看到一个椭圆形状。",
-        "emoji": "🥚",
-    "audioFile": "ellipse.mp3"
-  },
+
   {
     "id": 1113,
     "word": "fan",
@@ -13369,294 +10466,7 @@ export const words: WordEntry[] = [
         "emoji": "🪭",
     "audioFile": "fan.mp3"
   },
-  {
-    "id": 1114,
-    "word": "figure eight",
-    "meaning": "八字形",
-    "phonetic": "/figu/",
-    "difficulty": 6,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a figure eight.",
-    "sentenceCn": "我看到一个八字形。",
-        "emoji": "8️⃣",
-    "audioFile": "figure_eight.mp3"
-  },
-  {
-    "id": 1115,
-    "word": "heptagon",
-    "meaning": "七边形",
-    "phonetic": "/hept/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color heptagon is bright.",
-    "sentenceCn": "七边形很亮。",
-        "emoji": "7️⃣",
-    "audioFile": "heptagon.mp3"
-  },
-  {
-    "id": 1116,
-    "word": "honeycomb",
-    "meaning": "蜂窝形",
-    "phonetic": "/hone/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a honeycomb on the paper.",
-    "sentenceCn": "在纸上画一个蜂窝形。",
-        "emoji": "⬡",
-    "audioFile": "honeycomb.mp3"
-  },
-  {
-    "id": 1117,
-    "word": "knot",
-    "meaning": "结",
-    "phonetic": "/knot/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color knot is bright.",
-    "sentenceCn": "结很亮。",
-        "emoji": "🪢",
-    "audioFile": "knot.mp3"
-  },
-  {
-    "id": 1118,
-    "word": "lattice",
-    "meaning": "格子",
-    "phonetic": "/latt/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a lattice on the paper.",
-    "sentenceCn": "在纸上画一个格子。",
-        "emoji": "🔲",
-    "audioFile": "lattice.mp3"
-  },
-  {
-    "id": 1119,
-    "word": "loop",
-    "meaning": "环",
-    "phonetic": "/loop/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a loop shape.",
-    "sentenceCn": "我看到一个环形状。",
-        "emoji": "🔄",
-    "audioFile": "loop.mp3"
-  },
-  {
-    "id": 1120,
-    "word": "meander",
-    "meaning": "回纹",
-    "phonetic": "/mean/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color meander is bright.",
-    "sentenceCn": "回纹很亮。",
-        "emoji": "〰️",
-    "audioFile": "meander.mp3"
-  },
-  {
-    "id": 1121,
-    "word": "mesh",
-    "meaning": "网眼",
-    "phonetic": "/mesh/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a mesh on the paper.",
-    "sentenceCn": "在纸上画一个网眼。",
-        "emoji": "🔗",
-    "audioFile": "mesh.mp3"
-  },
-  {
-    "id": 1122,
-    "word": "nonagon",
-    "meaning": "九边形",
-    "phonetic": "/nona/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a nonagon shape.",
-    "sentenceCn": "我看到一个九边形形状。",
-        "emoji": "9️⃣",
-    "audioFile": "nonagon.mp3"
-  },
-  {
-    "id": 1123,
-    "word": "parallelogram",
-    "meaning": "平行四边形",
-    "phonetic": "/para/",
-    "difficulty": 6,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a parallelogram on the paper.",
-    "sentenceCn": "在纸上画一个平行四边形。",
-        "emoji": "▱",
-    "audioFile": "parallelogram.mp3"
-  },
-  {
-    "id": 1124,
-    "word": "polygon",
-    "meaning": "多边形",
-    "phonetic": "/poly/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a polygon shape.",
-    "sentenceCn": "我看到一个多边形形状。",
-        "emoji": "⬡",
-    "audioFile": "polygon.mp3"
-  },
-  {
-    "id": 1125,
-    "word": "quadrilateral",
-    "meaning": "四边形",
-    "phonetic": "/quad/",
-    "difficulty": 6,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a quadrilateral on the paper.",
-    "sentenceCn": "在纸上画一个四边形。",
-        "emoji": "🔲",
-    "audioFile": "quadrilateral.mp3"
-  },
-  {
-    "id": 1126,
-    "word": "rhombus",
-    "meaning": "菱形",
-    "phonetic": "/rhom/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a rhombus on the paper.",
-    "sentenceCn": "在纸上画一个菱形。",
-        "emoji": "🔶",
-    "audioFile": "rhombus.mp3"
-  },
-  {
-    "id": 1127,
-    "word": "semicircle",
-    "meaning": "半圆",
-    "phonetic": "/semi/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a semicircle on the paper.",
-    "sentenceCn": "在纸上画一个半圆。",
-        "emoji": "🌗",
-    "audioFile": "semicircle.mp3"
-  },
-  {
-    "id": 1128,
-    "word": "slash",
-    "meaning": "斜线",
-    "phonetic": "/slas/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a slash shape.",
-    "sentenceCn": "我看到一个斜线形状。",
-        "emoji": "➗",
-    "audioFile": "slash.mp3"
-  },
-  {
-    "id": 1129,
-    "word": "swirl",
-    "meaning": "漩涡",
-    "phonetic": "/swir/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a swirl shape.",
-    "sentenceCn": "我看到一个漩涡形状。",
-        "emoji": "🌀",
-    "audioFile": "swirl.mp3"
-  },
-  {
-    "id": 1130,
-    "word": "trapezoid",
-    "meaning": "梯形",
-    "phonetic": "/trap/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a trapezoid on the paper.",
-    "sentenceCn": "在纸上画一个梯形。",
-        "emoji": "⏢",
-    "audioFile": "trapezoid.mp3"
-  },
-  {
-    "id": 1131,
-    "word": "trefoil",
-    "meaning": "三叶形",
-    "phonetic": "/tref/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a trefoil on the paper.",
-    "sentenceCn": "在纸上画一个三叶形。",
-        "emoji": "☘️",
-    "audioFile": "trefoil.mp3"
-  },
-  {
-    "id": 1132,
-    "word": "vortex",
-    "meaning": "涡流",
-    "phonetic": "/vort/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a vortex on the paper.",
-    "sentenceCn": "在纸上画一个涡流。",
-        "emoji": "🌀",
-    "audioFile": "vortex.mp3"
-  },
-  {
-    "id": 1133,
-    "word": "wedge",
-    "meaning": "楔形",
-    "phonetic": "/wedg/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a wedge shape.",
-    "sentenceCn": "我看到一个楔形形状。",
-        "emoji": "🔺",
-    "audioFile": "wedge.mp3"
-  },
-  {
-    "id": 1134,
-    "word": "arch",
-    "meaning": "拱形",
-    "phonetic": "/arch/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a arch on the paper.",
-    "sentenceCn": "在纸上画一个拱形。",
-        "emoji": "🏛️",
-    "audioFile": "arch.mp3"
-  },
-  {
-    "id": 1135,
-    "word": "bead",
-    "meaning": "珠子",
-    "phonetic": "/bead/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color bead is bright.",
-    "sentenceCn": "珠子很亮。",
-        "emoji": "📿",
-    "audioFile": "bead.mp3"
-  },
-  {
-    "id": 1136,
-    "word": "blotch",
-    "meaning": "斑点",
-    "phonetic": "/blot/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a blotch on the paper.",
-    "sentenceCn": "在纸上画一个斑点。",
-        "emoji": "🔴",
-    "audioFile": "blotch.mp3"
-  },
-  {
-    "id": 1137,
-    "word": "braid",
-    "meaning": "辫子",
-    "phonetic": "/brai/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color braid is bright.",
-    "sentenceCn": "辫子很亮。",
-        "emoji": "🎀",
-    "audioFile": "braid.mp3"
-  },
+
   {
     "id": 1138,
     "word": "corkscrew",
@@ -13669,210 +10479,7 @@ export const words: WordEntry[] = [
         "emoji": "🥴",
     "audioFile": "corkscrew.mp3"
   },
-  {
-    "id": 1139,
-    "word": "crease",
-    "meaning": "折痕",
-    "phonetic": "/crea/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a crease shape.",
-    "sentenceCn": "我看到一个折痕形状。",
-        "emoji": "📄",
-    "audioFile": "crease.mp3"
-  },
-  {
-    "id": 1140,
-    "word": "dapple",
-    "meaning": "斑点",
-    "phonetic": "/dapp/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a dapple shape.",
-    "sentenceCn": "我看到一个斑点形状。",
-        "emoji": "🐾",
-    "audioFile": "dapple.mp3"
-  },
-  {
-    "id": 1141,
-    "word": "dot",
-    "meaning": "圆点",
-    "phonetic": "/dot/",
-    "difficulty": 1,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a dot on the paper.",
-    "sentenceCn": "在纸上画一个圆点。",
-        "emoji": "⏺️",
-    "audioFile": "dot.mp3"
-  },
-  {
-    "id": 1142,
-    "word": "feather",
-    "meaning": "羽毛",
-    "phonetic": "/feat/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a feather shape.",
-    "sentenceCn": "我看到一个羽毛形状。",
-        "emoji": "🪶",
-    "audioFile": "feather.mp3"
-  },
-  {
-    "id": 1143,
-    "word": "fleck",
-    "meaning": "斑点",
-    "phonetic": "/flec/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a fleck on the paper.",
-    "sentenceCn": "在纸上画一个斑点。",
-        "emoji": "⚪",
-    "audioFile": "fleck.mp3"
-  },
-  {
-    "id": 1144,
-    "word": "fold",
-    "meaning": "折叠",
-    "phonetic": "/fold/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color fold is bright.",
-    "sentenceCn": "折叠很亮。",
-        "emoji": "🫓",
-    "audioFile": "fold.mp3"
-  },
-  {
-    "id": 1145,
-    "word": "fringe",
-    "meaning": "流苏",
-    "phonetic": "/frin/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color fringe is bright.",
-    "sentenceCn": "流苏很亮。",
-        "emoji": "🎀",
-    "audioFile": "fringe.mp3"
-  },
-  {
-    "id": 1146,
-    "word": "grain",
-    "meaning": "纹理",
-    "phonetic": "/grai/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a grain on the paper.",
-    "sentenceCn": "在纸上画一个纹理。",
-        "emoji": "🌾",
-    "audioFile": "grain.mp3"
-  },
-  {
-    "id": 1147,
-    "word": "inlay",
-    "meaning": "镶嵌",
-    "phonetic": "/inla/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a inlay shape.",
-    "sentenceCn": "我看到一个镶嵌形状。",
-        "emoji": "💎",
-    "audioFile": "inlay.mp3"
-  },
-  {
-    "id": 1148,
-    "word": "knurl",
-    "meaning": "滚花",
-    "phonetic": "/knur/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color knurl is bright.",
-    "sentenceCn": "滚花很亮。",
-        "emoji": "⚙️",
-    "audioFile": "knurl.mp3"
-  },
-  {
-    "id": 1149,
-    "word": "marble",
-    "meaning": "大理石纹",
-    "phonetic": "/marb/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a marble on the paper.",
-    "sentenceCn": "在纸上画一个大理石纹。",
-        "emoji": "📿",
-    "audioFile": "marble.mp3"
-  },
-  {
-    "id": 1150,
-    "word": "matte",
-    "meaning": "哑光",
-    "phonetic": "/matt/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color matte is bright.",
-    "sentenceCn": "哑光很亮。",
-        "emoji": "⚫",
-    "audioFile": "matte.mp3"
-  },
-  {
-    "id": 1151,
-    "word": "mosaic",
-    "meaning": "马赛克",
-    "phonetic": "/mosa/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a mosaic on the paper.",
-    "sentenceCn": "在纸上画一个马赛克。",
-        "emoji": "🧩",
-    "audioFile": "mosaic.mp3"
-  },
-  {
-    "id": 1152,
-    "word": "notch",
-    "meaning": "凹口",
-    "phonetic": "/notc/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a notch shape.",
-    "sentenceCn": "我看到一个凹口形状。",
-        "emoji": "🔪",
-    "audioFile": "notch.mp3"
-  },
-  {
-    "id": 1153,
-    "word": "paisley",
-    "meaning": "佩斯利",
-    "phonetic": "/pais/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color paisley is bright.",
-    "sentenceCn": "佩斯利很亮。",
-        "emoji": "🌀",
-    "audioFile": "paisley.mp3"
-  },
-  {
-    "id": 1154,
-    "word": "patch",
-    "meaning": "补丁",
-    "phonetic": "/patc/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a patch shape.",
-    "sentenceCn": "我看到一个补丁形状。",
-        "emoji": "🟦",
-    "audioFile": "patch.mp3"
-  },
-  {
-    "id": 1155,
-    "word": "pinpoint",
-    "meaning": "针尖",
-    "phonetic": "/pinp/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a pinpoint shape.",
-    "sentenceCn": "我看到一个针尖形状。",
-        "emoji": "📍",
-    "audioFile": "pinpoint.mp3"
-  },
+
   {
     "id": 1156,
     "word": "plaid",
@@ -13885,234 +10492,7 @@ export const words: WordEntry[] = [
         "emoji": "🏁",
     "audioFile": "plaid.mp3"
   },
-  {
-    "id": 1157,
-    "word": "plait",
-    "meaning": "辫子",
-    "phonetic": "/plai/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a plait on the paper.",
-    "sentenceCn": "在纸上画一个辫子。",
-        "emoji": "🎀",
-    "audioFile": "plait.mp3"
-  },
-  {
-    "id": 1158,
-    "word": "plush",
-    "meaning": "毛绒",
-    "phonetic": "/plus/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a plush shape.",
-    "sentenceCn": "我看到一个毛绒形状。",
-        "emoji": "🧸",
-    "audioFile": "plush.mp3"
-  },
-  {
-    "id": 1159,
-    "word": "pom-pom",
-    "meaning": "绒球",
-    "phonetic": "/pom-/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a pom-pom.",
-    "sentenceCn": "我看到一个绒球。",
-        "emoji": "🎊",
-    "audioFile": "pom-pom.mp3"
-  },
-  {
-    "id": 1160,
-    "word": "pucker",
-    "meaning": "褶皱",
-    "phonetic": "/puck/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a pucker on the paper.",
-    "sentenceCn": "在纸上画一个褶皱。",
-        "emoji": "😗",
-    "audioFile": "pucker.mp3"
-  },
-  {
-    "id": 1161,
-    "word": "ridge",
-    "meaning": "脊",
-    "phonetic": "/ridg/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a ridge on the paper.",
-    "sentenceCn": "在纸上画一个脊。",
-        "emoji": "🏔️",
-    "audioFile": "ridge.mp3"
-  },
-  {
-    "id": 1162,
-    "word": "rivet",
-    "meaning": "铆钉",
-    "phonetic": "/rive/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a rivet on the paper.",
-    "sentenceCn": "在纸上画一个铆钉。",
-        "emoji": "🔩",
-    "audioFile": "rivet.mp3"
-  },
-  {
-    "id": 1163,
-    "word": "rosette",
-    "meaning": "玫瑰花结",
-    "phonetic": "/rose/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a rosette shape.",
-    "sentenceCn": "我看到一个玫瑰花结形状。",
-        "emoji": "🌹",
-    "audioFile": "rosette.mp3"
-  },
-  {
-    "id": 1164,
-    "word": "ruffle",
-    "meaning": "褶边",
-    "phonetic": "/ruff/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a ruffle shape.",
-    "sentenceCn": "我看到一个褶边形状。",
-        "emoji": "👗",
-    "audioFile": "ruffle.mp3"
-  },
-  {
-    "id": 1165,
-    "word": "scallop",
-    "meaning": "扇贝形",
-    "phonetic": "/scal/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a scallop shape.",
-    "sentenceCn": "我看到一个扇贝形形状。",
-        "emoji": "🐚",
-    "audioFile": "scallop.mp3"
-  },
-  {
-    "id": 1166,
-    "word": "sheen",
-    "meaning": "光泽",
-    "phonetic": "/shee/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color sheen is bright.",
-    "sentenceCn": "光泽很亮。",
-        "emoji": "✨",
-    "audioFile": "sheen.mp3"
-  },
-  {
-    "id": 1167,
-    "word": "silhouette",
-    "meaning": "剪影",
-    "phonetic": "/silh/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a silhouette shape.",
-    "sentenceCn": "我看到一个剪影形状。",
-        "emoji": "👤",
-    "audioFile": "silhouette.mp3"
-  },
-  {
-    "id": 1168,
-    "word": "sparkle",
-    "meaning": "闪光",
-    "phonetic": "/spar/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a sparkle shape.",
-    "sentenceCn": "我看到一个闪光形状。",
-        "emoji": "✨",
-    "audioFile": "sparkle.mp3"
-  },
-  {
-    "id": 1169,
-    "word": "speck",
-    "meaning": "小点",
-    "phonetic": "/spec/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color speck is bright.",
-    "sentenceCn": "小点很亮。",
-        "emoji": "⚪",
-    "audioFile": "speck.mp3"
-  },
-  {
-    "id": 1170,
-    "word": "spike",
-    "meaning": "尖刺",
-    "phonetic": "/spik/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color spike is bright.",
-    "sentenceCn": "尖刺很亮。",
-        "emoji": "📍",
-    "audioFile": "spike.mp3"
-  },
-  {
-    "id": 1171,
-    "word": "spiral",
-    "meaning": "螺旋",
-    "phonetic": "/spir/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a spiral on the paper.",
-    "sentenceCn": "在纸上画一个螺旋。",
-        "emoji": "🌀",
-    "audioFile": "spiral.mp3"
-  },
-  {
-    "id": 1172,
-    "word": "splash",
-    "meaning": "溅开",
-    "phonetic": "/spla/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a splash shape.",
-    "sentenceCn": "我看到一个溅开形状。",
-        "emoji": "💦",
-    "audioFile": "splash.mp3"
-  },
-  {
-    "id": 1173,
-    "word": "spoke",
-    "meaning": "辐条",
-    "phonetic": "/spok/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color spoke is bright.",
-    "sentenceCn": "辐条很亮。",
-        "emoji": "⚙️",
-    "audioFile": "spoke.mp3"
-  },
-  {
-    "id": 1174,
-    "word": "sprig",
-    "meaning": "小枝",
-    "phonetic": "/spri/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a sprig shape.",
-    "sentenceCn": "我看到一个小枝形状。",
-        "emoji": "🌿",
-    "audioFile": "sprig.mp3"
-  },
-  {
-    "id": 1175,
-    "word": "stripe",
-    "meaning": "条纹",
-    "phonetic": "/stri/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color stripe is bright.",
-    "sentenceCn": "条纹很亮。",
-        "emoji": "〰️",
-    "audioFile": "stripe.mp3"
-  },
+
   {
     "id": 1176,
     "word": "stud",
@@ -14125,54 +10505,7 @@ export const words: WordEntry[] = [
         "emoji": "💎",
     "audioFile": "stud.mp3"
   },
-  {
-    "id": 1177,
-    "word": "tassel",
-    "meaning": "流苏",
-    "phonetic": "/tass/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a tassel shape.",
-    "sentenceCn": "我看到一个流苏形状。",
-        "emoji": "🎀",
-    "audioFile": "tassel.mp3"
-  },
-  {
-    "id": 1178,
-    "word": "tier",
-    "meaning": "层",
-    "phonetic": "/tier/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a tier shape.",
-    "sentenceCn": "我看到一个层形状。",
-        "emoji": "📶",
-    "audioFile": "tier.mp3"
-  },
-  {
-    "id": 1179,
-    "word": "trim",
-    "meaning": "镶边",
-    "phonetic": "/trim/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color trim is bright.",
-    "sentenceCn": "镶边很亮。",
-        "emoji": "✂️",
-    "audioFile": "trim.mp3"
-  },
-  {
-    "id": 1180,
-    "word": "twirl",
-    "meaning": "旋转",
-    "phonetic": "/twir/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color twirl is bright.",
-    "sentenceCn": "旋转很亮。",
-        "emoji": "💫",
-    "audioFile": "twirl.mp3"
-  },
+
   {
     "id": 1181,
     "word": "wave",
@@ -14185,66 +10518,7 @@ export const words: WordEntry[] = [
         "emoji": "🌊",
     "audioFile": "wave.mp3"
   },
-  {
-    "id": 1182,
-    "word": "whorl",
-    "meaning": "螺纹",
-    "phonetic": "/whor/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a whorl shape.",
-    "sentenceCn": "我看到一个螺纹形状。",
-        "emoji": "🌀",
-    "audioFile": "whorl.mp3"
-  },
-  {
-    "id": 1183,
-    "word": "zigzag",
-    "meaning": "锯齿",
-    "phonetic": "/zigz/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color zigzag is bright.",
-    "sentenceCn": "锯齿很亮。",
-        "emoji": "⚡",
-    "audioFile": "zigzag.mp3"
-  },
-  {
-    "id": 1184,
-    "word": "arabesque",
-    "meaning": "阿拉伯花纹",
-    "phonetic": "/arab/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a arabesque on the paper.",
-    "sentenceCn": "在纸上画一个阿拉伯花纹。",
-        "emoji": "🕌",
-    "audioFile": "arabesque.mp3"
-  },
-  {
-    "id": 1185,
-    "word": "baroque",
-    "meaning": "巴洛克",
-    "phonetic": "/baro/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a baroque shape.",
-    "sentenceCn": "我看到一个巴洛克形状。",
-        "emoji": "🏛️",
-    "audioFile": "baroque.mp3"
-  },
-  {
-    "id": 1186,
-    "word": "filigree",
-    "meaning": "金银丝",
-    "phonetic": "/fili/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a filigree shape.",
-    "sentenceCn": "我看到一个金银丝形状。",
-        "emoji": "✨",
-    "audioFile": "filigree.mp3"
-  },
+
   {
     "id": 1187,
     "word": "floral",
@@ -14257,162 +10531,7 @@ export const words: WordEntry[] = [
         "emoji": "🌸",
     "audioFile": "floral.mp3"
   },
-  {
-    "id": 1188,
-    "word": "fret",
-    "meaning": "回纹",
-    "phonetic": "/fret/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a fret on the paper.",
-    "sentenceCn": "在纸上画一个回纹。",
-        "emoji": "〰️",
-    "audioFile": "fret.mp3"
-  },
-  {
-    "id": 1189,
-    "word": "garland",
-    "meaning": "花环",
-    "phonetic": "/garl/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "The color garland is bright.",
-    "sentenceCn": "花环很亮。",
-        "emoji": "🏵️",
-    "audioFile": "garland.mp3"
-  },
-  {
-    "id": 1190,
-    "word": "guilloche",
-    "meaning": "波纹",
-    "phonetic": "/guil/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a guilloche shape.",
-    "sentenceCn": "我看到一个波纹形状。",
-        "emoji": "〰️",
-    "audioFile": "guilloche.mp3"
-  },
-  {
-    "id": 1191,
-    "word": "herringbone",
-    "meaning": "人字纹",
-    "phonetic": "/herr/",
-    "difficulty": 5,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a herringbone shape.",
-    "sentenceCn": "我看到一个人字纹形状。",
-        "emoji": "〰️",
-    "audioFile": "herringbone.mp3"
-  },
-  {
-    "id": 1192,
-    "word": "interlace",
-    "meaning": "交织",
-    "phonetic": "/inte/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a interlace shape.",
-    "sentenceCn": "我看到一个交织形状。",
-        "emoji": "🔄",
-    "audioFile": "interlace.mp3"
-  },
-  {
-    "id": 1193,
-    "word": "motif",
-    "meaning": "图案",
-    "phonetic": "/moti/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a motif shape.",
-    "sentenceCn": "我看到一个图案形状。",
-        "emoji": "🎨",
-    "audioFile": "motif.mp3"
-  },
-  {
-    "id": 1194,
-    "word": "ornament",
-    "meaning": "装饰",
-    "phonetic": "/orna/",
-    "difficulty": 4,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a ornament shape.",
-    "sentenceCn": "我看到一个装饰形状。",
-        "emoji": "🎄",
-    "audioFile": "ornament.mp3"
-  },
-  {
-    "id": 1195,
-    "word": "scroll",
-    "meaning": "卷轴",
-    "phonetic": "/scro/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "I see a scroll shape.",
-    "sentenceCn": "我看到一个卷轴形状。",
-        "emoji": "📜",
-    "audioFile": "scroll.mp3"
-  },
-  {
-    "id": 1196,
-    "word": "spoke",
-    "meaning": "辐条",
-    "phonetic": "/spok/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "Draw a spoke on the paper.",
-    "sentenceCn": "在纸上画一个辐条。",
-        "emoji": "⚙️",
-    "audioFile": "spoke.mp3"
-  },
-  {
-    "id": 1197,
-    "word": "cube",
-    "meaning": "立方体",
-    "phonetic": "/kjuːb/",
-    "difficulty": 2,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🧊",
-    "audioFile": "cube.mp3"
-  },
-  {
-    "id": 1198,
-    "word": "sphere",
-    "meaning": "球体",
-    "phonetic": "/sfɪr/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "⚪",
-    "audioFile": "sphere.mp3"
-  },
-  {
-    "id": 1199,
-    "word": "cylinder",
-    "meaning": "圆柱体",
-    "phonetic": "/ˈsɪlɪndər/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🥫",
-    "audioFile": "cylinder.mp3"
-  },
-  {
-    "id": 1200,
-    "word": "pyramid",
-    "meaning": "棱锥体",
-    "phonetic": "/ˈpɪrəmɪd/",
-    "difficulty": 3,
-    "theme": "颜色形状 Colors&Shapes",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🔺",
-    "audioFile": "pyramid.mp3"
-  },
+
 {
     "id": 1201,
     "word": "zero",
@@ -16021,1614 +12140,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "duration.mp3"
   },
-{
-    "id": 1335,
-    "word": "fortnight",
-    "meaning": "两周",
-    "phonetic": "/ˈfɔːrtnaɪt/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to fortnight.",
-    "sentenceCn": "数到两周。",
-        "emoji": "📅",
-    "audioFile": "fortnight.mp3"
-  },
-{
-    "id": 1336,
-    "word": "annual",
-    "meaning": "年度的",
-    "phonetic": "/ˈænjuəl/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is annual o'clock.",
-    "sentenceCn": "现在是年度的点。",
-        "emoji": "📆",
-    "audioFile": "annual.mp3"
-  },
-{
-    "id": 1337,
-    "word": "spring",
-    "meaning": "春天",
-    "phonetic": "/spri/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have spring.",
-    "sentenceCn": "我有春天。",
-        "emoji": "🌸",
-    "audioFile": "spring.mp3"
-  },
-{
-    "id": 1338,
-    "word": "summer",
-    "meaning": "夏天",
-    "phonetic": "/summ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have summer.",
-    "sentenceCn": "我有夏天。",
-        "emoji": "☀️",
-    "audioFile": "summer.mp3"
-  },
-{
-    "id": 1339,
-    "word": "autumn",
-    "meaning": "秋天",
-    "phonetic": "/autu/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to autumn.",
-    "sentenceCn": "数到秋天。",
-        "emoji": "🍂",
-    "audioFile": "autumn.mp3"
-  },
-{
-    "id": 1340,
-    "word": "winter",
-    "meaning": "冬天",
-    "phonetic": "/wint/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to winter.",
-    "sentenceCn": "数到冬天。",
-        "emoji": "❄️",
-    "audioFile": "winter.mp3"
-  },
-{
-    "id": 1341,
-    "word": "january",
-    "meaning": "一月",
-    "phonetic": "/ˈdʒænjueri/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to january.",
-    "sentenceCn": "数到一月。",
-        "emoji": "🎉",
-    "audioFile": "january.mp3"
-  },
-{
-    "id": 1342,
-    "word": "february",
-    "meaning": "二月",
-    "phonetic": "/ˈfebrueri/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is february o'clock.",
-    "sentenceCn": "现在是二月点。",
-        "emoji": "💕",
-    "audioFile": "february.mp3"
-  },
-{
-    "id": 1343,
-    "word": "march",
-    "meaning": "三月",
-    "phonetic": "/mɑːrtʃ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to march.",
-    "sentenceCn": "数到三月。",
-        "emoji": "🌈",
-    "audioFile": "march.mp3"
-  },
-{
-    "id": 1344,
-    "word": "april",
-    "meaning": "四月",
-    "phonetic": "/ˈeɪprəl/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have april.",
-    "sentenceCn": "我有四月。",
-        "emoji": "🌧️",
-    "audioFile": "april.mp3"
-  },
-{
-    "id": 1345,
-    "word": "may",
-    "meaning": "五月",
-    "phonetic": "/meɪ/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have may.",
-    "sentenceCn": "我有五月。",
-        "emoji": "🌺",
-    "audioFile": "may.mp3"
-  },
-{
-    "id": 1346,
-    "word": "june",
-    "meaning": "六月",
-    "phonetic": "/dʒuːn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is june o'clock.",
-    "sentenceCn": "现在是六月点。",
-        "emoji": "☀️",
-    "audioFile": "june.mp3"
-  },
-{
-    "id": 1347,
-    "word": "july",
-    "meaning": "七月",
-    "phonetic": "/dʒʊˈlaɪ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is july o'clock.",
-    "sentenceCn": "现在是七月点。",
-        "emoji": "🏖️",
-    "audioFile": "july.mp3"
-  },
-{
-    "id": 1348,
-    "word": "august",
-    "meaning": "八月",
-    "phonetic": "/ɔːˈɡʌst/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is august o'clock.",
-    "sentenceCn": "现在是八月点。",
-        "emoji": "🍉",
-    "audioFile": "august.mp3"
-  },
-{
-    "id": 1349,
-    "word": "september",
-    "meaning": "九月",
-    "phonetic": "/sepˈtembər/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have september.",
-    "sentenceCn": "我有九月。",
-        "emoji": "🍁",
-    "audioFile": "september.mp3"
-  },
-{
-    "id": 1350,
-    "word": "october",
-    "meaning": "十月",
-    "phonetic": "/ɑːkˈtoʊbər/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to october.",
-    "sentenceCn": "数到十月。",
-        "emoji": "🎃",
-    "audioFile": "october.mp3"
-  },
-{
-    "id": 1351,
-    "word": "november",
-    "meaning": "十一月",
-    "phonetic": "/noʊˈvembər/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is november o'clock.",
-    "sentenceCn": "现在是十一月点。",
-        "emoji": "🦃",
-    "audioFile": "november.mp3"
-  },
-{
-    "id": 1352,
-    "word": "december",
-    "meaning": "十二月",
-    "phonetic": "/dɪˈsembər/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to december.",
-    "sentenceCn": "数到十二月。",
-        "emoji": "🎄",
-    "audioFile": "december.mp3"
-  },
-{
-    "id": 1353,
-    "word": "monday",
-    "meaning": "星期一",
-    "phonetic": "/ˈmʌndeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to monday.",
-    "sentenceCn": "数到星期一。",
-        "emoji": "📅",
-    "audioFile": "monday.mp3"
-  },
-{
-    "id": 1354,
-    "word": "tuesday",
-    "meaning": "星期二",
-    "phonetic": "/ˈtuːzdeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to tuesday.",
-    "sentenceCn": "数到星期二。",
-        "emoji": "📅",
-    "audioFile": "tuesday.mp3"
-  },
-{
-    "id": 1355,
-    "word": "wednesday",
-    "meaning": "星期三",
-    "phonetic": "/ˈwenzdeɪ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is wednesday o'clock.",
-    "sentenceCn": "现在是星期三点。",
-        "emoji": "📅",
-    "audioFile": "wednesday.mp3"
-  },
-{
-    "id": 1356,
-    "word": "thursday",
-    "meaning": "星期四",
-    "phonetic": "/ˈθɜːrzdeɪ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have thursday.",
-    "sentenceCn": "我有星期四。",
-        "emoji": "📅",
-    "audioFile": "thursday.mp3"
-  },
-{
-    "id": 1357,
-    "word": "friday",
-    "meaning": "星期五",
-    "phonetic": "/ˈfraɪdeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have friday.",
-    "sentenceCn": "我有星期五。",
-        "emoji": "🎉",
-    "audioFile": "friday.mp3"
-  },
-{
-    "id": 1358,
-    "word": "saturday",
-    "meaning": "星期六",
-    "phonetic": "/ˈsætərdeɪ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have saturday.",
-    "sentenceCn": "我有星期六。",
-        "emoji": "🎮",
-    "audioFile": "saturday.mp3"
-  },
-{
-    "id": 1359,
-    "word": "sunday",
-    "meaning": "星期日",
-    "phonetic": "/ˈsʌndeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have sunday.",
-    "sentenceCn": "我有星期日。",
-        "emoji": "🙏",
-    "audioFile": "sunday.mp3"
-  },
-{
-    "id": 1360,
-    "word": "birthday",
-    "meaning": "生日",
-    "phonetic": "/ˈbɜːrθdeɪ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is birthday o'clock.",
-    "sentenceCn": "现在是生日点。",
-        "emoji": "🎂",
-    "audioFile": "birthday.mp3"
-  },
-{
-    "id": 1361,
-    "word": "holiday",
-    "meaning": "假日",
-    "phonetic": "/ˈhɑːlədeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to holiday.",
-    "sentenceCn": "数到假日。",
-        "emoji": "🎉",
-    "audioFile": "holiday.mp3"
-  },
-{
-    "id": 1362,
-    "word": "vacation",
-    "meaning": "假期",
-    "phonetic": "/veɪˈkeɪʃn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is vacation o'clock.",
-    "sentenceCn": "现在是假期点。",
-        "emoji": "🏖️",
-    "audioFile": "vacation.mp3"
-  },
-{
-    "id": 1363,
-    "word": "schedule",
-    "meaning": "日程",
-    "phonetic": "/ˈskedʒuːl/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to schedule.",
-    "sentenceCn": "数到日程。",
-        "emoji": "📋",
-    "audioFile": "schedule.mp3"
-  },
-{
-    "id": 1364,
-    "word": "calendar",
-    "meaning": "日历",
-    "phonetic": "/ˈkælɪndər/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have calendar.",
-    "sentenceCn": "我有日历。",
-        "emoji": "📅",
-    "audioFile": "calendar.mp3"
-  },
-{
-    "id": 1365,
-    "word": "deadline",
-    "meaning": "截止",
-    "phonetic": "/ˈdedlaɪn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is deadline o'clock.",
-    "sentenceCn": "现在是截止点。",
-        "emoji": "⏰",
-    "audioFile": "deadline.mp3"
-  },
-{
-    "id": 1366,
-    "word": "century",
-    "meaning": "世纪",
-    "phonetic": "/ˈsentʃəri/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is century o'clock.",
-    "sentenceCn": "现在是世纪点。",
-        "emoji": "💯",
-    "audioFile": "century.mp3"
-  },
-{
-    "id": 1367,
-    "word": "decade",
-    "meaning": "十年",
-    "phonetic": "/ˈdekeɪd/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is decade o'clock.",
-    "sentenceCn": "现在是十年点。",
-        "emoji": "📆",
-    "audioFile": "decade.mp3"
-  },
-{
-    "id": 1368,
-    "word": "era",
-    "meaning": "时代",
-    "phonetic": "/ˈɪrə/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have era.",
-    "sentenceCn": "我有时代。",
-        "emoji": "🌍",
-    "audioFile": "era.mp3"
-  },
-{
-    "id": 1369,
-    "word": "age",
-    "meaning": "年龄",
-    "phonetic": "/eɪdʒ/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to age.",
-    "sentenceCn": "数到年龄。",
-        "emoji": "🎂",
-    "audioFile": "age.mp3"
-  },
-{
-    "id": 1370,
-    "word": "past",
-    "meaning": "过去",
-    "phonetic": "/pæst/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is past o'clock.",
-    "sentenceCn": "现在是过去点。",
-        "emoji": "⏪",
-    "audioFile": "past.mp3"
-  },
-{
-    "id": 1371,
-    "word": "present",
-    "meaning": "现在",
-    "phonetic": "/ˈpreznt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have present.",
-    "sentenceCn": "我有现在。",
-        "emoji": "⏩",
-    "audioFile": "present.mp3"
-  },
-{
-    "id": 1372,
-    "word": "future",
-    "meaning": "未来",
-    "phonetic": "/ˈfjuːtʃər/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is future o'clock.",
-    "sentenceCn": "现在是未来点。",
-        "emoji": "🔮",
-    "audioFile": "future.mp3"
-  },
-{
-    "id": 1373,
-    "word": "ancient",
-    "meaning": "古代",
-    "phonetic": "/ˈeɪnʃənt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to ancient.",
-    "sentenceCn": "数到古代。",
-        "emoji": "🏛️",
-    "audioFile": "ancient.mp3"
-  },
-{
-    "id": 1374,
-    "word": "modern",
-    "meaning": "现代",
-    "phonetic": "/ˈmɑːdərn/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to modern.",
-    "sentenceCn": "数到现代。",
-        "emoji": "🏙️",
-    "audioFile": "modern.mp3"
-  },
-{
-    "id": 1375,
-    "word": "current",
-    "meaning": "当前",
-    "phonetic": "/ˈkɜːrənt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to current.",
-    "sentenceCn": "数到当前。",
-        "emoji": "📌",
-    "audioFile": "current.mp3"
-  },
-{
-    "id": 1376,
-    "word": "previous",
-    "meaning": "之前",
-    "phonetic": "/ˈpriːviəs/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is previous o'clock.",
-    "sentenceCn": "现在是之前点。",
-        "emoji": "◀️",
-    "audioFile": "previous.mp3"
-  },
-{
-    "id": 1377,
-    "word": "next",
-    "meaning": "下一个",
-    "phonetic": "/nekst/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to next.",
-    "sentenceCn": "数到下一个。",
-        "emoji": "▶️",
-    "audioFile": "next.mp3"
-  },
-{
-    "id": 1378,
-    "word": "before",
-    "meaning": "之前",
-    "phonetic": "/bɪˈfɔːr/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have before.",
-    "sentenceCn": "我有之前。",
-        "emoji": "🕐",
-    "audioFile": "before.mp3"
-  },
-{
-    "id": 1379,
-    "word": "after",
-    "meaning": "之后",
-    "phonetic": "/ˈæftər/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to after.",
-    "sentenceCn": "数到之后。",
-        "emoji": "🕑",
-    "audioFile": "after.mp3"
-  },
-{
-    "id": 1380,
-    "word": "during",
-    "meaning": "期间",
-    "phonetic": "/ˈdʊrɪŋ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is during o'clock.",
-    "sentenceCn": "现在是期间点。",
-        "emoji": "🔄",
-    "audioFile": "during.mp3"
-  },
-{
-    "id": 1381,
-    "word": "until",
-    "meaning": "直到",
-    "phonetic": "/ʌnˈtɪl/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to until.",
-    "sentenceCn": "数到直到。",
-        "emoji": "➡️",
-    "audioFile": "until.mp3"
-  },
-{
-    "id": 1382,
-    "word": "since",
-    "meaning": "自从",
-    "phonetic": "/sɪns/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is since o'clock.",
-    "sentenceCn": "现在是自从点。",
-        "emoji": "⏮️",
-    "audioFile": "since.mp3"
-  },
-{
-    "id": 1383,
-    "word": "ago",
-    "meaning": "以前",
-    "phonetic": "/əˈɡoʊ/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is ago o'clock.",
-    "sentenceCn": "现在是以前点。",
-        "emoji": "⏪",
-    "audioFile": "ago.mp3"
-  },
-{
-    "id": 1384,
-    "word": "delay",
-    "meaning": "延迟",
-    "phonetic": "/dɪˈleɪ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have delay.",
-    "sentenceCn": "我有延迟。",
-        "emoji": "⏳",
-    "audioFile": "delay.mp3"
-  },
-{
-    "id": 1385,
-    "word": "duration",
-    "meaning": "时长",
-    "phonetic": "/duˈreɪʃn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to duration.",
-    "sentenceCn": "数到时长。",
-        "emoji": "⏱️",
-    "audioFile": "duration.mp3"
-  },
-{
-    "id": 1386,
-    "word": "while",
-    "meaning": "当…时",
-    "phonetic": "/waɪl/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is while o'clock.",
-    "sentenceCn": "现在是当…时点。",
-        "emoji": "🔄",
-    "audioFile": "while.mp3"
-  },
-{
-    "id": 1387,
-    "word": "often",
-    "meaning": "经常",
-    "phonetic": "/ˈɔːfn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have often.",
-    "sentenceCn": "我有经常。",
-        "emoji": "🔄",
-    "audioFile": "often.mp3"
-  },
-{
-    "id": 1388,
-    "word": "always",
-    "meaning": "总是",
-    "phonetic": "/ˈɔːlweɪz/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is always o'clock.",
-    "sentenceCn": "现在是总是点。",
-        "emoji": "♾️",
-    "audioFile": "always.mp3"
-  },
-{
-    "id": 1389,
-    "word": "never",
-    "meaning": "从不",
-    "phonetic": "/ˈnevər/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to never.",
-    "sentenceCn": "数到从不。",
-        "emoji": "🚫",
-    "audioFile": "never.mp3"
-  },
-{
-    "id": 1390,
-    "word": "sometimes",
-    "meaning": "有时",
-    "phonetic": "/ˈsʌmtaɪmz/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have sometimes.",
-    "sentenceCn": "我有有时。",
-        "emoji": "⏸️",
-    "audioFile": "sometimes.mp3"
-  },
-{
-    "id": 1391,
-    "word": "early",
-    "meaning": "早",
-    "phonetic": "/ˈɜːrli/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is early o'clock.",
-    "sentenceCn": "现在是早点。",
-        "emoji": "🌅",
-    "audioFile": "early.mp3"
-  },
-{
-    "id": 1392,
-    "word": "late",
-    "meaning": "晚",
-    "phonetic": "/leɪt/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to late.",
-    "sentenceCn": "数到晚。",
-        "emoji": "🌙",
-    "audioFile": "late.mp3"
-  },
-{
-    "id": 1393,
-    "word": "soon",
-    "meaning": "很快",
-    "phonetic": "/suːn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is soon o'clock.",
-    "sentenceCn": "现在是很快点。",
-        "emoji": "⏩",
-    "audioFile": "soon.mp3"
-  },
-{
-    "id": 1394,
-    "word": "now",
-    "meaning": "现在",
-    "phonetic": "/naʊ/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is now o'clock.",
-    "sentenceCn": "现在是现在点。",
-        "emoji": "🕐",
-    "audioFile": "now.mp3"
-  },
-{
-    "id": 1395,
-    "word": "later",
-    "meaning": "稍后",
-    "phonetic": "/ˈleɪtər/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is later o'clock.",
-    "sentenceCn": "现在是稍后点。",
-        "emoji": "⏰",
-    "audioFile": "later.mp3"
-  },
-{
-    "id": 1396,
-    "word": "immediately",
-    "meaning": "立即",
-    "phonetic": "/ɪˈmiːdiətli/",
-    "difficulty": 5,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have immediately.",
-    "sentenceCn": "我有立即。",
-        "emoji": "⚡",
-    "audioFile": "immediately.mp3"
-  },
-{
-    "id": 1397,
-    "word": "frequently",
-    "meaning": "频繁",
-    "phonetic": "/ˈfriːkwəntli/",
-    "difficulty": 5,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to frequently.",
-    "sentenceCn": "数到频繁。",
-        "emoji": "🔄",
-    "audioFile": "frequently.mp3"
-  },
-{
-    "id": 1398,
-    "word": "rarely",
-    "meaning": "很少",
-    "phonetic": "/ˈrerli/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to rarely.",
-    "sentenceCn": "数到很少。",
-        "emoji": "🕰️",
-    "audioFile": "rarely.mp3"
-  },
-{
-    "id": 1399,
-    "word": "hour",
-    "meaning": "小时",
-    "phonetic": "/ˈaʊər/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to hour.",
-    "sentenceCn": "数到小时。",
-        "emoji": "🕐",
-    "audioFile": "hour.mp3"
-  },
-{
-    "id": 1400,
-    "word": "minute",
-    "meaning": "分钟",
-    "phonetic": "/ˈmɪnɪt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have minute.",
-    "sentenceCn": "我有分钟。",
-        "emoji": "⏱️",
-    "audioFile": "minute.mp3"
-  },
-{
-    "id": 1401,
-    "word": "moment",
-    "meaning": "片刻",
-    "phonetic": "/ˈmoʊmənt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have moment.",
-    "sentenceCn": "我有片刻。",
-        "emoji": "⏳",
-    "audioFile": "moment.mp3"
-  },
-{
-    "id": 1402,
-    "word": "instant",
-    "meaning": "瞬间",
-    "phonetic": "/ˈɪnstənt/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to instant.",
-    "sentenceCn": "数到瞬间。",
-        "emoji": "⚡",
-    "audioFile": "instant.mp3"
-  },
-{
-    "id": 1403,
-    "word": "period",
-    "meaning": "时期",
-    "phonetic": "/ˈpɪriəd/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is period o'clock.",
-    "sentenceCn": "现在是时期点。",
-        "emoji": "📆",
-    "audioFile": "period.mp3"
-  },
-{
-    "id": 1404,
-    "word": "morning",
-    "meaning": "早上",
-    "phonetic": "/ˈmɔːrnɪŋ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have morning.",
-    "sentenceCn": "我有早上。",
-        "emoji": "🌅",
-    "audioFile": "morning.mp3"
-  },
-{
-    "id": 1405,
-    "word": "noon",
-    "meaning": "中午",
-    "phonetic": "/nuːn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is noon o'clock.",
-    "sentenceCn": "现在是中午点。",
-        "emoji": "☀️",
-    "audioFile": "noon.mp3"
-  },
-{
-    "id": 1406,
-    "word": "afternoon",
-    "meaning": "下午",
-    "phonetic": "/ˌæftərˈnuːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have afternoon.",
-    "sentenceCn": "我有下午。",
-        "emoji": "🌤️",
-    "audioFile": "afternoon.mp3"
-  },
-{
-    "id": 1407,
-    "word": "evening",
-    "meaning": "傍晚",
-    "phonetic": "/ˈiːvnɪŋ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to evening.",
-    "sentenceCn": "数到傍晚。",
-        "emoji": "🌆",
-    "audioFile": "evening.mp3"
-  },
-{
-    "id": 1408,
-    "word": "night",
-    "meaning": "夜晚",
-    "phonetic": "/naɪt/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is night o'clock.",
-    "sentenceCn": "现在是夜晚点。",
-        "emoji": "🌙",
-    "audioFile": "night.mp3"
-  },
-{
-    "id": 1409,
-    "word": "midnight",
-    "meaning": "午夜",
-    "phonetic": "/ˈmɪdnaɪt/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to midnight.",
-    "sentenceCn": "数到午夜。",
-        "emoji": "🕛",
-    "audioFile": "midnight.mp3"
-  },
-{
-    "id": 1410,
-    "word": "dawn",
-    "meaning": "黎明",
-    "phonetic": "/dɔːn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to dawn.",
-    "sentenceCn": "数到黎明。",
-        "emoji": "🌄",
-    "audioFile": "dawn.mp3"
-  },
-{
-    "id": 1411,
-    "word": "dusk",
-    "meaning": "黄昏",
-    "phonetic": "/dʌsk/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is dusk o'clock.",
-    "sentenceCn": "现在是黄昏点。",
-        "emoji": "🌇",
-    "audioFile": "dusk.mp3"
-  },
-{
-    "id": 1412,
-    "word": "today",
-    "meaning": "今天",
-    "phonetic": "/təˈdeɪ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to today.",
-    "sentenceCn": "数到今天。",
-        "emoji": "📅",
-    "audioFile": "today.mp3"
-  },
-{
-    "id": 1413,
-    "word": "tomorrow",
-    "meaning": "明天",
-    "phonetic": "/təˈmɔːroʊ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to tomorrow.",
-    "sentenceCn": "数到明天。",
-        "emoji": "📅",
-    "audioFile": "tomorrow.mp3"
-  },
-{
-    "id": 1414,
-    "word": "yesterday",
-    "meaning": "昨天",
-    "phonetic": "/ˈjestərdeɪ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to yesterday.",
-    "sentenceCn": "数到昨天。",
-        "emoji": "📅",
-    "audioFile": "yesterday.mp3"
-  },
-{
-    "id": 1415,
-    "word": "weekday",
-    "meaning": "工作日",
-    "phonetic": "/ˈwiːkdeɪ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have weekday.",
-    "sentenceCn": "我有工作日。",
-        "emoji": "💼",
-    "audioFile": "weekday.mp3"
-  },
-{
-    "id": 1416,
-    "word": "weekend",
-    "meaning": "周末",
-    "phonetic": "/ˌwiːkˈend/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have weekend.",
-    "sentenceCn": "我有周末。",
-        "emoji": "🎉",
-    "audioFile": "weekend.mp3"
-  },
-{
-    "id": 1417,
-    "word": "time",
-    "meaning": "时间",
-    "phonetic": "/taɪm/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to time.",
-    "sentenceCn": "数到时间。",
-        "emoji": "⏰",
-    "audioFile": "time.mp3"
-  },
-{
-    "id": 1418,
-    "word": "clock",
-    "meaning": "时钟",
-    "phonetic": "/klɑːk/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to clock.",
-    "sentenceCn": "数到时钟。",
-        "emoji": "🕰️",
-    "audioFile": "clock.mp3"
-  },
-{
-    "id": 1419,
-    "word": "zero",
-    "meaning": "零",
-    "phonetic": "/ˈzɪroʊ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to zero.",
-    "sentenceCn": "数到零。",
-        "emoji": "0️⃣",
-    "audioFile": "zero.mp3"
-  },
-{
-    "id": 1420,
-    "word": "one",
-    "meaning": "一",
-    "phonetic": "/wʌn/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have one.",
-    "sentenceCn": "我有一。",
-        "emoji": "1️⃣",
-    "audioFile": "one.mp3"
-  },
-{
-    "id": 1421,
-    "word": "two",
-    "meaning": "二",
-    "phonetic": "/tuː/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have two.",
-    "sentenceCn": "我有二。",
-        "emoji": "2️⃣",
-    "audioFile": "two.mp3"
-  },
-{
-    "id": 1422,
-    "word": "three",
-    "meaning": "三",
-    "phonetic": "/θriː/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is three o'clock.",
-    "sentenceCn": "现在是三点。",
-        "emoji": "3️⃣",
-    "audioFile": "three.mp3"
-  },
-{
-    "id": 1423,
-    "word": "four",
-    "meaning": "四",
-    "phonetic": "/fɔːr/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have four.",
-    "sentenceCn": "我有四。",
-        "emoji": "4️⃣",
-    "audioFile": "four.mp3"
-  },
-{
-    "id": 1424,
-    "word": "five",
-    "meaning": "五",
-    "phonetic": "/faɪv/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have five.",
-    "sentenceCn": "我有五。",
-        "emoji": "5️⃣",
-    "audioFile": "five.mp3"
-  },
-{
-    "id": 1425,
-    "word": "six",
-    "meaning": "六",
-    "phonetic": "/sɪks/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is six o'clock.",
-    "sentenceCn": "现在是六点。",
-        "emoji": "6️⃣",
-    "audioFile": "six.mp3"
-  },
-{
-    "id": 1426,
-    "word": "seven",
-    "meaning": "七",
-    "phonetic": "/ˈsevn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have seven.",
-    "sentenceCn": "我有七。",
-        "emoji": "7️⃣",
-    "audioFile": "seven.mp3"
-  },
-{
-    "id": 1427,
-    "word": "eight",
-    "meaning": "八",
-    "phonetic": "/eɪt/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is eight o'clock.",
-    "sentenceCn": "现在是八点。",
-        "emoji": "8️⃣",
-    "audioFile": "eight.mp3"
-  },
-{
-    "id": 1428,
-    "word": "nine",
-    "meaning": "九",
-    "phonetic": "/naɪn/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to nine.",
-    "sentenceCn": "数到九。",
-        "emoji": "9️⃣",
-    "audioFile": "nine.mp3"
-  },
-{
-    "id": 1429,
-    "word": "ten",
-    "meaning": "十",
-    "phonetic": "/ten/",
-    "difficulty": 1,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to ten.",
-    "sentenceCn": "数到十。",
-        "emoji": "🔟",
-    "audioFile": "ten.mp3"
-  },
-{
-    "id": 1430,
-    "word": "eleven",
-    "meaning": "十一",
-    "phonetic": "/ɪˈlevn/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is eleven o'clock.",
-    "sentenceCn": "现在是十一点。",
-        "emoji": "1️⃣1️⃣",
-    "audioFile": "eleven.mp3"
-  },
-{
-    "id": 1431,
-    "word": "twelve",
-    "meaning": "十二",
-    "phonetic": "/twelv/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have twelve.",
-    "sentenceCn": "我有十二。",
-        "emoji": "1️⃣2️⃣",
-    "audioFile": "twelve.mp3"
-  },
-{
-    "id": 1432,
-    "word": "thirteen",
-    "meaning": "十三",
-    "phonetic": "/ˌθɜːrˈtiːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is thirteen o'clock.",
-    "sentenceCn": "现在是十三点。",
-        "emoji": "1️⃣3️⃣",
-    "audioFile": "thirteen.mp3"
-  },
-{
-    "id": 1433,
-    "word": "fourteen",
-    "meaning": "十四",
-    "phonetic": "/ˌfɔːrˈtiːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is fourteen o'clock.",
-    "sentenceCn": "现在是十四点。",
-        "emoji": "1️⃣4️⃣",
-    "audioFile": "fourteen.mp3"
-  },
-{
-    "id": 1434,
-    "word": "fifteen",
-    "meaning": "十五",
-    "phonetic": "/ˌfɪfˈtiːn/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is fifteen o'clock.",
-    "sentenceCn": "现在是十五点。",
-        "emoji": "1️⃣5️⃣",
-    "audioFile": "fifteen.mp3"
-  },
-{
-    "id": 1435,
-    "word": "sixteen",
-    "meaning": "十六",
-    "phonetic": "/ˌsɪksˈtiːn/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to sixteen.",
-    "sentenceCn": "数到十六。",
-        "emoji": "1️⃣6️⃣",
-    "audioFile": "sixteen.mp3"
-  },
-{
-    "id": 1436,
-    "word": "seventeen",
-    "meaning": "十七",
-    "phonetic": "/ˌsevnˈtiːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have seventeen.",
-    "sentenceCn": "我有十七。",
-        "emoji": "1️⃣7️⃣",
-    "audioFile": "seventeen.mp3"
-  },
-{
-    "id": 1437,
-    "word": "eighteen",
-    "meaning": "十八",
-    "phonetic": "/ˌeɪˈtiːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to eighteen.",
-    "sentenceCn": "数到十八。",
-        "emoji": "1️⃣8️⃣",
-    "audioFile": "eighteen.mp3"
-  },
-{
-    "id": 1438,
-    "word": "nineteen",
-    "meaning": "十九",
-    "phonetic": "/ˌnaɪnˈtiːn/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to nineteen.",
-    "sentenceCn": "数到十九。",
-        "emoji": "1️⃣9️⃣",
-    "audioFile": "nineteen.mp3"
-  },
-{
-    "id": 1439,
-    "word": "twenty",
-    "meaning": "二十",
-    "phonetic": "/ˈtwenti/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is twenty o'clock.",
-    "sentenceCn": "现在是二十点。",
-        "emoji": "2️⃣0️⃣",
-    "audioFile": "twenty.mp3"
-  },
-{
-    "id": 1440,
-    "word": "thirty",
-    "meaning": "三十",
-    "phonetic": "/ˈθɜːrti/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to thirty.",
-    "sentenceCn": "数到三十。",
-        "emoji": "3️⃣0️⃣",
-    "audioFile": "thirty.mp3"
-  },
-{
-    "id": 1441,
-    "word": "forty",
-    "meaning": "四十",
-    "phonetic": "/ˈfɔːrti/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to forty.",
-    "sentenceCn": "数到四十。",
-        "emoji": "4️⃣0️⃣",
-    "audioFile": "forty.mp3"
-  },
-{
-    "id": 1442,
-    "word": "fifty",
-    "meaning": "五十",
-    "phonetic": "/ˈfɪfti/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have fifty.",
-    "sentenceCn": "我有五十。",
-        "emoji": "5️⃣0️⃣",
-    "audioFile": "fifty.mp3"
-  },
-{
-    "id": 1443,
-    "word": "sixty",
-    "meaning": "六十",
-    "phonetic": "/ˈsɪksti/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to sixty.",
-    "sentenceCn": "数到六十。",
-        "emoji": "6️⃣0️⃣",
-    "audioFile": "sixty.mp3"
-  },
-{
-    "id": 1444,
-    "word": "seventy",
-    "meaning": "七十",
-    "phonetic": "/ˈsevnti/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to seventy.",
-    "sentenceCn": "数到七十。",
-        "emoji": "7️⃣0️⃣",
-    "audioFile": "seventy.mp3"
-  },
-{
-    "id": 1445,
-    "word": "eighty",
-    "meaning": "八十",
-    "phonetic": "/ˈeɪti/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have eighty.",
-    "sentenceCn": "我有八十。",
-        "emoji": "8️⃣0️⃣",
-    "audioFile": "eighty.mp3"
-  },
-{
-    "id": 1446,
-    "word": "ninety",
-    "meaning": "九十",
-    "phonetic": "/ˈnaɪnti/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is ninety o'clock.",
-    "sentenceCn": "现在是九十点。",
-        "emoji": "9️⃣0️⃣",
-    "audioFile": "ninety.mp3"
-  },
-{
-    "id": 1447,
-    "word": "hundred",
-    "meaning": "百",
-    "phonetic": "/ˈhʌndrəd/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is hundred o'clock.",
-    "sentenceCn": "现在是百点。",
-        "emoji": "💯",
-    "audioFile": "hundred.mp3"
-  },
-{
-    "id": 1448,
-    "word": "thousand",
-    "meaning": "千",
-    "phonetic": "/ˈθaʊznd/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have thousand.",
-    "sentenceCn": "我有千。",
-        "emoji": "💎",
-    "audioFile": "thousand.mp3"
-  },
-{
-    "id": 1449,
-    "word": "million",
-    "meaning": "百万",
-    "phonetic": "/ˈmɪljən/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to million.",
-    "sentenceCn": "数到百万。",
-        "emoji": "💰",
-    "audioFile": "million.mp3"
-  },
-{
-    "id": 1450,
-    "word": "billion",
-    "meaning": "十亿",
-    "phonetic": "/ˈbɪljən/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have billion.",
-    "sentenceCn": "我有十亿。",
-        "emoji": "💵",
-    "audioFile": "billion.mp3"
-  },
-{
-    "id": 1451,
-    "word": "trillion",
-    "meaning": "万亿",
-    "phonetic": "/ˈtrɪljən/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is trillion o'clock.",
-    "sentenceCn": "现在是万亿点。",
-        "emoji": "🏦",
-    "audioFile": "trillion.mp3"
-  },
-{
-    "id": 1452,
-    "word": "first",
-    "meaning": "第一",
-    "phonetic": "/fɜːrst/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to first.",
-    "sentenceCn": "数到第一。",
-        "emoji": "🥇",
-    "audioFile": "first.mp3"
-  },
-{
-    "id": 1453,
-    "word": "second",
-    "meaning": "第二",
-    "phonetic": "/ˈsekənd/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is second o'clock.",
-    "sentenceCn": "现在是第二点。",
-        "emoji": "🥈",
-    "audioFile": "second.mp3"
-  },
-{
-    "id": 1454,
-    "word": "third",
-    "meaning": "第三",
-    "phonetic": "/θɜːrd/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to third.",
-    "sentenceCn": "数到第三。",
-        "emoji": "🥉",
-    "audioFile": "third.mp3"
-  },
-{
-    "id": 1455,
-    "word": "fourth",
-    "meaning": "第四",
-    "phonetic": "/fɔːrθ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have fourth.",
-    "sentenceCn": "我有第四。",
-        "emoji": "4️⃣",
-    "audioFile": "fourth.mp3"
-  },
-{
-    "id": 1456,
-    "word": "fifth",
-    "meaning": "第五",
-    "phonetic": "/fɪfθ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have fifth.",
-    "sentenceCn": "我有第五。",
-        "emoji": "5️⃣",
-    "audioFile": "fifth.mp3"
-  },
-{
-    "id": 1457,
-    "word": "sixth",
-    "meaning": "第六",
-    "phonetic": "/sɪksθ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is sixth o'clock.",
-    "sentenceCn": "现在是第六点。",
-        "emoji": "6️⃣",
-    "audioFile": "sixth.mp3"
-  },
-{
-    "id": 1458,
-    "word": "seventh",
-    "meaning": "第七",
-    "phonetic": "/ˈsevnθ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is seventh o'clock.",
-    "sentenceCn": "现在是第七点。",
-        "emoji": "7️⃣",
-    "audioFile": "seventh.mp3"
-  },
-{
-    "id": 1459,
-    "word": "eighth",
-    "meaning": "第八",
-    "phonetic": "/eɪtθ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to eighth.",
-    "sentenceCn": "数到第八。",
-        "emoji": "8️⃣",
-    "audioFile": "eighth.mp3"
-  },
-{
-    "id": 1460,
-    "word": "ninth",
-    "meaning": "第九",
-    "phonetic": "/naɪnθ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to ninth.",
-    "sentenceCn": "数到第九。",
-        "emoji": "9️⃣",
-    "audioFile": "ninth.mp3"
-  },
-{
-    "id": 1461,
-    "word": "tenth",
-    "meaning": "第十",
-    "phonetic": "/tenθ/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "It is tenth o'clock.",
-    "sentenceCn": "现在是第十点。",
-        "emoji": "🔟",
-    "audioFile": "tenth.mp3"
-  },
-{
-    "id": 1462,
-    "word": "twelfth",
-    "meaning": "第十二",
-    "phonetic": "/twelfθ/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to twelfth.",
-    "sentenceCn": "数到第十二。",
-        "emoji": "1️⃣2️⃣",
-    "audioFile": "twelfth.mp3"
-  },
-{
-    "id": 1463,
-    "word": "twentieth",
-    "meaning": "第二十",
-    "phonetic": "/ˈtwentiəθ/",
-    "difficulty": 4,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to twentieth.",
-    "sentenceCn": "数到第二十。",
-        "emoji": "2️⃣0️⃣",
-    "audioFile": "twentieth.mp3"
-  },
-{
-    "id": 1464,
-    "word": "half",
-    "meaning": "一半",
-    "phonetic": "/hæf/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have half.",
-    "sentenceCn": "我有一半。",
-        "emoji": "½",
-    "audioFile": "half.mp3"
-  },
-{
-    "id": 1465,
-    "word": "quarter",
-    "meaning": "四分之一",
-    "phonetic": "/ˈkwɔːrtər/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "I have quarter.",
-    "sentenceCn": "我有四分之一。",
-        "emoji": "¼",
-    "audioFile": "quarter.mp3"
-  },
-{
-    "id": 1466,
-    "word": "double",
-    "meaning": "双倍",
-    "phonetic": "/ˈdʌbl/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to double.",
-    "sentenceCn": "数到双倍。",
-        "emoji": "2️⃣",
-    "audioFile": "double.mp3"
-  },
-{
-    "id": 1467,
-    "word": "triple",
-    "meaning": "三倍",
-    "phonetic": "/ˈtrɪpl/",
-    "difficulty": 3,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to triple.",
-    "sentenceCn": "数到三倍。",
-        "emoji": "3️⃣",
-    "audioFile": "triple.mp3"
-  },
-{
-    "id": 1468,
-    "word": "pair",
-    "meaning": "一对",
-    "phonetic": "/per/",
-    "difficulty": 2,
-    "theme": "数字时间 Numbers&Time",
-    "sentence": "Count to pair.",
-    "sentenceCn": "数到一对。",
-        "emoji": "👫",
-    "audioFile": "pair.mp3"
-  },
+
   {
     "id": 1469,
     "word": "millennium",
@@ -18685,18 +13197,7 @@ export const words: WordEntry[] = [
         "emoji": "🧑‍🎓",
     "audioFile": "student.mp3"
   },
-{
-    "id": 1557,
-    "word": "pupil",
-    "meaning": "小学生",
-    "phonetic": "/pup/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My pupil is at home.",
-    "sentenceCn": "我的小学生在家里。",
-        "emoji": "📖",
-    "audioFile": "pupil.mp3"
-  },
+
 {
     "id": 1558,
     "word": "class",
@@ -19357,1254 +13858,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "truant.mp3"
   },
-{
-    "id": 1613,
-    "word": "stepfather",
-    "meaning": "继父",
-    "phonetic": "/step/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my stepfather.",
-    "sentenceCn": "我爱我的继父。",
-        "emoji": "👨",
-    "audioFile": "stepfather.mp3"
-  },
-{
-    "id": 1614,
-    "word": "stepmother",
-    "meaning": "继母",
-    "phonetic": "/step/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My stepmother is at home.",
-    "sentenceCn": "我的继母在家里。",
-        "emoji": "👩",
-    "audioFile": "stepmother.mp3"
-  },
-{
-    "id": 1615,
-    "word": "stepson",
-    "meaning": "继子",
-    "phonetic": "/step/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My stepson is at home.",
-    "sentenceCn": "我的继子在家里。",
-        "emoji": "👦",
-    "audioFile": "stepson.mp3"
-  },
-{
-    "id": 1616,
-    "word": "stepdaughter",
-    "meaning": "继女",
-    "phonetic": "/ˈstepdɔːtər/",
-    "difficulty": 6,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My stepdaughter is at home.",
-    "sentenceCn": "我的继女在家里。",
-        "emoji": "👧",
-    "audioFile": "stepdaughter.mp3"
-  },
-{
-    "id": 1617,
-    "word": "half brother",
-    "meaning": "同父异母兄弟",
-    "phonetic": "/half/",
-    "difficulty": 6,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a half brother.",
-    "sentenceCn": "我看到一个同父异母兄弟。",
-        "emoji": "👬",
-    "audioFile": "half_brother.mp3"
-  },
-{
-    "id": 1618,
-    "word": "godfather",
-    "meaning": "教父",
-    "phonetic": "/ˈɡɑːdfɑːðər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my godfather.",
-    "sentenceCn": "我爱我的教父。",
-        "emoji": "👨",
-    "audioFile": "godfather.mp3"
-  },
-{
-    "id": 1619,
-    "word": "godmother",
-    "meaning": "教母",
-    "phonetic": "/ˈɡɑːdmʌðər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The godmother is kind.",
-    "sentenceCn": "教母很亲切。",
-        "emoji": "👩",
-    "audioFile": "godmother.mp3"
-  },
-{
-    "id": 1620,
-    "word": "foster",
-    "meaning": "寄养",
-    "phonetic": "/ˈfɑːstər/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The foster is kind.",
-    "sentenceCn": "寄养很亲切。",
-        "emoji": "🤝",
-    "audioFile": "foster.mp3"
-  },
-{
-    "id": 1621,
-    "word": "adopt",
-    "meaning": "收养",
-    "phonetic": "/əˈdɑːpt/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My adopt is at home.",
-    "sentenceCn": "我的收养在家里。",
-        "emoji": "👨‍👩‍👧",
-    "audioFile": "adopt.mp3"
-  },
-{
-    "id": 1622,
-    "word": "ancestor",
-    "meaning": "祖先",
-    "phonetic": "/ance/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The ancestor is kind.",
-    "sentenceCn": "祖先很亲切。",
-        "emoji": "👴",
-    "audioFile": "ancestor.mp3"
-  },
-{
-    "id": 1623,
-    "word": "descendant",
-    "meaning": "后代",
-    "phonetic": "/dɪˈsendənt/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The descendant is kind.",
-    "sentenceCn": "后代很亲切。",
-        "emoji": "👶",
-    "audioFile": "descendant.mp3"
-  },
-{
-    "id": 1624,
-    "word": "triplet",
-    "meaning": "三胞胎",
-    "phonetic": "/trip/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My triplet is at home.",
-    "sentenceCn": "我的三胞胎在家里。",
-        "emoji": "👨‍👩‍👧‍👦",
-    "audioFile": "triplet.mp3"
-  },
-{
-    "id": 1625,
-    "word": "teenager",
-    "meaning": "青少年",
-    "phonetic": "/ˈtiːneɪdʒər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The teenager is kind.",
-    "sentenceCn": "青少年很亲切。",
-        "emoji": "🧑",
-    "audioFile": "teenager.mp3"
-  },
-{
-    "id": 1626,
-    "word": "adult",
-    "meaning": "成人",
-    "phonetic": "/adul/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My adult is at home.",
-    "sentenceCn": "我的成人在家里。",
-        "emoji": "🧑",
-    "audioFile": "adult.mp3"
-  },
-{
-    "id": 1627,
-    "word": "elder",
-    "meaning": "长辈",
-    "phonetic": "/elde/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my elder.",
-    "sentenceCn": "我爱我的长辈。",
-        "emoji": "👴",
-    "audioFile": "elder.mp3"
-  },
-{
-    "id": 1628,
-    "word": "buddy",
-    "meaning": "伙伴",
-    "phonetic": "/ˈbʌdi/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my buddy.",
-    "sentenceCn": "我爱我的伙伴。",
-        "emoji": "🤝",
-    "audioFile": "buddy.mp3"
-  },
-{
-    "id": 1629,
-    "word": "mate",
-    "meaning": "同伴",
-    "phonetic": "/meɪt/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My mate is at home.",
-    "sentenceCn": "我的同伴在家里。",
-        "emoji": "👥",
-    "audioFile": "mate.mp3"
-  },
-{
-    "id": 1630,
-    "word": "pal",
-    "meaning": "好友",
-    "phonetic": "/pæl/",
-    "difficulty": 1,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my pal.",
-    "sentenceCn": "我爱我的好友。",
-        "emoji": "🤝",
-    "audioFile": "pal.mp3"
-  },
-{
-    "id": 1631,
-    "word": "neighbor",
-    "meaning": "邻居",
-    "phonetic": "/ˈneɪbər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my neighbor.",
-    "sentenceCn": "我爱我的邻居。",
-        "emoji": "🏘️",
-    "audioFile": "neighbor.mp3"
-  },
-{
-    "id": 1632,
-    "word": "classmate",
-    "meaning": "同学",
-    "phonetic": "/ˈklæsmeɪt/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my classmate.",
-    "sentenceCn": "我爱我的同学。",
-        "emoji": "👥",
-    "audioFile": "classmate.mp3"
-  },
-{
-    "id": 1633,
-    "word": "roommate",
-    "meaning": "室友",
-    "phonetic": "/ˈruːmmeɪt/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The roommate is kind.",
-    "sentenceCn": "室友很亲切。",
-        "emoji": "🏠",
-    "audioFile": "roommate.mp3"
-  },
-{
-    "id": 1634,
-    "word": "professor",
-    "meaning": "教授",
-    "phonetic": "/prəˈfesər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The professor is kind.",
-    "sentenceCn": "教授很亲切。",
-        "emoji": "👨‍🏫",
-    "audioFile": "professor.mp3"
-  },
-{
-    "id": 1635,
-    "word": "coach",
-    "meaning": "教练",
-    "phonetic": "/koʊtʃ/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My coach is at home.",
-    "sentenceCn": "我的教练在家里。",
-        "emoji": "🏋️",
-    "audioFile": "coach.mp3"
-  },
-{
-    "id": 1636,
-    "word": "tutor",
-    "meaning": "家教",
-    "phonetic": "/ˈtuːtər/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The tutor is kind.",
-    "sentenceCn": "家教很亲切。",
-        "emoji": "📚",
-    "audioFile": "tutor.mp3"
-  },
-{
-    "id": 1637,
-    "word": "principal",
-    "meaning": "校长",
-    "phonetic": "/ˈprɪnsəpl/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my principal.",
-    "sentenceCn": "我爱我的校长。",
-        "emoji": "👨‍🏫",
-    "audioFile": "principal.mp3"
-  },
-{
-    "id": 1638,
-    "word": "pupil",
-    "meaning": "小学生",
-    "phonetic": "/ˈpjuːpl/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The pupil is kind.",
-    "sentenceCn": "小学生很亲切。",
-        "emoji": "🧒",
-    "audioFile": "pupil.mp3"
-  },
-{
-    "id": 1639,
-    "word": "lesson",
-    "meaning": "课",
-    "phonetic": "/ˈlesn/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The lesson is kind.",
-    "sentenceCn": "课很亲切。",
-        "emoji": "📖",
-    "audioFile": "lesson.mp3"
-  },
-{
-    "id": 1640,
-    "word": "course",
-    "meaning": "课程",
-    "phonetic": "/cour/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my course.",
-    "sentenceCn": "我爱我的课程。",
-        "emoji": "📚",
-    "audioFile": "course.mp3"
-  },
-{
-    "id": 1641,
-    "word": "subject",
-    "meaning": "科目",
-    "phonetic": "/ˈsʌbdʒɪkt/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The subject is kind.",
-    "sentenceCn": "科目很亲切。",
-        "emoji": "📋",
-    "audioFile": "subject.mp3"
-  },
-{
-    "id": 1642,
-    "word": "homework",
-    "meaning": "作业",
-    "phonetic": "/ˈhoʊmwɜːrk/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my homework.",
-    "sentenceCn": "我爱我的作业。",
-        "emoji": "📝",
-    "audioFile": "homework.mp3"
-  },
-{
-    "id": 1643,
-    "word": "exam",
-    "meaning": "考试",
-    "phonetic": "/ɪɡˈzæm/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my exam.",
-    "sentenceCn": "我爱我的考试。",
-        "emoji": "📄",
-    "audioFile": "exam.mp3"
-  },
-{
-    "id": 1644,
-    "word": "test",
-    "meaning": "测验",
-    "phonetic": "/test/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my test.",
-    "sentenceCn": "我爱我的测验。",
-        "emoji": "📝",
-    "audioFile": "test.mp3"
-  },
-{
-    "id": 1645,
-    "word": "quiz",
-    "meaning": "小测",
-    "phonetic": "/kwɪz/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my quiz.",
-    "sentenceCn": "我爱我的小测。",
-        "emoji": "❓",
-    "audioFile": "quiz.mp3"
-  },
-{
-    "id": 1646,
-    "word": "grade",
-    "meaning": "成绩",
-    "phonetic": "/ɡreɪd/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My grade is at home.",
-    "sentenceCn": "我的成绩在家里。",
-        "emoji": "🏆",
-    "audioFile": "grade.mp3"
-  },
-{
-    "id": 1647,
-    "word": "score",
-    "meaning": "分数",
-    "phonetic": "/skɔːr/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The score is kind.",
-    "sentenceCn": "分数很亲切。",
-        "emoji": "⭐",
-    "audioFile": "score.mp3"
-  },
-{
-    "id": 1648,
-    "word": "diploma",
-    "meaning": "文凭",
-    "phonetic": "/dɪˈploʊmə/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The diploma is kind.",
-    "sentenceCn": "文凭很亲切。",
-        "emoji": "🎓",
-    "audioFile": "diploma.mp3"
-  },
-{
-    "id": 1649,
-    "word": "degree",
-    "meaning": "学位",
-    "phonetic": "/dɪˈɡriː/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The degree is kind.",
-    "sentenceCn": "学位很亲切。",
-        "emoji": "🎓",
-    "audioFile": "degree.mp3"
-  },
-{
-    "id": 1650,
-    "word": "graduate",
-    "meaning": "毕业生",
-    "phonetic": "/ˈɡrædʒuət/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The graduate is kind.",
-    "sentenceCn": "毕业生很亲切。",
-        "emoji": "🎓",
-    "audioFile": "graduate.mp3"
-  },
-{
-    "id": 1651,
-    "word": "library",
-    "meaning": "图书馆",
-    "phonetic": "/ˈlaɪbreri/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my library.",
-    "sentenceCn": "我爱我的图书馆。",
-        "emoji": "📚",
-    "audioFile": "library.mp3"
-  },
-{
-    "id": 1652,
-    "word": "laboratory",
-    "meaning": "实验室",
-    "phonetic": "/ˈlæbrətɔːri/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My laboratory is at home.",
-    "sentenceCn": "我的实验室在家里。",
-        "emoji": "🔬",
-    "audioFile": "laboratory.mp3"
-  },
-{
-    "id": 1653,
-    "word": "classroom",
-    "meaning": "教室",
-    "phonetic": "/ˈklæsruːm/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my classroom.",
-    "sentenceCn": "我爱我的教室。",
-        "emoji": "🏫",
-    "audioFile": "classroom.mp3"
-  },
-{
-    "id": 1654,
-    "word": "playground",
-    "meaning": "操场",
-    "phonetic": "/ˈpleɪɡraʊnd/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The playground is kind.",
-    "sentenceCn": "操场很亲切。",
-        "emoji": "🛝",
-    "audioFile": "playground.mp3"
-  },
-{
-    "id": 1655,
-    "word": "cafeteria",
-    "meaning": "食堂",
-    "phonetic": "/ˌkæfəˈtɪriə/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The cafeteria is kind.",
-    "sentenceCn": "食堂很亲切。",
-        "emoji": "🍽️",
-    "audioFile": "cafeteria.mp3"
-  },
-{
-    "id": 1656,
-    "word": "dormitory",
-    "meaning": "宿舍",
-    "phonetic": "/ˈdɔːrmətɔːri/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The dormitory is kind.",
-    "sentenceCn": "宿舍很亲切。",
-        "emoji": "🏠",
-    "audioFile": "dormitory.mp3"
-  },
-{
-    "id": 1657,
-    "word": "campus",
-    "meaning": "校园",
-    "phonetic": "/ˈkæmpəs/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my campus.",
-    "sentenceCn": "我爱我的校园。",
-        "emoji": "🏛️",
-    "audioFile": "campus.mp3"
-  },
-{
-    "id": 1658,
-    "word": "school",
-    "meaning": "学校",
-    "phonetic": "/skuːl/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My school is at home.",
-    "sentenceCn": "我的学校在家里。",
-        "emoji": "🏫",
-    "audioFile": "school.mp3"
-  },
-{
-    "id": 1659,
-    "word": "college",
-    "meaning": "学院",
-    "phonetic": "/ˈkɑːlɪdʒ/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my college.",
-    "sentenceCn": "我爱我的学院。",
-        "emoji": "🏛️",
-    "audioFile": "college.mp3"
-  },
-{
-    "id": 1660,
-    "word": "university",
-    "meaning": "大学",
-    "phonetic": "/ˌjuːnɪˈvɜːrsəti/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my university.",
-    "sentenceCn": "我爱我的大学。",
-        "emoji": "🎓",
-    "audioFile": "university.mp3"
-  },
-{
-    "id": 1661,
-    "word": "kindergarten",
-    "meaning": "幼儿园",
-    "phonetic": "/ˈkɪndərɡɑːrtn/",
-    "difficulty": 6,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My kindergarten is at home.",
-    "sentenceCn": "我的幼儿园在家里。",
-        "emoji": "🧸",
-    "audioFile": "kindergarten.mp3"
-  },
-{
-    "id": 1662,
-    "word": "nursery",
-    "meaning": "托儿所",
-    "phonetic": "/ˈnɜːrsəri/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The nursery is kind.",
-    "sentenceCn": "托儿所很亲切。",
-        "emoji": "👶",
-    "audioFile": "nursery.mp3"
-  },
-{
-    "id": 1663,
-    "word": "preschool",
-    "meaning": "学前班",
-    "phonetic": "/ˈpriːskuːl/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My preschool is at home.",
-    "sentenceCn": "我的学前班在家里。",
-        "emoji": "🧒",
-    "audioFile": "preschool.mp3"
-  },
-{
-    "id": 1664,
-    "word": "education",
-    "meaning": "教育",
-    "phonetic": "/ˌedʒuˈkeɪʃn/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My education is at home.",
-    "sentenceCn": "我的教育在家里。",
-        "emoji": "📚",
-    "audioFile": "education.mp3"
-  },
-{
-    "id": 1665,
-    "word": "knowledge",
-    "meaning": "知识",
-    "phonetic": "/know/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my knowledge.",
-    "sentenceCn": "我爱我的知识。",
-        "emoji": "🧠",
-    "audioFile": "knowledge.mp3"
-  },
-{
-    "id": 1666,
-    "word": "learn",
-    "meaning": "学习",
-    "phonetic": "/lɜːrn/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my learn.",
-    "sentenceCn": "我爱我的学习。",
-        "emoji": "📖",
-    "audioFile": "learn.mp3"
-  },
-{
-    "id": 1667,
-    "word": "study",
-    "meaning": "学习",
-    "phonetic": "/ˈstʌdi/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My study is at home.",
-    "sentenceCn": "我的学习在家里。",
-        "emoji": "📚",
-    "audioFile": "study.mp3"
-  },
-{
-    "id": 1668,
-    "word": "teach",
-    "meaning": "教",
-    "phonetic": "/tiːtʃ/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My teach is at home.",
-    "sentenceCn": "我的教在家里。",
-        "emoji": "👨‍🏫",
-    "audioFile": "teach.mp3"
-  },
-{
-    "id": 1669,
-    "word": "train",
-    "meaning": "训练",
-    "phonetic": "/treɪn/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The train is kind.",
-    "sentenceCn": "训练很亲切。",
-        "emoji": "🏋️",
-    "audioFile": "train.mp3"
-  },
-{
-    "id": 1670,
-    "word": "practice",
-    "meaning": "练习",
-    "phonetic": "/ˈpræktɪs/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The practice is kind.",
-    "sentenceCn": "练习很亲切。",
-        "emoji": "✏️",
-    "audioFile": "practice.mp3"
-  },
-{
-    "id": 1671,
-    "word": "review",
-    "meaning": "复习",
-    "phonetic": "/rɪˈvjuː/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My review is at home.",
-    "sentenceCn": "我的复习在家里。",
-        "emoji": "🔄",
-    "audioFile": "review.mp3"
-  },
-{
-    "id": 1672,
-    "word": "textbook",
-    "meaning": "课本",
-    "phonetic": "/ˈtekstbʊk/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My textbook is at home.",
-    "sentenceCn": "我的课本在家里。",
-        "emoji": "📕",
-    "audioFile": "textbook.mp3"
-  },
-{
-    "id": 1673,
-    "word": "notebook",
-    "meaning": "笔记本",
-    "phonetic": "/ˈnoʊtbʊk/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My notebook is at home.",
-    "sentenceCn": "我的笔记本在家里。",
-        "emoji": "📓",
-    "audioFile": "notebook.mp3"
-  },
-{
-    "id": 1674,
-    "word": "pencil",
-    "meaning": "铅笔",
-    "phonetic": "/ˈpensl/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The pencil is kind.",
-    "sentenceCn": "铅笔很亲切。",
-        "emoji": "✏️",
-    "audioFile": "pencil.mp3"
-  },
-{
-    "id": 1675,
-    "word": "pen",
-    "meaning": "钢笔",
-    "phonetic": "/pen/",
-    "difficulty": 1,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The pen is kind.",
-    "sentenceCn": "钢笔很亲切。",
-        "emoji": "🖊️",
-    "audioFile": "pen.mp3"
-  },
-{
-    "id": 1676,
-    "word": "eraser",
-    "meaning": "橡皮",
-    "phonetic": "/ɪˈreɪsər/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my eraser.",
-    "sentenceCn": "我爱我的橡皮。",
-        "emoji": "🧹",
-    "audioFile": "eraser.mp3"
-  },
-{
-    "id": 1677,
-    "word": "ruler",
-    "meaning": "尺子",
-    "phonetic": "/ˈruːlər/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my ruler.",
-    "sentenceCn": "我爱我的尺子。",
-        "emoji": "📏",
-    "audioFile": "ruler.mp3"
-  },
-{
-    "id": 1678,
-    "word": "crayon",
-    "meaning": "蜡笔",
-    "phonetic": "/ˈkreɪɑːn/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My crayon is at home.",
-    "sentenceCn": "我的蜡笔在家里。",
-        "emoji": "🖍️",
-    "audioFile": "crayon.mp3"
-  },
-{
-    "id": 1679,
-    "word": "blackboard",
-    "meaning": "黑板",
-    "phonetic": "/ˈblækbɔːrd/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my blackboard.",
-    "sentenceCn": "我爱我的黑板。",
-        "emoji": "🏫",
-    "audioFile": "blackboard.mp3"
-  },
-{
-    "id": 1680,
-    "word": "whiteboard",
-    "meaning": "白板",
-    "phonetic": "/ˈwaɪtbɔːrd/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my whiteboard.",
-    "sentenceCn": "我爱我的白板。",
-        "emoji": "🏫",
-    "audioFile": "whiteboard.mp3"
-  },
-{
-    "id": 1681,
-    "word": "chalk",
-    "meaning": "粉笔",
-    "phonetic": "/tʃɔːk/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my chalk.",
-    "sentenceCn": "我爱我的粉笔。",
-        "emoji": "🗣️",
-    "audioFile": "chalk.mp3"
-  },
-{
-    "id": 1682,
-    "word": "marker",
-    "meaning": "马克笔",
-    "phonetic": "/ˈmɑːrkər/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My marker is at home.",
-    "sentenceCn": "我的马克笔在家里。",
-        "emoji": "🖍️",
-    "audioFile": "marker.mp3"
-  },
-{
-    "id": 1683,
-    "word": "backpack",
-    "meaning": "背包",
-    "phonetic": "/ˈbækpæk/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My backpack is at home.",
-    "sentenceCn": "我的背包在家里。",
-        "emoji": "🎒",
-    "audioFile": "backpack.mp3"
-  },
-{
-    "id": 1684,
-    "word": "satchel",
-    "meaning": "书包",
-    "phonetic": "/ˈsætʃəl/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My satchel is at home.",
-    "sentenceCn": "我的书包在家里。",
-        "emoji": "📚",
-    "audioFile": "satchel.mp3"
-  },
-{
-    "id": 1685,
-    "word": "scholarship",
-    "meaning": "奖学金",
-    "phonetic": "/ˈskɑːlərʃɪp/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my scholarship.",
-    "sentenceCn": "我爱我的奖学金。",
-        "emoji": "💰",
-    "audioFile": "scholarship.mp3"
-  },
-{
-    "id": 1686,
-    "word": "tuition",
-    "meaning": "学费",
-    "phonetic": "/tuˈɪʃn/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my tuition.",
-    "sentenceCn": "我爱我的学费。",
-        "emoji": "💵",
-    "audioFile": "tuition.mp3"
-  },
-{
-    "id": 1687,
-    "word": "semester",
-    "meaning": "学期",
-    "phonetic": "/sɪˈmestər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My semester is at home.",
-    "sentenceCn": "我的学期在家里。",
-        "emoji": "📅",
-    "audioFile": "semester.mp3"
-  },
-{
-    "id": 1688,
-    "word": "curriculum",
-    "meaning": "课程",
-    "phonetic": "/kəˈrɪkjʊləm/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The curriculum is kind.",
-    "sentenceCn": "课程很亲切。",
-        "emoji": "📋",
-    "audioFile": "curriculum.mp3"
-  },
-{
-    "id": 1689,
-    "word": "assembly",
-    "meaning": "集会",
-    "phonetic": "/asse/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my assembly.",
-    "sentenceCn": "我爱我的集会。",
-        "emoji": "🏢",
-    "audioFile": "assembly.mp3"
-  },
-{
-    "id": 1690,
-    "word": "discipline",
-    "meaning": "纪律",
-    "phonetic": "/ˈdɪsəplɪn/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The discipline is kind.",
-    "sentenceCn": "纪律很亲切。",
-        "emoji": "📏",
-    "audioFile": "discipline.mp3"
-  },
-{
-    "id": 1691,
-    "word": "attendance",
-    "meaning": "出勤",
-    "phonetic": "/atte/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The attendance is kind.",
-    "sentenceCn": "出勤很亲切。",
-        "emoji": "📋",
-    "audioFile": "attendance.mp3"
-  },
-{
-    "id": 1692,
-    "word": "truant",
-    "meaning": "逃学",
-    "phonetic": "/trua/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The truant is kind.",
-    "sentenceCn": "逃学很亲切。",
-        "emoji": "🏃",
-    "audioFile": "truant.mp3"
-  },
-{
-    "id": 1693,
-    "word": "spouse",
-    "meaning": "配偶",
-    "phonetic": "/spaʊs/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The spouse is kind.",
-    "sentenceCn": "配偶很亲切。",
-        "emoji": "💑",
-    "audioFile": "spouse.mp3"
-  },
-{
-    "id": 1694,
-    "word": "sibling",
-    "meaning": "兄弟姐妹",
-    "phonetic": "/ˈsɪblɪŋ/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my sibling.",
-    "sentenceCn": "我爱我的兄弟姐妹。",
-        "emoji": "👫",
-    "audioFile": "sibling.mp3"
-  },
-{
-    "id": 1695,
-    "word": "grandparent",
-    "meaning": "祖父母",
-    "phonetic": "/ˈɡrænperənt/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My grandparent is at home.",
-    "sentenceCn": "我的祖父母在家里。",
-        "emoji": "👴👵",
-    "audioFile": "grandparent.mp3"
-  },
-{
-    "id": 1696,
-    "word": "grandson",
-    "meaning": "孙子",
-    "phonetic": "/ˈɡrænsʌn/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My grandson is at home.",
-    "sentenceCn": "我的孙子在家里。",
-        "emoji": "👦",
-    "audioFile": "grandson.mp3"
-  },
-{
-    "id": 1697,
-    "word": "granddaughter",
-    "meaning": "孙女",
-    "phonetic": "/ˈɡrændɔːtər/",
-    "difficulty": 6,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My granddaughter is at home.",
-    "sentenceCn": "我的孙女在家里。",
-        "emoji": "👧",
-    "audioFile": "granddaughter.mp3"
-  },
-{
-    "id": 1698,
-    "word": "relative",
-    "meaning": "亲戚",
-    "phonetic": "/ˈrelətɪv/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my relative.",
-    "sentenceCn": "我爱我的亲戚。",
-        "emoji": "👨‍👩‍👧",
-    "audioFile": "relative.mp3"
-  },
-{
-    "id": 1699,
-    "word": "cousin",
-    "meaning": "表亲",
-    "phonetic": "/ˈkʌzn/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my cousin.",
-    "sentenceCn": "我爱我的表亲。",
-        "emoji": "👧",
-    "audioFile": "cousin.mp3"
-  },
-{
-    "id": 1700,
-    "word": "nephew",
-    "meaning": "侄子",
-    "phonetic": "/ˈnefjuː/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my nephew.",
-    "sentenceCn": "我爱我的侄子。",
-        "emoji": "👦",
-    "audioFile": "nephew.mp3"
-  },
-{
-    "id": 1701,
-    "word": "niece",
-    "meaning": "侄女",
-    "phonetic": "/niːs/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The niece is kind.",
-    "sentenceCn": "侄女很亲切。",
-        "emoji": "👧",
-    "audioFile": "niece.mp3"
-  },
-{
-    "id": 1702,
-    "word": "daughter",
-    "meaning": "女儿",
-    "phonetic": "/ˈdɔːtər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my daughter.",
-    "sentenceCn": "我爱我的女儿。",
-        "emoji": "👧",
-    "audioFile": "daughter.mp3"
-  },
-{
-    "id": 1703,
-    "word": "son",
-    "meaning": "儿子",
-    "phonetic": "/sʌn/",
-    "difficulty": 1,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The son is kind.",
-    "sentenceCn": "儿子很亲切。",
-        "emoji": "👦",
-    "audioFile": "son.mp3"
-  },
-{
-    "id": 1704,
-    "word": "husband",
-    "meaning": "丈夫",
-    "phonetic": "/ˈhʌzbənd/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my husband.",
-    "sentenceCn": "我爱我的丈夫。",
-        "emoji": "👨",
-    "audioFile": "husband.mp3"
-  },
-{
-    "id": 1705,
-    "word": "wife",
-    "meaning": "妻子",
-    "phonetic": "/waɪf/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my wife.",
-    "sentenceCn": "我爱我的妻子。",
-        "emoji": "👩",
-    "audioFile": "wife.mp3"
-  },
-{
-    "id": 1706,
-    "word": "family",
-    "meaning": "家庭",
-    "phonetic": "/ˈfæməli/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My family is at home.",
-    "sentenceCn": "我的家庭在家里。",
-        "emoji": "👨‍👩‍👧‍👦",
-    "audioFile": "family.mp3"
-  },
-{
-    "id": 1707,
-    "word": "home",
-    "meaning": "家",
-    "phonetic": "/home/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my home.",
-    "sentenceCn": "我爱我的家。",
-        "emoji": "🏠",
-    "audioFile": "home.mp3"
-  },
-{
-    "id": 1708,
-    "word": "household",
-    "meaning": "家庭",
-    "phonetic": "/ˈhaʊshoʊld/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The household is kind.",
-    "sentenceCn": "家庭很亲切。",
-        "emoji": "🏡",
-    "audioFile": "household.mp3"
-  },
-{
-    "id": 1709,
-    "word": "twin",
-    "meaning": "双胞胎",
-    "phonetic": "/twɪn/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The twin is kind.",
-    "sentenceCn": "双胞胎很亲切。",
-        "emoji": "👯",
-    "audioFile": "twin.mp3"
-  },
-{
-    "id": 1710,
-    "word": "baby",
-    "meaning": "婴儿",
-    "phonetic": "/ˈbeɪbi/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My baby is at home.",
-    "sentenceCn": "我的婴儿在家里。",
-        "emoji": "👶",
-    "audioFile": "baby.mp3"
-  },
-{
-    "id": 1711,
-    "word": "child",
-    "meaning": "孩子",
-    "phonetic": "/tʃaɪld/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my child.",
-    "sentenceCn": "我爱我的孩子。",
-        "emoji": "🧒",
-    "audioFile": "child.mp3"
-  },
-{
-    "id": 1712,
-    "word": "grandma",
-    "meaning": "奶奶",
-    "phonetic": "/ˈɡrænmɑː/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The grandma is kind.",
-    "sentenceCn": "奶奶很亲切。",
-        "emoji": "👵",
-    "audioFile": "grandma.mp3"
-  },
-{
-    "id": 1713,
-    "word": "grandpa",
-    "meaning": "爷爷",
-    "phonetic": "/ˈɡrænpɑː/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My grandpa is at home.",
-    "sentenceCn": "我的爷爷在家里。",
-        "emoji": "👴",
-    "audioFile": "grandpa.mp3"
-  },
-{
-    "id": 1714,
-    "word": "godfather",
-    "meaning": "教父",
-    "phonetic": "/ˈɡɑːdfɑːðər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my godfather.",
-    "sentenceCn": "我爱我的教父。",
-        "emoji": "⛪",
-    "audioFile": "godfather.mp3"
-  },
-{
-    "id": 1715,
-    "word": "godmother",
-    "meaning": "教母",
-    "phonetic": "/ˈɡɑːdmʌðər/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my godmother.",
-    "sentenceCn": "我爱我的教母。",
-        "emoji": "⛪",
-    "audioFile": "godmother.mp3"
-  },
-{
-    "id": 1716,
-    "word": "discipline",
-    "meaning": "纪律",
-    "phonetic": "/ˈdɪsəplɪn/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The discipline is kind.",
-    "sentenceCn": "纪律很亲切。",
-        "emoji": "📏",
-    "audioFile": "discipline.mp3"
-  },
+
   {
     "id": 1717,
     "word": "desk",
@@ -20977,402 +14231,7 @@ export const words: WordEntry[] = [
         "emoji": "👬",
     "audioFile": "fraternal.mp3"
   },
-  {
-    "id": 1748,
-    "word": "fiance",
-    "meaning": "未婚夫",
-    "phonetic": "/fian/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my fiance.",
-    "sentenceCn": "我爱我的未婚夫。",
-        "emoji": "💑",
-    "audioFile": "fiance.mp3"
-  },
-  {
-    "id": 1749,
-    "word": "fiancee",
-    "meaning": "未婚妻",
-    "phonetic": "/fian/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My fiancee is at home.",
-    "sentenceCn": "我的未婚妻在家里。",
-        "emoji": "💑",
-    "audioFile": "fiancee.mp3"
-  },
-  {
-    "id": 1750,
-    "word": "widow",
-    "meaning": "寡妇",
-    "phonetic": "/wido/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my widow.",
-    "sentenceCn": "我爱我的寡妇。",
-        "emoji": "👩",
-    "audioFile": "widow.mp3"
-  },
-  {
-    "id": 1751,
-    "word": "widower",
-    "meaning": "鳏夫",
-    "phonetic": "/wido/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My widower is at home.",
-    "sentenceCn": "我的鳏夫在家里。",
-        "emoji": "👨",
-    "audioFile": "widower.mp3"
-  },
-  {
-    "id": 1752,
-    "word": "orphan",
-    "meaning": "孤儿",
-    "phonetic": "/orph/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my orphan.",
-    "sentenceCn": "我爱我的孤儿。",
-        "emoji": "👶",
-    "audioFile": "orphan.mp3"
-  },
-  {
-    "id": 1753,
-    "word": "godchild",
-    "meaning": "教子",
-    "phonetic": "/godc/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My godchild is at home.",
-    "sentenceCn": "我的教子在家里。",
-        "emoji": "👼",
-    "audioFile": "godchild.mp3"
-  },
-  {
-    "id": 1754,
-    "word": "bridesmaid",
-    "meaning": "伴娘",
-    "phonetic": "/brid/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My bridesmaid is at home.",
-    "sentenceCn": "我的伴娘在家里。",
-        "emoji": "👩",
-    "audioFile": "bridesmaid.mp3"
-  },
-  {
-    "id": 1755,
-    "word": "best man",
-    "meaning": "伴郎",
-    "phonetic": "/best/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a best man.",
-    "sentenceCn": "我看到一个伴郎。",
-        "emoji": "👨",
-    "audioFile": "best_man.mp3"
-  },
-  {
-    "id": 1756,
-    "word": "flower girl",
-    "meaning": "花童",
-    "phonetic": "/flow/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a flower girl.",
-    "sentenceCn": "我看到一个花童。",
-        "emoji": "🌺",
-    "audioFile": "flower_girl.mp3"
-  },
-  {
-    "id": 1757,
-    "word": "ring bearer",
-    "meaning": "戒童",
-    "phonetic": "/ring/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a ring bearer.",
-    "sentenceCn": "我看到一个戒童。",
-        "emoji": "💍",
-    "audioFile": "ring_bearer.mp3"
-  },
-  {
-    "id": 1758,
-    "word": "family tree",
-    "meaning": "家谱",
-    "phonetic": "/fami/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a family tree.",
-    "sentenceCn": "我看到一个家谱。",
-        "emoji": "🌳",
-    "audioFile": "family_tree.mp3"
-  },
-  {
-    "id": 1759,
-    "word": "bloodline",
-    "meaning": "血统",
-    "phonetic": "/bloo/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My bloodline is at home.",
-    "sentenceCn": "我的血统在家里。",
-        "emoji": "🩸",
-    "audioFile": "bloodline.mp3"
-  },
-  {
-    "id": 1760,
-    "word": "offspring",
-    "meaning": "后代",
-    "phonetic": "/offs/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my offspring.",
-    "sentenceCn": "我爱我的后代。",
-        "emoji": "👶",
-    "audioFile": "offspring.mp3"
-  },
-  {
-    "id": 1761,
-    "word": "progeny",
-    "meaning": "后代",
-    "phonetic": "/prog/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The progeny is kind.",
-    "sentenceCn": "后代很亲切。",
-        "emoji": "👨‍👩‍👧",
-    "audioFile": "progeny.mp3"
-  },
-  {
-    "id": 1762,
-    "word": "lineage",
-    "meaning": "世系",
-    "phonetic": "/line/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my lineage.",
-    "sentenceCn": "我爱我的世系。",
-        "emoji": "📜",
-    "audioFile": "lineage.mp3"
-  },
-  {
-    "id": 1763,
-    "word": "pedigree",
-    "meaning": "谱系",
-    "phonetic": "/pedi/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my pedigree.",
-    "sentenceCn": "我爱我的谱系。",
-        "emoji": "📜",
-    "audioFile": "pedigree.mp3"
-  },
-  {
-    "id": 1764,
-    "word": "heritage",
-    "meaning": "遗产",
-    "phonetic": "/heri/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The heritage is kind.",
-    "sentenceCn": "遗产很亲切。",
-        "emoji": "🏛️",
-    "audioFile": "heritage.mp3"
-  },
-  {
-    "id": 1765,
-    "word": "tradition",
-    "meaning": "传统",
-    "phonetic": "/trad/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my tradition.",
-    "sentenceCn": "我爱我的传统。",
-        "emoji": "🎎",
-    "audioFile": "tradition.mp3"
-  },
-  {
-    "id": 1766,
-    "word": "culture",
-    "meaning": "文化",
-    "phonetic": "/cult/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The culture is kind.",
-    "sentenceCn": "文化很亲切。",
-        "emoji": "🌍",
-    "audioFile": "culture.mp3"
-  },
-  {
-    "id": 1767,
-    "word": "custom",
-    "meaning": "习俗",
-    "phonetic": "/cust/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my custom.",
-    "sentenceCn": "我爱我的习俗。",
-        "emoji": "🎭",
-    "audioFile": "custom.mp3"
-  },
-  {
-    "id": 1768,
-    "word": "moral",
-    "meaning": "道德",
-    "phonetic": "/mora/",
-    "difficulty": 2,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my moral.",
-    "sentenceCn": "我爱我的道德。",
-        "emoji": "⚖️",
-    "audioFile": "moral.mp3"
-  },
-  {
-    "id": 1769,
-    "word": "principle",
-    "meaning": "原则",
-    "phonetic": "/prin/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My principle is at home.",
-    "sentenceCn": "我的原则在家里。",
-        "emoji": "📋",
-    "audioFile": "principle.mp3"
-  },
-  {
-    "id": 1770,
-    "word": "ethics",
-    "meaning": "伦理",
-    "phonetic": "/ethi/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My ethics is at home.",
-    "sentenceCn": "我的伦理在家里。",
-        "emoji": "📜",
-    "audioFile": "ethics.mp3"
-  },
-  {
-    "id": 1771,
-    "word": "integrity",
-    "meaning": "正直",
-    "phonetic": "/inte/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The integrity is kind.",
-    "sentenceCn": "正直很亲切。",
-        "emoji": "💎",
-    "audioFile": "integrity.mp3"
-  },
-  {
-    "id": 1772,
-    "word": "honesty",
-    "meaning": "诚实",
-    "phonetic": "/hone/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The honesty is kind.",
-    "sentenceCn": "诚实很亲切。",
-        "emoji": "🤝",
-    "audioFile": "honesty.mp3"
-  },
-  {
-    "id": 1773,
-    "word": "respect",
-    "meaning": "尊重",
-    "phonetic": "/resp/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my respect.",
-    "sentenceCn": "我爱我的尊重。",
-        "emoji": "🙏",
-    "audioFile": "respect.mp3"
-  },
-  {
-    "id": 1774,
-    "word": "responsibility",
-    "meaning": "责任",
-    "phonetic": "/resp/",
-    "difficulty": 7,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The responsibility is kind.",
-    "sentenceCn": "责任很亲切。",
-        "emoji": "💪",
-    "audioFile": "responsibility.mp3"
-  },
-  {
-    "id": 1775,
-    "word": "manners",
-    "meaning": "礼仪",
-    "phonetic": "/mann/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "My manners is at home.",
-    "sentenceCn": "我的礼仪在家里。",
-        "emoji": "🎩",
-    "audioFile": "manners.mp3"
-  },
-  {
-    "id": 1776,
-    "word": "elementary",
-    "meaning": "小学",
-    "phonetic": "/elem/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The elementary is kind.",
-    "sentenceCn": "小学很亲切。",
-        "emoji": "📚",
-    "audioFile": "elementary.mp3"
-  },
-  {
-    "id": 1777,
-    "word": "secondary",
-    "meaning": "中学",
-    "phonetic": "/seco/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "The secondary is kind.",
-    "sentenceCn": "中学很亲切。",
-        "emoji": "📚",
-    "audioFile": "secondary.mp3"
-  },
-  {
-    "id": 1778,
-    "word": "high school",
-    "meaning": "高中",
-    "phonetic": "/high/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a high school.",
-    "sentenceCn": "我看到一个高中。",
-        "emoji": "🏫",
-    "audioFile": "high_school.mp3"
-  },
-  {
-    "id": 1779,
-    "word": "vocational",
-    "meaning": "职业的",
-    "phonetic": "/voca/",
-    "difficulty": 5,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I love my vocational.",
-    "sentenceCn": "我爱我的职业的。",
-        "emoji": "🔧",
-    "audioFile": "vocational.mp3"
-  },
-  {
-    "id": 1780,
-    "word": "boarding school",
-    "meaning": "寄宿学校",
-    "phonetic": "/boar/",
-    "difficulty": 7,
-    "theme": "家庭学校 Family&School",
-    "sentence": "I see a boarding school.",
-    "sentenceCn": "我看到一个寄宿学校。",
-        "emoji": "🏫",
-    "audioFile": "boarding_school.mp3"
-  },
+
   {
     "id": 1781,
     "word": "public school",
@@ -21505,42 +14364,7 @@ export const words: WordEntry[] = [
         "emoji": "🏫",
     "audioFile": "charter_school.mp3"
   },
-  {
-    "id": 1792,
-    "word": "geometry",
-    "meaning": "几何",
-    "phonetic": "/dʒiˈɑːmətri/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "📐",
-    "audioFile": "geometry.mp3"
-  },
-  {
-    "id": 1793,
-    "word": "grammar",
-    "meaning": "语法",
-    "phonetic": "/ˈɡræmər/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "📝",
-    "audioFile": "grammar.mp3"
-  },
-  {
-    "id": 1794,
-    "word": "arithmetic",
-    "meaning": "算术",
-    "phonetic": "/əˈrɪθmətɪk/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🧮",
-    "audioFile": "arithmetic.mp3"
-  },
+
   {
     "id": 1795,
     "word": "calligraphy",
@@ -21553,66 +14377,7 @@ export const words: WordEntry[] = [
     "emoji": "🖌️",
     "audioFile": "calligraphy.mp3"
   },
-  {
-    "id": 1796,
-    "word": "chemistry",
-    "meaning": "化学",
-    "phonetic": "/ˈkemɪstri/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🧪",
-    "audioFile": "chemistry.mp3"
-  },
-  {
-    "id": 1797,
-    "word": "physics",
-    "meaning": "物理",
-    "phonetic": "/ˈfɪzɪks/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "⚡",
-    "audioFile": "physics.mp3"
-  },
-  {
-    "id": 1798,
-    "word": "biology",
-    "meaning": "生物",
-    "phonetic": "/baɪˈɑːlədʒi/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🧬",
-    "audioFile": "biology.mp3"
-  },
-  {
-    "id": 1799,
-    "word": "astronomy",
-    "meaning": "天文学",
-    "phonetic": "/əˈstrɑːnəmi/",
-    "difficulty": 4,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🔭",
-    "audioFile": "astronomy.mp3"
-  },
-  {
-    "id": 1800,
-    "word": "geography",
-    "meaning": "地理",
-    "phonetic": "/dʒiˈɑːɡrəfi/",
-    "difficulty": 3,
-    "theme": "家庭学校 Family&School",
-    "sentence": "",
-    "sentenceCn": "",
-    "emoji": "🌍",
-    "audioFile": "geography.mp3"
-  },
+
 {
     "id": 1801,
     "word": "run",
@@ -21661,18 +14426,7 @@ export const words: WordEntry[] = [
         "emoji": "🏊",
     "audioFile": "swim.mp3"
   },
-{
-    "id": 1805,
-    "word": "fly",
-    "meaning": "飞",
-    "phonetic": "/fly/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "I like to fly.",
-    "sentenceCn": "我喜欢飞。",
-        "emoji": "✈️",
-    "audioFile": "fly.mp3"
-  },
+
 {
     "id": 1806,
     "word": "climb",
@@ -21805,18 +14559,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "bend.mp3"
   },
-{
-    "id": 1817,
-    "word": "stretch",
-    "meaning": "伸展",
-    "phonetic": "/str/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's stretch together.",
-    "sentenceCn": "我们一起伸展吧。",
-        "emoji": "📖",
-    "audioFile": "stretch.mp3"
-  },
+
 {
     "id": 1818,
     "word": "twist",
@@ -21877,18 +14620,7 @@ export const words: WordEntry[] = [
         "emoji": "🥤",
     "audioFile": "drink.mp3"
   },
-{
-    "id": 1823,
-    "word": "swallow",
-    "meaning": "吞咽",
-    "phonetic": "/swa/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "I like to swallow.",
-    "sentenceCn": "我喜欢吞咽。",
-        "emoji": "📖",
-    "audioFile": "swallow.mp3"
-  },
+
 {
     "id": 1824,
     "word": "chew",
@@ -22717,18 +15449,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "slap.mp3"
   },
-{
-    "id": 1893,
-    "word": "wave",
-    "meaning": "波浪",
-    "phonetic": "/wav/",
-    "difficulty": 4,
-    "theme": "动作 Actions",
-    "sentence": "Let's wave together.",
-    "sentenceCn": "我们一起波浪吧。",
-        "emoji": "📖",
-    "audioFile": "wave.mp3"
-  },
+
 {
     "id": 1894,
     "word": "point",
@@ -23497,66 +16218,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "work.mp3"
   },
-{
-    "id": 1958,
-    "word": "study",
-    "meaning": "书房",
-    "phonetic": "/stu/",
-    "difficulty": 6,
-    "theme": "动作 Actions",
-    "sentence": "I like to study.",
-    "sentenceCn": "我喜欢书房。",
-        "emoji": "📖",
-    "audioFile": "study.mp3"
-  },
-{
-    "id": 1959,
-    "word": "learn",
-    "meaning": "学习",
-    "phonetic": "/lea/",
-    "difficulty": 6,
-    "theme": "动作 Actions",
-    "sentence": "Learn is fun to do.",
-    "sentenceCn": "学习很有趣。",
-        "emoji": "📖",
-    "audioFile": "learn.mp3"
-  },
-{
-    "id": 1960,
-    "word": "teach",
-    "meaning": "教",
-    "phonetic": "/tea/",
-    "difficulty": 6,
-    "theme": "动作 Actions",
-    "sentence": "Let's teach together.",
-    "sentenceCn": "我们一起教吧。",
-        "emoji": "📖",
-    "audioFile": "teach.mp3"
-  },
-{
-    "id": 1961,
-    "word": "train",
-    "meaning": "火车",
-    "phonetic": "/tra/",
-    "difficulty": 6,
-    "theme": "动作 Actions",
-    "sentence": "I like to train.",
-    "sentenceCn": "我喜欢火车。",
-        "emoji": "📖",
-    "audioFile": "train.mp3"
-  },
-{
-    "id": 1962,
-    "word": "practice",
-    "meaning": "练习",
-    "phonetic": "/pra/",
-    "difficulty": 6,
-    "theme": "动作 Actions",
-    "sentence": "I like to practice.",
-    "sentenceCn": "我喜欢练习。",
-        "emoji": "📖",
-    "audioFile": "practice.mp3"
-  },
+
 {
     "id": 1963,
     "word": "improve",
@@ -23593,1542 +16255,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "skill.mp3"
   },
-{
-    "id": 1966,
-    "word": "bake",
-    "meaning": "烘烤",
-    "phonetic": "/beɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Bake is fun to do.",
-    "sentenceCn": "烘烤很有趣。",
-        "emoji": "🍞",
-    "audioFile": "bake.mp3"
-  },
-{
-    "id": 1967,
-    "word": "boil",
-    "meaning": "煮沸",
-    "phonetic": "/bɔɪl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's boil together.",
-    "sentenceCn": "我们一起煮沸吧。",
-        "emoji": "🍲",
-    "audioFile": "boil.mp3"
-  },
-{
-    "id": 1968,
-    "word": "brush",
-    "meaning": "刷",
-    "phonetic": "/brʌʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's brush together.",
-    "sentenceCn": "我们一起刷吧。",
-        "emoji": "🪥",
-    "audioFile": "brush.mp3"
-  },
-{
-    "id": 1969,
-    "word": "carry",
-    "meaning": "搬运",
-    "phonetic": "/ˈkæri/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's carry together.",
-    "sentenceCn": "我们一起搬运吧。",
-        "emoji": "💪",
-    "audioFile": "carry.mp3"
-  },
-{
-    "id": 1970,
-    "word": "catch",
-    "meaning": "接住",
-    "phonetic": "/kætʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to catch.",
-    "sentenceCn": "我喜欢接住。",
-        "emoji": "🤲",
-    "audioFile": "catch.mp3"
-  },
-{
-    "id": 1971,
-    "word": "chop",
-    "meaning": "切碎",
-    "phonetic": "/tʃɑːp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you chop?",
-    "sentenceCn": "你会切碎吗？",
-        "emoji": "🔪",
-    "audioFile": "chop.mp3"
-  },
-{
-    "id": 1972,
-    "word": "clap",
-    "meaning": "鼓掌",
-    "phonetic": "/klæp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you clap?",
-    "sentenceCn": "你会鼓掌吗？",
-        "emoji": "👏",
-    "audioFile": "clap.mp3"
-  },
-{
-    "id": 1973,
-    "word": "clean",
-    "meaning": "清洁",
-    "phonetic": "/kliːn/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you clean?",
-    "sentenceCn": "你会清洁吗？",
-        "emoji": "🧹",
-    "audioFile": "clean.mp3"
-  },
-{
-    "id": 1974,
-    "word": "climb",
-    "meaning": "攀登",
-    "phonetic": "/klaɪm/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you climb?",
-    "sentenceCn": "你会攀登吗？",
-        "emoji": "🧗",
-    "audioFile": "climb.mp3"
-  },
-{
-    "id": 1975,
-    "word": "close",
-    "meaning": "关闭",
-    "phonetic": "/kloʊz/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to close.",
-    "sentenceCn": "我喜欢关闭。",
-        "emoji": "🚪",
-    "audioFile": "close.mp3"
-  },
-{
-    "id": 1976,
-    "word": "cook",
-    "meaning": "烹饪",
-    "phonetic": "/kʊk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to cook.",
-    "sentenceCn": "我喜欢烹饪。",
-        "emoji": "🍳",
-    "audioFile": "cook.mp3"
-  },
-{
-    "id": 1977,
-    "word": "crawl",
-    "meaning": "爬行",
-    "phonetic": "/krɔːl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you crawl?",
-    "sentenceCn": "你会爬行吗？",
-        "emoji": "🐛",
-    "audioFile": "crawl.mp3"
-  },
-{
-    "id": 1978,
-    "word": "create",
-    "meaning": "创造",
-    "phonetic": "/kriˈeɪt/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Let's create together.",
-    "sentenceCn": "我们一起创造吧。",
-        "emoji": "🎨",
-    "audioFile": "create.mp3"
-  },
-{
-    "id": 1979,
-    "word": "cry",
-    "meaning": "哭泣",
-    "phonetic": "/kraɪ/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you cry?",
-    "sentenceCn": "你会哭泣吗？",
-        "emoji": "😢",
-    "audioFile": "cry.mp3"
-  },
-{
-    "id": 1980,
-    "word": "destroy",
-    "meaning": "摧毁",
-    "phonetic": "/dɪˈstrɔɪ/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "I like to destroy.",
-    "sentenceCn": "我喜欢摧毁。",
-        "emoji": "💥",
-    "audioFile": "destroy.mp3"
-  },
-{
-    "id": 1981,
-    "word": "donate",
-    "meaning": "捐赠",
-    "phonetic": "/ˈdoʊneɪt/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "I like to donate.",
-    "sentenceCn": "我喜欢捐赠。",
-        "emoji": "🎁",
-    "audioFile": "donate.mp3"
-  },
-{
-    "id": 1982,
-    "word": "draw",
-    "meaning": "画",
-    "phonetic": "/drɔː/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Draw is fun to do.",
-    "sentenceCn": "画很有趣。",
-        "emoji": "✏️",
-    "audioFile": "draw.mp3"
-  },
-{
-    "id": 1983,
-    "word": "drink",
-    "meaning": "喝",
-    "phonetic": "/drɪŋk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Drink is fun to do.",
-    "sentenceCn": "喝很有趣。",
-        "emoji": "🥤",
-    "audioFile": "drink.mp3"
-  },
-{
-    "id": 1984,
-    "word": "drop",
-    "meaning": "掉落",
-    "phonetic": "/drɑːp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you drop?",
-    "sentenceCn": "你会掉落吗？",
-        "emoji": "⬇️",
-    "audioFile": "drop.mp3"
-  },
-{
-    "id": 1985,
-    "word": "dust",
-    "meaning": "除尘",
-    "phonetic": "/dʌst/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Dust is fun to do.",
-    "sentenceCn": "除尘很有趣。",
-        "emoji": "🧹",
-    "audioFile": "dust.mp3"
-  },
-{
-    "id": 1986,
-    "word": "eat",
-    "meaning": "吃",
-    "phonetic": "/iːt/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Eat is fun to do.",
-    "sentenceCn": "吃很有趣。",
-        "emoji": "🍽️",
-    "audioFile": "eat.mp3"
-  },
-{
-    "id": 1987,
-    "word": "feed",
-    "meaning": "喂养",
-    "phonetic": "/fiːd/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to feed.",
-    "sentenceCn": "我喜欢喂养。",
-        "emoji": "🍼",
-    "audioFile": "feed.mp3"
-  },
-{
-    "id": 1988,
-    "word": "fetch",
-    "meaning": "取来",
-    "phonetic": "/fetʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you fetch?",
-    "sentenceCn": "你会取来吗？",
-        "emoji": "🦮",
-    "audioFile": "fetch.mp3"
-  },
-{
-    "id": 1989,
-    "word": "fix",
-    "meaning": "修理",
-    "phonetic": "/fɪks/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you fix?",
-    "sentenceCn": "你会修理吗？",
-        "emoji": "🔧",
-    "audioFile": "fix.mp3"
-  },
-{
-    "id": 1990,
-    "word": "frown",
-    "meaning": "皱眉",
-    "phonetic": "/fraʊn/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's frown together.",
-    "sentenceCn": "我们一起皱眉吧。",
-        "emoji": "😠",
-    "audioFile": "frown.mp3"
-  },
-{
-    "id": 1991,
-    "word": "fry",
-    "meaning": "油炸",
-    "phonetic": "/fraɪ/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you fry?",
-    "sentenceCn": "你会油炸吗？",
-        "emoji": "🍳",
-    "audioFile": "fry.mp3"
-  },
-{
-    "id": 1992,
-    "word": "giggle",
-    "meaning": "咯咯笑",
-    "phonetic": "/ˈɡɪɡl/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Giggle is fun to do.",
-    "sentenceCn": "咯咯笑很有趣。",
-        "emoji": "😄",
-    "audioFile": "giggle.mp3"
-  },
-{
-    "id": 1993,
-    "word": "give",
-    "meaning": "给",
-    "phonetic": "/ɡɪv/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Give is fun to do.",
-    "sentenceCn": "给很有趣。",
-        "emoji": "🎁",
-    "audioFile": "give.mp3"
-  },
-{
-    "id": 1994,
-    "word": "glance",
-    "meaning": "瞥",
-    "phonetic": "/ɡlæns/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Let's glance together.",
-    "sentenceCn": "我们一起瞥吧。",
-        "emoji": "👀",
-    "audioFile": "glance.mp3"
-  },
-{
-    "id": 1995,
-    "word": "grab",
-    "meaning": "抓住",
-    "phonetic": "/ɡræb/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to grab.",
-    "sentenceCn": "我喜欢抓住。",
-        "emoji": "🤏",
-    "audioFile": "grab.mp3"
-  },
-{
-    "id": 1996,
-    "word": "grill",
-    "meaning": "烧烤",
-    "phonetic": "/ɡrɪl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you grill?",
-    "sentenceCn": "你会烧烤吗？",
-        "emoji": "🍖",
-    "audioFile": "grill.mp3"
-  },
-{
-    "id": 1997,
-    "word": "grin",
-    "meaning": "露齿笑",
-    "phonetic": "/ɡrɪn/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Grin is fun to do.",
-    "sentenceCn": "露齿笑很有趣。",
-        "emoji": "😁",
-    "audioFile": "grin.mp3"
-  },
-{
-    "id": 1998,
-    "word": "guard",
-    "meaning": "守卫",
-    "phonetic": "/ɡɑːrd/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's guard together.",
-    "sentenceCn": "我们一起守卫吧。",
-        "emoji": "🛡️",
-    "audioFile": "guard.mp3"
-  },
-{
-    "id": 1999,
-    "word": "gulp",
-    "meaning": "大口喝",
-    "phonetic": "/ɡʌlp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you gulp?",
-    "sentenceCn": "你会大口喝吗？",
-        "emoji": "🥤",
-    "audioFile": "gulp.mp3"
-  },
-{
-    "id": 2000,
-    "word": "hear",
-    "meaning": "听见",
-    "phonetic": "/hɪr/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Hear is fun to do.",
-    "sentenceCn": "听见很有趣。",
-        "emoji": "👂",
-    "audioFile": "hear.mp3"
-  },
-{
-    "id": 2001,
-    "word": "help",
-    "meaning": "帮助",
-    "phonetic": "/help/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to help.",
-    "sentenceCn": "我喜欢帮助。",
-        "emoji": "🤝",
-    "audioFile": "help.mp3"
-  },
-{
-    "id": 2002,
-    "word": "hit",
-    "meaning": "打",
-    "phonetic": "/hɪt/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's hit together.",
-    "sentenceCn": "我们一起打吧。",
-        "emoji": "👊",
-    "audioFile": "hit.mp3"
-  },
-{
-    "id": 2003,
-    "word": "hold",
-    "meaning": "拿着",
-    "phonetic": "/hoʊld/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's hold together.",
-    "sentenceCn": "我们一起拿着吧。",
-        "emoji": "🤲",
-    "audioFile": "hold.mp3"
-  },
-{
-    "id": 2004,
-    "word": "hop",
-    "meaning": "跳跃",
-    "phonetic": "/hɑːp/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you hop?",
-    "sentenceCn": "你会跳跃吗？",
-        "emoji": "🦘",
-    "audioFile": "hop.mp3"
-  },
-{
-    "id": 2005,
-    "word": "hum",
-    "meaning": "哼唱",
-    "phonetic": "/hʌm/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you hum?",
-    "sentenceCn": "你会哼唱吗？",
-        "emoji": "🎵",
-    "audioFile": "hum.mp3"
-  },
-{
-    "id": 2006,
-    "word": "improve",
-    "meaning": "提高",
-    "phonetic": "/ɪmˈpruːv/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Improve is fun to do.",
-    "sentenceCn": "提高很有趣。",
-        "emoji": "📈",
-    "audioFile": "improve.mp3"
-  },
-{
-    "id": 2007,
-    "word": "jump",
-    "meaning": "跳",
-    "phonetic": "/dʒʌmp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you jump?",
-    "sentenceCn": "你会跳吗？",
-        "emoji": "🤸",
-    "audioFile": "jump.mp3"
-  },
-{
-    "id": 2008,
-    "word": "kick",
-    "meaning": "踢",
-    "phonetic": "/kɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Kick is fun to do.",
-    "sentenceCn": "踢很有趣。",
-        "emoji": "🦶",
-    "audioFile": "kick.mp3"
-  },
-{
-    "id": 2009,
-    "word": "kneel",
-    "meaning": "跪下",
-    "phonetic": "/niːl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to kneel.",
-    "sentenceCn": "我喜欢跪下。",
-        "emoji": "🧎",
-    "audioFile": "kneel.mp3"
-  },
-{
-    "id": 2010,
-    "word": "knock",
-    "meaning": "敲",
-    "phonetic": "/nɑːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's knock together.",
-    "sentenceCn": "我们一起敲吧。",
-        "emoji": "🚪",
-    "audioFile": "knock.mp3"
-  },
-{
-    "id": 2011,
-    "word": "laugh",
-    "meaning": "笑",
-    "phonetic": "/læf/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to laugh.",
-    "sentenceCn": "我喜欢笑。",
-        "emoji": "😂",
-    "audioFile": "laugh.mp3"
-  },
-{
-    "id": 2012,
-    "word": "lean",
-    "meaning": "倾斜",
-    "phonetic": "/liːn/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's lean together.",
-    "sentenceCn": "我们一起倾斜吧。",
-        "emoji": "↗️",
-    "audioFile": "lean.mp3"
-  },
-{
-    "id": 2013,
-    "word": "lick",
-    "meaning": "舔",
-    "phonetic": "/lɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's lick together.",
-    "sentenceCn": "我们一起舔吧。",
-        "emoji": "👅",
-    "audioFile": "lick.mp3"
-  },
-{
-    "id": 2014,
-    "word": "lie",
-    "meaning": "躺",
-    "phonetic": "/laɪ/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Lie is fun to do.",
-    "sentenceCn": "躺很有趣。",
-        "emoji": "🛌",
-    "audioFile": "lie.mp3"
-  },
-{
-    "id": 2015,
-    "word": "lift",
-    "meaning": "举起",
-    "phonetic": "/lɪft/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Lift is fun to do.",
-    "sentenceCn": "举起很有趣。",
-        "emoji": "🏋️",
-    "audioFile": "lift.mp3"
-  },
-{
-    "id": 2016,
-    "word": "listen",
-    "meaning": "听",
-    "phonetic": "/ˈlɪsn/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Listen is fun to do.",
-    "sentenceCn": "听很有趣。",
-        "emoji": "👂",
-    "audioFile": "listen.mp3"
-  },
-{
-    "id": 2017,
-    "word": "lock",
-    "meaning": "锁",
-    "phonetic": "/lɑːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Lock is fun to do.",
-    "sentenceCn": "锁很有趣。",
-        "emoji": "🔒",
-    "audioFile": "lock.mp3"
-  },
-{
-    "id": 2018,
-    "word": "look",
-    "meaning": "看",
-    "phonetic": "/lʊk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you look?",
-    "sentenceCn": "你会看吗？",
-        "emoji": "👀",
-    "audioFile": "look.mp3"
-  },
-{
-    "id": 2019,
-    "word": "make",
-    "meaning": "制作",
-    "phonetic": "/meɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to make.",
-    "sentenceCn": "我喜欢制作。",
-        "emoji": "🔧",
-    "audioFile": "make.mp3"
-  },
-{
-    "id": 2020,
-    "word": "master",
-    "meaning": "掌握",
-    "phonetic": "/ˈmæstər/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Can you master?",
-    "sentenceCn": "你会掌握吗？",
-        "emoji": "🎯",
-    "audioFile": "master.mp3"
-  },
-{
-    "id": 2021,
-    "word": "mix",
-    "meaning": "混合",
-    "phonetic": "/mɪks/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's mix together.",
-    "sentenceCn": "我们一起混合吧。",
-        "emoji": "🥣",
-    "audioFile": "mix.mp3"
-  },
-{
-    "id": 2022,
-    "word": "mop",
-    "meaning": "拖地",
-    "phonetic": "/mɑːp/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's mop together.",
-    "sentenceCn": "我们一起拖地吧。",
-        "emoji": "🧹",
-    "audioFile": "mop.mp3"
-  },
-{
-    "id": 2023,
-    "word": "nap",
-    "meaning": "小睡",
-    "phonetic": "/næp/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Nap is fun to do.",
-    "sentenceCn": "小睡很有趣。",
-        "emoji": "😴",
-    "audioFile": "nap.mp3"
-  },
-{
-    "id": 2024,
-    "word": "notice",
-    "meaning": "注意",
-    "phonetic": "/ˈnoʊtɪs/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "I like to notice.",
-    "sentenceCn": "我喜欢注意。",
-        "emoji": "👀",
-    "audioFile": "notice.mp3"
-  },
-{
-    "id": 2025,
-    "word": "observe",
-    "meaning": "观察",
-    "phonetic": "/əbˈzɜːrv/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Observe is fun to do.",
-    "sentenceCn": "观察很有趣。",
-        "emoji": "🔍",
-    "audioFile": "observe.mp3"
-  },
-{
-    "id": 2026,
-    "word": "open",
-    "meaning": "打开",
-    "phonetic": "/ˈoʊpən/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's open together.",
-    "sentenceCn": "我们一起打开吧。",
-        "emoji": "🚪",
-    "audioFile": "open.mp3"
-  },
-{
-    "id": 2027,
-    "word": "paint",
-    "meaning": "绘画",
-    "phonetic": "/peɪnt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's paint together.",
-    "sentenceCn": "我们一起绘画吧。",
-        "emoji": "🎨",
-    "audioFile": "paint.mp3"
-  },
-{
-    "id": 2028,
-    "word": "pay",
-    "meaning": "付款",
-    "phonetic": "/peɪ/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's pay together.",
-    "sentenceCn": "我们一起付款吧。",
-        "emoji": "💳",
-    "audioFile": "pay.mp3"
-  },
-{
-    "id": 2029,
-    "word": "peek",
-    "meaning": "偷看",
-    "phonetic": "/piːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to peek.",
-    "sentenceCn": "我喜欢偷看。",
-        "emoji": "👀",
-    "audioFile": "peek.mp3"
-  },
-{
-    "id": 2030,
-    "word": "peel",
-    "meaning": "削皮",
-    "phonetic": "/piːl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Peel is fun to do.",
-    "sentenceCn": "削皮很有趣。",
-        "emoji": "🍌",
-    "audioFile": "peel.mp3"
-  },
-{
-    "id": 2031,
-    "word": "peer",
-    "meaning": "凝视",
-    "phonetic": "/pɪr/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's peer together.",
-    "sentenceCn": "我们一起凝视吧。",
-        "emoji": "👀",
-    "audioFile": "peer.mp3"
-  },
-{
-    "id": 2032,
-    "word": "play",
-    "meaning": "玩",
-    "phonetic": "/pleɪ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to play.",
-    "sentenceCn": "我喜欢玩。",
-        "emoji": "🎮",
-    "audioFile": "play.mp3"
-  },
-{
-    "id": 2033,
-    "word": "point",
-    "meaning": "指",
-    "phonetic": "/pɔɪnt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Point is fun to do.",
-    "sentenceCn": "指很有趣。",
-        "emoji": "☝️",
-    "audioFile": "point.mp3"
-  },
-{
-    "id": 2034,
-    "word": "polish",
-    "meaning": "擦亮",
-    "phonetic": "/ˈpɑːlɪʃ/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Polish is fun to do.",
-    "sentenceCn": "擦亮很有趣。",
-        "emoji": "✨",
-    "audioFile": "polish.mp3"
-  },
-{
-    "id": 2035,
-    "word": "print",
-    "meaning": "打印",
-    "phonetic": "/prɪnt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you print?",
-    "sentenceCn": "你会打印吗？",
-        "emoji": "🖨️",
-    "audioFile": "print.mp3"
-  },
-{
-    "id": 2036,
-    "word": "protect",
-    "meaning": "保护",
-    "phonetic": "/prəˈtekt/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Protect is fun to do.",
-    "sentenceCn": "保护很有趣。",
-        "emoji": "🛡️",
-    "audioFile": "protect.mp3"
-  },
-{
-    "id": 2037,
-    "word": "pull",
-    "meaning": "拉",
-    "phonetic": "/pʊl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Pull is fun to do.",
-    "sentenceCn": "拉很有趣。",
-        "emoji": "⬅️",
-    "audioFile": "pull.mp3"
-  },
-{
-    "id": 2038,
-    "word": "punch",
-    "meaning": "拳打",
-    "phonetic": "/pʌntʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Punch is fun to do.",
-    "sentenceCn": "拳打很有趣。",
-        "emoji": "👊",
-    "audioFile": "punch.mp3"
-  },
-{
-    "id": 2039,
-    "word": "push",
-    "meaning": "推",
-    "phonetic": "/pʊʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you push?",
-    "sentenceCn": "你会推吗？",
-        "emoji": "➡️",
-    "audioFile": "push.mp3"
-  },
-{
-    "id": 2040,
-    "word": "receive",
-    "meaning": "接收",
-    "phonetic": "/rɪˈsiːv/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Let's receive together.",
-    "sentenceCn": "我们一起接收吧。",
-        "emoji": "📬",
-    "audioFile": "receive.mp3"
-  },
-{
-    "id": 2041,
-    "word": "relax",
-    "meaning": "放松",
-    "phonetic": "/rɪˈlæks/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you relax?",
-    "sentenceCn": "你会放松吗？",
-        "emoji": "😌",
-    "audioFile": "relax.mp3"
-  },
-{
-    "id": 2042,
-    "word": "rest",
-    "meaning": "休息",
-    "phonetic": "/rest/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's rest together.",
-    "sentenceCn": "我们一起休息吧。",
-        "emoji": "🛋️",
-    "audioFile": "rest.mp3"
-  },
-{
-    "id": 2043,
-    "word": "rinse",
-    "meaning": "冲洗",
-    "phonetic": "/rɪns/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to rinse.",
-    "sentenceCn": "我喜欢冲洗。",
-        "emoji": "🚿",
-    "audioFile": "rinse.mp3"
-  },
-{
-    "id": 2044,
-    "word": "roast",
-    "meaning": "烤",
-    "phonetic": "/roʊst/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Roast is fun to do.",
-    "sentenceCn": "烤很有趣。",
-        "emoji": "🍗",
-    "audioFile": "roast.mp3"
-  },
-{
-    "id": 2045,
-    "word": "save",
-    "meaning": "拯救",
-    "phonetic": "/seɪv/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's save together.",
-    "sentenceCn": "我们一起拯救吧。",
-        "emoji": "🆘",
-    "audioFile": "save.mp3"
-  },
-{
-    "id": 2046,
-    "word": "scrub",
-    "meaning": "擦洗",
-    "phonetic": "/skrʌb/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Scrub is fun to do.",
-    "sentenceCn": "擦洗很有趣。",
-        "emoji": "🧽",
-    "audioFile": "scrub.mp3"
-  },
-{
-    "id": 2047,
-    "word": "see",
-    "meaning": "看见",
-    "phonetic": "/siː/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "I like to see.",
-    "sentenceCn": "我喜欢看见。",
-        "emoji": "👁️",
-    "audioFile": "see.mp3"
-  },
-{
-    "id": 2048,
-    "word": "send",
-    "meaning": "发送",
-    "phonetic": "/send/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Send is fun to do.",
-    "sentenceCn": "发送很有趣。",
-        "emoji": "📤",
-    "audioFile": "send.mp3"
-  },
-{
-    "id": 2049,
-    "word": "serve",
-    "meaning": "服务",
-    "phonetic": "/sɜːrv/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to serve.",
-    "sentenceCn": "我喜欢服务。",
-        "emoji": "🍽️",
-    "audioFile": "serve.mp3"
-  },
-{
-    "id": 2050,
-    "word": "share",
-    "meaning": "分享",
-    "phonetic": "/ʃer/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to share.",
-    "sentenceCn": "我喜欢分享。",
-        "emoji": "🤝",
-    "audioFile": "share.mp3"
-  },
-{
-    "id": 2051,
-    "word": "shout",
-    "meaning": "喊叫",
-    "phonetic": "/ʃaʊt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's shout together.",
-    "sentenceCn": "我们一起喊叫吧。",
-        "emoji": "📢",
-    "audioFile": "shout.mp3"
-  },
-{
-    "id": 2052,
-    "word": "sing",
-    "meaning": "唱歌",
-    "phonetic": "/sɪŋ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's sing together.",
-    "sentenceCn": "我们一起唱歌吧。",
-        "emoji": "🎤",
-    "audioFile": "sing.mp3"
-  },
-{
-    "id": 2053,
-    "word": "sip",
-    "meaning": "小口喝",
-    "phonetic": "/sɪp/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's sip together.",
-    "sentenceCn": "我们一起小口喝吧。",
-        "emoji": "☕",
-    "audioFile": "sip.mp3"
-  },
-{
-    "id": 2054,
-    "word": "sit",
-    "meaning": "坐",
-    "phonetic": "/sɪt/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Can you sit?",
-    "sentenceCn": "你会坐吗？",
-        "emoji": "🪑",
-    "audioFile": "sit.mp3"
-  },
-{
-    "id": 2055,
-    "word": "sketch",
-    "meaning": "素描",
-    "phonetic": "/sketʃ/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Sketch is fun to do.",
-    "sentenceCn": "素描很有趣。",
-        "emoji": "✏️",
-    "audioFile": "sketch.mp3"
-  },
-{
-    "id": 2056,
-    "word": "skill",
-    "meaning": "技能",
-    "phonetic": "/skɪl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you skill?",
-    "sentenceCn": "你会技能吗？",
-        "emoji": "🎯",
-    "audioFile": "skill.mp3"
-  },
-{
-    "id": 2057,
-    "word": "skip",
-    "meaning": "跳过",
-    "phonetic": "/skɪp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's skip together.",
-    "sentenceCn": "我们一起跳过吧。",
-        "emoji": "⏭️",
-    "audioFile": "skip.mp3"
-  },
-{
-    "id": 2058,
-    "word": "slap",
-    "meaning": "拍",
-    "phonetic": "/slæp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's slap together.",
-    "sentenceCn": "我们一起拍吧。",
-        "emoji": "🤚",
-    "audioFile": "slap.mp3"
-  },
-{
-    "id": 2059,
-    "word": "sleep",
-    "meaning": "睡觉",
-    "phonetic": "/sliːp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Sleep is fun to do.",
-    "sentenceCn": "睡觉很有趣。",
-        "emoji": "😴",
-    "audioFile": "sleep.mp3"
-  },
-{
-    "id": 2060,
-    "word": "slide",
-    "meaning": "滑行",
-    "phonetic": "/slaɪd/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you slide?",
-    "sentenceCn": "你会滑行吗？",
-        "emoji": "🛝",
-    "audioFile": "slide.mp3"
-  },
-{
-    "id": 2061,
-    "word": "smile",
-    "meaning": "微笑",
-    "phonetic": "/smaɪl/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Smile is fun to do.",
-    "sentenceCn": "微笑很有趣。",
-        "emoji": "😊",
-    "audioFile": "smile.mp3"
-  },
-{
-    "id": 2062,
-    "word": "snore",
-    "meaning": "打鼾",
-    "phonetic": "/snɔːr/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you snore?",
-    "sentenceCn": "你会打鼾吗？",
-        "emoji": "💤",
-    "audioFile": "snore.mp3"
-  },
-{
-    "id": 2063,
-    "word": "speak",
-    "meaning": "说话",
-    "phonetic": "/spiːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's speak together.",
-    "sentenceCn": "我们一起说话吧。",
-        "emoji": "🗣️",
-    "audioFile": "speak.mp3"
-  },
-{
-    "id": 2064,
-    "word": "spend",
-    "meaning": "花费",
-    "phonetic": "/spend/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's spend together.",
-    "sentenceCn": "我们一起花费吧。",
-        "emoji": "💰",
-    "audioFile": "spend.mp3"
-  },
-{
-    "id": 2065,
-    "word": "squat",
-    "meaning": "深蹲",
-    "phonetic": "/skwɑːt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Squat is fun to do.",
-    "sentenceCn": "深蹲很有趣。",
-        "emoji": "🏋️",
-    "audioFile": "squat.mp3"
-  },
-{
-    "id": 2066,
-    "word": "stand",
-    "meaning": "站立",
-    "phonetic": "/stænd/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to stand.",
-    "sentenceCn": "我喜欢站立。",
-        "emoji": "🧍",
-    "audioFile": "stand.mp3"
-  },
-{
-    "id": 2067,
-    "word": "stare",
-    "meaning": "凝视",
-    "phonetic": "/ster/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you stare?",
-    "sentenceCn": "你会凝视吗？",
-        "emoji": "👁️",
-    "audioFile": "stare.mp3"
-  },
-{
-    "id": 2068,
-    "word": "steam",
-    "meaning": "蒸",
-    "phonetic": "/stiːm/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's steam together.",
-    "sentenceCn": "我们一起蒸吧。",
-        "emoji": "♨️",
-    "audioFile": "steam.mp3"
-  },
-{
-    "id": 2069,
-    "word": "stretch",
-    "meaning": "伸展",
-    "phonetic": "/stretʃ/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Can you stretch?",
-    "sentenceCn": "你会伸展吗？",
-        "emoji": "🤸",
-    "audioFile": "stretch.mp3"
-  },
-{
-    "id": 2070,
-    "word": "sweep",
-    "meaning": "扫",
-    "phonetic": "/swiːp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's sweep together.",
-    "sentenceCn": "我们一起扫吧。",
-        "emoji": "🧹",
-    "audioFile": "sweep.mp3"
-  },
-{
-    "id": 2071,
-    "word": "swim",
-    "meaning": "游泳",
-    "phonetic": "/swɪm/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's swim together.",
-    "sentenceCn": "我们一起游泳吧。",
-        "emoji": "🏊",
-    "audioFile": "swim.mp3"
-  },
-{
-    "id": 2072,
-    "word": "take",
-    "meaning": "拿",
-    "phonetic": "/teɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Take is fun to do.",
-    "sentenceCn": "拿很有趣。",
-        "emoji": "🤲",
-    "audioFile": "take.mp3"
-  },
-{
-    "id": 2073,
-    "word": "talk",
-    "meaning": "说话",
-    "phonetic": "/tɔːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to talk.",
-    "sentenceCn": "我喜欢说话。",
-        "emoji": "💬",
-    "audioFile": "talk.mp3"
-  },
-{
-    "id": 2074,
-    "word": "tap",
-    "meaning": "轻拍",
-    "phonetic": "/tæp/",
-    "difficulty": 1,
-    "theme": "动作 Actions",
-    "sentence": "Let's tap together.",
-    "sentenceCn": "我们一起轻拍吧。",
-        "emoji": "🤏",
-    "audioFile": "tap.mp3"
-  },
-{
-    "id": 2075,
-    "word": "taste",
-    "meaning": "品尝",
-    "phonetic": "/teɪst/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Taste is fun to do.",
-    "sentenceCn": "品尝很有趣。",
-        "emoji": "👅",
-    "audioFile": "taste.mp3"
-  },
-{
-    "id": 2076,
-    "word": "throw",
-    "meaning": "扔",
-    "phonetic": "/θroʊ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Throw is fun to do.",
-    "sentenceCn": "扔很有趣。",
-        "emoji": "🤾",
-    "audioFile": "throw.mp3"
-  },
-{
-    "id": 2077,
-    "word": "touch",
-    "meaning": "触摸",
-    "phonetic": "/tʌtʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you touch?",
-    "sentenceCn": "你会触摸吗？",
-        "emoji": "🤚",
-    "audioFile": "touch.mp3"
-  },
-{
-    "id": 2078,
-    "word": "twist",
-    "meaning": "扭转",
-    "phonetic": "/twɪst/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to twist.",
-    "sentenceCn": "我喜欢扭转。",
-        "emoji": "🔄",
-    "audioFile": "twist.mp3"
-  },
-{
-    "id": 2079,
-    "word": "type",
-    "meaning": "打字",
-    "phonetic": "/taɪp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you type?",
-    "sentenceCn": "你会打字吗？",
-        "emoji": "⌨️",
-    "audioFile": "type.mp3"
-  },
-{
-    "id": 2080,
-    "word": "unlock",
-    "meaning": "解锁",
-    "phonetic": "/ʌnˈlɑːk/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "I like to unlock.",
-    "sentenceCn": "我喜欢解锁。",
-        "emoji": "🔓",
-    "audioFile": "unlock.mp3"
-  },
-{
-    "id": 2081,
-    "word": "view",
-    "meaning": "观看",
-    "phonetic": "/vjuː/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to view.",
-    "sentenceCn": "我喜欢观看。",
-        "emoji": "👀",
-    "audioFile": "view.mp3"
-  },
-{
-    "id": 2082,
-    "word": "volunteer",
-    "meaning": "志愿",
-    "phonetic": "/ˌvɑːlənˈtɪr/",
-    "difficulty": 4,
-    "theme": "动作 Actions",
-    "sentence": "Can you volunteer?",
-    "sentenceCn": "你会志愿吗？",
-        "emoji": "🙋",
-    "audioFile": "volunteer.mp3"
-  },
-{
-    "id": 2083,
-    "word": "wake",
-    "meaning": "醒来",
-    "phonetic": "/weɪk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you wake?",
-    "sentenceCn": "你会醒来吗？",
-        "emoji": "⏰",
-    "audioFile": "wake.mp3"
-  },
-{
-    "id": 2084,
-    "word": "walk",
-    "meaning": "走路",
-    "phonetic": "/wɔːk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Walk is fun to do.",
-    "sentenceCn": "走路很有趣。",
-        "emoji": "🚶",
-    "audioFile": "walk.mp3"
-  },
-{
-    "id": 2085,
-    "word": "wash",
-    "meaning": "洗",
-    "phonetic": "/wɑːʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you wash?",
-    "sentenceCn": "你会洗吗？",
-        "emoji": "🧼",
-    "audioFile": "wash.mp3"
-  },
-{
-    "id": 2086,
-    "word": "watch",
-    "meaning": "观看",
-    "phonetic": "/wɑːtʃ/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's watch together.",
-    "sentenceCn": "我们一起观看吧。",
-        "emoji": "📺",
-    "audioFile": "watch.mp3"
-  },
-{
-    "id": 2087,
-    "word": "wave",
-    "meaning": "挥手",
-    "phonetic": "/weɪv/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you wave?",
-    "sentenceCn": "你会挥手吗？",
-        "emoji": "👋",
-    "audioFile": "wave.mp3"
-  },
-{
-    "id": 2088,
-    "word": "whisper",
-    "meaning": "低语",
-    "phonetic": "/ˈwɪspər/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Let's whisper together.",
-    "sentenceCn": "我们一起低语吧。",
-        "emoji": "🤫",
-    "audioFile": "whisper.mp3"
-  },
-{
-    "id": 2089,
-    "word": "whistle",
-    "meaning": "吹哨",
-    "phonetic": "/ˈwɪsl/",
-    "difficulty": 3,
-    "theme": "动作 Actions",
-    "sentence": "Let's whistle together.",
-    "sentenceCn": "我们一起吹哨吧。",
-        "emoji": "🎵",
-    "audioFile": "whistle.mp3"
-  },
-{
-    "id": 2090,
-    "word": "wink",
-    "meaning": "眨眼",
-    "phonetic": "/wɪŋk/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "I like to wink.",
-    "sentenceCn": "我喜欢眨眼。",
-        "emoji": "😉",
-    "audioFile": "wink.mp3"
-  },
-{
-    "id": 2091,
-    "word": "wipe",
-    "meaning": "擦",
-    "phonetic": "/waɪp/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you wipe?",
-    "sentenceCn": "你会擦吗？",
-        "emoji": "🧻",
-    "audioFile": "wipe.mp3"
-  },
-{
-    "id": 2092,
-    "word": "write",
-    "meaning": "写",
-    "phonetic": "/raɪt/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you write?",
-    "sentenceCn": "你会写吗？",
-        "emoji": "✍️",
-    "audioFile": "write.mp3"
-  },
-{
-    "id": 2093,
-    "word": "yawn",
-    "meaning": "打哈欠",
-    "phonetic": "/jɔːn/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Let's yawn together.",
-    "sentenceCn": "我们一起打哈欠吧。",
-        "emoji": "🥱",
-    "audioFile": "yawn.mp3"
-  },
+
   {
     "id": 2094,
     "word": "bow",
@@ -25177,18 +16304,7 @@ export const words: WordEntry[] = [
         "emoji": "🧶",
     "audioFile": "knit.mp3"
   },
-  {
-    "id": 2098,
-    "word": "march",
-    "meaning": "行军",
-    "phonetic": "/marc/",
-    "difficulty": 2,
-    "theme": "动作 Actions",
-    "sentence": "Can you march?",
-    "sentenceCn": "你会行军吗？",
-        "emoji": "🚶",
-    "audioFile": "march.mp3"
-  },
+
   {
     "id": 2099,
     "word": "salute",
@@ -25237,18 +16353,7 @@ export const words: WordEntry[] = [
         "emoji": "🌙",
     "audioFile": "moon.mp3"
   },
-{
-    "id": 2103,
-    "word": "star",
-    "meaning": "星星",
-    "phonetic": "/sta/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love star weather.",
-    "sentenceCn": "我喜欢星星的天气。",
-        "emoji": "⭐",
-    "audioFile": "star.mp3"
-  },
+
 {
     "id": 2104,
     "word": "planet",
@@ -25321,18 +16426,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "asteroid.mp3"
   },
-{
-    "id": 2110,
-    "word": "sky",
-    "meaning": "天空",
-    "phonetic": "/sky/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is sky.",
-    "sentenceCn": "天空天空。",
-        "emoji": "📖",
-    "audioFile": "sky.mp3"
-  },
+
 {
     "id": 2111,
     "word": "air",
@@ -25633,18 +16727,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "lightning.mp3"
   },
-{
-    "id": 2136,
-    "word": "rainbow",
-    "meaning": "彩虹",
-    "phonetic": "/rai/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A rainbow is coming.",
-    "sentenceCn": "彩虹要来了。",
-        "emoji": "📖",
-    "audioFile": "rainbow.mp3"
-  },
+
 {
     "id": 2137,
     "word": "sunrise",
@@ -25669,30 +16752,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "sunset.mp3"
   },
-{
-    "id": 2139,
-    "word": "dawn",
-    "meaning": "黎明",
-    "phonetic": "/daw/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love dawn weather.",
-    "sentenceCn": "我喜欢黎明的天气。",
-        "emoji": "📖",
-    "audioFile": "dawn.mp3"
-  },
-{
-    "id": 2140,
-    "word": "dusk",
-    "meaning": "黄昏",
-    "phonetic": "/dus/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love dusk weather.",
-    "sentenceCn": "我喜欢黄昏的天气。",
-        "emoji": "📖",
-    "audioFile": "dusk.mp3"
-  },
+
 {
     "id": 2141,
     "word": "twilight",
@@ -25753,18 +16813,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "temperature.mp3"
   },
-{
-    "id": 2146,
-    "word": "degree",
-    "meaning": "度",
-    "phonetic": "/deg/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is degree.",
-    "sentenceCn": "天空度。",
-        "emoji": "📖",
-    "audioFile": "degree.mp3"
-  },
+
 {
     "id": 2147,
     "word": "hot",
@@ -25909,54 +16958,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "season.mp3"
   },
-{
-    "id": 2159,
-    "word": "spring",
-    "meaning": "春天",
-    "phonetic": "/spr/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A spring is coming.",
-    "sentenceCn": "春天要来了。",
-        "emoji": "🌸",
-    "audioFile": "spring.mp3"
-  },
-{
-    "id": 2160,
-    "word": "summer",
-    "meaning": "夏天",
-    "phonetic": "/sum/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love summer weather.",
-    "sentenceCn": "我喜欢夏天的天气。",
-        "emoji": "🏖️",
-    "audioFile": "summer.mp3"
-  },
-{
-    "id": 2161,
-    "word": "autumn",
-    "meaning": "秋天",
-    "phonetic": "/aut/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A autumn is coming.",
-    "sentenceCn": "秋天要来了。",
-        "emoji": "🍂",
-    "audioFile": "autumn.mp3"
-  },
-{
-    "id": 2162,
-    "word": "winter",
-    "meaning": "冬天",
-    "phonetic": "/win/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A winter is coming.",
-    "sentenceCn": "冬天要来了。",
-        "emoji": "❄️",
-    "audioFile": "winter.mp3"
-  },
+
 {
     "id": 2163,
     "word": "tropical",
@@ -26401,18 +17403,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "ocean.mp3"
   },
-{
-    "id": 2200,
-    "word": "wave",
-    "meaning": "波浪",
-    "phonetic": "/wav/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love wave weather.",
-    "sentenceCn": "我喜欢波浪的天气。",
-        "emoji": "📖",
-    "audioFile": "wave.mp3"
-  },
+
 {
     "id": 2201,
     "word": "tide",
@@ -26425,18 +17416,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "tide.mp3"
   },
-{
-    "id": 2202,
-    "word": "current",
-    "meaning": "水流",
-    "phonetic": "/cur/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is current.",
-    "sentenceCn": "天空水流。",
-        "emoji": "📖",
-    "audioFile": "current.mp3"
-  },
+
 {
     "id": 2203,
     "word": "beach",
@@ -26785,18 +17765,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "scenery.mp3"
   },
-{
-    "id": 2232,
-    "word": "view",
-    "meaning": "视野",
-    "phonetic": "/vie/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love view weather.",
-    "sentenceCn": "我喜欢视野的天气。",
-        "emoji": "📖",
-    "audioFile": "view.mp3"
-  },
+
 {
     "id": 2233,
     "word": "horizon",
@@ -26893,1350 +17862,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "eclipse.mp3"
   },
-{
-    "id": 2241,
-    "word": "aurora",
-    "meaning": "极光",
-    "phonetic": "/auro/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A aurora is coming.",
-    "sentenceCn": "极光要来了。",
-        "emoji": "🌌",
-    "audioFile": "aurora.mp3"
-  },
-{
-    "id": 2242,
-    "word": "avalanche",
-    "meaning": "雪崩",
-    "phonetic": "/ˈævəlæntʃ/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is avalanche.",
-    "sentenceCn": "天空雪崩。",
-        "emoji": "🏔️",
-    "audioFile": "avalanche.mp3"
-  },
-{
-    "id": 2243,
-    "word": "breeze",
-    "meaning": "微风",
-    "phonetic": "/briːz/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is breeze.",
-    "sentenceCn": "天空微风。",
-        "emoji": "🌬️",
-    "audioFile": "breeze.mp3"
-  },
-{
-    "id": 2244,
-    "word": "cape",
-    "meaning": "海角",
-    "phonetic": "/keɪp/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love cape weather.",
-    "sentenceCn": "我喜欢海角的天气。",
-        "emoji": "🌊",
-    "audioFile": "cape.mp3"
-  },
-{
-    "id": 2245,
-    "word": "cave",
-    "meaning": "洞穴",
-    "phonetic": "/keɪv/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is cave.",
-    "sentenceCn": "天空洞穴。",
-        "emoji": "🕳️",
-    "audioFile": "cave.mp3"
-  },
-{
-    "id": 2246,
-    "word": "cliff",
-    "meaning": "悬崖",
-    "phonetic": "/klɪf/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is cliff.",
-    "sentenceCn": "天空悬崖。",
-        "emoji": "🏔️",
-    "audioFile": "cliff.mp3"
-  },
-{
-    "id": 2247,
-    "word": "climate",
-    "meaning": "气候",
-    "phonetic": "/ˈklaɪmət/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love climate weather.",
-    "sentenceCn": "我喜欢气候的天气。",
-        "emoji": "🌍",
-    "audioFile": "climate.mp3"
-  },
-{
-    "id": 2248,
-    "word": "coast",
-    "meaning": "海岸",
-    "phonetic": "/koʊst/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is coast.",
-    "sentenceCn": "天空海岸。",
-        "emoji": "🏖️",
-    "audioFile": "coast.mp3"
-  },
-{
-    "id": 2249,
-    "word": "comet",
-    "meaning": "彗星",
-    "phonetic": "/ˈkɑːmɪt/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love comet weather.",
-    "sentenceCn": "我喜欢彗星的天气。",
-        "emoji": "☄️",
-    "audioFile": "comet.mp3"
-  },
-{
-    "id": 2250,
-    "word": "cool",
-    "meaning": "凉爽",
-    "phonetic": "/kuːl/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love cool weather.",
-    "sentenceCn": "我喜欢凉爽的天气。",
-        "emoji": "🌬️",
-    "audioFile": "cool.mp3"
-  },
-{
-    "id": 2251,
-    "word": "drizzle",
-    "meaning": "毛毛雨",
-    "phonetic": "/ˈdrɪzl/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love drizzle weather.",
-    "sentenceCn": "我喜欢毛毛雨的天气。",
-        "emoji": "🌦️",
-    "audioFile": "drizzle.mp3"
-  },
-{
-    "id": 2252,
-    "word": "drought",
-    "meaning": "干旱",
-    "phonetic": "/draʊt/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love drought weather.",
-    "sentenceCn": "我喜欢干旱的天气。",
-        "emoji": "🏜️",
-    "audioFile": "drought.mp3"
-  },
-{
-    "id": 2253,
-    "word": "dune",
-    "meaning": "沙丘",
-    "phonetic": "/duːn/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A dune is coming.",
-    "sentenceCn": "沙丘要来了。",
-        "emoji": "🏜️",
-    "audioFile": "dune.mp3"
-  },
-{
-    "id": 2254,
-    "word": "earthquake",
-    "meaning": "地震",
-    "phonetic": "/ˈɜːrθkweɪk/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love earthquake weather.",
-    "sentenceCn": "我喜欢地震的天气。",
-        "emoji": "🏚️",
-    "audioFile": "earthquake.mp3"
-  },
-{
-    "id": 2255,
-    "word": "environment",
-    "meaning": "环境",
-    "phonetic": "/ɪnˈvaɪrənmənt/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A environment is coming.",
-    "sentenceCn": "环境要来了。",
-        "emoji": "🌿",
-    "audioFile": "environment.mp3"
-  },
-{
-    "id": 2256,
-    "word": "erosion",
-    "meaning": "侵蚀",
-    "phonetic": "/ɪˈroʊʒn/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A erosion is coming.",
-    "sentenceCn": "侵蚀要来了。",
-        "emoji": "🏜️",
-    "audioFile": "erosion.mp3"
-  },
-{
-    "id": 2257,
-    "word": "field",
-    "meaning": "田野",
-    "phonetic": "/fiːld/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is field.",
-    "sentenceCn": "天空田野。",
-        "emoji": "🌾",
-    "audioFile": "field.mp3"
-  },
-{
-    "id": 2258,
-    "word": "flood",
-    "meaning": "洪水",
-    "phonetic": "/flʌd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is flood.",
-    "sentenceCn": "天空洪水。",
-        "emoji": "🌊",
-    "audioFile": "flood.mp3"
-  },
-{
-    "id": 2259,
-    "word": "fog",
-    "meaning": "雾",
-    "phonetic": "/fɑːɡ/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A fog is coming.",
-    "sentenceCn": "雾要来了。",
-        "emoji": "🌫️",
-    "audioFile": "fog.mp3"
-  },
-{
-    "id": 2260,
-    "word": "forecast",
-    "meaning": "预报",
-    "phonetic": "/ˈfɔːrkæst/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love forecast weather.",
-    "sentenceCn": "我喜欢预报的天气。",
-        "emoji": "📺",
-    "audioFile": "forecast.mp3"
-  },
-{
-    "id": 2261,
-    "word": "forest",
-    "meaning": "森林",
-    "phonetic": "/ˈfɔːrɪst/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love forest weather.",
-    "sentenceCn": "我喜欢森林的天气。",
-        "emoji": "🌲",
-    "audioFile": "forest.mp3"
-  },
-{
-    "id": 2262,
-    "word": "freeze",
-    "meaning": "冰冻",
-    "phonetic": "/friːz/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A freeze is coming.",
-    "sentenceCn": "冰冻要来了。",
-        "emoji": "🥶",
-    "audioFile": "freeze.mp3"
-  },
-{
-    "id": 2263,
-    "word": "frost",
-    "meaning": "霜",
-    "phonetic": "/frɔːst/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is frost.",
-    "sentenceCn": "天空霜。",
-        "emoji": "❄️",
-    "audioFile": "frost.mp3"
-  },
-{
-    "id": 2264,
-    "word": "galaxy",
-    "meaning": "星系",
-    "phonetic": "/ˈɡæləksi/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love galaxy weather.",
-    "sentenceCn": "我喜欢星系的天气。",
-        "emoji": "🌌",
-    "audioFile": "galaxy.mp3"
-  },
-{
-    "id": 2265,
-    "word": "gravity",
-    "meaning": "重力",
-    "phonetic": "/ˈɡrævəti/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love gravity weather.",
-    "sentenceCn": "我喜欢重力的天气。",
-        "emoji": "⬇️",
-    "audioFile": "gravity.mp3"
-  },
-{
-    "id": 2266,
-    "word": "gust",
-    "meaning": "阵风",
-    "phonetic": "/ɡʌst/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A gust is coming.",
-    "sentenceCn": "阵风要来了。",
-        "emoji": "💨",
-    "audioFile": "gust.mp3"
-  },
-{
-    "id": 2267,
-    "word": "hail",
-    "meaning": "冰雹",
-    "phonetic": "/heɪl/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is hail.",
-    "sentenceCn": "天空冰雹。",
-        "emoji": "🧊",
-    "audioFile": "hail.mp3"
-  },
-{
-    "id": 2268,
-    "word": "harbor",
-    "meaning": "海港",
-    "phonetic": "/ˈhɑːrbər/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A harbor is coming.",
-    "sentenceCn": "海港要来了。",
-        "emoji": "⛵",
-    "audioFile": "harbor.mp3"
-  },
-{
-    "id": 2269,
-    "word": "haze",
-    "meaning": "霾",
-    "phonetic": "/heɪz/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love haze weather.",
-    "sentenceCn": "我喜欢霾的天气。",
-        "emoji": "🌫️",
-    "audioFile": "haze.mp3"
-  },
-{
-    "id": 2270,
-    "word": "hill",
-    "meaning": "小山",
-    "phonetic": "/hɪl/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A hill is coming.",
-    "sentenceCn": "小山要来了。",
-        "emoji": "⛰️",
-    "audioFile": "hill.mp3"
-  },
-{
-    "id": 2271,
-    "word": "horizon",
-    "meaning": "地平线",
-    "phonetic": "/həˈraɪzn/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love horizon weather.",
-    "sentenceCn": "我喜欢地平线的天气。",
-        "emoji": "🌅",
-    "audioFile": "horizon.mp3"
-  },
-{
-    "id": 2272,
-    "word": "hot",
-    "meaning": "热",
-    "phonetic": "/hɑːt/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love hot weather.",
-    "sentenceCn": "我喜欢热的天气。",
-        "emoji": "🥵",
-    "audioFile": "hot.mp3"
-  },
-{
-    "id": 2273,
-    "word": "humidity",
-    "meaning": "湿度",
-    "phonetic": "/hjuːˈmɪdəti/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love humidity weather.",
-    "sentenceCn": "我喜欢湿度的天气。",
-        "emoji": "💧",
-    "audioFile": "humidity.mp3"
-  },
-{
-    "id": 2274,
-    "word": "hurricane",
-    "meaning": "飓风",
-    "phonetic": "/ˈhʌrɪkeɪn/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love hurricane weather.",
-    "sentenceCn": "我喜欢飓风的天气。",
-        "emoji": "🌀",
-    "audioFile": "hurricane.mp3"
-  },
-{
-    "id": 2275,
-    "word": "ice",
-    "meaning": "冰",
-    "phonetic": "/aɪs/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is ice.",
-    "sentenceCn": "天空冰。",
-        "emoji": "🧊",
-    "audioFile": "ice.mp3"
-  },
-{
-    "id": 2276,
-    "word": "island",
-    "meaning": "岛",
-    "phonetic": "/ˈaɪlənd/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is island.",
-    "sentenceCn": "天空岛。",
-        "emoji": "🏝️",
-    "audioFile": "island.mp3"
-  },
-{
-    "id": 2277,
-    "word": "jungle",
-    "meaning": "丛林",
-    "phonetic": "/ˈdʒʌŋɡl/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is jungle.",
-    "sentenceCn": "天空丛林。",
-        "emoji": "🌴",
-    "audioFile": "jungle.mp3"
-  },
-{
-    "id": 2278,
-    "word": "lake",
-    "meaning": "湖",
-    "phonetic": "/leɪk/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A lake is coming.",
-    "sentenceCn": "湖要来了。",
-        "emoji": "🏞️",
-    "audioFile": "lake.mp3"
-  },
-{
-    "id": 2279,
-    "word": "landscape",
-    "meaning": "风景",
-    "phonetic": "/ˈlændskeɪp/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is landscape.",
-    "sentenceCn": "天空风景。",
-        "emoji": "🏞️",
-    "audioFile": "landscape.mp3"
-  },
-{
-    "id": 2280,
-    "word": "leaf",
-    "meaning": "叶子",
-    "phonetic": "/liːf/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love leaf weather.",
-    "sentenceCn": "我喜欢叶子的天气。",
-        "emoji": "🍃",
-    "audioFile": "leaf.mp3"
-  },
-{
-    "id": 2281,
-    "word": "lightning",
-    "meaning": "闪电",
-    "phonetic": "/ˈlaɪtnɪŋ/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is lightning.",
-    "sentenceCn": "天空闪电。",
-        "emoji": "⚡",
-    "audioFile": "lightning.mp3"
-  },
-{
-    "id": 2282,
-    "word": "magnet",
-    "meaning": "磁铁",
-    "phonetic": "/ˈmæɡnət/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A magnet is coming.",
-    "sentenceCn": "磁铁要来了。",
-        "emoji": "🧲",
-    "audioFile": "magnet.mp3"
-  },
-{
-    "id": 2283,
-    "word": "marsh",
-    "meaning": "沼泽",
-    "phonetic": "/mɑːrʃ/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is marsh.",
-    "sentenceCn": "天空沼泽。",
-        "emoji": "🌿",
-    "audioFile": "marsh.mp3"
-  },
-{
-    "id": 2284,
-    "word": "meadow",
-    "meaning": "草地",
-    "phonetic": "/ˈmedoʊ/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is meadow.",
-    "sentenceCn": "天空草地。",
-        "emoji": "🌿",
-    "audioFile": "meadow.mp3"
-  },
-{
-    "id": 2285,
-    "word": "mist",
-    "meaning": "薄雾",
-    "phonetic": "/mɪst/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A mist is coming.",
-    "sentenceCn": "薄雾要来了。",
-        "emoji": "🌁",
-    "audioFile": "mist.mp3"
-  },
-{
-    "id": 2286,
-    "word": "moisture",
-    "meaning": "水分",
-    "phonetic": "/ˈmɔɪstʃər/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love moisture weather.",
-    "sentenceCn": "我喜欢水分的天气。",
-        "emoji": "💧",
-    "audioFile": "moisture.mp3"
-  },
-{
-    "id": 2287,
-    "word": "mountain",
-    "meaning": "山",
-    "phonetic": "/ˈmaʊntn/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love mountain weather.",
-    "sentenceCn": "我喜欢山的天气。",
-        "emoji": "⛰️",
-    "audioFile": "mountain.mp3"
-  },
-{
-    "id": 2288,
-    "word": "nature",
-    "meaning": "自然",
-    "phonetic": "/ˈneɪtʃər/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is nature.",
-    "sentenceCn": "天空自然。",
-        "emoji": "🌿",
-    "audioFile": "nature.mp3"
-  },
-{
-    "id": 2289,
-    "word": "oasis",
-    "meaning": "绿洲",
-    "phonetic": "/oʊˈeɪsɪs/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is oasis.",
-    "sentenceCn": "天空绿洲。",
-        "emoji": "🏝️",
-    "audioFile": "oasis.mp3"
-  },
-{
-    "id": 2290,
-    "word": "ocean",
-    "meaning": "海洋",
-    "phonetic": "/ˈoʊʃn/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is ocean.",
-    "sentenceCn": "天空海洋。",
-        "emoji": "🌊",
-    "audioFile": "ocean.mp3"
-  },
-{
-    "id": 2291,
-    "word": "oxygen",
-    "meaning": "氧气",
-    "phonetic": "/ˈɑːksɪdʒən/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is oxygen.",
-    "sentenceCn": "天空氧气。",
-        "emoji": "🫧",
-    "audioFile": "oxygen.mp3"
-  },
-{
-    "id": 2292,
-    "word": "ozone",
-    "meaning": "臭氧",
-    "phonetic": "/ˈoʊzoʊn/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A ozone is coming.",
-    "sentenceCn": "臭氧要来了。",
-        "emoji": "🛡️",
-    "audioFile": "ozone.mp3"
-  },
-{
-    "id": 2293,
-    "word": "peninsula",
-    "meaning": "半岛",
-    "phonetic": "/pəˈnɪnsələ/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is peninsula.",
-    "sentenceCn": "天空半岛。",
-        "emoji": "🌊",
-    "audioFile": "peninsula.mp3"
-  },
-{
-    "id": 2294,
-    "word": "planet",
-    "meaning": "行星",
-    "phonetic": "/ˈplænɪt/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love planet weather.",
-    "sentenceCn": "我喜欢行星的天气。",
-        "emoji": "🪐",
-    "audioFile": "planet.mp3"
-  },
-{
-    "id": 2295,
-    "word": "plain",
-    "meaning": "平原",
-    "phonetic": "/pleɪn/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love plain weather.",
-    "sentenceCn": "我喜欢平原的天气。",
-        "emoji": "🌾",
-    "audioFile": "plain.mp3"
-  },
-{
-    "id": 2296,
-    "word": "polar",
-    "meaning": "极地",
-    "phonetic": "/ˈpoʊlər/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is polar.",
-    "sentenceCn": "天空极地。",
-        "emoji": "🥶",
-    "audioFile": "polar.mp3"
-  },
-{
-    "id": 2297,
-    "word": "pollen",
-    "meaning": "花粉",
-    "phonetic": "/ˈpɑːlən/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love pollen weather.",
-    "sentenceCn": "我喜欢花粉的天气。",
-        "emoji": "🌸",
-    "audioFile": "pollen.mp3"
-  },
-{
-    "id": 2298,
-    "word": "pollution",
-    "meaning": "污染",
-    "phonetic": "/pəˈluːʃn/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A pollution is coming.",
-    "sentenceCn": "污染要来了。",
-        "emoji": "💨",
-    "audioFile": "pollution.mp3"
-  },
-{
-    "id": 2299,
-    "word": "pond",
-    "meaning": "池塘",
-    "phonetic": "/pɑːnd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love pond weather.",
-    "sentenceCn": "我喜欢池塘的天气。",
-        "emoji": "🏞️",
-    "audioFile": "pond.mp3"
-  },
-{
-    "id": 2300,
-    "word": "port",
-    "meaning": "港口",
-    "phonetic": "/pɔːrt/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is port.",
-    "sentenceCn": "天空港口。",
-        "emoji": "⛵",
-    "audioFile": "port.mp3"
-  },
-{
-    "id": 2301,
-    "word": "prairie",
-    "meaning": "草原",
-    "phonetic": "/ˈpreri/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A prairie is coming.",
-    "sentenceCn": "草原要来了。",
-        "emoji": "🌾",
-    "audioFile": "prairie.mp3"
-  },
-{
-    "id": 2302,
-    "word": "rainbow",
-    "meaning": "彩虹",
-    "phonetic": "/ˈreɪnboʊ/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is rainbow.",
-    "sentenceCn": "天空彩虹。",
-        "emoji": "🌈",
-    "audioFile": "rainbow.mp3"
-  },
-{
-    "id": 2303,
-    "word": "river",
-    "meaning": "河流",
-    "phonetic": "/ˈrɪvər/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A river is coming.",
-    "sentenceCn": "河流要来了。",
-        "emoji": "🏞️",
-    "audioFile": "river.mp3"
-  },
-{
-    "id": 2304,
-    "word": "rock",
-    "meaning": "岩石",
-    "phonetic": "/rɑːk/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is rock.",
-    "sentenceCn": "天空岩石。",
-        "emoji": "🪨",
-    "audioFile": "rock.mp3"
-  },
-{
-    "id": 2305,
-    "word": "scenery",
-    "meaning": "景色",
-    "phonetic": "/ˈsiːnəri/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love scenery weather.",
-    "sentenceCn": "我喜欢景色的天气。",
-        "emoji": "🏞️",
-    "audioFile": "scenery.mp3"
-  },
-{
-    "id": 2306,
-    "word": "sea",
-    "meaning": "海",
-    "phonetic": "/siː/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is sea.",
-    "sentenceCn": "天空海。",
-        "emoji": "🌊",
-    "audioFile": "sea.mp3"
-  },
-{
-    "id": 2307,
-    "word": "season",
-    "meaning": "季节",
-    "phonetic": "/ˈsiːzn/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is season.",
-    "sentenceCn": "天空季节。",
-        "emoji": "🍂",
-    "audioFile": "season.mp3"
-  },
-{
-    "id": 2308,
-    "word": "seed",
-    "meaning": "种子",
-    "phonetic": "/siːd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A seed is coming.",
-    "sentenceCn": "种子要来了。",
-        "emoji": "🌱",
-    "audioFile": "seed.mp3"
-  },
-{
-    "id": 2309,
-    "word": "shade",
-    "meaning": "阴凉",
-    "phonetic": "/ʃeɪd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A shade is coming.",
-    "sentenceCn": "阴凉要来了。",
-        "emoji": "🌳",
-    "audioFile": "shade.mp3"
-  },
-{
-    "id": 2310,
-    "word": "shadow",
-    "meaning": "影子",
-    "phonetic": "/ˈʃædoʊ/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is shadow.",
-    "sentenceCn": "天空影子。",
-        "emoji": "👤",
-    "audioFile": "shadow.mp3"
-  },
-{
-    "id": 2311,
-    "word": "shore",
-    "meaning": "海岸",
-    "phonetic": "/ʃɔːr/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love shore weather.",
-    "sentenceCn": "我喜欢海岸的天气。",
-        "emoji": "🏖️",
-    "audioFile": "shore.mp3"
-  },
-{
-    "id": 2312,
-    "word": "shower",
-    "meaning": "阵雨",
-    "phonetic": "/ˈʃaʊər/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is shower.",
-    "sentenceCn": "天空阵雨。",
-        "emoji": "🌧️",
-    "audioFile": "shower.mp3"
-  },
-{
-    "id": 2313,
-    "word": "sky",
-    "meaning": "天空",
-    "phonetic": "/skaɪ/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love sky weather.",
-    "sentenceCn": "我喜欢天空的天气。",
-        "emoji": "☀️",
-    "audioFile": "sky.mp3"
-  },
-{
-    "id": 2314,
-    "word": "sleet",
-    "meaning": "雨夹雪",
-    "phonetic": "/sliːt/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A sleet is coming.",
-    "sentenceCn": "雨夹雪要来了。",
-        "emoji": "🌨️",
-    "audioFile": "sleet.mp3"
-  },
-{
-    "id": 2315,
-    "word": "snow",
-    "meaning": "雪",
-    "phonetic": "/snoʊ/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A snow is coming.",
-    "sentenceCn": "雪要来了。",
-        "emoji": "❄️",
-    "audioFile": "snow.mp3"
-  },
-{
-    "id": 2316,
-    "word": "soil",
-    "meaning": "土壤",
-    "phonetic": "/sɔɪl/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is soil.",
-    "sentenceCn": "天空土壤。",
-        "emoji": "🌱",
-    "audioFile": "soil.mp3"
-  },
-{
-    "id": 2317,
-    "word": "space",
-    "meaning": "太空",
-    "phonetic": "/speɪs/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love space weather.",
-    "sentenceCn": "我喜欢太空的天气。",
-        "emoji": "🌌",
-    "audioFile": "space.mp3"
-  },
-{
-    "id": 2318,
-    "word": "storm",
-    "meaning": "风暴",
-    "phonetic": "/stɔːrm/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A storm is coming.",
-    "sentenceCn": "风暴要来了。",
-        "emoji": "⛈️",
-    "audioFile": "storm.mp3"
-  },
-{
-    "id": 2319,
-    "word": "stream",
-    "meaning": "溪流",
-    "phonetic": "/striːm/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is stream.",
-    "sentenceCn": "天空溪流。",
-        "emoji": "🏞️",
-    "audioFile": "stream.mp3"
-  },
-{
-    "id": 2320,
-    "word": "sunrise",
-    "meaning": "日出",
-    "phonetic": "/ˈsʌnraɪz/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A sunrise is coming.",
-    "sentenceCn": "日出要来了。",
-        "emoji": "🌅",
-    "audioFile": "sunrise.mp3"
-  },
-{
-    "id": 2321,
-    "word": "sunset",
-    "meaning": "日落",
-    "phonetic": "/ˈsʌnset/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love sunset weather.",
-    "sentenceCn": "我喜欢日落的天气。",
-        "emoji": "🌇",
-    "audioFile": "sunset.mp3"
-  },
-{
-    "id": 2322,
-    "word": "swamp",
-    "meaning": "沼泽",
-    "phonetic": "/swɑːmp/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is swamp.",
-    "sentenceCn": "天空沼泽。",
-        "emoji": "🌿",
-    "audioFile": "swamp.mp3"
-  },
-{
-    "id": 2323,
-    "word": "temperate",
-    "meaning": "温带",
-    "phonetic": "/ˈtempərət/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A temperate is coming.",
-    "sentenceCn": "温带要来了。",
-        "emoji": "🌍",
-    "audioFile": "temperate.mp3"
-  },
-{
-    "id": 2324,
-    "word": "temperature",
-    "meaning": "温度",
-    "phonetic": "/ˈtemprətʃər/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is temperature.",
-    "sentenceCn": "天空温度。",
-        "emoji": "🌡️",
-    "audioFile": "temperature.mp3"
-  },
-{
-    "id": 2325,
-    "word": "thunder",
-    "meaning": "雷",
-    "phonetic": "/ˈθʌndər/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love thunder weather.",
-    "sentenceCn": "我喜欢雷的天气。",
-        "emoji": "🌩️",
-    "audioFile": "thunder.mp3"
-  },
-{
-    "id": 2326,
-    "word": "tide",
-    "meaning": "潮汐",
-    "phonetic": "/taɪd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A tide is coming.",
-    "sentenceCn": "潮汐要来了。",
-        "emoji": "🌊",
-    "audioFile": "tide.mp3"
-  },
-{
-    "id": 2327,
-    "word": "tornado",
-    "meaning": "龙卷风",
-    "phonetic": "/tɔːrˈneɪdoʊ/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A tornado is coming.",
-    "sentenceCn": "龙卷风要来了。",
-        "emoji": "🌪️",
-    "audioFile": "tornado.mp3"
-  },
-{
-    "id": 2328,
-    "word": "tree",
-    "meaning": "树",
-    "phonetic": "/triː/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love tree weather.",
-    "sentenceCn": "我喜欢树的天气。",
-        "emoji": "🌳",
-    "audioFile": "tree.mp3"
-  },
-{
-    "id": 2329,
-    "word": "tropical",
-    "meaning": "热带",
-    "phonetic": "/ˈtrɑːpɪkl/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is tropical.",
-    "sentenceCn": "天空热带。",
-        "emoji": "🌴",
-    "audioFile": "tropical.mp3"
-  },
-{
-    "id": 2330,
-    "word": "twilight",
-    "meaning": "暮光",
-    "phonetic": "/ˈtwaɪlaɪt/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is twilight.",
-    "sentenceCn": "天空暮光。",
-        "emoji": "🌆",
-    "audioFile": "twilight.mp3"
-  },
-{
-    "id": 2331,
-    "word": "typhoon",
-    "meaning": "台风",
-    "phonetic": "/taɪˈfuːn/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love typhoon weather.",
-    "sentenceCn": "我喜欢台风的天气。",
-        "emoji": "🌀",
-    "audioFile": "typhoon.mp3"
-  },
-{
-    "id": 2332,
-    "word": "valley",
-    "meaning": "山谷",
-    "phonetic": "/ˈvæli/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A valley is coming.",
-    "sentenceCn": "山谷要来了。",
-        "emoji": "🏞️",
-    "audioFile": "valley.mp3"
-  },
-{
-    "id": 2333,
-    "word": "volcano",
-    "meaning": "火山",
-    "phonetic": "/vɑːlˈkeɪnoʊ/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is volcano.",
-    "sentenceCn": "天空火山。",
-        "emoji": "🌋",
-    "audioFile": "volcano.mp3"
-  },
-{
-    "id": 2334,
-    "word": "warm",
-    "meaning": "温暖",
-    "phonetic": "/wɔːrm/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love warm weather.",
-    "sentenceCn": "我喜欢温暖的天气。",
-        "emoji": "☀️",
-    "audioFile": "warm.mp3"
-  },
-{
-    "id": 2335,
-    "word": "weather",
-    "meaning": "天气",
-    "phonetic": "/ˈweðər/",
-    "difficulty": 3,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is weather.",
-    "sentenceCn": "天空天气。",
-        "emoji": "🌤️",
-    "audioFile": "weather.mp3"
-  },
-{
-    "id": 2336,
-    "word": "weed",
-    "meaning": "杂草",
-    "phonetic": "/wiːd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A weed is coming.",
-    "sentenceCn": "杂草要来了。",
-        "emoji": "🌿",
-    "audioFile": "weed.mp3"
-  },
-{
-    "id": 2337,
-    "word": "wet",
-    "meaning": "湿",
-    "phonetic": "/wet/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A wet is coming.",
-    "sentenceCn": "湿要来了。",
-        "emoji": "💧",
-    "audioFile": "wet.mp3"
-  },
-{
-    "id": 2338,
-    "word": "wilderness",
-    "meaning": "荒野",
-    "phonetic": "/ˈwɪldərnəs/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love wilderness weather.",
-    "sentenceCn": "我喜欢荒野的天气。",
-        "emoji": "🏔️",
-    "audioFile": "wilderness.mp3"
-  },
-{
-    "id": 2339,
-    "word": "wildfire",
-    "meaning": "野火",
-    "phonetic": "/ˈwaɪldfaɪər/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is wildfire.",
-    "sentenceCn": "天空野火。",
-        "emoji": "🔥",
-    "audioFile": "wildfire.mp3"
-  },
-{
-    "id": 2340,
-    "word": "wind",
-    "meaning": "风",
-    "phonetic": "/wɪnd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love wind weather.",
-    "sentenceCn": "我喜欢风的天气。",
-        "emoji": "💨",
-    "audioFile": "wind.mp3"
-  },
-{
-    "id": 2341,
-    "word": "wood",
-    "meaning": "木头",
-    "phonetic": "/wʊd/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A wood is coming.",
-    "sentenceCn": "木头要来了。",
-        "emoji": "🪵",
-    "audioFile": "wood.mp3"
-  },
-{
-    "id": 2342,
-    "word": "cold",
-    "meaning": "冷",
-    "phonetic": "/koʊld/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A cold is coming.",
-    "sentenceCn": "冷要来了。",
-        "emoji": "🥶",
-    "audioFile": "cold.mp3"
-  },
-{
-    "id": 2343,
-    "word": "dry",
-    "meaning": "干",
-    "phonetic": "/dry/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is dry.",
-    "sentenceCn": "天空干。",
-        "emoji": "🏜️",
-    "audioFile": "dry.mp3"
-  },
-{
-    "id": 2344,
-    "word": "moon",
-    "meaning": "月亮",
-    "phonetic": "/muːn/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love moon weather.",
-    "sentenceCn": "我喜欢月亮的天气。",
-        "emoji": "🌙",
-    "audioFile": "moon.mp3"
-  },
-{
-    "id": 2345,
-    "word": "sun",
-    "meaning": "太阳",
-    "phonetic": "/sʌn/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love sun weather.",
-    "sentenceCn": "我喜欢太阳的天气。",
-        "emoji": "☀️",
-    "audioFile": "sun.mp3"
-  },
-{
-    "id": 2346,
-    "word": "star",
-    "meaning": "星星",
-    "phonetic": "/stɑːr/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A star is coming.",
-    "sentenceCn": "星星要来了。",
-        "emoji": "⭐",
-    "audioFile": "star.mp3"
-  },
-{
-    "id": 2347,
-    "word": "air",
-    "meaning": "空气",
-    "phonetic": "/er/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love air weather.",
-    "sentenceCn": "我喜欢空气的天气。",
-        "emoji": "💨",
-    "audioFile": "air.mp3"
-  },
-{
-    "id": 2348,
-    "word": "asteroid",
-    "meaning": "小行星",
-    "phonetic": "/ˈæstərɔɪd/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A asteroid is coming.",
-    "sentenceCn": "小行星要来了。",
-        "emoji": "☄️",
-    "audioFile": "asteroid.mp3"
-  },
-{
-    "id": 2349,
-    "word": "atmosphere",
-    "meaning": "大气",
-    "phonetic": "/ˈætməsfɪr/",
-    "difficulty": 5,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love atmosphere weather.",
-    "sentenceCn": "我喜欢大气的天气。",
-        "emoji": "🌍",
-    "audioFile": "atmosphere.mp3"
-  },
-{
-    "id": 2350,
-    "word": "bay",
-    "meaning": "海湾",
-    "phonetic": "/beɪ/",
-    "difficulty": 1,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "The sky is bay.",
-    "sentenceCn": "天空海湾。",
-        "emoji": "🏖️",
-    "audioFile": "bay.mp3"
-  },
-{
-    "id": 2351,
-    "word": "beach",
-    "meaning": "海滩",
-    "phonetic": "/biːtʃ/",
-    "difficulty": 2,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "I love beach weather.",
-    "sentenceCn": "我喜欢海滩的天气。",
-        "emoji": "🏖️",
-    "audioFile": "beach.mp3"
-  },
-{
-    "id": 2352,
-    "word": "blizzard",
-    "meaning": "暴风雪",
-    "phonetic": "/ˈblɪzərd/",
-    "difficulty": 4,
-    "theme": "自然天气 Nature&Weather",
-    "sentence": "A blizzard is coming.",
-    "sentenceCn": "暴风雪要来了。",
-        "emoji": "❄️",
-    "audioFile": "blizzard.mp3"
-  },
+
   {
     "id": 2353,
     "word": "altitude",
@@ -29773,18 +19399,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "earrings.mp3"
   },
-{
-    "id": 2481,
-    "word": "watch",
-    "meaning": "手表",
-    "phonetic": "/wat/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a watch.",
-    "sentenceCn": "我穿一件手表。",
-        "emoji": "📖",
-    "audioFile": "watch.mp3"
-  },
+
 {
     "id": 2482,
     "word": "glasses",
@@ -29917,18 +19532,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "pocket.mp3"
   },
-{
-    "id": 2493,
-    "word": "collar",
-    "meaning": "领子",
-    "phonetic": "/col/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The collar is soft.",
-    "sentenceCn": "这件领子很柔软。",
-        "emoji": "📖",
-    "audioFile": "collar.mp3"
-  },
+
 {
     "id": 2494,
     "word": "sleeve",
@@ -30061,18 +19665,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "nylon.mp3"
   },
-{
-    "id": 2505,
-    "word": "denim",
-    "meaning": "牛仔布",
-    "phonetic": "/den/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a denim.",
-    "sentenceCn": "妈妈给我买了牛仔布。",
-        "emoji": "📖",
-    "audioFile": "denim.mp3"
-  },
+
 {
     "id": 2506,
     "word": "fur",
@@ -30109,18 +19702,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "lace.mp3"
   },
-{
-    "id": 2509,
-    "word": "knit",
-    "meaning": "针织",
-    "phonetic": "/kni/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a knit.",
-    "sentenceCn": "妈妈给我买了针织。",
-        "emoji": "📖",
-    "audioFile": "knit.mp3"
-  },
+
 {
     "id": 2510,
     "word": "fleece",
@@ -30193,18 +19775,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "striped.mp3"
   },
-{
-    "id": 2516,
-    "word": "plaid",
-    "meaning": "格子图案的",
-    "phonetic": "/pla/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The plaid is soft.",
-    "sentenceCn": "这件格子图案的很柔软。",
-        "emoji": "📖",
-    "audioFile": "plaid.mp3"
-  },
+
 {
     "id": 2517,
     "word": "checkered",
@@ -30229,18 +19800,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "polka dot.mp3"
   },
-{
-    "id": 2519,
-    "word": "floral",
-    "meaning": "花卉图案的",
-    "phonetic": "/flo/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The floral is soft.",
-    "sentenceCn": "这件花卉图案的很柔软。",
-        "emoji": "📖",
-    "audioFile": "floral.mp3"
-  },
+
 {
     "id": 2520,
     "word": "solid",
@@ -30433,1374 +19993,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "swimwear.mp3"
   },
-{
-    "id": 2536,
-    "word": "bathrobe",
-    "meaning": "浴袍",
-    "phonetic": "/ˈbæθroʊb/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a bathrobe.",
-    "sentenceCn": "妈妈给我买了浴袍。",
-        "emoji": "🛁",
-    "audioFile": "bathrobe.mp3"
-  },
-{
-    "id": 2537,
-    "word": "beanie",
-    "meaning": "毛线帽",
-    "phonetic": "/ˈbiːni/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The beanie is soft.",
-    "sentenceCn": "这件毛线帽很柔软。",
-        "emoji": "🧢",
-    "audioFile": "beanie.mp3"
-  },
-{
-    "id": 2538,
-    "word": "belt",
-    "meaning": "腰带",
-    "phonetic": "/belt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a belt.",
-    "sentenceCn": "我穿一件腰带。",
-        "emoji": "🔗",
-    "audioFile": "belt.mp3"
-  },
-{
-    "id": 2539,
-    "word": "beret",
-    "meaning": "贝雷帽",
-    "phonetic": "/bəˈreɪ/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a beret.",
-    "sentenceCn": "妈妈给我买了贝雷帽。",
-        "emoji": "🎨",
-    "audioFile": "beret.mp3"
-  },
-{
-    "id": 2540,
-    "word": "blazer",
-    "meaning": "西装外套",
-    "phonetic": "/ˈbleɪzər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a blazer.",
-    "sentenceCn": "妈妈给我买了西装外套。",
-        "emoji": "🧥",
-    "audioFile": "blazer.mp3"
-  },
-{
-    "id": 2541,
-    "word": "bowtie",
-    "meaning": "蝴蝶结",
-    "phonetic": "/ˈboʊtaɪ/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The bowtie is soft.",
-    "sentenceCn": "这件蝴蝶结很柔软。",
-        "emoji": "🎀",
-    "audioFile": "bowtie.mp3"
-  },
-{
-    "id": 2542,
-    "word": "bra",
-    "meaning": "文胸",
-    "phonetic": "/brɑː/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "The bra is soft.",
-    "sentenceCn": "这件文胸很柔软。",
-        "emoji": "👙",
-    "audioFile": "bra.mp3"
-  },
-{
-    "id": 2543,
-    "word": "bracelet",
-    "meaning": "手链",
-    "phonetic": "/ˈbreɪslɪt/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a bracelet.",
-    "sentenceCn": "我穿一件手链。",
-        "emoji": "📿",
-    "audioFile": "bracelet.mp3"
-  },
-{
-    "id": 2544,
-    "word": "briefs",
-    "meaning": "三角裤",
-    "phonetic": "/briːfs/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The briefs is soft.",
-    "sentenceCn": "这件三角裤很柔软。",
-        "emoji": "🩲",
-    "audioFile": "briefs.mp3"
-  },
-{
-    "id": 2545,
-    "word": "button",
-    "meaning": "纽扣",
-    "phonetic": "/ˈbʌtn/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The button is soft.",
-    "sentenceCn": "这件纽扣很柔软。",
-        "emoji": "🔘",
-    "audioFile": "button.mp3"
-  },
-{
-    "id": 2546,
-    "word": "cap",
-    "meaning": "帽子",
-    "phonetic": "/kæp/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a cap.",
-    "sentenceCn": "妈妈给我买了帽子。",
-        "emoji": "🧢",
-    "audioFile": "cap.mp3"
-  },
-{
-    "id": 2547,
-    "word": "cardigan",
-    "meaning": "开衫",
-    "phonetic": "/ˈkɑːrdɪɡən/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a cardigan.",
-    "sentenceCn": "我穿一件开衫。",
-        "emoji": "🧥",
-    "audioFile": "cardigan.mp3"
-  },
-{
-    "id": 2548,
-    "word": "cashmere",
-    "meaning": "羊绒",
-    "phonetic": "/ˈkæʃmɪr/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a cashmere.",
-    "sentenceCn": "我穿一件羊绒。",
-        "emoji": "🐐",
-    "audioFile": "cashmere.mp3"
-  },
-{
-    "id": 2549,
-    "word": "casual",
-    "meaning": "休闲",
-    "phonetic": "/ˈkæʒuəl/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a casual.",
-    "sentenceCn": "妈妈给我买了休闲。",
-        "emoji": "👕",
-    "audioFile": "casual.mp3"
-  },
-{
-    "id": 2550,
-    "word": "collar",
-    "meaning": "领子",
-    "phonetic": "/ˈkɑːlər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a collar.",
-    "sentenceCn": "妈妈给我买了领子。",
-        "emoji": "👔",
-    "audioFile": "collar.mp3"
-  },
-{
-    "id": 2551,
-    "word": "corduroy",
-    "meaning": "灯芯绒",
-    "phonetic": "/ˈkɔːrdərɔɪ/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The corduroy is soft.",
-    "sentenceCn": "这件灯芯绒很柔软。",
-        "emoji": "👖",
-    "audioFile": "corduroy.mp3"
-  },
-{
-    "id": 2552,
-    "word": "cotton",
-    "meaning": "棉",
-    "phonetic": "/ˈkɑːtn/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a cotton.",
-    "sentenceCn": "妈妈给我买了棉。",
-        "emoji": "👕",
-    "audioFile": "cotton.mp3"
-  },
-{
-    "id": 2553,
-    "word": "cuff",
-    "meaning": "袖口",
-    "phonetic": "/kʌf/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a cuff.",
-    "sentenceCn": "妈妈给我买了袖口。",
-        "emoji": "👔",
-    "audioFile": "cuff.mp3"
-  },
-{
-    "id": 2554,
-    "word": "denim",
-    "meaning": "牛仔布",
-    "phonetic": "/ˈdenɪm/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a denim.",
-    "sentenceCn": "妈妈给我买了牛仔布。",
-        "emoji": "👖",
-    "audioFile": "denim.mp3"
-  },
-{
-    "id": 2555,
-    "word": "diaper",
-    "meaning": "尿布",
-    "phonetic": "/ˈdaɪpər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a diaper.",
-    "sentenceCn": "我穿一件尿布。",
-        "emoji": "👶",
-    "audioFile": "diaper.mp3"
-  },
-{
-    "id": 2556,
-    "word": "earrings",
-    "meaning": "耳环",
-    "phonetic": "/ˈɪrɪŋz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a earrings.",
-    "sentenceCn": "妈妈给我买了耳环。",
-        "emoji": "💎",
-    "audioFile": "earrings.mp3"
-  },
-{
-    "id": 2557,
-    "word": "fedora",
-    "meaning": "软呢帽",
-    "phonetic": "/fɪˈdɔːrə/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The fedora is soft.",
-    "sentenceCn": "这件软呢帽很柔软。",
-        "emoji": "🎩",
-    "audioFile": "fedora.mp3"
-  },
-{
-    "id": 2558,
-    "word": "fit",
-    "meaning": "合身",
-    "phonetic": "/fɪt/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "The fit is soft.",
-    "sentenceCn": "这件合身很柔软。",
-        "emoji": "👕",
-    "audioFile": "fit.mp3"
-  },
-{
-    "id": 2559,
-    "word": "flannel",
-    "meaning": "法兰绒",
-    "phonetic": "/ˈflænl/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a flannel.",
-    "sentenceCn": "妈妈给我买了法兰绒。",
-        "emoji": "🧣",
-    "audioFile": "flannel.mp3"
-  },
-{
-    "id": 2560,
-    "word": "fleece",
-    "meaning": "抓绒",
-    "phonetic": "/fliːs/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The fleece is soft.",
-    "sentenceCn": "这件抓绒很柔软。",
-        "emoji": "🐑",
-    "audioFile": "fleece.mp3"
-  },
-{
-    "id": 2561,
-    "word": "flipflops",
-    "meaning": "人字拖",
-    "phonetic": "/ˈflɪpflɑːps/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The flipflops is soft.",
-    "sentenceCn": "这件人字拖很柔软。",
-        "emoji": "🩴",
-    "audioFile": "flipflops.mp3"
-  },
-{
-    "id": 2562,
-    "word": "floral",
-    "meaning": "印花",
-    "phonetic": "/ˈflɔːrəl/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a floral.",
-    "sentenceCn": "我穿一件印花。",
-        "emoji": "🌸",
-    "audioFile": "floral.mp3"
-  },
-{
-    "id": 2563,
-    "word": "formal",
-    "meaning": "正式",
-    "phonetic": "/ˈfɔːrml/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a formal.",
-    "sentenceCn": "妈妈给我买了正式。",
-        "emoji": "👔",
-    "audioFile": "formal.mp3"
-  },
-{
-    "id": 2564,
-    "word": "fur",
-    "meaning": "毛皮",
-    "phonetic": "/fɜːr/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a fur.",
-    "sentenceCn": "妈妈给我买了毛皮。",
-        "emoji": "🐾",
-    "audioFile": "fur.mp3"
-  },
-{
-    "id": 2565,
-    "word": "glasses",
-    "meaning": "眼镜",
-    "phonetic": "/ˈɡlæsɪz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The glasses is soft.",
-    "sentenceCn": "这件眼镜很柔软。",
-        "emoji": "👓",
-    "audioFile": "glasses.mp3"
-  },
-{
-    "id": 2566,
-    "word": "gloves",
-    "meaning": "手套",
-    "phonetic": "/ɡlʌvz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a gloves.",
-    "sentenceCn": "妈妈给我买了手套。",
-        "emoji": "🧤",
-    "audioFile": "gloves.mp3"
-  },
-{
-    "id": 2567,
-    "word": "goggles",
-    "meaning": "护目镜",
-    "phonetic": "/ˈɡɑːɡlz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The goggles is soft.",
-    "sentenceCn": "这件护目镜很柔软。",
-        "emoji": "🥽",
-    "audioFile": "goggles.mp3"
-  },
-{
-    "id": 2568,
-    "word": "gown",
-    "meaning": "礼服",
-    "phonetic": "/ɡaʊn/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a gown.",
-    "sentenceCn": "我穿一件礼服。",
-        "emoji": "👗",
-    "audioFile": "gown.mp3"
-  },
-{
-    "id": 2569,
-    "word": "hat",
-    "meaning": "帽子",
-    "phonetic": "/hæt/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a hat.",
-    "sentenceCn": "妈妈给我买了帽子。",
-        "emoji": "🎩",
-    "audioFile": "hat.mp3"
-  },
-{
-    "id": 2570,
-    "word": "headband",
-    "meaning": "发带",
-    "phonetic": "/ˈhedbænd/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a headband.",
-    "sentenceCn": "我穿一件发带。",
-        "emoji": "🎀",
-    "audioFile": "headband.mp3"
-  },
-{
-    "id": 2571,
-    "word": "heels",
-    "meaning": "高跟鞋",
-    "phonetic": "/hiːlz/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a heels.",
-    "sentenceCn": "妈妈给我买了高跟鞋。",
-        "emoji": "👠",
-    "audioFile": "heels.mp3"
-  },
-{
-    "id": 2572,
-    "word": "helmet",
-    "meaning": "头盔",
-    "phonetic": "/ˈhelmɪt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a helmet.",
-    "sentenceCn": "我穿一件头盔。",
-        "emoji": "⛑️",
-    "audioFile": "helmet.mp3"
-  },
-{
-    "id": 2573,
-    "word": "hem",
-    "meaning": "衣边",
-    "phonetic": "/hem/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "The hem is soft.",
-    "sentenceCn": "这件衣边很柔软。",
-        "emoji": "👗",
-    "audioFile": "hem.mp3"
-  },
-{
-    "id": 2574,
-    "word": "hoodie",
-    "meaning": "连帽衫",
-    "phonetic": "/ˈhʊdi/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a hoodie.",
-    "sentenceCn": "妈妈给我买了连帽衫。",
-        "emoji": "🧥",
-    "audioFile": "hoodie.mp3"
-  },
-{
-    "id": 2575,
-    "word": "jacket",
-    "meaning": "夹克",
-    "phonetic": "/ˈdʒækɪt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a jacket.",
-    "sentenceCn": "妈妈给我买了夹克。",
-        "emoji": "🧥",
-    "audioFile": "jacket.mp3"
-  },
-{
-    "id": 2576,
-    "word": "jeans",
-    "meaning": "牛仔裤",
-    "phonetic": "/dʒiːnz/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a jeans.",
-    "sentenceCn": "我穿一件牛仔裤。",
-        "emoji": "👖",
-    "audioFile": "jeans.mp3"
-  },
-{
-    "id": 2577,
-    "word": "jumpsuit",
-    "meaning": "连体衣",
-    "phonetic": "/ˈdʒʌmpsuːt/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a jumpsuit.",
-    "sentenceCn": "我穿一件连体衣。",
-        "emoji": "👗",
-    "audioFile": "jumpsuit.mp3"
-  },
-{
-    "id": 2578,
-    "word": "knit",
-    "meaning": "针织",
-    "phonetic": "/nɪt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a knit.",
-    "sentenceCn": "我穿一件针织。",
-        "emoji": "🧶",
-    "audioFile": "knit.mp3"
-  },
-{
-    "id": 2579,
-    "word": "lace",
-    "meaning": "蕾丝",
-    "phonetic": "/leɪs/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a lace.",
-    "sentenceCn": "妈妈给我买了蕾丝。",
-        "emoji": "🎀",
-    "audioFile": "lace.mp3"
-  },
-{
-    "id": 2580,
-    "word": "large",
-    "meaning": "大号",
-    "phonetic": "/lɑːrdʒ/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a large.",
-    "sentenceCn": "妈妈给我买了大号。",
-        "emoji": "👕",
-    "audioFile": "large.mp3"
-  },
-{
-    "id": 2581,
-    "word": "leather",
-    "meaning": "皮革",
-    "phonetic": "/ˈleðər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a leather.",
-    "sentenceCn": "我穿一件皮革。",
-        "emoji": "👜",
-    "audioFile": "leather.mp3"
-  },
-{
-    "id": 2582,
-    "word": "leggings",
-    "meaning": "打底裤",
-    "phonetic": "/ˈleɡɪŋz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The leggings is soft.",
-    "sentenceCn": "这件打底裤很柔软。",
-        "emoji": "🩱",
-    "audioFile": "leggings.mp3"
-  },
-{
-    "id": 2583,
-    "word": "linen",
-    "meaning": "亚麻",
-    "phonetic": "/ˈlɪnɪn/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a linen.",
-    "sentenceCn": "我穿一件亚麻。",
-        "emoji": "👕",
-    "audioFile": "linen.mp3"
-  },
-{
-    "id": 2584,
-    "word": "lining",
-    "meaning": "衬里",
-    "phonetic": "/ˈlaɪnɪŋ/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The lining is soft.",
-    "sentenceCn": "这件衬里很柔软。",
-        "emoji": "👔",
-    "audioFile": "lining.mp3"
-  },
-{
-    "id": 2585,
-    "word": "loafers",
-    "meaning": "乐福鞋",
-    "phonetic": "/ˈloʊfərz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a loafers.",
-    "sentenceCn": "我穿一件乐福鞋。",
-        "emoji": "👞",
-    "audioFile": "loafers.mp3"
-  },
-{
-    "id": 2586,
-    "word": "loose",
-    "meaning": "宽松",
-    "phonetic": "/luːs/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a loose.",
-    "sentenceCn": "妈妈给我买了宽松。",
-        "emoji": "👕",
-    "audioFile": "loose.mp3"
-  },
-{
-    "id": 2587,
-    "word": "mask",
-    "meaning": "口罩",
-    "phonetic": "/mæsk/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The mask is soft.",
-    "sentenceCn": "这件口罩很柔软。",
-        "emoji": "😷",
-    "audioFile": "mask.mp3"
-  },
-{
-    "id": 2588,
-    "word": "medium",
-    "meaning": "中号",
-    "phonetic": "/ˈmiːdiəm/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a medium.",
-    "sentenceCn": "我穿一件中号。",
-        "emoji": "👕",
-    "audioFile": "medium.mp3"
-  },
-{
-    "id": 2589,
-    "word": "mittens",
-    "meaning": "连指手套",
-    "phonetic": "/ˈmɪtnz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a mittens.",
-    "sentenceCn": "妈妈给我买了连指手套。",
-        "emoji": "🧤",
-    "audioFile": "mittens.mp3"
-  },
-{
-    "id": 2590,
-    "word": "moccasins",
-    "meaning": "莫卡辛",
-    "phonetic": "/ˈmɑːkəsɪnz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a moccasins.",
-    "sentenceCn": "我穿一件莫卡辛。",
-        "emoji": "👞",
-    "audioFile": "moccasins.mp3"
-  },
-{
-    "id": 2591,
-    "word": "necklace",
-    "meaning": "项链",
-    "phonetic": "/ˈnekləs/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a necklace.",
-    "sentenceCn": "妈妈给我买了项链。",
-        "emoji": "📿",
-    "audioFile": "necklace.mp3"
-  },
-{
-    "id": 2592,
-    "word": "necktie",
-    "meaning": "领带",
-    "phonetic": "/ˈnektaɪ/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a necktie.",
-    "sentenceCn": "我穿一件领带。",
-        "emoji": "👔",
-    "audioFile": "necktie.mp3"
-  },
-{
-    "id": 2593,
-    "word": "nightgown",
-    "meaning": "睡袍",
-    "phonetic": "/ˈnaɪtɡaʊn/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a nightgown.",
-    "sentenceCn": "妈妈给我买了睡袍。",
-        "emoji": "👘",
-    "audioFile": "nightgown.mp3"
-  },
-{
-    "id": 2594,
-    "word": "nylon",
-    "meaning": "尼龙",
-    "phonetic": "/ˈnaɪlɑːn/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The nylon is soft.",
-    "sentenceCn": "这件尼龙很柔软。",
-        "emoji": "🧵",
-    "audioFile": "nylon.mp3"
-  },
-{
-    "id": 2595,
-    "word": "overalls",
-    "meaning": "工装裤",
-    "phonetic": "/ˈoʊvərɔːlz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a overalls.",
-    "sentenceCn": "我穿一件工装裤。",
-        "emoji": "👖",
-    "audioFile": "overalls.mp3"
-  },
-{
-    "id": 2596,
-    "word": "oxfords",
-    "meaning": "牛津鞋",
-    "phonetic": "/ˈɑːksfərdz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a oxfords.",
-    "sentenceCn": "我穿一件牛津鞋。",
-        "emoji": "👞",
-    "audioFile": "oxfords.mp3"
-  },
-{
-    "id": 2597,
-    "word": "pajamas",
-    "meaning": "睡衣",
-    "phonetic": "/pəˈdʒɑːməz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a pajamas.",
-    "sentenceCn": "妈妈给我买了睡衣。",
-        "emoji": "🛌",
-    "audioFile": "pajamas.mp3"
-  },
-{
-    "id": 2598,
-    "word": "pants",
-    "meaning": "裤子",
-    "phonetic": "/pænts/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The pants is soft.",
-    "sentenceCn": "这件裤子很柔软。",
-        "emoji": "👖",
-    "audioFile": "pants.mp3"
-  },
-{
-    "id": 2599,
-    "word": "parka",
-    "meaning": "派克大衣",
-    "phonetic": "/ˈpɑːrkə/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The parka is soft.",
-    "sentenceCn": "这件派克大衣很柔软。",
-        "emoji": "🧥",
-    "audioFile": "parka.mp3"
-  },
-{
-    "id": 2600,
-    "word": "platform",
-    "meaning": "厚底鞋",
-    "phonetic": "/ˈplætfɔːrm/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a platform.",
-    "sentenceCn": "妈妈给我买了厚底鞋。",
-        "emoji": "👠",
-    "audioFile": "platform.mp3"
-  },
-{
-    "id": 2601,
-    "word": "pocket",
-    "meaning": "口袋",
-    "phonetic": "/ˈpɑːkɪt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The pocket is soft.",
-    "sentenceCn": "这件口袋很柔软。",
-        "emoji": "👕",
-    "audioFile": "pocket.mp3"
-  },
-{
-    "id": 2602,
-    "word": "polo",
-    "meaning": "Polo衫",
-    "phonetic": "/ˈpoʊloʊ/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The polo is soft.",
-    "sentenceCn": "这件Polo衫很柔软。",
-        "emoji": "👕",
-    "audioFile": "polo.mp3"
-  },
-{
-    "id": 2603,
-    "word": "polyester",
-    "meaning": "涤纶",
-    "phonetic": "/ˌpɑːliˈestər/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a polyester.",
-    "sentenceCn": "我穿一件涤纶。",
-        "emoji": "🧵",
-    "audioFile": "polyester.mp3"
-  },
-{
-    "id": 2604,
-    "word": "printed",
-    "meaning": "印花",
-    "phonetic": "/ˈprɪntɪd/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The printed is soft.",
-    "sentenceCn": "这件印花很柔软。",
-        "emoji": "👕",
-    "audioFile": "printed.mp3"
-  },
-{
-    "id": 2605,
-    "word": "pumps",
-    "meaning": "高跟鞋",
-    "phonetic": "/pʌmps/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a pumps.",
-    "sentenceCn": "我穿一件高跟鞋。",
-        "emoji": "👠",
-    "audioFile": "pumps.mp3"
-  },
-{
-    "id": 2606,
-    "word": "raincoat",
-    "meaning": "雨衣",
-    "phonetic": "/ˈreɪnkoʊt/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a raincoat.",
-    "sentenceCn": "我穿一件雨衣。",
-        "emoji": "🧥",
-    "audioFile": "raincoat.mp3"
-  },
-{
-    "id": 2607,
-    "word": "rings",
-    "meaning": "戒指",
-    "phonetic": "/rɪŋz/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The rings is soft.",
-    "sentenceCn": "这件戒指很柔软。",
-        "emoji": "💍",
-    "audioFile": "rings.mp3"
-  },
-{
-    "id": 2608,
-    "word": "robe",
-    "meaning": "长袍",
-    "phonetic": "/roʊb/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a robe.",
-    "sentenceCn": "我穿一件长袍。",
-        "emoji": "👘",
-    "audioFile": "robe.mp3"
-  },
-{
-    "id": 2609,
-    "word": "sandals",
-    "meaning": "凉鞋",
-    "phonetic": "/ˈsændlz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The sandals is soft.",
-    "sentenceCn": "这件凉鞋很柔软。",
-        "emoji": "🩴",
-    "audioFile": "sandals.mp3"
-  },
-{
-    "id": 2610,
-    "word": "scarf",
-    "meaning": "围巾",
-    "phonetic": "/skɑːrf/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The scarf is soft.",
-    "sentenceCn": "这件围巾很柔软。",
-        "emoji": "🧣",
-    "audioFile": "scarf.mp3"
-  },
-{
-    "id": 2611,
-    "word": "seam",
-    "meaning": "接缝",
-    "phonetic": "/siːm/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a seam.",
-    "sentenceCn": "我穿一件接缝。",
-        "emoji": "🧵",
-    "audioFile": "seam.mp3"
-  },
-{
-    "id": 2612,
-    "word": "shawl",
-    "meaning": "披肩",
-    "phonetic": "/ʃɔːl/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a shawl.",
-    "sentenceCn": "我穿一件披肩。",
-        "emoji": "🧣",
-    "audioFile": "shawl.mp3"
-  },
-{
-    "id": 2613,
-    "word": "shorts",
-    "meaning": "短裤",
-    "phonetic": "/ʃɔːrts/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The shorts is soft.",
-    "sentenceCn": "这件短裤很柔软。",
-        "emoji": "🩳",
-    "audioFile": "shorts.mp3"
-  },
-{
-    "id": 2614,
-    "word": "silk",
-    "meaning": "丝绸",
-    "phonetic": "/sɪlk/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The silk is soft.",
-    "sentenceCn": "这件丝绸很柔软。",
-        "emoji": "👘",
-    "audioFile": "silk.mp3"
-  },
-{
-    "id": 2615,
-    "word": "size",
-    "meaning": "尺码",
-    "phonetic": "/saɪz/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a size.",
-    "sentenceCn": "我穿一件尺码。",
-        "emoji": "📏",
-    "audioFile": "size.mp3"
-  },
-{
-    "id": 2616,
-    "word": "skirt",
-    "meaning": "裙子",
-    "phonetic": "/skɜːrt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The skirt is soft.",
-    "sentenceCn": "这件裙子很柔软。",
-        "emoji": "👗",
-    "audioFile": "skirt.mp3"
-  },
-{
-    "id": 2617,
-    "word": "sleeve",
-    "meaning": "袖子",
-    "phonetic": "/sliːv/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The sleeve is soft.",
-    "sentenceCn": "这件袖子很柔软。",
-        "emoji": "👕",
-    "audioFile": "sleeve.mp3"
-  },
-{
-    "id": 2618,
-    "word": "slippers",
-    "meaning": "拖鞋",
-    "phonetic": "/ˈslɪpərz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The slippers is soft.",
-    "sentenceCn": "这件拖鞋很柔软。",
-        "emoji": "🩴",
-    "audioFile": "slippers.mp3"
-  },
-{
-    "id": 2619,
-    "word": "small",
-    "meaning": "小号",
-    "phonetic": "/smɔːl/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The small is soft.",
-    "sentenceCn": "这件小号很柔软。",
-        "emoji": "👕",
-    "audioFile": "small.mp3"
-  },
-{
-    "id": 2620,
-    "word": "sneakers",
-    "meaning": "运动鞋",
-    "phonetic": "/ˈsniːkərz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The sneakers is soft.",
-    "sentenceCn": "这件运动鞋很柔软。",
-        "emoji": "👟",
-    "audioFile": "sneakers.mp3"
-  },
-{
-    "id": 2621,
-    "word": "socks",
-    "meaning": "袜子",
-    "phonetic": "/sɑːks/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a socks.",
-    "sentenceCn": "妈妈给我买了袜子。",
-        "emoji": "🧦",
-    "audioFile": "socks.mp3"
-  },
-{
-    "id": 2622,
-    "word": "solid",
-    "meaning": "纯色",
-    "phonetic": "/ˈsɑːlɪd/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The solid is soft.",
-    "sentenceCn": "这件纯色很柔软。",
-        "emoji": "🎨",
-    "audioFile": "solid.mp3"
-  },
-{
-    "id": 2623,
-    "word": "sportswear",
-    "meaning": "运动服",
-    "phonetic": "/ˈspɔːrtswer/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a sportswear.",
-    "sentenceCn": "妈妈给我买了运动服。",
-        "emoji": "🏃",
-    "audioFile": "sportswear.mp3"
-  },
-{
-    "id": 2624,
-    "word": "stockings",
-    "meaning": "长袜",
-    "phonetic": "/ˈstɑːkɪŋz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The stockings is soft.",
-    "sentenceCn": "这件长袜很柔软。",
-        "emoji": "🧦",
-    "audioFile": "stockings.mp3"
-  },
-{
-    "id": 2625,
-    "word": "striped",
-    "meaning": "条纹",
-    "phonetic": "/straɪpt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The striped is soft.",
-    "sentenceCn": "这件条纹很柔软。",
-        "emoji": "👕",
-    "audioFile": "striped.mp3"
-  },
-{
-    "id": 2626,
-    "word": "suit",
-    "meaning": "西装",
-    "phonetic": "/suːt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The suit is soft.",
-    "sentenceCn": "这件西装很柔软。",
-        "emoji": "🕴️",
-    "audioFile": "suit.mp3"
-  },
-{
-    "id": 2627,
-    "word": "sunglasses",
-    "meaning": "太阳镜",
-    "phonetic": "/ˈsʌnɡlæsɪz/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "The sunglasses is soft.",
-    "sentenceCn": "这件太阳镜很柔软。",
-        "emoji": "🕶️",
-    "audioFile": "sunglasses.mp3"
-  },
-{
-    "id": 2628,
-    "word": "suspenders",
-    "meaning": "吊带",
-    "phonetic": "/səˈspendərz/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "The suspenders is soft.",
-    "sentenceCn": "这件吊带很柔软。",
-        "emoji": "👖",
-    "audioFile": "suspenders.mp3"
-  },
-{
-    "id": 2629,
-    "word": "swimwear",
-    "meaning": "泳装",
-    "phonetic": "/ˈswɪmwer/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The swimwear is soft.",
-    "sentenceCn": "这件泳装很柔软。",
-        "emoji": "🩱",
-    "audioFile": "swimwear.mp3"
-  },
-{
-    "id": 2630,
-    "word": "t-shirt",
-    "meaning": "T恤",
-    "phonetic": "/ˈtiːʃɜːrt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I see a t-shirt.",
-    "sentenceCn": "我看到一个T恤。",
-        "emoji": "👕",
-    "audioFile": "t-shirt.mp3"
-  },
-{
-    "id": 2631,
-    "word": "tie",
-    "meaning": "领带",
-    "phonetic": "/taɪ/",
-    "difficulty": 1,
-    "theme": "衣服 Clothes",
-    "sentence": "The tie is soft.",
-    "sentenceCn": "这件领带很柔软。",
-        "emoji": "👔",
-    "audioFile": "tie.mp3"
-  },
-{
-    "id": 2632,
-    "word": "tight",
-    "meaning": "紧",
-    "phonetic": "/taɪt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a tight.",
-    "sentenceCn": "妈妈给我买了紧。",
-        "emoji": "👕",
-    "audioFile": "tight.mp3"
-  },
-{
-    "id": 2633,
-    "word": "tights",
-    "meaning": "紧身袜",
-    "phonetic": "/taɪts/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a tights.",
-    "sentenceCn": "妈妈给我买了紧身袜。",
-        "emoji": "🦵",
-    "audioFile": "tights.mp3"
-  },
-{
-    "id": 2634,
-    "word": "trousers",
-    "meaning": "西裤",
-    "phonetic": "/ˈtraʊzərz/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "The trousers is soft.",
-    "sentenceCn": "这件西裤很柔软。",
-        "emoji": "👖",
-    "audioFile": "trousers.mp3"
-  },
-{
-    "id": 2635,
-    "word": "tweed",
-    "meaning": "粗花呢",
-    "phonetic": "/twiːd/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The tweed is soft.",
-    "sentenceCn": "这件粗花呢很柔软。",
-        "emoji": "🧥",
-    "audioFile": "tweed.mp3"
-  },
-{
-    "id": 2636,
-    "word": "underwear",
-    "meaning": "内衣",
-    "phonetic": "/ˈʌndərwer/",
-    "difficulty": 4,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a underwear.",
-    "sentenceCn": "我穿一件内衣。",
-        "emoji": "🩲",
-    "audioFile": "underwear.mp3"
-  },
-{
-    "id": 2637,
-    "word": "uniform",
-    "meaning": "制服",
-    "phonetic": "/ˈjuːnɪfɔːrm/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a uniform.",
-    "sentenceCn": "妈妈给我买了制服。",
-        "emoji": "👮",
-    "audioFile": "uniform.mp3"
-  },
-{
-    "id": 2638,
-    "word": "velvet",
-    "meaning": "天鹅绒",
-    "phonetic": "/ˈvelvɪt/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a velvet.",
-    "sentenceCn": "妈妈给我买了天鹅绒。",
-        "emoji": "👗",
-    "audioFile": "velvet.mp3"
-  },
-{
-    "id": 2639,
-    "word": "vest",
-    "meaning": "马甲",
-    "phonetic": "/vest/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The vest is soft.",
-    "sentenceCn": "这件马甲很柔软。",
-        "emoji": "🧥",
-    "audioFile": "vest.mp3"
-  },
-{
-    "id": 2640,
-    "word": "watch",
-    "meaning": "手表",
-    "phonetic": "/wɑːtʃ/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a watch.",
-    "sentenceCn": "妈妈给我买了手表。",
-        "emoji": "⌚",
-    "audioFile": "watch.mp3"
-  },
-{
-    "id": 2641,
-    "word": "wedges",
-    "meaning": "坡跟鞋",
-    "phonetic": "/wedʒɪz/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The wedges is soft.",
-    "sentenceCn": "这件坡跟鞋很柔软。",
-        "emoji": "👠",
-    "audioFile": "wedges.mp3"
-  },
-{
-    "id": 2642,
-    "word": "windbreaker",
-    "meaning": "风衣",
-    "phonetic": "/ˈwɪndbreɪkər/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "The windbreaker is soft.",
-    "sentenceCn": "这件风衣很柔软。",
-        "emoji": "🧥",
-    "audioFile": "windbreaker.mp3"
-  },
-{
-    "id": 2643,
-    "word": "wool",
-    "meaning": "羊毛",
-    "phonetic": "/wʊl/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a wool.",
-    "sentenceCn": "妈妈给我买了羊毛。",
-        "emoji": "🐑",
-    "audioFile": "wool.mp3"
-  },
-{
-    "id": 2644,
-    "word": "zipper",
-    "meaning": "拉链",
-    "phonetic": "/ˈzɪpər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The zipper is soft.",
-    "sentenceCn": "这件拉链很柔软。",
-        "emoji": "🤐",
-    "audioFile": "zipper.mp3"
-  },
-{
-    "id": 2645,
-    "word": "sweater",
-    "meaning": "毛衣",
-    "phonetic": "/ˈswetər/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "The sweater is soft.",
-    "sentenceCn": "这件毛衣很柔软。",
-        "emoji": "🧶",
-    "audioFile": "sweater.mp3"
-  },
-{
-    "id": 2646,
-    "word": "shirt",
-    "meaning": "衬衫",
-    "phonetic": "/ʃɜːrt/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "The shirt is soft.",
-    "sentenceCn": "这件衬衫很柔软。",
-        "emoji": "👔",
-    "audioFile": "shirt.mp3"
-  },
-{
-    "id": 2647,
-    "word": "blouse",
-    "meaning": "女衬衫",
-    "phonetic": "/blaʊs/",
-    "difficulty": 3,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a blouse.",
-    "sentenceCn": "我穿一件女衬衫。",
-        "emoji": "👚",
-    "audioFile": "blouse.mp3"
-  },
-{
-    "id": 2648,
-    "word": "shortsleeve",
-    "meaning": "短袖",
-    "phonetic": "/shor/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "The shortsleeve is soft.",
-    "sentenceCn": "这件短袖很柔软。",
-        "emoji": "👕",
-    "audioFile": "shortsleeve.mp3"
-  },
-{
-    "id": 2649,
-    "word": "longsleeve",
-    "meaning": "长袖",
-    "phonetic": "/long/",
-    "difficulty": 5,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a longsleeve.",
-    "sentenceCn": "妈妈给我买了长袖。",
-        "emoji": "👕",
-    "audioFile": "longsleeve.mp3"
-  },
+
   {
     "id": 2650,
     "word": "accessory",
@@ -32233,18 +20426,7 @@ export const words: WordEntry[] = [
         "emoji": "👘",
     "audioFile": "sari.mp3"
   },
-  {
-    "id": 2686,
-    "word": "sole",
-    "meaning": "鞋底",
-    "phonetic": "/sole/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "Mom bought me a sole.",
-    "sentenceCn": "妈妈给我买了鞋底。",
-        "emoji": "👟",
-    "audioFile": "sole.mp3"
-  },
+
   {
     "id": 2687,
     "word": "strap",
@@ -32257,18 +20439,7 @@ export const words: WordEntry[] = [
         "emoji": "🩴",
     "audioFile": "strap.mp3"
   },
-  {
-    "id": 2688,
-    "word": "stud",
-    "meaning": "饰钉",
-    "phonetic": "/stud/",
-    "difficulty": 2,
-    "theme": "衣服 Clothes",
-    "sentence": "I wear a stud.",
-    "sentenceCn": "我穿一件饰钉。",
-        "emoji": "💎",
-    "audioFile": "stud.mp3"
-  },
+
   {
     "id": 2689,
     "word": "tag",
@@ -32413,18 +20584,7 @@ export const words: WordEntry[] = [
         "emoji": "🧴",
     "audioFile": "perfume.mp3"
   },
-{
-    "id": 2701,
-    "word": "home",
-    "meaning": "家",
-    "phonetic": "/hom/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I always home in the morning.",
-    "sentenceCn": "我早上总是家。",
-        "emoji": "📖",
-    "audioFile": "home.mp3"
-  },
+
 {
     "id": 2702,
     "word": "house",
@@ -32533,18 +20693,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "dining room.mp3"
   },
-{
-    "id": 2711,
-    "word": "study",
-    "meaning": "书房",
-    "phonetic": "/stu/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I always study in the morning.",
-    "sentenceCn": "我早上总是书房。",
-        "emoji": "📖",
-    "audioFile": "study.mp3"
-  },
+
 {
     "id": 2712,
     "word": "hallway",
@@ -33145,18 +21294,7 @@ export const words: WordEntry[] = [
         "emoji": "🔑",
     "audioFile": "key.mp3"
   },
-{
-    "id": 2762,
-    "word": "lock",
-    "meaning": "锁",
-    "phonetic": "/loc/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I lock every day.",
-    "sentenceCn": "我每天锁。",
-        "emoji": "📖",
-    "audioFile": "lock.mp3"
-  },
+
 {
     "id": 2763,
     "word": "chain",
@@ -33253,18 +21391,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "gas.mp3"
   },
-{
-    "id": 2771,
-    "word": "water",
-    "meaning": "水",
-    "phonetic": "/wat/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I water every day.",
-    "sentenceCn": "我每天水。",
-        "emoji": "💧",
-    "audioFile": "water.mp3"
-  },
+
 {
     "id": 2772,
     "word": "pipe",
@@ -33277,18 +21404,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "pipe.mp3"
   },
-{
-    "id": 2773,
-    "word": "tap",
-    "meaning": "水龙头",
-    "phonetic": "/tap/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always tap in the morning.",
-    "sentenceCn": "我早上总是水龙头。",
-        "emoji": "📖",
-    "audioFile": "tap.mp3"
-  },
+
 {
     "id": 2774,
     "word": "sink",
@@ -33373,18 +21489,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "compost.mp3"
   },
-{
-    "id": 2781,
-    "word": "clean",
-    "meaning": "干净的",
-    "phonetic": "/cle/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always clean in the morning.",
-    "sentenceCn": "我早上总是干净的。",
-        "emoji": "📖",
-    "audioFile": "clean.mp3"
-  },
+
 {
     "id": 2782,
     "word": "tidy",
@@ -33829,18 +21934,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "mall.mp3"
   },
-{
-    "id": 2819,
-    "word": "stand",
-    "meaning": "摊位",
-    "phonetic": "/sta/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always stand in the morning.",
-    "sentenceCn": "我早上总是摊位。",
-        "emoji": "📖",
-    "audioFile": "stand.mp3"
-  },
+
 {
     "id": 2820,
     "word": "cart",
@@ -34141,18 +22235,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "park.mp3"
   },
-{
-    "id": 2845,
-    "word": "playground",
-    "meaning": "游乐场",
-    "phonetic": "/pla/",
-    "difficulty": 5,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to playground now.",
-    "sentenceCn": "该去游乐场了。",
-        "emoji": "📖",
-    "audioFile": "playground.mp3"
-  },
+
 {
     "id": 2846,
     "word": "bench",
@@ -34213,18 +22296,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "lawn.mp3"
   },
-{
-    "id": 2851,
-    "word": "library",
-    "meaning": "图书馆",
-    "phonetic": "/lib/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I library every day.",
-    "sentenceCn": "我每天图书馆。",
-        "emoji": "📖",
-    "audioFile": "library.mp3"
-  },
+
 {
     "id": 2852,
     "word": "book",
@@ -34273,18 +22345,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "librarian.mp3"
   },
-{
-    "id": 2856,
-    "word": "quiet",
-    "meaning": "安静的",
-    "phonetic": "/qui/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I always quiet in the morning.",
-    "sentenceCn": "我早上总是安静的。",
-        "emoji": "📖",
-    "audioFile": "quiet.mp3"
-  },
+
 {
     "id": 2857,
     "word": "transport",
@@ -34309,18 +22370,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "bus.mp3"
   },
-{
-    "id": 2859,
-    "word": "train",
-    "meaning": "火车",
-    "phonetic": "/tra/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I always train in the morning.",
-    "sentenceCn": "我早上总是火车。",
-        "emoji": "📖",
-    "audioFile": "train.mp3"
-  },
+
 {
     "id": 2860,
     "word": "taxi",
@@ -34525,54 +22575,7 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "habit.mp3"
   },
-{
-    "id": 2877,
-    "word": "morning",
-    "meaning": "早晨",
-    "phonetic": "/mor/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I morning every day.",
-    "sentenceCn": "我每天早晨。",
-        "emoji": "🌅",
-    "audioFile": "morning.mp3"
-  },
-{
-    "id": 2878,
-    "word": "evening",
-    "meaning": "晚上",
-    "phonetic": "/eve/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I always evening in the morning.",
-    "sentenceCn": "我早上总是晚上。",
-        "emoji": "🌆",
-    "audioFile": "evening.mp3"
-  },
-{
-    "id": 2879,
-    "word": "schedule",
-    "meaning": "日程",
-    "phonetic": "/sch/",
-    "difficulty": 6,
-    "theme": "日常 Daily Life",
-    "sentence": "I always schedule in the morning.",
-    "sentenceCn": "我早上总是日程。",
-        "emoji": "📖",
-    "audioFile": "schedule.mp3"
-  },
-{
-    "id": 2880,
-    "word": "work",
-    "meaning": "工作",
-    "phonetic": "/wor/",
-    "difficulty": 7,
-    "theme": "日常 Daily Life",
-    "sentence": "I work every day.",
-    "sentenceCn": "我每天工作。",
-        "emoji": "📖",
-    "audioFile": "work.mp3"
-  },
+
 {
     "id": 2881,
     "word": "job",
@@ -34729,1339 +22732,9 @@ export const words: WordEntry[] = [
         "emoji": "📖",
     "audioFile": "value.mp3"
   },
-{
-    "id": 2894,
-    "word": "account",
-    "meaning": "账户",
-    "phonetic": "/əˈkaʊnt/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always account in the morning.",
-    "sentenceCn": "我早上总是账户。",
-        "emoji": "🏦",
-    "audioFile": "account.mp3"
-  },
-{
-    "id": 2895,
-    "word": "alarm",
-    "meaning": "警报",
-    "phonetic": "/əˈlɑːrm/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always alarm in the morning.",
-    "sentenceCn": "我早上总是警报。",
-        "emoji": "🚨",
-    "audioFile": "alarm.mp3"
-  },
-{
-    "id": 2896,
-    "word": "antenna",
-    "meaning": "天线",
-    "phonetic": "/ænˈtenə/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always antenna in the morning.",
-    "sentenceCn": "我早上总是天线。",
-        "emoji": "📡",
-    "audioFile": "antenna.mp3"
-  },
-{
-    "id": 2897,
-    "word": "apartment",
-    "meaning": "公寓",
-    "phonetic": "/əˈpɑːrtmənt/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I apartment every day.",
-    "sentenceCn": "我每天公寓。",
-        "emoji": "🏢",
-    "audioFile": "apartment.mp3"
-  },
-{
-    "id": 2898,
-    "word": "app",
-    "meaning": "应用",
-    "phonetic": "/æp/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to app now.",
-    "sentenceCn": "该去应用了。",
-        "emoji": "📱",
-    "audioFile": "app.mp3"
-  },
-{
-    "id": 2899,
-    "word": "appliance",
-    "meaning": "电器",
-    "phonetic": "/əˈplaɪəns/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I appliance every day.",
-    "sentenceCn": "我每天电器。",
-        "emoji": "🔌",
-    "audioFile": "appliance.mp3"
-  },
-{
-    "id": 2900,
-    "word": "balcony",
-    "meaning": "阳台",
-    "phonetic": "/ˈbælkəni/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I balcony every day.",
-    "sentenceCn": "我每天阳台。",
-        "emoji": "🏢",
-    "audioFile": "balcony.mp3"
-  },
-{
-    "id": 2901,
-    "word": "bank",
-    "meaning": "银行",
-    "phonetic": "/bæŋk/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always bank in the morning.",
-    "sentenceCn": "我早上总是银行。",
-        "emoji": "🏦",
-    "audioFile": "bank.mp3"
-  },
-{
-    "id": 2902,
-    "word": "basement",
-    "meaning": "地下室",
-    "phonetic": "/ˈbeɪsmənt/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always basement in the morning.",
-    "sentenceCn": "我早上总是地下室。",
-        "emoji": "🏠",
-    "audioFile": "basement.mp3"
-  },
-{
-    "id": 2903,
-    "word": "basket",
-    "meaning": "篮子",
-    "phonetic": "/ˈbæskɪt/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always basket in the morning.",
-    "sentenceCn": "我早上总是篮子。",
-        "emoji": "🧺",
-    "audioFile": "basket.mp3"
-  },
-{
-    "id": 2904,
-    "word": "battery",
-    "meaning": "电池",
-    "phonetic": "/ˈbætəri/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I battery every day.",
-    "sentenceCn": "我每天电池。",
-        "emoji": "🔋",
-    "audioFile": "battery.mp3"
-  },
-{
-    "id": 2905,
-    "word": "bed",
-    "meaning": "床",
-    "phonetic": "/bed/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I bed every day.",
-    "sentenceCn": "我每天床。",
-        "emoji": "🛏️",
-    "audioFile": "bed.mp3"
-  },
-{
-    "id": 2906,
-    "word": "bell",
-    "meaning": "铃",
-    "phonetic": "/bel/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to bell now.",
-    "sentenceCn": "该去铃了。",
-        "emoji": "🔔",
-    "audioFile": "bell.mp3"
-  },
-{
-    "id": 2907,
-    "word": "bench",
-    "meaning": "长凳",
-    "phonetic": "/bentʃ/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to bench now.",
-    "sentenceCn": "该去长凳了。",
-        "emoji": "🪑",
-    "audioFile": "bench.mp3"
-  },
-{
-    "id": 2908,
-    "word": "bike",
-    "meaning": "自行车",
-    "phonetic": "/baɪk/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to bike now.",
-    "sentenceCn": "该去自行车了。",
-        "emoji": "🚲",
-    "audioFile": "bike.mp3"
-  },
-{
-    "id": 2909,
-    "word": "bill",
-    "meaning": "账单",
-    "phonetic": "/bɪl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always bill in the morning.",
-    "sentenceCn": "我早上总是账单。",
-        "emoji": "🧾",
-    "audioFile": "bill.mp3"
-  },
-{
-    "id": 2910,
-    "word": "bin",
-    "meaning": "垃圾桶",
-    "phonetic": "/bɪn/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to bin now.",
-    "sentenceCn": "该去垃圾桶了。",
-        "emoji": "🗑️",
-    "audioFile": "bin.mp3"
-  },
-{
-    "id": 2911,
-    "word": "blanket",
-    "meaning": "毯子",
-    "phonetic": "/ˈblæŋkɪt/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always blanket in the morning.",
-    "sentenceCn": "我早上总是毯子。",
-        "emoji": "🛌",
-    "audioFile": "blanket.mp3"
-  },
-{
-    "id": 2912,
-    "word": "blender",
-    "meaning": "搅拌机",
-    "phonetic": "/ˈblendər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I blender every day.",
-    "sentenceCn": "我每天搅拌机。",
-        "emoji": "🥤",
-    "audioFile": "blender.mp3"
-  },
-{
-    "id": 2913,
-    "word": "booking",
-    "meaning": "预订",
-    "phonetic": "/ˈbʊkɪŋ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always booking in the morning.",
-    "sentenceCn": "我早上总是预订。",
-        "emoji": "📋",
-    "audioFile": "booking.mp3"
-  },
-{
-    "id": 2914,
-    "word": "boss",
-    "meaning": "老板",
-    "phonetic": "/bɔːs/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I boss every day.",
-    "sentenceCn": "我每天老板。",
-        "emoji": "👔",
-    "audioFile": "boss.mp3"
-  },
-{
-    "id": 2915,
-    "word": "bus",
-    "meaning": "公交车",
-    "phonetic": "/bʌs/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I always bus in the morning.",
-    "sentenceCn": "我早上总是公交车。",
-        "emoji": "🚌",
-    "audioFile": "bus.mp3"
-  },
-{
-    "id": 2916,
-    "word": "cable",
-    "meaning": "电缆",
-    "phonetic": "/ˈkeɪbl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always cable in the morning.",
-    "sentenceCn": "我早上总是电缆。",
-        "emoji": "🔌",
-    "audioFile": "cable.mp3"
-  },
-{
-    "id": 2917,
-    "word": "camera",
-    "meaning": "相机",
-    "phonetic": "/ˈkæmərə/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always camera in the morning.",
-    "sentenceCn": "我早上总是相机。",
-        "emoji": "📷",
-    "audioFile": "camera.mp3"
-  },
-{
-    "id": 2918,
-    "word": "car",
-    "meaning": "汽车",
-    "phonetic": "/kɑːr/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I always car in the morning.",
-    "sentenceCn": "我早上总是汽车。",
-        "emoji": "🚗",
-    "audioFile": "car.mp3"
-  },
-{
-    "id": 2919,
-    "word": "card",
-    "meaning": "卡",
-    "phonetic": "/kɑːrd/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to card now.",
-    "sentenceCn": "该去卡了。",
-        "emoji": "💳",
-    "audioFile": "card.mp3"
-  },
-{
-    "id": 2920,
-    "word": "carpet",
-    "meaning": "地毯",
-    "phonetic": "/ˈkɑːrpɪt/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to carpet now.",
-    "sentenceCn": "该去地毯了。",
-        "emoji": "🟫",
-    "audioFile": "carpet.mp3"
-  },
-{
-    "id": 2921,
-    "word": "cart",
-    "meaning": "推车",
-    "phonetic": "/kɑːrt/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always cart in the morning.",
-    "sentenceCn": "我早上总是推车。",
-        "emoji": "🛒",
-    "audioFile": "cart.mp3"
-  },
-{
-    "id": 2922,
-    "word": "cash",
-    "meaning": "现金",
-    "phonetic": "/kæʃ/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to cash now.",
-    "sentenceCn": "该去现金了。",
-        "emoji": "💵",
-    "audioFile": "cash.mp3"
-  },
-{
-    "id": 2923,
-    "word": "ceiling",
-    "meaning": "天花板",
-    "phonetic": "/ˈsiːlɪŋ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to ceiling now.",
-    "sentenceCn": "该去天花板了。",
-        "emoji": "🏠",
-    "audioFile": "ceiling.mp3"
-  },
-{
-    "id": 2924,
-    "word": "chair",
-    "meaning": "椅子",
-    "phonetic": "/tʃer/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I chair every day.",
-    "sentenceCn": "我每天椅子。",
-        "emoji": "🪑",
-    "audioFile": "chair.mp3"
-  },
-{
-    "id": 2925,
-    "word": "charger",
-    "meaning": "充电器",
-    "phonetic": "/ˈtʃɑːrdʒər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always charger in the morning.",
-    "sentenceCn": "我早上总是充电器。",
-        "emoji": "🔌",
-    "audioFile": "charger.mp3"
-  },
-{
-    "id": 2926,
-    "word": "check",
-    "meaning": "支票",
-    "phonetic": "/tʃek/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I check every day.",
-    "sentenceCn": "我每天支票。",
-        "emoji": "💳",
-    "audioFile": "check.mp3"
-  },
-{
-    "id": 2927,
-    "word": "clinic",
-    "meaning": "诊所",
-    "phonetic": "/ˈklɪnɪk/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to clinic now.",
-    "sentenceCn": "该去诊所了。",
-        "emoji": "🏥",
-    "audioFile": "clinic.mp3"
-  },
-{
-    "id": 2928,
-    "word": "coin",
-    "meaning": "硬币",
-    "phonetic": "/kɔɪn/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I coin every day.",
-    "sentenceCn": "我每天硬币。",
-        "emoji": "🪙",
-    "audioFile": "coin.mp3"
-  },
-{
-    "id": 2929,
-    "word": "colleague",
-    "meaning": "同事",
-    "phonetic": "/ˈkɑːliːɡ/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always colleague in the morning.",
-    "sentenceCn": "我早上总是同事。",
-        "emoji": "👥",
-    "audioFile": "colleague.mp3"
-  },
-{
-    "id": 2930,
-    "word": "compost",
-    "meaning": "堆肥",
-    "phonetic": "/ˈkɑːmpoʊst/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always compost in the morning.",
-    "sentenceCn": "我早上总是堆肥。",
-        "emoji": "🌱",
-    "audioFile": "compost.mp3"
-  },
-{
-    "id": 2931,
-    "word": "computer",
-    "meaning": "电脑",
-    "phonetic": "/kəmˈpjuːtər/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to computer now.",
-    "sentenceCn": "该去电脑了。",
-        "emoji": "💻",
-    "audioFile": "computer.mp3"
-  },
-{
-    "id": 2932,
-    "word": "cost",
-    "meaning": "成本",
-    "phonetic": "/kɔːst/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I cost every day.",
-    "sentenceCn": "我每天成本。",
-        "emoji": "💰",
-    "audioFile": "cost.mp3"
-  },
-{
-    "id": 2933,
-    "word": "courier",
-    "meaning": "快递员",
-    "phonetic": "/ˈkʊriər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I courier every day.",
-    "sentenceCn": "我每天快递员。",
-        "emoji": "📦",
-    "audioFile": "courier.mp3"
-  },
-{
-    "id": 2934,
-    "word": "curtain",
-    "meaning": "窗帘",
-    "phonetic": "/ˈkɜːrtn/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always curtain in the morning.",
-    "sentenceCn": "我早上总是窗帘。",
-        "emoji": "🪟",
-    "audioFile": "curtain.mp3"
-  },
-{
-    "id": 2935,
-    "word": "daily",
-    "meaning": "日常",
-    "phonetic": "/ˈdeɪli/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to daily now.",
-    "sentenceCn": "该去日常了。",
-        "emoji": "📆",
-    "audioFile": "daily.mp3"
-  },
-{
-    "id": 2936,
-    "word": "doctor",
-    "meaning": "医生",
-    "phonetic": "/ˈdɑːktər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I doctor every day.",
-    "sentenceCn": "我每天医生。",
-        "emoji": "👨‍⚕️",
-    "audioFile": "doctor.mp3"
-  },
-{
-    "id": 2937,
-    "word": "door",
-    "meaning": "门",
-    "phonetic": "/dɔːr/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to door now.",
-    "sentenceCn": "该去门了。",
-        "emoji": "🚪",
-    "audioFile": "door.mp3"
-  },
-{
-    "id": 2938,
-    "word": "drain",
-    "meaning": "排水管",
-    "phonetic": "/dreɪn/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to drain now.",
-    "sentenceCn": "该去排水管了。",
-        "emoji": "🚿",
-    "audioFile": "drain.mp3"
-  },
-{
-    "id": 2939,
-    "word": "drawer",
-    "meaning": "抽屉",
-    "phonetic": "/drɔːr/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always drawer in the morning.",
-    "sentenceCn": "我早上总是抽屉。",
-        "emoji": "🗄️",
-    "audioFile": "drawer.mp3"
-  },
-{
-    "id": 2940,
-    "word": "drill",
-    "meaning": "电钻",
-    "phonetic": "/drɪl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always drill in the morning.",
-    "sentenceCn": "我早上总是电钻。",
-        "emoji": "🔧",
-    "audioFile": "drill.mp3"
-  },
-{
-    "id": 2941,
-    "word": "dryer",
-    "meaning": "烘干机",
-    "phonetic": "/ˈdraɪər/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always dryer in the morning.",
-    "sentenceCn": "我早上总是烘干机。",
-        "emoji": "🧺",
-    "audioFile": "dryer.mp3"
-  },
-{
-    "id": 2942,
-    "word": "electricity",
-    "meaning": "电",
-    "phonetic": "/ɪˌlekˈtrɪsəti/",
-    "difficulty": 5,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to electricity now.",
-    "sentenceCn": "该去电了。",
-        "emoji": "⚡",
-    "audioFile": "electricity.mp3"
-  },
-{
-    "id": 2943,
-    "word": "elevator",
-    "meaning": "电梯",
-    "phonetic": "/ˈelɪveɪtər/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to elevator now.",
-    "sentenceCn": "该去电梯了。",
-        "emoji": "🛗",
-    "audioFile": "elevator.mp3"
-  },
-{
-    "id": 2944,
-    "word": "email",
-    "meaning": "邮件",
-    "phonetic": "/ˈiːmeɪl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always email in the morning.",
-    "sentenceCn": "我早上总是邮件。",
-        "emoji": "📧",
-    "audioFile": "email.mp3"
-  },
-{
-    "id": 2945,
-    "word": "envelope",
-    "meaning": "信封",
-    "phonetic": "/ˈenvəloʊp/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I envelope every day.",
-    "sentenceCn": "我每天信封。",
-        "emoji": "✉️",
-    "audioFile": "envelope.mp3"
-  },
-{
-    "id": 2946,
-    "word": "expensive",
-    "meaning": "昂贵",
-    "phonetic": "/ɪkˈspensɪv/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always expensive in the morning.",
-    "sentenceCn": "我早上总是昂贵。",
-        "emoji": "💸",
-    "audioFile": "expensive.mp3"
-  },
-{
-    "id": 2947,
-    "word": "flat",
-    "meaning": "公寓",
-    "phonetic": "/flæt/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I flat every day.",
-    "sentenceCn": "我每天公寓。",
-        "emoji": "🏢",
-    "audioFile": "flat.mp3"
-  },
-{
-    "id": 2948,
-    "word": "floor",
-    "meaning": "地板",
-    "phonetic": "/flɔːr/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always floor in the morning.",
-    "sentenceCn": "我早上总是地板。",
-        "emoji": "🏠",
-    "audioFile": "floor.mp3"
-  },
-{
-    "id": 2949,
-    "word": "fountain",
-    "meaning": "喷泉",
-    "phonetic": "/ˈfaʊntn/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I fountain every day.",
-    "sentenceCn": "我每天喷泉。",
-        "emoji": "⛲",
-    "audioFile": "fountain.mp3"
-  },
-{
-    "id": 2950,
-    "word": "free",
-    "meaning": "免费",
-    "phonetic": "/friː/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to free now.",
-    "sentenceCn": "该去免费了。",
-        "emoji": "🆓",
-    "audioFile": "free.mp3"
-  },
-{
-    "id": 2951,
-    "word": "fridge",
-    "meaning": "冰箱",
-    "phonetic": "/frɪdʒ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I fridge every day.",
-    "sentenceCn": "我每天冰箱。",
-        "emoji": "🧊",
-    "audioFile": "fridge.mp3"
-  },
-{
-    "id": 2952,
-    "word": "furniture",
-    "meaning": "家具",
-    "phonetic": "/ˈfɜːrnɪtʃər/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always furniture in the morning.",
-    "sentenceCn": "我早上总是家具。",
-        "emoji": "🪑",
-    "audioFile": "furniture.mp3"
-  },
-{
-    "id": 2953,
-    "word": "garage",
-    "meaning": "车库",
-    "phonetic": "/ɡəˈrɑːʒ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to garage now.",
-    "sentenceCn": "该去车库了。",
-        "emoji": "🚗",
-    "audioFile": "garage.mp3"
-  },
-{
-    "id": 2954,
-    "word": "garden",
-    "meaning": "花园",
-    "phonetic": "/ˈɡɑːrdn/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always garden in the morning.",
-    "sentenceCn": "我早上总是花园。",
-        "emoji": "🌳",
-    "audioFile": "garden.mp3"
-  },
-{
-    "id": 2955,
-    "word": "gas",
-    "meaning": "燃气",
-    "phonetic": "/ɡæs/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to gas now.",
-    "sentenceCn": "该去燃气了。",
-        "emoji": "🔥",
-    "audioFile": "gas.mp3"
-  },
-{
-    "id": 2956,
-    "word": "habit",
-    "meaning": "习惯",
-    "phonetic": "/ˈhæbɪt/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to habit now.",
-    "sentenceCn": "该去习惯了。",
-        "emoji": "🔄",
-    "audioFile": "habit.mp3"
-  },
-{
-    "id": 2957,
-    "word": "hallway",
-    "meaning": "走廊",
-    "phonetic": "/ˈhɔːlweɪ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to hallway now.",
-    "sentenceCn": "该去走廊了。",
-        "emoji": "🚪",
-    "audioFile": "hallway.mp3"
-  },
-{
-    "id": 2958,
-    "word": "hammer",
-    "meaning": "锤子",
-    "phonetic": "/ˈhæmər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to hammer now.",
-    "sentenceCn": "该去锤子了。",
-        "emoji": "🔨",
-    "audioFile": "hammer.mp3"
-  },
-{
-    "id": 2959,
-    "word": "hospital",
-    "meaning": "医院",
-    "phonetic": "/ˈhɑːspɪtl/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to hospital now.",
-    "sentenceCn": "该去医院了。",
-        "emoji": "🏥",
-    "audioFile": "hospital.mp3"
-  },
-{
-    "id": 2960,
-    "word": "hotel",
-    "meaning": "酒店",
-    "phonetic": "/hoʊˈtel/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always hotel in the morning.",
-    "sentenceCn": "我早上总是酒店。",
-        "emoji": "🏨",
-    "audioFile": "hotel.mp3"
-  },
-{
-    "id": 2961,
-    "word": "house",
-    "meaning": "房子",
-    "phonetic": "/haʊs/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always house in the morning.",
-    "sentenceCn": "我早上总是房子。",
-        "emoji": "🏠",
-    "audioFile": "house.mp3"
-  },
-{
-    "id": 2962,
-    "word": "intercom",
-    "meaning": "对讲",
-    "phonetic": "/ˈɪntərkɑːm/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I intercom every day.",
-    "sentenceCn": "我每天对讲。",
-        "emoji": "📞",
-    "audioFile": "intercom.mp3"
-  },
-{
-    "id": 2963,
-    "word": "internet",
-    "meaning": "网络",
-    "phonetic": "/ˈɪntərnet/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always internet in the morning.",
-    "sentenceCn": "我早上总是网络。",
-        "emoji": "🌐",
-    "audioFile": "internet.mp3"
-  },
-{
-    "id": 2964,
-    "word": "iron",
-    "meaning": "熨斗",
-    "phonetic": "/ˈaɪərn/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I iron every day.",
-    "sentenceCn": "我每天熨斗。",
-        "emoji": "👔",
-    "audioFile": "iron.mp3"
-  },
-{
-    "id": 2965,
-    "word": "job",
-    "meaning": "工作",
-    "phonetic": "/dʒɑːb/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to job now.",
-    "sentenceCn": "该去工作了。",
-        "emoji": "💼",
-    "audioFile": "job.mp3"
-  },
-{
-    "id": 2966,
-    "word": "kettle",
-    "meaning": "水壶",
-    "phonetic": "/ˈketl/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always kettle in the morning.",
-    "sentenceCn": "我早上总是水壶。",
-        "emoji": "🫖",
-    "audioFile": "kettle.mp3"
-  },
-{
-    "id": 2967,
-    "word": "key",
-    "meaning": "钥匙",
-    "phonetic": "/kiː/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "I always key in the morning.",
-    "sentenceCn": "我早上总是钥匙。",
-        "emoji": "🔑",
-    "audioFile": "key.mp3"
-  },
-{
-    "id": 2968,
-    "word": "kitchen",
-    "meaning": "厨房",
-    "phonetic": "/ˈkɪtʃɪn/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I kitchen every day.",
-    "sentenceCn": "我每天厨房。",
-        "emoji": "🍳",
-    "audioFile": "kitchen.mp3"
-  },
-{
-    "id": 2969,
-    "word": "ladder",
-    "meaning": "梯子",
-    "phonetic": "/ˈlædər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always ladder in the morning.",
-    "sentenceCn": "我早上总是梯子。",
-        "emoji": "🪜",
-    "audioFile": "ladder.mp3"
-  },
-{
-    "id": 2970,
-    "word": "lamp",
-    "meaning": "灯",
-    "phonetic": "/læmp/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to lamp now.",
-    "sentenceCn": "该去灯了。",
-        "emoji": "💡",
-    "audioFile": "lamp.mp3"
-  },
-{
-    "id": 2971,
-    "word": "laptop",
-    "meaning": "笔记本",
-    "phonetic": "/ˈlæptɑːp/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I laptop every day.",
-    "sentenceCn": "我每天笔记本。",
-        "emoji": "💻",
-    "audioFile": "laptop.mp3"
-  },
-{
-    "id": 2972,
-    "word": "lawn",
-    "meaning": "草坪",
-    "phonetic": "/lɔːn/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always lawn in the morning.",
-    "sentenceCn": "我早上总是草坪。",
-        "emoji": "🌿",
-    "audioFile": "lawn.mp3"
-  },
-{
-    "id": 2973,
-    "word": "letter",
-    "meaning": "信",
-    "phonetic": "/ˈletər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to letter now.",
-    "sentenceCn": "该去信了。",
-        "emoji": "✉️",
-    "audioFile": "letter.mp3"
-  },
-{
-    "id": 2974,
-    "word": "librarian",
-    "meaning": "图书管理员",
-    "phonetic": "/laɪˈbreriən/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always librarian in the morning.",
-    "sentenceCn": "我早上总是图书管理员。",
-        "emoji": "📚",
-    "audioFile": "librarian.mp3"
-  },
-{
-    "id": 2975,
-    "word": "life",
-    "meaning": "生活",
-    "phonetic": "/laɪf/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always life in the morning.",
-    "sentenceCn": "我早上总是生活。",
-        "emoji": "🌟",
-    "audioFile": "life.mp3"
-  },
-{
-    "id": 2976,
-    "word": "light",
-    "meaning": "灯",
-    "phonetic": "/laɪt/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I light every day.",
-    "sentenceCn": "我每天灯。",
-        "emoji": "💡",
-    "audioFile": "light.mp3"
-  },
-{
-    "id": 2977,
-    "word": "living room",
-    "meaning": "客厅",
-    "phonetic": "/ˈlɪvɪŋ ruːm/",
-    "difficulty": 5,
-    "theme": "日常 Daily Life",
-    "sentence": "I see a living room.",
-    "sentenceCn": "我看到一个客厅。",
-        "emoji": "🛋️",
-    "audioFile": "living_room.mp3"
-  },
-{
-    "id": 2978,
-    "word": "magazine",
-    "meaning": "杂志",
-    "phonetic": "/ˈmæɡəziːn/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I magazine every day.",
-    "sentenceCn": "我每天杂志。",
-        "emoji": "📰",
-    "audioFile": "magazine.mp3"
-  },
-{
-    "id": 2979,
-    "word": "mail",
-    "meaning": "邮件",
-    "phonetic": "/meɪl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I mail every day.",
-    "sentenceCn": "我每天邮件。",
-        "emoji": "📬",
-    "audioFile": "mail.mp3"
-  },
-{
-    "id": 2980,
-    "word": "mall",
-    "meaning": "商场",
-    "phonetic": "/mɔːl/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always mall in the morning.",
-    "sentenceCn": "我早上总是商场。",
-        "emoji": "🏬",
-    "audioFile": "mall.mp3"
-  },
-{
-    "id": 2981,
-    "word": "map",
-    "meaning": "地图",
-    "phonetic": "/mæp/",
-    "difficulty": 1,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to map now.",
-    "sentenceCn": "该去地图了。",
-        "emoji": "🗺️",
-    "audioFile": "map.mp3"
-  },
-{
-    "id": 2982,
-    "word": "market",
-    "meaning": "市场",
-    "phonetic": "/ˈmɑːrkɪt/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I always market in the morning.",
-    "sentenceCn": "我早上总是市场。",
-        "emoji": "🏪",
-    "audioFile": "market.mp3"
-  },
-{
-    "id": 2983,
-    "word": "medicine",
-    "meaning": "药",
-    "phonetic": "/ˈmedɪsn/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always medicine in the morning.",
-    "sentenceCn": "我早上总是药。",
-        "emoji": "💊",
-    "audioFile": "medicine.mp3"
-  },
-{
-    "id": 2984,
-    "word": "meeting",
-    "meaning": "会议",
-    "phonetic": "/ˈmiːtɪŋ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I meeting every day.",
-    "sentenceCn": "我每天会议。",
-        "emoji": "📋",
-    "audioFile": "meeting.mp3"
-  },
-{
-    "id": 2985,
-    "word": "menu",
-    "meaning": "菜单",
-    "phonetic": "/ˈmenjuː/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I menu every day.",
-    "sentenceCn": "我每天菜单。",
-        "emoji": "📜",
-    "audioFile": "menu.mp3"
-  },
-{
-    "id": 2986,
-    "word": "microwave",
-    "meaning": "微波炉",
-    "phonetic": "/ˈmaɪkrəweɪv/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to microwave now.",
-    "sentenceCn": "该去微波炉了。",
-        "emoji": "📡",
-    "audioFile": "microwave.mp3"
-  },
-{
-    "id": 2987,
-    "word": "mirror",
-    "meaning": "镜子",
-    "phonetic": "/ˈmɪrər/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I mirror every day.",
-    "sentenceCn": "我每天镜子。",
-        "emoji": "🪞",
-    "audioFile": "mirror.mp3"
-  },
-{
-    "id": 2988,
-    "word": "mixer",
-    "meaning": "搅拌机",
-    "phonetic": "/ˈmɪksər/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I mixer every day.",
-    "sentenceCn": "我每天搅拌机。",
-        "emoji": "🥄",
-    "audioFile": "mixer.mp3"
-  },
-{
-    "id": 2989,
-    "word": "mobile",
-    "meaning": "手机",
-    "phonetic": "/ˈmoʊbl/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "I mobile every day.",
-    "sentenceCn": "我每天手机。",
-        "emoji": "📱",
-    "audioFile": "mobile.mp3"
-  },
-{
-    "id": 2990,
-    "word": "money",
-    "meaning": "钱",
-    "phonetic": "/ˈmʌni/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to money now.",
-    "sentenceCn": "该去钱了。",
-        "emoji": "💰",
-    "audioFile": "money.mp3"
-  },
-{
-    "id": 2991,
-    "word": "newspaper",
-    "meaning": "报纸",
-    "phonetic": "/ˈnuːzpeɪpər/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I always newspaper in the morning.",
-    "sentenceCn": "我早上总是报纸。",
-        "emoji": "📰",
-    "audioFile": "newspaper.mp3"
-  },
-{
-    "id": 2992,
-    "word": "nurse",
-    "meaning": "护士",
-    "phonetic": "/nɜːrs/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I nurse every day.",
-    "sentenceCn": "我每天护士。",
-        "emoji": "👩‍⚕️",
-    "audioFile": "nurse.mp3"
-  },
-{
-    "id": 2993,
-    "word": "office",
-    "meaning": "办公室",
-    "phonetic": "/ˈɔːfɪs/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to office now.",
-    "sentenceCn": "该去办公室了。",
-        "emoji": "🏢",
-    "audioFile": "office.mp3"
-  },
-{
-    "id": 2994,
-    "word": "order",
-    "meaning": "点单",
-    "phonetic": "/ˈɔːrdər/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always order in the morning.",
-    "sentenceCn": "我早上总是点单。",
-        "emoji": "📋",
-    "audioFile": "order.mp3"
-  },
-{
-    "id": 2995,
-    "word": "oven",
-    "meaning": "烤箱",
-    "phonetic": "/ˈʌvn/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always oven in the morning.",
-    "sentenceCn": "我早上总是烤箱。",
-        "emoji": "🔥",
-    "audioFile": "oven.mp3"
-  },
-{
-    "id": 2996,
-    "word": "package",
-    "meaning": "包裹",
-    "phonetic": "/ˈpækɪdʒ/",
-    "difficulty": 3,
-    "theme": "日常 Daily Life",
-    "sentence": "Time to package now.",
-    "sentenceCn": "该去包裹了。",
-        "emoji": "📦",
-    "audioFile": "package.mp3"
-  },
-{
-    "id": 2997,
-    "word": "park",
-    "meaning": "公园",
-    "phonetic": "/pɑːrk/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always park in the morning.",
-    "sentenceCn": "我早上总是公园。",
-        "emoji": "🏞️",
-    "audioFile": "park.mp3"
-  },
-{
-    "id": 2998,
-    "word": "passport",
-    "meaning": "护照",
-    "phonetic": "/ˈpæspɔːrt/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I passport every day.",
-    "sentenceCn": "我每天护照。",
-        "emoji": "🛂",
-    "audioFile": "passport.mp3"
-  },
-{
-    "id": 2999,
-    "word": "password",
-    "meaning": "密码",
-    "phonetic": "/ˈpæswɜːrd/",
-    "difficulty": 4,
-    "theme": "日常 Daily Life",
-    "sentence": "I password every day.",
-    "sentenceCn": "我每天密码。",
-        "emoji": "🔐",
-    "audioFile": "password.mp3"
-  },
-{
-    "id": 3000,
-    "word": "path",
-    "meaning": "小路",
-    "phonetic": "/pæθ/",
-    "difficulty": 2,
-    "theme": "日常 Daily Life",
-    "sentence": "I always path in the morning.",
-    "sentenceCn": "我早上总是小路。",
-        "emoji": "🛤️",
-    "audioFile": "path.mp3"
-  }
+
 ,
-{
-  "id": 3001,
-  "word": "apple",
-  "meaning": "苹果",
-  "phonetic": "/ˈæpəl/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat apples.",
-  "sentenceCn": "我爱吃苹果。",
-  "emoji": "🍎",
-  "audioFile": "apple.mp3"
-},
-{
-  "id": 3002,
-  "word": "banana",
-  "meaning": "香蕉",
-  "phonetic": "/bəˈnænə/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat bananas.",
-  "sentenceCn": "我爱吃香蕉。",
-  "emoji": "🍌",
-  "audioFile": "banana.mp3"
-},
-{
-  "id": 3003,
-  "word": "orange",
-  "meaning": "橙子",
-  "phonetic": "/ˈɔrɪndʒ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat oranges.",
-  "sentenceCn": "我爱吃橙子。",
-  "emoji": "🍊",
-  "audioFile": "orange.mp3"
-},
-{
-  "id": 3004,
-  "word": "grape",
-  "meaning": "葡萄",
-  "phonetic": "/ɡreɪp/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat grapes.",
-  "sentenceCn": "我爱吃葡萄。",
-  "emoji": "🍇",
-  "audioFile": "grape.mp3"
-},
+
 {
   "id": 3005,
   "word": "strawberry",
@@ -36074,234 +22747,7 @@ export const words: WordEntry[] = [
   "emoji": "🍓",
   "audioFile": "strawberry.mp3"
 },
-{
-  "id": 3006,
-  "word": "blueberry",
-  "meaning": "蓝莓",
-  "phonetic": "/ˈbluˌbɛri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat blueberries.",
-  "sentenceCn": "我爱吃蓝莓。",
-  "emoji": "🫐",
-  "audioFile": "blueberry.mp3"
-},
-{
-  "id": 3007,
-  "word": "watermelon",
-  "meaning": "西瓜",
-  "phonetic": "/ˈwɔtərˌmɛlən/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The watermelon is fresh.",
-  "sentenceCn": "这个西瓜很新鲜。",
-  "emoji": "🍉",
-  "audioFile": "watermelon.mp3"
-},
-{
-  "id": 3008,
-  "word": "pineapple",
-  "meaning": "菠萝",
-  "phonetic": "/ˈpaɪnˌæpəl/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pineapple is fresh.",
-  "sentenceCn": "这个菠萝很新鲜。",
-  "emoji": "🍍",
-  "audioFile": "pineapple.mp3"
-},
-{
-  "id": 3009,
-  "word": "mango",
-  "meaning": "芒果",
-  "phonetic": "/ˈmæŋɡoʊ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The mango is fresh.",
-  "sentenceCn": "这个芒果很新鲜。",
-  "emoji": "🥭",
-  "audioFile": "mango.mp3"
-},
-{
-  "id": 3010,
-  "word": "peach",
-  "meaning": "桃子",
-  "phonetic": "/pitʃ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The peach is fresh.",
-  "sentenceCn": "这个桃子很新鲜。",
-  "emoji": "🍑",
-  "audioFile": "peach.mp3"
-},
-{
-  "id": 3011,
-  "word": "pear",
-  "meaning": "梨",
-  "phonetic": "/pɛr/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pears.",
-  "sentenceCn": "我爱吃梨。",
-  "emoji": "🍐",
-  "audioFile": "pear.mp3"
-},
-{
-  "id": 3012,
-  "word": "cherry",
-  "meaning": "樱桃",
-  "phonetic": "/ˈtʃɛri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cherries.",
-  "sentenceCn": "我爱吃樱桃。",
-  "emoji": "🍒",
-  "audioFile": "cherry.mp3"
-},
-{
-  "id": 3013,
-  "word": "lemon",
-  "meaning": "柠檬",
-  "phonetic": "/ˈlɛmən/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The lemon is fresh.",
-  "sentenceCn": "这个柠檬很新鲜。",
-  "emoji": "🍋",
-  "audioFile": "lemon.mp3"
-},
-{
-  "id": 3014,
-  "word": "lime",
-  "meaning": "青柠",
-  "phonetic": "/laɪm/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat limes.",
-  "sentenceCn": "我爱吃青柠。",
-  "emoji": "🍋‍🟩",
-  "audioFile": "lime.mp3"
-},
-{
-  "id": 3015,
-  "word": "coconut",
-  "meaning": "椰子",
-  "phonetic": "/ˈkoʊkəˌnʌt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The coconut is fresh.",
-  "sentenceCn": "这个椰子很新鲜。",
-  "emoji": "🥥",
-  "audioFile": "coconut.mp3"
-},
-{
-  "id": 3016,
-  "word": "kiwi",
-  "meaning": "猕猴桃",
-  "phonetic": "/ˈkiˌwi/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The kiwi is fresh.",
-  "sentenceCn": "这个猕猴桃很新鲜。",
-  "emoji": "🥝",
-  "audioFile": "kiwi.mp3"
-},
-{
-  "id": 3017,
-  "word": "plum",
-  "meaning": "李子",
-  "phonetic": "/plʌm/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat plums.",
-  "sentenceCn": "我爱吃李子。",
-  "emoji": "🫐",
-  "audioFile": "plum.mp3"
-},
-{
-  "id": 3018,
-  "word": "apricot",
-  "meaning": "杏",
-  "phonetic": "/ˈæprɪˌkɑt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The apricot is fresh.",
-  "sentenceCn": "这个杏很新鲜。",
-  "emoji": "🍑",
-  "audioFile": "apricot.mp3"
-},
-{
-  "id": 3019,
-  "word": "fig",
-  "meaning": "无花果",
-  "phonetic": "/fɪɡ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The fig is fresh.",
-  "sentenceCn": "这个无花果很新鲜。",
-  "emoji": "🫐",
-  "audioFile": "fig.mp3"
-},
-{
-  "id": 3020,
-  "word": "date",
-  "meaning": "椰枣",
-  "phonetic": "/deɪt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The date is fresh.",
-  "sentenceCn": "这个椰枣很新鲜。",
-  "emoji": "🫐",
-  "audioFile": "date.mp3"
-},
-{
-  "id": 3021,
-  "word": "grapefruit",
-  "meaning": "西柚",
-  "phonetic": "/ˈɡreɪpˌfrut/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The grapefruit is fresh.",
-  "sentenceCn": "这个西柚很新鲜。",
-  "emoji": "🍊",
-  "audioFile": "grapefruit.mp3"
-},
-{
-  "id": 3022,
-  "word": "pomegranate",
-  "meaning": "石榴",
-  "phonetic": "/ˈpɑməˌɡrænɪt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pomegranates.",
-  "sentenceCn": "我爱吃石榴。",
-  "emoji": "🍑",
-  "audioFile": "pomegranate.mp3"
-},
-{
-  "id": 3023,
-  "word": "papaya",
-  "meaning": "木瓜",
-  "phonetic": "/pəˈpaɪə/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The papaya is fresh.",
-  "sentenceCn": "这个木瓜很新鲜。",
-  "emoji": "🥭",
-  "audioFile": "papaya.mp3"
-},
-{
-  "id": 3024,
-  "word": "guava",
-  "meaning": "番石榴",
-  "phonetic": "/ˈɡwɑvə/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The guava is fresh.",
-  "sentenceCn": "这个番石榴很新鲜。",
-  "emoji": "🫐",
-  "audioFile": "guava.mp3"
-},
+
 {
   "id": 3025,
   "word": "dragonfruit",
@@ -36326,210 +22772,7 @@ export const words: WordEntry[] = [
   "emoji": "🫐",
   "audioFile": "lychee.mp3"
 },
-{
-  "id": 3027,
-  "word": "persimmon",
-  "meaning": "柿子",
-  "phonetic": "/pərˈsɪmən/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The persimmon is fresh.",
-  "sentenceCn": "这个柿子很新鲜。",
-  "emoji": "🍊",
-  "audioFile": "persimmon.mp3"
-},
-{
-  "id": 3028,
-  "word": "melon",
-  "meaning": "甜瓜",
-  "phonetic": "/ˈmɛlən/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The melon is fresh.",
-  "sentenceCn": "这个甜瓜很新鲜。",
-  "emoji": "🍈",
-  "audioFile": "melon.mp3"
-},
-{
-  "id": 3029,
-  "word": "cantaloupe",
-  "meaning": "哈密瓜",
-  "phonetic": "/ˈkæntəˌloʊp/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cantaloupe is fresh.",
-  "sentenceCn": "这个哈密瓜很新鲜。",
-  "emoji": "🍈",
-  "audioFile": "cantaloupe.mp3"
-},
-{
-  "id": 3030,
-  "word": "raspberry",
-  "meaning": "覆盆子",
-  "phonetic": "/ˈræzˌbɛri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat raspberries.",
-  "sentenceCn": "我爱吃覆盆子。",
-  "emoji": "🫐",
-  "audioFile": "raspberry.mp3"
-},
-{
-  "id": 3031,
-  "word": "blackberry",
-  "meaning": "黑莓",
-  "phonetic": "/ˈblækˌbɛri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat blackberries.",
-  "sentenceCn": "我爱吃黑莓。",
-  "emoji": "🫐",
-  "audioFile": "blackberry.mp3"
-},
-{
-  "id": 3032,
-  "word": "cranberry",
-  "meaning": "蔓越莓",
-  "phonetic": "/ˈkrænˌbɛri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cranberry is fresh.",
-  "sentenceCn": "这个蔓越莓很新鲜。",
-  "emoji": "🫐",
-  "audioFile": "cranberry.mp3"
-},
-{
-  "id": 3033,
-  "word": "avocado",
-  "meaning": "牛油果",
-  "phonetic": "/ˌævəˈkɑdoʊ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The avocado is fresh.",
-  "sentenceCn": "这个牛油果很新鲜。",
-  "emoji": "🥑",
-  "audioFile": "avocado.mp3"
-},
-{
-  "id": 3034,
-  "word": "tomato",
-  "meaning": "番茄",
-  "phonetic": "/təˈmeɪtoʊ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The tomato is fresh.",
-  "sentenceCn": "这个番茄很新鲜。",
-  "emoji": "🍅",
-  "audioFile": "tomato.mp3"
-},
-{
-  "id": 3035,
-  "word": "cucumber",
-  "meaning": "黄瓜",
-  "phonetic": "/ˈkjuˌkʌmbər/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cucumbers.",
-  "sentenceCn": "我爱吃黄瓜。",
-  "emoji": "🥒",
-  "audioFile": "cucumber.mp3"
-},
-{
-  "id": 3036,
-  "word": "carrot",
-  "meaning": "胡萝卜",
-  "phonetic": "/ˈkærət/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The carrot is fresh.",
-  "sentenceCn": "这个胡萝卜很新鲜。",
-  "emoji": "🥕",
-  "audioFile": "carrot.mp3"
-},
-{
-  "id": 3037,
-  "word": "broccoli",
-  "meaning": "西兰花",
-  "phonetic": "/ˈbrɑkəli/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The broccoli is fresh.",
-  "sentenceCn": "这个西兰花很新鲜。",
-  "emoji": "🥦",
-  "audioFile": "broccoli.mp3"
-},
-{
-  "id": 3038,
-  "word": "cauliflower",
-  "meaning": "花菜",
-  "phonetic": "/ˈkɔlɪˌflaʊər/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cauliflower is fresh.",
-  "sentenceCn": "这个花菜很新鲜。",
-  "emoji": "🥦",
-  "audioFile": "cauliflower.mp3"
-},
-{
-  "id": 3039,
-  "word": "spinach",
-  "meaning": "菠菜",
-  "phonetic": "/ˈspɪnɪtʃ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat spinaches.",
-  "sentenceCn": "我爱吃菠菜。",
-  "emoji": "🥬",
-  "audioFile": "spinach.mp3"
-},
-{
-  "id": 3040,
-  "word": "lettuce",
-  "meaning": "生菜",
-  "phonetic": "/ˈlɛtɪs/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat lettuces.",
-  "sentenceCn": "我爱吃生菜。",
-  "emoji": "🥬",
-  "audioFile": "lettuce.mp3"
-},
-{
-  "id": 3041,
-  "word": "cabbage",
-  "meaning": "卷心菜",
-  "phonetic": "/ˈkæbɪdʒ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cabbage is fresh.",
-  "sentenceCn": "这个卷心菜很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "cabbage.mp3"
-},
-{
-  "id": 3042,
-  "word": "celery",
-  "meaning": "芹菜",
-  "phonetic": "/ˈsɛləri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat celeries.",
-  "sentenceCn": "我爱吃芹菜。",
-  "emoji": "🥬",
-  "audioFile": "celery.mp3"
-},
-{
-  "id": 3043,
-  "word": "pepper",
-  "meaning": "辣椒",
-  "phonetic": "/ˈpɛpər/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pepper is fresh.",
-  "sentenceCn": "这个辣椒很新鲜。",
-  "emoji": "🌶️",
-  "audioFile": "pepper.mp3"
-},
+
 {
   "id": 3044,
   "word": "bellpepper",
@@ -36542,90 +22785,7 @@ export const words: WordEntry[] = [
   "emoji": "🫑",
   "audioFile": "bellpepper.mp3"
 },
-{
-  "id": 3045,
-  "word": "eggplant",
-  "meaning": "茄子",
-  "phonetic": "/ˈɛɡˌplænt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The eggplant is fresh.",
-  "sentenceCn": "这个茄子很新鲜。",
-  "emoji": "🍆",
-  "audioFile": "eggplant.mp3"
-},
-{
-  "id": 3046,
-  "word": "zucchini",
-  "meaning": "西葫芦",
-  "phonetic": "/zuˈkini/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The zucchini is fresh.",
-  "sentenceCn": "这个西葫芦很新鲜。",
-  "emoji": "🥒",
-  "audioFile": "zucchini.mp3"
-},
-{
-  "id": 3047,
-  "word": "pumpkin",
-  "meaning": "南瓜",
-  "phonetic": "/ˈpʌmpkɪn/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pumpkin is fresh.",
-  "sentenceCn": "这个南瓜很新鲜。",
-  "emoji": "🎃",
-  "audioFile": "pumpkin.mp3"
-},
-{
-  "id": 3048,
-  "word": "squash",
-  "meaning": "南瓜属",
-  "phonetic": "/skwɑʃ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat squashes.",
-  "sentenceCn": "我爱吃南瓜属。",
-  "emoji": "🎃",
-  "audioFile": "squash.mp3"
-},
-{
-  "id": 3049,
-  "word": "corn",
-  "meaning": "玉米",
-  "phonetic": "/kɔrn/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The corn is fresh.",
-  "sentenceCn": "这个玉米很新鲜。",
-  "emoji": "🌽",
-  "audioFile": "corn.mp3"
-},
-{
-  "id": 3050,
-  "word": "pea",
-  "meaning": "豌豆",
-  "phonetic": "/pi/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pea is fresh.",
-  "sentenceCn": "这个豌豆很新鲜。",
-  "emoji": "🫛",
-  "audioFile": "pea.mp3"
-},
-{
-  "id": 3051,
-  "word": "bean",
-  "meaning": "豆子",
-  "phonetic": "/bin/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The bean is fresh.",
-  "sentenceCn": "这个豆子很新鲜。",
-  "emoji": "🫛",
-  "audioFile": "bean.mp3"
-},
+
 {
   "id": 3052,
   "word": "soybean",
@@ -36638,18 +22798,7 @@ export const words: WordEntry[] = [
   "emoji": "🫘",
   "audioFile": "soybean.mp3"
 },
-{
-  "id": 3053,
-  "word": "potato",
-  "meaning": "土豆",
-  "phonetic": "/pəˈteɪtoʊ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The potato is fresh.",
-  "sentenceCn": "这个土豆很新鲜。",
-  "emoji": "🥔",
-  "audioFile": "potato.mp3"
-},
+
 {
   "id": 3054,
   "word": "sweetpotato",
@@ -36662,90 +22811,7 @@ export const words: WordEntry[] = [
   "emoji": "🍠",
   "audioFile": "sweetpotato.mp3"
 },
-{
-  "id": 3055,
-  "word": "yam",
-  "meaning": "山药",
-  "phonetic": "/jæm/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat yams.",
-  "sentenceCn": "我爱吃山药。",
-  "emoji": "🍠",
-  "audioFile": "yam.mp3"
-},
-{
-  "id": 3056,
-  "word": "radish",
-  "meaning": "萝卜",
-  "phonetic": "/ˈrædɪʃ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat radishes.",
-  "sentenceCn": "我爱吃萝卜。",
-  "emoji": "🥕",
-  "audioFile": "radish.mp3"
-},
-{
-  "id": 3057,
-  "word": "turnip",
-  "meaning": "芜菁",
-  "phonetic": "/ˈtɜrnɪp/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The turnip is fresh.",
-  "sentenceCn": "这个芜菁很新鲜。",
-  "emoji": "🥕",
-  "audioFile": "turnip.mp3"
-},
-{
-  "id": 3058,
-  "word": "beet",
-  "meaning": "甜菜",
-  "phonetic": "/bit/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat beets.",
-  "sentenceCn": "我爱吃甜菜。",
-  "emoji": "🫘",
-  "audioFile": "beet.mp3"
-},
-{
-  "id": 3059,
-  "word": "onion",
-  "meaning": "洋葱",
-  "phonetic": "/ˈʌnjən/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat onions.",
-  "sentenceCn": "我爱吃洋葱。",
-  "emoji": "🧅",
-  "audioFile": "onion.mp3"
-},
-{
-  "id": 3060,
-  "word": "garlic",
-  "meaning": "大蒜",
-  "phonetic": "/ˈɡɑrlɪk/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat garlics.",
-  "sentenceCn": "我爱吃大蒜。",
-  "emoji": "🧄",
-  "audioFile": "garlic.mp3"
-},
-{
-  "id": 3061,
-  "word": "ginger",
-  "meaning": "姜",
-  "phonetic": "/ˈdʒɪndʒər/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The ginger is fresh.",
-  "sentenceCn": "这个姜很新鲜。",
-  "emoji": "🫚",
-  "audioFile": "ginger.mp3"
-},
+
 {
   "id": 3062,
   "word": "turmeric",
@@ -36758,54 +22824,7 @@ export const words: WordEntry[] = [
   "emoji": "🫚",
   "audioFile": "turmeric.mp3"
 },
-{
-  "id": 3063,
-  "word": "mushroom",
-  "meaning": "蘑菇",
-  "phonetic": "/ˈmʌʃˌrum/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The mushroom is fresh.",
-  "sentenceCn": "这个蘑菇很新鲜。",
-  "emoji": "🍄",
-  "audioFile": "mushroom.mp3"
-},
-{
-  "id": 3064,
-  "word": "asparagus",
-  "meaning": "芦笋",
-  "phonetic": "/əˈspærəɡəs/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The asparagus is fresh.",
-  "sentenceCn": "这个芦笋很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "asparagus.mp3"
-},
-{
-  "id": 3065,
-  "word": "artichoke",
-  "meaning": "洋蓟",
-  "phonetic": "/ˈɑrtɪˌtʃoʊk/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat artichokes.",
-  "sentenceCn": "我爱吃洋蓟。",
-  "emoji": "🥬",
-  "audioFile": "artichoke.mp3"
-},
-{
-  "id": 3066,
-  "word": "kale",
-  "meaning": "羽衣甘蓝",
-  "phonetic": "/keɪl/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat kales.",
-  "sentenceCn": "我爱吃羽衣甘蓝。",
-  "emoji": "🥬",
-  "audioFile": "kale.mp3"
-},
+
 {
   "id": 3067,
   "word": "seaweed",
@@ -36818,18 +22837,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "seaweed.mp3"
 },
-{
-  "id": 3068,
-  "word": "bamboo",
-  "meaning": "竹笋",
-  "phonetic": "/bæmˈbu/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat bamboos.",
-  "sentenceCn": "我爱吃竹笋。",
-  "emoji": "🎋",
-  "audioFile": "bamboo.mp3"
-},
+
 {
   "id": 3069,
   "word": "taro",
@@ -36878,18 +22886,7 @@ export const words: WordEntry[] = [
   "emoji": "🥬",
   "audioFile": "okra.mp3"
 },
-{
-  "id": 3073,
-  "word": "chili",
-  "meaning": "辣椒",
-  "phonetic": "/ˈtʃɪli/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat chilis.",
-  "sentenceCn": "我爱吃辣椒。",
-  "emoji": "🌶️",
-  "audioFile": "chili.mp3"
-},
+
 {
   "id": 3074,
   "word": "cilantro",
@@ -36902,42 +22899,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "cilantro.mp3"
 },
-{
-  "id": 3075,
-  "word": "basil",
-  "meaning": "罗勒",
-  "phonetic": "/ˈbæzəl/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The basil is fresh.",
-  "sentenceCn": "这个罗勒很新鲜。",
-  "emoji": "🌿",
-  "audioFile": "basil.mp3"
-},
-{
-  "id": 3076,
-  "word": "mint",
-  "meaning": "薄荷",
-  "phonetic": "/mɪnt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat mints.",
-  "sentenceCn": "我爱吃薄荷。",
-  "emoji": "🌿",
-  "audioFile": "mint.mp3"
-},
-{
-  "id": 3077,
-  "word": "rosemary",
-  "meaning": "迷迭香",
-  "phonetic": "/ˈroʊzˌmɛri/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat rosemaries.",
-  "sentenceCn": "我爱吃迷迭香。",
-  "emoji": "🌿",
-  "audioFile": "rosemary.mp3"
-},
+
 {
   "id": 3078,
   "word": "thyme",
@@ -36950,42 +22912,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "thyme.mp3"
 },
-{
-  "id": 3079,
-  "word": "oregano",
-  "meaning": "牛至",
-  "phonetic": "/əˈrɛɡəˌnoʊ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat oreganos.",
-  "sentenceCn": "我爱吃牛至。",
-  "emoji": "🌿",
-  "audioFile": "oregano.mp3"
-},
-{
-  "id": 3080,
-  "word": "parsley",
-  "meaning": "欧芹",
-  "phonetic": "/ˈpɑrsli/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat parsleys.",
-  "sentenceCn": "我爱吃欧芹。",
-  "emoji": "🌿",
-  "audioFile": "parsley.mp3"
-},
-{
-  "id": 3081,
-  "word": "dill",
-  "meaning": "莳萝",
-  "phonetic": "/dɪl/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat dills.",
-  "sentenceCn": "我爱吃莳萝。",
-  "emoji": "🌿",
-  "audioFile": "dill.mp3"
-},
+
 {
   "id": 3082,
   "word": "chives",
@@ -36998,42 +22925,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "chives.mp3"
 },
-{
-  "id": 3083,
-  "word": "scallion",
-  "meaning": "青葱",
-  "phonetic": "/ˈskæljən/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat scallions.",
-  "sentenceCn": "我爱吃青葱。",
-  "emoji": "🧅",
-  "audioFile": "scallion.mp3"
-},
-{
-  "id": 3084,
-  "word": "leek",
-  "meaning": "韭葱",
-  "phonetic": "/lik/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The leek is fresh.",
-  "sentenceCn": "这个韭葱很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "leek.mp3"
-},
-{
-  "id": 3085,
-  "word": "horseradish",
-  "meaning": "辣根",
-  "phonetic": "/ˈhɔrsˌrædɪʃ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The horseradish is fresh.",
-  "sentenceCn": "这个辣根很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "horseradish.mp3"
-},
+
 {
   "id": 3086,
   "word": "wasabi",
@@ -37046,102 +22938,7 @@ export const words: WordEntry[] = [
   "emoji": "🫘",
   "audioFile": "wasabi.mp3"
 },
-{
-  "id": 3087,
-  "word": "almond",
-  "meaning": "杏仁",
-  "phonetic": "/ˈɑmənd/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat almonds.",
-  "sentenceCn": "我爱吃杏仁。",
-  "emoji": "🥜",
-  "audioFile": "almond.mp3"
-},
-{
-  "id": 3088,
-  "word": "walnut",
-  "meaning": "核桃",
-  "phonetic": "/ˈwɔlnʌt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The walnut is fresh.",
-  "sentenceCn": "这个核桃很新鲜。",
-  "emoji": "🥜",
-  "audioFile": "walnut.mp3"
-},
-{
-  "id": 3089,
-  "word": "cashew",
-  "meaning": "腰果",
-  "phonetic": "/ˈkæʃu/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cashew is fresh.",
-  "sentenceCn": "这个腰果很新鲜。",
-  "emoji": "🥜",
-  "audioFile": "cashew.mp3"
-},
-{
-  "id": 3090,
-  "word": "peanut",
-  "meaning": "花生",
-  "phonetic": "/ˈpiˌnʌt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat peanuts.",
-  "sentenceCn": "我爱吃花生。",
-  "emoji": "🥜",
-  "audioFile": "peanut.mp3"
-},
-{
-  "id": 3091,
-  "word": "pecan",
-  "meaning": "山核桃",
-  "phonetic": "/pɪˈkɑn/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pecan is fresh.",
-  "sentenceCn": "这个山核桃很新鲜。",
-  "emoji": "🥜",
-  "audioFile": "pecan.mp3"
-},
-{
-  "id": 3092,
-  "word": "pistachio",
-  "meaning": "开心果",
-  "phonetic": "/pɪˈstɑʃiˌoʊ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pistachios.",
-  "sentenceCn": "我爱吃开心果。",
-  "emoji": "🥜",
-  "audioFile": "pistachio.mp3"
-},
-{
-  "id": 3093,
-  "word": "hazelnut",
-  "meaning": "榛子",
-  "phonetic": "/ˈheɪzəlˌnʌt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat hazelnuts.",
-  "sentenceCn": "我爱吃榛子。",
-  "emoji": "🥜",
-  "audioFile": "hazelnut.mp3"
-},
-{
-  "id": 3094,
-  "word": "chestnut",
-  "meaning": "栗子",
-  "phonetic": "/ˈtʃɛsˌnʌt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat chestnuts.",
-  "sentenceCn": "我爱吃栗子。",
-  "emoji": "🥜",
-  "audioFile": "chestnut.mp3"
-},
+
 {
   "id": 3095,
   "word": "macadamia",
@@ -37166,18 +22963,7 @@ export const words: WordEntry[] = [
   "emoji": "🥥",
   "audioFile": "coconutmilk.mp3"
 },
-{
-  "id": 3097,
-  "word": "tofu",
-  "meaning": "豆腐",
-  "phonetic": "/ˈtoʊfu/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The tofu is fresh.",
-  "sentenceCn": "这个豆腐很新鲜。",
-  "emoji": "🫘",
-  "audioFile": "tofu.mp3"
-},
+
 {
   "id": 3098,
   "word": "tempeh",
@@ -37190,42 +22976,7 @@ export const words: WordEntry[] = [
   "emoji": "🫘",
   "audioFile": "tempeh.mp3"
 },
-{
-  "id": 3099,
-  "word": "olive",
-  "meaning": "橄榄",
-  "phonetic": "/ˈɑlɪv/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The olive is fresh.",
-  "sentenceCn": "这个橄榄很新鲜。",
-  "emoji": "🫒",
-  "audioFile": "olive.mp3"
-},
-{
-  "id": 3100,
-  "word": "pickle",
-  "meaning": "腌黄瓜",
-  "phonetic": "/ˈpɪkəl/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pickle is fresh.",
-  "sentenceCn": "这个腌黄瓜很新鲜。",
-  "emoji": "🥒",
-  "audioFile": "pickle.mp3"
-},
-{
-  "id": 3101,
-  "word": "sauerkraut",
-  "meaning": "酸菜",
-  "phonetic": "/ˈsaʊrˌkraʊt/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat sauerkrauts.",
-  "sentenceCn": "我爱吃酸菜。",
-  "emoji": "🥬",
-  "audioFile": "sauerkraut.mp3"
-},
+
 {
   "id": 3102,
   "word": "kimchi",
@@ -37250,126 +23001,7 @@ export const words: WordEntry[] = [
   "emoji": "🫘",
   "audioFile": "miso.mp3"
 },
-{
-  "id": 3104,
-  "word": "yogurt",
-  "meaning": "酸奶",
-  "phonetic": "/ˈjoʊɡərt/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat yogurts.",
-  "sentenceCn": "我爱吃酸奶。",
-  "emoji": "🫘",
-  "audioFile": "yogurt.mp3"
-},
-{
-  "id": 3105,
-  "word": "cheese",
-  "meaning": "奶酪",
-  "phonetic": "/tʃiz/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cheeses.",
-  "sentenceCn": "我爱吃奶酪。",
-  "emoji": "🧀",
-  "audioFile": "cheese.mp3"
-},
-{
-  "id": 3106,
-  "word": "butter",
-  "meaning": "黄油",
-  "phonetic": "/ˈbʌtər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The butter is fresh.",
-  "sentenceCn": "这个黄油很新鲜。",
-  "emoji": "🧈",
-  "audioFile": "butter.mp3"
-},
-{
-  "id": 3107,
-  "word": "cream",
-  "meaning": "奶油",
-  "phonetic": "/krim/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat creams.",
-  "sentenceCn": "我爱吃奶油。",
-  "emoji": "🥛",
-  "audioFile": "cream.mp3"
-},
-{
-  "id": 3108,
-  "word": "milk",
-  "meaning": "牛奶",
-  "phonetic": "/mɪlk/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat milks.",
-  "sentenceCn": "我爱吃牛奶。",
-  "emoji": "🥛",
-  "audioFile": "milk.mp3"
-},
-{
-  "id": 3109,
-  "word": "egg",
-  "meaning": "鸡蛋",
-  "phonetic": "/ɛɡ/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat eggs.",
-  "sentenceCn": "我爱吃鸡蛋。",
-  "emoji": "🥚",
-  "audioFile": "egg.mp3"
-},
-{
-  "id": 3110,
-  "word": "honey",
-  "meaning": "蜂蜜",
-  "phonetic": "/ˈhʌni/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The honey is fresh.",
-  "sentenceCn": "这个蜂蜜很新鲜。",
-  "emoji": "🍯",
-  "audioFile": "honey.mp3"
-},
-{
-  "id": 3111,
-  "word": "jam",
-  "meaning": "果酱",
-  "phonetic": "/dʒæm/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The jam is fresh.",
-  "sentenceCn": "这个果酱很新鲜。",
-  "emoji": "🫙",
-  "audioFile": "jam.mp3"
-},
-{
-  "id": 3112,
-  "word": "syrup",
-  "meaning": "糖浆",
-  "phonetic": "/ˈsɪrəp/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat syrups.",
-  "sentenceCn": "我爱吃糖浆。",
-  "emoji": "🫙",
-  "audioFile": "syrup.mp3"
-},
-{
-  "id": 3113,
-  "word": "vinegar",
-  "meaning": "醋",
-  "phonetic": "/ˈvɪnɪɡər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat vinegars.",
-  "sentenceCn": "我爱吃醋。",
-  "emoji": "🫙",
-  "audioFile": "vinegar.mp3"
-},
+
 {
   "id": 3114,
   "word": "soysauce",
@@ -37382,222 +23014,7 @@ export const words: WordEntry[] = [
   "emoji": "🫙",
   "audioFile": "soysauce.mp3"
 },
-{
-  "id": 3115,
-  "word": "oil",
-  "meaning": "油",
-  "phonetic": "/ɔɪl/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The oil is fresh.",
-  "sentenceCn": "这个油很新鲜。",
-  "emoji": "🫒",
-  "audioFile": "oil.mp3"
-},
-{
-  "id": 3116,
-  "word": "salt",
-  "meaning": "盐",
-  "phonetic": "/sɔlt/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The salt is fresh.",
-  "sentenceCn": "这个盐很新鲜。",
-  "emoji": "🧂",
-  "audioFile": "salt.mp3"
-},
-{
-  "id": 3117,
-  "word": "pepper",
-  "meaning": "胡椒",
-  "phonetic": "/ˈpɛpər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat peppers.",
-  "sentenceCn": "我爱吃胡椒。",
-  "emoji": "🧂",
-  "audioFile": "pepper.mp3"
-},
-{
-  "id": 3118,
-  "word": "sugar",
-  "meaning": "糖",
-  "phonetic": "/ˈʃʊɡər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat sugars.",
-  "sentenceCn": "我爱吃糖。",
-  "emoji": "🧂",
-  "audioFile": "sugar.mp3"
-},
-{
-  "id": 3119,
-  "word": "flour",
-  "meaning": "面粉",
-  "phonetic": "/ˈflaʊər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The flour is fresh.",
-  "sentenceCn": "这个面粉很新鲜。",
-  "emoji": "🫙",
-  "audioFile": "flour.mp3"
-},
-{
-  "id": 3120,
-  "word": "rice",
-  "meaning": "大米",
-  "phonetic": "/raɪs/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The rice is fresh.",
-  "sentenceCn": "这个大米很新鲜。",
-  "emoji": "🍚",
-  "audioFile": "rice.mp3"
-},
-{
-  "id": 3121,
-  "word": "noodle",
-  "meaning": "面条",
-  "phonetic": "/ˈnudəl/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The noodle is fresh.",
-  "sentenceCn": "这个面条很新鲜。",
-  "emoji": "🍜",
-  "audioFile": "noodle.mp3"
-},
-{
-  "id": 3122,
-  "word": "bread",
-  "meaning": "面包",
-  "phonetic": "/brɛd/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The bread is fresh.",
-  "sentenceCn": "这个面包很新鲜。",
-  "emoji": "🍞",
-  "audioFile": "bread.mp3"
-},
-{
-  "id": 3123,
-  "word": "toast",
-  "meaning": "吐司",
-  "phonetic": "/toʊst/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The toast is fresh.",
-  "sentenceCn": "这个吐司很新鲜。",
-  "emoji": "🍞",
-  "audioFile": "toast.mp3"
-},
-{
-  "id": 3124,
-  "word": "cake",
-  "meaning": "蛋糕",
-  "phonetic": "/keɪk/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cakes.",
-  "sentenceCn": "我爱吃蛋糕。",
-  "emoji": "🎂",
-  "audioFile": "cake.mp3"
-},
-{
-  "id": 3125,
-  "word": "pie",
-  "meaning": "派",
-  "phonetic": "/paɪ/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pie is fresh.",
-  "sentenceCn": "这个派很新鲜。",
-  "emoji": "🥧",
-  "audioFile": "pie.mp3"
-},
-{
-  "id": 3126,
-  "word": "cookie",
-  "meaning": "饼干",
-  "phonetic": "/ˈkʊki/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cookies.",
-  "sentenceCn": "我爱吃饼干。",
-  "emoji": "🍪",
-  "audioFile": "cookie.mp3"
-},
-{
-  "id": 3127,
-  "word": "donut",
-  "meaning": "甜甜圈",
-  "phonetic": "/ˈdoʊnət/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The donut is fresh.",
-  "sentenceCn": "这个甜甜圈很新鲜。",
-  "emoji": "🍩",
-  "audioFile": "donut.mp3"
-},
-{
-  "id": 3128,
-  "word": "muffin",
-  "meaning": "松饼",
-  "phonetic": "/ˈmʌfən/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The muffin is fresh.",
-  "sentenceCn": "这个松饼很新鲜。",
-  "emoji": "🧁",
-  "audioFile": "muffin.mp3"
-},
-{
-  "id": 3129,
-  "word": "pancake",
-  "meaning": "煎饼",
-  "phonetic": "/ˈpænˌkeɪk/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pancakes.",
-  "sentenceCn": "我爱吃煎饼。",
-  "emoji": "🥞",
-  "audioFile": "pancake.mp3"
-},
-{
-  "id": 3130,
-  "word": "waffle",
-  "meaning": "华夫饼",
-  "phonetic": "/ˈwɑfəl/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The waffle is fresh.",
-  "sentenceCn": "这个华夫饼很新鲜。",
-  "emoji": "🧇",
-  "audioFile": "waffle.mp3"
-},
-{
-  "id": 3131,
-  "word": "cereal",
-  "meaning": "麦片",
-  "phonetic": "/ˈsɪriəl/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat cereals.",
-  "sentenceCn": "我爱吃麦片。",
-  "emoji": "🥣",
-  "audioFile": "cereal.mp3"
-},
-{
-  "id": 3132,
-  "word": "oatmeal",
-  "meaning": "燕麦粥",
-  "phonetic": "/ˈoʊtˌmil/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The oatmeal is fresh.",
-  "sentenceCn": "这个燕麦粥很新鲜。",
-  "emoji": "🥣",
-  "audioFile": "oatmeal.mp3"
-},
+
 {
   "id": 3133,
   "word": "porridge",
@@ -37610,90 +23027,7 @@ export const words: WordEntry[] = [
   "emoji": "🥣",
   "audioFile": "porridge.mp3"
 },
-{
-  "id": 3134,
-  "word": "soup",
-  "meaning": "汤",
-  "phonetic": "/sup/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The soup is fresh.",
-  "sentenceCn": "这个汤很新鲜。",
-  "emoji": "🍜",
-  "audioFile": "soup.mp3"
-},
-{
-  "id": 3135,
-  "word": "stew",
-  "meaning": "炖菜",
-  "phonetic": "/stu/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The stew is fresh.",
-  "sentenceCn": "这个炖菜很新鲜。",
-  "emoji": "🍲",
-  "audioFile": "stew.mp3"
-},
-{
-  "id": 3136,
-  "word": "curry",
-  "meaning": "咖喱",
-  "phonetic": "/ˈkʌri/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat curries.",
-  "sentenceCn": "我爱吃咖喱。",
-  "emoji": "🍛",
-  "audioFile": "curry.mp3"
-},
-{
-  "id": 3137,
-  "word": "salad",
-  "meaning": "沙拉",
-  "phonetic": "/ˈsæləd/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The salad is fresh.",
-  "sentenceCn": "这个沙拉很新鲜。",
-  "emoji": "🥗",
-  "audioFile": "salad.mp3"
-},
-{
-  "id": 3138,
-  "word": "sandwich",
-  "meaning": "三明治",
-  "phonetic": "/ˈsændwɪtʃ/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat sandwiches.",
-  "sentenceCn": "我爱吃三明治。",
-  "emoji": "🥪",
-  "audioFile": "sandwich.mp3"
-},
-{
-  "id": 3139,
-  "word": "burger",
-  "meaning": "汉堡",
-  "phonetic": "/ˈbɜrɡər/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat burgers.",
-  "sentenceCn": "我爱吃汉堡。",
-  "emoji": "🍔",
-  "audioFile": "burger.mp3"
-},
-{
-  "id": 3140,
-  "word": "pizza",
-  "meaning": "披萨",
-  "phonetic": "/ˈpitsə/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The pizza is fresh.",
-  "sentenceCn": "这个披萨很新鲜。",
-  "emoji": "🍕",
-  "audioFile": "pizza.mp3"
-},
+
 {
   "id": 3141,
   "word": "hotdog",
@@ -37706,18 +23040,7 @@ export const words: WordEntry[] = [
   "emoji": "🌭",
   "audioFile": "hotdog.mp3"
 },
-{
-  "id": 3142,
-  "word": "taco",
-  "meaning": "玉米卷",
-  "phonetic": "/ˈtɑkoʊ/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat tacos.",
-  "sentenceCn": "我爱吃玉米卷。",
-  "emoji": "🌮",
-  "audioFile": "taco.mp3"
-},
+
 {
   "id": 3143,
   "word": "burrito",
@@ -37730,18 +23053,7 @@ export const words: WordEntry[] = [
   "emoji": "🌯",
   "audioFile": "burrito.mp3"
 },
-{
-  "id": 3144,
-  "word": "sushi",
-  "meaning": "寿司",
-  "phonetic": "/ˈsuʃi/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The sushi is fresh.",
-  "sentenceCn": "这个寿司很新鲜。",
-  "emoji": "🍣",
-  "audioFile": "sushi.mp3"
-},
+
 {
   "id": 3145,
   "word": "riceball",
@@ -37754,18 +23066,7 @@ export const words: WordEntry[] = [
   "emoji": "🍙",
   "audioFile": "riceball.mp3"
 },
-{
-  "id": 3146,
-  "word": "dumpling",
-  "meaning": "饺子",
-  "phonetic": "/ˈdʌmplɪŋ/",
-  "difficulty": 3,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat dumplings.",
-  "sentenceCn": "我爱吃饺子。",
-  "emoji": "🥟",
-  "audioFile": "dumpling.mp3"
-},
+
 {
   "id": 3147,
   "word": "springroll",
@@ -37826,258 +23127,7 @@ export const words: WordEntry[] = [
   "emoji": "🫕",
   "audioFile": "hotpot.mp3"
 },
-{
-  "id": 3152,
-  "word": "steak",
-  "meaning": "牛排",
-  "phonetic": "/steɪk/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The steak is fresh.",
-  "sentenceCn": "这个牛排很新鲜。",
-  "emoji": "🥩",
-  "audioFile": "steak.mp3"
-},
-{
-  "id": 3153,
-  "word": "chicken",
-  "meaning": "鸡肉",
-  "phonetic": "/ˈtʃɪkən/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat chickens.",
-  "sentenceCn": "我爱吃鸡肉。",
-  "emoji": "🍗",
-  "audioFile": "chicken.mp3"
-},
-{
-  "id": 3154,
-  "word": "turkey",
-  "meaning": "火鸡",
-  "phonetic": "/ˈtɜrki/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat turkeys.",
-  "sentenceCn": "我爱吃火鸡。",
-  "emoji": "🦃",
-  "audioFile": "turkey.mp3"
-},
-{
-  "id": 3155,
-  "word": "pork",
-  "meaning": "猪肉",
-  "phonetic": "/pɔrk/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat porks.",
-  "sentenceCn": "我爱吃猪肉。",
-  "emoji": "🥓",
-  "audioFile": "pork.mp3"
-},
-{
-  "id": 3156,
-  "word": "bacon",
-  "meaning": "培根",
-  "phonetic": "/ˈbeɪkən/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat bacons.",
-  "sentenceCn": "我爱吃培根。",
-  "emoji": "🥓",
-  "audioFile": "bacon.mp3"
-},
-{
-  "id": 3157,
-  "word": "ham",
-  "meaning": "火腿",
-  "phonetic": "/hæm/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat hams.",
-  "sentenceCn": "我爱吃火腿。",
-  "emoji": "🥓",
-  "audioFile": "ham.mp3"
-},
-{
-  "id": 3158,
-  "word": "sausage",
-  "meaning": "香肠",
-  "phonetic": "/ˈsɔsɪdʒ/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The sausage is fresh.",
-  "sentenceCn": "这个香肠很新鲜。",
-  "emoji": "🌭",
-  "audioFile": "sausage.mp3"
-},
-{
-  "id": 3159,
-  "word": "fish",
-  "meaning": "鱼",
-  "phonetic": "/fɪʃ/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The fish is fresh.",
-  "sentenceCn": "这个鱼很新鲜。",
-  "emoji": "🐟",
-  "audioFile": "fish.mp3"
-},
-{
-  "id": 3160,
-  "word": "shrimp",
-  "meaning": "虾",
-  "phonetic": "/ʃrɪmp/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The shrimp is fresh.",
-  "sentenceCn": "这个虾很新鲜。",
-  "emoji": "🦐",
-  "audioFile": "shrimp.mp3"
-},
-{
-  "id": 3161,
-  "word": "crab",
-  "meaning": "螃蟹",
-  "phonetic": "/kræb/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The crab is fresh.",
-  "sentenceCn": "这个螃蟹很新鲜。",
-  "emoji": "🦀",
-  "audioFile": "crab.mp3"
-},
-{
-  "id": 3162,
-  "word": "lobster",
-  "meaning": "龙虾",
-  "phonetic": "/ˈlɑbstər/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The lobster is fresh.",
-  "sentenceCn": "这个龙虾很新鲜。",
-  "emoji": "🦞",
-  "audioFile": "lobster.mp3"
-},
-{
-  "id": 3163,
-  "word": "clam",
-  "meaning": "蛤蜊",
-  "phonetic": "/klæm/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The clam is fresh.",
-  "sentenceCn": "这个蛤蜊很新鲜。",
-  "emoji": "🦪",
-  "audioFile": "clam.mp3"
-},
-{
-  "id": 3164,
-  "word": "oyster",
-  "meaning": "牡蛎",
-  "phonetic": "/ˈɔɪstər/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The oyster is fresh.",
-  "sentenceCn": "这个牡蛎很新鲜。",
-  "emoji": "🦪",
-  "audioFile": "oyster.mp3"
-},
-{
-  "id": 3165,
-  "word": "squid",
-  "meaning": "鱿鱼",
-  "phonetic": "/skwɪd/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The squid is fresh.",
-  "sentenceCn": "这个鱿鱼很新鲜。",
-  "emoji": "🦑",
-  "audioFile": "squid.mp3"
-},
-{
-  "id": 3166,
-  "word": "octopus",
-  "meaning": "章鱼",
-  "phonetic": "/ˈɑktəpəs/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The octopus is fresh.",
-  "sentenceCn": "这个章鱼很新鲜。",
-  "emoji": "🐙",
-  "audioFile": "octopus.mp3"
-},
-{
-  "id": 3167,
-  "word": "tuna",
-  "meaning": "金枪鱼",
-  "phonetic": "/ˈtunə/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The tuna is fresh.",
-  "sentenceCn": "这个金枪鱼很新鲜。",
-  "emoji": "🐟",
-  "audioFile": "tuna.mp3"
-},
-{
-  "id": 3168,
-  "word": "salmon",
-  "meaning": "三文鱼",
-  "phonetic": "/ˈsæmən/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat salmons.",
-  "sentenceCn": "我爱吃三文鱼。",
-  "emoji": "🐟",
-  "audioFile": "salmon.mp3"
-},
-{
-  "id": 3169,
-  "word": "cod",
-  "meaning": "鳕鱼",
-  "phonetic": "/kɑd/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cod is fresh.",
-  "sentenceCn": "这个鳕鱼很新鲜。",
-  "emoji": "🐟",
-  "audioFile": "cod.mp3"
-},
-{
-  "id": 3170,
-  "word": "eel",
-  "meaning": "鳗鱼",
-  "phonetic": "/il/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat eels.",
-  "sentenceCn": "我爱吃鳗鱼。",
-  "emoji": "🐍",
-  "audioFile": "eel.mp3"
-},
-{
-  "id": 3171,
-  "word": "chocolate",
-  "meaning": "巧克力",
-  "phonetic": "/ˈtʃɔklət/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The chocolate is fresh.",
-  "sentenceCn": "这个巧克力很新鲜。",
-  "emoji": "🍫",
-  "audioFile": "chocolate.mp3"
-},
-{
-  "id": 3172,
-  "word": "candy",
-  "meaning": "糖果",
-  "phonetic": "/ˈkændi/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The candy is fresh.",
-  "sentenceCn": "这个糖果很新鲜。",
-  "emoji": "🍬",
-  "audioFile": "candy.mp3"
-},
+
 {
   "id": 3173,
   "word": "lollipop",
@@ -38090,18 +23140,7 @@ export const words: WordEntry[] = [
   "emoji": "🍭",
   "audioFile": "lollipop.mp3"
 },
-{
-  "id": 3174,
-  "word": "gum",
-  "meaning": "口香糖",
-  "phonetic": "/ɡʌm/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat gums.",
-  "sentenceCn": "我爱吃口香糖。",
-  "emoji": "🫧",
-  "audioFile": "gum.mp3"
-},
+
 {
   "id": 3175,
   "word": "icecream",
@@ -38126,78 +23165,7 @@ export const words: WordEntry[] = [
   "emoji": "🍦",
   "audioFile": "popsicle.mp3"
 },
-{
-  "id": 3177,
-  "word": "sorbet",
-  "meaning": "雪葩",
-  "phonetic": "/sɔrˈbeɪ/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The sorbet is fresh.",
-  "sentenceCn": "这个雪葩很新鲜。",
-  "emoji": "🍧",
-  "audioFile": "sorbet.mp3"
-},
-{
-  "id": 3178,
-  "word": "pudding",
-  "meaning": "布丁",
-  "phonetic": "/ˈpʊdɪŋ/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat puddings.",
-  "sentenceCn": "我爱吃布丁。",
-  "emoji": "🍮",
-  "audioFile": "pudding.mp3"
-},
-{
-  "id": 3179,
-  "word": "custard",
-  "meaning": "蛋奶冻",
-  "phonetic": "/ˈkʌstərd/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat custards.",
-  "sentenceCn": "我爱吃蛋奶冻。",
-  "emoji": "🍮",
-  "audioFile": "custard.mp3"
-},
-{
-  "id": 3180,
-  "word": "jelly",
-  "meaning": "果冻",
-  "phonetic": "/ˈdʒɛli/",
-  "difficulty": 4,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat jellies.",
-  "sentenceCn": "我爱吃果冻。",
-  "emoji": "🫙",
-  "audioFile": "jelly.mp3"
-},
-{
-  "id": 3181,
-  "word": "car",
-  "meaning": "汽车",
-  "phonetic": "/kɑr/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by car.",
-  "sentenceCn": "我坐汽车去上学。",
-  "emoji": "🚗",
-  "audioFile": "car.mp3"
-},
-{
-  "id": 3182,
-  "word": "bus",
-  "meaning": "公交车",
-  "phonetic": "/bʌs/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by bus.",
-  "sentenceCn": "我坐公交车去上学。",
-  "emoji": "🚌",
-  "audioFile": "bus.mp3"
-},
+
 {
   "id": 3183,
   "word": "truck",
@@ -38222,18 +23190,7 @@ export const words: WordEntry[] = [
   "emoji": "🚐",
   "audioFile": "van.mp3"
 },
-{
-  "id": 3185,
-  "word": "taxi",
-  "meaning": "出租车",
-  "phonetic": "/ˈtæksi/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The taxi is fast.",
-  "sentenceCn": "出租车很快。",
-  "emoji": "🚕",
-  "audioFile": "taxi.mp3"
-},
+
 {
   "id": 3186,
   "word": "bicycle",
@@ -38270,30 +23227,7 @@ export const words: WordEntry[] = [
   "emoji": "🏍️",
   "audioFile": "motorcycle.mp3"
 },
-{
-  "id": 3189,
-  "word": "train",
-  "meaning": "火车",
-  "phonetic": "/treɪn/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by train.",
-  "sentenceCn": "我坐火车去上学。",
-  "emoji": "🚂",
-  "audioFile": "train.mp3"
-},
-{
-  "id": 3190,
-  "word": "subway",
-  "meaning": "地铁",
-  "phonetic": "/ˈsʌbˌweɪ/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The subway is fast.",
-  "sentenceCn": "地铁很快。",
-  "emoji": "🚇",
-  "audioFile": "subway.mp3"
-},
+
 {
   "id": 3191,
   "word": "tram",
@@ -38642,18 +23576,7 @@ export const words: WordEntry[] = [
   "emoji": "🚜",
   "audioFile": "bulldozer.mp3"
 },
-{
-  "id": 3220,
-  "word": "crane",
-  "meaning": "起重机",
-  "phonetic": "/kreɪn/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The crane is fast.",
-  "sentenceCn": "起重机很快。",
-  "emoji": "🏗️",
-  "audioFile": "crane.mp3"
-},
+
 {
   "id": 3221,
   "word": "forklift",
@@ -38894,18 +23817,7 @@ export const words: WordEntry[] = [
   "emoji": "⛸️",
   "audioFile": "rollerblade.mp3"
 },
-{
-  "id": 3241,
-  "word": "horse",
-  "meaning": "马",
-  "phonetic": "/hɔrs/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by horse.",
-  "sentenceCn": "我坐马去上学。",
-  "emoji": "🐴",
-  "audioFile": "horse.mp3"
-},
+
 {
   "id": 3242,
   "word": "carriage",
@@ -38918,30 +23830,7 @@ export const words: WordEntry[] = [
   "emoji": "🏇",
   "audioFile": "carriage.mp3"
 },
-{
-  "id": 3243,
-  "word": "camel",
-  "meaning": "骆驼",
-  "phonetic": "/ˈkæməl/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "The camel is fast.",
-  "sentenceCn": "骆驼很快。",
-  "emoji": "🐪",
-  "audioFile": "camel.mp3"
-},
-{
-  "id": 3244,
-  "word": "donkey",
-  "meaning": "驴",
-  "phonetic": "/ˈdɑŋki/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by donkey.",
-  "sentenceCn": "我坐驴去上学。",
-  "emoji": "🫏",
-  "audioFile": "donkey.mp3"
-},
+
 {
   "id": 3245,
   "word": "sled",
@@ -38954,18 +23843,7 @@ export const words: WordEntry[] = [
   "emoji": "🛷",
   "audioFile": "sled.mp3"
 },
-{
-  "id": 3246,
-  "word": "dog",
-  "meaning": "狗拉雪橇",
-  "phonetic": "/dɔɡ sled/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by dog.",
-  "sentenceCn": "我坐狗拉雪橇去上学。",
-  "emoji": "🐕",
-  "audioFile": "dog.mp3"
-},
+
 {
   "id": 3247,
   "word": "bicyclelane",
@@ -39098,18 +23976,7 @@ export const words: WordEntry[] = [
   "emoji": "🅿️",
   "audioFile": "parkinglot.mp3"
 },
-{
-  "id": 3258,
-  "word": "garage",
-  "meaning": "车库",
-  "phonetic": "/ɡəˈrɑʒ/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "The garage is fast.",
-  "sentenceCn": "车库很快。",
-  "emoji": "🏠",
-  "audioFile": "garage.mp3"
-},
+
 {
   "id": 3259,
   "word": "gasstation",
@@ -39170,18 +24037,7 @@ export const words: WordEntry[] = [
   "emoji": "🚏",
   "audioFile": "busstop.mp3"
 },
-{
-  "id": 3264,
-  "word": "harbor",
-  "meaning": "港口",
-  "phonetic": "/ˈhɑrbər/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "The harbor is fast.",
-  "sentenceCn": "港口很快。",
-  "emoji": "⛵",
-  "audioFile": "harbor.mp3"
-},
+
 {
   "id": 3265,
   "word": "dock",
@@ -39254,18 +24110,7 @@ export const words: WordEntry[] = [
   "emoji": "🔗",
   "audioFile": "seatbelt.mp3"
 },
-{
-  "id": 3271,
-  "word": "helmet",
-  "meaning": "头盔",
-  "phonetic": "/ˈhɛlmɪt/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by helmet.",
-  "sentenceCn": "我坐头盔去上学。",
-  "emoji": "⛑️",
-  "audioFile": "helmet.mp3"
-},
+
 {
   "id": 3272,
   "word": "lifejacket",
@@ -39482,18 +24327,7 @@ export const words: WordEntry[] = [
   "emoji": "🚗",
   "audioFile": "bumper.mp3"
 },
-{
-  "id": 3290,
-  "word": "trunk",
-  "meaning": "后备箱",
-  "phonetic": "/trʌŋk/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by trunk.",
-  "sentenceCn": "我坐后备箱去上学。",
-  "emoji": "🚗",
-  "audioFile": "trunk.mp3"
-},
+
 {
   "id": 3291,
   "word": "horn",
@@ -39542,42 +24376,7 @@ export const words: WordEntry[] = [
   "emoji": "📍",
   "audioFile": "gps.mp3"
 },
-{
-  "id": 3295,
-  "word": "map",
-  "meaning": "地图",
-  "phonetic": "/mæp/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "The map is fast.",
-  "sentenceCn": "地图很快。",
-  "emoji": "🗺️",
-  "audioFile": "map.mp3"
-},
-{
-  "id": 3296,
-  "word": "ticket",
-  "meaning": "车票",
-  "phonetic": "/ˈtɪkɪt/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "The ticket is fast.",
-  "sentenceCn": "车票很快。",
-  "emoji": "🎫",
-  "audioFile": "ticket.mp3"
-},
-{
-  "id": 3297,
-  "word": "passport",
-  "meaning": "护照",
-  "phonetic": "/ˈpæsˌpɔrt/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by passport.",
-  "sentenceCn": "我坐护照去上学。",
-  "emoji": "🛂",
-  "audioFile": "passport.mp3"
-},
+
 {
   "id": 3298,
   "word": "boardingpass",
@@ -39602,18 +24401,7 @@ export const words: WordEntry[] = [
   "emoji": "🧳",
   "audioFile": "luggage.mp3"
 },
-{
-  "id": 3300,
-  "word": "suitcase",
-  "meaning": "手提箱",
-  "phonetic": "/ˈsutˌkeɪs/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "The suitcase is fast.",
-  "sentenceCn": "手提箱很快。",
-  "emoji": "🧳",
-  "audioFile": "suitcase.mp3"
-},
+
 {
   "id": 3301,
   "word": "baggage",
@@ -39626,18 +24414,7 @@ export const words: WordEntry[] = [
   "emoji": "🧳",
   "audioFile": "baggage.mp3"
 },
-{
-  "id": 3302,
-  "word": "backpack",
-  "meaning": "背包",
-  "phonetic": "/ˈbækˌpæk/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by backpack.",
-  "sentenceCn": "我坐背包去上学。",
-  "emoji": "🎒",
-  "audioFile": "backpack.mp3"
-},
+
 {
   "id": 3303,
   "word": "commute",
@@ -39806,18 +24583,7 @@ export const words: WordEntry[] = [
   "emoji": "🚄",
   "audioFile": "bullet.mp3"
 },
-{
-  "id": 3317,
-  "word": "steam",
-  "meaning": "蒸汽火车",
-  "phonetic": "/stim treɪn/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by steam.",
-  "sentenceCn": "我坐蒸汽火车去上学。",
-  "emoji": "🚂",
-  "audioFile": "steam.mp3"
-},
+
 {
   "id": 3318,
   "word": "maglev",
@@ -39866,18 +24632,7 @@ export const words: WordEntry[] = [
   "emoji": "🚡",
   "audioFile": "gondola.mp3"
 },
-{
-  "id": 3322,
-  "word": "elevator",
-  "meaning": "电梯",
-  "phonetic": "/ˈɛlɪˌveɪtər/",
-  "difficulty": 3,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by elevator.",
-  "sentenceCn": "我坐电梯去上学。",
-  "emoji": "🛗",
-  "audioFile": "elevator.mp3"
-},
+
 {
   "id": 3323,
   "word": "escalator",
@@ -39902,42 +24657,7 @@ export const words: WordEntry[] = [
   "emoji": "🚶",
   "audioFile": "movingwalk.mp3"
 },
-{
-  "id": 3325,
-  "word": "teacher",
-  "meaning": "老师",
-  "phonetic": "/ˈtitʃər/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a teacher.",
-  "sentenceCn": "我妈妈是老师。",
-  "emoji": "👩‍🏫",
-  "audioFile": "teacher.mp3"
-},
-{
-  "id": 3326,
-  "word": "doctor",
-  "meaning": "医生",
-  "phonetic": "/ˈdɑktər/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a doctor.",
-  "sentenceCn": "我妈妈是医生。",
-  "emoji": "👨‍⚕️",
-  "audioFile": "doctor.mp3"
-},
-{
-  "id": 3327,
-  "word": "nurse",
-  "meaning": "护士",
-  "phonetic": "/nɜrs/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a nurse.",
-  "sentenceCn": "我妈妈是护士。",
-  "emoji": "👩‍⚕️",
-  "audioFile": "nurse.mp3"
-},
+
 {
   "id": 3328,
   "word": "dentist",
@@ -40034,18 +24754,7 @@ export const words: WordEntry[] = [
   "emoji": "🪖",
   "audioFile": "soldier.mp3"
 },
-{
-  "id": 3336,
-  "word": "guard",
-  "meaning": "保安",
-  "phonetic": "/ɡɑrd/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "The guard helps people.",
-  "sentenceCn": "保安帮助别人。",
-  "emoji": "💂",
-  "audioFile": "guard.mp3"
-},
+
 {
   "id": 3337,
   "word": "detective",
@@ -40334,18 +25043,7 @@ export const words: WordEntry[] = [
   "emoji": "🥖",
   "audioFile": "baker.mp3"
 },
-{
-  "id": 3361,
-  "word": "waiter",
-  "meaning": "服务员",
-  "phonetic": "/ˈweɪtər/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a waiter.",
-  "sentenceCn": "我妈妈是服务员。",
-  "emoji": "👨‍🍳",
-  "audioFile": "waiter.mp3"
-},
+
 {
   "id": 3362,
   "word": "bartender",
@@ -40562,54 +25260,7 @@ export const words: WordEntry[] = [
   "emoji": "🔢",
   "audioFile": "mathematician.mp3"
 },
-{
-  "id": 3380,
-  "word": "professor",
-  "meaning": "教授",
-  "phonetic": "/prəˈfɛsər/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "The professor helps people.",
-  "sentenceCn": "教授帮助别人。",
-  "emoji": "👨‍🏫",
-  "audioFile": "professor.mp3"
-},
-{
-  "id": 3381,
-  "word": "principal",
-  "meaning": "校长",
-  "phonetic": "/ˈprɪnsəpəl/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a principal.",
-  "sentenceCn": "我妈妈是校长。",
-  "emoji": "👨‍🏫",
-  "audioFile": "principal.mp3"
-},
-{
-  "id": 3382,
-  "word": "librarian",
-  "meaning": "图书管理员",
-  "phonetic": "/laɪˈbrɛriən/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a librarian.",
-  "sentenceCn": "我妈妈是图书管理员。",
-  "emoji": "📚",
-  "audioFile": "librarian.mp3"
-},
-{
-  "id": 3383,
-  "word": "coach",
-  "meaning": "教练",
-  "phonetic": "/koʊtʃ/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a coach.",
-  "sentenceCn": "我妈妈是教练。",
-  "emoji": "🏅",
-  "audioFile": "coach.mp3"
-},
+
 {
   "id": 3384,
   "word": "athlete",
@@ -40646,18 +25297,7 @@ export const words: WordEntry[] = [
   "emoji": "🧑‍🚀",
   "audioFile": "astronaut.mp3"
 },
-{
-  "id": 3387,
-  "word": "pilot",
-  "meaning": "飞行员",
-  "phonetic": "/ˈpaɪlət/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a pilot.",
-  "sentenceCn": "我妈妈是飞行员。",
-  "emoji": "👨‍✈️",
-  "audioFile": "pilot.mp3"
-},
+
 {
   "id": 3388,
   "word": "flightattendant",
@@ -40682,18 +25322,7 @@ export const words: WordEntry[] = [
   "emoji": "⛵",
   "audioFile": "sailor.mp3"
 },
-{
-  "id": 3390,
-  "word": "captain",
-  "meaning": "船长",
-  "phonetic": "/ˈkæptɪn/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "The captain helps people.",
-  "sentenceCn": "船长帮助别人。",
-  "emoji": "⚓",
-  "audioFile": "captain.mp3"
-},
+
 {
   "id": 3391,
   "word": "businessman",
@@ -40862,18 +25491,7 @@ export const words: WordEntry[] = [
   "emoji": "💄",
   "audioFile": "makeupartist.mp3"
 },
-{
-  "id": 3405,
-  "word": "nanny",
-  "meaning": "保姆",
-  "phonetic": "/ˈnæni/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a nanny.",
-  "sentenceCn": "我妈妈是保姆。",
-  "emoji": "👶",
-  "audioFile": "nanny.mp3"
-},
+
 {
   "id": 3406,
   "word": "butler",
@@ -40934,30 +25552,7 @@ export const words: WordEntry[] = [
   "emoji": "📦",
   "audioFile": "delivery.mp3"
 },
-{
-  "id": 3411,
-  "word": "driver",
-  "meaning": "司机",
-  "phonetic": "/ˈdraɪvər/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a driver.",
-  "sentenceCn": "我妈妈是司机。",
-  "emoji": "🚗",
-  "audioFile": "driver.mp3"
-},
-{
-  "id": 3412,
-  "word": "pilot",
-  "meaning": "领航员",
-  "phonetic": "/ˈpaɪlət/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "The pilot helps people.",
-  "sentenceCn": "领航员帮助别人。",
-  "emoji": "🧭",
-  "audioFile": "pilot.mp3"
-},
+
 {
   "id": 3413,
   "word": "tourguide",
@@ -41090,18 +25685,7 @@ export const words: WordEntry[] = [
   "emoji": "🌐",
   "audioFile": "diplomat.mp3"
 },
-{
-  "id": 3424,
-  "word": "judge",
-  "meaning": "审判员",
-  "phonetic": "/dʒʌdʒ/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a judge.",
-  "sentenceCn": "我妈妈是审判员。",
-  "emoji": "⚖️",
-  "audioFile": "judge.mp3"
-},
+
 {
   "id": 3425,
   "word": "attorney",
@@ -41210,18 +25794,7 @@ export const words: WordEntry[] = [
   "emoji": "🤝",
   "audioFile": "socialworker.mp3"
 },
-{
-  "id": 3434,
-  "word": "volunteer",
-  "meaning": "志愿者",
-  "phonetic": "/ˌvɑlənˈtɪr/",
-  "difficulty": 3,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a volunteer.",
-  "sentenceCn": "我妈妈是志愿者。",
-  "emoji": "🤲",
-  "audioFile": "volunteer.mp3"
-},
+
 {
   "id": 3435,
   "word": "missionary",
@@ -41354,30 +25927,7 @@ export const words: WordEntry[] = [
   "emoji": "🏊",
   "audioFile": "lifeguard.mp3"
 },
-{
-  "id": 3446,
-  "word": "lifeguard",
-  "meaning": "救赎者",
-  "phonetic": "/ˈlaɪfˌɡɑrd/",
-  "difficulty": 3,
-  "theme": "职业 Occupations",
-  "sentence": "The lifeguard helps people.",
-  "sentenceCn": "救赎者帮助别人。",
-  "emoji": "🛟",
-  "audioFile": "lifeguard.mp3"
-},
-{
-  "id": 3447,
-  "word": "firefighter",
-  "meaning": "消防员",
-  "phonetic": "/ˈfaɪərˌfaɪtər/",
-  "difficulty": 3,
-  "theme": "职业 Occupations",
-  "sentence": "The firefighter helps people.",
-  "sentenceCn": "消防员帮助别人。",
-  "emoji": "🧯",
-  "audioFile": "firefighter.mp3"
-},
+
 {
   "id": 3448,
   "word": "paramedic",
@@ -41450,18 +26000,7 @@ export const words: WordEntry[] = [
   "emoji": "👷",
   "audioFile": "constructionworker.mp3"
 },
-{
-  "id": 3454,
-  "word": "painter",
-  "meaning": "油漆工",
-  "phonetic": "/ˈpeɪntər/",
-  "difficulty": 3,
-  "theme": "职业 Occupations",
-  "sentence": "The painter helps people.",
-  "sentenceCn": "油漆工帮助别人。",
-  "emoji": "🖌️",
-  "audioFile": "painter.mp3"
-},
+
 {
   "id": 3455,
   "word": "roofer",
@@ -41678,18 +26217,7 @@ export const words: WordEntry[] = [
   "emoji": "🏈",
   "audioFile": "football.mp3"
 },
-{
-  "id": 3473,
-  "word": "cricket",
-  "meaning": "板球",
-  "phonetic": "/ˈkrɪkɪt/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play cricket.",
-  "sentenceCn": "我喜欢玩板球。",
-  "emoji": "🏏",
-  "audioFile": "cricket.mp3"
-},
+
 {
   "id": 3474,
   "word": "handball",
@@ -41834,18 +26362,7 @@ export const words: WordEntry[] = [
   "emoji": "⛷️",
   "audioFile": "waterskiing.mp3"
 },
-{
-  "id": 3486,
-  "word": "jet",
-  "meaning": "水上摩托",
-  "phonetic": "/dʒɛt ˈskiɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play jet.",
-  "sentenceCn": "我喜欢玩水上摩托。",
-  "emoji": "🚤",
-  "audioFile": "jet.mp3"
-},
+
 {
   "id": 3487,
   "word": "running",
@@ -42230,18 +26747,7 @@ export const words: WordEntry[] = [
   "emoji": "🚴",
   "audioFile": "bmx.mp3"
 },
-{
-  "id": 3519,
-  "word": "skateboarding",
-  "meaning": "滑板运动",
-  "phonetic": "/ˈskeɪtˌbɔrdɪŋ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play skateboarding.",
-  "sentenceCn": "我喜欢玩滑板运动。",
-  "emoji": "🛹",
-  "audioFile": "skateboarding.mp3"
-},
+
 {
   "id": 3520,
   "word": "scootering",
@@ -42314,18 +26820,7 @@ export const words: WordEntry[] = [
   "emoji": "💪",
   "audioFile": "pullup.mp3"
 },
-{
-  "id": 3526,
-  "word": "squat",
-  "meaning": "深蹲",
-  "phonetic": "/skwɑt/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play squat.",
-  "sentenceCn": "我喜欢玩深蹲。",
-  "emoji": "🏋️",
-  "audioFile": "squat.mp3"
-},
+
 {
   "id": 3527,
   "word": "jumprope",
@@ -42626,18 +27121,7 @@ export const words: WordEntry[] = [
   "emoji": "🎾",
   "audioFile": "racquetball.mp3"
 },
-{
-  "id": 3552,
-  "word": "squash",
-  "meaning": "壁球",
-  "phonetic": "/skwɑʃ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Squash is fun.",
-  "sentenceCn": "壁球很有趣。",
-  "emoji": "🎾",
-  "audioFile": "squash.mp3"
-},
+
 {
   "id": 3553,
   "word": "lacrosse",
@@ -42686,18 +27170,7 @@ export const words: WordEntry[] = [
   "emoji": "🏴",
   "audioFile": "captureflag.mp3"
 },
-{
-  "id": 3557,
-  "word": "tag",
-  "meaning": "抓人游戏",
-  "phonetic": "/tæɡ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Tag is fun.",
-  "sentenceCn": "抓人游戏很有趣。",
-  "emoji": "🏃",
-  "audioFile": "tag.mp3"
-},
+
 {
   "id": 3558,
   "word": "hideandseek",
@@ -43190,18 +27663,7 @@ export const words: WordEntry[] = [
   "emoji": "😤",
   "audioFile": "rough.mp3"
 },
-{
-  "id": 3599,
-  "word": "patient",
-  "meaning": "耐心的",
-  "phonetic": "/ˈpeɪʃənt/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel patient today.",
-  "sentenceCn": "我今天感到耐心的。",
-  "emoji": "🧘",
-  "audioFile": "patient.mp3"
-},
+
 {
   "id": 3600,
   "word": "impatient",
@@ -43718,18 +28180,7 @@ export const words: WordEntry[] = [
   "emoji": "🌟",
   "audioFile": "admired.mp3"
 },
-{
-  "id": 3643,
-  "word": "loved",
-  "meaning": "深爱的",
-  "phonetic": "/lʌvd/",
-  "difficulty": 2,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "The loved makes me happy.",
-  "sentenceCn": "深爱的让我开心。",
-  "emoji": "❤️",
-  "audioFile": "loved.mp3"
-},
+
 {
   "id": 3644,
   "word": "cared",
@@ -44234,18 +28685,7 @@ export const words: WordEntry[] = [
   "emoji": "😳",
   "audioFile": "ashamed.mp3"
 },
-{
-  "id": 3686,
-  "word": "embarrassed",
-  "meaning": "难堪的",
-  "phonetic": "/ɛmˈbɛrəst/",
-  "difficulty": 3,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel embarrassed today.",
-  "sentenceCn": "我今天感到难堪的。",
-  "emoji": "😅",
-  "audioFile": "embarrassed.mp3"
-},
+
 {
   "id": 3687,
   "word": "grumpy",
@@ -44342,18 +28782,7 @@ export const words: WordEntry[] = [
   "emoji": "🐢",
   "audioFile": "cautious.mp3"
 },
-{
-  "id": 3695,
-  "word": "rose",
-  "meaning": "玫瑰",
-  "phonetic": "/roʊz/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Rose grows in the garden.",
-  "sentenceCn": "玫瑰长在花园里。",
-  "emoji": "🌹",
-  "audioFile": "rose.mp3"
-},
+
 {
   "id": 3696,
   "word": "lily",
@@ -44438,30 +28867,7 @@ export const words: WordEntry[] = [
   "emoji": "🌸",
   "audioFile": "jasmine.mp3"
 },
-{
-  "id": 3703,
-  "word": "lavender",
-  "meaning": "薰衣草",
-  "phonetic": "/ˈlævəndər/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lavender grows in the garden.",
-  "sentenceCn": "薰衣草长在花园里。",
-  "emoji": "💜",
-  "audioFile": "lavender.mp3"
-},
-{
-  "id": 3704,
-  "word": "violet",
-  "meaning": "紫罗兰",
-  "phonetic": "/ˈvaɪəlɪt/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The violet is a plant.",
-  "sentenceCn": "紫罗兰是一种植物。",
-  "emoji": "💜",
-  "audioFile": "violet.mp3"
-},
+
 {
   "id": 3705,
   "word": "peony",
@@ -44582,18 +28988,7 @@ export const words: WordEntry[] = [
   "emoji": "🪴",
   "audioFile": "succulent.mp3"
 },
-{
-  "id": 3715,
-  "word": "bamboo",
-  "meaning": "竹子",
-  "phonetic": "/bæmˈbu/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The bamboo is a plant.",
-  "sentenceCn": "竹子是一种植物。",
-  "emoji": "🎋",
-  "audioFile": "bamboo.mp3"
-},
+
 {
   "id": 3716,
   "word": "pinetree",
@@ -44654,18 +29049,7 @@ export const words: WordEntry[] = [
   "emoji": "🌲",
   "audioFile": "birch.mp3"
 },
-{
-  "id": 3721,
-  "word": "palm",
-  "meaning": "棕榈树",
-  "phonetic": "/pɑm/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Palm grows in the garden.",
-  "sentenceCn": "棕榈树长在花园里。",
-  "emoji": "🌴",
-  "audioFile": "palm.mp3"
-},
+
 {
   "id": 3722,
   "word": "magnolia",
@@ -44750,30 +29134,7 @@ export const words: WordEntry[] = [
   "emoji": "🌺",
   "audioFile": "gardenia.mp3"
 },
-{
-  "id": 3729,
-  "word": "iris",
-  "meaning": "鸢尾花",
-  "phonetic": "/ˈaɪrɪs/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The iris is a plant.",
-  "sentenceCn": "鸢尾花是一种植物。",
-  "emoji": "💜",
-  "audioFile": "iris.mp3"
-},
-{
-  "id": 3730,
-  "word": "lilac",
-  "meaning": "丁香花",
-  "phonetic": "/ˈlaɪlək/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The lilac is a plant.",
-  "sentenceCn": "丁香花是一种植物。",
-  "emoji": "💜",
-  "audioFile": "lilac.mp3"
-},
+
 {
   "id": 3731,
   "word": "poppy",
@@ -44822,18 +29183,7 @@ export const words: WordEntry[] = [
   "emoji": "🌼",
   "audioFile": "narcissus.mp3"
 },
-{
-  "id": 3735,
-  "word": "orchid",
-  "meaning": "蝴蝶兰",
-  "phonetic": "/ˈɔrkɪd/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Orchid grows in the garden.",
-  "sentenceCn": "蝴蝶兰长在花园里。",
-  "emoji": "🦋",
-  "audioFile": "orchid.mp3"
-},
+
 {
   "id": 3736,
   "word": "bloom",
@@ -44846,18 +29196,7 @@ export const words: WordEntry[] = [
   "emoji": "🌸",
   "audioFile": "bloom.mp3"
 },
-{
-  "id": 3737,
-  "word": "blossom",
-  "meaning": "花簇",
-  "phonetic": "/ˈblɑsəm/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Blossom grows in the garden.",
-  "sentenceCn": "花簇长在花园里。",
-  "emoji": "🌺",
-  "audioFile": "blossom.mp3"
-},
+
 {
   "id": 3738,
   "word": "bud",
@@ -44870,30 +29209,7 @@ export const words: WordEntry[] = [
   "emoji": "🌱",
   "audioFile": "bud.mp3"
 },
-{
-  "id": 3739,
-  "word": "petal",
-  "meaning": "花瓣",
-  "phonetic": "/ˈpɛtəl/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Petal grows in the garden.",
-  "sentenceCn": "花瓣长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "petal.mp3"
-},
-{
-  "id": 3740,
-  "word": "pollen",
-  "meaning": "花粉",
-  "phonetic": "/ˈpɑlən/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Pollen grows in the garden.",
-  "sentenceCn": "花粉长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "pollen.mp3"
-},
+
 {
   "id": 3741,
   "word": "nectar",
@@ -44930,42 +29246,7 @@ export const words: WordEntry[] = [
   "emoji": "🌱",
   "audioFile": "stem.mp3"
 },
-{
-  "id": 3744,
-  "word": "leaf",
-  "meaning": "叶子",
-  "phonetic": "/lif/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The leaf is a plant.",
-  "sentenceCn": "叶子是一种植物。",
-  "emoji": "🍃",
-  "audioFile": "leaf.mp3"
-},
-{
-  "id": 3745,
-  "word": "root",
-  "meaning": "根",
-  "phonetic": "/rut/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The root is a plant.",
-  "sentenceCn": "根是一种植物。",
-  "emoji": "🌱",
-  "audioFile": "root.mp3"
-},
-{
-  "id": 3746,
-  "word": "seed",
-  "meaning": "种子",
-  "phonetic": "/sid/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The seed is a plant.",
-  "sentenceCn": "种子是一种植物。",
-  "emoji": "🌰",
-  "audioFile": "seed.mp3"
-},
+
 {
   "id": 3747,
   "word": "sprout",
@@ -44978,90 +29259,7 @@ export const words: WordEntry[] = [
   "emoji": "🌱",
   "audioFile": "sprout.mp3"
 },
-{
-  "id": 3748,
-  "word": "weed",
-  "meaning": "杂草",
-  "phonetic": "/wid/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The weed is a plant.",
-  "sentenceCn": "杂草是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "weed.mp3"
-},
-{
-  "id": 3749,
-  "word": "grass",
-  "meaning": "草",
-  "phonetic": "/ɡræs/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The grass is a plant.",
-  "sentenceCn": "草是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "grass.mp3"
-},
-{
-  "id": 3750,
-  "word": "lawn",
-  "meaning": "草坪",
-  "phonetic": "/lɔn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The lawn is a plant.",
-  "sentenceCn": "草坪是一种植物。",
-  "emoji": "🌱",
-  "audioFile": "lawn.mp3"
-},
-{
-  "id": 3751,
-  "word": "meadow",
-  "meaning": "草地",
-  "phonetic": "/ˈmɛdoʊ/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The meadow is a plant.",
-  "sentenceCn": "草地是一种植物。",
-  "emoji": "🌾",
-  "audioFile": "meadow.mp3"
-},
-{
-  "id": 3752,
-  "word": "forest",
-  "meaning": "森林",
-  "phonetic": "/ˈfɔrɪst/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The forest is a plant.",
-  "sentenceCn": "森林是一种植物。",
-  "emoji": "🌲",
-  "audioFile": "forest.mp3"
-},
-{
-  "id": 3753,
-  "word": "jungle",
-  "meaning": "丛林",
-  "phonetic": "/ˈdʒʌŋɡəl/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The jungle is a plant.",
-  "sentenceCn": "丛林是一种植物。",
-  "emoji": "🌴",
-  "audioFile": "jungle.mp3"
-},
-{
-  "id": 3754,
-  "word": "rainforest",
-  "meaning": "雨林",
-  "phonetic": "/ˈreɪnˌfɔrɪst/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Rainforest grows in the garden.",
-  "sentenceCn": "雨林长在花园里。",
-  "emoji": "🌳",
-  "audioFile": "rainforest.mp3"
-},
+
 {
   "id": 3755,
   "word": "grove",
@@ -45086,18 +29284,7 @@ export const words: WordEntry[] = [
   "emoji": "🌲",
   "audioFile": "woodland.mp3"
 },
-{
-  "id": 3757,
-  "word": "garden",
-  "meaning": "花园",
-  "phonetic": "/ˈɡɑrdən/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Garden grows in the garden.",
-  "sentenceCn": "花园长在花园里。",
-  "emoji": "🌻",
-  "audioFile": "garden.mp3"
-},
+
 {
   "id": 3758,
   "word": "flowerbed",
@@ -45146,30 +29333,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "ivy.mp3"
 },
-{
-  "id": 3762,
-  "word": "vine",
-  "meaning": "藤蔓",
-  "phonetic": "/vaɪn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Vine grows in the garden.",
-  "sentenceCn": "藤蔓长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "vine.mp3"
-},
-{
-  "id": 3763,
-  "word": "mushroom",
-  "meaning": "蘑菇",
-  "phonetic": "/ˈmʌʃrum/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The mushroom is a plant.",
-  "sentenceCn": "蘑菇是一种植物。",
-  "emoji": "🍄",
-  "audioFile": "mushroom.mp3"
-},
+
 {
   "id": 3764,
   "word": "toadstool",
@@ -45206,18 +29370,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "lichen.mp3"
 },
-{
-  "id": 3767,
-  "word": "moss",
-  "meaning": "藓类",
-  "phonetic": "/mɔs/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The moss is a plant.",
-  "sentenceCn": "藓类是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "moss.mp3"
-},
+
 {
   "id": 3768,
   "word": "shrub",
@@ -45278,18 +29431,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "perennial.mp3"
 },
-{
-  "id": 3773,
-  "word": "annual",
-  "meaning": "一年生植物",
-  "phonetic": "/ˈænjuəl/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The annual is a plant.",
-  "sentenceCn": "一年生植物是一种植物。",
-  "emoji": "🌱",
-  "audioFile": "annual.mp3"
-},
+
 {
   "id": 3774,
   "word": "evergreen",
@@ -45326,18 +29468,7 @@ export const words: WordEntry[] = [
   "emoji": "🌲",
   "audioFile": "conifer.mp3"
 },
-{
-  "id": 3777,
-  "word": "tropical",
-  "meaning": "热带植物",
-  "phonetic": "/ˈtrɑpɪkəl/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Tropical grows in the garden.",
-  "sentenceCn": "热带植物长在花园里。",
-  "emoji": "🌴",
-  "audioFile": "tropical.mp3"
-},
+
 {
   "id": 3778,
   "word": "aquatic",
@@ -45362,246 +29493,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "herb.mp3"
 },
-{
-  "id": 3780,
-  "word": "shrub",
-  "meaning": "灌木植物",
-  "phonetic": "/ʃrʌb/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The shrub is a plant.",
-  "sentenceCn": "灌木植物是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "shrub.mp3"
-},
-{
-  "id": 3781,
-  "word": "cactus",
-  "meaning": "仙人掌科",
-  "phonetic": "/ˈkæktəs/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Cactus grows in the garden.",
-  "sentenceCn": "仙人掌科长在花园里。",
-  "emoji": "🌵",
-  "audioFile": "cactus.mp3"
-},
-{
-  "id": 3782,
-  "word": "orchid",
-  "meaning": "兰花科",
-  "phonetic": "/ˈɔrkɪd/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Orchid grows in the garden.",
-  "sentenceCn": "兰花科长在花园里。",
-  "emoji": "🌺",
-  "audioFile": "orchid.mp3"
-},
-{
-  "id": 3783,
-  "word": "fern",
-  "meaning": "蕨类植物",
-  "phonetic": "/fɜrn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Fern grows in the garden.",
-  "sentenceCn": "蕨类植物长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "fern.mp3"
-},
-{
-  "id": 3784,
-  "word": "palm",
-  "meaning": "棕榈科",
-  "phonetic": "/pɑm/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The palm is a plant.",
-  "sentenceCn": "棕榈科是一种植物。",
-  "emoji": "🌴",
-  "audioFile": "palm.mp3"
-},
-{
-  "id": 3785,
-  "word": "mint",
-  "meaning": "薄荷属",
-  "phonetic": "/mɪnt/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The mint is a plant.",
-  "sentenceCn": "薄荷属是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "mint.mp3"
-},
-{
-  "id": 3786,
-  "word": "lavender",
-  "meaning": "薰衣草属",
-  "phonetic": "/ˈlævəndər/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lavender grows in the garden.",
-  "sentenceCn": "薰衣草属长在花园里。",
-  "emoji": "💜",
-  "audioFile": "lavender.mp3"
-},
-{
-  "id": 3787,
-  "word": "rose",
-  "meaning": "蔷薇属",
-  "phonetic": "/roʊz/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Rose grows in the garden.",
-  "sentenceCn": "蔷薇属长在花园里。",
-  "emoji": "🌹",
-  "audioFile": "rose.mp3"
-},
-{
-  "id": 3788,
-  "word": "lily",
-  "meaning": "百合科",
-  "phonetic": "/ˈlɪli/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lily grows in the garden.",
-  "sentenceCn": "百合科长在花园里。",
-  "emoji": "🌷",
-  "audioFile": "lily.mp3"
-},
-{
-  "id": 3789,
-  "word": "orchid",
-  "meaning": "兰科",
-  "phonetic": "/ˈɔrkɪd/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The orchid is a plant.",
-  "sentenceCn": "兰科是一种植物。",
-  "emoji": "🌺",
-  "audioFile": "orchid.mp3"
-},
-{
-  "id": 3790,
-  "word": "carnation",
-  "meaning": "石竹科",
-  "phonetic": "/kɑrˈneɪʃən/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The carnation is a plant.",
-  "sentenceCn": "石竹科是一种植物。",
-  "emoji": "🌺",
-  "audioFile": "carnation.mp3"
-},
-{
-  "id": 3791,
-  "word": "sunflower",
-  "meaning": "向日葵属",
-  "phonetic": "/ˈsʌnˌflaʊər/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Sunflower grows in the garden.",
-  "sentenceCn": "向日葵属长在花园里。",
-  "emoji": "🌻",
-  "audioFile": "sunflower.mp3"
-},
-{
-  "id": 3792,
-  "word": "daisy",
-  "meaning": "雏菊属",
-  "phonetic": "/ˈdeɪzi/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Daisy grows in the garden.",
-  "sentenceCn": "雏菊属长在花园里。",
-  "emoji": "🌼",
-  "audioFile": "daisy.mp3"
-},
-{
-  "id": 3793,
-  "word": "tulip",
-  "meaning": "郁金香属",
-  "phonetic": "/ˈtulɪp/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The tulip is a plant.",
-  "sentenceCn": "郁金香属是一种植物。",
-  "emoji": "🌷",
-  "audioFile": "tulip.mp3"
-},
-{
-  "id": 3794,
-  "word": "peony",
-  "meaning": "芍药科",
-  "phonetic": "/ˈpiəni/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The peony is a plant.",
-  "sentenceCn": "芍药科是一种植物。",
-  "emoji": "🌺",
-  "audioFile": "peony.mp3"
-},
-{
-  "id": 3795,
-  "word": "chrysanthemum",
-  "meaning": "菊科",
-  "phonetic": "/krɪˈsænθəməm/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The chrysanthemum is a plant.",
-  "sentenceCn": "菊科是一种植物。",
-  "emoji": "🌼",
-  "audioFile": "chrysanthemum.mp3"
-},
-{
-  "id": 3796,
-  "word": "dandelion",
-  "meaning": "蒲公英属",
-  "phonetic": "/ˈdændəˌlaɪən/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The dandelion is a plant.",
-  "sentenceCn": "蒲公英属是一种植物。",
-  "emoji": "🌼",
-  "audioFile": "dandelion.mp3"
-},
-{
-  "id": 3797,
-  "word": "clover",
-  "meaning": "三叶草属",
-  "phonetic": "/ˈkloʊvər/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The clover is a plant.",
-  "sentenceCn": "三叶草属是一种植物。",
-  "emoji": "🍀",
-  "audioFile": "clover.mp3"
-},
-{
-  "id": 3798,
-  "word": "bamboo",
-  "meaning": "竹亚科",
-  "phonetic": "/bæmˈbu/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The bamboo is a plant.",
-  "sentenceCn": "竹亚科是一种植物。",
-  "emoji": "🎋",
-  "audioFile": "bamboo.mp3"
-},
-{
-  "id": 3799,
-  "word": "cactus",
-  "meaning": "仙人掌属",
-  "phonetic": "/ˈkæktəs/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The cactus is a plant.",
-  "sentenceCn": "仙人掌属是一种植物。",
-  "emoji": "🌵",
-  "audioFile": "cactus.mp3"
-},
+
 {
   "id": 3800,
   "word": "aloe",
@@ -45638,18 +29530,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "yucca.mp3"
 },
-{
-  "id": 3803,
-  "word": "maple",
-  "meaning": "枫",
-  "phonetic": "/ˈmeɪpəl/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Maple grows in the garden.",
-  "sentenceCn": "枫长在花园里。",
-  "emoji": "🍁",
-  "audioFile": "maple.mp3"
-},
+
 {
   "id": 3804,
   "word": "oak",
@@ -45722,18 +29603,7 @@ export const words: WordEntry[] = [
   "emoji": "🌲",
   "audioFile": "cypress.mp3"
 },
-{
-  "id": 3810,
-  "word": "birch",
-  "meaning": "桦树",
-  "phonetic": "/bɜrtʃ/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Birch grows in the garden.",
-  "sentenceCn": "桦树长在花园里。",
-  "emoji": "🌲",
-  "audioFile": "birch.mp3"
-},
+
 {
   "id": 3811,
   "word": "poplar",
@@ -45746,18 +29616,7 @@ export const words: WordEntry[] = [
   "emoji": "🌳",
   "audioFile": "poplar.mp3"
 },
-{
-  "id": 3812,
-  "word": "willow",
-  "meaning": "垂柳",
-  "phonetic": "/ˈwɪloʊ/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The willow is a plant.",
-  "sentenceCn": "垂柳是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "willow.mp3"
-},
+
 {
   "id": 3813,
   "word": "elm",
@@ -45794,174 +29653,7 @@ export const words: WordEntry[] = [
   "emoji": "🌳",
   "audioFile": "ash.mp3"
 },
-{
-  "id": 3816,
-  "word": "walnut",
-  "meaning": "胡桃木",
-  "phonetic": "/ˈwɔlnʌt/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The walnut is a plant.",
-  "sentenceCn": "胡桃木是一种植物。",
-  "emoji": "🌳",
-  "audioFile": "walnut.mp3"
-},
-{
-  "id": 3817,
-  "word": "cherry",
-  "meaning": "樱桃树",
-  "phonetic": "/ˈtʃɛri/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Cherry grows in the garden.",
-  "sentenceCn": "樱桃树长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "cherry.mp3"
-},
-{
-  "id": 3818,
-  "word": "plum",
-  "meaning": "李子树",
-  "phonetic": "/plʌm/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Plum grows in the garden.",
-  "sentenceCn": "李子树长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "plum.mp3"
-},
-{
-  "id": 3819,
-  "word": "peach",
-  "meaning": "桃树",
-  "phonetic": "/pitʃ/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The peach is a plant.",
-  "sentenceCn": "桃树是一种植物。",
-  "emoji": "🌸",
-  "audioFile": "peach.mp3"
-},
-{
-  "id": 3820,
-  "word": "apple",
-  "meaning": "苹果树",
-  "phonetic": "/ˈæpəl/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The apple is a plant.",
-  "sentenceCn": "苹果树是一种植物。",
-  "emoji": "🌳",
-  "audioFile": "apple.mp3"
-},
-{
-  "id": 3821,
-  "word": "pear",
-  "meaning": "梨树",
-  "phonetic": "/pɛr/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Pear grows in the garden.",
-  "sentenceCn": "梨树长在花园里。",
-  "emoji": "🌳",
-  "audioFile": "pear.mp3"
-},
-{
-  "id": 3822,
-  "word": "orange",
-  "meaning": "橙树",
-  "phonetic": "/ˈɔrɪndʒ/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The orange is a plant.",
-  "sentenceCn": "橙树是一种植物。",
-  "emoji": "🍊",
-  "audioFile": "orange.mp3"
-},
-{
-  "id": 3823,
-  "word": "lemon",
-  "meaning": "柠檬树",
-  "phonetic": "/ˈlɛmən/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lemon grows in the garden.",
-  "sentenceCn": "柠檬树长在花园里。",
-  "emoji": "🍋",
-  "audioFile": "lemon.mp3"
-},
-{
-  "id": 3824,
-  "word": "olive",
-  "meaning": "橄榄树",
-  "phonetic": "/ˈɑlɪv/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Olive grows in the garden.",
-  "sentenceCn": "橄榄树长在花园里。",
-  "emoji": "🌳",
-  "audioFile": "olive.mp3"
-},
-{
-  "id": 3825,
-  "word": "palm",
-  "meaning": "椰子树",
-  "phonetic": "/pɑm/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The palm is a plant.",
-  "sentenceCn": "椰子树是一种植物。",
-  "emoji": "🌴",
-  "audioFile": "palm.mp3"
-},
-{
-  "id": 3826,
-  "word": "banana",
-  "meaning": "香蕉树",
-  "phonetic": "/bəˈnænə/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Banana grows in the garden.",
-  "sentenceCn": "香蕉树长在花园里。",
-  "emoji": "🍌",
-  "audioFile": "banana.mp3"
-},
-{
-  "id": 3827,
-  "word": "coconut",
-  "meaning": "椰树",
-  "phonetic": "/ˈkoʊkəˌnʌt/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Coconut grows in the garden.",
-  "sentenceCn": "椰树长在花园里。",
-  "emoji": "🥥",
-  "audioFile": "coconut.mp3"
-},
-{
-  "id": 3828,
-  "word": "mango",
-  "meaning": "芒果树",
-  "phonetic": "/ˈmæŋɡoʊ/",
-  "difficulty": 3,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Mango grows in the garden.",
-  "sentenceCn": "芒果树长在花园里。",
-  "emoji": "🥭",
-  "audioFile": "mango.mp3"
-},
-{
-  "id": 3829,
-  "word": "sofa",
-  "meaning": "沙发",
-  "phonetic": "/ˈsoʊfə/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the sofa every day.",
-  "sentenceCn": "我每天用沙发。",
-  "emoji": "🛋️",
-  "audioFile": "sofa.mp3"
-},
+
 {
   "id": 3830,
   "word": "couch",
@@ -45974,54 +29666,7 @@ export const words: WordEntry[] = [
   "emoji": "🛋️",
   "audioFile": "couch.mp3"
 },
-{
-  "id": 3831,
-  "word": "table",
-  "meaning": "桌子",
-  "phonetic": "/ˈteɪbəl/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the table every day.",
-  "sentenceCn": "我每天用桌子。",
-  "emoji": "🪑",
-  "audioFile": "table.mp3"
-},
-{
-  "id": 3832,
-  "word": "chair",
-  "meaning": "椅子",
-  "phonetic": "/tʃɛr/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The chair is in my room.",
-  "sentenceCn": "椅子在我房间里。",
-  "emoji": "🪑",
-  "audioFile": "chair.mp3"
-},
-{
-  "id": 3833,
-  "word": "desk",
-  "meaning": "书桌",
-  "phonetic": "/dɛsk/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the desk every day.",
-  "sentenceCn": "我每天用书桌。",
-  "emoji": "🪑",
-  "audioFile": "desk.mp3"
-},
-{
-  "id": 3834,
-  "word": "bed",
-  "meaning": "床",
-  "phonetic": "/bɛd/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The bed is in my room.",
-  "sentenceCn": "床在我房间里。",
-  "emoji": "🛏️",
-  "audioFile": "bed.mp3"
-},
+
 {
   "id": 3835,
   "word": "wardrobe",
@@ -46058,30 +29703,7 @@ export const words: WordEntry[] = [
   "emoji": "📚",
   "audioFile": "bookshelf.mp3"
 },
-{
-  "id": 3838,
-  "word": "cabinet",
-  "meaning": "橱柜",
-  "phonetic": "/ˈkæbɪnɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the cabinet every day.",
-  "sentenceCn": "我每天用橱柜。",
-  "emoji": "🗄️",
-  "audioFile": "cabinet.mp3"
-},
-{
-  "id": 3839,
-  "word": "drawer",
-  "meaning": "抽屉",
-  "phonetic": "/drɔr/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the drawer every day.",
-  "sentenceCn": "我每天用抽屉。",
-  "emoji": "🗄️",
-  "audioFile": "drawer.mp3"
-},
+
 {
   "id": 3840,
   "word": "dresser",
@@ -46094,42 +29716,7 @@ export const words: WordEntry[] = [
   "emoji": "🪞",
   "audioFile": "dresser.mp3"
 },
-{
-  "id": 3841,
-  "word": "mirror",
-  "meaning": "镜子",
-  "phonetic": "/ˈmɪrər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The mirror is in my room.",
-  "sentenceCn": "镜子在我房间里。",
-  "emoji": "🪞",
-  "audioFile": "mirror.mp3"
-},
-{
-  "id": 3842,
-  "word": "lamp",
-  "meaning": "台灯",
-  "phonetic": "/læmp/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The lamp is in my room.",
-  "sentenceCn": "台灯在我房间里。",
-  "emoji": "💡",
-  "audioFile": "lamp.mp3"
-},
-{
-  "id": 3843,
-  "word": "curtain",
-  "meaning": "窗帘",
-  "phonetic": "/ˈkɜrtən/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The curtain is in my room.",
-  "sentenceCn": "窗帘在我房间里。",
-  "emoji": "🪟",
-  "audioFile": "curtain.mp3"
-},
+
 {
   "id": 3844,
   "word": "rug",
@@ -46142,54 +29729,7 @@ export const words: WordEntry[] = [
   "emoji": "🟫",
   "audioFile": "rug.mp3"
 },
-{
-  "id": 3845,
-  "word": "carpet",
-  "meaning": "地毯",
-  "phonetic": "/ˈkɑrpɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the carpet every day.",
-  "sentenceCn": "我每天用地毯。",
-  "emoji": "🟫",
-  "audioFile": "carpet.mp3"
-},
-{
-  "id": 3846,
-  "word": "pillow",
-  "meaning": "枕头",
-  "phonetic": "/ˈpɪloʊ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the pillow every day.",
-  "sentenceCn": "我每天用枕头。",
-  "emoji": "🛏️",
-  "audioFile": "pillow.mp3"
-},
-{
-  "id": 3847,
-  "word": "blanket",
-  "meaning": "毯子",
-  "phonetic": "/ˈblæŋkɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The blanket is in my room.",
-  "sentenceCn": "毯子在我房间里。",
-  "emoji": "🛏️",
-  "audioFile": "blanket.mp3"
-},
-{
-  "id": 3848,
-  "word": "quilt",
-  "meaning": "被子",
-  "phonetic": "/kwɪlt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the quilt every day.",
-  "sentenceCn": "我每天用被子。",
-  "emoji": "🧶",
-  "audioFile": "quilt.mp3"
-},
+
 {
   "id": 3849,
   "word": "sheets",
@@ -46226,18 +29766,7 @@ export const words: WordEntry[] = [
   "emoji": "🪑",
   "audioFile": "nightstand.mp3"
 },
-{
-  "id": 3852,
-  "word": "bench",
-  "meaning": "长凳",
-  "phonetic": "/bɛntʃ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The bench is in my room.",
-  "sentenceCn": "长凳在我房间里。",
-  "emoji": "🪑",
-  "audioFile": "bench.mp3"
-},
+
 {
   "id": 3853,
   "word": "stool",
@@ -46358,54 +29887,7 @@ export const words: WordEntry[] = [
   "emoji": "🧊",
   "audioFile": "freezer.mp3"
 },
-{
-  "id": 3863,
-  "word": "stove",
-  "meaning": "炉灶",
-  "phonetic": "/stoʊv/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The stove is in my room.",
-  "sentenceCn": "炉灶在我房间里。",
-  "emoji": "🍳",
-  "audioFile": "stove.mp3"
-},
-{
-  "id": 3864,
-  "word": "oven",
-  "meaning": "烤箱",
-  "phonetic": "/ˈʌvən/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The oven is in my room.",
-  "sentenceCn": "烤箱在我房间里。",
-  "emoji": "🍳",
-  "audioFile": "oven.mp3"
-},
-{
-  "id": 3865,
-  "word": "microwave",
-  "meaning": "微波炉",
-  "phonetic": "/ˈmaɪkrəˌweɪv/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The microwave is in my room.",
-  "sentenceCn": "微波炉在我房间里。",
-  "emoji": "📟",
-  "audioFile": "microwave.mp3"
-},
-{
-  "id": 3866,
-  "word": "toaster",
-  "meaning": "烤面包机",
-  "phonetic": "/ˈtoʊstər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the toaster every day.",
-  "sentenceCn": "我每天用烤面包机。",
-  "emoji": "🍞",
-  "audioFile": "toaster.mp3"
-},
+
 {
   "id": 3867,
   "word": "dishwasher",
@@ -46418,54 +29900,7 @@ export const words: WordEntry[] = [
   "emoji": "🍽️",
   "audioFile": "dishwasher.mp3"
 },
-{
-  "id": 3868,
-  "word": "washer",
-  "meaning": "洗衣机",
-  "phonetic": "/ˈwɑʃər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The washer is in my room.",
-  "sentenceCn": "洗衣机在我房间里。",
-  "emoji": "🧺",
-  "audioFile": "washer.mp3"
-},
-{
-  "id": 3869,
-  "word": "dryer",
-  "meaning": "烘干机",
-  "phonetic": "/ˈdraɪər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the dryer every day.",
-  "sentenceCn": "我每天用烘干机。",
-  "emoji": "🧺",
-  "audioFile": "dryer.mp3"
-},
-{
-  "id": 3870,
-  "word": "vacuum",
-  "meaning": "吸尘器",
-  "phonetic": "/ˈvækjuəm/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the vacuum every day.",
-  "sentenceCn": "我每天用吸尘器。",
-  "emoji": "🧹",
-  "audioFile": "vacuum.mp3"
-},
-{
-  "id": 3871,
-  "word": "iron",
-  "meaning": "熨斗",
-  "phonetic": "/ˈaɪərn/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The iron is in my room.",
-  "sentenceCn": "熨斗在我房间里。",
-  "emoji": "👕",
-  "audioFile": "iron.mp3"
-},
+
 {
   "id": 3872,
   "word": "airconditioner",
@@ -46490,30 +29925,7 @@ export const words: WordEntry[] = [
   "emoji": "🔥",
   "audioFile": "heater.mp3"
 },
-{
-  "id": 3874,
-  "word": "fan",
-  "meaning": "风扇",
-  "phonetic": "/fæn/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the fan every day.",
-  "sentenceCn": "我每天用风扇。",
-  "emoji": "🌀",
-  "audioFile": "fan.mp3"
-},
-{
-  "id": 3875,
-  "word": "tv",
-  "meaning": "电视",
-  "phonetic": "/ˌti ˈvi/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the tv every day.",
-  "sentenceCn": "我每天用电视。",
-  "emoji": "📺",
-  "audioFile": "tv.mp3"
-},
+
 {
   "id": 3876,
   "word": "stereo",
@@ -46526,42 +29938,7 @@ export const words: WordEntry[] = [
   "emoji": "🔊",
   "audioFile": "stereo.mp3"
 },
-{
-  "id": 3877,
-  "word": "radio",
-  "meaning": "收音机",
-  "phonetic": "/ˈreɪdiˌoʊ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the radio every day.",
-  "sentenceCn": "我每天用收音机。",
-  "emoji": "📻",
-  "audioFile": "radio.mp3"
-},
-{
-  "id": 3878,
-  "word": "computer",
-  "meaning": "电脑",
-  "phonetic": "/kəmˈpjutər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The computer is in my room.",
-  "sentenceCn": "电脑在我房间里。",
-  "emoji": "💻",
-  "audioFile": "computer.mp3"
-},
-{
-  "id": 3879,
-  "word": "monitor",
-  "meaning": "显示器",
-  "phonetic": "/ˈmɑnɪtər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the monitor every day.",
-  "sentenceCn": "我每天用显示器。",
-  "emoji": "🖥️",
-  "audioFile": "monitor.mp3"
-},
+
 {
   "id": 3880,
   "word": "keyboard",
@@ -46574,42 +29951,7 @@ export const words: WordEntry[] = [
   "emoji": "⌨️",
   "audioFile": "keyboard.mp3"
 },
-{
-  "id": 3881,
-  "word": "mouse",
-  "meaning": "鼠标",
-  "phonetic": "/maʊs/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the mouse every day.",
-  "sentenceCn": "我每天用鼠标。",
-  "emoji": "🖱️",
-  "audioFile": "mouse.mp3"
-},
-{
-  "id": 3882,
-  "word": "printer",
-  "meaning": "打印机",
-  "phonetic": "/ˈprɪntər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the printer every day.",
-  "sentenceCn": "我每天用打印机。",
-  "emoji": "🖨️",
-  "audioFile": "printer.mp3"
-},
-{
-  "id": 3883,
-  "word": "speaker",
-  "meaning": "音箱",
-  "phonetic": "/ˈspikər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The speaker is in my room.",
-  "sentenceCn": "音箱在我房间里。",
-  "emoji": "🔊",
-  "audioFile": "speaker.mp3"
-},
+
 {
   "id": 3884,
   "word": "headphones",
@@ -46622,30 +29964,7 @@ export const words: WordEntry[] = [
   "emoji": "🎧",
   "audioFile": "headphones.mp3"
 },
-{
-  "id": 3885,
-  "word": "clock",
-  "meaning": "钟",
-  "phonetic": "/klɑk/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The clock is in my room.",
-  "sentenceCn": "钟在我房间里。",
-  "emoji": "🕰️",
-  "audioFile": "clock.mp3"
-},
-{
-  "id": 3886,
-  "word": "alarm",
-  "meaning": "闹钟",
-  "phonetic": "/əˈlɑrm klɑk/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the alarm every day.",
-  "sentenceCn": "我每天用闹钟。",
-  "emoji": "⏰",
-  "audioFile": "alarm.mp3"
-},
+
 {
   "id": 3887,
   "word": "thermostat",
@@ -46694,18 +30013,7 @@ export const words: WordEntry[] = [
   "emoji": "🔔",
   "audioFile": "doorbell.mp3"
 },
-{
-  "id": 3891,
-  "word": "intercom",
-  "meaning": "对讲机",
-  "phonetic": "/ˈɪntərˌkɑm/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the intercom every day.",
-  "sentenceCn": "我每天用对讲机。",
-  "emoji": "📞",
-  "audioFile": "intercom.mp3"
-},
+
 {
   "id": 3892,
   "word": "humidifier",
@@ -46754,42 +30062,7 @@ export const words: WordEntry[] = [
   "emoji": "☕",
   "audioFile": "coffeemaker.mp3"
 },
-{
-  "id": 3896,
-  "word": "kettle",
-  "meaning": "水壶",
-  "phonetic": "/ˈkɛtəl/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the kettle every day.",
-  "sentenceCn": "我每天用水壶。",
-  "emoji": "🫖",
-  "audioFile": "kettle.mp3"
-},
-{
-  "id": 3897,
-  "word": "blender",
-  "meaning": "搅拌机",
-  "phonetic": "/ˈblɛndər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The blender is in my room.",
-  "sentenceCn": "搅拌机在我房间里。",
-  "emoji": "🫗",
-  "audioFile": "blender.mp3"
-},
-{
-  "id": 3898,
-  "word": "mixer",
-  "meaning": "打蛋器",
-  "phonetic": "/ˈmɪksər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The mixer is in my room.",
-  "sentenceCn": "打蛋器在我房间里。",
-  "emoji": "🥣",
-  "audioFile": "mixer.mp3"
-},
+
 {
   "id": 3899,
   "word": "ricecooker",
@@ -46850,42 +30123,7 @@ export const words: WordEntry[] = [
   "emoji": "🛁",
   "audioFile": "bath.mp3"
 },
-{
-  "id": 3904,
-  "word": "shower",
-  "meaning": "淋浴",
-  "phonetic": "/ˈʃaʊər/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the shower every day.",
-  "sentenceCn": "我每天用淋浴。",
-  "emoji": "🚿",
-  "audioFile": "shower.mp3"
-},
-{
-  "id": 3905,
-  "word": "sink",
-  "meaning": "水槽",
-  "phonetic": "/sɪŋk/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The sink is in my room.",
-  "sentenceCn": "水槽在我房间里。",
-  "emoji": "🚰",
-  "audioFile": "sink.mp3"
-},
-{
-  "id": 3906,
-  "word": "toilet",
-  "meaning": "马桶",
-  "phonetic": "/ˈtɔɪlɪt/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the toilet every day.",
-  "sentenceCn": "我每天用马桶。",
-  "emoji": "🚽",
-  "audioFile": "toilet.mp3"
-},
+
 {
   "id": 3907,
   "word": "bidet",
@@ -46910,18 +30148,7 @@ export const words: WordEntry[] = [
   "emoji": "🪞",
   "audioFile": "vanity.mp3"
 },
-{
-  "id": 3909,
-  "word": "towel",
-  "meaning": "毛巾",
-  "phonetic": "/ˈtaʊəl/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The towel is in my room.",
-  "sentenceCn": "毛巾在我房间里。",
-  "emoji": "🧣",
-  "audioFile": "towel.mp3"
-},
+
 {
   "id": 3910,
   "word": "bathmat",
@@ -47006,18 +30233,7 @@ export const words: WordEntry[] = [
   "emoji": "🪥",
   "audioFile": "toothpaste.mp3"
 },
-{
-  "id": 3917,
-  "word": "tissue",
-  "meaning": "纸巾",
-  "phonetic": "/ˈtɪʃu/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The tissue is in my room.",
-  "sentenceCn": "纸巾在我房间里。",
-  "emoji": "🧻",
-  "audioFile": "tissue.mp3"
-},
+
 {
   "id": 3918,
   "word": "paper",
@@ -47066,18 +30282,7 @@ export const words: WordEntry[] = [
   "emoji": "🧹",
   "audioFile": "broom.mp3"
 },
-{
-  "id": 3922,
-  "word": "mop",
-  "meaning": "拖把",
-  "phonetic": "/mɑp/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the mop every day.",
-  "sentenceCn": "我每天用拖把。",
-  "emoji": "🧹",
-  "audioFile": "mop.mp3"
-},
+
 {
   "id": 3923,
   "word": "bucket",
@@ -47102,18 +30307,7 @@ export const words: WordEntry[] = [
   "emoji": "🧽",
   "audioFile": "sponge.mp3"
 },
-{
-  "id": 3925,
-  "word": "scrub",
-  "meaning": "刷子",
-  "phonetic": "/skrʌb brʌʃ/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The scrub is in my room.",
-  "sentenceCn": "刷子在我房间里。",
-  "emoji": "🪥",
-  "audioFile": "scrub.mp3"
-},
+
 {
   "id": 3926,
   "word": "dustpan",
@@ -47198,30 +30392,7 @@ export const words: WordEntry[] = [
   "emoji": "💡",
   "audioFile": "bulb.mp3"
 },
-{
-  "id": 3933,
-  "word": "battery",
-  "meaning": "电池",
-  "phonetic": "/ˈbætəri/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The battery is in my room.",
-  "sentenceCn": "电池在我房间里。",
-  "emoji": "🔋",
-  "audioFile": "battery.mp3"
-},
-{
-  "id": 3934,
-  "word": "remote",
-  "meaning": "遥控器",
-  "phonetic": "/rɪˈmoʊt/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the remote every day.",
-  "sentenceCn": "我每天用遥控器。",
-  "emoji": "📱",
-  "audioFile": "remote.mp3"
-},
+
 {
   "id": 3935,
   "word": "candle",
@@ -47270,18 +30441,7 @@ export const words: WordEntry[] = [
   "emoji": "🪴",
   "audioFile": "plantpot.mp3"
 },
-{
-  "id": 3939,
-  "word": "lamp",
-  "meaning": "落地灯",
-  "phonetic": "/flɔr læmp/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The lamp is in my room.",
-  "sentenceCn": "落地灯在我房间里。",
-  "emoji": "💡",
-  "audioFile": "lamp.mp3"
-},
+
 {
   "id": 3940,
   "word": "chandelier",
@@ -47330,54 +30490,7 @@ export const words: WordEntry[] = [
   "emoji": "🧰",
   "audioFile": "toolbox.mp3"
 },
-{
-  "id": 3944,
-  "word": "hammer",
-  "meaning": "锤子",
-  "phonetic": "/ˈhæmər/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The hammer is in my room.",
-  "sentenceCn": "锤子在我房间里。",
-  "emoji": "🔨",
-  "audioFile": "hammer.mp3"
-},
-{
-  "id": 3945,
-  "word": "screwdriver",
-  "meaning": "螺丝刀",
-  "phonetic": "/ˈskruˌdraɪvər/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the screwdriver every day.",
-  "sentenceCn": "我每天用螺丝刀。",
-  "emoji": "🪛",
-  "audioFile": "screwdriver.mp3"
-},
-{
-  "id": 3946,
-  "word": "wrench",
-  "meaning": "扳手",
-  "phonetic": "/rɛntʃ/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the wrench every day.",
-  "sentenceCn": "我每天用扳手。",
-  "emoji": "🔧",
-  "audioFile": "wrench.mp3"
-},
-{
-  "id": 3947,
-  "word": "pliers",
-  "meaning": "钳子",
-  "phonetic": "/ˈplaɪərz/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the pliers every day.",
-  "sentenceCn": "我每天用钳子。",
-  "emoji": "🔧",
-  "audioFile": "pliers.mp3"
-},
+
 {
   "id": 3948,
   "word": "tape",
@@ -47414,18 +30527,7 @@ export const words: WordEntry[] = [
   "emoji": "✂️",
   "audioFile": "scissors.mp3"
 },
-{
-  "id": 3951,
-  "word": "ladder",
-  "meaning": "梯子",
-  "phonetic": "/ˈlædər/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The ladder is in my room.",
-  "sentenceCn": "梯子在我房间里。",
-  "emoji": "🪜",
-  "audioFile": "ladder.mp3"
-},
+
 {
   "id": 3952,
   "word": "stepstool",
@@ -47450,18 +30552,7 @@ export const words: WordEntry[] = [
   "emoji": "🗄️",
   "audioFile": "filing.mp3"
 },
-{
-  "id": 3954,
-  "word": "safe",
-  "meaning": "保险箱",
-  "phonetic": "/seɪf/",
-  "difficulty": 3,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The safe is in my room.",
-  "sentenceCn": "保险箱在我房间里。",
-  "emoji": "🔐",
-  "audioFile": "safe.mp3"
-},
+
 {
   "id": 3955,
   "word": "china",
@@ -48098,18 +31189,7 @@ export const words: WordEntry[] = [
   "emoji": "🇬🇷",
   "audioFile": "greece.mp3"
 },
-{
-  "id": 4008,
-  "word": "turkey",
-  "meaning": "土耳其",
-  "phonetic": "/ˈtɜrki/",
-  "difficulty": 2,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "turkey is a big city.",
-  "sentenceCn": "土耳其是个大城市。",
-  "emoji": "🇹🇷",
-  "audioFile": "turkey.mp3"
-},
+
 {
   "id": 4009,
   "word": "russia",
@@ -48722,18 +31802,7 @@ export const words: WordEntry[] = [
   "emoji": "🏙️",
   "audioFile": "mumbai.mp3"
 },
-{
-  "id": 4060,
-  "word": "singapore",
-  "meaning": "新加坡市",
-  "phonetic": "/ˈsɪŋəˌpɔr/",
-  "difficulty": 3,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in singapore.",
-  "sentenceCn": "我住在新加坡市。",
-  "emoji": "🏙️",
-  "audioFile": "singapore.mp3"
-},
+
 {
   "id": 4061,
   "word": "bangkok",
@@ -49226,18 +32295,7 @@ export const words: WordEntry[] = [
   "emoji": "🎉",
   "audioFile": "newyear.mp3"
 },
-{
-  "id": 4102,
-  "word": "lunar",
-  "meaning": "春节",
-  "phonetic": "/ˈlunər nju jɪr/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love lunar.",
-  "sentenceCn": "我喜欢春节。",
-  "emoji": "🧧",
-  "audioFile": "lunar.mp3"
-},
+
 {
   "id": 4103,
   "word": "lantern",
@@ -49298,18 +32356,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "qingming.mp3"
 },
-{
-  "id": 4108,
-  "word": "double",
-  "meaning": "重阳节",
-  "phonetic": "/ˈdʌbəl naɪnθ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate double with family.",
-  "sentenceCn": "我们和家人一起过重阳节。",
-  "emoji": "🍁",
-  "audioFile": "double.mp3"
-},
+
 {
   "id": 4109,
   "word": "valentine",
@@ -49430,18 +32477,7 @@ export const words: WordEntry[] = [
   "emoji": "🤡",
   "audioFile": "aprilfools.mp3"
 },
-{
-  "id": 4119,
-  "word": "earth",
-  "meaning": "地球日",
-  "phonetic": "/ɜrθ deɪ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate earth with family.",
-  "sentenceCn": "我们和家人一起过地球日。",
-  "emoji": "🌍",
-  "audioFile": "earth.mp3"
-},
+
 {
   "id": 4120,
   "word": "arbor",
@@ -49502,18 +32538,7 @@ export const words: WordEntry[] = [
   "emoji": "🕎",
   "audioFile": "hanukkah.mp3"
 },
-{
-  "id": 4125,
-  "word": "thanksgiving",
-  "meaning": "感恩节",
-  "phonetic": "/ˈθæŋksˌɡɪvɪŋ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate thanksgiving with family.",
-  "sentenceCn": "我们和家人一起过感恩节。",
-  "emoji": "🥧",
-  "audioFile": "thanksgiving.mp3"
-},
+
 {
   "id": 4126,
   "word": "carnival",
@@ -49598,30 +32623,7 @@ export const words: WordEntry[] = [
   "emoji": "🏮",
   "audioFile": "obon.mp3"
 },
-{
-  "id": 4133,
-  "word": "boxing",
-  "meaning": "节礼日",
-  "phonetic": "/ˈbɑksɪŋ deɪ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate boxing with family.",
-  "sentenceCn": "我们和家人一起过节礼日。",
-  "emoji": "🎁",
-  "audioFile": "boxing.mp3"
-},
-{
-  "id": 4134,
-  "word": "thanksgiving",
-  "meaning": "感恩节",
-  "phonetic": "/ˈθæŋksˌɡɪvɪŋ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate thanksgiving with family.",
-  "sentenceCn": "我们和家人一起过感恩节。",
-  "emoji": "🍂",
-  "audioFile": "thanksgiving.mp3"
-},
+
 {
   "id": 4135,
   "word": "guyfawkes",
@@ -49730,18 +32732,7 @@ export const words: WordEntry[] = [
   "emoji": "🗳️",
   "audioFile": "election.mp3"
 },
-{
-  "id": 4144,
-  "word": "earth",
-  "meaning": "地球一小时",
-  "phonetic": "/ɜrθ aʊər/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love earth.",
-  "sentenceCn": "我喜欢地球一小时。",
-  "emoji": "🌍",
-  "audioFile": "earth.mp3"
-},
+
 {
   "id": 4145,
   "word": "worldpeace",
@@ -49790,30 +32781,7 @@ export const words: WordEntry[] = [
   "emoji": "🧳",
   "audioFile": "refugee.mp3"
 },
-{
-  "id": 4149,
-  "word": "environment",
-  "meaning": "环境日",
-  "phonetic": "/ɪnˈvaɪrənmənt deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love environment.",
-  "sentenceCn": "我喜欢环境日。",
-  "emoji": "🌿",
-  "audioFile": "environment.mp3"
-},
-{
-  "id": 4150,
-  "word": "ocean",
-  "meaning": "海洋日",
-  "phonetic": "/ˈoʊʃən deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate ocean with family.",
-  "sentenceCn": "我们和家人一起过海洋日。",
-  "emoji": "🌊",
-  "audioFile": "ocean.mp3"
-},
+
 {
   "id": 4151,
   "word": "animal",
@@ -49838,18 +32806,7 @@ export const words: WordEntry[] = [
   "emoji": "🌾",
   "audioFile": "food.mp3"
 },
-{
-  "id": 4153,
-  "word": "water",
-  "meaning": "水日",
-  "phonetic": "/ˈwɔtər deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love water.",
-  "sentenceCn": "我喜欢水日。",
-  "emoji": "💧",
-  "audioFile": "water.mp3"
-},
+
 {
   "id": 4154,
   "word": "health",
@@ -49886,30 +32843,7 @@ export const words: WordEntry[] = [
   "emoji": "📝",
   "audioFile": "poetry.mp3"
 },
-{
-  "id": 4157,
-  "word": "music",
-  "meaning": "音乐日",
-  "phonetic": "/ˈmjuzɪk deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate music with family.",
-  "sentenceCn": "我们和家人一起过音乐日。",
-  "emoji": "🎵",
-  "audioFile": "music.mp3"
-},
-{
-  "id": 4158,
-  "word": "dance",
-  "meaning": "舞蹈日",
-  "phonetic": "/ˈdæns deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love dance.",
-  "sentenceCn": "我喜欢舞蹈日。",
-  "emoji": "💃",
-  "audioFile": "dance.mp3"
-},
+
 {
   "id": 4159,
   "word": "theatre",
@@ -49922,18 +32856,7 @@ export const words: WordEntry[] = [
   "emoji": "🎭",
   "audioFile": "theatre.mp3"
 },
-{
-  "id": 4160,
-  "word": "smile",
-  "meaning": "微笑日",
-  "phonetic": "/smaɪl deɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate smile with family.",
-  "sentenceCn": "我们和家人一起过微笑日。",
-  "emoji": "😊",
-  "audioFile": "smile.mp3"
-},
+
 {
   "id": 4161,
   "word": "hug",
@@ -50042,18 +32965,7 @@ export const words: WordEntry[] = [
   "emoji": "🕴️",
   "audioFile": "singles.mp3"
 },
-{
-  "id": 4170,
-  "word": "valentine",
-  "meaning": "白色情人节",
-  "phonetic": "/waɪt ˈvælənˌtaɪnz/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate valentine with family.",
-  "sentenceCn": "我们和家人一起过白色情人节。",
-  "emoji": "🤍",
-  "audioFile": "valentine.mp3"
-},
+
 {
   "id": 4171,
   "word": "chinese",
@@ -50066,66 +32978,7 @@ export const words: WordEntry[] = [
   "emoji": "💞",
   "audioFile": "chinese.mp3"
 },
-{
-  "id": 4172,
-  "word": "christmas",
-  "meaning": "平安夜",
-  "phonetic": "/ˈkrɪsməs iːv/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love christmas.",
-  "sentenceCn": "我喜欢平安夜。",
-  "emoji": "🌲",
-  "audioFile": "christmas.mp3"
-},
-{
-  "id": 4173,
-  "word": "newyear",
-  "meaning": "除夕",
-  "phonetic": "/ˈnu jɪrz iːv/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love newyear.",
-  "sentenceCn": "我喜欢除夕。",
-  "emoji": "🎊",
-  "audioFile": "newyear.mp3"
-},
-{
-  "id": 4174,
-  "word": "birthday",
-  "meaning": "生日",
-  "phonetic": "/ˈbɜrθˌdeɪ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate birthday with family.",
-  "sentenceCn": "我们和家人一起过生日。",
-  "emoji": "🎂",
-  "audioFile": "birthday.mp3"
-},
-{
-  "id": 4175,
-  "word": "anniversary",
-  "meaning": "纪念日",
-  "phonetic": "/ˌænɪˈvɜrsəri/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate anniversary with family.",
-  "sentenceCn": "我们和家人一起过纪念日。",
-  "emoji": "💍",
-  "audioFile": "anniversary.mp3"
-},
-{
-  "id": 4176,
-  "word": "wedding",
-  "meaning": "婚礼",
-  "phonetic": "/ˈwɛdɪŋ/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "I love wedding.",
-  "sentenceCn": "我喜欢婚礼。",
-  "emoji": "💒",
-  "audioFile": "wedding.mp3"
-},
+
 {
   "id": 4177,
   "word": "engagement",
@@ -50186,18 +33039,7 @@ export const words: WordEntry[] = [
   "emoji": "👨‍👩‍👧‍👦",
   "audioFile": "reunion.mp3"
 },
-{
-  "id": 4182,
-  "word": "barbecue",
-  "meaning": "烧烤派对",
-  "phonetic": "/ˈbɑrbɪˌkju pɑrti/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate barbecue with family.",
-  "sentenceCn": "我们和家人一起过烧烤派对。",
-  "emoji": "🍖",
-  "audioFile": "barbecue.mp3"
-},
+
 {
   "id": 4183,
   "word": "potluck",
@@ -50270,18 +33112,7 @@ export const words: WordEntry[] = [
   "emoji": "🏠",
   "audioFile": "housewarming.mp3"
 },
-{
-  "id": 4189,
-  "word": "baby",
-  "meaning": "宝宝派对",
-  "phonetic": "/ˈbeɪbi ˈʃaʊər/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate baby with family.",
-  "sentenceCn": "我们和家人一起过宝宝派对。",
-  "emoji": "👶",
-  "audioFile": "baby.mp3"
-},
+
 {
   "id": 4190,
   "word": "bridal",
@@ -50330,18 +33161,7 @@ export const words: WordEntry[] = [
   "emoji": "🎭",
   "audioFile": "masquerade.mp3"
 },
-{
-  "id": 4194,
-  "word": "costume",
-  "meaning": "化装舞会",
-  "phonetic": "/ˈkɑstum pɑrti/",
-  "difficulty": 2,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate costume with family.",
-  "sentenceCn": "我们和家人一起过化装舞会。",
-  "emoji": "👻",
-  "audioFile": "costume.mp3"
-},
+
 {
   "id": 4195,
   "word": "pool",
@@ -50366,66 +33186,7 @@ export const words: WordEntry[] = [
   "emoji": "🎉",
   "audioFile": "surprise.mp3"
 },
-{
-  "id": 4197,
-  "word": "pencil",
-  "meaning": "铅笔",
-  "phonetic": "/ˈpɛnsəl/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my pencil.",
-  "sentenceCn": "我玩我的铅笔。",
-  "emoji": "✏️",
-  "audioFile": "pencil.mp3"
-},
-{
-  "id": 4198,
-  "word": "pen",
-  "meaning": "笔",
-  "phonetic": "/pɛn/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my pen.",
-  "sentenceCn": "我玩我的笔。",
-  "emoji": "🖊️",
-  "audioFile": "pen.mp3"
-},
-{
-  "id": 4199,
-  "word": "marker",
-  "meaning": "马克笔",
-  "phonetic": "/ˈmɑrkər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my marker.",
-  "sentenceCn": "我玩我的马克笔。",
-  "emoji": "🖍️",
-  "audioFile": "marker.mp3"
-},
-{
-  "id": 4200,
-  "word": "crayon",
-  "meaning": "蜡笔",
-  "phonetic": "/ˈkreɪˌɑn/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my crayon.",
-  "sentenceCn": "我玩我的蜡笔。",
-  "emoji": "🖍️",
-  "audioFile": "crayon.mp3"
-},
-{
-  "id": 4201,
-  "word": "eraser",
-  "meaning": "橡皮",
-  "phonetic": "/ɪˈreɪsər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The eraser is fun.",
-  "sentenceCn": "这个橡皮很有趣。",
-  "emoji": "🧹",
-  "audioFile": "eraser.mp3"
-},
+
 {
   "id": 4202,
   "word": "sharpener",
@@ -50438,30 +33199,7 @@ export const words: WordEntry[] = [
   "emoji": "✏️",
   "audioFile": "sharpener.mp3"
 },
-{
-  "id": 4203,
-  "word": "ruler",
-  "meaning": "尺子",
-  "phonetic": "/ˈrulər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my ruler.",
-  "sentenceCn": "我玩我的尺子。",
-  "emoji": "📏",
-  "audioFile": "ruler.mp3"
-},
-{
-  "id": 4204,
-  "word": "compass",
-  "meaning": "圆规",
-  "phonetic": "/ˈkʌmpəs/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my compass.",
-  "sentenceCn": "我玩我的圆规。",
-  "emoji": "📐",
-  "audioFile": "compass.mp3"
-},
+
 {
   "id": 4205,
   "word": "protractor",
@@ -50474,102 +33212,7 @@ export const words: WordEntry[] = [
   "emoji": "📐",
   "audioFile": "protractor.mp3"
 },
-{
-  "id": 4206,
-  "word": "triangle",
-  "meaning": "三角板",
-  "phonetic": "/ˈtraɪˌæŋɡəl/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The triangle is fun.",
-  "sentenceCn": "这个三角板很有趣。",
-  "emoji": "📐",
-  "audioFile": "triangle.mp3"
-},
-{
-  "id": 4207,
-  "word": "notebook",
-  "meaning": "笔记本",
-  "phonetic": "/ˈnoʊtˌbʊk/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my notebook.",
-  "sentenceCn": "我玩我的笔记本。",
-  "emoji": "📓",
-  "audioFile": "notebook.mp3"
-},
-{
-  "id": 4208,
-  "word": "paper",
-  "meaning": "纸",
-  "phonetic": "/ˈpeɪpər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The paper is fun.",
-  "sentenceCn": "这个纸很有趣。",
-  "emoji": "📄",
-  "audioFile": "paper.mp3"
-},
-{
-  "id": 4209,
-  "word": "envelope",
-  "meaning": "信封",
-  "phonetic": "/ˈɛnvəˌloʊp/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The envelope is fun.",
-  "sentenceCn": "这个信封很有趣。",
-  "emoji": "✉️",
-  "audioFile": "envelope.mp3"
-},
-{
-  "id": 4210,
-  "word": "stamp",
-  "meaning": "邮票",
-  "phonetic": "/stæmp/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The stamp is fun.",
-  "sentenceCn": "这个邮票很有趣。",
-  "emoji": "💌",
-  "audioFile": "stamp.mp3"
-},
-{
-  "id": 4211,
-  "word": "glue",
-  "meaning": "胶水",
-  "phonetic": "/ɡlu/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The glue is fun.",
-  "sentenceCn": "这个胶水很有趣。",
-  "emoji": "🧴",
-  "audioFile": "glue.mp3"
-},
-{
-  "id": 4212,
-  "word": "tape",
-  "meaning": "胶带",
-  "phonetic": "/teɪp/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The tape is fun.",
-  "sentenceCn": "这个胶带很有趣。",
-  "emoji": "🩹",
-  "audioFile": "tape.mp3"
-},
-{
-  "id": 4213,
-  "word": "scissors",
-  "meaning": "剪刀",
-  "phonetic": "/ˈsɪzərz/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my scissors.",
-  "sentenceCn": "我玩我的剪刀。",
-  "emoji": "✂️",
-  "audioFile": "scissors.mp3"
-},
+
 {
   "id": 4214,
   "word": "stapler",
@@ -50666,18 +33309,7 @@ export const words: WordEntry[] = [
   "emoji": "🧮",
   "audioFile": "calculator.mp3"
 },
-{
-  "id": 4222,
-  "word": "whiteboard",
-  "meaning": "白板",
-  "phonetic": "/ˈwaɪtˌbɔrd/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The whiteboard is fun.",
-  "sentenceCn": "这个白板很有趣。",
-  "emoji": "🏫",
-  "audioFile": "whiteboard.mp3"
-},
+
 {
   "id": 4223,
   "word": "chalkboard",
@@ -50690,42 +33322,7 @@ export const words: WordEntry[] = [
   "emoji": "📝",
   "audioFile": "chalkboard.mp3"
 },
-{
-  "id": 4224,
-  "word": "chalk",
-  "meaning": "粉笔",
-  "phonetic": "/tʃɔk/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The chalk is fun.",
-  "sentenceCn": "这个粉笔很有趣。",
-  "emoji": "🧑‍🏫",
-  "audioFile": "chalk.mp3"
-},
-{
-  "id": 4225,
-  "word": "eraser",
-  "meaning": "板擦",
-  "phonetic": "/ɪˈreɪsər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The eraser is fun.",
-  "sentenceCn": "这个板擦很有趣。",
-  "emoji": "🧽",
-  "audioFile": "eraser.mp3"
-},
-{
-  "id": 4226,
-  "word": "blackboard",
-  "meaning": "黑板",
-  "phonetic": "/ˈblækˌbɔrd/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my blackboard.",
-  "sentenceCn": "我玩我的黑板。",
-  "emoji": "📝",
-  "audioFile": "blackboard.mp3"
-},
+
 {
   "id": 4227,
   "word": "bulletin",
@@ -50798,18 +33395,7 @@ export const words: WordEntry[] = [
   "emoji": "🧴",
   "audioFile": "correction.mp3"
 },
-{
-  "id": 4233,
-  "word": "backpack",
-  "meaning": "书包",
-  "phonetic": "/ˈbækˌpæk/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my backpack.",
-  "sentenceCn": "我玩我的书包。",
-  "emoji": "🎒",
-  "audioFile": "backpack.mp3"
-},
+
 {
   "id": 4234,
   "word": "lunchbox",
@@ -50846,18 +33432,7 @@ export const words: WordEntry[] = [
   "emoji": "✏️",
   "audioFile": "pencilcase.mp3"
 },
-{
-  "id": 4237,
-  "word": "textbook",
-  "meaning": "教科书",
-  "phonetic": "/ˈtɛkstˌbʊk/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The textbook is fun.",
-  "sentenceCn": "这个教科书很有趣。",
-  "emoji": "📕",
-  "audioFile": "textbook.mp3"
-},
+
 {
   "id": 4238,
   "word": "workbook",
@@ -50930,18 +33505,7 @@ export const words: WordEntry[] = [
   "emoji": "🌍",
   "audioFile": "globe.mp3"
 },
-{
-  "id": 4244,
-  "word": "map",
-  "meaning": "地图",
-  "phonetic": "/mæp/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my map.",
-  "sentenceCn": "我玩我的地图。",
-  "emoji": "🗺️",
-  "audioFile": "map.mp3"
-},
+
 {
   "id": 4245,
   "word": "planner",
@@ -50954,18 +33518,7 @@ export const words: WordEntry[] = [
   "emoji": "📅",
   "audioFile": "planner.mp3"
 },
-{
-  "id": 4246,
-  "word": "calendar",
-  "meaning": "日历",
-  "phonetic": "/ˈkæləndər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The calendar is fun.",
-  "sentenceCn": "这个日历很有趣。",
-  "emoji": "📅",
-  "audioFile": "calendar.mp3"
-},
+
 {
   "id": 4247,
   "word": "sticky",
@@ -51002,18 +33555,7 @@ export const words: WordEntry[] = [
   "emoji": "🃏",
   "audioFile": "flashcard.mp3"
 },
-{
-  "id": 4250,
-  "word": "ruler",
-  "meaning": "直尺",
-  "phonetic": "/ˈrulər/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my ruler.",
-  "sentenceCn": "我玩我的直尺。",
-  "emoji": "📏",
-  "audioFile": "ruler.mp3"
-},
+
 {
   "id": 4251,
   "word": "duckt",
@@ -51158,18 +33700,7 @@ export const words: WordEntry[] = [
   "emoji": "🎲",
   "audioFile": "boardgame.mp3"
 },
-{
-  "id": 4263,
-  "word": "card",
-  "meaning": "纸牌",
-  "phonetic": "/kɑrdz/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my card.",
-  "sentenceCn": "我玩我的纸牌。",
-  "emoji": "🃏",
-  "audioFile": "card.mp3"
-},
+
 {
   "id": 4264,
   "word": "chess",
@@ -51194,18 +33725,7 @@ export const words: WordEntry[] = [
   "emoji": "🟥",
   "audioFile": "checkers.mp3"
 },
-{
-  "id": 4266,
-  "word": "go",
-  "meaning": "围棋",
-  "phonetic": "/ɡoʊ/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my go.",
-  "sentenceCn": "我玩我的围棋。",
-  "emoji": "⚫",
-  "audioFile": "go.mp3"
-},
+
 {
   "id": 4267,
   "word": "dominoes",
@@ -51242,30 +33762,7 @@ export const words: WordEntry[] = [
   "emoji": "⚽",
   "audioFile": "ball.mp3"
 },
-{
-  "id": 4270,
-  "word": "bubble",
-  "meaning": "泡泡",
-  "phonetic": "/ˈbʌbəlz/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The bubble is fun.",
-  "sentenceCn": "这个泡泡很有趣。",
-  "emoji": "🫧",
-  "audioFile": "bubble.mp3"
-},
-{
-  "id": 4271,
-  "word": "kite",
-  "meaning": "风筝",
-  "phonetic": "/kaɪt/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The kite is fun.",
-  "sentenceCn": "这个风筝很有趣。",
-  "emoji": "🪁",
-  "audioFile": "kite.mp3"
-},
+
 {
   "id": 4272,
   "word": "yo",
@@ -51278,30 +33775,7 @@ export const words: WordEntry[] = [
   "emoji": "🪀",
   "audioFile": "yo.mp3"
 },
-{
-  "id": 4273,
-  "word": "jump",
-  "meaning": "跳绳",
-  "phonetic": "/ˈdʒʌmp roʊp/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my jump.",
-  "sentenceCn": "我玩我的跳绳。",
-  "emoji": "🪢",
-  "audioFile": "jump.mp3"
-},
-{
-  "id": 4274,
-  "word": "hula",
-  "meaning": "呼啦圈",
-  "phonetic": "/ˈhulə hup/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my hula.",
-  "sentenceCn": "我玩我的呼啦圈。",
-  "emoji": "🛞",
-  "audioFile": "hula.mp3"
-},
+
 {
   "id": 4275,
   "word": "marbles",
@@ -51398,18 +33872,7 @@ export const words: WordEntry[] = [
   "emoji": "🚂",
   "audioFile": "toytrain.mp3"
 },
-{
-  "id": 4283,
-  "word": "remote",
-  "meaning": "遥控车",
-  "phonetic": "/rɪˈmoʊt kɑr/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The remote is fun.",
-  "sentenceCn": "这个遥控车很有趣。",
-  "emoji": "🚙",
-  "audioFile": "remote.mp3"
-},
+
 {
   "id": 4284,
   "word": "drone",
@@ -51506,18 +33969,7 @@ export const words: WordEntry[] = [
   "emoji": "🧩",
   "audioFile": "model.mp3"
 },
-{
-  "id": 4292,
-  "word": "science",
-  "meaning": "科学套装",
-  "phonetic": "/ˈsaɪəns kɪt/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my science.",
-  "sentenceCn": "我玩我的科学套装。",
-  "emoji": "🔬",
-  "audioFile": "science.mp3"
-},
+
 {
   "id": 4293,
   "word": "microscope",
@@ -51554,30 +34006,7 @@ export const words: WordEntry[] = [
   "emoji": "🔍",
   "audioFile": "magnifying.mp3"
 },
-{
-  "id": 4296,
-  "word": "prism",
-  "meaning": "棱镜",
-  "phonetic": "/ˈprɪzəm/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The prism is fun.",
-  "sentenceCn": "这个棱镜很有趣。",
-  "emoji": "🌈",
-  "audioFile": "prism.mp3"
-},
-{
-  "id": 4297,
-  "word": "compass",
-  "meaning": "指南针",
-  "phonetic": "/ˈkʌmpəs/",
-  "difficulty": 3,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The compass is fun.",
-  "sentenceCn": "这个指南针很有趣。",
-  "emoji": "🧭",
-  "audioFile": "compass.mp3"
-},
+
 {
   "id": 4298,
   "word": "stopwatch",
@@ -51614,138 +34043,7 @@ export const words: WordEntry[] = [
   "emoji": "🧪",
   "audioFile": "beaker.mp3"
 },
-{
-  "id": 4301,
-  "word": "test",
-  "meaning": "试管",
-  "phonetic": "/tɛst tyb/",
-  "difficulty": 3,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The test is fun.",
-  "sentenceCn": "这个试管很有趣。",
-  "emoji": "🧪",
-  "audioFile": "test.mp3"
-},
-{
-  "id": 4302,
-  "word": "magnets",
-  "meaning": "磁铁",
-  "phonetic": "/ˈmæɡnɪts/",
-  "difficulty": 3,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my magnets.",
-  "sentenceCn": "我玩我的磁铁。",
-  "emoji": "🧲",
-  "audioFile": "magnets.mp3"
-},
-{
-  "id": 4303,
-  "word": "battery",
-  "meaning": "电池",
-  "phonetic": "/ˈbætəri/",
-  "difficulty": 3,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my battery.",
-  "sentenceCn": "我玩我的电池。",
-  "emoji": "🔋",
-  "audioFile": "battery.mp3"
-},
-{
-  "id": 4304,
-  "word": "bulb",
-  "meaning": "灯泡",
-  "phonetic": "/bʌlb/",
-  "difficulty": 3,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my bulb.",
-  "sentenceCn": "我玩我的灯泡。",
-  "emoji": "💡",
-  "audioFile": "bulb.mp3"
-  },
-{
-  "id": 4305,
-  "word": "broccoli",
-  "meaning": "西兰花",
-  "phonetic": "/ˈbrɑkəli/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The broccoli is fresh.",
-  "sentenceCn": "这个西兰花很新鲜。",
-  "emoji": "🥦",
-  "audioFile": "broccoli.mp3"
-},
-{
-  "id": 4306,
-  "word": "cabbage",
-  "meaning": "卷心菜",
-  "phonetic": "/ˈkæbɪdʒ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cabbage is fresh.",
-  "sentenceCn": "这个卷心菜很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "cabbage.mp3"
-},
-{
-  "id": 4307,
-  "word": "cauliflower",
-  "meaning": "花椰菜",
-  "phonetic": "/ˈkɔlɪˌflaʊər/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The cauliflower is fresh.",
-  "sentenceCn": "这个花椰菜很新鲜。",
-  "emoji": "🥦",
-  "audioFile": "cauliflower.mp3"
-},
-{
-  "id": 4308,
-  "word": "celery",
-  "meaning": "芹菜",
-  "phonetic": "/ˈsɛləri/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The celery is fresh.",
-  "sentenceCn": "这个芹菜很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "celery.mp3"
-},
-{
-  "id": 4309,
-  "word": "asparagus",
-  "meaning": "芦笋",
-  "phonetic": "/əˈspærəɡəs/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The asparagus is fresh.",
-  "sentenceCn": "这个芦笋很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "asparagus.mp3"
-},
-{
-  "id": 4310,
-  "word": "artichoke",
-  "meaning": "洋蓟",
-  "phonetic": "/ˈɑrtɪˌtʃoʊk/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat artichokes.",
-  "sentenceCn": "我爱吃洋蓟。",
-  "emoji": "🥬",
-  "audioFile": "artichoke.mp3"
-},
-{
-  "id": 4311,
-  "word": "kale",
-  "meaning": "羽衣甘蓝",
-  "phonetic": "/keɪl/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat kales.",
-  "sentenceCn": "我爱吃羽衣甘蓝。",
-  "emoji": "🥬",
-  "audioFile": "kale.mp3"
-},
+
 {
   "id": 4312,
   "word": "chard",
@@ -51782,66 +34080,7 @@ export const words: WordEntry[] = [
   "emoji": "🥬",
   "audioFile": "arugula.mp3"
 },
-{
-  "id": 4315,
-  "word": "turnip",
-  "meaning": "芜菁",
-  "phonetic": "/ˈtɜrnɪp/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat turnips.",
-  "sentenceCn": "我爱吃芜菁。",
-  "emoji": "🥕",
-  "audioFile": "turnip.mp3"
-},
-{
-  "id": 4316,
-  "word": "parsnip",
-  "meaning": "欧防风",
-  "phonetic": "/ˈpɑrsnɪp/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The parsnip is fresh.",
-  "sentenceCn": "这个欧防风很新鲜。",
-  "emoji": "🥕",
-  "audioFile": "parsnip.mp3"
-},
-{
-  "id": 4317,
-  "word": "horseradish",
-  "meaning": "辣根",
-  "phonetic": "/ˈhɔrsˌrædɪʃ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The horseradish is fresh.",
-  "sentenceCn": "这个辣根很新鲜。",
-  "emoji": "🥕",
-  "audioFile": "horseradish.mp3"
-},
-{
-  "id": 4318,
-  "word": "wasabi",
-  "meaning": "山葵",
-  "phonetic": "/wəˈsɑbi/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The wasabi is fresh.",
-  "sentenceCn": "这个山葵很新鲜。",
-  "emoji": "🫘",
-  "audioFile": "wasabi.mp3"
-},
-{
-  "id": 4319,
-  "word": "okra",
-  "meaning": "秋葵",
-  "phonetic": "/ˈoʊkrə/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat okras.",
-  "sentenceCn": "我爱吃秋葵。",
-  "emoji": "🥬",
-  "audioFile": "okra.mp3"
-},
+
 {
   "id": 4320,
   "word": "jicama",
@@ -51974,42 +34213,7 @@ export const words: WordEntry[] = [
   "emoji": "⭐",
   "audioFile": "carambola.mp3"
 },
-{
-  "id": 4331,
-  "word": "rhubarb",
-  "meaning": "大黄",
-  "phonetic": "/ˈruˌbɑrb/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat rhubarbs.",
-  "sentenceCn": "我爱吃大黄。",
-  "emoji": "🌿",
-  "audioFile": "rhubarb.mp3"
-},
-{
-  "id": 4332,
-  "word": "fennel",
-  "meaning": "茴香",
-  "phonetic": "/ˈfɛnəl/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The fennel is fresh.",
-  "sentenceCn": "这个茴香很新鲜。",
-  "emoji": "🌿",
-  "audioFile": "fennel.mp3"
-},
-{
-  "id": 4333,
-  "word": "chard",
-  "meaning": "瑞士甜菜",
-  "phonetic": "/tʃɑrd/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The chard is fresh.",
-  "sentenceCn": "这个瑞士甜菜很新鲜。",
-  "emoji": "🥬",
-  "audioFile": "chard.mp3"
-},
+
 {
   "id": 4334,
   "word": "collard",
@@ -52070,30 +34274,7 @@ export const words: WordEntry[] = [
   "emoji": "🥬",
   "audioFile": "watercress.mp3"
 },
-{
-  "id": 4339,
-  "word": "sprout",
-  "meaning": "豆芽",
-  "phonetic": "/spraʊts/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The sprout is fresh.",
-  "sentenceCn": "这个豆芽很新鲜。",
-  "emoji": "🌱",
-  "audioFile": "sprout.mp3"
-},
-{
-  "id": 4340,
-  "word": "olive",
-  "meaning": "橄榄",
-  "phonetic": "/ˈɑlɪv/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The olive is fresh.",
-  "sentenceCn": "这个橄榄很新鲜。",
-  "emoji": "🫒",
-  "audioFile": "olive.mp3"
-},
+
 {
   "id": 4341,
   "word": "caper",
@@ -52106,18 +34287,7 @@ export const words: WordEntry[] = [
   "emoji": "🫒",
   "audioFile": "caper.mp3"
 },
-{
-  "id": 4342,
-  "word": "sesame",
-  "meaning": "芝麻",
-  "phonetic": "/ˈsɛsəmi/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The sesame is fresh.",
-  "sentenceCn": "这个芝麻很新鲜。",
-  "emoji": "🌰",
-  "audioFile": "sesame.mp3"
-},
+
 {
   "id": 4343,
   "word": "flaxseed",
@@ -52142,30 +34312,7 @@ export const words: WordEntry[] = [
   "emoji": "🌰",
   "audioFile": "chia.mp3"
 },
-{
-  "id": 4345,
-  "word": "quinoa",
-  "meaning": "藜麦",
-  "phonetic": "/ˈkinˌwɑ/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The quinoa is fresh.",
-  "sentenceCn": "这个藜麦很新鲜。",
-  "emoji": "🌾",
-  "audioFile": "quinoa.mp3"
-},
-{
-  "id": 4346,
-  "word": "couscous",
-  "meaning": "库斯库斯",
-  "phonetic": "/ˈkusˌkus/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The couscous is fresh.",
-  "sentenceCn": "这个库斯库斯很新鲜。",
-  "emoji": "🌾",
-  "audioFile": "couscous.mp3"
-},
+
 {
   "id": 4347,
   "word": "bulgur",
@@ -52178,30 +34325,7 @@ export const words: WordEntry[] = [
   "emoji": "🌾",
   "audioFile": "bulgur.mp3"
 },
-{
-  "id": 4348,
-  "word": "barley",
-  "meaning": "大麦",
-  "phonetic": "/ˈbɑrli/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The barley is fresh.",
-  "sentenceCn": "这个大麦很新鲜。",
-  "emoji": "🌾",
-  "audioFile": "barley.mp3"
-},
-{
-  "id": 4349,
-  "word": "oat",
-  "meaning": "燕麦",
-  "phonetic": "/oʊt/",
-  "difficulty": 1,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat oats.",
-  "sentenceCn": "我爱吃燕麦。",
-  "emoji": "🌾",
-  "audioFile": "oat.mp3"
-},
+
 {
   "id": 4350,
   "word": "rye",
@@ -52394,18 +34518,7 @@ export const words: WordEntry[] = [
   "emoji": "🧀",
   "audioFile": "nutritional.mp3"
 },
-{
-  "id": 4366,
-  "word": "tempeh",
-  "meaning": "天贝",
-  "phonetic": "/ˈtɛmpeɪ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The tempeh is fresh.",
-  "sentenceCn": "这个天贝很新鲜。",
-  "emoji": "🫘",
-  "audioFile": "tempeh.mp3"
-},
+
 {
   "id": 4367,
   "word": "seitan",
@@ -52430,18 +34543,7 @@ export const words: WordEntry[] = [
   "emoji": "🌾",
   "audioFile": "polenta.mp3"
 },
-{
-  "id": 4369,
-  "word": "hummus",
-  "meaning": "鹰嘴豆泥",
-  "phonetic": "/ˈhʊməs/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The hummus is fresh.",
-  "sentenceCn": "这个鹰嘴豆泥很新鲜。",
-  "emoji": "🫘",
-  "audioFile": "hummus.mp3"
-},
+
 {
   "id": 4370,
   "word": "baba",
@@ -52466,78 +34568,7 @@ export const words: WordEntry[] = [
   "emoji": "🥒",
   "audioFile": "tzatziki.mp3"
 },
-{
-  "id": 4372,
-  "word": "pesto",
-  "meaning": "青酱",
-  "phonetic": "/ˈpɛstoʊ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pestos.",
-  "sentenceCn": "我爱吃青酱。",
-  "emoji": "🌿",
-  "audioFile": "pesto.mp3"
-},
-{
-  "id": 4373,
-  "word": "salsa",
-  "meaning": "莎莎酱",
-  "phonetic": "/ˈsɑlsə/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat salsas.",
-  "sentenceCn": "我爱吃莎莎酱。",
-  "emoji": "🫙",
-  "audioFile": "salsa.mp3"
-},
-{
-  "id": 4374,
-  "word": "guacamole",
-  "meaning": "牛油果酱",
-  "phonetic": "/ˌɡwɑkəˈmoʊleɪ/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "The guacamole is fresh.",
-  "sentenceCn": "这个牛油果酱很新鲜。",
-  "emoji": "🥑",
-  "audioFile": "guacamole.mp3"
-},
-{
-  "id": 4375,
-  "word": "kimchi",
-  "meaning": "泡菜",
-  "phonetic": "/ˈkɪmtʃi/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat kimchis.",
-  "sentenceCn": "我爱吃泡菜。",
-  "emoji": "🥬",
-  "audioFile": "kimchi.mp3"
-},
-{
-  "id": 4376,
-  "word": "sauerkraut",
-  "meaning": "德国酸菜",
-  "phonetic": "/ˈsaʊrˌkraʊt/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat sauerkrauts.",
-  "sentenceCn": "我爱吃德国酸菜。",
-  "emoji": "🥬",
-  "audioFile": "sauerkraut.mp3"
-},
-{
-  "id": 4377,
-  "word": "pickle",
-  "meaning": "腌黄瓜",
-  "phonetic": "/ˈpɪkəl/",
-  "difficulty": 2,
-  "theme": "水果蔬菜 Fruits & Vegetables",
-  "sentence": "I like to eat pickles.",
-  "sentenceCn": "我爱吃腌黄瓜。",
-  "emoji": "🥒",
-  "audioFile": "pickle.mp3"
-},
+
 {
   "id": 4378,
   "word": "chutney",
@@ -52550,30 +34581,7 @@ export const words: WordEntry[] = [
   "emoji": "🫙",
   "audioFile": "chutney.mp3"
 },
-{
-  "id": 4379,
-  "word": "rickshaw",
-  "meaning": "人力车",
-  "phonetic": "/ˈrɪkʃɔ/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The rickshaw is fast.",
-  "sentenceCn": "人力车很快。",
-  "emoji": "🛺",
-  "audioFile": "rickshaw.mp3"
-},
-{
-  "id": 4380,
-  "word": "pedicab",
-  "meaning": "三轮车",
-  "phonetic": "/ˈpɛdɪˌkæb/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The pedicab is fast.",
-  "sentenceCn": "三轮车很快。",
-  "emoji": "🛺",
-  "audioFile": "pedicab.mp3"
-},
+
 {
   "id": 4381,
   "word": "trolley",
@@ -52586,30 +34594,7 @@ export const words: WordEntry[] = [
   "emoji": "🚊",
   "audioFile": "trolley.mp3"
 },
-{
-  "id": 4382,
-  "word": "cablecar",
-  "meaning": "缆车",
-  "phonetic": "/ˈkeɪbəl kɑr/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by cablecar.",
-  "sentenceCn": "我坐缆车去上学。",
-  "emoji": "🚡",
-  "audioFile": "cablecar.mp3"
-},
-{
-  "id": 4383,
-  "word": "gondola",
-  "meaning": "贡多拉",
-  "phonetic": "/ˈɡɑndələ/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The gondola is fast.",
-  "sentenceCn": "贡多拉很快。",
-  "emoji": "🚡",
-  "audioFile": "gondola.mp3"
-},
+
 {
   "id": 4384,
   "word": "chairlift",
@@ -52742,18 +34727,7 @@ export const words: WordEntry[] = [
   "emoji": "🛳️",
   "audioFile": "cruise.mp3"
 },
-{
-  "id": 4395,
-  "word": "ferry",
-  "meaning": "摆渡船",
-  "phonetic": "/ˈfɛri/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by ferry.",
-  "sentenceCn": "我坐摆渡船去上学。",
-  "emoji": "⛴️",
-  "audioFile": "ferry.mp3"
-},
+
 {
   "id": 4396,
   "word": "watertaxi",
@@ -52778,42 +34752,7 @@ export const words: WordEntry[] = [
   "emoji": "🚤",
   "audioFile": "speedboat.mp3"
 },
-{
-  "id": 4398,
-  "word": "jetski",
-  "meaning": "摩托艇",
-  "phonetic": "/ˈdʒɛt ˌski/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The jetski is fast.",
-  "sentenceCn": "摩托艇很快。",
-  "emoji": "🏍️",
-  "audioFile": "jetski.mp3"
-},
-{
-  "id": 4399,
-  "word": "sailboat",
-  "meaning": "帆船",
-  "phonetic": "/ˈseɪlˌboʊt/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The sailboat is fast.",
-  "sentenceCn": "帆船很快。",
-  "emoji": "⛵",
-  "audioFile": "sailboat.mp3"
-},
-{
-  "id": 4400,
-  "word": "yacht",
-  "meaning": "游艇",
-  "phonetic": "/jɑt/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by yacht.",
-  "sentenceCn": "我坐游艇去上学。",
-  "emoji": "🛥️",
-  "audioFile": "yacht.mp3"
-},
+
 {
   "id": 4401,
   "word": "dinghy",
@@ -52826,66 +34765,7 @@ export const words: WordEntry[] = [
   "emoji": "⛵",
   "audioFile": "dinghy.mp3"
 },
-{
-  "id": 4402,
-  "word": "kayak",
-  "meaning": "皮划艇",
-  "phonetic": "/ˈkaɪæk/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The kayak is fast.",
-  "sentenceCn": "皮划艇很快。",
-  "emoji": "🛶",
-  "audioFile": "kayak.mp3"
-},
-{
-  "id": 4403,
-  "word": "canoe",
-  "meaning": "独木舟",
-  "phonetic": "/kəˈnu/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by canoe.",
-  "sentenceCn": "我坐独木舟去上学。",
-  "emoji": "🛶",
-  "audioFile": "canoe.mp3"
-},
-{
-  "id": 4404,
-  "word": "raft",
-  "meaning": "木筏",
-  "phonetic": "/ræft/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by raft.",
-  "sentenceCn": "我坐木筏去上学。",
-  "emoji": "🛟",
-  "audioFile": "raft.mp3"
-},
-{
-  "id": 4405,
-  "word": "lifeboat",
-  "meaning": "救生艇",
-  "phonetic": "/ˈlaɪfˌboʊt/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The lifeboat is fast.",
-  "sentenceCn": "救生艇很快。",
-  "emoji": "🚣",
-  "audioFile": "lifeboat.mp3"
-},
-{
-  "id": 4406,
-  "word": "bicycle",
-  "meaning": "自行车",
-  "phonetic": "/ˈbaɪsɪkəl/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by bicycle.",
-  "sentenceCn": "我坐自行车去上学。",
-  "emoji": "🚲",
-  "audioFile": "bicycle.mp3"
-},
+
 {
   "id": 4407,
   "word": "tandem",
@@ -52922,30 +34802,7 @@ export const words: WordEntry[] = [
   "emoji": "🚲",
   "audioFile": "tricycle.mp3"
 },
-{
-  "id": 4410,
-  "word": "scooter",
-  "meaning": "踏板车",
-  "phonetic": "/ˈskutər/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The scooter is fast.",
-  "sentenceCn": "踏板车很快。",
-  "emoji": "🛴",
-  "audioFile": "scooter.mp3"
-},
-{
-  "id": 4411,
-  "word": "skateboard",
-  "meaning": "滑板",
-  "phonetic": "/ˈskeɪtˌbɔrd/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by skateboard.",
-  "sentenceCn": "我坐滑板去上学。",
-  "emoji": "🛹",
-  "audioFile": "skateboard.mp3"
-},
+
 {
   "id": 4412,
   "word": "segway",
@@ -53018,18 +34875,7 @@ export const words: WordEntry[] = [
   "emoji": "🚜",
   "audioFile": "snowcat.mp3"
 },
-{
-  "id": 4418,
-  "word": "snowmobile",
-  "meaning": "雪地摩托",
-  "phonetic": "/ˈsnoʊmoʊˌbil/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The snowmobile is fast.",
-  "sentenceCn": "雪地摩托很快。",
-  "emoji": "🏍️",
-  "audioFile": "snowmobile.mp3"
-},
+
 {
   "id": 4419,
   "word": "electric",
@@ -53066,18 +34912,7 @@ export const words: WordEntry[] = [
   "emoji": "🚌",
   "audioFile": "shuttle.mp3"
 },
-{
-  "id": 4422,
-  "word": "coach",
-  "meaning": "长途大巴",
-  "phonetic": "/koʊtʃ/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by coach.",
-  "sentenceCn": "我坐长途大巴去上学。",
-  "emoji": "🚌",
-  "audioFile": "coach.mp3"
-},
+
 {
   "id": 4423,
   "word": "doubledecker",
@@ -53126,30 +34961,7 @@ export const words: WordEntry[] = [
   "emoji": "🚙",
   "audioFile": "jeep.mp3"
 },
-{
-  "id": 4427,
-  "word": "van",
-  "meaning": "厢式货车",
-  "phonetic": "/væn/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The van is fast.",
-  "sentenceCn": "厢式货车很快。",
-  "emoji": "🚐",
-  "audioFile": "van.mp3"
-},
-{
-  "id": 4428,
-  "word": "pickup",
-  "meaning": "皮卡",
-  "phonetic": "/ˈpɪkˌʌp/",
-  "difficulty": 1,
-  "theme": "交通工具 Transportation",
-  "sentence": "The pickup is fast.",
-  "sentenceCn": "皮卡很快。",
-  "emoji": "🛻",
-  "audioFile": "pickup.mp3"
-},
+
 {
   "id": 4429,
   "word": "camper",
@@ -53186,18 +34998,7 @@ export const words: WordEntry[] = [
   "emoji": "🚐",
   "audioFile": "caravan.mp3"
 },
-{
-  "id": 4432,
-  "word": "motorcycle",
-  "meaning": "摩托车",
-  "phonetic": "/ˈmoʊtərˌsaɪkəl/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by motorcycle.",
-  "sentenceCn": "我坐摩托车去上学。",
-  "emoji": "🏍️",
-  "audioFile": "motorcycle.mp3"
-},
+
 {
   "id": 4433,
   "word": "moped",
@@ -53210,18 +35011,7 @@ export const words: WordEntry[] = [
   "emoji": "🛵",
   "audioFile": "moped.mp3"
 },
-{
-  "id": 4434,
-  "word": "scooter",
-  "meaning": "摩托车",
-  "phonetic": "/ˈskutər/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by scooter.",
-  "sentenceCn": "我坐摩托车去上学。",
-  "emoji": "🛵",
-  "audioFile": "scooter.mp3"
-},
+
 {
   "id": 4435,
   "word": "dirtbike",
@@ -53258,18 +35048,7 @@ export const words: WordEntry[] = [
   "emoji": "🚙",
   "audioFile": "golfcart.mp3"
 },
-{
-  "id": 4438,
-  "word": "tractor",
-  "meaning": "拖拉机",
-  "phonetic": "/ˈtræktər/",
-  "difficulty": 2,
-  "theme": "交通工具 Transportation",
-  "sentence": "I go to school by tractor.",
-  "sentenceCn": "我坐拖拉机去上学。",
-  "emoji": "🚜",
-  "audioFile": "tractor.mp3"
-},
+
 {
   "id": 4439,
   "word": "combine",
@@ -53354,18 +35133,7 @@ export const words: WordEntry[] = [
   "emoji": "👶",
   "audioFile": "midwife.mp3"
 },
-{
-  "id": 4446,
-  "word": "paramedic",
-  "meaning": "急救医生",
-  "phonetic": "/ˌpɛrəˈmɛdɪk/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a paramedic.",
-  "sentenceCn": "我妈妈是急救医生。",
-  "emoji": "🚑",
-  "audioFile": "paramedic.mp3"
-},
+
 {
   "id": 4447,
   "word": "radiologist",
@@ -53414,18 +35182,7 @@ export const words: WordEntry[] = [
   "emoji": "🔍",
   "audioFile": "forensic.mp3"
 },
-{
-  "id": 4451,
-  "word": "veterinarian",
-  "meaning": "兽医",
-  "phonetic": "/ˌvɛtərɪˈnɛriən/",
-  "difficulty": 1,
-  "theme": "职业 Occupations",
-  "sentence": "My mom is a veterinarian.",
-  "sentenceCn": "我妈妈是兽医。",
-  "emoji": "🐾",
-  "audioFile": "veterinarian.mp3"
-},
+
 {
   "id": 4452,
   "word": "zoologist",
@@ -53894,18 +35651,7 @@ export const words: WordEntry[] = [
   "emoji": "📺",
   "audioFile": "streamer.mp3"
 },
-{
-  "id": 4491,
-  "word": "photographer",
-  "meaning": "摄影师",
-  "phonetic": "/fəˈtɑɡrəfər/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "The photographer helps people.",
-  "sentenceCn": "摄影师帮助别人。",
-  "emoji": "📷",
-  "audioFile": "photographer.mp3"
-},
+
 {
   "id": 4492,
   "word": "videographer",
@@ -53918,18 +35664,7 @@ export const words: WordEntry[] = [
   "emoji": "🎥",
   "audioFile": "videographer.mp3"
 },
-{
-  "id": 4493,
-  "word": "editor",
-  "meaning": "剪辑师",
-  "phonetic": "/ˈɛdɪtər/",
-  "difficulty": 2,
-  "theme": "职业 Occupations",
-  "sentence": "The editor helps people.",
-  "sentenceCn": "剪辑师帮助别人。",
-  "emoji": "✂️",
-  "audioFile": "editor.mp3"
-},
+
 {
   "id": 4494,
   "word": "producer",
@@ -53966,30 +35701,7 @@ export const words: WordEntry[] = [
   "emoji": "🎨",
   "audioFile": "illustrator.mp3"
 },
-{
-  "id": 4497,
-  "word": "skydiving",
-  "meaning": "高空跳伞",
-  "phonetic": "/ˈskaɪˌdaɪvɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play skydiving.",
-  "sentenceCn": "我喜欢玩高空跳伞。",
-  "emoji": "🪂",
-  "audioFile": "skydiving.mp3"
-},
-{
-  "id": 4498,
-  "word": "bungee",
-  "meaning": "蹦极",
-  "phonetic": "/ˈbʌndʒi/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Bungee is fun.",
-  "sentenceCn": "蹦极很有趣。",
-  "emoji": "🪢",
-  "audioFile": "bungee.mp3"
-},
+
 {
   "id": 4499,
   "word": "rockclimbing",
@@ -54038,54 +35750,7 @@ export const words: WordEntry[] = [
   "emoji": "🕳️",
   "audioFile": "caving.mp3"
 },
-{
-  "id": 4503,
-  "word": "paragliding",
-  "meaning": "滑翔伞",
-  "phonetic": "/ˈpɛrəˌɡlaɪdɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play paragliding.",
-  "sentenceCn": "我喜欢玩滑翔伞。",
-  "emoji": "🪂",
-  "audioFile": "paragliding.mp3"
-},
-{
-  "id": 4504,
-  "word": "hanggliding",
-  "meaning": "悬挂滑翔",
-  "phonetic": "/ˈhæŋ ˌɡlaɪdɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Hanggliding is fun.",
-  "sentenceCn": "悬挂滑翔很有趣。",
-  "emoji": "🪂",
-  "audioFile": "hanggliding.mp3"
-},
-{
-  "id": 4505,
-  "word": "windsurfing",
-  "meaning": "风帆冲浪",
-  "phonetic": "/ˈwɪndˌsɜrfɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Windsurfing is fun.",
-  "sentenceCn": "风帆冲浪很有趣。",
-  "emoji": "⛵",
-  "audioFile": "windsurfing.mp3"
-},
-{
-  "id": 4506,
-  "word": "kitesurfing",
-  "meaning": "风筝冲浪",
-  "phonetic": "/ˈkaɪtˌsɜrfɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play kitesurfing.",
-  "sentenceCn": "我喜欢玩风筝冲浪。",
-  "emoji": "🪁",
-  "audioFile": "kitesurfing.mp3"
-},
+
 {
   "id": 4507,
   "word": "paddleboarding",
@@ -54098,18 +35763,7 @@ export const words: WordEntry[] = [
   "emoji": "🏄",
   "audioFile": "paddleboarding.mp3"
 },
-{
-  "id": 4508,
-  "word": "surfing",
-  "meaning": "冲浪",
-  "phonetic": "/ˈsɜrfɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Surfing is fun.",
-  "sentenceCn": "冲浪很有趣。",
-  "emoji": "🏄",
-  "audioFile": "surfing.mp3"
-},
+
 {
   "id": 4509,
   "word": "bodysurfing",
@@ -54182,18 +35836,7 @@ export const words: WordEntry[] = [
   "emoji": "🎣",
   "audioFile": "surfcasting.mp3"
 },
-{
-  "id": 4515,
-  "word": "iceskating",
-  "meaning": "滑冰",
-  "phonetic": "/aɪs ˈskeɪtɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play iceskating.",
-  "sentenceCn": "我喜欢玩滑冰。",
-  "emoji": "⛸️",
-  "audioFile": "iceskating.mp3"
-},
+
 {
   "id": 4516,
   "word": "figureskating",
@@ -54218,18 +35861,7 @@ export const words: WordEntry[] = [
   "emoji": "⛸️",
   "audioFile": "speedskating.mp3"
 },
-{
-  "id": 4518,
-  "word": "skiing",
-  "meaning": "滑雪",
-  "phonetic": "/ˈskiɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Skiing is fun.",
-  "sentenceCn": "滑雪很有趣。",
-  "emoji": "⛷️",
-  "audioFile": "skiing.mp3"
-},
+
 {
   "id": 4519,
   "word": "crosscountry",
@@ -54254,30 +35886,7 @@ export const words: WordEntry[] = [
   "emoji": "⛷️",
   "audioFile": "downhill.mp3"
 },
-{
-  "id": 4521,
-  "word": "snowboarding",
-  "meaning": "单板滑雪",
-  "phonetic": "/ˈsnoʊˌbɔrdɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play snowboarding.",
-  "sentenceCn": "我喜欢玩单板滑雪。",
-  "emoji": "🏂",
-  "audioFile": "snowboarding.mp3"
-},
-{
-  "id": 4522,
-  "word": "sledding",
-  "meaning": "滑雪橇",
-  "phonetic": "/ˈslɛdɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Sledding is fun.",
-  "sentenceCn": "滑雪橇很有趣。",
-  "emoji": "🛷",
-  "audioFile": "sledding.mp3"
-},
+
 {
   "id": 4523,
   "word": "luge",
@@ -54302,18 +35911,7 @@ export const words: WordEntry[] = [
   "emoji": "🛷",
   "audioFile": "bobsled.mp3"
 },
-{
-  "id": 4525,
-  "word": "skeleton",
-  "meaning": "钢架雪车",
-  "phonetic": "/ˈskɛlətən/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Skeleton is fun.",
-  "sentenceCn": "钢架雪车很有趣。",
-  "emoji": "🛷",
-  "audioFile": "skeleton.mp3"
-},
+
 {
   "id": 4526,
   "word": "curling",
@@ -54338,18 +35936,7 @@ export const words: WordEntry[] = [
   "emoji": "🎿",
   "audioFile": "biathlon.mp3"
 },
-{
-  "id": 4528,
-  "word": "marathon",
-  "meaning": "马拉松",
-  "phonetic": "/ˈmɛrəˌθɑn/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play marathon.",
-  "sentenceCn": "我喜欢玩马拉松。",
-  "emoji": "🏃",
-  "audioFile": "marathon.mp3"
-},
+
 {
   "id": 4529,
   "word": "ultramarathon",
@@ -54374,42 +35961,7 @@ export const words: WordEntry[] = [
   "emoji": "🏃",
   "audioFile": "halfmarathon.mp3"
 },
-{
-  "id": 4531,
-  "word": "sprint",
-  "meaning": "短跑",
-  "phonetic": "/sprɪnt/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play sprint.",
-  "sentenceCn": "我喜欢玩短跑。",
-  "emoji": "🏃‍♂️",
-  "audioFile": "sprint.mp3"
-},
-{
-  "id": 4532,
-  "word": "relay",
-  "meaning": "接力赛",
-  "phonetic": "/ˈriˌleɪ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play relay.",
-  "sentenceCn": "我喜欢玩接力赛。",
-  "emoji": "🏃",
-  "audioFile": "relay.mp3"
-},
-{
-  "id": 4533,
-  "word": "hurdles",
-  "meaning": "跨栏",
-  "phonetic": "/ˈhɜrdəlz/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Hurdles is fun.",
-  "sentenceCn": "跨栏很有趣。",
-  "emoji": "🏃‍♂️",
-  "audioFile": "hurdles.mp3"
-},
+
 {
   "id": 4534,
   "word": "steeplechase",
@@ -54422,18 +35974,7 @@ export const words: WordEntry[] = [
   "emoji": "🏃",
   "audioFile": "steeplechase.mp3"
 },
-{
-  "id": 4535,
-  "word": "triathlon",
-  "meaning": "铁人三项",
-  "phonetic": "/traɪˈæθlən/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Triathlon is fun.",
-  "sentenceCn": "铁人三项很有趣。",
-  "emoji": "🏊",
-  "audioFile": "triathlon.mp3"
-},
+
 {
   "id": 4536,
   "word": "ironman",
@@ -54482,18 +36023,7 @@ export const words: WordEntry[] = [
   "emoji": "🏋️",
   "audioFile": "powerlifting.mp3"
 },
-{
-  "id": 4540,
-  "word": "weightlifting",
-  "meaning": "举重",
-  "phonetic": "/ˈweɪtˌlɪftɪŋ/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play weightlifting.",
-  "sentenceCn": "我喜欢玩举重。",
-  "emoji": "🏋️",
-  "audioFile": "weightlifting.mp3"
-},
+
 {
   "id": 4541,
   "word": "calisthenics",
@@ -54554,30 +36084,7 @@ export const words: WordEntry[] = [
   "emoji": "🧘",
   "audioFile": "cooldown.mp3"
 },
-{
-  "id": 4546,
-  "word": "yoga",
-  "meaning": "瑜伽",
-  "phonetic": "/ˈjoʊɡə/",
-  "difficulty": 1,
-  "theme": "运动体育 Sports",
-  "sentence": "Yoga is fun.",
-  "sentenceCn": "瑜伽很有趣。",
-  "emoji": "🧘",
-  "audioFile": "yoga.mp3"
-},
-{
-  "id": 4547,
-  "word": "pilates",
-  "meaning": "普拉提",
-  "phonetic": "/pɪˈlɑtiz/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play pilates.",
-  "sentenceCn": "我喜欢玩普拉提。",
-  "emoji": "🧘",
-  "audioFile": "pilates.mp3"
-},
+
 {
   "id": 4548,
   "word": "tai",
@@ -54650,18 +36157,7 @@ export const words: WordEntry[] = [
   "emoji": "🚴",
   "audioFile": "spinning.mp3"
 },
-{
-  "id": 4554,
-  "word": "boxing",
-  "meaning": "拳击",
-  "phonetic": "/ˈbɑksɪŋ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Boxing is fun.",
-  "sentenceCn": "拳击很有趣。",
-  "emoji": "🥊",
-  "audioFile": "boxing.mp3"
-},
+
 {
   "id": 4555,
   "word": "muay",
@@ -54674,42 +36170,7 @@ export const words: WordEntry[] = [
   "emoji": "🥊",
   "audioFile": "muay.mp3"
 },
-{
-  "id": 4556,
-  "word": "judo",
-  "meaning": "柔道",
-  "phonetic": "/ˈdʒudoʊ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Judo is fun.",
-  "sentenceCn": "柔道很有趣。",
-  "emoji": "🥋",
-  "audioFile": "judo.mp3"
-},
-{
-  "id": 4557,
-  "word": "karate",
-  "meaning": "空手道",
-  "phonetic": "/kəˈrɑti/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Karate is fun.",
-  "sentenceCn": "空手道很有趣。",
-  "emoji": "🥋",
-  "audioFile": "karate.mp3"
-},
-{
-  "id": 4558,
-  "word": "taekwondo",
-  "meaning": "跆拳道",
-  "phonetic": "/taɪˈkwɑnˈdoʊ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Taekwondo is fun.",
-  "sentenceCn": "跆拳道很有趣。",
-  "emoji": "🥋",
-  "audioFile": "taekwondo.mp3"
-},
+
 {
   "id": 4559,
   "word": "kungfu",
@@ -54746,42 +36207,7 @@ export const words: WordEntry[] = [
   "emoji": "🥋",
   "audioFile": "capoeira.mp3"
 },
-{
-  "id": 4562,
-  "word": "fencing",
-  "meaning": "击剑",
-  "phonetic": "/ˈfɛnsɪŋ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Fencing is fun.",
-  "sentenceCn": "击剑很有趣。",
-  "emoji": "🤺",
-  "audioFile": "fencing.mp3"
-},
-{
-  "id": 4563,
-  "word": "archery",
-  "meaning": "射箭",
-  "phonetic": "/ˈɑrtʃəri/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "Archery is fun.",
-  "sentenceCn": "射箭很有趣。",
-  "emoji": "🏹",
-  "audioFile": "archery.mp3"
-},
-{
-  "id": 4564,
-  "word": "shooting",
-  "meaning": "射击",
-  "phonetic": "/ˈʃutɪŋ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play shooting.",
-  "sentenceCn": "我喜欢玩射击。",
-  "emoji": "🔫",
-  "audioFile": "shooting.mp3"
-},
+
 {
   "id": 4565,
   "word": "equestrian",
@@ -54794,18 +36220,7 @@ export const words: WordEntry[] = [
   "emoji": "🏇",
   "audioFile": "equestrian.mp3"
 },
-{
-  "id": 4566,
-  "word": "polo",
-  "meaning": "马球",
-  "phonetic": "/ˈpoʊloʊ/",
-  "difficulty": 2,
-  "theme": "运动体育 Sports",
-  "sentence": "I like to play polo.",
-  "sentenceCn": "我喜欢玩马球。",
-  "emoji": "🏇",
-  "audioFile": "polo.mp3"
-},
+
 {
   "id": 4567,
   "word": "jousting",
@@ -55058,18 +36473,7 @@ export const words: WordEntry[] = [
   "emoji": "🥲",
   "audioFile": "bittersweet.mp3"
 },
-{
-  "id": 4588,
-  "word": "nostalgic",
-  "meaning": "怀旧的",
-  "phonetic": "/nɑˈstældʒɪk/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "The nostalgic makes me happy.",
-  "sentenceCn": "怀旧的让我开心。",
-  "emoji": "🥲",
-  "audioFile": "nostalgic.mp3"
-},
+
 {
   "id": 4589,
   "word": "sentimental",
@@ -55130,18 +36534,7 @@ export const words: WordEntry[] = [
   "emoji": "🥺",
   "audioFile": "pining.mp3"
 },
-{
-  "id": 4594,
-  "word": "homesick",
-  "meaning": "想家的",
-  "phonetic": "/ˈhoʊmˌsɪk/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel homesick today.",
-  "sentenceCn": "我今天感到想家的。",
-  "emoji": "🏠",
-  "audioFile": "homesick.mp3"
-},
+
 {
   "id": 4595,
   "word": "apprehensive",
@@ -55166,18 +36559,7 @@ export const words: WordEntry[] = [
   "emoji": "😟",
   "audioFile": "uneasy.mp3"
 },
-{
-  "id": 4597,
-  "word": "tense",
-  "meaning": "紧张的",
-  "phonetic": "/tɛns/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel tense today.",
-  "sentenceCn": "我今天感到紧张的。",
-  "emoji": "😬",
-  "audioFile": "tense.mp3"
-},
+
 {
   "id": 4598,
   "word": "woundup",
@@ -55226,18 +36608,7 @@ export const words: WordEntry[] = [
   "emoji": "🪑",
   "audioFile": "fidgety.mp3"
 },
-{
-  "id": 4602,
-  "word": "restless",
-  "meaning": "焦躁的",
-  "phonetic": "/ˈrɛstləs/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel restless today.",
-  "sentenceCn": "我今天感到焦躁的。",
-  "emoji": "😖",
-  "audioFile": "restless.mp3"
-},
+
 {
   "id": 4603,
   "word": "serene",
@@ -55274,18 +36645,7 @@ export const words: WordEntry[] = [
   "emoji": "😊",
   "audioFile": "placid.mp3"
 },
-{
-  "id": 4606,
-  "word": "blissful",
-  "meaning": "极乐的",
-  "phonetic": "/ˈblɪsfəl/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel blissful today.",
-  "sentenceCn": "我今天感到极乐的。",
-  "emoji": "😇",
-  "audioFile": "blissful.mp3"
-},
+
 {
   "id": 4607,
   "word": "euphoric",
@@ -55298,18 +36658,7 @@ export const words: WordEntry[] = [
   "emoji": "🤯",
   "audioFile": "euphoric.mp3"
 },
-{
-  "id": 4608,
-  "word": "elated",
-  "meaning": "得意洋洋的",
-  "phonetic": "/ɪˈleɪtɪd/",
-  "difficulty": 1,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel elated today.",
-  "sentenceCn": "我今天感到得意洋洋的。",
-  "emoji": "🥳",
-  "audioFile": "elated.mp3"
-},
+
 {
   "id": 4609,
   "word": "jubilant",
@@ -55478,18 +36827,7 @@ export const words: WordEntry[] = [
   "emoji": "😤",
   "audioFile": "seething.mp3"
 },
-{
-  "id": 4623,
-  "word": "jealous",
-  "meaning": "嫉妒的",
-  "phonetic": "/ˈdʒɛləs/",
-  "difficulty": 2,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "The jealous makes me happy.",
-  "sentenceCn": "嫉妒的让我开心。",
-  "emoji": "😒",
-  "audioFile": "jealous.mp3"
-},
+
 {
   "id": 4624,
   "word": "envious",
@@ -55538,18 +36876,7 @@ export const words: WordEntry[] = [
   "emoji": "😖",
   "audioFile": "bitter.mp3"
 },
-{
-  "id": 4628,
-  "word": "resentful",
-  "meaning": "怨恨的",
-  "phonetic": "/rɪˈzɛntfəl/",
-  "difficulty": 2,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "The resentful makes me happy.",
-  "sentenceCn": "怨恨的让我开心。",
-  "emoji": "😤",
-  "audioFile": "resentful.mp3"
-},
+
 {
   "id": 4629,
   "word": "vengeful",
@@ -55634,18 +36961,7 @@ export const words: WordEntry[] = [
   "emoji": "🙇",
   "audioFile": "apologetic.mp3"
 },
-{
-  "id": 4636,
-  "word": "compassionate",
-  "meaning": "有同情心的",
-  "phonetic": "/kəmˈpæʃənɪt/",
-  "difficulty": 2,
-  "theme": "情绪情感 Feelings & Emotions",
-  "sentence": "I feel compassionate today.",
-  "sentenceCn": "我今天感到有同情心的。",
-  "emoji": "🥺",
-  "audioFile": "compassionate.mp3"
-},
+
 {
   "id": 4637,
   "word": "buttercup",
@@ -55730,78 +37046,7 @@ export const words: WordEntry[] = [
   "emoji": "💜",
   "audioFile": "foxglove.mp3"
 },
-{
-  "id": 4644,
-  "word": "lavender",
-  "meaning": "薰衣草",
-  "phonetic": "/ˈlævəndər/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lavender grows in the garden.",
-  "sentenceCn": "薰衣草长在花园里。",
-  "emoji": "💜",
-  "audioFile": "lavender.mp3"
-},
-{
-  "id": 4645,
-  "word": "wisteria",
-  "meaning": "紫藤",
-  "phonetic": "/wɪˈstɪriə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Wisteria grows in the garden.",
-  "sentenceCn": "紫藤长在花园里。",
-  "emoji": "💜",
-  "audioFile": "wisteria.mp3"
-},
-{
-  "id": 4646,
-  "word": "jasmine",
-  "meaning": "茉莉",
-  "phonetic": "/ˈdʒæzmɪn/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Jasmine grows in the garden.",
-  "sentenceCn": "茉莉长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "jasmine.mp3"
-},
-{
-  "id": 4647,
-  "word": "gardenia",
-  "meaning": "栀子花",
-  "phonetic": "/ɡɑrˈdiniə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Gardenia grows in the garden.",
-  "sentenceCn": "栀子花长在花园里。",
-  "emoji": "🤍",
-  "audioFile": "gardenia.mp3"
-},
-{
-  "id": 4648,
-  "word": "camellia",
-  "meaning": "山茶花",
-  "phonetic": "/kəˈmiliə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The camellia is a plant.",
-  "sentenceCn": "山茶花是一种植物。",
-  "emoji": "🌸",
-  "audioFile": "camellia.mp3"
-},
-{
-  "id": 4649,
-  "word": "azalea",
-  "meaning": "杜鹃花",
-  "phonetic": "/əˈzeɪliə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The azalea is a plant.",
-  "sentenceCn": "杜鹃花是一种植物。",
-  "emoji": "🌸",
-  "audioFile": "azalea.mp3"
-},
+
 {
   "id": 4650,
   "word": "rhododendron",
@@ -55814,30 +37059,7 @@ export const words: WordEntry[] = [
   "emoji": "🌸",
   "audioFile": "rhododendron.mp3"
 },
-{
-  "id": 4651,
-  "word": "magnolia",
-  "meaning": "玉兰",
-  "phonetic": "/mæɡˈnoʊliə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The magnolia is a plant.",
-  "sentenceCn": "玉兰是一种植物。",
-  "emoji": "🤍",
-  "audioFile": "magnolia.mp3"
-},
-{
-  "id": 4652,
-  "word": "lotus",
-  "meaning": "荷花",
-  "phonetic": "/ˈloʊtəs/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lotus grows in the garden.",
-  "sentenceCn": "荷花长在花园里。",
-  "emoji": "🪷",
-  "audioFile": "lotus.mp3"
-},
+
 {
   "id": 4653,
   "word": "waterlily",
@@ -55874,18 +37096,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "reed.mp3"
 },
-{
-  "id": 4656,
-  "word": "bamboo",
-  "meaning": "竹",
-  "phonetic": "/bæmˈbu/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Bamboo grows in the garden.",
-  "sentenceCn": "竹长在花园里。",
-  "emoji": "🎋",
-  "audioFile": "bamboo.mp3"
-},
+
 {
   "id": 4657,
   "word": "sugarcane",
@@ -55898,54 +37109,7 @@ export const words: WordEntry[] = [
   "emoji": "🌾",
   "audioFile": "sugarcane.mp3"
 },
-{
-  "id": 4658,
-  "word": "wheat",
-  "meaning": "麦子",
-  "phonetic": "/wit/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The wheat is a plant.",
-  "sentenceCn": "麦子是一种植物。",
-  "emoji": "🌾",
-  "audioFile": "wheat.mp3"
-},
-{
-  "id": 4659,
-  "word": "rice",
-  "meaning": "稻米",
-  "phonetic": "/raɪs/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The rice is a plant.",
-  "sentenceCn": "稻米是一种植物。",
-  "emoji": "🌾",
-  "audioFile": "rice.mp3"
-},
-{
-  "id": 4660,
-  "word": "corn",
-  "meaning": "玉米",
-  "phonetic": "/kɔrn/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Corn grows in the garden.",
-  "sentenceCn": "玉米长在花园里。",
-  "emoji": "🌽",
-  "audioFile": "corn.mp3"
-},
-{
-  "id": 4661,
-  "word": "cotton",
-  "meaning": "棉花",
-  "phonetic": "/ˈkɑtən/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The cotton is a plant.",
-  "sentenceCn": "棉花是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "cotton.mp3"
-},
+
 {
   "id": 4662,
   "word": "hemp",
@@ -55958,18 +37122,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "hemp.mp3"
 },
-{
-  "id": 4663,
-  "word": "flax",
-  "meaning": "亚麻",
-  "phonetic": "/flæks/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Flax grows in the garden.",
-  "sentenceCn": "亚麻长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "flax.mp3"
-},
+
 {
   "id": 4664,
   "word": "jute",
@@ -56006,30 +37159,7 @@ export const words: WordEntry[] = [
   "emoji": "🌳",
   "audioFile": "rubber.mp3"
 },
-{
-  "id": 4667,
-  "word": "tea",
-  "meaning": "茶树",
-  "phonetic": "/ti tri/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The tea is a plant.",
-  "sentenceCn": "茶树是一种植物。",
-  "emoji": "🍵",
-  "audioFile": "tea.mp3"
-},
-{
-  "id": 4668,
-  "word": "coffee",
-  "meaning": "咖啡树",
-  "phonetic": "/ˈkɔfi tri/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Coffee grows in the garden.",
-  "sentenceCn": "咖啡树长在花园里。",
-  "emoji": "🌳",
-  "audioFile": "coffee.mp3"
-},
+
 {
   "id": 4669,
   "word": "cacao",
@@ -56042,102 +37172,7 @@ export const words: WordEntry[] = [
   "emoji": "🌳",
   "audioFile": "cacao.mp3"
 },
-{
-  "id": 4670,
-  "word": "cinnamon",
-  "meaning": "肉桂树",
-  "phonetic": "/ˈsɪnəmən tri/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Cinnamon grows in the garden.",
-  "sentenceCn": "肉桂树长在花园里。",
-  "emoji": "🌳",
-  "audioFile": "cinnamon.mp3"
-},
-{
-  "id": 4671,
-  "word": "pepper",
-  "meaning": "胡椒藤",
-  "phonetic": "/ˈpɛpər vain/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The pepper is a plant.",
-  "sentenceCn": "胡椒藤是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "pepper.mp3"
-},
-{
-  "id": 4672,
-  "word": "vanilla",
-  "meaning": "香草兰",
-  "phonetic": "/vəˈnɪlə/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The vanilla is a plant.",
-  "sentenceCn": "香草兰是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "vanilla.mp3"
-},
-{
-  "id": 4673,
-  "word": "saffron",
-  "meaning": "藏红花",
-  "phonetic": "/ˈsæfrən/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Saffron grows in the garden.",
-  "sentenceCn": "藏红花长在花园里。",
-  "emoji": "💛",
-  "audioFile": "saffron.mp3"
-},
-{
-  "id": 4674,
-  "word": "tulip",
-  "meaning": "郁金香",
-  "phonetic": "/ˈtulɪp/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The tulip is a plant.",
-  "sentenceCn": "郁金香是一种植物。",
-  "emoji": "🌷",
-  "audioFile": "tulip.mp3"
-},
-{
-  "id": 4675,
-  "word": "daisy",
-  "meaning": "雏菊",
-  "phonetic": "/ˈdeɪzi/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The daisy is a plant.",
-  "sentenceCn": "雏菊是一种植物。",
-  "emoji": "🌼",
-  "audioFile": "daisy.mp3"
-},
-{
-  "id": 4676,
-  "word": "sunflower",
-  "meaning": "向日葵",
-  "phonetic": "/ˈsʌnˌflaʊər/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The sunflower is a plant.",
-  "sentenceCn": "向日葵是一种植物。",
-  "emoji": "🌻",
-  "audioFile": "sunflower.mp3"
-},
-{
-  "id": 4677,
-  "word": "marigold",
-  "meaning": "万寿菊",
-  "phonetic": "/ˈmɛrɪˌɡoʊld/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Marigold grows in the garden.",
-  "sentenceCn": "万寿菊长在花园里。",
-  "emoji": "🌼",
-  "audioFile": "marigold.mp3"
-},
+
 {
   "id": 4678,
   "word": "zinnia",
@@ -56198,18 +37233,7 @@ export const words: WordEntry[] = [
   "emoji": "🌸",
   "audioFile": "lantana.mp3"
 },
-{
-  "id": 4683,
-  "word": "hibiscus",
-  "meaning": "木槿",
-  "phonetic": "/haɪˈbɪskəs/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Hibiscus grows in the garden.",
-  "sentenceCn": "木槿长在花园里。",
-  "emoji": "🌸",
-  "audioFile": "hibiscus.mp3"
-},
+
 {
   "id": 4684,
   "word": "bougainvillea",
@@ -56234,114 +37258,7 @@ export const words: WordEntry[] = [
   "emoji": "❤️",
   "audioFile": "poinsettia.mp3"
 },
-{
-  "id": 4686,
-  "word": "cactus",
-  "meaning": "仙人掌",
-  "phonetic": "/ˈkæktəs/",
-  "difficulty": 1,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The cactus is a plant.",
-  "sentenceCn": "仙人掌是一种植物。",
-  "emoji": "🌵",
-  "audioFile": "cactus.mp3"
-},
-{
-  "id": 4687,
-  "word": "agave",
-  "meaning": "龙舌兰",
-  "phonetic": "/əˈɡɑvi/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The agave is a plant.",
-  "sentenceCn": "龙舌兰是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "agave.mp3"
-},
-{
-  "id": 4688,
-  "word": "yucca",
-  "meaning": "丝兰",
-  "phonetic": "/ˈjʌkə/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The yucca is a plant.",
-  "sentenceCn": "丝兰是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "yucca.mp3"
-},
-{
-  "id": 4689,
-  "word": "aloe",
-  "meaning": "芦荟",
-  "phonetic": "/ˈæloʊ/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The aloe is a plant.",
-  "sentenceCn": "芦荟是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "aloe.mp3"
-},
-{
-  "id": 4690,
-  "word": "succulent",
-  "meaning": "多肉植物",
-  "phonetic": "/ˈsʌkjələnt/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Succulent grows in the garden.",
-  "sentenceCn": "多肉植物长在花园里。",
-  "emoji": "🪴",
-  "audioFile": "succulent.mp3"
-},
-{
-  "id": 4691,
-  "word": "fern",
-  "meaning": "蕨",
-  "phonetic": "/fɜrn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Fern grows in the garden.",
-  "sentenceCn": "蕨长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "fern.mp3"
-},
-{
-  "id": 4692,
-  "word": "moss",
-  "meaning": "苔藓",
-  "phonetic": "/mɔs/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Moss grows in the garden.",
-  "sentenceCn": "苔藓长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "moss.mp3"
-},
-{
-  "id": 4693,
-  "word": "lichen",
-  "meaning": "地衣",
-  "phonetic": "/ˈlaɪkən/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Lichen grows in the garden.",
-  "sentenceCn": "地衣长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "lichen.mp3"
-},
-{
-  "id": 4694,
-  "word": "seaweed",
-  "meaning": "海藻",
-  "phonetic": "/ˈsiˌwid/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The seaweed is a plant.",
-  "sentenceCn": "海藻是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "seaweed.mp3"
-},
+
 {
   "id": 4695,
   "word": "kelp",
@@ -56354,42 +37271,7 @@ export const words: WordEntry[] = [
   "emoji": "🌿",
   "audioFile": "kelp.mp3"
 },
-{
-  "id": 4696,
-  "word": "coral",
-  "meaning": "珊瑚",
-  "phonetic": "/ˈkɔrəl/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Coral grows in the garden.",
-  "sentenceCn": "珊瑚长在花园里。",
-  "emoji": "🪸",
-  "audioFile": "coral.mp3"
-},
-{
-  "id": 4697,
-  "word": "cactus",
-  "meaning": "柱状仙人掌",
-  "phonetic": "/ˈkæktəs/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The cactus is a plant.",
-  "sentenceCn": "柱状仙人掌是一种植物。",
-  "emoji": "🌵",
-  "audioFile": "cactus.mp3"
-},
-{
-  "id": 4698,
-  "word": "bonsai",
-  "meaning": "盆景",
-  "phonetic": "/ˈbɑnsaɪ/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The bonsai is a plant.",
-  "sentenceCn": "盆景是一种植物。",
-  "emoji": "🌳",
-  "audioFile": "bonsai.mp3"
-},
+
 {
   "id": 4699,
   "word": "topiary",
@@ -56402,78 +37284,7 @@ export const words: WordEntry[] = [
   "emoji": "🌳",
   "audioFile": "topiary.mp3"
 },
-{
-  "id": 4700,
-  "word": "vine",
-  "meaning": "藤蔓",
-  "phonetic": "/vaɪn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Vine grows in the garden.",
-  "sentenceCn": "藤蔓长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "vine.mp3"
-},
-{
-  "id": 4701,
-  "word": "ivy",
-  "meaning": "常春藤",
-  "phonetic": "/ˈaɪvi/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Ivy grows in the garden.",
-  "sentenceCn": "常春藤长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "ivy.mp3"
-},
-{
-  "id": 4702,
-  "word": "palm",
-  "meaning": "棕榈",
-  "phonetic": "/pɑm/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Palm grows in the garden.",
-  "sentenceCn": "棕榈长在花园里。",
-  "emoji": "🌴",
-  "audioFile": "palm.mp3"
-},
-{
-  "id": 4703,
-  "word": "fern",
-  "meaning": "凤尾蕨",
-  "phonetic": "/fɜrn/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The fern is a plant.",
-  "sentenceCn": "凤尾蕨是一种植物。",
-  "emoji": "🌿",
-  "audioFile": "fern.mp3"
-},
-{
-  "id": 4704,
-  "word": "mushroom",
-  "meaning": "蘑菇",
-  "phonetic": "/ˈmʌʃrum/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Mushroom grows in the garden.",
-  "sentenceCn": "蘑菇长在花园里。",
-  "emoji": "🍄",
-  "audioFile": "mushroom.mp3"
-},
-{
-  "id": 4705,
-  "word": "toadstool",
-  "meaning": "毒蘑菇",
-  "phonetic": "/ˈtoʊdˌstul/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Toadstool grows in the garden.",
-  "sentenceCn": "毒蘑菇长在花园里。",
-  "emoji": "🍄",
-  "audioFile": "toadstool.mp3"
-},
+
 {
   "id": 4706,
   "word": "mold",
@@ -56486,18 +37297,7 @@ export const words: WordEntry[] = [
   "emoji": "🍄",
   "audioFile": "mold.mp3"
 },
-{
-  "id": 4707,
-  "word": "yeast",
-  "meaning": "酵母",
-  "phonetic": "/yist/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "The yeast is a plant.",
-  "sentenceCn": "酵母是一种植物。",
-  "emoji": "🫧",
-  "audioFile": "yeast.mp3"
-},
+
 {
   "id": 4708,
   "word": "mildew",
@@ -56510,18 +37310,7 @@ export const words: WordEntry[] = [
   "emoji": "🍄",
   "audioFile": "mildew.mp3"
 },
-{
-  "id": 4709,
-  "word": "algae",
-  "meaning": "藻",
-  "phonetic": "/ˈældʒi/",
-  "difficulty": 2,
-  "theme": "植物花草 Plants & Flowers",
-  "sentence": "Algae grows in the garden.",
-  "sentenceCn": "藻长在花园里。",
-  "emoji": "🌿",
-  "audioFile": "algae.mp3"
-},
+
 {
   "id": 4710,
   "word": "plankton",
@@ -56546,18 +37335,7 @@ export const words: WordEntry[] = [
   "emoji": "💡",
   "audioFile": "bedside.mp3"
 },
-{
-  "id": 4712,
-  "word": "ceiling",
-  "meaning": "吊扇",
-  "phonetic": "/ˈsilɪŋ fæn/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The ceiling is in my room.",
-  "sentenceCn": "吊扇在我房间里。",
-  "emoji": "🌀",
-  "audioFile": "ceiling.mp3"
-},
+
 {
   "id": 4713,
   "word": "exhaust",
@@ -56582,18 +37360,7 @@ export const words: WordEntry[] = [
   "emoji": "🍳",
   "audioFile": "rangehood.mp3"
 },
-{
-  "id": 4715,
-  "word": "garbage",
-  "meaning": "垃圾处理器",
-  "phonetic": "/ˈɡɑrbɪdʒ dɪˈspoʊzəl/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the garbage every day.",
-  "sentenceCn": "我每天用垃圾处理器。",
-  "emoji": "🗑️",
-  "audioFile": "garbage.mp3"
-},
+
 {
   "id": 4716,
   "word": "waterheater",
@@ -56654,30 +37421,7 @@ export const words: WordEntry[] = [
   "emoji": "🏭",
   "audioFile": "chimney.mp3"
 },
-{
-  "id": 4721,
-  "word": "door",
-  "meaning": "门",
-  "phonetic": "/dɔr/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The door is in my room.",
-  "sentenceCn": "门在我房间里。",
-  "emoji": "🚪",
-  "audioFile": "door.mp3"
-},
-{
-  "id": 4722,
-  "word": "window",
-  "meaning": "窗户",
-  "phonetic": "/ˈwɪndoʊ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The window is in my room.",
-  "sentenceCn": "窗户在我房间里。",
-  "emoji": "🪟",
-  "audioFile": "window.mp3"
-},
+
 {
   "id": 4723,
   "word": "shutter",
@@ -56738,30 +37482,7 @@ export const words: WordEntry[] = [
   "emoji": "🔑",
   "audioFile": "doorknob.mp3"
 },
-{
-  "id": 4728,
-  "word": "lock",
-  "meaning": "锁",
-  "phonetic": "/lɑk/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the lock every day.",
-  "sentenceCn": "我每天用锁。",
-  "emoji": "🔒",
-  "audioFile": "lock.mp3"
-},
-{
-  "id": 4729,
-  "word": "key",
-  "meaning": "钥匙",
-  "phonetic": "/ki/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the key every day.",
-  "sentenceCn": "我每天用钥匙。",
-  "emoji": "🔑",
-  "audioFile": "key.mp3"
-},
+
 {
   "id": 4730,
   "word": "bolt",
@@ -56798,54 +37519,7 @@ export const words: WordEntry[] = [
   "emoji": "👁️",
   "audioFile": "peephole.mp3"
 },
-{
-  "id": 4733,
-  "word": "doorbell",
-  "meaning": "门铃",
-  "phonetic": "/ˈdɔrˌbɛl/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The doorbell is in my room.",
-  "sentenceCn": "门铃在我房间里。",
-  "emoji": "🔔",
-  "audioFile": "doorbell.mp3"
-},
-{
-  "id": 4734,
-  "word": "intercom",
-  "meaning": "对讲机",
-  "phonetic": "/ˈɪntərˌkɑm/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The intercom is in my room.",
-  "sentenceCn": "对讲机在我房间里。",
-  "emoji": "📞",
-  "audioFile": "intercom.mp3"
-},
-{
-  "id": 4735,
-  "word": "carpet",
-  "meaning": "地毯",
-  "phonetic": "/ˈkɑrpɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the carpet every day.",
-  "sentenceCn": "我每天用地毯。",
-  "emoji": "🟫",
-  "audioFile": "carpet.mp3"
-},
-{
-  "id": 4736,
-  "word": "rug",
-  "meaning": "小地毯",
-  "phonetic": "/rʌɡ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the rug every day.",
-  "sentenceCn": "我每天用小地毯。",
-  "emoji": "🟫",
-  "audioFile": "rug.mp3"
-},
+
 {
   "id": 4737,
   "word": "runner",
@@ -56918,18 +37592,7 @@ export const words: WordEntry[] = [
   "emoji": "🟫",
   "audioFile": "baseboard.mp3"
 },
-{
-  "id": 4743,
-  "word": "crown",
-  "meaning": "冠顶饰",
-  "phonetic": "/kraʊn ˈmɔldɪŋ/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the crown every day.",
-  "sentenceCn": "我每天用冠顶饰。",
-  "emoji": "🏛️",
-  "audioFile": "crown.mp3"
-},
+
 {
   "id": 4744,
   "word": "wainscoting",
@@ -56954,30 +37617,7 @@ export const words: WordEntry[] = [
   "emoji": "🌺",
   "audioFile": "wallpaper.mp3"
 },
-{
-  "id": 4746,
-  "word": "paint",
-  "meaning": "油漆",
-  "phonetic": "/peɪnt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The paint is in my room.",
-  "sentenceCn": "油漆在我房间里。",
-  "emoji": "🎨",
-  "audioFile": "paint.mp3"
-},
-{
-  "id": 4747,
-  "word": "shelf",
-  "meaning": "搁板",
-  "phonetic": "/ʃɛlf/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The shelf is in my room.",
-  "sentenceCn": "搁板在我房间里。",
-  "emoji": "📚",
-  "audioFile": "shelf.mp3"
-},
+
 {
   "id": 4748,
   "word": "bracket",
@@ -57002,18 +37642,7 @@ export const words: WordEntry[] = [
   "emoji": "🪝",
   "audioFile": "hook.mp3"
 },
-{
-  "id": 4750,
-  "word": "hanger",
-  "meaning": "衣架",
-  "phonetic": "/ˈhæŋər/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The hanger is in my room.",
-  "sentenceCn": "衣架在我房间里。",
-  "emoji": "👕",
-  "audioFile": "hanger.mp3"
-},
+
 {
   "id": 4751,
   "word": "coatrack",
@@ -57050,30 +37679,7 @@ export const words: WordEntry[] = [
   "emoji": "👟",
   "audioFile": "shoerack.mp3"
 },
-{
-  "id": 4754,
-  "word": "cabinet",
-  "meaning": "储物柜",
-  "phonetic": "/ˈkæbɪnɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the cabinet every day.",
-  "sentenceCn": "我每天用储物柜。",
-  "emoji": "🗄️",
-  "audioFile": "cabinet.mp3"
-},
-{
-  "id": 4755,
-  "word": "drawer",
-  "meaning": "抽屉",
-  "phonetic": "/drɔr/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the drawer every day.",
-  "sentenceCn": "我每天用抽屉。",
-  "emoji": "🗄️",
-  "audioFile": "drawer.mp3"
-},
+
 {
   "id": 4756,
   "word": "organizer",
@@ -57086,30 +37692,7 @@ export const words: WordEntry[] = [
   "emoji": "📦",
   "audioFile": "organizer.mp3"
 },
-{
-  "id": 4757,
-  "word": "bin",
-  "meaning": "收纳箱",
-  "phonetic": "/bɪn/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "The bin is in my room.",
-  "sentenceCn": "收纳箱在我房间里。",
-  "emoji": "🗑️",
-  "audioFile": "bin.mp3"
-},
-{
-  "id": 4758,
-  "word": "basket",
-  "meaning": "篮子",
-  "phonetic": "/ˈbæskɪt/",
-  "difficulty": 1,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the basket every day.",
-  "sentenceCn": "我每天用篮子。",
-  "emoji": "🧺",
-  "audioFile": "basket.mp3"
-},
+
 {
   "id": 4759,
   "word": "hamper",
@@ -57326,18 +37909,7 @@ export const words: WordEntry[] = [
   "emoji": "🍾",
   "audioFile": "bottleopener.mp3"
 },
-{
-  "id": 4777,
-  "word": "corkscrew",
-  "meaning": "开塞钻",
-  "phonetic": "/ˈkɔrkˌskru/",
-  "difficulty": 2,
-  "theme": "家具家电 Furniture & Appliances",
-  "sentence": "I use the corkscrew every day.",
-  "sentenceCn": "我每天用开塞钻。",
-  "emoji": "🍷",
-  "audioFile": "corkscrew.mp3"
-},
+
 {
   "id": 4778,
   "word": "whisk",
@@ -57398,66 +37970,7 @@ export const words: WordEntry[] = [
   "emoji": "🥟",
   "audioFile": "rollingpin.mp3"
 },
-{
-  "id": 4783,
-  "word": "argentina",
-  "meaning": "阿根廷",
-  "phonetic": "/ˌɑrdʒənˈtinə/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I want to visit argentina.",
-  "sentenceCn": "我想去阿根廷。",
-  "emoji": "🇦🇷",
-  "audioFile": "argentina.mp3"
-},
-{
-  "id": 4784,
-  "word": "bolivia",
-  "meaning": "玻利维亚",
-  "phonetic": "/bəˈlɪviə/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in bolivia.",
-  "sentenceCn": "我住在玻利维亚。",
-  "emoji": "🇧🇴",
-  "audioFile": "bolivia.mp3"
-},
-{
-  "id": 4785,
-  "word": "chile",
-  "meaning": "智利",
-  "phonetic": "/ˈtʃɪli/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in chile.",
-  "sentenceCn": "我住在智利。",
-  "emoji": "🇨🇱",
-  "audioFile": "chile.mp3"
-},
-{
-  "id": 4786,
-  "word": "colombia",
-  "meaning": "哥伦比亚",
-  "phonetic": "/kəˈlʌmbiə/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in colombia.",
-  "sentenceCn": "我住在哥伦比亚。",
-  "emoji": "🇨🇴",
-  "audioFile": "colombia.mp3"
-},
-{
-  "id": 4787,
-  "word": "ecuador",
-  "meaning": "厄瓜多尔",
-  "phonetic": "/ˈɛkwəˌdɔr/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "ecuador is a big city.",
-  "sentenceCn": "厄瓜多尔是个大城市。",
-  "emoji": "🇪🇨",
-  "audioFile": "ecuador.mp3"
-},
+
 {
   "id": 4788,
   "word": "guyana",
@@ -57470,30 +37983,7 @@ export const words: WordEntry[] = [
   "emoji": "🇬🇾",
   "audioFile": "guyana.mp3"
 },
-{
-  "id": 4789,
-  "word": "paraguay",
-  "meaning": "巴拉圭",
-  "phonetic": "/ˈpɛrəˌɡwaɪ/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I want to visit paraguay.",
-  "sentenceCn": "我想去巴拉圭。",
-  "emoji": "🇵🇾",
-  "audioFile": "paraguay.mp3"
-},
-{
-  "id": 4790,
-  "word": "peru",
-  "meaning": "秘鲁",
-  "phonetic": "/pəˈru/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "peru is a big city.",
-  "sentenceCn": "秘鲁是个大城市。",
-  "emoji": "🇵🇪",
-  "audioFile": "peru.mp3"
-},
+
 {
   "id": 4791,
   "word": "suriname",
@@ -57506,30 +37996,7 @@ export const words: WordEntry[] = [
   "emoji": "🇸🇷",
   "audioFile": "suriname.mp3"
 },
-{
-  "id": 4792,
-  "word": "uruguay",
-  "meaning": "乌拉圭",
-  "phonetic": "/ˈjʊrəˌɡwaɪ/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I want to visit uruguay.",
-  "sentenceCn": "我想去乌拉圭。",
-  "emoji": "🇺🇾",
-  "audioFile": "uruguay.mp3"
-},
-{
-  "id": 4793,
-  "word": "venezuela",
-  "meaning": "委内瑞拉",
-  "phonetic": "/ˌvɛnɪˈzweɪlə/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in venezuela.",
-  "sentenceCn": "我住在委内瑞拉。",
-  "emoji": "🇻🇪",
-  "audioFile": "venezuela.mp3"
-},
+
 {
   "id": 4794,
   "word": "costarica",
@@ -57590,18 +38057,7 @@ export const words: WordEntry[] = [
   "emoji": "🇳🇮",
   "audioFile": "nicaragua.mp3"
 },
-{
-  "id": 4799,
-  "word": "panama",
-  "meaning": "巴拿马",
-  "phonetic": "/ˈpænəˌmɑ/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "panama is a big city.",
-  "sentenceCn": "巴拿马是个大城市。",
-  "emoji": "🇵🇦",
-  "audioFile": "panama.mp3"
-},
+
 {
   "id": 4800,
   "word": "bahamas",
@@ -57626,18 +38082,7 @@ export const words: WordEntry[] = [
   "emoji": "🇧🇧",
   "audioFile": "barbados.mp3"
 },
-{
-  "id": 4802,
-  "word": "cuba",
-  "meaning": "古巴",
-  "phonetic": "/ˈkjubə/",
-  "difficulty": 1,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I want to visit cuba.",
-  "sentenceCn": "我想去古巴。",
-  "emoji": "🇨🇺",
-  "audioFile": "cuba.mp3"
-},
+
 {
   "id": 4803,
   "word": "dominican",
@@ -58082,18 +38527,7 @@ export const words: WordEntry[] = [
   "emoji": "🇬🇲",
   "audioFile": "gambia.mp3"
 },
-{
-  "id": 4840,
-  "word": "ghana",
-  "meaning": "加纳",
-  "phonetic": "/ˈɡɑnə/",
-  "difficulty": 2,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "I live in ghana.",
-  "sentenceCn": "我住在加纳。",
-  "emoji": "🇬🇭",
-  "audioFile": "ghana.mp3"
-},
+
 {
   "id": 4841,
   "word": "guinea",
@@ -58346,18 +38780,7 @@ export const words: WordEntry[] = [
   "emoji": "🇿🇼",
   "audioFile": "zimbabwe.mp3"
 },
-{
-  "id": 4862,
-  "word": "afghanistan",
-  "meaning": "阿富汗",
-  "phonetic": "/æfˈɡænɪˌstæn/",
-  "difficulty": 2,
-  "theme": "国家城市 Countries & Cities",
-  "sentence": "afghanistan is a big city.",
-  "sentenceCn": "阿富汗是个大城市。",
-  "emoji": "🇦🇫",
-  "audioFile": "afghanistan.mp3"
-},
+
 {
   "id": 4863,
   "word": "springfestival",
@@ -58526,18 +38949,7 @@ export const words: WordEntry[] = [
   "emoji": "🤝",
   "audioFile": "volunteerday.mp3"
 },
-{
-  "id": 4877,
-  "word": "humanrights",
-  "meaning": "人权日",
-  "phonetic": "/ˈhjumən raɪts deɪ/",
-  "difficulty": 1,
-  "theme": "节日 Festivals & Holidays",
-  "sentence": "We celebrate humanrights with family.",
-  "sentenceCn": "我们和家人一起过人权日。",
-  "emoji": "✊",
-  "audioFile": "humanrights.mp3"
-},
+
 {
   "id": 4878,
   "word": "povertyday",
@@ -59318,30 +39730,7 @@ export const words: WordEntry[] = [
   "emoji": "🩸",
   "audioFile": "blooddonor.mp3"
 },
-{
-  "id": 4943,
-  "word": "toycar",
-  "meaning": "玩具汽车",
-  "phonetic": "/tɔɪ kɑr/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my toycar.",
-  "sentenceCn": "我玩我的玩具汽车。",
-  "emoji": "🚗",
-  "audioFile": "toycar.mp3"
-},
-{
-  "id": 4944,
-  "word": "toytrain",
-  "meaning": "玩具火车",
-  "phonetic": "/tɔɪ treɪn/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my toytrain.",
-  "sentenceCn": "我玩我的玩具火车。",
-  "emoji": "🚂",
-  "audioFile": "toytrain.mp3"
-},
+
 {
   "id": 4945,
   "word": "toyplane",
@@ -59414,18 +39803,7 @@ export const words: WordEntry[] = [
   "emoji": "🏰",
   "audioFile": "castle.mp3"
 },
-{
-  "id": 4951,
-  "word": "spaceship",
-  "meaning": "太空船玩具",
-  "phonetic": "/ˈspeɪsˌʃɪp tɔɪ/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my spaceship.",
-  "sentenceCn": "我玩我的太空船玩具。",
-  "emoji": "🚀",
-  "audioFile": "spaceship.mp3"
-},
+
 {
   "id": 4952,
   "word": "robot",
@@ -59654,18 +40032,7 @@ export const words: WordEntry[] = [
   "emoji": "🟣",
   "audioFile": "putty.mp3"
 },
-{
-  "id": 4971,
-  "word": "sand",
-  "meaning": "沙",
-  "phonetic": "/sænd/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The sand is fun.",
-  "sentenceCn": "这个沙很有趣。",
-  "emoji": "⏳",
-  "audioFile": "sand.mp3"
-},
+
 {
   "id": 4972,
   "word": "waterbeads",
@@ -59678,18 +40045,7 @@ export const words: WordEntry[] = [
   "emoji": "💧",
   "audioFile": "waterbeads.mp3"
 },
-{
-  "id": 4973,
-  "word": "puzzle",
-  "meaning": "拼图",
-  "phonetic": "/ˈpʌzəl/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The puzzle is fun.",
-  "sentenceCn": "这个拼图很有趣。",
-  "emoji": "🧩",
-  "audioFile": "puzzle.mp3"
-},
+
 {
   "id": 4974,
   "word": "jigsaw",
@@ -59726,30 +40082,7 @@ export const words: WordEntry[] = [
   "emoji": "🌀",
   "audioFile": "maze.mp3"
 },
-{
-  "id": 4977,
-  "word": "labyrinth",
-  "meaning": "迷宫",
-  "phonetic": "/ˈlæbərɪnθ/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The labyrinth is fun.",
-  "sentenceCn": "这个迷宫很有趣。",
-  "emoji": "🌀",
-  "audioFile": "labyrinth.mp3"
-},
-{
-  "id": 4978,
-  "word": "marbles",
-  "meaning": "弹珠",
-  "phonetic": "/ˈmɑrbəlz/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The marbles is fun.",
-  "sentenceCn": "这个弹珠很有趣。",
-  "emoji": "🪩",
-  "audioFile": "marbles.mp3"
-},
+
 {
   "id": 4979,
   "word": "magnetic",
@@ -59846,30 +40179,7 @@ export const words: WordEntry[] = [
   "emoji": "🔄",
   "audioFile": "windup.mp3"
 },
-{
-  "id": 4987,
-  "word": "pull",
-  "meaning": "拉线玩具",
-  "phonetic": "/pʊl tɔɪ/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The pull is fun.",
-  "sentenceCn": "这个拉线玩具很有趣。",
-  "emoji": "🪢",
-  "audioFile": "pull.mp3"
-},
-{
-  "id": 4988,
-  "word": "push",
-  "meaning": "推车玩具",
-  "phonetic": "/pʊʃ tɔɪ/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my push.",
-  "sentenceCn": "我玩我的推车玩具。",
-  "emoji": "🚗",
-  "audioFile": "push.mp3"
-},
+
 {
   "id": 4989,
   "word": "stacking",
@@ -59906,18 +40216,7 @@ export const words: WordEntry[] = [
   "emoji": "🔺",
   "audioFile": "shape.mp3"
 },
-{
-  "id": 4992,
-  "word": "color",
-  "meaning": "颜色分类",
-  "phonetic": "/ˈkʌlər sɔrtər/",
-  "difficulty": 1,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my color.",
-  "sentenceCn": "我玩我的颜色分类。",
-  "emoji": "🌈",
-  "audioFile": "color.mp3"
-},
+
 {
   "id": 4993,
   "word": "abacus",
@@ -59966,18 +40265,7 @@ export const words: WordEntry[] = [
   "emoji": "🔢",
   "audioFile": "number.mp3"
 },
-{
-  "id": 4997,
-  "word": "flashcard",
-  "meaning": "闪卡",
-  "phonetic": "/ˈflæʃˌkɑrd/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The flashcard is fun.",
-  "sentenceCn": "这个闪卡很有趣。",
-  "emoji": "🃏",
-  "audioFile": "flashcard.mp3"
-},
+
 {
   "id": 4998,
   "word": "poster",
@@ -59990,30 +40278,7 @@ export const words: WordEntry[] = [
   "emoji": "🖼️",
   "audioFile": "poster.mp3"
 },
-{
-  "id": 4999,
-  "word": "chalk",
-  "meaning": "粉笔",
-  "phonetic": "/tʃɔk/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The chalk is fun.",
-  "sentenceCn": "这个粉笔很有趣。",
-  "emoji": "🧑‍🏫",
-  "audioFile": "chalk.mp3"
-},
-{
-  "id": 5000,
-  "word": "whiteboard",
-  "meaning": "小白板",
-  "phonetic": "/ˈwaɪtˌbɔrd/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my whiteboard.",
-  "sentenceCn": "我玩我的小白板。",
-  "emoji": "🏫",
-  "audioFile": "whiteboard.mp3"
-},
+
 {
   "id": 5001,
   "word": "easel",
@@ -60026,18 +40291,7 @@ export const words: WordEntry[] = [
   "emoji": "🎨",
   "audioFile": "easel.mp3"
 },
-{
-  "id": 5002,
-  "word": "art",
-  "meaning": "美术用品",
-  "phonetic": "/ɑrt səˌplaɪz/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my art.",
-  "sentenceCn": "我玩我的美术用品。",
-  "emoji": "🎨",
-  "audioFile": "art.mp3"
-},
+
 {
   "id": 5003,
   "word": "paintbrush",
@@ -60050,18 +40304,7 @@ export const words: WordEntry[] = [
   "emoji": "🖌️",
   "audioFile": "paintbrush.mp3"
 },
-{
-  "id": 5004,
-  "word": "watercolor",
-  "meaning": "水彩",
-  "phonetic": "/ˈwɔtər ˌkʌlər/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "I play with my watercolor.",
-  "sentenceCn": "我玩我的水彩。",
-  "emoji": "🎨",
-  "audioFile": "watercolor.mp3"
-},
+
 {
   "id": 5005,
   "word": "tempera",
@@ -60110,42 +40353,7 @@ export const words: WordEntry[] = [
   "emoji": "🎨",
   "audioFile": "pastel.mp3"
 },
-{
-  "id": 5009,
-  "word": "charcoal",
-  "meaning": "炭笔",
-  "phonetic": "/ˈtʃɑrˌkoʊl/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The charcoal is fun.",
-  "sentenceCn": "这个炭笔很有趣。",
-  "emoji": "✏️",
-  "audioFile": "charcoal.mp3"
-},
-{
-  "id": 5010,
-  "word": "marker",
-  "meaning": "马克笔",
-  "phonetic": "/ˈmɑrkər/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The marker is fun.",
-  "sentenceCn": "这个马克笔很有趣。",
-  "emoji": "🖍️",
-  "audioFile": "marker.mp3"
-},
-{
-  "id": 5011,
-  "word": "crayon",
-  "meaning": "蜡笔",
-  "phonetic": "/ˈkreɪˌɑn/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The crayon is fun.",
-  "sentenceCn": "这个蜡笔很有趣。",
-  "emoji": "🖍️",
-  "audioFile": "crayon.mp3"
-},
+
 {
   "id": 5012,
   "word": "coloredpencil",
@@ -60182,18 +40390,7 @@ export const words: WordEntry[] = [
   "emoji": "🖊️",
   "audioFile": "fountainpen.mp3"
 },
-{
-  "id": 5015,
-  "word": "calligraphy",
-  "meaning": "书法",
-  "phonetic": "/kəˈlɪɡrəfi/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The calligraphy is fun.",
-  "sentenceCn": "这个书法很有趣。",
-  "emoji": "✍️",
-  "audioFile": "calligraphy.mp3"
-},
+
 {
   "id": 5016,
   "word": "brushpen",
@@ -60206,18 +40403,7 @@ export const words: WordEntry[] = [
   "emoji": "🖌️",
   "audioFile": "brushpen.mp3"
 },
-{
-  "id": 5017,
-  "word": "stamp",
-  "meaning": "印章",
-  "phonetic": "/stæmp/",
-  "difficulty": 2,
-  "theme": "文具玩具 Stationery & Toys",
-  "sentence": "The stamp is fun.",
-  "sentenceCn": "这个印章很有趣。",
-  "emoji": "🕹️",
-  "audioFile": "stamp.mp3"
-},
+
 {
   "id": 5018,
   "word": "stencil",
