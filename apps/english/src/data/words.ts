@@ -22733,8 +22733,6 @@ export const words: WordEntry[] = [
     "audioFile": "value.mp3"
   },
 
-,
-
 {
   "id": 3005,
   "word": "strawberry",
