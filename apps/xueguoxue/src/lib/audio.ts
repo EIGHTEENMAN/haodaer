@@ -30,21 +30,26 @@ export interface PlayResult {
 }
 
 export function playMp3(opts: PlayOptions): PlayResult | null {
-  // 不再 stopAll：让多按钮（原文/译文/解读）可同时播放
-  // 只停止 BGM（如果当前 BGM 不在 opts.bgmSrc 列表）
-  stopBgm()
-  // 同 src 已播：先停旧的再播新的（防止叠播同一文件）
+  // 单例互斥：先停掉所有正在播放的朗诵（包括同 src 和其他 src）
+  // 解决两个 bug：
+  //   1) 点开始→点停止→点开始 → 不会两遍叠加
+  //   2) 同时点多个朗读按钮 → 不会出现 N 段同时播
   for (const a of Array.from(activeAudios)) {
-    if (a.src && a.src.includes(opts.src.split('/').pop()!)) {
-      try { a.onended = null; a.onerror = null; a.pause(); a.src = '' } catch {}
-      activeAudios.delete(a)
-    }
+    try { a.onended = null; a.onerror = null; a.pause(); a.src = '' } catch {}
+    activeAudios.delete(a)
+  }
+  // BGM：每次新朗读都重新选曲（如果 opts.bgmSrc 跟当前 BGM 不同，先停）
+  if (opts.bgmSrc) {
+    stopBgm()
+  } else {
+    stopBgm()
   }
   const audio = new Audio(opts.src)
   audio.preload = 'auto'
   activeAudios.add(audio)
 
   const cleanup = () => {
+    if (!activeAudios.has(audio)) return
     activeAudios.delete(audio)
     try { audio.pause() } catch {}
     try { audio.src = '' } catch {}

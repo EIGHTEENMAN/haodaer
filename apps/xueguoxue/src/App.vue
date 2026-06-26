@@ -2,7 +2,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { classicIndex, categories, categoryColors, type ClassicMeta } from './data/classics-meta'
 import type { Classic, Section } from './data/classics'
-import { playSectionAudioWithFallback, stopAll, stopOne, speak, stopSpeaking } from './lib/audio'
+import { playSectionAudioWithFallback, stopAll, speak, stopSpeaking } from './lib/audio'
 import { useAuth } from '@shared/composables/useAuth'
 import { filterApps } from '@shared/composables/useSearch'
 import { reportLearningProgress, getActiveChildId } from '@shared/composables/useLearningProgress'
@@ -299,70 +299,56 @@ async function restoreFromHash() {
   }
 }
 
-// Audio playback - try pre-generated mp3 first, fallback to Web Speech TTS
-// 3 个独立按钮的播放状态（Set 同时支持多个按钮播放）
-const playingTypes = ref(new Set<'original' | 'translation' | 'interpretation' | 'full'>())
-const audioInstances = new Map<'original' | 'translation' | 'interpretation' | 'full', HTMLAudioElement>()
+// Audio playback - 单实例互斥：一次只能播一段（原文/译文/解读 三选一）
+// audio.ts 的 playMp3 已保证 stopAll 旧音频
+const playingType = ref<'original' | 'translation' | 'interpretation' | 'full' | null>(null)
 const speaking = ref(false)
 
 function isPlaying(type: 'original' | 'translation' | 'interpretation'): boolean {
-  return playingTypes.value.has(type)
+  return playingType.value === type
 }
 
 function playText(text: string, type?: 'original' | 'translation' | 'interpretation') {
   if (!text.trim()) return
 
+  // 如果该 type 已在播 → 切回 toggle（停止）
+  if (type && playingType.value === type) {
+    stopAll()
+    playingType.value = null
+    speaking.value = false
+    return
+  }
+
   speaking.value = true
   if (type && currentClassic.value && currentSection.value) {
-    // 切换该 type 的播放状态：先停该 type 的音频
-    if (playingTypes.value.has(type)) {
-      stopAudioType(type)
-      return
-    }
-    playingTypes.value.add(type)
+    playingType.value = type
     playSectionAudioWithFallback(
       currentClassic.value.title,
       currentSection.value.title,
       type,
       text,
       () => {
-        playingTypes.value.delete(type)
-        audioInstances.delete(type)
-        if (playingTypes.value.size === 0) speaking.value = false
+        playingType.value = null
+        speaking.value = false
       }
-    ).then(audio => {
-      // 缓存 audio 实例以便单独停止
-      const old = audioInstances.get(type)
-      if (old) audioInstances.delete(type)
-      if (audio) audioInstances.set(type, audio)
-    })
+    )
   } else {
     // Fallback to Web Speech (e.g. for full-text play all)
-    playingTypes.value.clear()
-    audioInstances.clear()
-    playingTypes.value.add('full')
+    playingType.value = 'full'
     speak(text, 0.8, () => {
-      playingTypes.value.clear()
+      playingType.value = null
       speaking.value = false
     })
   }
 }
 
-function stopAudioType(type: 'original' | 'translation' | 'interpretation') {
-  const audio = audioInstances.get(type)
-  if (audio) {
-    stopOne(audio)
-    audioInstances.delete(type)
-  }
-  playingTypes.value.delete(type)
-  if (playingTypes.value.size === 0) speaking.value = false
-}
-
 function playOriginal() {
   if (!currentSection.value) return
-  // 如果当前该 type 在播 → 停（toggle）
-  if (playingTypes.value.has('original')) {
-    stopAudioType('original')
+  // 如果当前是 original 在播 → 停（toggle）；其他情况都直接播 original
+  if (playingType.value === 'original') {
+    stopAll()
+    playingType.value = null
+    speaking.value = false
   } else {
     playText(currentSection.value.original, 'original')
   }
@@ -370,8 +356,10 @@ function playOriginal() {
 
 function playTranslation() {
   if (!currentSection.value) return
-  if (playingTypes.value.has('translation')) {
-    stopAudioType('translation')
+  if (playingType.value === 'translation') {
+    stopAll()
+    playingType.value = null
+    speaking.value = false
   } else {
     playText(currentSection.value.translation, 'translation')
   }
@@ -379,8 +367,10 @@ function playTranslation() {
 
 function playInterpretation() {
   if (!currentSection.value) return
-  if (playingTypes.value.has('interpretation')) {
-    stopAudioType('interpretation')
+  if (playingType.value === 'interpretation') {
+    stopAll()
+    playingType.value = null
+    speaking.value = false
   } else {
     playText(currentSection.value.interpretation, 'interpretation')
   }
@@ -388,8 +378,7 @@ function playInterpretation() {
 
 function stopAudio() {
   stopAll()
-  playingTypes.value.clear()
-  audioInstances.clear()
+  playingType.value = null
   speaking.value = false
 }
 
