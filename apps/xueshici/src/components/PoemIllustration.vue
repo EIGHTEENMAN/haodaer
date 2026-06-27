@@ -190,6 +190,8 @@ function closeFullscreen() {
         <span class="pi-badge-dynasty">{{ poemDynasty }}</span>
         <span class="pi-badge-author">{{ poemAuthor }}</span>
       </div>
+      <!-- AI 生成标识（右下角） -->
+      <div class="pi-ai-badge">⚡ AI 生成</div>
     </div>
 
     <!-- ===== 空状态（无配图）：诗意水墨占位 ===== -->
@@ -433,6 +435,20 @@ function closeFullscreen() {
   left: 12px;
   display: flex;
   gap: 6px;
+}
+
+.pi-ai-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.3px;
 }
 
 .pi-badge-dynasty,

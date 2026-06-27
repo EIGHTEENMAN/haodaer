@@ -766,7 +766,6 @@ onUnmounted(() => {
           <div class="sc-content-block">
             <div class="sc-content-label">
               <span class="sc-content-label-text">📖 译文</span>
-              <span class="sc-ai-badge">AI</span>
               <button class="sc-block-play"
                 :class="playingTarget === 'translation' ? 'sc-block-playing' : ''"
                 @click="speaking ? stopAudio() : playTranslation()">
@@ -774,12 +773,11 @@ onUnmounted(() => {
                 <span v-else>▶ 朗读译文</span>
               </button>
             </div>
-            <p class="sc-translation-text">{{ currentSection.translation }}</p>
+            <p class="sc-translation-text">{{ currentSection.translation }} <span class="sc-ai-badge">AI</span></p>
           </div>
           <div class="sc-content-block">
             <div class="sc-content-label">
               <span class="sc-content-label-text">💡 赏析</span>
-              <span class="sc-ai-badge">AI</span>
               <button class="sc-block-play"
                 :class="playingTarget === 'interpretation' ? 'sc-block-playing' : ''"
                 @click="speaking ? stopAudio() : playInterpretation()">
@@ -787,7 +785,7 @@ onUnmounted(() => {
                 <span v-else>▶ 朗读赏析</span>
               </button>
             </div>
-            <p class="sc-translation-text sc-interpretation-text">{{ currentSection.interpretation }}</p>
+            <p class="sc-translation-text sc-interpretation-text">{{ currentSection.interpretation }} <span class="sc-ai-badge">AI</span></p>
           </div>
         </div>
       </div>

@@ -570,7 +570,6 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span class="gx-content-label-text">📖 译文</span>
-              <span class="gx-ai-badge">AI</span>
               <button class="gx-block-play"
                 :class="isPlaying('translation') ? 'gx-block-playing' : ''"
                 @click="playTranslation()">
@@ -578,12 +577,11 @@ onUnmounted(() => {
                 <span v-else>▶ 朗读译文</span>
               </button>
             </div>
-            <p class="gx-translation-text">{{ currentSection.translation }}</p>
+            <p class="gx-translation-text">{{ currentSection.translation }} <span class="gx-ai-badge">AI</span></p>
           </div>
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span class="gx-content-label-text">💡 解读</span>
-              <span class="gx-ai-badge">AI</span>
               <button class="gx-block-play"
                 :class="isPlaying('interpretation') ? 'gx-block-playing' : ''"
                 @click="playInterpretation()">
@@ -591,7 +589,7 @@ onUnmounted(() => {
                 <span v-else>▶ 朗读解读</span>
               </button>
             </div>
-            <p class="gx-translation-text">{{ currentSection.interpretation }}</p>
+            <p class="gx-translation-text">{{ currentSection.interpretation }} <span class="gx-ai-badge">AI</span></p>
           </div>
         </div>
       </div>
