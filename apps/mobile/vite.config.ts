@@ -16,7 +16,7 @@ export default defineConfig({
       manifest: {
         name: '好大儿',
         short_name: '好大儿',
-        description: '儿童益智乐园 - 读万卷书，行万里路',
+        description: '好大儿儿童免费学习乐园 - 读万卷书，行万里路',
         theme_color: '#2563eb',
         background_color: '#f8fafc',
         display: 'standalone',

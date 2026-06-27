@@ -80,8 +80,6 @@ db.exec(`
     age INTEGER,
     birthday TEXT,
     avatar TEXT,
-    phone TEXT UNIQUE,
-    wechat_openid TEXT UNIQUE,
     password_hash TEXT,
     game_level INTEGER DEFAULT 1,
     game_score INTEGER DEFAULT 0,
@@ -157,8 +155,6 @@ try { db.exec(`ALTER TABLE users ADD COLUMN gender TEXT`); } catch (e) {}
 try { db.exec(`ALTER TABLE users ADD COLUMN birthday TEXT`); } catch (e) {}
 try { db.exec(`ALTER TABLE users ADD COLUMN suspended INTEGER DEFAULT 0`); } catch (e) {}
 try { db.exec(`ALTER TABLE children ADD COLUMN birthday TEXT`); } catch (e) {}
-try { db.exec(`ALTER TABLE children ADD COLUMN phone TEXT`); } catch (e) {}
-try { db.exec(`ALTER TABLE children ADD COLUMN wechat_openid TEXT`); } catch (e) {}
 try { db.exec(`ALTER TABLE children ADD COLUMN password_hash TEXT`); } catch (e) {}
 try { db.exec(`ALTER TABLE children ADD COLUMN game_level INTEGER DEFAULT 1`); } catch (e) {}
 try { db.exec(`ALTER TABLE children ADD COLUMN game_score INTEGER DEFAULT 0`); } catch (e) {}

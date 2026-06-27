@@ -60,6 +60,7 @@ function handleError() {
     <div class="ki-badge" :style="{ backgroundColor: color || '#94a3b8' }">
       {{ category }}
     </div>
+    <div v-if="imgStatus === 'loaded'" class="ki-ai-badge">⚡ AI 生成</div>
 
     <!-- 全屏查看 -->
     <Teleport to="body" v-if="showFullscreen">
@@ -157,4 +158,18 @@ function handleError() {
   backdrop-filter: blur(4px);
 }
 .ki-close:hover { background: rgba(255, 255, 255, 0.3); }
+
+.ki-ai-badge {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.3px;
+  pointer-events: none;
+}
 </style>

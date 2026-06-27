@@ -122,21 +122,21 @@ router.get('/children', authenticate, (req, res) => {
 
 // POST /api/user/children - Add a child
 router.post('/children', authenticate, (req, res) => {
-  const { nickname, gender, birthday, avatar, phone } = req.body;
+  const { nickname, gender, birthday, avatar } = req.body;
   if (!nickname) {
     return res.status(400).json({ code: 'INVALID_INPUT', message: '孩子昵称不能为空' });
   }
   const id = uuidv4();
   db.prepare(
-    `INSERT INTO children (id, user_id, nickname, gender, birthday, avatar, phone) VALUES (?, ?, ?, ?, ?, ?, ?)`
-  ).run(id, req.user.id, nickname, gender || null, birthday || null, avatar || null, phone || null);
+    `INSERT INTO children (id, user_id, nickname, gender, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?)`
+  ).run(id, req.user.id, nickname, gender || null, birthday || null, avatar || null);
   const child = db.prepare(`SELECT * FROM children WHERE id = ?`).get(id);
   res.status(201).json({ code: 'OK', data: child });
 });
 
 // PUT /api/user/children/:id - Update a child
 router.put('/children/:id', authenticate, (req, res) => {
-  const { nickname, gender, birthday, avatar, phone } = req.body;
+  const { nickname, gender, birthday, avatar } = req.body;
   const existing = db.prepare(`SELECT id FROM children WHERE id = ? AND user_id = ?`).get(req.params.id, req.user.id);
   if (!existing) {
     return res.status(404).json({ code: 'NOT_FOUND', message: '孩子信息不存在' });
@@ -398,30 +398,9 @@ router.get('/learning-report', authenticate, (req, res) => {
 
 // ─── Child Independent Login ─────────────────────────────────
 
-// POST /api/user/children/login - Child login with phone + password
-router.post('/children/login', (req, res) => {
-  const { phone, password } = req.body;
-  if (!phone || !password) {
-    return res.status(400).json({ code: 'INVALID_INPUT', message: '手机号和密码不能为空' });
-  }
-
-  const child = db.prepare(`SELECT * FROM children WHERE phone = ?`).get(phone);
-  if (!child) {
-    return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '账号或密码错误' });
-  }
-  if (!child.password_hash) {
-    return res.status(401).json({ code: 'NO_PASSWORD', message: '该账号未设置密码' });
-  }
-
-  const valid = bcrypt.compareSync(password, child.password_hash);
-  if (!valid) {
-    return res.status(401).json({ code: 'INVALID_CREDENTIALS', message: '账号或密码错误' });
-  }
-
-  const tokens = generateTokens({ id: child.id, role: 'child' });
-  setTokenCookie(res, tokens.accessToken, tokens.expiresAt);
-
-  res.json({ code: 'OK', data: { child, ...tokens } });
+// POST /api/user/children/login - (已移除，children 不再存 phone)
+router.post('/children/login', (_req, res) => {
+  res.status(410).json({ code: 'GONE', message: '子账号独立登录已停用，请使用家长账号管理' });
 });
 
 // POST /api/user/children/set-password - Set child independent password
