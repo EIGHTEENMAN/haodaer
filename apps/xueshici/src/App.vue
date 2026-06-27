@@ -766,6 +766,7 @@ onUnmounted(() => {
           <div class="sc-content-block">
             <div class="sc-content-label">
               <span class="sc-content-label-text">📖 译文</span>
+              <span class="sc-ai-badge">AI</span>
               <button class="sc-block-play"
                 :class="playingTarget === 'translation' ? 'sc-block-playing' : ''"
                 @click="speaking ? stopAudio() : playTranslation()">
@@ -778,6 +779,7 @@ onUnmounted(() => {
           <div class="sc-content-block">
             <div class="sc-content-label">
               <span class="sc-content-label-text">💡 赏析</span>
+              <span class="sc-ai-badge">AI</span>
               <button class="sc-block-play"
                 :class="playingTarget === 'interpretation' ? 'sc-block-playing' : ''"
                 @click="speaking ? stopAudio() : playInterpretation()">
@@ -947,6 +949,12 @@ body {
 .sc-block-play:hover { background: #d97706; color: white; }
 .sc-block-playing { background: #d97706 !important; color: white !important; }
 .sc-content-label-text { font-size: 14px; font-weight: 700; color: #d97706; }
+.sc-ai-badge {
+  display: inline-block; margin-left: 6px; padding: 1px 5px;
+  border-radius: 4px; font-size: 10px; font-weight: 700;
+  color: #fff; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  vertical-align: middle; line-height: 1.4;
+}
 @keyframes pi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 /* ===== Poem Info Card (原详情页内容) ===== */

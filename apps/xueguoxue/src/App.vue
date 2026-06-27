@@ -570,6 +570,7 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span class="gx-content-label-text">📖 译文</span>
+              <span class="gx-ai-badge">AI</span>
               <button class="gx-block-play"
                 :class="isPlaying('translation') ? 'gx-block-playing' : ''"
                 @click="playTranslation()">
@@ -582,6 +583,7 @@ onUnmounted(() => {
           <div class="gx-content-block">
             <div class="gx-content-label">
               <span class="gx-content-label-text">💡 解读</span>
+              <span class="gx-ai-badge">AI</span>
               <button class="gx-block-play"
                 :class="isPlaying('interpretation') ? 'gx-block-playing' : ''"
                 @click="playInterpretation()">
@@ -789,6 +791,12 @@ body {
   display: flex; align-items: center; justify-content: space-between;
 }
 .gx-content-label-text { font-size: 14px; font-weight: 700; color: #2563eb; }
+.gx-ai-badge {
+  display: inline-block; margin-left: 6px; padding: 1px 5px;
+  border-radius: 4px; font-size: 10px; font-weight: 700;
+  color: #fff; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  vertical-align: middle; line-height: 1.4;
+}
 .gx-original-text { font-family: "Noto Serif SC", "STSong", serif; }
 .gx-original-line {
   font-size: 17px; line-height: 2.2; color: #0f172a;
