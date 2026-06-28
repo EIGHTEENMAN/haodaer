@@ -16,6 +16,9 @@
  * 用法：
  *   node scripts/tts-guoxue.mjs                    # 全部书籍全部音频
  *   node scripts/tts-guoxue.mjs --book jing-1       # 指定某本书
+ *   --force                                        # 强制覆盖所有 type (修复字段后用)
+ *   --replace-original                             # 只强制覆盖 original
+ *   --only-original/--only-translation/--only-interpretation
  *   node scripts/tts-guoxue.mjs --poc               # 每个书只生成1节测试
  */
 
@@ -283,7 +286,9 @@ async function main() {
 
         const filename = buildFilename(book.title, sec.title, label)
         const path = resolve(CONFIG.outputDir, filename)
-        const forceReplace = process.argv.includes('--replace-original') && type === 'original'
+        // --replace-original: 只对 original 强制覆盖
+        // --force: 对所有 type (original/translation/interpretation) 强制覆盖
+        const forceReplace = (process.argv.includes('--replace-original') && type === 'original') || process.argv.includes('--force')
         if (existsSync(path) && !forceReplace) { totalSkipped++; continue }
 
         const profile = type === 'original' ? CONFIG.originalVoice : CONFIG.translationVoice
