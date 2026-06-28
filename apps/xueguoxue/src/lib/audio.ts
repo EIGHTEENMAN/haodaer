@@ -138,7 +138,8 @@ const typeLabels: Record<string, string> = { original: '原文', translation: '�
 function buildAudioPath(classicTitle: string, sectionTitle: string, type: string): string {
   // 替换文件名不兼容字符
   const sanitize = (s: string) => s.replace(/[（）()]/g, '').replace(/\s+/g, '')
-  return `/audio/books/${sanitize(classicTitle)}_${sanitize(sectionTitle)}_${typeLabels[type] || type}.mp3`
+  // v=3 cache-busting: 强制浏览器重新下载（避免旧缓存）
+  return `/audio/books/${sanitize(classicTitle)}_${sanitize(sectionTitle)}_${typeLabels[type] || type}.mp3?v=3`
 }
 
 /**
