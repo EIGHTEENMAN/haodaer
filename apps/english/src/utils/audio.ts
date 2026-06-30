@@ -1,24 +1,45 @@
 // Audio manager: word pronunciation + Bruce Lee sound effects
+//
+// 2026-06-30 修复：原版用 Map 预创建所有单词的 Audio()，
+// 导致 2201 个 Audio 元素同时存在，触发 Chromium WebMediaPlayer 上限。
+// 改为懒加载：只缓存 URL 字符串，播放时才 new Audio()。
+// 同时维护一个 LRU-style pool，限制同时存在的 Audio 元素 ≤ MAX_POOL_SIZE。
 
 let audioCtx: AudioContext | null = null
-const audioCache = new Map<string, HTMLAudioElement>()
+
+// URL 缓存（永远不大）
+const audioUrlCache = new Map<string, string>()
+
+// 活跃 Audio 元素池（LRU：超过 MAX_POOL_SIZE 时清理最旧的）
+const MAX_POOL_SIZE = 8
+const audioPool: HTMLAudioElement[] = []
 
 function getCtx(): AudioContext {
   if (!audioCtx) audioCtx = new AudioContext()
   return audioCtx
 }
 
+function playWithPool(url: string, onEnd?: () => void): HTMLAudioElement {
+  const audio = new Audio(url)
+  audio.preload = "auto"
+  audioPool.push(audio)
+  if (audioPool.length > MAX_POOL_SIZE) {
+    const oldest = audioPool.shift()
+    try { oldest?.pause() } catch {}
+  }
+  if (onEnd) audio.onended = () => onEnd()
+  audio.play().catch(() => {
+    // autoplay 失败或加载失败
+    onEnd?.()
+  })
+  return audio
+}
+
 // Play word pronunciation from file or TTS fallback
 export function playWordAudio(word: string, onEnd?: () => void) {
-  if (audioCache.has(word)) {
-    const audio = audioCache.get(word)!
-    audio.currentTime = 0
-    audio.play().then(() => {
-      audio.onended = () => { onEnd?.() }
-    }).catch(() => {
-      audioCache.delete(word)
-      playWordAudio(word, onEnd)
-    })
+  const url = audioUrlCache.get(word)
+  if (url) {
+    playWithPool(url, onEnd)
     return
   }
   if ("speechSynthesis" in window) {
@@ -32,11 +53,33 @@ export function playWordAudio(word: string, onEnd?: () => void) {
   }
 }
 
-// Register an audio element for a word (from preloaded files)
+// Register a URL for a word (NO Audio creation - lazy loading)
 export function registerWordAudio(word: string, url: string) {
+  audioUrlCache.set(word, url)
+}
+
+// 播放预生成的例句 mp3（按 id 命名 sent_${id}.mp3）
+// mp3 缺失/加载失败时自动降级到浏览器 speechSynthesis
+export function playSentenceAudio(id: number, sentence?: string, onEnd?: () => void) {
+  const url = `/audio/sentences/sent_${id}.mp3`
   const audio = new Audio(url)
   audio.preload = "auto"
-  audioCache.set(word, audio)
+  audio.onerror = () => {
+    if (sentence) speakSentence(sentence)
+    onEnd?.()
+  }
+  audioPool.push(audio)
+  if (audioPool.length > MAX_POOL_SIZE) {
+    const oldest = audioPool.shift()
+    try { oldest?.pause() } catch {}
+  }
+  audio.play().then(() => {
+    if (onEnd) audio.onended = () => onEnd()
+  }).catch(() => {
+    // autoplay 失败 → 降级 TTS
+    if (sentence) speakSentence(sentence)
+    onEnd?.()
+  })
 }
 
 // 朗读英文例句（浏览器内置 TTS，零成本、即时）

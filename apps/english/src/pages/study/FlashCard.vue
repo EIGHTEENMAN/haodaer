@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { words } from '../../data/words'
 import { wordStore } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
-import { playWordAudio, speakSentence } from '../../utils/audio'
+import { playWordAudio, speakSentence, playSentenceAudio } from '../../utils/audio'
 
 const props = defineProps<{
   themeId: string
@@ -57,16 +57,11 @@ function playAudio() {
 function playSentence() {
   if (!currentWord.value) return
   // 优先播预生成的 Edge TTS mp3（en-US-JennyNeural + friendly style）
-  // 文件名按 word id 命名（sent_{id}.mp3），不是按 word 文本
-  // 缺失或加载失败 → 降级到浏览器 speechSynthesis
+  // 走 audio.ts 的 playSentenceAudio，自动管理 Audio 池避免 WebMediaPlayer 过多
+  // 失败时降级到浏览器 speechSynthesis（由 audio.ts 内部处理）
   const id = currentWord.value.id
-  const audio = new Audio(`/audio/sentences/sent_${id}.mp3`)
-  audio.onerror = () => {
-    speakSentence(currentWord.value.sentence)
-  }
-  audio.play().catch(() => {
-    speakSentence(currentWord.value.sentence)
-  })
+  const sentence = currentWord.value.sentence
+  playSentenceAudio(id, sentence)
 }
 
 function checkSpell() {
