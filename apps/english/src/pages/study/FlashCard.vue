@@ -215,14 +215,16 @@ function nextManual() {
 </template>
 
 <style scoped>
-/* 单屏布局：100vh 减去 header 61 + bottomnav 80，flex 三段 */
+/* 单屏布局：100vh 减去 header 61 + bottomnav 80，flex 三段
+   ⚠️ 移动端修复：viewport 高度在小屏幕上不够 → 改用 min-height 让内容自然撑开，
+   避免 word-card 被 .bottom-bar 遮挡覆盖 */
 .flash-page {
-  height: calc(100vh - 61px - 80px);
+  min-height: calc(100vh - 61px - 80px);
   display: flex;
   flex-direction: column;
   max-width: 480px;
   margin: 0 auto;
-  padding: 0 var(--gap-md);
+  padding: 0 var(--gap-md) var(--gap-md);
 }
 
 /* 顶栏 */
@@ -266,13 +268,18 @@ function nextManual() {
   transition: width 0.3s ease;
 }
 
-/* 主区：单词卡 */
+/* 主区：单词卡
+   ⚠️ 修复重叠：去掉 align-items: center 强制居中，改用 flex-start + overflow-y: auto，
+   让长例句自然撑开页面并可滚动，不再覆盖底部 nav-row/spell-wrap */
 .content {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: 0;
+  overflow-y: auto;
+  /* iOS 安全区 */
+  padding-bottom: var(--gap-sm);
 }
 
 .word-card {
@@ -283,6 +290,8 @@ function nextManual() {
   border: 1px solid var(--color-border);
   padding: var(--gap-md) var(--gap-lg);
   text-align: center;
+  /* 保证卡片高度自适应内容，不被外部 flex 拉伸/压缩 */
+  flex-shrink: 0;
 }
 
 .word-emoji {
@@ -406,9 +415,15 @@ function nextManual() {
   color: var(--color-text-sub);
 }
 
-/* 底部：拼写 */
+/* 底部：拼写
+   ⚠️ 修复重叠：用 flex-shrink: 0 + 半透明白底把底部栏从内容流中独立出来，
+   确保 nav-row/spell-wrap 永远在卡片下方，不会被 example 长文本压上来 */
 .bottom-bar {
+  flex-shrink: 0;
   padding: var(--gap-sm) 0 var(--gap-md);
+  background: var(--color-bg);
+  position: relative;
+  z-index: 2;
 }
 
 .nav-row {
@@ -419,13 +434,15 @@ function nextManual() {
 
 .nav-btn {
   flex: 1;
-  padding: 12px 14px;
+  padding: 12px 10px;
   border-radius: var(--radius-md);
   font-family: var(--font-display);
   font-size: var(--text-body);
   font-weight: 700;
   /* 减色：去掉 box-shadow */
   transition: all 0.15s;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .nav-btn--prev,
@@ -498,7 +515,7 @@ function nextManual() {
 }
 
 .spell-btn {
-  padding: 0 22px;
+  padding: 0 18px;
   border-radius: var(--radius-md);
   background: var(--color-primary);
   color: white;
@@ -506,6 +523,11 @@ function nextManual() {
   font-weight: 700;
   /* 减色：去掉阴影（主操作按钮保留蓝色实心） */
   font-family: var(--font-display);
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* iOS Safari 避免按钮默认样式 */
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .spell-btn:active {
@@ -521,4 +543,61 @@ function nextManual() {
 
 .result-text--correct { color: var(--color-tertiary); }
 .result-text--wrong { color: var(--color-secondary); }
+
+/* ─── 移动端断点 (< 480px) ───
+   iPhone SE/12mini 等小屏幕：压字号 + 减 padding，给 nav-row/spell-wrap 留空间 */
+@media (max-width: 480px) {
+  .flash-page {
+    padding: 0 var(--gap-sm) var(--gap-sm);
+  }
+
+  .word-card {
+    padding: var(--gap-sm) var(--gap-md);
+  }
+
+  .word-emoji {
+    font-size: 32px;
+    margin-bottom: 2px;
+  }
+
+  .word-main {
+    font-size: 28px;
+  }
+
+  .audio-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .word-meaning {
+    font-size: 18px;
+  }
+
+  /* 例句紧凑，但保持可读 */
+  .example-en {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .example-cn {
+    font-size: 13px;
+  }
+
+  /* 移动端拼写输入更紧凑，避免撑出屏幕 */
+  .spell-input {
+    padding: 10px 12px;
+    font-size: 18px;
+  }
+
+  .spell-btn {
+    padding: 0 16px;
+    font-size: 18px;
+  }
+
+  .nav-btn {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+}
 </style>
