@@ -40,31 +40,24 @@ export function registerWordAudio(word: string, url: string) {
 }
 
 // 朗读英文例句（浏览器内置 TTS，零成本、即时）
-// rate 0.85 让例句节奏稍慢便于跟读
-// 选男童声：优先 zh-CN male child / en-US male；高 pitch + 中速
-let maleChildVoice: SpeechSynthesisVoice | null = null
-function pickMaleChildVoice(): SpeechSynthesisVoice | null {
-  if (maleChildVoice) return maleChildVoice
+// 注意：2026-06-30 起，例句优先播放预生成的 Edge TTS mp3（en-US-JennyNeural + friendly）
+// 这里只是 mp3 缺失时的兜底。pitch 调高会让机器人感加重，去掉改用默认音色。
+let cachedEnVoice: SpeechSynthesisVoice | null = null
+function pickEnVoice(): SpeechSynthesisVoice | null {
+  if (cachedEnVoice) return cachedEnVoice
   const voices = window.speechSynthesis.getVoices()
   if (!voices.length) return null
-  // 优先级：中文男童 → 英文男声 → 任意英文男声
-  const candidates = [
-    (v: SpeechSynthesisVoice) => /zh-?CN/i.test(v.lang) && /child|kid|boy|young|male/i.test(v.name),
-    (v: SpeechSynthesisVoice) => /zh-?CN/i.test(v.lang),
-    (v: SpeechSynthesisVoice) => /male/i.test(v.name) && /en/i.test(v.lang),
-    (v: SpeechSynthesisVoice) => /^en/i.test(v.lang) && !/female/i.test(v.name)
-  ]
-  for (const test of candidates) {
-    const found = voices.find(test)
-    if (found) { maleChildVoice = found; return found }
-  }
-  return null
+  // 优先级：英文女声（柔和） → 任意英文
+  cachedEnVoice =
+    voices.find(v => /^en/i.test(v.lang) && /female|samantha|victoria|karen|tessa|moira|fiona|aria|jenny/i.test(v.name)) ||
+    voices.find(v => /^en/i.test(v.lang)) ||
+    null
+  return cachedEnVoice
 }
 
 if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-  // voices 异步加载，需监听
   window.speechSynthesis.onvoiceschanged = () => {
-    pickMaleChildVoice()
+    pickEnVoice()
   }
 }
 
@@ -73,9 +66,9 @@ export function speakSentence(text: string) {
   speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
   u.lang = "en-US"
-  u.rate = 0.85
-  u.pitch = 1.4  // 男童声偏高 pitch
-  const voice = pickMaleChildVoice()
+  u.rate = 0.9
+  // 不再设 pitch，让系统默认（pitch=1）最自然
+  const voice = pickEnVoice()
   if (voice) u.voice = voice
   speechSynthesis.speak(u)
 }
