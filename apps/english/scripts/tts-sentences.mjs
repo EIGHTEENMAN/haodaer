@@ -33,8 +33,9 @@ const CONFIG = {
   outputDir: resolve(APP_DIR, 'public/audio/sentences'),
   statusFile: resolve(APP_DIR, '../../scripts/rewrite-english-sentences/tts-status.json'),
   voice: 'en-US-JennyNeural',
-  style: 'friendly',
-  styleDegree: '1.5',
+  // 2026-06-30 v2：去掉 mstts:express-as style="friendly"
+  // 原因：edge-tts 的 SSML style 对短句+缩写（it's/don't）经常解析失败，输出技术字符乱码
+  // 改为纯文本 + prosody rate/pitch（学诗词/学国学 v2 成熟方案）
   rate: '-15%',
   pitch: '+0Hz',
   concurrency: 4,
@@ -50,17 +51,17 @@ const C = {
 const log = (color, tag, msg) => console.log(`${color}[${tag}]${C.reset} ${msg}`)
 
 function escapeXml(text) {
+  // v2 简化：只转 XML 必要的 & < >，不要转 ' "（edge-tts 会念出 entity 名字）
   return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
 }
 
 function buildSsml(text) {
+  // v2 简化：去掉 mstts namespace 和 express-as 包装，只保留 prosody
   const body = escapeXml(text)
-  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><voice name="${CONFIG.voice}"><mstts:express-as style="${CONFIG.style}" styledegree="${CONFIG.styleDegree}"><prosody rate="${CONFIG.rate}" pitch="${CONFIG.pitch}">${body}</prosody></mstts:express-as></voice></speak>`
+  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${CONFIG.voice}"><prosody rate="${CONFIG.rate}" pitch="${CONFIG.pitch}">${body}</prosody></voice></speak>`
 }
 
 async function callEdgeTTS(text, outputPath) {
@@ -70,7 +71,9 @@ async function callEdgeTTS(text, outputPath) {
   mkdirSync(dirname(outputPath), { recursive: true })
 
   // 文本里去掉可能让 TTS 卡壳的特殊字符
-  const cleanText = text.replace(/"/g, "'").trim()
+  // 学诗词 v2 经验：去掉英文双引号（edge-tts 会读成 "quote" 怪声）
+  // 但保留 '（缩写 it's/don't 需要）
+  const cleanText = text.replace(/"/g, '').trim()
 
   writeFileSync(tmpTxt, buildSsml(cleanText), 'utf-8')
 

@@ -14,12 +14,30 @@ const audioUrlCache = new Map<string, string>()
 const MAX_POOL_SIZE = 8
 const audioPool: HTMLAudioElement[] = []
 
+// 当前正在播放的 Audio（任何新播放前先 pause 它，避免音频重叠）
+let currentAudio: HTMLAudioElement | null = null
+
 function getCtx(): AudioContext {
   if (!audioCtx) audioCtx = new AudioContext()
   return audioCtx
 }
 
+// 停掉当前播放的音频（包括 TTS），避免重叠
+function stopCurrent() {
+  if (currentAudio) {
+    try { currentAudio.pause() } catch {}
+    try { currentAudio.currentTime = 0 } catch {}
+    currentAudio = null
+  }
+  // 同时停掉 TTS
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    try { window.speechSynthesis.cancel() } catch {}
+  }
+}
+
 function playWithPool(url: string, onEnd?: () => void): HTMLAudioElement {
+  // 关键：先停掉上一个音频，避免重叠
+  stopCurrent()
   const audio = new Audio(url)
   audio.preload = "auto"
   audioPool.push(audio)
@@ -27,8 +45,13 @@ function playWithPool(url: string, onEnd?: () => void): HTMLAudioElement {
     const oldest = audioPool.shift()
     try { oldest?.pause() } catch {}
   }
-  if (onEnd) audio.onended = () => onEnd()
+  currentAudio = audio
+  if (onEnd) audio.onended = () => {
+    if (currentAudio === audio) currentAudio = null
+    onEnd()
+  }
   audio.play().catch(() => {
+    if (currentAudio === audio) currentAudio = null
     // autoplay 失败或加载失败
     onEnd?.()
   })
@@ -61,21 +84,27 @@ export function registerWordAudio(word: string, url: string) {
 // 播放预生成的例句 mp3（按 id 命名 sent_${id}.mp3）
 // mp3 缺失/加载失败时自动降级到浏览器 speechSynthesis
 export function playSentenceAudio(id: number, sentence?: string, onEnd?: () => void) {
+  stopCurrent()
   const url = `/audio/sentences/sent_${id}.mp3`
   const audio = new Audio(url)
   audio.preload = "auto"
-  audio.onerror = () => {
-    if (sentence) speakSentence(sentence)
-    onEnd?.()
-  }
+  currentAudio = audio
   audioPool.push(audio)
   if (audioPool.length > MAX_POOL_SIZE) {
     const oldest = audioPool.shift()
     try { oldest?.pause() } catch {}
   }
-  audio.play().then(() => {
-    if (onEnd) audio.onended = () => onEnd()
-  }).catch(() => {
+  audio.onerror = () => {
+    if (currentAudio === audio) currentAudio = null
+    if (sentence) speakSentence(sentence)
+    onEnd?.()
+  }
+  audio.onended = () => {
+    if (currentAudio === audio) currentAudio = null
+    onEnd?.()
+  }
+  audio.play().catch(() => {
+    if (currentAudio === audio) currentAudio = null
     // autoplay 失败 → 降级 TTS
     if (sentence) speakSentence(sentence)
     onEnd?.()
