@@ -11,8 +11,14 @@ const searchQuery = ref('')
 const detailWord = ref<any>(null)
 
 onMounted(() => {
-  // 从 URL ?q=xxx 自动填入（TopHeader 搜索跳转）
-  const params = new URLSearchParams(window.location.search)
+  // 从 URL 自动填入（TopHeader 搜索跳转）
+  // 注意：hash 路由的 ?q=xxx 在 # 后面，window.location.search 为空
+  // 要从 hash 里解析 search 部分
+  let search = window.location.search
+  if (!search && window.location.hash.includes('?')) {
+    search = '?' + window.location.hash.split('?').slice(1).join('?')
+  }
+  const params = new URLSearchParams(search)
   const q = params.get('q')
   if (q) searchQuery.value = q
 })
