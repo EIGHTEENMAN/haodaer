@@ -24,7 +24,10 @@ import ProfileScreen from './pages/profile/ProfileScreen.vue'
 import SettingsPanel from './pages/profile/SettingsPanel.vue'
 
 function parseStudyHash(): { themeId: string | null, stage: number | null } {
-  const h = window.location.hash.replace(/^#\/?study\/?/, '')
+  // 去掉 #/study/ 前缀，再去掉 ?xxx 查询参数（hash 路由把 ?q= 放在 # 后）
+  let h = window.location.hash.replace(/^#\/?study\/?/, '')
+  const qIdx = h.indexOf('?')
+  if (qIdx >= 0) h = h.slice(0, qIdx)
   const parts = h.split('/')
   return {
     // themeId 可能含中文/空格/特殊字符，hash URL 会被浏览器自动 encode，读回要 decode
