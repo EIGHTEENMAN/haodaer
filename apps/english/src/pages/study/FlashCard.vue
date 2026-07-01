@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { words } from '../../data/words'
 import { wordStore } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
-import { playWordAudio, speakSentence, playSentenceAudio } from '../../utils/audio'
+import { playWordAudio, speakSentence, playSentenceAudio, stopAllAudio } from '../../utils/audio'
 
 const props = defineProps<{
   themeId: string
@@ -46,6 +46,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (!isComplete.value) studyStore.cancelSession()
+  stopAllAudio()
 })
 
 function playAudio() {
@@ -98,6 +99,7 @@ function next() {
 }
 
 function back() {
+  stopAllAudio()
   window.location.hash = `#/study/${props.themeId}`
 }
 
@@ -187,6 +189,8 @@ function nextManual() {
         <p class="spell-hint">拼写单词</p>
         <div class="spell-row">
           <input
+            id="spell-input"
+            name="spell"
             v-model="spellInput"
             @keyup.enter="checkSpell"
             @focus="hideWord = true"
@@ -202,6 +206,7 @@ function nextManual() {
             autocapitalize="off"
             autocorrect="off"
             spellcheck="false"
+            aria-label="拼写输入框"
           />
           <button class="spell-btn" @click="checkSpell">检查</button>
         </div>

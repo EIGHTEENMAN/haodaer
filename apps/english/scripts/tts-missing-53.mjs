@@ -43,6 +43,32 @@ function buildSsml(text) {
   return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${CONFIG.voice}"><prosody rate="${CONFIG.rate}" pitch="${CONFIG.pitch}">${body}</prosody></voice></speak>`
 }
 
+function trimLeadingSilence(srcPath, destPath) {
+  return new Promise((resolveP, rejectP) => {
+    const args = [
+      '-y', '-i', srcPath,
+      '-ss', '0.15',
+      '-af', 'afade=t=in:st=0:d=0.05',
+      '-codec:a', 'libmp3lame',
+      '-b:a', '48k',
+      '-write_xing', '0',
+      destPath
+    ]
+    const proc = spawn('ffmpeg', args, { encoding: 'utf-8' })
+    let stderr = ''
+    proc.stderr?.on('data', d => { stderr += d.toString() })
+    proc.on('error', err => rejectP(err))
+    proc.on('close', code => {
+      try { unlinkSync(srcPath) } catch {}
+      if (code !== 0) {
+        rejectP(new Error(`ffmpeg exit ${code}: ${stderr.slice(0, 500)}`))
+        return
+      }
+      resolveP()
+    })
+  })
+}
+
 async function callEdgeTTS(text, outputPath) {
   if (!text || !text.trim()) throw new Error('Empty text')
   const tmpMp3 = outputPath + '.tmp.mp3'
@@ -64,7 +90,7 @@ async function callEdgeTTS(text, outputPath) {
     }, CONFIG.timeoutMs)
     child.stderr?.on('data', d => { stderr += d.toString() })
     child.on('error', err => { clearTimeout(timer); rejectP(err) })
-    child.on('close', code => {
+    child.on('close', async code => {
       clearTimeout(timer)
       if (code !== 0) {
         try { unlinkSync(tmpMp3) } catch {}
@@ -78,9 +104,15 @@ async function callEdgeTTS(text, outputPath) {
         rejectP(new Error('File too small'))
         return
       }
-      renameSync(tmpMp3, outputPath)
+      // 2026-07-01：trim 前导静音 150ms + 50ms fade-in
+      try {
+        await trimLeadingSilence(tmpMp3, outputPath)
+      } catch (err) {
+        try { renameSync(tmpMp3, outputPath) } catch {}
+        console.error(`[ffmpeg trim fail] ${outputPath}: ${err.message}`)
+      }
       try { unlinkSync(tmpTxt) } catch {}
-      resolveP(size)
+      resolveP(statSync(outputPath).size)
     })
   })
 }

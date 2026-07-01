@@ -81,6 +81,18 @@ export function registerWordAudio(word: string, url: string) {
   audioUrlCache.set(word, url)
 }
 
+// 2026-07-01：组件卸载或路由切换时调用，停止所有音频 + TTS
+export function stopAllAudio() {
+  stopCurrent()
+  // 同时 pause 掉池里所有还活着的 audio
+  for (const audio of audioPool) {
+    try { audio.pause() } catch {}
+    try { audio.currentTime = 0 } catch {}
+  }
+  audioPool.length = 0
+  currentAudio = null
+}
+
 // 播放预生成的例句 mp3（按 id 命名 sent_${id}.mp3）
 // mp3 缺失/加载失败时自动降级到浏览器 speechSynthesis
 export function playSentenceAudio(id: number, sentence?: string, onEnd?: () => void) {
