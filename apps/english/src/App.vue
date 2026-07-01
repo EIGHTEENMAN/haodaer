@@ -23,16 +23,24 @@ import ChatPanel from './pages/chat/ChatPanel.vue'
 import ProfileScreen from './pages/profile/ProfileScreen.vue'
 import SettingsPanel from './pages/profile/SettingsPanel.vue'
 
-function parseStudyHash(): { themeId: string | null, stage: number | null } {
-  // 去掉 #/study/ 前缀，再去掉 ?xxx 查询参数（hash 路由把 ?q= 放在 # 后）
+function parseStudyHash(): { themeId: string | null, stage: number | null, wordId: number | null } {
+  // 去掉 #/study/ 前缀
   let h = window.location.hash.replace(/^#\/?study\/?/, '')
+  // 分离 ?query 部分
+  let wordId: number | null = null
   const qIdx = h.indexOf('?')
-  if (qIdx >= 0) h = h.slice(0, qIdx)
+  if (qIdx >= 0) {
+    const qs = h.slice(qIdx + 1)
+    h = h.slice(0, qIdx)
+    const params = new URLSearchParams(qs)
+    const wid = params.get('wordId')
+    if (wid) wordId = parseInt(wid, 10)
+  }
   const parts = h.split('/')
   return {
-    // themeId 可能含中文/空格/特殊字符，hash URL 会被浏览器自动 encode，读回要 decode
     themeId: parts[0] ? decodeURIComponent(parts[0]) : null,
-    stage: parts[1] ? parseInt(parts[1], 10) : null
+    stage: parts[1] ? parseInt(parts[1], 10) : null,
+    wordId
   }
 }
 
@@ -115,6 +123,7 @@ const _router = router
             v-else-if="studyPath.themeId && studyPath.stage"
             :theme-id="studyPath.themeId"
             :stage="studyPath.stage"
+            :word-id="studyPath.wordId"
           />
           <StudyReadAlong v-else-if="studyPath.themeId === '__read__'" />
           <StudyStageList v-else-if="studyPath.themeId" :theme-id="studyPath.themeId" />

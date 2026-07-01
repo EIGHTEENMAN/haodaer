@@ -25,9 +25,11 @@ function getStageForWord(wordId: number): { themeId: string, stage: number } | n
 
 function openStudy(rec: any) {
   // 点击单词卡片：跳到它所在的 theme + stage，进入 FlashCard 学习
+  // 带 ?wordId= 参数，FlashCard 用它直接定位到该单词（不是 stage 第一个）
   const loc = getStageForWord(rec.id)
   if (!loc) return
-  window.location.hash = `#/study/${encodeURIComponent(loc.themeId)}/${loc.stage}`
+  const wordPart = `${encodeURIComponent(loc.themeId)}/${loc.stage}?wordId=${rec.id}`
+  window.location.hash = `#/study/${wordPart}`
 }
 
 onMounted(() => {

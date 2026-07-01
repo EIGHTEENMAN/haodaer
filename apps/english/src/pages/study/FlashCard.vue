@@ -8,6 +8,7 @@ import { playWordAudio, speakSentence, playSentenceAudio, stopAllAudio } from '.
 const props = defineProps<{
   themeId: string
   stage: number
+  wordId?: number | null  // 2026-07-01：搜索跳转直接定位到该单词
 }>()
 
 const STAGES = 6
@@ -35,7 +36,16 @@ const progress = computed(() => {
 
 const isComplete = computed(() => currentIndex.value >= sessionWords.value.length)
 
+// 2026-07-01：如果 URL 带了 wordId，定位到该单词在 sessionWords 里的 index
+function locateWordById() {
+  if (!props.wordId) return
+  const idx = sessionWords.value.findIndex(w => w.id === props.wordId)
+  if (idx >= 0) currentIndex.value = idx
+}
+
 onMounted(() => {
+  // 先定位再开 session，确保 startSession 用的是定位后的当前单词
+  locateWordById()
   studyStore.startSession(
     props.themeId,
     themeWords.value[0]?.theme || props.themeId,
