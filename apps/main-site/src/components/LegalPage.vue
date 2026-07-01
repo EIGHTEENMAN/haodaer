@@ -315,7 +315,7 @@ function scrollTo(id: string) {
           <div class="legal-contact-card">
             <div class="contact-row">
               <span class="contact-label">📧 电子邮箱</span>
-              <a href="mailto:contact@grandand.com" class="contact-value">contact@grandand.com</a>
+              <a href="mailto:grandand@shibaxia.com" class="contact-value">grandand@shibaxia.com</a>
             </div>
             <div class="contact-row">
               <span class="contact-label">🌐 网站</span>
