@@ -1,7 +1,7 @@
 const config = {
   port: parseInt(process.env.PORT || '3007', 10),
   jwt: {
-    secret: process.env.JWT_SECRET || 'haodaer-jwt-secret-dev',
+    secret: process.env.JWT_SECRET || 'grandkidsgo-jwt-secret-dev',
     accessExpiresIn: '15m',
     refreshExpiresIn: '7d',
   },

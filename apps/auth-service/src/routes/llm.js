@@ -73,7 +73,7 @@ function loadApiKey() {
   const fs = require('fs');
   const path = require('path');
   const os = require('os');
-  const envPath = path.join(os.homedir(), '.config', 'haodaer', 'secrets.env');
+  const envPath = path.join(os.homedir(), '.config', 'grandkidsgo', 'secrets.env');
   if (!fs.existsSync(envPath)) return null;
   const text = fs.readFileSync(envPath, 'utf-8');
   const m = text.match(/^\s*MINIMAX_API_KEY\s*=\s*(.+?)\s*$/m);

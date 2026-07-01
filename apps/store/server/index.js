@@ -7,7 +7,7 @@ import db from './db.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3006;
-const JWT_SECRET = process.env.JWT_SECRET || 'haodaer-store-dev';
+const JWT_SECRET = process.env.JWT_SECRET || 'grandkidsgo-store-dev';
 
 const app = express();
 app.use(express.json());
@@ -109,7 +109,7 @@ app.all(/^\/api\/auth\//, async (req, res) => {
       },
       body: req.method !== 'GET' && req.method !== 'HEAD' ? JSON.stringify(req.body) : undefined,
     });
-    // Forward Set-Cookie headers (auth-service sets haodaer_token/access_token cookies)
+    // Forward Set-Cookie headers (auth-service sets grandkidsgo_token/access_token cookies)
     if (typeof r.headers.getSetCookie === 'function') {
       const setCookie = r.headers.getSetCookie();
       if (setCookie && setCookie.length > 0) {

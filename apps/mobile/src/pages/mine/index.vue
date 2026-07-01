@@ -22,7 +22,7 @@ const subjectColors: Record<string, string> = {
 }
 
 async function loadLearningReport() {
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (!token) return
   reportLoading.value = true
   try {
@@ -199,14 +199,14 @@ onShow(() => {
   checkAuth()
   progress.value = getProgress()
   ranking.value = getAppRanking()
-  if (uni.getStorageSync('haodaer_token')) loadLearningReport()
+  if (uni.getStorageSync('grandkidsgo_token')) loadLearningReport()
 })
 
 function checkAuth() {
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (token) {
     isLoggedIn.value = true
-    const stored = uni.getStorageSync('haodaer_user')
+    const stored = uni.getStorageSync('grandkidsgo_user')
     if (stored) {
       try { userInfo.value = JSON.parse(stored) } catch {
         userInfo.value = { nickname: '用户' }

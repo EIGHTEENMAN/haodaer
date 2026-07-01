@@ -69,7 +69,7 @@ async function save() {
       }
     }
 
-    localStorage.removeItem('haodaer_isNewUser')
+    localStorage.removeItem('grandkidsgo_isNewUser')
     await fetchUser()
     emit('complete')
   } catch {

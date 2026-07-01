@@ -6,7 +6,7 @@ const reason = ref('')
 const loading = ref(true)
 
 function getToken(): string | null {
-  return sessionStorage.getItem('haodaer_token')
+  return sessionStorage.getItem('grandkidsgo_token')
 }
 
 onMounted(async () => {

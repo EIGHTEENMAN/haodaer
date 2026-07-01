@@ -4,11 +4,11 @@ import { ref, onMounted } from 'vue'
 const accepted = ref(true)
 
 onMounted(() => {
-  accepted.value = !!localStorage.getItem('haodaer_cookie_consent')
+  accepted.value = !!localStorage.getItem('grandkidsgo_cookie_consent')
 })
 
 function accept() {
-  localStorage.setItem('haodaer_cookie_consent', '1')
+  localStorage.setItem('grandkidsgo_cookie_consent', '1')
   accepted.value = true
 }
 </script>

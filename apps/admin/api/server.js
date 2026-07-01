@@ -8,9 +8,9 @@ import Database from 'better-sqlite3';
 import jwt from 'jsonwebtoken';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const JWT_SECRET = 'haodaer-admin-2026';
+const JWT_SECRET = 'grandkidsgo-admin-2026';
 const ADMIN_USER = 'eighteenman';
-const ADMIN_PASS = 'haodaer2018';
+const ADMIN_PASS = 'grandkidsgo2018';
 
 // Database connections
 const TZ_DB_PATH = process.env.TIAOZHAN_DB_PATH || path.join(__dirname, '..', '..', 'tiaozhan', 'data', 'game.db');
@@ -127,7 +127,7 @@ app.get('/api/system', (req, res) => {
 
 app.get('/api/stats', (req, res) => {
   try {
-    const env = readFileSync('/haodaer/apps/travel-guide/.env', 'utf8');
+    const env = readFileSync('/grandkidsgo/apps/travel-guide/.env', 'utf8');
     const line = env.split('\n').find(l => l.startsWith('DATABASE_URL='));
     if (!line) return res.json({});
     const dbUrl = line.substring('DATABASE_URL='.length).replace(/\?schema=.*$/, '');
@@ -148,7 +148,7 @@ app.get('/api/stats', (req, res) => {
 
 app.get('/api/analytics', (req, res) => {
   try {
-    const env = readFileSync('/haodaer/apps/travel-guide/.env', 'utf8');
+    const env = readFileSync('/grandkidsgo/apps/travel-guide/.env', 'utf8');
     const line = env.split('\n').find(l => l.startsWith('DATABASE_URL='));
     if (!line) return res.json({});
     const dbUrl = line.substring('DATABASE_URL='.length).replace(/\?schema=.*$/, '');
@@ -166,7 +166,7 @@ app.get('/api/analytics', (req, res) => {
 
 app.get('/api/moderation', (req, res) => {
   try {
-    const env = readFileSync('/haodaer/apps/travel-guide/.env', 'utf8');
+    const env = readFileSync('/grandkidsgo/apps/travel-guide/.env', 'utf8');
     const line = env.split('\n').find(l => l.startsWith('DATABASE_URL='));
     if (!line) return res.json({});
     const dbUrl = line.substring('DATABASE_URL='.length).replace(/\?schema=.*$/, '');

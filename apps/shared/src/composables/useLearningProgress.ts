@@ -5,7 +5,7 @@ export async function reportLearningProgress(
   timeSpentMinutes: number,
   accuracy?: number
 ) {
-  const token = sessionStorage.getItem('haodaer_token')
+  const token = sessionStorage.getItem('grandkidsgo_token')
   if (!token) return
   try {
     await fetch('/api/user/learning-progress', {
@@ -29,7 +29,7 @@ export async function reportLearningProgress(
 
 export function getActiveChildId(): string | null {
   try {
-    const profile = localStorage.getItem('haodaer_active_profile')
+    const profile = localStorage.getItem('grandkidsgo_active_profile')
     if (profile) {
       const p = JSON.parse(profile)
       return p.id || null

@@ -29,10 +29,10 @@ onLoad((params) => {
   }
 
   // Inject auth token for SSO
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (token && targetUrl) {
     const sep = targetUrl.includes('?') ? '&' : '?'
-    targetUrl += `${sep}haodaer_token=${token}`
+    targetUrl += `${sep}grandkidsgo_token=${token}`
   }
   url.value = targetUrl
 })

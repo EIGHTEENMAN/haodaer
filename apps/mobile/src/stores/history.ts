@@ -1,6 +1,6 @@
 // Content browsing history using uni storage
 
-const STORAGE_KEY = 'haodaer_browse_history'
+const STORAGE_KEY = 'grandkidsgo_browse_history'
 
 export interface BrowseRecord {
   id: string

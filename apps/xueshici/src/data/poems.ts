@@ -1,4 +1,4 @@
-// haodaer-shici poem data - auto-generated
+// grandkidsgo-shici poem data - auto-generated
 // Contains 2028 poems from 11 dynasties
 
 export interface Section {

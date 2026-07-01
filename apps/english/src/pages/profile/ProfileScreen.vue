@@ -16,7 +16,7 @@ const displayName = computed(() => {
   if (!user.value) return '小朋友'
   const u = user.value as any
   if (u.children && u.children.length > 0) {
-    const active = u.children.find((c: any) => c.id === JSON.parse(localStorage.getItem('haodaer_active_profile') || 'null')?.id)
+    const active = u.children.find((c: any) => c.id === JSON.parse(localStorage.getItem('grandkidsgo_active_profile') || 'null')?.id)
     return active?.nickname || u.children[0].nickname || u.nickname || '小朋友'
   }
   return u.nickname || u.username || '小朋友'

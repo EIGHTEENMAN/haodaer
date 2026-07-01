@@ -12,8 +12,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3001;
 
 // Use auth-service JWT secret for shared auth
-const JWT_SECRET = process.env.AUTH_JWT_SECRET || process.env.JWT_SECRET || 'haodaer-auth-jwt-secret-kids-2024';
-const LOCAL_JWT_SECRET = process.env.JWT_SECRET || 'haodaer-tiaozhan-dev-secret';
+const JWT_SECRET = process.env.AUTH_JWT_SECRET || process.env.JWT_SECRET || 'grandkidsgo-auth-jwt-secret-kids-2024';
+const LOCAL_JWT_SECRET = process.env.JWT_SECRET || 'grandkidsgo-tiaozhan-dev-secret';
 
 const app = express();
 const server = createServer(app);
@@ -152,12 +152,12 @@ app.get('/api/quiz/solo', (_req, res) => {
   res.json(questions);
 });
 
-// Auth check endpoint: reads haodaer_token from cookie and returns user + token
+// Auth check endpoint: reads grandkidsgo_token from cookie and returns user + token
 app.get('/api/auth/check', async (req, res) => {
   // Read token from cookie (sent automatically by browser) or Authorization header
   let token = null;
   const cookie = req.headers.cookie || '';
-  const match = cookie.match(/(?:^|;\s*)haodaer_token=([^;]+)/);
+  const match = cookie.match(/(?:^|;\s*)grandkidsgo_token=([^;]+)/);
   if (match) {
     token = decodeURIComponent(match[1]);
   }
@@ -203,7 +203,7 @@ app.all(/^\/api\/auth\//, async (req, res) => {
       },
       body: req.method !== 'GET' && req.method !== 'HEAD' ? JSON.stringify(req.body) : undefined,
     });
-    // Forward Set-Cookie headers (auth-service sets haodaer_token/access_token cookies)
+    // Forward Set-Cookie headers (auth-service sets grandkidsgo_token/access_token cookies)
     const setCookie = r.headers.getSetCookie?.();
     if (setCookie && setCookie.length > 0) {
       res.setHeader('Set-Cookie', setCookie);
@@ -745,7 +745,7 @@ app.use((_req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`[haodaer-tiaozhan] running on port ${PORT}`);
+  console.log(`[grandkidsgo-tiaozhan] running on port ${PORT}`);
 });
 
 export default app;

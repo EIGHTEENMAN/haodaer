@@ -32,7 +32,7 @@ function close() {
 
 // 获取 jwt token 用于 API 请求
 function getToken(): string | null {
-  return sessionStorage.getItem('haodaer_token')
+  return sessionStorage.getItem('grandkidsgo_token')
 }
 
 // 调用后端积分 API

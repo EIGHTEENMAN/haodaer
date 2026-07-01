@@ -10,7 +10,7 @@ function generateTokens(user) {
     { expiresIn: config.jwt.accessExpiresIn }
   );
 
-  // Long-lived token for cross-app auth sync (haodaer_token cookie)
+  // Long-lived token for cross-app auth sync (grandkidsgo_token cookie)
   const syncToken = jwt.sign(
     { sub: user.id, role: user.role },
     config.jwt.secret,
@@ -67,7 +67,7 @@ function setTokenCookie(res, accessToken, syncToken) {
 
   // Non-httpOnly cookie for client-side JS cross-app auth sync — session cookie (no expires)
   // MUST have domain=.grandand.com so all sub-apps can read it via document.cookie
-  res.cookie('haodaer_token', syncToken, {
+  res.cookie('grandkidsgo_token', syncToken, {
     ...sharedOpts,
     httpOnly: false,
     secure: !!config.cookieDomain,

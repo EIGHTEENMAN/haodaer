@@ -1,4 +1,4 @@
-const DB_NAME = 'haodaer_shici'
+const DB_NAME = 'grandkidsgo_shici'
 const DB_VER = 1
 const STORE = 'recordings'
 

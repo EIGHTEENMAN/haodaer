@@ -112,7 +112,7 @@ onMounted(() => {
     history.replaceState(null, '', window.location.pathname)
   }
   // Soft prompt: show auth modal once on first visit if not logged in
-  if (!isLoggedIn() && !localStorage.getItem('haodaer_auth_prompted')) {
+  if (!isLoggedIn() && !localStorage.getItem('grandkidsgo_auth_prompted')) {
     setTimeout(() => {
       showAuth.value = true
     }, 500)
@@ -142,7 +142,7 @@ function handleLogout() {
 
 function handleCloseAuth() {
   showAuth.value = false
-  localStorage.setItem('haodaer_auth_prompted', '1')
+  localStorage.setItem('grandkidsgo_auth_prompted', '1')
 }
 
 async function handleSetupComplete() {

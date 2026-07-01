@@ -33,7 +33,7 @@ export default defineConfig({
             urlPattern: /^https:\/\/grandand\.com\/api\/.*/i,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'haodaer-api-cache',
+              cacheName: 'grandkidsgo-api-cache',
               expiration: { maxEntries: 50, maxAgeSeconds: 86400 },
             },
           },

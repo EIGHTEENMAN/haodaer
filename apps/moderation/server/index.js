@@ -8,7 +8,7 @@ import { buildTrie, checkText, censorText, scoreText } from './dfa.js';
 import { SENSITIVE_WORDS, WHITELIST } from './words.js';
 
 const PORT = process.env.PORT || 3020;
-const JWT_SECRET = process.env.JWT_SECRET || 'haodaer-moderation-dev';
+const JWT_SECRET = process.env.JWT_SECRET || 'grandkidsgo-moderation-dev';
 
 // Build DFA trie on startup
 const trie = buildTrie(SENSITIVE_WORDS);

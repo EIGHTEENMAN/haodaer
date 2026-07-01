@@ -1,6 +1,6 @@
 // Simple progress tracking using uni storage
 
-const STORAGE_KEY = 'haodaer_progress'
+const STORAGE_KEY = 'grandkidsgo_progress'
 
 interface ProgressData {
   lastVisit: number

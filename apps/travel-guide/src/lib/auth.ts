@@ -1,8 +1,8 @@
 'use client';
 
-const TOKEN_KEY = 'haodaer_token';
-const USER_KEY = 'haodaer_user';
-const NEW_USER_KEY = 'haodaer_isNewUser';
+const TOKEN_KEY = 'grandkidsgo_token';
+const USER_KEY = 'grandkidsgo_user';
+const NEW_USER_KEY = 'grandkidsgo_isNewUser';
 
 function getCookie(name: string): string | null {
   const match = document.cookie.match(new RegExp('(?:^| )' + name + '=([^;]+)'));
@@ -23,12 +23,12 @@ export function getToken(): string | null {
 
 export function setToken(token: string, syncToken?: string) {
   sessionStorage.setItem(TOKEN_KEY, token);
-  document.cookie = 'haodaer_token=' + encodeURIComponent(syncToken || token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax';
+  document.cookie = 'grandkidsgo_token=' + encodeURIComponent(syncToken || token) + '; domain=.grandand.com; path=/; Secure; SameSite=Lax';
 }
 
 export function removeToken() {
   sessionStorage.removeItem(TOKEN_KEY);
-  document.cookie = 'haodaer_token=; domain=.grandand.com; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  document.cookie = 'grandkidsgo_token=; domain=.grandand.com; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 }
 
 export function getUser(): any | null {

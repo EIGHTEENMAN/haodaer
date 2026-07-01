@@ -6,8 +6,8 @@
 const AUTH_BASE = 'https://grandand.com'
 
 async function syncToChild(subject: string, payload: Record<string, any>) {
-  const token = sessionStorage.getItem('haodaer_token')
-  const profile = localStorage.getItem('haodaer_active_profile')
+  const token = sessionStorage.getItem('grandkidsgo_token')
+  const profile = localStorage.getItem('grandkidsgo_active_profile')
   if (!token || !profile) return
   try {
     const p = JSON.parse(profile)

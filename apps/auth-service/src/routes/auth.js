@@ -141,7 +141,7 @@ router.post('/logout', (req, res) => {
     revokeSession(refreshToken);
   }
   res.clearCookie('access_token', { path: '/' }); // host-only cookie (no domain)
-  res.clearCookie('haodaer_token', { domain: '.grandand.com', path: '/' }); // shared cross-app cookie
+  res.clearCookie('grandkidsgo_token', { domain: '.grandand.com', path: '/' }); // shared cross-app cookie
   res.json({ code: 'OK' });
 });
 

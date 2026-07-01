@@ -105,11 +105,11 @@ watch(currentView, (newView, oldView) => {
 })
 
 // Favorites
-const favoriteIds = ref<string[]>(JSON.parse(localStorage.getItem('haodaer_shici_fav') || '[]'))
+const favoriteIds = ref<string[]>(JSON.parse(localStorage.getItem('grandkidsgo_shici_fav') || '[]'))
 function toggleFavorite(id: string) {
   const i = favoriteIds.value.indexOf(id)
   i >= 0 ? favoriteIds.value.splice(i, 1) : favoriteIds.value.push(id)
-  localStorage.setItem('haodaer_shici_fav', JSON.stringify(favoriteIds.value))
+  localStorage.setItem('grandkidsgo_shici_fav', JSON.stringify(favoriteIds.value))
 }
 function isFavorite(id: string) { return favoriteIds.value.includes(id) }
 

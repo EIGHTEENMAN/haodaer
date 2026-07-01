@@ -15,13 +15,13 @@ const gradeWorlds = [
 
 onMounted(() => {
   // Auto-hide how-to-play after 5 seconds on first visit
-  const seen = uni.getStorageSync('haodaer_english_hint')
+  const seen = uni.getStorageSync('grandkidsgo_english_hint')
   if (seen) showHowToPlay.value = false
 })
 
 function dismissHint() {
   showHowToPlay.value = false
-  uni.setStorageSync('haodaer_english_hint', '1')
+  uni.setStorageSync('grandkidsgo_english_hint', '1')
 }
 
 function openWorld(w: typeof WORLDS[0]) {

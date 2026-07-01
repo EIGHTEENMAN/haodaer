@@ -5,9 +5,9 @@ const travelUrl = ref('https://travel.grandand.com')
 const loaded = ref(false)
 
 onMounted(() => {
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (token) {
-    travelUrl.value = `https://travel.grandand.com?haodaer_token=${token}`
+    travelUrl.value = `https://travel.grandand.com?grandkidsgo_token=${token}`
   }
 })
 

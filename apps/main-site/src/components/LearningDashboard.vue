@@ -130,7 +130,7 @@ onMounted(async () => {
   profile.value = getActiveProfile()
   if (!profile.value) {
     try {
-      const raw = localStorage.getItem('haodaer_user')
+      const raw = localStorage.getItem('grandkidsgo_user')
       if (raw) {
         const u = JSON.parse(raw)
         profile.value = { type: 'parent', id: u.id, nickname: u.nickname || u.username }

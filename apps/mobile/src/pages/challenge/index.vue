@@ -5,9 +5,9 @@ const challengeUrl = ref('https://tiaozhan.grandand.com')
 const loaded = ref(false)
 
 onMounted(() => {
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (token) {
-    challengeUrl.value = `https://tiaozhan.grandand.com?haodaer_token=${token}`
+    challengeUrl.value = `https://tiaozhan.grandand.com?grandkidsgo_token=${token}`
   }
 })
 

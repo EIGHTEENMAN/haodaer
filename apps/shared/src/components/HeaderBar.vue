@@ -30,12 +30,12 @@ const displayName = computed(() => {
 // localStorage helpers — keep in sync with main-site auth.ts
 function getActiveProfile(): any | null {
   try {
-    const raw = localStorage.getItem('haodaer_active_profile')
+    const raw = localStorage.getItem('grandkidsgo_active_profile')
     return raw ? JSON.parse(raw) : null
   } catch { return null }
 }
 
-function getToken() { return sessionStorage.getItem('haodaer_token') }
+function getToken() { return sessionStorage.getItem('grandkidsgo_token') }
 
 function doSearch() {
   const q = searchQuery.value.trim()
@@ -85,17 +85,17 @@ onMounted(() => {
 
   // Cross-domain auth sync: check cookie if no localStorage user
   if (!isLoggedIn()) {
-    const m = document.cookie.match(new RegExp('(^| )haodaer_token=([^;]+)'))
+    const m = document.cookie.match(new RegExp('(^| )grandkidsgo_token=([^;]+)'))
     if (m) {
       const cookieToken = decodeURIComponent(m[2])
-      sessionStorage.setItem('haodaer_token', cookieToken)
+      sessionStorage.setItem('grandkidsgo_token', cookieToken)
       fetch('/api/auth/me', {
         headers: { Authorization: 'Bearer ' + cookieToken }
       })
       .then(r => r.json())
       .then(d => {
         if (d.code === 'OK') {
-          sessionStorage.setItem('haodaer_user', JSON.stringify(d.data))
+          sessionStorage.setItem('grandkidsgo_user', JSON.stringify(d.data))
           localUser.value = d.data
         }
       })

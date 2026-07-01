@@ -232,13 +232,13 @@ async function doLogin() {
     const d = await r.json()
     if (d.code === "OK") {
       const tok = d.data.accessToken
-      sessionStorage.setItem("haodaer_token", tok)
-      setCookie("haodaer_token", tok)
+      sessionStorage.setItem("grandkidsgo_token", tok)
+      setCookie("grandkidsgo_token", tok)
       if (d.data.user) {
-        sessionStorage.setItem("haodaer_user", JSON.stringify(d.data.user))
+        sessionStorage.setItem("grandkidsgo_user", JSON.stringify(d.data.user))
       }
       if (d.data.isNewUser) {
-        localStorage.setItem("haodaer_isNewUser", "true")
+        localStorage.setItem("grandkidsgo_isNewUser", "true")
       }
       if (timer) clearInterval(timer)
       emit("loggedIn")
@@ -269,10 +269,10 @@ async function doUsernameLogin() {
     const d = await r.json()
     if (d.code === "OK") {
       const tok = d.data.accessToken
-      sessionStorage.setItem("haodaer_token", tok)
-      setCookie("haodaer_token", tok)
+      sessionStorage.setItem("grandkidsgo_token", tok)
+      setCookie("grandkidsgo_token", tok)
       if (d.data.user) {
-        sessionStorage.setItem("haodaer_user", JSON.stringify(d.data.user))
+        sessionStorage.setItem("grandkidsgo_user", JSON.stringify(d.data.user))
       }
       if (timer) clearInterval(timer)
       emit("loggedIn")
@@ -315,13 +315,13 @@ async function doUsernameRegister() {
     const d = await r.json()
     if (d.code === "OK") {
       const tok = d.data.accessToken
-      sessionStorage.setItem("haodaer_token", tok)
-      setCookie("haodaer_token", tok)
+      sessionStorage.setItem("grandkidsgo_token", tok)
+      setCookie("grandkidsgo_token", tok)
       if (d.data.user) {
-        sessionStorage.setItem("haodaer_user", JSON.stringify(d.data.user))
+        sessionStorage.setItem("grandkidsgo_user", JSON.stringify(d.data.user))
       }
       if (d.data.isNewUser) {
-        localStorage.setItem("haodaer_isNewUser", "true")
+        localStorage.setItem("grandkidsgo_isNewUser", "true")
       }
       if (timer) clearInterval(timer)
       emit("loggedIn")

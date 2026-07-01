@@ -5,7 +5,7 @@ const emit = defineEmits<{ close: [] }>()
 const learningData = ref<any[]>([])
 const loading = ref(true)
 
-function getToken() { return sessionStorage.getItem('haodaer_token') }
+function getToken() { return sessionStorage.getItem('grandkidsgo_token') }
 
 function subjectIcon(subject: string): string {
   const icons: Record<string, string> = { poetry: '📜', classics: '📚', general: '🔬', english: '⭐', challenge: '🏆' }

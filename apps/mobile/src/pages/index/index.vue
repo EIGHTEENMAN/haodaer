@@ -54,7 +54,7 @@ const animatedStats = ref(stats.map(s => ({ ...s, displayCount: 0 })))
 const statsVisible = ref(false)
 
 onMounted(() => {
-  token.value = uni.getStorageSync('haodaer_token') || ''
+  token.value = uni.getStorageSync('grandkidsgo_token') || ''
   trackAppOpen('首页')
   // Trigger counter animation after mount
   setTimeout(() => {
@@ -82,8 +82,8 @@ function animateCounters() {
 }
 
 onShow(() => {
-  token.value = uni.getStorageSync('haodaer_token') || ''
-  const stored = uni.getStorageSync('haodaer_user')
+  token.value = uni.getStorageSync('grandkidsgo_token') || ''
+  const stored = uni.getStorageSync('grandkidsgo_user')
   if (stored) {
     try { userInfo.value = JSON.parse(stored) } catch {}
   }

@@ -1,9 +1,9 @@
 // Mobile app auth utilities
 const STORAGE_KEYS = {
-  TOKEN: 'haodaer_token',
-  USER: 'haodaer_user',
-  NEW_USER: 'haodaer_new_user',
-  PROFILE: 'haodaer_active_profile',
+  TOKEN: 'grandkidsgo_token',
+  USER: 'grandkidsgo_user',
+  NEW_USER: 'grandkidsgo_new_user',
+  PROFILE: 'grandkidsgo_active_profile',
 }
 
 export function getToken(): string {

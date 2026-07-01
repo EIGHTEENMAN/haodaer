@@ -42,7 +42,7 @@ app.get('/api/system', (req, res) => {
 // Travel-guide DB stats
 app.get('/api/stats', (req, res) => {
   try {
-    const env = readFileSync('/haodaer/apps/travel-guide/.env', 'utf8');
+    const env = readFileSync('/grandkidsgo/apps/travel-guide/.env', 'utf8');
     const line = env.split('\n').find(l => l.startsWith('DATABASE_URL='));
     if (!line) return res.json({});
     const dbUrl = line.substring('DATABASE_URL='.length).replace(/\?schema=.*$/, '');

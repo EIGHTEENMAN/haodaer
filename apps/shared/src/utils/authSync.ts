@@ -9,10 +9,10 @@
 // Known apps that consume this module are configured with a Vite alias:
 //   resolve: { alias: { '@shared': path.resolve(__dirname, '../shared/src') } }
 
-const TOKEN_KEY = 'haodaer_token'
-const USER_KEY = 'haodaer_user'
-const NEW_USER_KEY = 'haodaer_isNewUser'
-const COOKIE_NAME = 'haodaer_token'
+const TOKEN_KEY = 'grandkidsgo_token'
+const USER_KEY = 'grandkidsgo_user'
+const NEW_USER_KEY = 'grandkidsgo_isNewUser'
+const COOKIE_NAME = 'grandkidsgo_token'
 const COOKIE_DOMAIN = '.grandand.com'
 
 // ── Cookie helpers (vanilla, no library) ───────────────────────

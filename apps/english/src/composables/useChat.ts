@@ -23,7 +23,7 @@ export function useChat(characterId: string, systemPrompt: string) {
     const user = getUser() as any
     let childId: string | null = null
     try {
-      const profile = localStorage.getItem('haodaer_active_profile')
+      const profile = localStorage.getItem('grandkidsgo_active_profile')
       if (profile) {
         const p = JSON.parse(profile)
         childId = p.id
@@ -47,7 +47,7 @@ export function useChat(characterId: string, systemPrompt: string) {
     let assistantContent = ''
 
     try {
-      const token = sessionStorage.getItem('haodaer_token') || ''
+      const token = sessionStorage.getItem('grandkidsgo_token') || ''
       const resp = await fetch(`${AUTH_BASE}/api/llm/chat`, {
         method: 'POST',
         headers: {

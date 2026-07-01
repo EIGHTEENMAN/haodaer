@@ -1,7 +1,7 @@
 // 积分 API 工具函数
 
 function getToken(): string | null {
-  return sessionStorage.getItem('haodaer_token')
+  return sessionStorage.getItem('grandkidsgo_token')
 }
 
 export async function earnPoints(type: string, description?: string): Promise<{ earned: number; balance: number } | null> {

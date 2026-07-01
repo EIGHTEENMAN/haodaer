@@ -6,7 +6,7 @@ const isOnline = ref(true)
 
 onLaunch(() => {
   // Sync token across apps
-  const token = uni.getStorageSync('haodaer_token')
+  const token = uni.getStorageSync('grandkidsgo_token')
   if (token) {
     console.log('[App] Auth token found, restoring state')
   }
@@ -15,7 +15,7 @@ onLaunch(() => {
   try {
     const sysInfo = uni.getSystemInfoSync()
     if (sysInfo.safeArea) {
-      uni.setStorageSync('haodaer_safe_area', JSON.stringify(sysInfo.safeArea))
+      uni.setStorageSync('grandkidsgo_safe_area', JSON.stringify(sysInfo.safeArea))
     }
   } catch {}
 
