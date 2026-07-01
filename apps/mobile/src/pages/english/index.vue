@@ -32,7 +32,7 @@ function openWorld(w: typeof WORLDS[0]) {
 
 function shareEnglish() {
   shareContent({
-    title: '学英语 - 好大儿',
+    title: '学英语 - 童慧行',
     text: `趣味单词，自然拼读 · ${totalWords}单词`,
   })
 }

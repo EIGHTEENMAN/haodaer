@@ -4,7 +4,7 @@
 
 ```bash
 # 1. 安装依赖
-cd 好大儿/scripts/generate-poem-images
+cd 童慧行/scripts/generate-poem-images
 npm install
 
 # 2. 导出诗词数据（首次运行）

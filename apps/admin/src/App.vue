@@ -46,7 +46,7 @@ function doLogout() {
   <div class="admin-layout" v-if="route.path !== '/login'">
     <aside class="sidebar">
       <div class="sidebar-header">
-        <router-link to="/" class="sidebar-logo">好大儿</router-link>
+        <router-link to="/" class="sidebar-logo">童慧行</router-link>
         <span class="sidebar-badge">管理</span>
       </div>
       <nav class="sidebar-nav">
@@ -71,7 +71,7 @@ function doLogout() {
     </aside>
     <main class="main-content">
       <header class="topbar">
-        <h2 class="page-title">{{ route.meta.title || '好大儿管理' }}</h2>
+        <h2 class="page-title">{{ route.meta.title || '童慧行管理' }}</h2>
         <div class="topbar-right">
           <a href="https://grandand.com" target="_blank" class="topbar-link">主站</a>
           <span class="topbar-sep">|</span>

@@ -105,7 +105,7 @@ function goBack() {
     <!-- Hero -->
     <view class="hero">
       <view class="hero-icon">👤</view>
-      <text class="hero-title">欢迎来到好大儿</text>
+      <text class="hero-title">欢迎来到童慧行</text>
       <text class="hero-desc">登录后同步学习进度，记录成长</text>
     </view>
 

@@ -221,7 +221,7 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div className="header-left">
-            <a href="https://grandand.com" className="logo">好大儿</a>
+            <a href="https://grandand.com" className="logo">童慧行</a>
             <form className="header-search" onSubmit={(e) => { e.preventDefault(); doSearch(); }}>
               <svg className="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" onClick={doSearch}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

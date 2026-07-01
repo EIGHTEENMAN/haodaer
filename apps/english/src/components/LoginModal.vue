@@ -25,7 +25,7 @@
             <div class="qr-app-item">
               <span class="qr-app-icon">📱</span>
               <div>
-                <div class="qr-app-name">好大儿 App</div>
+                <div class="qr-app-name">童慧行 App</div>
                 <div class="qr-app-desc">打开扫一扫</div>
               </div>
             </div>

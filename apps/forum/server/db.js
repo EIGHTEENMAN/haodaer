@@ -72,7 +72,7 @@ if (boardCount.cnt === 0) {
     ['education', '学习教育', '讨论儿童教育方法、学习资源', 2],
     ['travel', '亲子旅行', '旅行攻略、出行经验交流', 3],
     ['fun', '趣味分享', '好玩的、有趣的内容分享', 4],
-    ['feedback', '建议反馈', '对好大儿平台的建议和反馈', 5],
+    ['feedback', '建议反馈', '对童慧行平台的建议和反馈', 5],
   ];
   const insert = db.prepare('INSERT INTO boards (id, name, description, sort_order) VALUES (?, ?, ?, ?)');
   db.transaction(() => { for (const b of boards) insert.run(...b); })();

@@ -1414,7 +1414,7 @@ function generateTongshiComprehensionQuestions(): QuestionRow[] {
 
 function main() {
   console.log('========================================')
-  console.log('  好大儿问答挑战 - 自动出题脚本')
+  console.log('  童慧行问答挑战 - 自动出题脚本')
   console.log('========================================\n')
 
   let allQuestions: QuestionRow[] = []

@@ -384,7 +384,7 @@ const ageOptions = Array.from({ length: 18 }, (_, i) => i + 1)
     <header class="pc-header">
       <div class="pc-header-inner">
         <div class="pc-header-left">
-          <a href="https://grandand.com" class="pc-logo">好大儿</a>
+          <a href="https://grandand.com" class="pc-logo">童慧行</a>
           <form class="pc-search-form" @submit.prevent="doSearch">
             <svg class="pc-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="doSearch">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

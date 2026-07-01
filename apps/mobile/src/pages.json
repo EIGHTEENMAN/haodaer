@@ -3,7 +3,7 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "好大儿",
+        "navigationBarTitleText": "童慧行",
         "navigationStyle": "custom"
       }
     },
@@ -85,7 +85,7 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "好大儿",
+    "navigationBarTitleText": "童慧行",
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#f8fafc"
   },

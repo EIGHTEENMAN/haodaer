@@ -1,6 +1,6 @@
 // 追加新诗词到 poems.ts
 const fs = require('fs')
-const path = '/Users/eighteenman/工作/好大儿/apps/xueshici/src/data/poems.ts'
+const path = '/Users/eighteenman/工作/童慧行/apps/xueshici/src/data/poems.ts'
 const content = fs.readFileSync(path, 'utf8')
 
 // 找到数组结束位置: 最后一个 ']' 后面跟着 '\n\nexport'

@@ -263,7 +263,7 @@ app.get('/api/admin/questions/download', async (req, res) => {
       sections: [{
         properties: {},
         children: [
-          new Paragraph({ children: [new TextRun({ text: `好大儿 - 题库导出 (${rows.length} 题)`, bold: true, size: 28 })], alignment: AlignmentType.CENTER, spacing: { after: 300 } }),
+          new Paragraph({ children: [new TextRun({ text: `童慧行 - 题库导出 (${rows.length} 题)`, bold: true, size: 28 })], alignment: AlignmentType.CENTER, spacing: { after: 300 } }),
           new Paragraph({ children: [new TextRun({ text: `导出时间: ${new Date().toLocaleString('zh-CN')}`, size: 18 })], alignment: AlignmentType.CENTER, spacing: { after: 400 } }),
           new Table({ rows: [headerRow, ...dataRows], width: { size: 100, type: WidthType.PERCENTAGE } })
         ]

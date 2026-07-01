@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon.svg'],
       manifest: {
-        name: '好大儿 儿童免费学习乐园',
-        short_name: '好大儿',
+        name: '童慧行 儿童免费学习乐园',
+        short_name: '童慧行',
         description: '国学启蒙、诗词学习、通识百科、英语学习、亲子旅行',
         theme_color: '#2563eb',
         background_color: '#f8fafc',

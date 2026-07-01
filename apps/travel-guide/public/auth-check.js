@@ -122,7 +122,7 @@
           '</div>' +
           '<p style="font-size:14px;opacity:0.8;margin-bottom:24px">打开 App 或微信扫一扫</p>' +
           '<div style="width:100%">' +
-            ['📱好大儿 App', '🧳走天下 App', '💬微信'].map(function(s) {
+            ['📱童慧行 App', '🧳走天下 App', '💬微信'].map(function(s) {
               var chars = Array.from(s);
               var icon = chars[0];
               var text = chars.slice(1).join('');

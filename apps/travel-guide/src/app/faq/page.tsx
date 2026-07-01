@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-export const metadata = { title: '常见问题 - 好大儿走天下', description: '关于好大儿走天下的常见问题解答' };
+export const metadata = { title: '常见问题 - 童慧行走天下', description: '关于童慧行走天下的常见问题解答' };
 
 export default function FAQPage() {
   const faqs = [
-    { q: '好大儿走天下是什么？', a: '好大儿走天下是一个专注于亲子旅行的攻略平台，汇集千万真实家庭的旅行经验，帮助父母轻松规划亲子出行。' },
+    { q: '童慧行走天下是什么？', a: '童慧行走天下是一个专注于亲子旅行的攻略平台，汇集千万真实家庭的旅行经验，帮助父母轻松规划亲子出行。' },
     { q: '如何发布攻略？', a: '注册并登录后，点击首页或攻略详情页的"发布攻略"按钮，填写标题、目的地、内容等信息即可发布。' },
     { q: '攻略内容可以使用富文本吗？', a: '可以。发布攻略时，内容编辑器支持富文本排版，包括标题、粗体、列表、引用、链接等多种格式。' },
     { q: '如何修改已发布的攻略？', a: '目前暂不支持编辑已发布的攻略，如需修改请联系管理员。' },
@@ -21,7 +21,7 @@ export default function FAQPage() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <Link href="/" className="text-green-600 hover:text-green-800 text-sm mb-6 block">← 返回首页</Link>
         <h1 className="text-2xl font-bold text-gray-900 mb-2">常见问题</h1>
-        <p className="text-gray-500 mb-8">关于好大儿走天下的常见问题解答</p>
+        <p className="text-gray-500 mb-8">关于童慧行走天下的常见问题解答</p>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <details key={i} className="bg-white rounded-xl shadow-sm overflow-hidden">

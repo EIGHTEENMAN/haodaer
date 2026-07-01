@@ -2,7 +2,7 @@
 const fs = require('fs')
 
 // 读取已有诗词标题
-const existingData = fs.readFileSync('/Users/eighteenman/工作/好大儿/apps/xueshici/src/data/poems.ts', 'utf8')
+const existingData = fs.readFileSync('/Users/eighteenman/工作/童慧行/apps/xueshici/src/data/poems.ts', 'utf8')
 const existingTitles = new Set()
 const regex = /title:\s*"([^"]+)"\s*\n\s+author:/g
 let m

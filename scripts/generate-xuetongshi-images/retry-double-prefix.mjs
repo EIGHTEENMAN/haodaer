@@ -12,7 +12,7 @@ if (existsSync(userEnvPath)) {
   }
 }
 
-const SECTIONS_DIR = '/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/sections'
+const SECTIONS_DIR = '/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/sections'
 
 const targets = [
   { id: 'ct-four-great-ct-four-great-s7', title: '四大发明' },

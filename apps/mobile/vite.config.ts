@@ -14,9 +14,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico'],
       manifest: {
-        name: '好大儿',
-        short_name: '好大儿',
-        description: '好大儿儿童免费学习乐园 - 读万卷书，行万里路',
+        name: '童慧行',
+        short_name: '童慧行',
+        description: '童慧行儿童免费学习乐园 - 读万卷书，行万里路',
         theme_color: '#2563eb',
         background_color: '#f8fafc',
         display: 'standalone',

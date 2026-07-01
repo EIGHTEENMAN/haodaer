@@ -154,7 +154,7 @@ export default function LoginModal({ open, onClose, onLogin }: Props) {
               <p className="am-qr-hint">打开 App 或微信扫一扫</p>
               <div className="am-methods">
                 {[
-                  { name: '好大儿 App', icon: '📱', desc: '打开好大儿 App 扫一扫' },
+                  { name: '童慧行 App', icon: '📱', desc: '打开童慧行 App 扫一扫' },
                   { name: '微信', icon: '💬', desc: '使用微信扫一扫' },
                 ].map(m => (
                   <div key={m.name} className="am-method">
@@ -173,7 +173,7 @@ export default function LoginModal({ open, onClose, onLogin }: Props) {
             <div className="am-mobile-oauth">
               <span className="amo-label">一键登录</span>
               <button className="amo-btn amo-btn-wechat" onClick={() => window.location.href = '/api/oauth/wechat'}>💬 微信</button>
-              <button className="amo-btn amo-btn-app">📱 好大儿 App</button>
+              <button className="amo-btn amo-btn-app">📱 童慧行 App</button>
             </div>
             {/* Tab Bar */}
             <div className="am-tabs">

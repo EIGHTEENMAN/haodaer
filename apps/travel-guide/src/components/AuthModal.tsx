@@ -128,8 +128,8 @@ export default function AuthModal({ open, onClose, onLogin, force }: AuthModalPr
   if (!open) return null;
 
   const scanMethods = [
-    { name: '好大儿 App', icon: '📱', desc: '打开好大儿 App 扫一扫' },
-    { name: '走天下 App', icon: '🧳', desc: '打开好大儿走天下 App 扫一扫' },
+    { name: '童慧行 App', icon: '📱', desc: '打开童慧行 App 扫一扫' },
+    { name: '走天下 App', icon: '🧳', desc: '打开童慧行走天下 App 扫一扫' },
     { name: '微信', icon: '💬', desc: '使用微信扫一扫' },
   ];
 

@@ -272,7 +272,7 @@
   "ecosystem": {
     "id": "ecosystem",
     "status": "skip",
-    "path": "/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/knowledge/ecosystem.jpg"
+    "path": "/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/knowledge/ecosystem.jpg"
   },
   "po1": {
     "id": "po1",
@@ -625,7 +625,7 @@
   "calligraphy": {
     "id": "calligraphy",
     "status": "skip",
-    "path": "/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/knowledge/calligraphy.jpg"
+    "path": "/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/knowledge/calligraphy.jpg"
   },
   "dance-theater": {
     "id": "dance-theater",
@@ -636,7 +636,7 @@
   "sculpture": {
     "id": "sculpture",
     "status": "skip",
-    "path": "/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/knowledge/sculpture.jpg"
+    "path": "/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/knowledge/sculpture.jpg"
   },
   "famous-paintings": {
     "id": "famous-paintings",
@@ -809,7 +809,7 @@
   "mental-health": {
     "id": "mental-health",
     "status": "skip",
-    "path": "/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/knowledge/mental-health.jpg"
+    "path": "/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/knowledge/mental-health.jpg"
   },
   "first-aid": {
     "id": "first-aid",

@@ -69,7 +69,7 @@ async function downloadWord() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `好大儿题库-${Date.now()}.docx`
+    a.download = `童慧行题库-${Date.now()}.docx`
     a.click()
     URL.revokeObjectURL(url)
   } catch (e) {

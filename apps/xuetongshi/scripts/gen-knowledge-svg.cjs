@@ -65,7 +65,7 @@ function generateSvg(topic) {
   <text x="512" y="430" font-family="serif" font-size="280" font-weight="900" fill="${s.accent}" text-anchor="middle" opacity="0.18">${escapeXml(char)}</text>
   <text x="512" y="600" font-family="sans-serif" font-size="48" font-weight="700" fill="${s.accent}" text-anchor="middle" opacity="0.85">${escapeXml(topic.title)}</text>
   <text x="512" y="660" font-family="sans-serif" font-size="28" fill="#64748b" text-anchor="middle" opacity="0.7">${escapeXml(topic.cat)}</text>
-  <text x="512" y="940" font-family="sans-serif" font-size="20" fill="#94a3b8" text-anchor="middle" opacity="0.6">好大儿 · 学通识</text>
+  <text x="512" y="940" font-family="sans-serif" font-size="20" fill="#94a3b8" text-anchor="middle" opacity="0.6">童慧行 · 学通识</text>
 </svg>`
 }
 

@@ -246,7 +246,7 @@ function handleLogout() {
         <view class="profile-detail">
           <text class="profile-name">{{ userInfo.nickname || userInfo.username || '用户' }}</text>
           <view class="profile-meta">
-            <text class="profile-badge">好大儿用户</text>
+            <text class="profile-badge">童慧行用户</text>
             <text v-if="streakDays > 0" class="profile-streak">🔥 {{ streakDays }}天连续</text>
           </view>
         </view>
@@ -436,7 +436,7 @@ function handleLogout() {
 
     <!-- Version -->
     <view class="version">
-      <text>好大儿 v1.0.0</text>
+      <text>童慧行 v1.0.0</text>
     </view>
   </view>
 </template>

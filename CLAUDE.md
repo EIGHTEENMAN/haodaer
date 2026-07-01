@@ -1,22 +1,22 @@
-# 好大儿项目 (Haodaer)
+# 童慧行项目 (Haodaer)
 
 儿童益智乐园 & 亲子旅行攻略平台
 
 ## 项目说明
 
-好大儿包含两大站点：
-- **好大儿主站** (grandand.com)：儿童学习资源 + 益智挑战
-- **好大儿走天下** (travel.grandand.com)：真实亲子旅行攻略
+童慧行包含两大站点：
+- **童慧行主站** (grandand.com)：儿童学习资源 + 益智挑战
+- **童慧行走天下** (travel.grandand.com)：真实亲子旅行攻略
 
 核心理念：孩子说好才是真的好。儿童体验第一、隐私保护、非商业化优先。
 
 ## 快速信息
 
-- **好大儿服务器**：47.114.77.124 (阿里云 ECS, root/Hde@2026)
-- **seedme 服务器**：121.196.230.54 (旧好大儿服务器，seedme-api 端口 3000)
-- 好大儿路径：`/haodaer/apps/`
+- **童慧行服务器**：47.114.77.124 (阿里云 ECS, root/Hde@2026)
+- **seedme 服务器**：121.196.230.54 (旧童慧行服务器，seedme-api 端口 3000)
+- 童慧行路径：`/haodaer/apps/`
 - GitHub 组织：github.com/EIGHTEENMAN (12个仓库)
-- 完整方案：`项目建设方案/好大儿项目建设方案（v3.2 终极版）.txt`
+- 完整方案：`项目建设方案/童慧行项目建设方案（v3.2 终极版）.txt`
 
 ## TTS 音频系统
 
@@ -42,7 +42,7 @@
 - Phase 3E 管理监控看板 ✅ (admin Express+AntD)
 - Phase 3F PostHog 埋点 ✅
 - Phase 3C 前端壳子 🟡 (学习应用已部署但缺内容数据)
-- Phase 4 好大儿来挑战 ✅ (问答挑战+神兽方块, tiaozhan.grandand.com)
+- Phase 4 童慧行来挑战 ✅ (问答挑战+神兽方块, tiaozhan.grandand.com)
 - Phase 5 论坛 ✅ (forum.grandand.com, 完整社区功能)
 - Phase 5 商城 ✅ (store.grandand.com, 积分兑换系统)
 - Phase 3G FAQ/法律页面 ✅ (grandand.com/faq, /legal)
@@ -62,8 +62,8 @@
 
 ```bash
 # 1. 克隆仓库
-git clone git@github.com:EIGHTEENMAN/好大儿.git
-cd 好大儿
+git clone git@github.com:EIGHTEENMAN/童慧行.git
+cd 童慧行
 
 # 2. 安装依赖（每个 app 各自安装）
 cd apps/auth-service && npm install && cd ../..

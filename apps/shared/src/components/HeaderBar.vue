@@ -111,7 +111,7 @@ onMounted(() => {
   <header class="hd-header">
     <div class="hd-header-inner">
       <div class="hd-header-left">
-        <a href="https://grandand.com" class="hd-logo">好大儿</a>
+        <a href="https://grandand.com" class="hd-logo">童慧行</a>
         <form v-if="!isMinimal" class="hd-search-form" @submit.prevent="doSearch">
           <svg class="hd-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="doSearch">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

@@ -74,7 +74,7 @@ async function save() {
 <template>
   <div class="psp-page">
     <div class="psp-header">
-      <a href="https://grandand.com" class="psp-logo">好大儿</a>
+      <a href="https://grandand.com" class="psp-logo">童慧行</a>
     </div>
     <div class="psp-container">
       <!-- Steps -->
@@ -85,7 +85,7 @@ async function save() {
 
       <!-- Step 1: Registrant Profile -->
       <div v-if="step === 1">
-        <h2 class="psp-title">欢迎加入好大儿</h2>
+        <h2 class="psp-title">欢迎加入童慧行</h2>
         <p class="psp-desc">请先填写注册人的信息</p>
 
         <div class="psp-section">
@@ -108,7 +108,7 @@ async function save() {
             placeholder="给自己取个好听的名字"
             class="psp-input"
           />
-          <p class="psp-hint">例如：帅爸、美妈、好大儿家长</p>
+          <p class="psp-hint">例如：帅爸、美妈、童慧行家长</p>
         </div>
 
         <div class="psp-section">

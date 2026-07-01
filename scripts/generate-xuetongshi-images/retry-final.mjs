@@ -41,7 +41,7 @@ for (let i = 0; i < targets.length; i++) {
       continue
     }
     const processed = await sharp(buf).resize(800).jpeg({ quality: 82 }).toBuffer()
-    writeFileSync(join('/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/sections', `${id}.jpg`), processed)
+    writeFileSync(join('/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/sections', `${id}.jpg`), processed)
     log(`[${i+1}/${targets.length}] ${id} ✅ ${(processed.length/1024).toFixed(0)}KB`)
   } catch (e) {
     log(`[${i+1}/${targets.length}] ${id} ❌ ${e.message}`)

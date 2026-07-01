@@ -23,5 +23,5 @@ if (data.data?.image_urls?.[0]) {
   buf = Buffer.from(await (await fetch(data.data.image_urls[0])).arrayBuffer())
 } else { console.log('FAIL:', JSON.stringify(data).slice(0, 300)); process.exit(1) }
 const processed = await sharp(buf).resize(800).jpeg({ quality: 82 }).toBuffer()
-writeFileSync('/Users/eighteenman/工作/好大儿/apps/xuetongshi/public/images/sections/ct-silk-road-ct-silk-road-s10.jpg', processed)
+writeFileSync('/Users/eighteenman/工作/童慧行/apps/xuetongshi/public/images/sections/ct-silk-road-ct-silk-road-s10.jpg', processed)
 console.log('OK', processed.length, 'bytes')

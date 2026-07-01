@@ -42,7 +42,7 @@ function LoginForm() {
       <Link href="/" className="text-green-600 hover:text-green-800 text-sm mb-6 block">← 返回首页</Link>
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h1 className="text-xl font-bold text-gray-900 mb-1">登录</h1>
-        <p className="text-sm text-gray-500 mb-6">登录好大儿走天下</p>
+        <p className="text-sm text-gray-500 mb-6">登录童慧行走天下</p>
 
         {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg">{error}</div>}
 

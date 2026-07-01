@@ -27,7 +27,7 @@ export default function ComingSoon() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight drop-shadow-lg">
-            好大儿走天下
+            童慧行走天下
           </h1>
 
           <p className="text-2xl md:text-3xl font-bold text-green-300 mb-8 drop-shadow">
@@ -59,7 +59,7 @@ export default function ComingSoon() {
             href="https://grandand.com"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white/80 hover:text-white rounded-full text-sm font-medium transition-all border border-white/20 hover:border-white/40"
           >
-            ← 返回好大儿主站
+            ← 返回童慧行主站
           </Link>
         </div>
       </div>
@@ -67,7 +67,7 @@ export default function ComingSoon() {
       {/* Footer */}
       <footer className="relative z-10 text-center py-6">
         <p className="text-sm text-white/30">
-          &copy; {new Date().getFullYear()} 好大儿走天下 &mdash; 好大儿旗下亲子旅行品牌
+          &copy; {new Date().getFullYear()} 童慧行走天下 &mdash; 童慧行旗下亲子旅行品牌
         </p>
       </footer>
 

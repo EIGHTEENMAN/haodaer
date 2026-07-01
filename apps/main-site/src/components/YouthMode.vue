@@ -147,7 +147,7 @@ onUnmounted(() => {
     <div class="ym-night-card">
       <div class="ym-night-icon">🌙</div>
       <h2 class="ym-night-title">夜间模式已开启</h2>
-      <p class="ym-night-desc">为了保护孩子的视力，好大儿在夜间（22:00-06:00）暂停服务</p>
+      <p class="ym-night-desc">为了保护孩子的视力，童慧行在夜间（22:00-06:00）暂停服务</p>
       <p class="ym-night-time">请明天早上6点后再来哦</p>
     </div>
   </div>

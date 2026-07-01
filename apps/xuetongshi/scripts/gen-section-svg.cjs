@@ -104,7 +104,7 @@ for (const t of topics) {
   <text x="400" y="270" font-family="serif" font-size="200" font-weight="900" fill="${s.accent}" text-anchor="middle" opacity="0.2">${escapeXml(char)}</text>
   <text x="400" y="400" font-family="sans-serif" font-size="28" font-weight="700" fill="${s.accent}" text-anchor="middle" opacity="0.85">${escapeXml(sec.title)}</text>
   <text x="400" y="440" font-family="sans-serif" font-size="18" fill="#64748b" text-anchor="middle" opacity="0.6">${escapeXml(t.title)}</text>
-  <text x="400" y="560" font-family="sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle" opacity="0.6">好大儿 · 学通识</text>
+  <text x="400" y="560" font-family="sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle" opacity="0.6">童慧行 · 学通识</text>
 </svg>`
     try {
       fs.writeFileSync(outFile, svg, 'utf-8')

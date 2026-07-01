@@ -189,7 +189,7 @@ function dismissInstall() {
       <view class="install-content">
         <text class="install-icon">📲</text>
         <view class="install-texts">
-          <text class="install-title">安装好大儿</text>
+          <text class="install-title">安装童慧行</text>
           <text class="install-desc">添加到主屏幕，随时学习</text>
         </view>
       </view>
@@ -327,7 +327,7 @@ function dismissInstall() {
     <!-- Platform Stats -->
     <view class="stats-section">
       <view class="section-header">
-        <text class="section-title">📈 好大儿内容</text>
+        <text class="section-title">📈 童慧行内容</text>
       </view>
       <view class="stats-grid">
         <view v-for="s in animatedStats" :key="s.label" class="stat-card" :style="{ borderColor: s.color + '30' }">

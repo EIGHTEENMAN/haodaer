@@ -38,7 +38,7 @@ async function doLogin() {
 <template>
   <div class="login-page">
     <div class="login-card">
-      <div class="login-logo">好大儿</div>
+      <div class="login-logo">童慧行</div>
       <div class="login-title">管理后台</div>
       <div class="login-subtitle">请登录以继续</div>
 

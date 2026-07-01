@@ -180,7 +180,7 @@ onMounted(async () => {
     <!-- Header -->
     <header class="s-header">
       <div class="s-header-inner">
-        <a href="https://grandand.com" class="s-logo">好大儿</a>
+        <a href="https://grandand.com" class="s-logo">童慧行</a>
         <form class="s-search-form" @submit.prevent="doSearch">
           <svg class="s-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="doSearch">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

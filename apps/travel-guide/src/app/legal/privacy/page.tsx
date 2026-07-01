@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const metadata = { title: '隐私政策 - 好大儿走天下', description: '好大儿走天下隐私政策，说明我们如何收集、使用和保护您的个人信息' };
+export const metadata = { title: '隐私政策 - 童慧行走天下', description: '童慧行走天下隐私政策，说明我们如何收集、使用和保护您的个人信息' };
 
 export default function PrivacyPage() {
   return (

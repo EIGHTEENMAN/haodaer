@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const metadata = { title: '服务条款 - 好大儿走天下', description: '好大儿走天下服务条款，使用本平台即表示同意以下条款' };
+export const metadata = { title: '服务条款 - 童慧行走天下', description: '童慧行走天下服务条款，使用本平台即表示同意以下条款' };
 
 export default function TermsPage() {
   return (
@@ -11,7 +11,7 @@ export default function TermsPage() {
         <p className="text-gray-500">最后更新：2026年5月</p>
 
         <h2>1. 服务说明</h2>
-        <p>好大儿走天下是一个亲子旅行攻略平台，为用户提供攻略浏览、发布、评论、评分等功能。使用本平台即表示您同意以下条款。</p>
+        <p>童慧行走天下是一个亲子旅行攻略平台，为用户提供攻略浏览、发布、评论、评分等功能。使用本平台即表示您同意以下条款。</p>
 
         <h2>2. 用户责任</h2>
         <ul>

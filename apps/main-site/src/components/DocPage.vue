@@ -39,7 +39,7 @@ function typeIcon(t: string): string {
   <div class="doc-page">
     <header class="doc-header">
       <div class="doc-header-inner">
-        <a href="https://grandand.com" class="doc-logo">好大儿</a>
+        <a href="https://grandand.com" class="doc-logo">童慧行</a>
         <form class="doc-search" @submit.prevent="docDoSearch">
           <svg class="doc-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="docDoSearch">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

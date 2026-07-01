@@ -165,7 +165,7 @@ function App() {
       <header className="store-header">
         <div className="store-header-inner">
           <div className="store-header-left">
-            <a href="https://grandand.com" className="store-logo">好大儿</a>
+            <a href="https://grandand.com" className="store-logo">童慧行</a>
             <form className="store-search" onSubmit={(e) => { e.preventDefault(); const inp = document.querySelector(".store-search-input") as HTMLInputElement; if(inp?.value) window.location.href = "https://grandand.com/search?q=" + encodeURIComponent(inp.value); }}>
               <svg className="store-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" onClick={() => { const inp = document.querySelector(".store-search-input") as HTMLInputElement; if(inp?.value) window.location.href = "https://grandand.com/search?q=" + encodeURIComponent(inp.value); }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

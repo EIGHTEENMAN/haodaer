@@ -5,13 +5,13 @@ import AnalyticsTracker from '@/components/AnalyticsTracker';
 import Header from '@/components/Header';
 import AnimationStyles from '@/components/Animation';
 
-const siteName = '好大儿走天下';
+const siteName = '童慧行走天下';
 const description = '汇聚千万真实家庭的亲子旅行经验，让每一次出行都有迹可循';
 
 export const metadata: Metadata = {
   title: { default: `${siteName} - 亲子旅行攻略`, template: `%s - ${siteName}` },
   description,
-  keywords: ['亲子旅行', '亲子游', '家庭旅游', '儿童旅行', '亲子攻略', '好大儿走天下'],
+  keywords: ['亲子旅行', '亲子游', '家庭旅游', '儿童旅行', '亲子攻略', '童慧行走天下'],
   openGraph: {
     title: siteName,
     description,

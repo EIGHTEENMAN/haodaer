@@ -195,7 +195,7 @@ const stats = [
     <header class="header">
       <div class="header-inner">
         <div class="header-left">
-          <a href="https://grandand.com" class="logo">好大儿</a>
+          <a href="https://grandand.com" class="logo">童慧行</a>
           <form class="header-search" @submit.prevent="doSearch">
             <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" @click="doSearch">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -263,7 +263,7 @@ const stats = [
         <div :class="['hero-content', { 'hero-split': localUser }]">
           <div class="hero-text animate-fadeInUp">
             <p class="hero-subtitle">读万卷书 行万里路</p>
-            <p class="hero-desc">好大儿是一个专为儿童和父母打造的成长陪伴平台。以"寓教于乐"为核心理念，为孩子们提供丰富的人文启蒙和学习资源，为年轻父母提供真实可靠的亲子旅行指南。</p>
+            <p class="hero-desc">童慧行是一个专为儿童和父母打造的成长陪伴平台。以"寓教于乐"为核心理念，为孩子们提供丰富的人文启蒙和学习资源，为年轻父母提供真实可靠的亲子旅行指南。</p>
             <p class="hero-desc-sub">从国学经典学立身，到通识百科长见识，再到走向广阔天地——陪伴孩子们读万卷书，行万里路。</p>
             <div class="hero-cta">
               <a href="#apps" class="cta-btn cta-primary">开始学习</a>
@@ -338,7 +338,7 @@ const stats = [
         <a href="/legal">隐私政策</a>
       </div>
       <p class="footer-icp"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备XXXXXXXX号-X</a> <span class="footer-sep">|</span> 京公网安备 XXXXXXXXXX号</p>
-      <p class="footer-copy">&copy; 2026 好大儿 &mdash; 儿童免费学习乐园 <span class="footer-ai">· AI辅助</span></p>
+      <p class="footer-copy">&copy; 2026 童慧行 &mdash; 儿童免费学习乐园 <span class="footer-ai">· AI辅助</span></p>
     </footer>
 
     <!-- Auth Modal -->

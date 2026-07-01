@@ -320,8 +320,8 @@ async function submitParentConsent() {
             <p class="am-qr-hint">打开 App 或微信扫一扫</p>
             <div class="am-methods">
               <div class="am-method" v-for="m in [
-                { name: '好大儿 App', icon: '📱', desc: '打开好大儿 App 扫一扫' },
-                { name: '走天下 App', icon: '🧳', desc: '打开好大儿走天下 App 扫一扫' },
+                { name: '童慧行 App', icon: '📱', desc: '打开童慧行 App 扫一扫' },
+                { name: '走天下 App', icon: '🧳', desc: '打开童慧行走天下 App 扫一扫' },
                 { name: '微信', icon: '💬', desc: '使用微信扫一扫' },
               ]" :key="m.name">
                 <span class="am-method-icon">{{ m.icon }}</span>
@@ -340,7 +340,7 @@ async function submitParentConsent() {
           <div class="am-mobile-oauth">
             <span class="amo-label">一键登录</span>
             <button class="amo-btn amo-btn-wechat" @click="onWechatLogin">💬 微信</button>
-            <button class="amo-btn amo-btn-app">📱 好大儿 App</button>
+            <button class="amo-btn amo-btn-app">📱 童慧行 App</button>
             <button class="amo-btn amo-btn-travel">🧳 走天下</button>
           </div>
           <!-- Tab Bar -->
@@ -533,7 +533,7 @@ async function submitParentConsent() {
       <button class="am-close" @click="showParentConsent = false">✕</button>
       <div class="am-right" style="width:100%;padding:32px">
         <h2 class="am-title am-title-dark">家长同意确认</h2>
-        <p class="am-subtitle">您的孩子未满14周岁，根据相关法律法规，需要家长同意后才能使用好大儿</p>
+        <p class="am-subtitle">您的孩子未满14周岁，根据相关法律法规，需要家长同意后才能使用童慧行</p>
 
         <div v-if="consentError" class="am-error">{{ consentError }}</div>
 
