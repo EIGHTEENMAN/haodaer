@@ -4,6 +4,24 @@ import { words } from '../../data/words'
 import { wordStore } from '../../stores/wordStore'
 import { studyStore } from '../../stores/studyStore'
 import { playWordAudio, speakSentence, playSentenceAudio, stopAllAudio } from '../../utils/audio'
+import { earnPoints } from '@shared/utils/points'
+
+const showPointToast = ref(false)
+const pointToastData = ref({ earned: 0, balance: 0 })
+
+async function onSessionComplete() {
+  const result = await earnPoints('study_checkin')
+  if (result && result.earned > 0) {
+    pointToastData.value = result
+    showPointToast.value = true
+    setTimeout(() => {
+      showPointToast.value = false
+      window.location.hash = '#/study/__read__'
+    }, 2500)
+  } else {
+    window.location.hash = '#/study/__read__'
+  }
+}
 
 const props = defineProps<{
   themeId: string
@@ -104,7 +122,7 @@ function next() {
       sessionWords.value.map(w => ({ word: w.word, meaning: w.meaning })),
       correctCount.value
     )
-    window.location.hash = '#/study/__read__'
+    onSessionComplete()
   }
 }
 
@@ -132,7 +150,7 @@ function nextManual() {
       sessionWords.value.map(w => ({ word: w.word, meaning: w.meaning })),
       correctCount.value
     )
-    window.location.hash = '#/study/__read__'
+    onSessionComplete()
   }
 }
 </script>
@@ -226,6 +244,19 @@ function nextManual() {
         </p>
       </div>
     </footer>
+
+    <!-- 积分奖励 Toast -->
+    <Teleport to="body" v-if="showPointToast">
+      <div class="point-toast-overlay">
+        <div class="point-toast">
+          <div class="point-toast-star">⭐</div>
+          <div class="point-toast-text">
+            <strong>+{{ pointToastData.earned }} 积分</strong>
+            <span>当前 {{ pointToastData.balance }} 分</span>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -614,5 +645,59 @@ function nextManual() {
     padding: 10px 8px;
     font-size: 16px;
   }
+}
+
+/* 积分 Toast */
+.point-toast-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  animation: pt-fadeIn 0.3s ease;
+}
+
+.point-toast {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 36px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  animation: pt-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.point-toast-star {
+  font-size: 42px;
+  margin-bottom: 8px;
+  animation: pt-bounce 0.8s ease infinite;
+}
+
+.point-toast-text strong {
+  display: block;
+  font-size: 26px;
+  color: #f59e0b;
+  margin-bottom: 4px;
+}
+
+.point-toast-text span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+@keyframes pt-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pt-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pt-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 </style>

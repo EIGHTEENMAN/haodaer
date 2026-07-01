@@ -94,7 +94,56 @@ router.get('/points', authenticate, (req, res) => {
   });
 });
 
-// POST /api/user/wechat-bind - Bind WeChat account
+// POST /api/user/points/earn - Earn points for various activities
+// types: study_checkin (每日学习+2), study_stage_complete (完成一关+10),
+//        streak_bonus (连续学习奖励+5起), daily_checkin (每日签到+5)
+const POINTS_MAP = {
+  study_checkin: 2,
+  study_stage_complete: 10,
+  streak_bonus: 5,
+  daily_checkin: 5,
+};
+
+router.post('/points/earn', authenticate, (req, res) => {
+  const { type, description } = req.body;
+  const POINTS_MAP = { study_checkin: 2, study_stage_complete: 10, streak_bonus: 5, daily_checkin: 5 };
+  if (!type || !POINTS_MAP[type]) {
+    return res.status(400).json({ code: 'INVALID_TYPE', message: '无效的积分类型' });
+  }
+
+  const amount = POINTS_MAP[type];
+  const DESCS = { study_checkin: '每日学习', study_stage_complete: '完成学习关卡', streak_bonus: '连续学习奖励', daily_checkin: '每日签到' };
+  const desc = description || DESCS[type];
+
+  try {
+    // 防同类型今天重复（study_checkin / daily_checkin）
+    if (type === 'study_checkin' || type === 'daily_checkin') {
+      const today = new Date().toISOString().slice(0, 10);
+      const existing = db.prepare(`SELECT id FROM point_transactions WHERE user_id = ? AND type = ? AND date(created_at) = ?`).get(req.user.id, type, today);
+      if (existing) {
+        return res.json({ code: 'OK', data: { earned: 0, already_claimed: true, balance: db.prepare(`SELECT balance FROM points WHERE user_id = ?`).get(req.user.id)?.balance || 0 } });
+      }
+    }
+
+    // 确保 points 记录存在
+    const exist = db.prepare(`SELECT user_id FROM points WHERE user_id = ?`).get(req.user.id);
+    if (!exist) {
+      db.prepare(`INSERT INTO points (user_id, balance, total_earned, total_spent) VALUES (?, 0, 0, 0)`).run(req.user.id);
+    }
+
+    // 添加积分
+    db.prepare(`UPDATE points SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now') WHERE user_id = ?`).run(amount, amount, req.user.id);
+
+    // 记录交易
+    db.prepare(`INSERT INTO point_transactions (id, user_id, amount, type, description) VALUES (?, ?, ?, ?, ?)`).run(uuidv4(), req.user.id, amount, type, desc);
+
+    const balance = db.prepare(`SELECT balance FROM points WHERE user_id = ?`).get(req.user.id);
+    res.json({ code: 'OK', data: { earned: amount, balance: balance?.balance || 0 } });
+  } catch (e) {
+    console.error('[points/earn error]', e.message);
+    res.status(500).json({ code: 'INTERNAL_ERROR', message: e.message });
+  }
+});
 router.post('/wechat-bind', authenticate, (req, res) => {
   const { openid } = req.body;
   if (!openid) {
