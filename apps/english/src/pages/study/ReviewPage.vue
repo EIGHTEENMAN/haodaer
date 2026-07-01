@@ -10,6 +10,26 @@ const filterMastery = ref<'all' | 'mastered' | 'learning' | 'new'>('all')
 const searchQuery = ref('')
 const detailWord = ref<any>(null)
 
+const STAGES = 6
+const WORDS_PER_STAGE = 8
+
+// 给定单词 id，返回它在所属 theme 内的关卡号
+function getStageForWord(wordId: number): { themeId: string, stage: number } | null {
+  const w = words.find(x => x.id === wordId)
+  if (!w) return null
+  const themeWords = words.filter(x => x.theme === w.theme)
+  const idx = themeWords.findIndex(x => x.id === wordId)
+  const stage = Math.floor(idx / WORDS_PER_STAGE) + 1
+  return { themeId: w.theme, stage }
+}
+
+function openStudy(rec: any) {
+  // 点击单词卡片：跳到它所在的 theme + stage，进入 FlashCard 学习
+  const loc = getStageForWord(rec.id)
+  if (!loc) return
+  window.location.hash = `#/study/${encodeURIComponent(loc.themeId)}/${loc.stage}`
+}
+
 onMounted(() => {
   // 从 URL 自动填入（TopHeader 搜索跳转）
   // 注意：hash 路由的 ?q=xxx 在 # 后面，window.location.search 为空
@@ -110,7 +130,7 @@ function close() {
         :key="rec.id"
         class="word-card"
         :class="{ mastered: rec.mastered }"
-        @click="showDetail(rec)"
+        @click="openStudy(rec)"
       >
         <div class="word-text">{{ rec.word }}</div>
         <div class="word-meaning">{{ rec.meaning }}</div>
