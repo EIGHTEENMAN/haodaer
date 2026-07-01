@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { words } from '../../data/words'
 import { wordStore, getAccuracy } from '../../stores/wordStore'
 import { playWordAudio } from '../../utils/audio'
@@ -9,6 +9,13 @@ const filterDifficulty = ref(0)
 const filterMastery = ref<'all' | 'mastered' | 'learning' | 'new'>('all')
 const searchQuery = ref('')
 const detailWord = ref<any>(null)
+
+onMounted(() => {
+  // 从 URL ?q=xxx 自动填入（TopHeader 搜索跳转）
+  const params = new URLSearchParams(window.location.search)
+  const q = params.get('q')
+  if (q) searchQuery.value = q
+})
 
 const records = computed(() => {
   const arr = []
