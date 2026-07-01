@@ -33,10 +33,11 @@ const CONFIG = {
   outputDir: resolve(APP_DIR, 'public/audio/sentences'),
   statusFile: resolve(APP_DIR, '../../scripts/rewrite-english-sentences/tts-status.json'),
   voice: 'en-US-JennyNeural',
-  // 2026-06-30 v2：去掉 mstts:express-as style="friendly"
-  // 原因：edge-tts 的 SSML style 对短句+缩写（it's/don't）经常解析失败，输出技术字符乱码
-  // 改为纯文本 + prosody rate/pitch（学诗词/学国学 v2 成熟方案）
-  rate: '-15%',
+  // 2026-07-01 v3：
+  // 1) 不用 SSML 模式（edge-tts 会把 'version=1.0' 'xmlns=...' 当文本念出来，输出 27 秒）
+  // 2) rate=-25%（用户确认的合适语速）
+  // 3) style='friendly' 在 --file 模式下也读错，纯文本默认语调自然
+  rate: '-25%',
   pitch: '+0Hz',
   concurrency: 4,
   retries: 3,
@@ -59,9 +60,9 @@ function escapeXml(text) {
 }
 
 function buildSsml(text) {
-  // v2 简化：去掉 mstts namespace 和 express-as 包装，只保留 prosody
-  const body = escapeXml(text)
-  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${CONFIG.voice}"><prosody rate="${CONFIG.rate}" pitch="${CONFIG.pitch}">${body}</prosody></voice></speak>`
+  // v3: 不再使用 SSML —— edge-tts 会把 'version=1.0' 'xmlns=...' 等元数据当成文本念出来
+  // 改用纯文本模式 + edge_tts CLI 的 --rate/--pitch 参数
+  return String(text).trim()
 }
 
 async function callEdgeTTS(text, outputPath) {
@@ -71,13 +72,14 @@ async function callEdgeTTS(text, outputPath) {
   mkdirSync(dirname(outputPath), { recursive: true })
 
   // 文本里去掉可能让 TTS 卡壳的特殊字符
-  // 学诗词 v2 经验：去掉英文双引号（edge-tts 会读成 "quote" 怪声）
-  // 但保留 '（缩写 it's/don't 需要）
   const cleanText = text.replace(/"/g, '').trim()
 
-  writeFileSync(tmpTxt, buildSsml(cleanText), 'utf-8')
+  // v3：直接传纯文本，不用 SSML 包装（避免 27 秒 bug）
+  writeFileSync(tmpTxt, cleanText, 'utf-8')
 
-  const args = ['-m', 'edge_tts', '--voice', CONFIG.voice, '--file', tmpTxt, '--write-media', tmpMp3]
+  const args = ['-m', 'edge_tts', '--voice', CONFIG.voice,
+    '--rate=' + CONFIG.rate, '--pitch=' + CONFIG.pitch,
+    '--file', tmpTxt, '--write-media', tmpMp3]
 
   return new Promise((resolveP, rejectP) => {
     const child = spawn('python3', args, { encoding: 'utf-8' })

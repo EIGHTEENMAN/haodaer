@@ -39,8 +39,8 @@ function escapeXml(text) {
 }
 
 function buildSsml(text) {
-  const body = escapeXml(text)
-  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${CONFIG.voice}"><prosody rate="${CONFIG.rate}" pitch="${CONFIG.pitch}">${body}</prosody></voice></speak>`
+  // v3：纯文本模式（去掉 SSML 包装，避免 27 秒 bug）
+  return String(text).trim()
 }
 
 function trimLeadingSilence(srcPath, destPath) {
@@ -78,7 +78,9 @@ async function callEdgeTTS(text, outputPath) {
   const cleanText = text.replace(/"/g, '').trim()
   writeFileSync(tmpTxt, buildSsml(cleanText), 'utf-8')
 
-  const args = ['-m', 'edge_tts', '--voice', CONFIG.voice, '--file', tmpTxt, '--write-media', tmpMp3]
+  const args = ['-m', 'edge_tts', '--voice', CONFIG.voice,
+    '--rate=' + CONFIG.rate, '--pitch=' + CONFIG.pitch,
+    '--file', tmpTxt, '--write-media', tmpMp3]
 
   return new Promise((resolveP, rejectP) => {
     const child = spawn('python3', args, { encoding: 'utf-8' })
