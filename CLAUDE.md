@@ -14,7 +14,7 @@
 
 - **童慧行服务器**：47.114.77.124 (阿里云 ECS, root/Hde@2026)
 - **seedme 服务器**：121.196.230.54 (旧童慧行服务器，seedme-api 端口 3000)
-- 童慧行路径：`/haodaer/apps/`
+- 童慧行路径：`/grandkidsgo/apps/`
 - GitHub 组织：github.com/EIGHTEENMAN (12个仓库)
 - 完整方案：`项目建设方案/童慧行项目建设方案（v3.2 终极版）.txt`
 
@@ -62,8 +62,8 @@
 
 ```bash
 # 1. 克隆仓库
-git clone git@github.com:EIGHTEENMAN/童慧行.git
-cd 童慧行
+git clone git@github.com:EIGHTEENMAN/GrandKidsGo.git
+cd GrandKidsGo
 
 # 2. 安装依赖（每个 app 各自安装）
 cd apps/auth-service && npm install && cd ../..
@@ -98,11 +98,11 @@ cd apps/tiaozhan && npm run dev          # 终端2：Vite 前端 (端口 3011，
 | auth-service | 3007 | ✅ |
 | travel-guide | 3010 | ✅ |
 | admin | 3099 | ✅ |
-| haodaer-shici | 3008 | ✅ (壳子) |
+| xueshici | 3008 | ✅ (壳子) |
 | xueguoxue | 3003 | ✅ (壳子) |
 | xuetongshi | 3004 | ✅ (壳子) |
 | ultraman-english | 3002 | ✅ (壳子) |
-| haodaer-tiaozhan | 3001 / 3011 | ✅ tiaozhan.grandand.com (后端3001, 前端dev端口3011) |
-| haodaer-forum | 3005 | ✅ forum.grandand.com |
-| haodaer-store | 3006 | ✅ store.grandand.com |
-| haodaer-moderation | 3020 | ✅ 内部审核服务 |
+| tiaozhan | 3001 / 3011 | ✅ tiaozhan.grandand.com (后端3001, 前端dev端口3011) |
+| forum | 3005 | ✅ forum.grandand.com |
+| store | 3006 | ✅ store.grandand.com |
+| moderation | 3020 | ✅ 内部审核服务 |
